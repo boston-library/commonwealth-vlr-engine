@@ -1,0 +1,9 @@
+/*
+ * This is a manifest file that'll be compiled into ie_fixes.css, which will include all the files
+ * listed below.
+ * don't forget to add this file to config.assets.precompile in application.rb
+
+ *= require_self
+ *= require_directory ./ie_fixes
+
+*/

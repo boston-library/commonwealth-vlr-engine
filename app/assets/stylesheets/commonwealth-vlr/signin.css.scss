@@ -1,0 +1,45 @@
+/* styles for signin/auth views */
+
+@import 'cmmnwlth_defaults';
+
+#signin_wrapper {
+  padding-top:10px;
+
+  #alt_signins {
+    padding: 1em 0 2em 0;
+
+    .alt_signin_btn {
+      padding-right: 1em;
+    }
+
+  }
+
+}
+
+#signup_wrapper {
+  padding-top:10px;
+}
+
+#edit_account_wrapper {
+
+  #error_explanation {
+
+    h2 {
+      display:none;
+    }
+  }
+
+}
+
+#why_log_in {
+  margin-top: 42px;
+
+  ul {
+    padding-left: 20px;
+  }
+
+}
+
+#password_reset, #password_edit {
+  padding-top: 20px;
+}

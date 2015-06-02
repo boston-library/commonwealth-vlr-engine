@@ -1,0 +1,141 @@
+/* styles for advanced search view */
+
+@import 'cmmnwlth_defaults';
+
+#advanced_search_wrapper {
+  margin-top: 20px;
+
+  #advanced_search_fields {
+
+    .advanced_search_field {
+      margin-left: 0;
+      margin-bottom:5px;
+
+      .search_index_select {
+        text-align: left;
+        width: 120px;
+      }
+
+      #advanced_operators {
+        padding-left:32px;
+      }
+
+    }
+
+  }
+
+  #advanced_search_limits {
+    margin-top: 20px;
+    padding: 5px 19px 0px 15px;
+    float: left;
+    width: 95%;
+
+    label.control-label {
+      font-weight: bold;
+    }
+
+    #date_range_limit {
+      padding-bottom: 20px;
+
+      .input-group {
+        float:left;
+        margin-right: 5px;
+
+        label {
+          font-weight: normal;
+          padding-right: 4px;
+          font-size: 12px;
+          background: none;
+          border: none;
+
+        }
+
+        input {
+          border-bottom-left-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+
+      }
+
+    }
+
+    .facet_scrollbox_wrapper {
+      background-color: #FFFFFF;
+
+      .facet_limit_scrollbox {
+        max-height: 130px;
+        min-height: 50px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling:touch;
+
+        ul.facet-values {
+
+          li {
+
+            .facet-checkbox {
+
+              input[type="checkbox"] {
+                vertical-align: bottom;
+              }
+
+            }
+
+            .label-and-count {
+              font-size: 12px;
+
+              .facet-label {
+                text-indent: -20px;
+                padding-bottom: 4px;
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  #advanced_search_help {
+    @include rounded-corners(8px);
+    border: 1px solid $light_gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20px;
+    opacity: .8;
+
+    ul.advanced_help {
+      font-size: 12px;
+      padding-left: 24px;
+
+      li {
+        padding-bottom:10px;
+      }
+
+    }
+
+  }
+
+
+}
+
+/* responsive styles */
+
+/* Landscape phone to portrait tablet (iPad) */
+
+@media (max-width: 767px) {
+
+  #advanced_search_wrapper {
+
+    #advanced_search_help {
+      float:left;
+      margin-top:20px;
+    }
+
+  }
+
+}

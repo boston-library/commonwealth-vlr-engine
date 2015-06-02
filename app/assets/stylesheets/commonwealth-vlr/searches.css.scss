@@ -1,0 +1,57 @@
+/* styles for search history and saved searches views */
+
+@import 'cmmnwlth_defaults';
+
+#searches_content, #search_history_content {
+
+  .filterName {
+    padding-right: .2em;
+  }
+
+}
+
+#searches_content {
+
+  h2 {
+    margin-bottom:0px;
+  }
+
+  #empty_saved_searches {
+    margin-top:20px;
+  }
+
+  .constraint {
+    padding-right: .5em;
+  }
+
+}
+
+#search_history_content {
+
+  h2 {
+    margin-bottom:0px;
+  }
+
+  .search_history .filterName, .search_history .filterSeparator {
+    color: inherit;
+  }
+
+  #empty_search_history {
+    margin-top:20px;
+  }
+
+
+  td.query {
+    width: 70%;
+  }
+
+  td.actions {
+    text-align: right;
+  }
+
+  form {
+    margin: 0;
+  }
+
+}
+

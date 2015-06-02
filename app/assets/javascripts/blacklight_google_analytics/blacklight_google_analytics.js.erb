@@ -1,0 +1,165 @@
+/* have to change '$' to '$' to avoid conflict with Prototype in image show view */
+
+$(function() {
+
+    BlacklightGoogleAnalytics = {}
+
+    BlacklightGoogleAnalytics.console_log_error = function(err, values){
+        <% if Rails.env == 'development' %>
+            // good place to log in development
+            console.log(err);
+            console.log(values);
+        <% end %>
+    };
+
+    BlacklightGoogleAnalytics.this_or_parent_id = function(that){
+        if (that.get(0).id.length > 0){
+            var identifier = that.get(0).id;
+        } else {
+            var identifier = that.parents('[id]:first').get(0).id;
+        }
+        return identifier;
+    };
+
+    var category = $('body').attr('class').split(' ')[1].toString().replace(/blacklight-/,'').replace(/-/,'#');
+
+    // generic link tracking
+    $('a').click(function () {
+        try {
+            var action = BlacklightGoogleAnalytics.this_or_parent_id($(this));
+            var label = ($(this).text() || $(this).children('img:first').attr('alt'));
+            if (action === 'facets-collapse') { // for facets, make the action the facet heading
+                var action = 'facet_' + $(this).parents("div:first").find("h5:first").text().trim();
+            } else if (action === 'documents') { // search results
+                var action = 'result_' + $(this).parents("div:first").attr('class');
+                if ($(this).data('counter')) {
+                    var label = $(this).data('counter');
+                }
+            } else if (action === 'item_metadata') { // catalog#show metadata links
+                var label = $(this).parent().prev("dt").text().replace(/:/,'');
+            } else if (action === 'item_breadcrumb') { // catalog#show breadcrumb
+                var label = $(this).attr('class');
+            } else if (action === 'institution_site_link') { // institutions#show external site URL
+                var label = $('img.institution_img_show').attr('alt');
+            }
+
+            ga('send', 'event', category, action, label);
+        } catch (err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+        //BlacklightGoogleAnalytics.pause();
+    });
+
+    // "more" facet ajax-modal clicks
+    BlacklightGoogleAnalytics.track_modal_facet_clicks = function () {
+        $("#ajax-modal").find('a').click(function () {
+            try {
+                var action = 'facet_' + $('div.modal-header').find('h3').text();
+                var label = $(this).text();
+                ga('send', 'event', category, action, label);
+            } catch (err) {
+                BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+            }
+        });
+    };
+
+    // modal form submission
+    BlacklightGoogleAnalytics.track_modal_form = function () {
+        $("#ajax-modal").find('form').submit(function () {
+            try{
+                var action = 'submit_' + BlacklightGoogleAnalytics.this_or_parent_id($(this));
+                ga('send', 'event', category, action);
+            } catch(err) {
+                BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
+            }
+        });
+    };
+
+    // OAI item clicks
+    $("#oai_img_show_container").find("a").off("click").click(function(){
+        try{
+            var action = 'oai_item_link';
+            var label = $('#item_breadcrumb').find("a.institution_breadcrumb").text();
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    });
+
+    // saved searches clicks
+    $("#searches_content").find("a").off("click").click(function(){
+        try{
+            if ($(this).attr('class')) {
+                var action = $(this).attr('class');
+            } else {
+                var action = 'link_to_saved_search';
+            }
+            ga('send', 'event', category, action);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
+        }
+    });
+
+    // search history clicks
+    $("#searches_list").find("a").off("click").click(function(){
+        try{
+            var action = 'link_to_previous_search';
+            ga('send', 'event', category, action);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
+        }
+    });
+
+    // collections#show series clicks
+    $("#series_wrapper").find("a").off("click").click(function(){
+        try{
+            var action = 'series_' + $(this).parents("div:first").attr('class');
+            var label = ($(this).text() || $(this).children('img:first').attr('alt'));
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    });
+
+    // institutions#show collection clicks
+    $("#institution_collections").find("a").off("click").click(function(){
+        try{
+            var action = 'collections_' + $(this).parents("div:first").attr('class');
+            var label = ($(this).text() || $(this).children('img:first').attr('alt'));
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    });
+
+    // form submissions
+    $("form").submit(function(){
+        try{
+            var action = BlacklightGoogleAnalytics.this_or_parent_id($(this));
+            var label = "";
+            if (action === "folder_item_toggle") { // add item to bookmarks
+                var label = "Bookmarks";
+            } else if (action === "item_actions_form") { // bookmarks/folders item delete
+                var action = "removeLink";
+                var label = "Remove"
+            } else if (action === "hero_search_form") { // home page search
+                var label = $("#search_field").val();
+            }
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    });
+
+    // image_viewer#book_viewer button clicks
+    $("#viewer").find("button").click(function(){
+        try{
+            var action = BlacklightGoogleAnalytics.this_or_parent_id($(this));
+            var label = '';
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    })
+
+});

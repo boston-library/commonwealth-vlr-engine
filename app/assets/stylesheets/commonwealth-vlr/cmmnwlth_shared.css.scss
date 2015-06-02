@@ -1,0 +1,77 @@
+/* shared sitewide styles */
+
+@import 'cmmnwlth_defaults';
+
+body.blacklight-institutions-index, body.blacklight-collections-index, body.blacklight-catalog-index {
+
+  #header-navbar {
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+    position: fixed;
+    right: 0;
+    z-index: 1001; // blacklight-maps leaflet controls have z-index:1000
+  }
+
+  #main-container {
+    padding-top: 100px;
+  }
+
+}
+
+.flash_messages {
+  margin-top: 10px;
+
+  .alert {
+    padding: 5px 8px;
+    margin: 5px 0;
+
+    .close {
+      line-height: .8;
+    }
+
+  }
+
+}
+
+#breadcrumb {
+  margin-top: 5px;
+
+  ul.breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 0 0 10px;
+    font-size: 12px;
+
+    > li {
+
+      + li:before {
+        content: none;
+      }
+    }
+
+    a {
+      color: $darker_gray;
+    }
+
+    span.divider {
+      color:$light_gray;
+      padding: 0 5px;
+    }
+
+  }
+
+}
+
+#error_explanation {
+  color: $error_text;
+  background-color: $error_bg;
+  border: 1px solid $error_border;
+  @include rounded-corners(4px);
+  margin-bottom: 15px;
+  padding-top: 10px;
+
+  h2 {
+    display:none;
+  }
+}

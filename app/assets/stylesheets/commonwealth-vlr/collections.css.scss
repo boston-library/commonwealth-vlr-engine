@@ -1,0 +1,574 @@
+/* styles for collections views */
+
+@import 'cmmnwlth_defaults';
+
+
+/* collections#index */
+
+div.collections-list {
+
+  #collection_az_links {
+    margin-bottom: 10px;
+
+    .col_a-z_link, .col_a-z_nolink {
+      padding-left:7px;
+    }
+
+    .col_a-z_nolink {
+      color:$dark_gray;
+    }
+
+  }
+
+  /* don't display sort or view-type widgets */
+  #sort-dropdown, .view-type {
+    display: none;
+  }
+
+  #documents.documents-list {
+    margin-top: 15px;
+
+    .document {
+
+      .document-thumbnail {
+        min-width: 130px;
+
+        img {
+          max-height: 130px;
+          max-width: 130px;
+        }
+
+      }
+
+      .item_index_details {
+        font-size: 13px;
+      }
+
+    }
+
+  }
+
+}
+
+/* collections#show */
+
+h2.collection-title {
+  line-height:25px;
+}
+
+h4.collection-provenance {
+  font-size: 17.5px;
+  color: $dark_gray;
+  font-weight: normal;
+  line-height: 1;
+
+  a {
+    color: $darker_gray;
+  }
+
+  a:hover {
+    color:$bl_link;
+    text-decoration: none;
+  }
+
+}
+
+#collection_img {
+  float: left;
+  width: 43%;
+  margin: 0 1.4em 1.5em 0;
+
+  img.collection_img_show {
+    border: 1px solid $light_gray;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #collection_img_caption {
+    font-size: 12px;
+    padding-top: .3em;
+
+    a, a:hover {
+      color:$darker_gray;
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+#collection_search_tools {
+  margin-bottom: 1em;
+  width:54%;
+  float:right;
+
+  #collection_search_form {
+    padding: 0 3px 0 0;
+    float: left;
+
+    input {
+      width: 175px;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    .submit-search-text {
+      display: none;
+    }
+
+  }
+
+  .collection_search_separator {
+    display: inline;
+    float: left;
+    padding: 6px 6px 8px 3px;
+    vertical-align: middle;
+    color: $dark_gray;
+  }
+
+}
+
+
+#collection_desc {
+
+  ol,ul {
+    display: inline-block;
+  }
+
+}
+
+#series_wrapper {
+  /* float:left; */
+  clear: left;
+  padding-top: 10px;
+
+  .panel-default {
+    border: none;
+    box-shadow: none;
+
+    .panel-heading {
+      display: none;
+    }
+
+    #facet-related_item_series_ssim_thumb-list {
+      display:block;
+
+      .panel-body {
+        padding: 0;
+      }
+
+    }
+
+  }
+
+  #documents {
+
+    .document {
+      border: none;
+      padding-bottom: 25px;
+      margin-bottom: 10px;
+
+      .thumbnail {
+        border: none;
+        height: 127px;
+
+        img {
+          max-height: 127px;
+        }
+
+        .caption {
+          padding: 2px 5px;
+          font-size: 12px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+#facets div.blacklight-related_item_series_ssim {
+  display: none;
+}
+
+#blacklight-collection-map-container {
+  clear: left;
+  padding-top: 10px;
+
+  #blacklight-index-map {
+    height: 300px;
+  }
+
+}
+
+#collection_metadata_wrapper {
+  margin-top: 1.5em;
+}
+
+#item_metadata h4 {
+  padding-left:1em;
+}
+
+/* collections gallery */
+
+#documents.collections-gallery {
+
+  .masonry {
+
+    &.document {
+      background-color: inherit;
+      padding: 5px;
+
+      .thumbnail {
+        border: 1px solid $dark_gray;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 7px;
+        height: 221px;
+
+        a {
+
+          img {
+            border: none;
+            height:auto;
+            width:auto;
+            max-height: 221px;
+            position: relative;
+            top: 109px; // would rather use 50% but doesn't work in Chrome
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+          }
+
+        }
+
+        .caption {
+          display: block;
+          left: 5px;
+          right: 5px;
+          width: auto;
+          bottom: 5px;
+          border-bottom-left-radius: 7px;
+          border-bottom-right-radius: 7px;
+          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 27%, rgba(0,0,0,0.45) 100%);
+
+          h5 {
+            font-size:16px;
+            margin-bottom: 3px;
+            margin-top: 3px;
+
+            a:hover {
+              text-decoration: none;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+/* responsive styles */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:13px;
+      }
+
+    }
+
+  }
+
+  #collection_search_tools {
+    width:54%;
+  }
+
+  #series_wrapper {
+
+    #documents {
+
+      .document {
+
+        .thumbnail {
+          height: 159px;
+
+          img {
+            max-height: 159px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  #blacklight-collection-map-container {
+
+    #blacklight-index-map {
+      height: 400px;
+    }
+
+  }
+
+  #documents.collections-gallery {
+
+    .masonry {
+
+      &.document {
+
+        .thumbnail {
+          height: 271px;
+
+          a {
+
+            img {
+              top: 135px;
+              max-height: 271px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:1px;
+      }
+
+    }
+
+  }
+
+  #collection_img {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+
+  #collection_search_tools {
+    width:97%;
+    float:left;
+
+    #collection_search_form {
+
+      input {
+        width: 100%;
+      }
+
+    }
+
+  }
+
+  #series_wrapper {
+
+    #documents {
+
+      .document {
+
+        .thumbnail {
+          height: 95px;
+
+          img {
+            max-height: 95px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  #documents.collections-gallery {
+
+    .masonry {
+
+      &.document {
+
+        .thumbnail {
+          height: 166px;
+
+          a {
+
+            img {
+              top: 82px;
+              max-height: 166px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:2px;
+      }
+
+    }
+
+  }
+
+  #collection_img {
+    width: 100%;
+    margin: 0 0 1em 0;
+    float: none;
+  }
+
+  #collection_search_tools {
+    width:97%;
+    float:none;
+
+    #collection_search_form {
+      width:289px;
+
+      input {
+        width: 100%;
+      }
+
+    }
+
+  }
+
+  #series_wrapper {
+    display: none;
+  }
+
+  .blacklight-collection #facets {
+    margin-top: 1em;
+
+    div.blacklight-related_item_series_ssim {
+      display: block;
+    }
+
+  }
+
+  #documents.collections-gallery {
+
+    .masonry {
+
+      &.document {
+
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
+        }
+
+        .thumbnail {
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          bottom: 5px;
+          right: 5px;
+          height: auto;
+
+          a {
+
+            img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+              -webkit-transform: translate(-50%,-50%);
+              -ms-transform: translate(-50%,-50%);
+              -moz-transform: translate(-50%,-50%);
+              max-height: unset;
+            }
+
+          }
+
+          .caption {
+            left: 0;
+            right: 0;
+            bottom: -2px;
+
+            h5 {
+              font-size:14px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  #collection_search_tools {
+
+    #collection_search_form {
+
+      input {
+        width: 100%;
+      }
+
+    }
+
+    #collection_view_all {
+      padding-top: 45px;
+    }
+
+  }
+
+  #blacklight-collection-map-container {
+    display:none;
+  }
+
+}
+

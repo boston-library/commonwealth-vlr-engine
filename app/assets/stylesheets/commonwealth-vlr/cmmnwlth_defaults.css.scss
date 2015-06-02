@@ -1,0 +1,41 @@
+/* Site-wide style settings/variables for public-facing Digital Commonwealth hydra-head */
+
+$logo_image: 'dc-logo_notag_sm.png';
+$logo_image_home: 'dc-logo_tagline_sm.png';
+
+$darker_gray: #666666;
+$dark_gray: #A29E9E;
+$light_gray: #CACACA;
+$lighter_gray: #F1F1F1;
+
+$bootstrap_text: #333333;
+
+$bl_link: #428BCA;
+$bl_link_hover: #005580;
+
+$well_bg_color: #F5F5F5;
+$well_border_color: #E3E3E3;
+$facets_border: #DDDDDD;
+
+$navbarBorder: #D4D4D4;
+
+$dropdown-hover-background: #0081C2;
+$dropdown-hover-background-gradient-start:#0088CC;
+$dropdown-hover-background-gradient-end: #0077B3;
+
+$error_text: #b94a48;
+$error_bg: #f2dede;
+$error_border: #eed3d7;
+
+$viewer_bg: #111111;
+
+@mixin rounded-corners($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}

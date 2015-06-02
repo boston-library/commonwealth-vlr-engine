@@ -1,0 +1,33 @@
+/* various static-type pages */
+
+@import 'cmmnwlth_defaults';
+
+div.about_content {
+
+  h5.section_heading {
+    padding-top: 10px;
+    font-weight: bold;
+  }
+
+  ul li {
+    padding-bottom: 1em;
+  }
+
+  #lesson_plan_list {
+    padding-top: 5px;
+  }
+
+  #partner_list li {
+    padding: 20px 0;
+  }
+
+}
+
+ul.page_list {
+  margin-top:20px;
+
+  li {
+    padding-bottom: 1em;
+  }
+
+}
