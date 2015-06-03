@@ -1,0 +1,29 @@
+<% @page_title = t('blacklight.advanced_search.title', :application_name => application_name) %>
+<!--
+<script type="text/javascript">
+    $(document).ready(function(){$("form.advanced input:first").focus();});
+</script>
+-->
+
+<div id="content" class="col-sm-12 advanced-search-form">
+
+  <h2><%= t('blacklight.advanced_search.page_title') %></h2>
+
+  <ul id="search_mode_tabs" class="nav nav-tabs">
+    <li>
+      <%= link_to 'Basic', catalog_index_path %>
+    </li>
+    <li class="active"><a href="#">Advanced</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tab-pane active" id="advanced_search_wrapper">
+
+          <%= render 'advanced_search_form' %>
+
+    </div>
+
+  </div>
+
+</div>

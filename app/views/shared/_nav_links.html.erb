@@ -1,0 +1,64 @@
+<% @nav_links = {
+        :search => {
+                :basic => {:nav_link_title => 'Basic',
+                           :nav_link_path => catalog_index_path},
+                :advanced => {:nav_link_title => 'Advanced',
+                              :nav_link_path => advanced_search_path}
+        },
+        :explore => {
+                :map => {:nav_link_title => t('blacklight.maps.title'),
+                            :nav_link_path => map_path},
+                :collections => {:nav_link_title => t('blacklight.collections.nav'),
+                                 :nav_link_path => collections_path},
+                :institutions => {:nav_link_title => t('blacklight.institutions.nav'),
+                                  :nav_link_path => institutions_path},
+                :formats => {:nav_link_title => t('blacklight.navigation.format'),
+                                  :nav_link_path => formats_facet_path}
+        },
+        :for_libraries => {
+                :membership => {:nav_link_title => 'Membership',
+                               :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/membership'},
+                :contribute => {:nav_link_title => 'Contribute Your Collections',
+                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/contribute'},
+                :conference => {:nav_link_title => 'Conferences, Training & Events',
+                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/events'},
+                :training => {:nav_link_title => 'Digitization & Metadata Services',
+                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/digitization'}
+        },
+        :for_educators => {
+                :lesson_plans => {:nav_link_title => t('blacklight.pages.lesson_plans.title'),
+                                  :nav_link_path => lesson_plans_path}
+        },
+        :about => {
+                :overview => {:nav_link_title => t('blacklight.pages.about_dc.title'),
+                         :nav_link_path => about_dc_path},
+                :news=> {:nav_link_title => t('blacklight.pages.news.title'),
+                         :nav_link_path => blog_path},
+                :directory => {:nav_link_title => 'Member Directory',
+                         :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/directory'},
+                :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),
+                               :nav_link_path => copyright_path},
+                :partners => {:nav_link_title => t('blacklight.pages.partners.title'),
+                              :nav_link_path => partners_path},
+                :contact => {:nav_link_title => t('blacklight.pages.contact.title'),
+                             :nav_link_path => feedback_path}
+        }
+} %>
+
+<% @nav_links.each_with_index do |(k, v), index| %>
+    <li class="dropdown<%= ' last_nav' if index == @nav_links.length-1 %>">
+      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle<%= @nav_li_active == k.to_s ? ' active' : '' %>" href="/<%= k.to_s %>" role="button" data-toggle="dropdown">
+        <%= k.to_s.titleize %><!-- <span class="caret"></span> -->
+      </a>
+      <ul class="dropdown-menu<%= ' pull-right' if index == @nav_links.length-1 %>" role="menu" aria-labelledby="<%= k.to_s + '_dropdown' %>">
+        <% v.each do |k,v| %>
+            <%= content_tag(:li,
+                    link_to(v[:nav_link_title],
+                            v[:nav_link_path]),
+                            :tabindex => '-1') %>
+        <% end %>
+      </ul>
+    </li>
+
+<% end %>
+

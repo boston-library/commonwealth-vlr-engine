@@ -1,0 +1,20 @@
+<%# display the page sequence %>
+<div id="page_sequence">
+  Viewing image <%= page_sequence[:index] %> of <%= page_sequence[:total] %>
+  <div id="page_sequence_pagination">
+    <%= link_to('< Previous',
+                image_viewer_path(@document.id,
+                                  :view => page_sequence[:prev]),
+                :class => 'prev_next',
+                :title => t('blacklight.images.prev'),
+                :data => { :viewer => page_sequence[:prev] },
+                :remote => true) if page_sequence[:prev] %>
+    <%= link_to('Next >',
+                image_viewer_path(@document.id,
+                                  :view => page_sequence[:next]),
+                :class => 'prev_next',
+                :title => t('blacklight.images.next'),
+                :data => { :viewer => page_sequence[:next] },
+                :remote => true) if page_sequence[:next] %>
+  </div>
+</div>

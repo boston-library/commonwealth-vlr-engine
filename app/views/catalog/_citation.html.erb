@@ -1,0 +1,50 @@
+<h4><%= t('blacklight.citation.chicago') %></h4>
+
+<% @documents.each do |document| %>
+
+    <div class="citation-content">
+      <p>
+        <%# TODO: If there is a preferred citation note, render it here %>
+
+        <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
+            <% names = [] %>
+            <% if document[:name_personal_tsim] %>
+                <% pers_names = [] %>
+                <% document[:name_personal_tsim].each do |pers_name| %>
+                    <% pers_names << pers_name.gsub(/, \d.*/,'') %>
+                <% end %>
+                <% names.concat(pers_names) %>
+            <% end %>
+            <% names.concat(document[:name_corporate_tsim]) if document[:name_corporate_tsim] %>
+            <%# if multiple creators, put ', ' between each, but ', and ' before last one %>
+            <% if names.length > 1 %>
+                <% 0.upto names.length-1 do |index| %>
+                    <% if index == names.length-1 %>
+                        and&nbsp;<%= names[index] %>.&nbsp;
+                    <% else %>
+                        <%= names[index] %>,&nbsp;
+                    <% end %>
+                <% end %>
+            <% else %>
+                <%= names.first %>.&nbsp;
+            <% end %>
+        <% end %>
+        <% if document[blacklight_config.index.title_field.to_sym] %>
+            "<%= document[blacklight_config.index.title_field.to_sym] %>."&nbsp;
+        <% end %>
+        <% if document[:genre_basic_ssim] %>
+            <%= document[:genre_basic_ssim].first.gsub(/s\z/,'') %>.&nbsp;
+        <% end %>
+        <%# if date, add it here, period+space at end %>
+        <% if document[:date_start_dtsi] %>
+            <%= Time.new(document[:date_start_dtsi]).year %>.&nbsp;
+        <% end %>
+        <em><%= t('blacklight.application_name') %></em>,&nbsp;
+        <% if document[:identifier_uri_ss] %>
+            <%= document[:identifier_uri_ss] %>&nbsp;
+        <% end %>
+        (accessed <%= Date.today.strftime('%B %d, %Y') %>).
+      </p>
+    </div>
+
+<% end %>

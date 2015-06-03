@@ -1,0 +1,13 @@
+<%= link_to(img,
+            book_viewer_path(document.id),
+            :title => t('blacklight.book_viewer.link_to_reader'),
+            :rel => 'nofollow') %>
+
+<div id="book_viewer_link_wrap">
+  <%= link_to(book_viewer_path(document.id),
+              :class => 'book_viewer_link btn',
+              :rel => 'nofollow') do %>
+      <%= t('blacklight.book_viewer.link_to_reader') %> <i class="fa fa-book"></i>
+  <% end %>
+</div>
+</div>

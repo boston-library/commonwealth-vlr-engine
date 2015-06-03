@@ -1,0 +1,21 @@
+<div id="documents">
+  <% display_facet.items.each do |item| -%>
+      <% series_title = facet_display_value(solr_field, item) %>
+      <div class="document col-sm-3">
+        <div class="thumbnail">
+          <%= link_to(create_thumb_img_element(get_series_image_obj(series_title,
+                                                                    @collection_title),
+                                               %w(series_thumbnail)),
+                      add_facet_params_and_redirect(solr_field, item)) %>
+          <div class="caption">
+            <%= (link_to(series_title,
+                         add_facet_params_and_redirect(solr_field, item),
+                         :class=> 'facet_select')).html_safe %><!-- <br/>
+                <span class="series_facet_count">
+                  <%# render_facet_count(item.hits) + ' items' %>
+                </span> -->
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

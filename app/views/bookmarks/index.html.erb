@@ -1,0 +1,64 @@
+<% @page_title = t('blacklight.bookmarks.title') + ' - ' + application_name %>
+
+<%= javascript_include_tag 'commonwealth-vlr-engine/folder_tools' %>
+
+<div id="content" class="folder_show_container col-sm-9">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li>
+        <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.bookmarks.title') %>
+      </li>
+    </ul>
+  </div>
+
+<h2><%= t('blacklight.bookmarks.title') %>
+  <% unless !current_or_guest_user || @document_list.blank? %>
+      <small id="folder_tools">
+        <%# link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
+                    clear_bookmarks_path,
+                    :id => 'remove_all_link',
+                    :class => 'btn btn-default btn-sm',
+                    :method => :delete,
+                    :data => { :confirm => t('blacklight.folder_items.clear.confirm') }) %>
+      </small>
+  <% end %>
+</h2>
+
+  <div id="folder_description">
+    <%= t('blacklight.bookmarks.description') %>
+  </div>
+
+<%- if current_or_guest_user.blank? -%>
+      <div id="empty_folder" class="well">
+        <h5><%= t('blacklight.bookmarks.need_login') %></h5>
+      </div>
+<%- elsif @document_list.blank? -%>
+      <div id="empty_folder" class="well">
+        <h4><%= t('blacklight.bookmarks.no_bookmarks') %></h4>
+        <p><%= t('blacklight.folders.help.add_items') %></p>
+      </div>
+<% else %>
+
+    <%= render 'sort_and_per_page' %>
+
+    <%= form_tag selected_bookmarks_actions_path, :method => :put, :id => "item_actions_form" do %>
+
+        <%= render :partial => 'shared/folder_item_actions' %>
+
+        <%= render_document_index %>
+
+    <% end %>
+    <%= render 'results_pagination' %>
+<% end %>
+</div>

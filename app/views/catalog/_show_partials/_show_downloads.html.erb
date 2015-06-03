@@ -1,0 +1,14 @@
+<div class="panel panel-default" id="sidebar-downloads">
+  <div class="panel-heading">
+    <%= t('blacklight.downloads.title') %>
+  </div>
+
+  <div class="panel-body">
+    <ul class="nav nav-list">
+      <% create_download_links(object_files, 'sidebar_downloads_link').each do |link| %>
+        <li class="download_list_item"><%= link %></li>
+      <% end %>
+        <!-- <li class="download_info"><%# t('blacklight.downloads.link_info') %></li> -->
+    </ul>
+  </div>
+</div>

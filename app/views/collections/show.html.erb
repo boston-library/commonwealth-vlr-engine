@@ -1,0 +1,115 @@
+<div id="content" class="col-sm-12 show-document">
+
+  <% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
+  <% content_for(:head) { render_link_rel_alternates } %>
+
+  <%# this should be in a partial -%>
+  <div id="document" class="<%= render_document_class %>">
+
+    <div id="doc_<%= @document.id.to_s.parameterize %>">
+
+      <h2 class="collection-title"><%= @collection_title %></h2>
+
+      <h4 class="collection-provenance">
+        <% if @document[:institution_pid_ssi] %>
+            <%= link_to(@document[blacklight_config.institution_field.to_sym][0],
+                        institutions_path + '/' + @document[:institution_pid_ssi],
+                        :id => 'institution_link'
+                ) %>
+        <% elsif @document[:physical_location_ssim] %>
+            <%= @document[:physical_location_ssim][0] %>
+        <% end %>
+      </h4>
+
+      <div class="document">
+
+        <div class="row">
+
+          <div class="col-sm-9">
+            <div id="collection_img">
+              <% if @collection_image_pid && @collection_image_info %>
+                  <% image_title = @collection_image_info[:title] %>
+                  <% if @collection_image_pid.match(/oai/) || @collection_image_info[:access_master] == false %>
+                       <% img_element = image_tag(datastream_disseminator_url(@collection_image_pid,'thumbnail300'),
+                                                  :alt => image_title,
+                                                  :class => 'collection_img_show') %>
+                  <% else %>
+                      <% img_element = iiif_image_tag(@collection_image_pid,
+                                                      {:size => 'pct:20',
+                                                       :alt => image_title,
+                                                       :class => 'collection_img_show'}) %>
+                  <% end %>
+              <%= link_to(img_element,
+                          solr_document_path(@collection_image_info[:pid])) %>
+              <div id="collection_img_caption">
+                <%= link_to(image_title,
+                            solr_document_path(@collection_image_info[:pid])) %>
+              </div>
+              <% else %>
+                <%= image_tag(collection_icon_path,
+                              :alt => @collection_title,
+                              :class => 'collection_img_show') %>
+              <% end %>
+            </div>
+            <div id="collection_search_tools" class="well well-sm">
+              <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
+              <span class="collection_search_separator">or</span>
+              <div id="collection_view_all">
+                <% if @document[blacklight_config.institution_field.to_sym] %>
+                    <%= link_to_all_col_items(@collection_title,
+                                              @document[blacklight_config.institution_field.to_sym],
+                                              'btn btn-info view-all-col') %>
+                <% end %>
+              </div>
+            </div>
+
+            <div id="collection_desc">
+                <% if @document[:abstract_tsim] %>
+                      <% @document[:abstract_tsim].each do |abstract| %>
+                          <%= abstract.html_safe %>
+                      <% end %>
+                <% end %>
+            </div>
+
+            <% if has_facet_values? %w[related_item_series_ssim] %>
+                <div id="series_wrapper">
+                    <%= render :partial=> 'catalog/facets_series' %>
+                </div>
+            <% end %>
+
+            <% # map for collections#show view %>
+            <% unless @response.facet_by_field_name(map_facet_field).items.empty? %>
+                <div id="blacklight-collection-map-container">
+                  <h4><%= t('blacklight.collections.map.title') %></h4>
+                  <%= render :partial => 'catalog/index_map',
+                             :locals => {:geojson_features => serialize_geojson(map_facet_values,
+                                                                                'index')} %>
+                  </div>
+                </div>
+            <% end %>
+
+          </div>
+
+          <div id="sidebar" class="col-sm-3">
+            <%= javascript_include_tag 'collection_facets' %>
+            <%= render 'commonwealth-vlr-engine/search_sidebar' %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
+      <!--
+           // COinS, for Zotero among others.
+           // This document_partial_name(@document) business is not quite right,
+           // but has been there for a while.
+      -->
+      <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
+  <% end %>
+
+</div>

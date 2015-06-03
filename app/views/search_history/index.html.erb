@@ -1,0 +1,59 @@
+<% @page_title = t('blacklight.search_history.title') + " - " + application_name %>
+<div class="col-sm-9" id="search_history_content">
+<%# sidebar_items << capture do %>
+    <!-- <p><%# link_back_to_catalog %></p> -->
+<%# end %>
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li class="active">
+        <%=t('blacklight.search_history.title')%>
+      </li>
+    </ul>
+  </div>
+
+
+<h2><%=t('blacklight.search_history.title')%></h2>
+  <%= t('blacklight.search_history.intro') %>
+<%- if @searches.blank? -%>
+      <div id="empty_search_history" class="well">
+        <h4><%=t('blacklight.search_history.no_history')%></h4>
+        <p>Search for items by entering keywords in the search bar at the top right.</p>
+      </div>
+<%- else -%>
+    <h3>
+      <%=t('blacklight.search_history.recent')%>
+      <small>
+        [<%= link_to t('blacklight.search_history.clear.action_title'),
+                     clear_search_history_path,
+                     :id => 'clear_search_history',
+                     :method => :delete,
+                     :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
+      </small>
+    </h3>
+    <table id="searches_list" class="table search_history">
+      <%-  @searches.each_with_index do |search,index| -%>
+          <%= content_tag :tr, :id => "document_#{index + 1}" do %>
+              <td class="query"><%= link_to_previous_search(search.query_params) %></td>
+              <%- if has_user_authentication_provider? -%>
+                  <td class="actions">
+                    <%- if current_or_guest_user && search.saved? -%>
+                        <%# button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class => 'btn btn-default' %>
+                         <%= content_tag(:span, '', :class => 'glyphicon glyphicon-ok') %>
+                         In your <%= link_to t('blacklight.saved_searches.title'),
+                                            saved_searches_path %>
+                    <%- else -%>
+                        <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class => 'btn btn-default' %>
+                    <%- end -%>
+                  </td>
+              <%- end -%>
+          <% end #content_tag %>
+      <%- end -%>
+    </table>
+<%- end -%>
+</div>

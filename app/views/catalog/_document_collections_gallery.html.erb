@@ -1,0 +1,7 @@
+<% # container for all collection documents in collections display view -%>
+<div id="documents" class="row collections-gallery">
+  <%= render collection: documents,
+             as: :document,
+             partial: 'index_collections_gallery',
+             locals: {count: documents.count} %>
+</div>

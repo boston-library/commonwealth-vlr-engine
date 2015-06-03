@@ -1,0 +1,9 @@
+<div id="more_like_this" class="well well-sm">
+  <h4><%= t('blacklight.more_like_this.heading') %></h4>
+  <div id="more_like_this_docs" class="row">
+    <%= render :collection => document.more_like_this,
+               :partial => 'show_more_like_this',
+               :as => :document %>
+  </div>
+  <%= render_mlt_search_link(document) %>
+</div>

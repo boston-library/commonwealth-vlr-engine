@@ -1,0 +1,13 @@
+<%# copy of catalog/index_default %>
+<%# need this partial or catalog#index will attempt to render blacklight-maps/index_map %>
+<%# whenever rendering a doc with 'map' as the value of blacklight_config.display_type_field %>
+<dl class="document-metadata dl-horizontal dl-invert">
+
+  <% index_fields(document).each do |field_name, field| -%>
+      <% if should_render_index_field? document, field %>
+          <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+          <dd class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_value document, field: field_name %></dd>
+      <% end -%>
+  <% end -%>
+
+</dl>

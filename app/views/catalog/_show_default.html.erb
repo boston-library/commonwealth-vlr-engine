@@ -1,0 +1,65 @@
+<%# show the object image(s)/file(s) and metadata %>
+
+<% image_files = has_image_files?(@object_files) %>
+<% if image_files %>
+    <% case image_files.length %>
+        <% when 1 %>
+            <%= render :partial => 'catalog/_show_partials/show_default_img',
+                       :locals => {:document => @document,
+                                   :image_pid => image_files.first,
+                                   :page_sequence => {:total => 1}} %>
+        <% when 2..7 %>
+            <%= render :partial => 'catalog/_show_partials/show_multi_img',
+                       :locals => {:document => @document,
+                                   :image_files => image_files} %>
+            <%= javascript_include_tag('commonwealth-vlr-engine/multi_img_viewer.js.erb') %>
+        <% else %>
+            <% book_reader = true %>
+    <% end %>
+<% end %>
+
+<div class="row">
+
+  <%# show thumbnail or icon if object has no images %>
+  <% if !image_files || book_reader %>
+      <div id="thumbnail_wrapper" class="col-sm-4">
+        <div id="thumb_img_show_container">
+          <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
+          <% if @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' %>
+              <%= render :partial => 'catalog/_show_partials/show_oai_item_link', :locals => {:document => @document, :img => img} %>
+          <% elsif book_reader %>
+              <%= render :partial => 'catalog/_show_partials/show_book_viewer_link', :locals => {:document => @document, :img => img} %>
+          <% else %>
+              <%= img %>
+            </div>
+          <% end %>
+      </div>
+  <% end %>
+
+  <div class="<%= params[:action]%>_details col-sm-8">
+
+    <% # metadata display -%>
+    <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+
+    <%# more like this %>
+    <% unless @document.more_like_this.empty? %>
+        <%= render :partial => 'catalog/more_like_this', :locals => {:document => @document} %>
+    <% end %>
+
+  </div>
+
+  <div id="sidebar" class="<%= show_sidebar_classes %>">
+    <%# render files to download %>
+    <% if has_downloadable_files?(@object_files) %>
+        <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:object_files => @object_files} %>
+    <% end %>
+
+    <% # bookmark/folder/sharing functions -%>
+    <%= render_document_sidebar_partial  %>
+
+    <%# map view %>
+    <%= render :partial => 'catalog/show_maplet_default' %>
+
+  </div>
+
+</div>

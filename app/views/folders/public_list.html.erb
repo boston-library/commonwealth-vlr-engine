@@ -1,0 +1,44 @@
+<% @page_title = t('blacklight.folders.public_list.title') + " - " + application_name %>
+<div class="col-sm-9">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li>
+        <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.folders.public_list.title') %>
+      </li>
+    </ul>
+  </div>
+
+  <h2>
+    <%= t('blacklight.folders.public_list.title') %>
+    <small id="add_folder">
+      <%= link_to(
+                  content_tag(:span, '', :class => 'glyphicon glyphicon-plus') + ' add folder',
+                  new_folder_path,
+                  :id => 'create_folder_link',
+                  :class => 'btn btn-primary btn-sm'
+          ) %>
+    </small>
+  </h2>
+
+  <div id="user_folders" class="folder_container">
+    <p><%= t('blacklight.folders.public_list.intro') %></p>
+    <ul id="user_folder_list" class="public_folders">
+      <% unless @folders.blank? %>
+          <%= render @folders %>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+

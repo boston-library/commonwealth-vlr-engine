@@ -1,0 +1,10 @@
+<div id="documents" class="map">
+  <%= blacklight_map_tag('institutions-index-map',
+                         {data:{searchcontrol: true,
+                                catalogpath: institutions_path,
+                                placenamefield: blacklight_config.view.maps.placename_field,
+                                searchresultsview: default_document_index_view_type,
+                                clustercount: 'hits'
+                         }}) %>
+  <%= javascript_tag "$('#institutions-index-map').blacklight_leaflet_map(#{geojson_features});" %>
+</div>

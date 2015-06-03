@@ -1,0 +1,17 @@
+<%# check for search params %>
+<% if has_search_parameters? %>
+
+    <div id="sidebar" class="col-sm-3">
+      <%= render 'search_sidebar' %>
+    </div>
+
+    <div id="content" class="<%= main_content_classes %>">
+      <%= render 'search_results' %>
+    </div>
+
+<% else %>
+
+    <%# if no input/search params, render basic_search partial %>
+    <%= render :partial => 'catalog/basic_search' %>
+
+<% end %>

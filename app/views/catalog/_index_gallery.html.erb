@@ -1,0 +1,11 @@
+<%# copy (with some changes) of  blacklight-gallery/app/views/catalog/_index_gallery %>
+<%# need this partial or catalog#index will attempt to render blacklight-maps/index_map %>
+<%# whenever rendering a doc with 'map' as the value of blacklight_config.display_type_field %>
+<div class="document col-xs-6 col-sm-4 col-md-4 <%= cycle('new_row', '', '', name: 'desktop_row_class') %> <%= cycle('new_row_device', '', name: 'device_row_class') %>">
+  <div class="thumbnail">
+    <%= render_thumbnail_tag(document, {}, :counter => document_counter_with_offset(document_counter)) %>
+    <div class="caption">
+      <%= render_document_partials document, blacklight_config.view_config(:gallery).partials, :document_counter => document_counter %>
+    </div>
+  </div>
+</div>

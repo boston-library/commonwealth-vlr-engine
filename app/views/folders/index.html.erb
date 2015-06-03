@@ -1,0 +1,73 @@
+<% @page_title = t('blacklight.folders.list_title') + " - " + application_name %>
+<div class="col-sm-9">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li class="active">
+        <%= t('blacklight.folders.list_title') %>
+      </li>
+    </ul>
+  </div>
+
+<h2>
+  <%= t('blacklight.folders.list_title') %>
+  <small id="add_folder">
+    <%= link_to(
+                content_tag(:span, '', :class=>'glyphicon glyphicon-plus') + ' add folder',
+                new_folder_path,
+                :id => 'create_folder_link',
+                :class => 'btn btn-primary btn-sm'
+        ) %>
+  </small>
+</h2>
+
+<% if current_or_guest_user.blank? %>
+
+    <% redirect to login %>
+
+<% else %>
+
+    <div id="user_folders" class="folder_container">
+      <p><%= t('blacklight.folders.intro') %></p>
+      <ul id="user_folder_list">
+        <li>
+          <h4>
+            <%= link_to t('blacklight.bookmarks.title'), bookmarks_path, :class => "folder_title" %>
+            <small class="folder_visibility">
+              <% if current_user %>
+                  <%= content_tag(:span, '', :class => 'glyphicon glyphicon-lock') %>
+                  <span class="visibility_private">private</span>
+              <% end %>
+            </small>
+          </h4>
+          <div class="folder_status">
+            <span class="folder_item_count">
+              <%= pluralize(current_or_guest_user.bookmarks.length.to_s,
+                    'item') %>
+            </span>
+          </div>
+          <%= t('blacklight.bookmarks.description') %>
+        </li>
+        <% unless @folders.blank? %>
+            <%= render @folders %>
+        <% end %>
+      </ul>
+    </div>
+
+
+<% end %>
+
+</div>
+<div class="col-sm-3">
+  <div id="public_folders_sidebar" class="well well-sm">
+    <ul>
+      <li><%= link_to 'View all shared folders', public_folders_path %></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<% @page_title = t('blacklight.saved_searches.title') + " - " + application_name %>
+<div class="col-sm-9" id="searches_content">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.saved_searches.title') %>
+      </li>
+    </ul>
+  </div>
+
+<h2><%= t('blacklight.saved_searches.title') %></h2>
+  <%= t('blacklight.saved_searches.intro') %>
+
+<%- if current_or_guest_user.blank? -%>
+
+    <h4><%= t('blacklight.saved_searches.need_login') %></h4>
+
+<%- elsif @searches.blank? -%>
+
+      <div id="empty_saved_searches" class="well">
+        <h4><%= t('blacklight.saved_searches.no_searches') %></h4>
+        <p>To save a search, click the "Save Search" link on the search results page.</p>
+      </div>
+
+<%- else -%>
+    <h3>
+      <%= t('blacklight.saved_searches.list_title') %>
+      <small>
+        [<%= link_to t('blacklight.saved_searches.clear.action_title'),
+                    clear_saved_searches_path,
+                    :class => 'clear_all',
+                    :method => :delete,
+                    :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') } %>]
+      </small>
+    </h3>
+    <table class="table">
+      <%- @searches.each do |search| -%>
+          <tr>
+            <td><%= link_to_previous_search(search.query_params) %></td>
+            <td><%# button_to content_tag(:i, '', :class => 'icon-remove'),
+                              forget_search_path(search.id) %>
+                <%= link_to(content_tag(:span, '',
+                                        :class => 'glyphicon glyphicon-remove'),
+                            forget_search_path(search.id),
+                            :class => 'delete_search',
+                            :method => 'post',
+                            :title => t('blacklight.saved_searches.delete'))
+                %>
+            </td>
+          </tr>
+      <%- end -%>
+    </table>
+
+<%- end -%>
+</div>

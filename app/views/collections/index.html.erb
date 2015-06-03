@@ -1,0 +1,23 @@
+<% @page_title = t('blacklight.collections.index.page_title', :application_name => application_name) %>
+<% content_for(:head) { render_opensearch_response_metadata } %>
+
+<div id="content" class="col-sm-9 collections-list">
+
+  <h2><%= t('blacklight.collections.index.title') %></h2>
+
+  <%= render 'collections/az_links' %>
+
+  <%= render 'catalog/sort_and_per_page' %>
+
+  <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
+
+  <%= render_document_index %>
+
+  <%= render 'catalog/results_pagination' %>
+
+</div>
+
+<%# not using facets at the moment %>
+<div id="sidebar" class="col-sm-3">
+  <%# render :partial=>'facets' %>
+</div><!--/well -->

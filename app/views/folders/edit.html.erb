@@ -1,0 +1,25 @@
+<% @page_title = t('blacklight.folders.edit_folder') + " - " + application_name %>
+<div class="col-sm-9">
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li>
+        <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.folders.edit_folder') + ': ' + @folder.title %>
+      </li>
+    </ul>
+  </div>
+  <div id="edit_folder" class="folder_container">
+
+    <h2><%= t('blacklight.folders.edit_folder') + ': ' + @folder.title %></h2>
+
+    <%= render 'new_edit_form_fields', :form_object => @folder, :submit_button_text => 'Update folder' %>
+
+  </div>
+</div>

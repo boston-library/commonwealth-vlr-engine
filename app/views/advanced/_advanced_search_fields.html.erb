@@ -1,0 +1,39 @@
+<% search_fields_for_advanced_search.take(3).each_with_index do |(key, field_def), index| %>
+    <div class="advanced_search_field form-group">
+      <%= select_tag('search_index[]',
+                     options_for_select(search_fields,
+                                        search_fields[index]),
+                     :title => t('blacklight.search.basic_search.form.search_indexes'),
+                     :class=> 'btn btn-default search_index_select col-sm-2 control-label') %>
+      <%= label_tag('input' + (index+1).to_s,
+                    t('blacklight.search.basic_search.form.q') + ' (' + (index+1).to_s + ')',
+                    :class => 'sr-only') %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'query[]',
+                           nil,
+                           :class => 'advanced_input_text form-control',
+                           :autofocus => index == 0 ? true : false %>
+      </div>
+    </div>
+<% end %>
+<div class="advanced_search_field">
+  <div id="advanced_operators" class="col-sm-offset-2 col-sm-6">
+    <label class="radio-inline">
+      <%= radio_button_tag(:op, 'AND', :checked) %> find all terms
+    </label>
+    <label class="radio-inline">
+      <%= radio_button_tag(:op, 'OR') %> find any terms
+    </label>
+  </div>
+</div>
+<div class="pull-right">
+  <%= submit_tag 'Search', :class=>'btn btn-primary advanced_submit', :id=>'advanced_search' %>
+  <%= link_to 'Start over', {:controller => 'advanced', :action => 'index'}, :class =>'reset btn btn-default' %>
+</div>
+
+<%# search_fields_for_advanced_search.each do |key, field_def| -%>
+    <!-- <div class="advanced_search_field"> -->
+      <%# label_tag key, "#{field_def.label }:" %>
+      <%# text_field_tag key, label_tag_default_for(key), :class => 'input-block-level' %>
+    <!-- </div> -->
+<%# end -%>

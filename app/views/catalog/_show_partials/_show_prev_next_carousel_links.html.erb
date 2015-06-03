@@ -1,0 +1,17 @@
+<%# show the previous and next links as carousel controls for multi-img objects %>
+<%= link_to('&lsaquo;'.html_safe,
+            image_viewer_path(@document.id,
+                              :view => page_sequence[:prev]),
+            :class => 'left carousel-control prev_next',
+            :id => 'carousel-nav_prev',
+            :title => t('blacklight.images.prev'),
+            :data => { :viewer => page_sequence[:prev] },
+            :remote => true) if page_sequence[:prev] %>
+<%= link_to('&rsaquo;'.html_safe,
+            image_viewer_path(@document.id,
+                              :view => page_sequence[:next]),
+            :class => 'right carousel-control prev_next',
+            :id => 'carousel-nav_next',
+            :title => t('blacklight.images.next'),
+            :data => { :viewer => page_sequence[:next] },
+            :remote => true) if page_sequence[:next] %>

@@ -1,0 +1,64 @@
+<% if current_or_guest_user %>
+
+    <div id="folder_item_toggle">
+
+      <% if current_user %>
+          <% existing_folders = current_user.folders %>
+          <% existing_folder_item = current_user.existing_folder_item_for(document.id) %>
+      <% else %>
+          <% existing_folders = [] %>
+      <% end %>
+
+      <% unless bookmarked? document || existing_folder_item %>
+
+        <% if existing_folders.empty? %>
+
+          <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
+            <button class="btn btn-default" type="submit">
+                <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
+            </button>
+          <% end %>
+
+        <% else %>
+
+              <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
+
+                <div class="btn-group folder-item-control">
+                    <button class="btn btn-default" type="submit">
+                        <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
+                    </button>
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><%= link_to t('blacklight.bookmarks.title'),
+                                        bookmark_path( document ),
+                                        :method => :put,
+                                        :class=>'folder_item_add',
+                                        :remote => true %>
+                        </li>
+                        <% existing_folders.each do |folder| %>
+                            <li><%= link_to folder.title,
+                                            folder_item_path(document, :folder_id => folder.id),
+                                            :method => :put,
+                                            :class=>'folder_item_add',
+                                            :remote => true %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+
+              <% end %>
+
+        <% end %>
+
+      <% else %>
+
+        <%= render :partial => "folders/in_folder" %>
+
+      <% end %>
+
+    </div>
+
+<% end %>
+
