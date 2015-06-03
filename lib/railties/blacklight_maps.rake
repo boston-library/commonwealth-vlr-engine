@@ -1,7 +1,7 @@
 require 'rails/generators'
-require 'generators/blacklight_maps/install_generator'
+require 'generators/commonwealth-vlr-engine/install_generator'
 
-namespace :'commonwealth-vlr' do
+namespace :'commonwealth-vlr-engine' do
   namespace :solr do
     desc "Put sample data into solr"
     task :seed => :environment do
