@@ -12,7 +12,7 @@
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
                        :locals => {:document => @document,
                                    :image_files => image_files} %>
-            <%= javascript_include_tag('commonwealth-vlr-engine/multi_img_viewer.js.erb') %>
+            <%= javascript_include_tag('commonwealth-vlr-engine/multi_img_viewer') %>
         <% else %>
             <% book_reader = true %>
     <% end %>

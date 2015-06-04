@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'generators/commonwealth-vlr-engine/install_generator'
 
-namespace :'commonwealth-vlr-engine' do
+namespace :'commonwealth_vlr_engine' do
   namespace :solr do
     desc "Put sample data into solr"
     task :seed => :environment do
