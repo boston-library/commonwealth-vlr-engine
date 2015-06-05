@@ -91,9 +91,7 @@ en:
             name: 'SITE NAME'
             email: 'somebody@example.org'
           text:
-            subject:
-              one: 'SITE_NAME E-mail: link to item'
-              other: 'Item records'
+            subject: 'SITE_NAME E-mail: link to item'
             url: 'Link: %{url}'
             message: 'Comments: %{message}'
 

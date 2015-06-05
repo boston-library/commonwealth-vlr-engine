@@ -26,6 +26,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'font-awesome-sass'
   spec.add_dependency 'hydra-head', '7.0.0'
   spec.add_dependency 'hydra-derivatives'
+  spec.add_dependency 'hydra-ldap'#, :git => 'https://github.com/boston-library/hydra-ldap.git'
+  #spec.add_dependency 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'#, :ref => '4cbd775e53'
+  #spec.add_dependency 'bplmodels', :path => '/home/eenglish/bplmodels'
+  #spec.add_dependency 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 
   spec.add_development_dependency 'bundler', '~> 1.5'
   spec.add_development_dependency 'rake'
