@@ -10,17 +10,15 @@ module CommonwealthVlrEngine
 
   def self.inject!
 
-    CatalogController.send(:include, CommonwealthVlrEngine::ControllerOverride)
-
     CatalogController.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
     CatalogController.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride) unless
         CatalogController.helpers.is_a?(CommonwealthVlrEngine::RenderConstraintsOverride)
 =begin
-    # inject into SearchHistory and SavedSearches so spatial queries display properly
-    SearchHistoryController.send(:helper, BlacklightMaps::RenderConstraintsOverride) unless
-        SearchHistoryController.helpers.is_a?(BlacklightMaps::RenderConstraintsOverride)
-    SavedSearchesController.send(:helper, BlacklightMaps::RenderConstraintsOverride) unless
-        SavedSearchesController.helpers.is_a?(BlacklightMaps::RenderConstraintsOverride)
+    # TODO inject into SearchHistory and SavedSearches so mlt queries display properly
+    SearchHistoryController.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride) unless
+        SearchHistoryController.helpers.is_a?(CommonwealthVlrEngine::RenderConstraintsOverride)
+    SavedSearchesController.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride) unless
+        SavedSearchesController.helpers.is_a?(CommonwealthVlrEngine::RenderConstraintsOverride)
 =end
   end
 

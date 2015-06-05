@@ -1,5 +1,5 @@
 <%# show the object image(s)/file(s) and metadata %>
-
+<%= blacklight_config.inspect %>
 <% image_files = has_image_files?(@object_files) %>
 <% if image_files %>
     <% case image_files.length %>
