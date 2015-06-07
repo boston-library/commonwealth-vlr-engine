@@ -4,7 +4,7 @@ module CommonwealthVlrEngine
     included do
 
       # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
-      self.send(:include, Hydra::Controller::ControllerBehavior)
+      self.send(:include, ::Hydra::Controller::ControllerBehavior)
 
       if self.respond_to? :search_params_logic
         search_params_logic << :exclude_unwanted_models

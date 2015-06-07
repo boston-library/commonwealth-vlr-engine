@@ -26,6 +26,7 @@ module CommonwealthVlrEngine
   layout 'commonwealth-vlr-engine'
 }
         end
+
       end
     end
 
@@ -49,7 +50,10 @@ module CommonwealthVlrEngine
 }
         end
 
+        #For config.default_solr_params
         gsub_file("app/controllers/#{controller_name}_controller.rb", /config\.default_solr_params[\s\S]+?}/, "")
+
+        #For single line fields
         fields_to_comment_out = ['config.index.title_field =',
                              'config.index.display_type_field =',
                              'config.add_facet_field =',
@@ -60,9 +64,7 @@ module CommonwealthVlrEngine
         ]
 
         fields_to_comment_out.each do |comment_marker|
-          insert_into_file "app/controllers/#{controller_name}_controller.rb", :before => comment_marker do
-            %q{#}
-          end
+          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
         end
       end
 
