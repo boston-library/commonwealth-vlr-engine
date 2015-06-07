@@ -7,15 +7,6 @@ module CommonwealthVlrEngine
 
     argument     :controller_name  , type: :string , default: "catalog"
 
-    COMMENT_OUT_ARRAY = ['config.index.title_field',
-                     'config.index.display_type_field',
-                     'config.add_facet_field',
-                     'config.add_index_field',
-                     'config.add_show_field',
-                     'config.add_search_field',
-                     'config.add_sort_field'
-                    ]
-
     desc """
   This generator makes the following changes to your application:
    1. Injects behavior into your user application_controller.rb
@@ -59,9 +50,18 @@ module CommonwealthVlrEngine
         end
 
         gsub_file("app/controllers/#{controller_name}_controller.rb", /config\.default_solr_params[\s\S]+?}/, "")
-        COMMENT_OUT_ARRAY.each do |marker|
-          insert_into_file "app/controllers/#{controller_name}_controller.rb", :before => marker do
-            '#'
+        fields_to_comment_out = ['config.index.title_field',
+                             'config.index.display_type_field',
+                             'config.add_facet_field',
+                             'config.add_index_field',
+                             'config.add_show_field',
+                             'config.add_search_field',
+                             'config.add_sort_field'
+        ]
+
+        fields_to_comment_out.each do |comment_marker|
+          insert_into_file "app/controllers/#{controller_name}_controller.rb", :before => comment_marker do
+            %q{#}
           end
         end
       end
