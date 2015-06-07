@@ -25,7 +25,7 @@ module CommonwealthVlrEngine
       unless IO.read("app/assets/stylesheets/application.css").include?('commonwealth-vlr-engine')
         marker = '*/'
         insert_into_file "app/assets/stylesheets/application.css", :before => marker do
-          %q{ *
+          %q{*
  *= require commonwealth-vlr-engine
 }
         end

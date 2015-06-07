@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
     desc """
   This generator makes the following changes to your application:
    1. Injects behavior into your user application_controller.rb
-   2. Configures your catalog_controller.rb.
+   2. Configures your catalog_controller.rb and removes many values.
   Thank you for Installing Commonwealth VLR.
          """
 
@@ -53,30 +53,31 @@ module CommonwealthVlrEngine
         #For config.default_solr_params
         gsub_file("app/controllers/#{controller_name}_controller.rb", /config\.default_solr_params[\s\S]+?}/, "")
 
-        #For single line fields
-        fields_to_comment_out = ['config.index.title_field =',
-                             'config.index.display_type_field =',
-                             "config.add_facet_field '",
-                             "config.add_index_field '",
-                             "config.add_show_field '",
-                             "config.add_search_field '",
-                             "config.add_sort_field '"
-        ]
-
-        fields_to_comment_out.each do |comment_marker|
-          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
-          #gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "")
-        end
-
         #For multi line fields
-        fields_to_comment_out = [/config.add_facet_field 'example_query_facet_field'[\s\S]+?}\n[ ]+}/,
-                                 /config.add_search_field\([\s\S]+?end/
+        fields_to_remove = [/ +config.add_facet_field 'example_query_facet_field'[\s\S]+?}\n[ ]+}/,
+                                 / +config.add_search_field\([\s\S]+?end/
         ]
 
-        fields_to_comment_out.each do |comment_marker|
+        fields_to_remove.each do |remove_marker|
           #gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
-          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "")
+          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{remove_marker}/, "")
         end
+
+        #For single line fields
+        fields_to_remove = [/ +config.index.title_field +=.+?$\n*/,
+                                 / +config.index.display_type_field +=.+?$\n*/,
+                                 / +config.add_facet_field +'.+?$\n*/,
+                                 / +config.add_index_field +'.+?$\n*/,
+                                 / +config.add_show_field +'.+?$\n*/,
+                                 / +config.add_search_field +'.+?$\n*/,
+                                 / +config.add_sort_field +'.+?$\n*/
+        ]
+
+        fields_to_remove.each do |remove_marker|
+          #gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
+          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{remove_marker}/, "")
+        end
+
       end
 
     end
