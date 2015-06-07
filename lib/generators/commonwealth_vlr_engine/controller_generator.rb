@@ -30,9 +30,10 @@ module CommonwealthVlrEngine
         marker = 'include Blacklight::Controller'
         insert_into_file "app/controllers/application_controller.rb", :after => marker do
           %q{
-   # adds some site-wide behavior into the application controller
-   include CommonwealthVlrEngine::Controller
-   layout 'commonwealth-vlr-engine'
+
+  # adds some site-wide behavior into the application controller
+  include CommonwealthVlrEngine::Controller
+  layout 'commonwealth-vlr-engine'
 }
         end
       end
@@ -40,8 +41,6 @@ module CommonwealthVlrEngine
 
     # Update the blacklight catalog controller
     def inject_catalog_controller_behavior
-      template "catalog_controller.rb", "app/controllers/#{controller_name}_controller.rb"
-
       unless IO.read("app/controllers/#{controller_name}_controller.rb").include?('CommonwealthVlrEngine')
         marker = 'include Blacklight::Catalog'
         insert_into_file "app/controllers/#{controller_name}_controller.rb", :after => marker do
@@ -61,7 +60,7 @@ module CommonwealthVlrEngine
         end
 
         COMMENT_OUT_ARRAY.each do |marker|
-          insert_into_file "app/controllers/#{controller_name}_controller.rb", :after => marker do
+          insert_into_file "app/controllers/#{controller_name}_controller.rb", :before => marker do
             '//'
           end
         end

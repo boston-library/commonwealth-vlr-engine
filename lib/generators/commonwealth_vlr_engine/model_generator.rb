@@ -21,6 +21,7 @@ module CommonwealthVlrEngine
         marker = 'Blacklight::Solr::SearchBuilderBehavior'
         insert_into_file "app/models/#{search_builder_model}.rb", :after => marker do
           %q{
+
   # limit to a specific institution
   def institutions_filter(solr_parameters = {})
     solr_parameters[:fq] ||= []
@@ -37,6 +38,7 @@ module CommonwealthVlrEngine
         marker = 'include Blacklight::Solr::Document'
         insert_into_file "app/models/#{document_model_name}.rb", :after => marker do
           %q{
+
   include Blacklight::Gallery::OpenseadragonSolrDocument
 }
         end

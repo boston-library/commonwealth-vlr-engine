@@ -17,16 +17,17 @@ module CommonwealthVlrEngine
           %q{
 //
 // Required by Commonwealth-VLR-Engine
-//= require commonwealth-vlr-engine}
+//= require commonwealth-vlr-engine
+}
         end
       end
 
       unless IO.read("app/assets/stylesheets/application.css").include?('commonwealth-vlr-engine')
         marker = '*/'
         insert_into_file "app/assets/stylesheets/application.css", :before => marker do
-          %q{*
-*= require commonwealth-vlr-engine
-*}
+          %q{ *
+ *= require commonwealth-vlr-engine
+}
         end
       end
 
