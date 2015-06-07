@@ -7,8 +7,7 @@ module CommonwealthVlrEngine
 
     argument     :controller_name  , type: :string , default: "catalog"
 
-    COMMENT_OUT_ARRAY = ['config.default_solr_params',
-                     'config.index.title_field',
+    COMMENT_OUT_ARRAY = ['config.index.title_field',
                      'config.index.display_type_field',
                      'config.add_facet_field',
                      'config.add_index_field',
@@ -59,9 +58,10 @@ module CommonwealthVlrEngine
 }
         end
 
+        gsub_file("app/controllers/#{controller_name}_controller.rb", /config\.default_solr_params[\s\S]+}/, "")
         COMMENT_OUT_ARRAY.each do |marker|
           insert_into_file "app/controllers/#{controller_name}_controller.rb", :before => marker do
-            '//'
+            '#'
           end
         end
       end
