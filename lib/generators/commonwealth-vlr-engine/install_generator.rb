@@ -12,15 +12,15 @@ module CommonwealthVlrEngine
     desc "InstallGenerator Commonwealth VLR Engine"
 
     def insert_to_assets
-      generate "commonwealthvlr:assets"
+      generate "commonwealth_vlr_engine:assets"
     end
 
     def insert_to_controllers
-      generate "commonwealthvlr:controller", controller_name
+      generate "commonwealth_vlr_engine:controller", controller_name
     end
 
     def insert_to_models
-      generate "commonwealthvlr:model", search_builder_name, document_name
+      generate "commonwealth_vlr_engine:model", search_builder_name, document_name
     end
   end
 end
