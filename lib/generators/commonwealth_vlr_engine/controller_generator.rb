@@ -50,13 +50,13 @@ module CommonwealthVlrEngine
         end
 
         gsub_file("app/controllers/#{controller_name}_controller.rb", /config\.default_solr_params[\s\S]+?}/, "")
-        fields_to_comment_out = ['config.index.title_field',
-                             'config.index.display_type_field',
-                             'config.add_facet_field',
-                             'config.add_index_field',
-                             'config.add_show_field',
-                             'config.add_search_field',
-                             'config.add_sort_field'
+        fields_to_comment_out = ['config.index.title_field =',
+                             'config.index.display_type_field =',
+                             'config.add_facet_field =',
+                             'config.add_index_field =',
+                             'config.add_show_field =',
+                             'config.add_search_field =',
+                             'config.add_sort_field ='
         ]
 
         fields_to_comment_out.each do |comment_marker|
