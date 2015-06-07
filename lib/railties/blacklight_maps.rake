@@ -1,5 +1,5 @@
 require 'rails/generators'
-require 'generators/commonwealth-vlr-engine/install_generator'
+require 'generators/commonwealth-vlr-engine/assets_generator'
 
 namespace :'commonwealth_vlr_engine' do
   namespace :solr do
