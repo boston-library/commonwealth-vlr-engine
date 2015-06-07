@@ -11,6 +11,12 @@ module CommonwealthVlrEngine
 
     desc "InstallGenerator Commonwealth VLR Engine"
 
+    def verify_blacklight_installed
+      if !IO.read("app/controllers/application_controller.rb").include?('include Blacklight::Controller')
+         raise "It doesn't look like you have Blacklight installed..."
+      end
+    end
+
     def insert_to_assets
       generate "commonwealth_vlr_engine:assets"
     end

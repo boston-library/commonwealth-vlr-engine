@@ -5,6 +5,8 @@ module CommonwealthVlrEngine
 
     source_root File.expand_path('../templates', __FILE__)
 
+    argument     :controller_name  , type: :string , default: "catalog"
+
     COMMENT_OUT_ARRAY = ['config.default_solr_params',
                      'config.index.title_field',
                      'config.index.display_type_field',
@@ -37,7 +39,7 @@ module CommonwealthVlrEngine
     end
 
     # Update the blacklight catalog controller
-    def injest_catalog_controller_behavior
+    def inject_catalog_controller_behavior
       template "catalog_controller.rb", "app/controllers/#{controller_name}_controller.rb"
 
       unless IO.read("app/controllers/#{controller_name}_controller.rb").include?('CommonwealthVlrEngine')
