@@ -1,6 +1,7 @@
 module CommonwealthVlrEngine
   module ControllerOverride
     extend ActiveSupport::Concern
+
     included do
 
       # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).

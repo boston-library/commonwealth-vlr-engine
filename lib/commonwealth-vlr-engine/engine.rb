@@ -1,6 +1,10 @@
+require 'hydra/head'
+require 'blacklight/gallery'
 require 'blacklight'
 
 module CommonwealthVlrEngine
+  extend ActiveSupport::Autoload
+
   class Engine < Rails::Engine
 
     # Set some default configurations
@@ -10,6 +14,12 @@ module CommonwealthVlrEngine
     #initializer 'commonwealth-vlr-engine.helpers' do |app|
     #  ActionView::Base.send :include, BlacklightMapsHelper
     #end
+
+    config.autoload_paths += %W(
+     #{config.root}/app/controllers
+      #{config.root}/app/models
+      #{Hydra::Engine.root}/app/models/concerns
+    )
 
     config.to_prepare do
       CommonwealthVlrEngine.inject!

@@ -56,15 +56,26 @@ module CommonwealthVlrEngine
         #For single line fields
         fields_to_comment_out = ['config.index.title_field =',
                              'config.index.display_type_field =',
-                             'config.add_facet_field =',
-                             'config.add_index_field =',
-                             'config.add_show_field =',
-                             'config.add_search_field =',
-                             'config.add_sort_field ='
+                             "config.add_facet_field '",
+                             "config.add_index_field '",
+                             "config.add_show_field '",
+                             "config.add_search_field '",
+                             "config.add_sort_field '"
         ]
 
         fields_to_comment_out.each do |comment_marker|
           gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
+          #gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "")
+        end
+
+        #For multi line fields
+        fields_to_comment_out = [/config.add_facet_field 'example_query_facet_field'[\s\S]+?}\n[ ]+}/,
+                                 /config.add_search_field\([\s\S]+?end/
+        ]
+
+        fields_to_comment_out.each do |comment_marker|
+          #gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "\##{comment_marker}")
+          gsub_file("app/controllers/#{controller_name}_controller.rb", /#{comment_marker}/, "")
         end
       end
 
