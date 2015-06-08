@@ -28,5 +28,9 @@ module CommonwealthVlrEngine
     def insert_to_models
       generate "commonwealth_vlr_engine:model", search_builder_name, document_name
     end
+
+    def copy_yml_files
+      generate "commonwealth_vlr_engine:yml"
+    end
   end
 end
