@@ -1,0 +1,28 @@
+<% @page_title = t('blacklight.institutions.index.page_title', :application_name => application_name) %>
+<% content_for(:head) { render_opensearch_response_metadata } %>
+
+<div id="content" class="col-sm-9 institutions-list">
+
+  <h2><%= t('blacklight.institutions.title') %></h2>
+
+  <p>This is a list of institutions that have contributed historical materials to this site. For the full list of Digital Commonwealth member institutions, and information on how to join, see the <a href="http://digitalcommonwealth.memberlodge.org/directory" target="_blank">Member Directory.</a></p>
+  <p>Click the institution name to view their collections. For a map of institutions, click the <%= content_tag :span, '', class: 'glyphicon glyphicon-maps view-icon-maps' %> icon below.</p>
+
+  <%= render 'catalog/constraints' %>
+
+  <%= render 'catalog/sort_and_per_page' %>
+
+  <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
+
+  <%= render_institutions_index %>
+
+  <%= render 'catalog/results_pagination' %>
+
+</div>
+
+<%# not using facets at the moment %>
+<div id="sidebar" class="col-sm-3">
+  <%# render :partial=>'facets' %>
+</div><!--/well -->
+
+<%= javascript_include_tag 'commonwealth/modify_constraints' %>

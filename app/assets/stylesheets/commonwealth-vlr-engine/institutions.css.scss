@@ -1,0 +1,243 @@
+/* styles for institution views */
+
+@import 'cmmnwlth_defaults';
+
+/* institutions index view (see shared.css for static-navbar) */
+
+div.institutions-list {
+
+  #sortAndPerPage {
+    margin-bottom:0;
+
+    /* don't display sort widget */
+    #sort-dropdown {
+      display: none;
+    }
+
+  }
+
+  #documents {
+    margin-top: 15px;
+
+    .blacklight-institution {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+
+      .document-thumbnail {
+        display: none;
+      }
+
+      .documentHeader {
+        padding-left: 0;
+      }
+
+      .document-metadata {
+        display: none;
+      }
+
+    }
+
+  }
+
+  #institutions-index-map {
+    height: 550px;
+    margin: 10px 0;
+
+    & ~ div.record-padding {
+
+      div.pagination {
+        display: none;
+      }
+
+    }
+  }
+
+}
+
+
+/* institutions show view */
+
+div.blacklight-institution {
+
+  h2 {
+    line-height: 25px;
+  }
+
+  #institution_geolocation {
+    padding-bottom: .7em;
+    font-size: 16px;
+    position: relative;
+    top: -5px;
+    color: $dark_gray;
+
+    a {
+      color: $darker_gray;
+      &:hover {
+        color: $bl_link;
+        text-decoration: none;
+      }
+    }
+
+    .metadata_breadcrumb {
+      padding: 0 5px;
+    }
+
+  }
+
+  img.institution_img_show {
+    float: left;
+    max-width: 25%;
+    margin: 0 1.4em 1em 0;
+    border: 1px solid $light_gray;
+  }
+
+  #institution_search_tools {
+    margin-bottom: 1em;
+    width: 72%;
+    float: right;
+
+    #institution_search_form {
+      padding: 0 3px 0 0;
+      float: left;
+
+      input {
+        width: 255px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+      }
+
+      .submit-search-text {
+        display: none;
+      }
+
+    }
+
+    .institution_search_separator {
+      display: inline;
+      float: left;
+      padding: 6px 15px 8px 12px;
+      vertical-align: middle;
+      color: $dark_gray;
+    }
+
+  }
+
+  #institution_desc {
+
+    ol, ul {
+      display: inline-block;
+    }
+
+  }
+
+  #institution_collections {
+    width: 100%;
+    float: left;
+    margin-top: 1em;
+
+    #collections_count {
+      font-size: 14px;
+      color: $dark_gray;
+      vertical-align: top;
+    }
+
+    #documents.collections-gallery {
+      margin-top: 0;
+    }
+
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  div.blacklight-institution {
+
+    img.institution_img_show {
+      max-width: 35%;
+    }
+
+    #institution_search_tools {
+      width:100%;
+    }
+
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+
+@media (max-width: 767px) {
+
+  div.blacklight-institution {
+
+    #institution_search_tools {
+      width:70%;
+
+      #institution_search_form {
+        padding: 0 3px 7px 0;
+        width: 301px;
+
+        input {
+          width:100%;
+        }
+
+      }
+
+      .institution_search_separator {
+        padding: 6px 10px 15px 7px;
+      }
+
+    }
+
+    #institution_collections {
+      margin: 2em 0;
+    }
+
+    #sidebar {
+      float:left;
+      width: 100%;
+    }
+
+  }
+
+}
+
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+
+  div.blacklight-institution {
+
+    img.institution_img_show {
+      max-width: 35%;
+    }
+
+    #institution_search_tools {
+      width:100%;
+
+      #institution_search_form {
+        padding: 0 1em .5em 0;
+        width: 100%;
+
+        input {
+          width: 100%;
+          font-size: 11px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+
+
+

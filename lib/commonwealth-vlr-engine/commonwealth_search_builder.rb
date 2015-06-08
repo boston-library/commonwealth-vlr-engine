@@ -18,6 +18,12 @@ module CommonwealthVlrEngine
       solr_parameters[:fq] << "-#{blacklight_config.flagged_field}:[* TO *]"
     end
 
+    # used by InstitutionsController#index
+    def institutions_filter(solr_parameters = {})
+      solr_parameters[:fq] ||= []
+      solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Institution\""
+    end
+
     # for 'more like this' search -- set solr id param to params[:mlt_id]
     def set_solr_id_for_mlt(solr_parameters = {})
       solr_parameters[:id] = blacklight_params[:mlt_id]
