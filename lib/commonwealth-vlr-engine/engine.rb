@@ -1,6 +1,22 @@
 require 'hydra/head'
 require 'blacklight/gallery'
 require 'blacklight'
+require 'blacklight_advanced_search'
+require 'blacklight/maps'
+require 'hydra-ldap'
+require 'hydra/derivatives'
+require 'bpluser'
+require 'bplmodels'
+require 'execjs'
+require 'tzinfo'
+require 'typhoeus'
+require 'devise'
+require 'devise-guests'
+require 'omniauth'
+require 'omniauth-ldap'
+require 'omniauth-facebook'
+require 'bootstrap-sass'
+#require 'bootstrap-forms' #throws error
 
 module CommonwealthVlrEngine
   extend ActiveSupport::Autoload
