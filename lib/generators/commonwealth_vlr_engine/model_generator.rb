@@ -25,7 +25,7 @@ module CommonwealthVlrEngine
   # limit to a specific institution
   def institutions_filter(solr_parameters = {})
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << '+institution_pid_ssi:"bpl-dev:[PID]"' #TODO: put PID in a YAML file, initializer, etc.
+    solr_parameters[:fq] << '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
   end
 }
         end

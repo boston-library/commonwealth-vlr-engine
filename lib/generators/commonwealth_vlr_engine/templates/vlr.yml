@@ -1,0 +1,28 @@
+# stores VLR settings
+
+development:
+  institution:
+    pid: '<pid>'
+    name: '<name>'
+    email: '<email>'
+
+  design:
+    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
+
+test:
+  institution:
+    pid: '<pid>'
+    name: '<name>'
+    email: '<email>'
+
+  design:
+    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
+
+production:
+  institution:
+    pid: '<pid>'
+    name: '<name>'
+    email: '<email>'
+
+  design:
+    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
