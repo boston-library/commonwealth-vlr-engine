@@ -1,0 +1,11 @@
+<% @page_title = t('blacklight.pages.explore.title') + " - " + application_name %>
+<div class="col-sm-9 explore_content">
+  <h2><%= t('blacklight.pages.explore.title') %></h2>
+
+  <ul class="page_list">
+    <li><%= link_to t('blacklight.collections.index.title'), collections_path %></li>
+    <li><%= link_to t('blacklight.maps.title'), map_path %></li>
+    <li><%= link_to t('blacklight.navigation.format'), formats_facet_path %></li>
+  </ul>
+
+</div>
