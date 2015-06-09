@@ -8,8 +8,6 @@ module CommonwealthVlrEngine
     desc "AssetsGenerator Commonwealth VLR Engine"
 
     def assets
-      copy_file "commonwealth-vlr-engine.css.scss", "app/assets/stylesheets/commonwealth-vlr-engine.css.scss"
-
       unless IO.read("app/assets/javascripts/application.js").include?('commonwealth-vlr-engine')
         marker = IO.read("app/assets/javascripts/application.js").include?('turbolinks') ?
             '//= require turbolinks' : "//= require jquery_ujs"

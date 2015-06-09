@@ -25,6 +25,8 @@ module CommonwealthVlrEngine
   include CommonwealthVlrEngine::Controller
   layout 'commonwealth-vlr-engine'
 }
+          remove_marker = "layout 'blacklight'"
+          gsub_file("app/controllers/application_controller.rb", remove_marker, "")
         end
 
       end
@@ -38,7 +40,7 @@ module CommonwealthVlrEngine
           %q{
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
-  CatalogController.search_params_logic += [:instituition_limit]
+  CatalogController.search_params_logic += [:institution_limit]
 }
         end
 
