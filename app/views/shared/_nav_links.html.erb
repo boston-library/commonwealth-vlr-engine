@@ -30,10 +30,10 @@
                                   :nav_link_path => lesson_plans_path}
         },
         :about => {
-                :overview => {:nav_link_title => t('blacklight.pages.about_dc.title'),
-                         :nav_link_path => about_dc_path},
-                :news=> {:nav_link_title => t('blacklight.pages.news.title'),
-                         :nav_link_path => blog_path},
+                :overview => {:nav_link_title => CommonwealthVlrEngine.config[:content][:homepage][:about][:link_text],
+                         :nav_link_path => CommonwealthVlrEngine.config[:content][:homepage][:about][:link]},
+                :news=> {:nav_link_title => CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_title],
+                         :nav_link_path => CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link]},
                 :directory => {:nav_link_title => 'Member Directory',
                          :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/directory'},
                 :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),
@@ -44,6 +44,28 @@
                              :nav_link_path => feedback_path}
         }
 } %>
+
+<%
+   if !CommonwealthVlrEngine.config[:content][:sections][:maps][:enabled]
+     @nav_links[:explore].delete(:map)
+   end
+
+   if !CommonwealthVlrEngine.config[:content][:sections][:collections][:enabled]
+     @nav_links[:explore].delete(:collections)
+   end
+
+   if !CommonwealthVlrEngine.config[:content][:sections][:institutions][:enabled]
+     @nav_links[:explore].delete(:institutions)
+   end
+
+   if !CommonwealthVlrEngine.config[:content][:sections][:formats][:enabled]
+     @nav_links[:explore].delete(:formats)
+   end
+
+   if !CommonwealthVlrEngine.config[:content][:homepage][:about][:enabled]
+    @nav_links[:about].delete(:overview)
+   end
+%>
 
 <% @nav_links.each_with_index do |(k, v), index| %>
     <li class="dropdown<%= ' last_nav' if index == @nav_links.length-1 %>">
