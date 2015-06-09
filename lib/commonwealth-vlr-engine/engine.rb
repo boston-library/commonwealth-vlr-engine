@@ -5,8 +5,10 @@ require 'blacklight_advanced_search'
 require 'blacklight/maps'
 require 'hydra-ldap'
 require 'hydra/derivatives'
+require 'hydra/role_management' #throws error
 require 'bpluser'
 require 'bplmodels'
+require 'bpl-institution-management'
 require 'execjs'
 require 'tzinfo'
 require 'typhoeus'
@@ -15,7 +17,10 @@ require 'devise-guests'
 require 'omniauth'
 require 'omniauth-ldap'
 require 'omniauth-facebook'
+require 'omniauth-polaris'
 require 'bootstrap-sass'
+require 'font-awesome-sass'
+require 'unicode'
 #require 'bootstrap-forms' #throws error
 
 module CommonwealthVlrEngine

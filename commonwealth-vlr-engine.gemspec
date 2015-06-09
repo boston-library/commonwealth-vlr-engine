@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'font-awesome-sass'
   spec.add_dependency 'hydra-head', '7.0.0'
   spec.add_dependency 'hydra-derivatives'
+  spec.add_dependency 'hydra-role-management', '0.1.0'
   spec.add_dependency 'hydra-ldap'
   spec.add_dependency 'bplmodels'
   spec.add_dependency 'bpluser'
@@ -38,6 +39,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'omniauth'
   spec.add_dependency 'omniauth-ldap'
   spec.add_dependency 'omniauth-facebook'
+  spec.add_dependency 'unicode'
+  spec.add_dependency 'omniauth-polaris'
+  spec.add_dependency 'bpl-institution-management'
 
 
   spec.add_development_dependency 'bundler', '~> 1.5'
