@@ -1,7 +1,7 @@
 require 'rails/generators'
 
 module CommonwealthVlrEngine
-  class AssetsGenerator < Rails::Generators::Base
+  class LocalassetsGenerator < Rails::Generators::Base
 
     source_root File.expand_path('../templates', __FILE__)
 

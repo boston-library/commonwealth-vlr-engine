@@ -18,7 +18,7 @@ module CommonwealthVlrEngine
     end
 
     def insert_to_assets
-      generate "commonwealth_vlr_engine:assets"
+      generate "commonwealth_vlr_engine:localassets"
     end
 
     def insert_to_controllers
