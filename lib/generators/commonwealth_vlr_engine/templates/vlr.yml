@@ -6,9 +6,6 @@ development:
     name: '<name>'
     email: '<email>'
 
-  design:
-    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
-
   content:
     sections:
       maps:
@@ -21,18 +18,18 @@ development:
         enabled: true
 
     homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
+      center_text: 'Explore historical collections from this totally awesome library.'
 
       about:
         enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
+        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
+        link: 'about'
+        link_title: 'About This Site'
 
       news:
         rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
         non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
+        non_rss_title: 'News & Announcements'
 
 test:
   institution:
@@ -40,9 +37,6 @@ test:
     name: '<name>'
     email: '<email>'
 
-  design:
-    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
-
   content:
     sections:
       maps:
@@ -55,18 +49,18 @@ test:
         enabled: true
 
     homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
+      center_text: 'Explore historical collections from this totally awesome library.'
 
       about:
         enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
+        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
+        link: 'about'
+        link_title: 'About This Site'
 
       news:
         rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
         non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
+        non_rss_title: 'News & Announcements'
 
 production:
   institution:
@@ -74,9 +68,6 @@ production:
     name: '<name>'
     email: '<email>'
 
-  design:
-    logo: 'https://www.digitalcommonwealth.org/assets/dc-logo_tagline_sm-645192e6a6c46d8ccbdaa34c2a520445.png'
-
   content:
     sections:
       maps:
@@ -89,15 +80,15 @@ production:
         enabled: true
 
     homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
+      center_text: 'Explore historical collections from this totally awesome library.'
 
       about:
         enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
+        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
+        link: 'about'
+        link_title: 'About This Site'
 
       news:
         rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
         non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
+        non_rss_title: 'News & Announcements'
