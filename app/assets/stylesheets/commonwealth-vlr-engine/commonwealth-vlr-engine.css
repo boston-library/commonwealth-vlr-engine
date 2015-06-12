@@ -1,0 +1,46 @@
+/* Master manifest file for engine, so local app can require
+ * this one file, but get all our files -- and local app
+ * require does not need to change if we change file list.
+ *
+ * require ../blacklight_maps.css.scss
+ * require blacklight_gallery
+ * require bootstrap-accessibility-plugin/bootstrap-accessibility
+ * require blacklight_advanced_search
+ * require font-awesome
+ * require_directory './commonwealth-vlr-engine'
+*/
+
+/* vlr-engine dependencies such as blacklight_maps, blacklight_gallery, etc. */
+@import 'vlr_dependencies';
+
+/* some site-wide styles, colors, etc. */
+@import 'cmmnwlth_defaults';
+
+/* styles for partials */
+@import 'cmmnwlth_shared';
+@import 'advanced_search';
+@import 'basic_search';
+@import 'book_viewer';
+@import 'header';
+@import 'collections';
+@import 'facets';
+@import 'folders';
+@import 'footer';
+@import 'header';
+@import 'index';
+@import 'institutions';
+@import 'pages';
+@import 'searches';
+@import 'show';
+@import 'signin';
+@import 'users';
+
+
+/* TODO */
+//*= require font-awesome
+//@import 'commonwealth-vlr-engine';
+//@import 'blacklight_maps';
+//@import 'ie_fixes';
+//@import 'blacklight_gallery';
+//@import 'openseadragon';
+//@import 'bootstrap-accessibility-plugin/bootstrap-accessibility';

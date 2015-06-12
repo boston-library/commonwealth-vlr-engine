@@ -20,11 +20,13 @@ module CommonwealthVlrEngine
         end
       end
 
-      unless IO.read("app/assets/stylesheets/application.css").include?('commonwealth-vlr-engine')
-        marker = '*/'
+      copy_file "commonwealth_vlr_engine.css.scss", "app/assets/stylesheets/commonwealth_vlr_engine.css.scss"
+
+      unless IO.read("app/assets/stylesheets/application.css").include?('commonwealth_vlr_engine')
+        marker = '* require_tree'
         insert_into_file "app/assets/stylesheets/application.css", :before => marker do
           %q{*
- *= require commonwealth-vlr-engine
+ *= require commonwealth_vlr_engine
 }
         end
       end

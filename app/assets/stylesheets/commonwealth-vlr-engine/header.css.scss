@@ -1,4 +1,4 @@
-@import 'cmmnwlth_defaults';
+/* styles for views/shared/header */
 
 #header-navbar {
   min-width: 320px;
@@ -25,7 +25,7 @@
     /* The main logo image for the Blacklight instance */
     .navbar-brand {
       width: 205px;
-      background:transparent asset_url($logo_image_home) no-repeat top left;
+      background:transparent asset_url($header_logo_image) no-repeat top left;
       display: inline-block;
       text-indent: 100%;
       white-space: nowrap;

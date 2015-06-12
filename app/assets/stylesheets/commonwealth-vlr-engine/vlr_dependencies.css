@@ -1,0 +1,8 @@
+/* various dependencies for commonwealth-vlr-engine.
+ *
+ *= require blacklight_maps
+ *= require blacklight_gallery
+ *= require bootstrap-accessibility-plugin/bootstrap-accessibility
+ *= require blacklight_advanced_search
+ *= require font-awesome
+*/

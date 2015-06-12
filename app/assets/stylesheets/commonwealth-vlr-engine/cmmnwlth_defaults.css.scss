@@ -1,32 +1,34 @@
 /* Site-wide style settings/variables for DigitalCommonwealth-based virtual local repositories */
+/* to override, declare variables in your_app/assets/stylesheets/commonwealth_vlr_engine.css.scss */
+/* put any locally-declared variables before @import line */
 
-$logo_image_home: 'vlr_logo_img.png';
+$header_logo_image: 'vlr_logo_img.png' !default;
 
-$darker_gray: #666666;
-$dark_gray: #A29E9E;
-$light_gray: #CACACA;
-$lighter_gray: #F1F1F1;
+$darker_gray: #666666 !default;
+$dark_gray: #A29E9E !default;
+$light_gray: #CACACA !default;
+$lighter_gray: #F1F1F1 !default;
 
-$bootstrap_text: #333333;
+$bootstrap_text: #333333 !default;
 
-$bl_link: #428BCA;
-$bl_link_hover: #005580;
+$bl_link: #428BCA !default;
+$bl_link_hover: #005580 !default;
 
-$well_bg_color: #F5F5F5;
-$well_border_color: #E3E3E3;
-$facets_border: #DDDDDD;
+$well_bg_color: #F5F5F5 !default;
+$well_border_color: #E3E3E3 !default;
+$facets_border: #DDDDDD !default;
 
-$navbarBorder: #D4D4D4;
+$navbarBorder: #D4D4D4 !default;
 
-$dropdown-hover-background: #0081C2;
-$dropdown-hover-background-gradient-start:#0088CC;
-$dropdown-hover-background-gradient-end: #0077B3;
+$dropdown-hover-background: #0081C2 !default;
+$dropdown-hover-background-gradient-start:#0088CC !default;
+$dropdown-hover-background-gradient-end: #0077B3 !default;
 
-$error_text: #b94a48;
-$error_bg: #f2dede;
-$error_border: #eed3d7;
+$error_text: #b94a48 !default;
+$error_bg: #f2dede !default;
+$error_border: #eed3d7 !default;
 
-$viewer_bg: #111111;
+$viewer_bg: #111111 !default;
 
 @mixin rounded-corners($radius) {
   -moz-border-radius: $radius;
