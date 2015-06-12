@@ -7,6 +7,7 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/commonwealth_search_builder'
   require 'commonwealth-vlr-engine/controller'
   require 'commonwealth-vlr-engine/render_constraints_override'
+  require 'commonwealth-vlr-engine/pages'
 
 
   def self.config

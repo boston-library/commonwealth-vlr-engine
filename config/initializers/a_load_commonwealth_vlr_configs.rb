@@ -1,5 +1,5 @@
 # various app-specific config settings
-# use file name "a_load_project_configs" so Rails loads this file before other initializers
+# use file name "a_load_commonwealth_vlr_configs" so Rails loads this file before other initializers
 
 GOOGLE_ANALYTICS = YAML.load_file(Rails.root.join('config', 'google_analytics.yml'))[Rails.env]
 
