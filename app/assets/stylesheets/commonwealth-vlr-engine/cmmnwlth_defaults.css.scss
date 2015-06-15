@@ -1,6 +1,6 @@
-/* Site-wide style settings/variables for DigitalCommonwealth-based virtual local repositories */
-/* to override, declare variables in your_app/assets/stylesheets/commonwealth_vlr_engine.css.scss */
-/* put any locally-declared variables before @import line */
+/* Site-wide style settings/variables for DigitalCommonwealth-based virtual local repositories. */
+/* To override, declare variables in your_app/assets/stylesheets/commonwealth_vlr_engine.css.scss, */
+/* putting any locally-declared variables before @import line, and removing !default */
 
 $header_logo_image: 'vlr_logo_img.png' !default;
 

@@ -1,0 +1,265 @@
+/* styles for home page view */
+
+/* don't show the search icon on home page */
+body.blacklight-home {
+
+  #header-navbar .navbar-header #nav_collapse_button {
+    padding-left: 8px;
+
+    .glyphicon-search {
+      display: none;
+    }
+
+  }
+
+}
+
+#content_home {
+  padding-top: 13px;
+
+  #hero_search {
+    @include rounded-corners(5px);
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 0 0 25px 0;
+    height: 235px;
+    width: 48.5%; /* ARRGH! */
+
+    #hero_search_headline {
+      width:78%;
+      margin: auto;
+      text-align: left;
+
+      h2 {
+        font-size: 24px;
+        line-height: 30px;
+        padding: 15px 0 10px 5px;
+      }
+    }
+
+    #hero_search_form {
+      padding-top:10px;
+
+      div.search_select_wrapper {
+        display: inline;
+      }
+
+      #search_field {
+        text-align: left;
+        height: 34px;
+        margin-right: 3px;
+      }
+
+    }
+
+  }
+
+  #content_home_browse {
+    margin-top: 50px;
+
+    div.browse_item {
+      text-align: center;
+
+      img.browse_img {
+        width:120px;
+        border: 1px solid $light_gray;
+      }
+
+      .browse_item_desc {
+        font-size: 16px;
+        color: $darker_gray;
+      }
+
+    }
+
+  }
+
+  #content_home_context {
+    margin-top: 30px;
+
+    #content_home_news li {
+      padding-bottom: .5em;
+    }
+
+    .more-info-link {
+      text-align: right;
+      padding-right: 1em;
+    }
+
+
+  }
+
+}
+
+
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  #content_home {
+
+    #hero_search {
+      height: 287px;
+
+      #hero_search_headline {
+        width:81%;
+
+        h2 {
+          font-size: 31.5px;
+          line-height: 35px;
+          padding: 30px 0 10px 10px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  #content_home {
+
+    #hero_search {
+      height: 179px;
+
+      #hero_search_headline {
+        width:82%;
+
+        h2 {
+          font-size: 20px;
+          line-height: 20px;
+          padding: 10px 0 0 7px;
+        }
+
+      }
+
+      #hero_search_form {
+
+        #search_field {
+          display:none;
+        }
+
+        #q {
+          border-bottom-left-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+
+      }
+
+    }
+
+    #content_home_browse h4 {
+      font-size: 16px;
+    }
+
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #content_home {
+
+    #hero_search {
+      margin-bottom: 20px;
+      height: auto;
+      margin-left: 15px;
+      width: 95%;
+
+      #hero_search_headline {
+        width:82%;
+        text-align: center;
+
+        h2 {
+          padding: 25px 0 0 5px;
+        }
+
+      }
+
+      #hero_search_form {
+        padding-top: 0;
+        width:75%;
+        display: inline-block;
+
+        div.search_select_wrapper {
+          float: left;
+        }
+
+      }
+
+    }
+
+    #content_home_browse {
+      margin-top: 10px;
+
+      h4 {
+        font-size:24px;
+      }
+
+      img.media-object {
+        width: 70px;
+      }
+
+    }
+
+  }
+
+
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  #content_home {
+
+    #hero_search {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      height: auto;
+      width: 91%;
+
+      #hero_search_headline {
+
+        h2 {
+          font-size: 16px;
+          line-height: 20px;
+          padding: 15px 0 0 5px;
+        }
+
+      }
+
+      #hero_search_form {
+        padding-top: 0;
+
+        form.search-query-form {
+          padding-top: 0;
+          margin-top:0;
+
+          #search_field {
+            display:none;
+          }
+
+          #q {
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+          }
+
+          .submit-search-text {
+            display: none;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

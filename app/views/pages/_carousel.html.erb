@@ -1,0 +1,46 @@
+<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% 0.upto carousel_slides.length-1 do |index| %>
+        <% if index == 0 %>
+            <li class="active"></li>
+        <% else %>
+            <li></li>
+        <% end %>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+
+    <% carousel_slides.each_with_index do |slide,index| %>
+        <% if index == 0 %>
+            <% status = 'item active' %>
+        <% else %>
+            <% status = 'item' %>
+        <% end %>
+        <div class="<%= status %>">
+          <% slide_img = iiif_image_tag(slide.image_pid,
+                                        {:size => slide.size,
+                                         :alt => slide.title,
+                                         :region => slide.region}) %>
+          <%= link_to slide_img, solr_document_path(:id => slide.object_pid) %>
+          <div class="carousel-caption">
+            <h5><%= slide.title %></h5>
+            <p><%= slide.institution %></p>
+          </div>
+        </div>
+    <% end %>
+
+  </div>
+  <a class="left carousel-control" href="#slideshow" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#slideshow" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#slideshow').carousel({
+            interval: 5000
+        });
+    });
+</script>
