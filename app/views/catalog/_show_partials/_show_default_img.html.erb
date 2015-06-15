@@ -1,9 +1,13 @@
 <% image_metadata = get_image_metadata(image_pid) %>
 <% object_title = document[blacklight_config.index.title_field.to_sym] %>
-<% img_element = iiif_image_tag(image_pid,
+<%# img_element = iiif_image_tag(image_pid,
                                 {:size => ',800',
                                  :alt => object_title,
                                  :class => 'img_show'}) %>
+<%# we are using access800 derivative as default catalog#show image for the moment %>
+<% img_element = image_tag(datastream_disseminator_url(image_pid, 'access800'),
+                           :alt => object_title,
+                           :class => 'img_show') %>
 <div id="img_show_container">
   <% if image_metadata[:width] < 724 && image_metadata[:height] < 700 %>
       <%= img_element  %>
