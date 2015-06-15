@@ -49,10 +49,11 @@ module CommonwealthVlrEngine
     # This makes our rake tasks visible.
     rake_tasks do
       Dir.chdir(File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))) do
-        Dir.glob(File.join('railties', '*.rake')).each do |railtie|
+        Dir.glob(File.join('tasks', '*.rake')).each do |railtie|
           load railtie
         end
       end
+      #load "#{config.root}/tasks/dc_public.rake"
     end
   end
 end

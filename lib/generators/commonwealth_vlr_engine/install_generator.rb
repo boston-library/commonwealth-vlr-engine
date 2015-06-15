@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
 
     source_root File.expand_path('../templates', __FILE__)
 
-    argument :search_mentbuilder_name, type: :string , default: "search_builder"
+    argument :search_builder_name, type: :string , default: "search_builder"
     argument :document_name, type: :string , default: "solr_document"
     argument :controller_name, type: :string , default: "catalog"
 
