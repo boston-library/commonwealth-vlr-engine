@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'blacklight-maps', '0.3.3'
   spec.add_dependency 'bootstrap-sass', '~> 3.0'
   spec.add_dependency 'bootstrap_forms'
-  spec.add_dependency 'font-awesome-sass'
+  spec.add_dependency 'font-awesome-sass', '4.1.0'
   spec.add_dependency 'hydra-head', '7.0.0'
   spec.add_dependency 'hydra-derivatives'
   spec.add_dependency 'hydra-role-management', '0.1.0'

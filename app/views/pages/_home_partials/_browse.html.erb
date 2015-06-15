@@ -3,11 +3,9 @@
   <% if CommonwealthVlrEngine.config[:content][:sections][:maps][:enabled] %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="map_browse" class="browse_item">
-          <%= link_to(image_tag('dc-home_map_thumb.jpg',
-                                :class => 'browse_img img-circle',
-                                :alt => 'Browse by Map'),
+          <%= link_to(content_tag(:i, '', :class => 'fa fa-globe fa-5x'),
                       map_path,
-                      :class => '') %>
+                      :class => 'browse_icon_link') %>
           <h4 class=""><%= link_to t('blacklight.maps.title'), map_path %></h4>
           <p class="browse_item_desc"><%= t('blacklight.home.browse.maps.tagline') %></p>
         </div>
@@ -17,11 +15,9 @@
   <% if CommonwealthVlrEngine.config[:content][:sections][:collections][:enabled] %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="collections_browse" class="browse_item">
-          <%= link_to(image_tag('dc-home_collections_thumb.jpg',
-                                :class => 'browse_img img-circle',
-                                :alt => 'Browse All Collections'),
+          <%= link_to(content_tag(:i, '', :class => 'fa fa-folder-open fa-5x'),
                       collections_path,
-                      :class => '') %>
+                      :class => 'browse_icon_link') %>
           <h4 class="">
             <%= link_to t('blacklight.collections.index.title'), collections_path %>
           </h4>
@@ -33,11 +29,9 @@
   <% if CommonwealthVlrEngine.config[:content][:sections][:institutions][:enabled] %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="institutions_browse" class="browse_item">
-          <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
-                                :class => 'browse_img img-circle',
-                                :alt => 'Browse All Institutions'),
+          <%= link_to(content_tag(:i, '', :class => 'fa fa-institution fa-5x'),
                       institutions_path,
-                      :class => '') %>
+                      :class => 'browse_icon_link') %>
           <h4 class=""><%= link_to t('blacklight.institutions.title'), institutions_path %></h4>
           <p class="browse_item_desc"><%= t('blacklight.home.browse.institutions.tagline') %></p>
         </div>
@@ -47,11 +41,9 @@
   <% if CommonwealthVlrEngine.config[:content][:sections][:formats][:enabled] %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="formats_browse" class="browse_item">
-          <%= link_to(image_tag('dc-home_format_thumb.jpg',
-                                :class => 'browse_img img-circle',
-                                :alt => 'Browse All Formats'),
+          <%= link_to(content_tag(:i, '', :class => 'fa fa-image fa-5x'),
                       formats_facet_path,
-                      :class => '') %>
+                      :class => 'browse_icon_link') %>
           <h4 class="">
             <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
           </h4>

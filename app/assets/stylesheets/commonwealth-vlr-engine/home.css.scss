@@ -60,6 +60,10 @@ body.blacklight-home {
     div.browse_item {
       text-align: center;
 
+      a.browse_icon_link {
+        color: $dark_gray;
+      }
+
       img.browse_img {
         width:120px;
         border: 1px solid $light_gray;
