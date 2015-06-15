@@ -186,6 +186,22 @@ en:
           search_history: 'Search History'
           selected_items: 'Selected Items'
 
+    home:
+          browse:
+            collections:
+              tagline: 'Explore curated collections of historic materials grouped by topic, date, location, or format.'
+            formats:
+              tagline: 'Photographs, maps, postcards, manuscripts, books, artifacts, and more.'
+            institutions:
+              tagline: 'View materials from libraries, historical societies, museums, and other cultural institutions.'
+            maps:
+              tagline: 'Use the map to search for materials from locations across the globe.'
+          context:
+            about:
+              title: 'About This Site'
+            news:
+              title: 'News & Announcements'
+
     images:
           zoom: 'Click to zoom in on this image.'
           next: 'View next image'

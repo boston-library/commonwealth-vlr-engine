@@ -1,0 +1,63 @@
+<%# the browse sections - collections, map, etc. %>
+<div id="content_home_browse" class="row">
+  <% if CommonwealthVlrEngine.config[:content][:sections][:maps][:enabled] %>
+      <div class="col-sm-<%= @middle_feature_columns %>">
+        <div id="map_browse" class="browse_item">
+          <%= link_to(image_tag('dc-home_map_thumb.jpg',
+                                :class => 'browse_img img-circle',
+                                :alt => 'Browse by Map'),
+                      map_path,
+                      :class => '') %>
+          <h4 class=""><%= link_to t('blacklight.maps.title'), map_path %></h4>
+          <p class="browse_item_desc"><%= t('blacklight.home.browse.maps.tagline') %></p>
+        </div>
+      </div>
+  <% end %>
+
+  <% if CommonwealthVlrEngine.config[:content][:sections][:collections][:enabled] %>
+      <div class="col-sm-<%= @middle_feature_columns %>">
+        <div id="collections_browse" class="browse_item">
+          <%= link_to(image_tag('dc-home_collections_thumb.jpg',
+                                :class => 'browse_img img-circle',
+                                :alt => 'Browse All Collections'),
+                      collections_path,
+                      :class => '') %>
+          <h4 class="">
+            <%= link_to t('blacklight.collections.index.title'), collections_path %>
+          </h4>
+          <p class="browse_item_desc"><%= t('blacklight.home.browse.collections.tagline') %></p>
+        </div>
+      </div>
+  <% end %>
+
+  <% if CommonwealthVlrEngine.config[:content][:sections][:institutions][:enabled] %>
+      <div class="col-sm-<%= @middle_feature_columns %>">
+        <div id="institutions_browse" class="browse_item">
+          <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
+                                :class => 'browse_img img-circle',
+                                :alt => 'Browse All Institutions'),
+                      institutions_path,
+                      :class => '') %>
+          <h4 class=""><%= link_to t('blacklight.institutions.title'), institutions_path %></h4>
+          <p class="browse_item_desc"><%= t('blacklight.home.browse.institutions.tagline') %></p>
+        </div>
+      </div>
+  <% end %>
+
+  <% if CommonwealthVlrEngine.config[:content][:sections][:formats][:enabled] %>
+      <div class="col-sm-<%= @middle_feature_columns %>">
+        <div id="formats_browse" class="browse_item">
+          <%= link_to(image_tag('dc-home_format_thumb.jpg',
+                                :class => 'browse_img img-circle',
+                                :alt => 'Browse All Formats'),
+                      formats_facet_path,
+                      :class => '') %>
+          <h4 class="">
+            <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
+          </h4>
+          <p class="browse_item_desc"><%= t('blacklight.home.browse.formats.tagline') %></p>
+        </div>
+      </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,14 @@
+<%# putting this in a partial so it can be called from catalog#index %>
+<%# when no search params present %>
+<div id="content_home" class="col-sm-12">
+
+  <%# the banner for the carousel and search box %>
+  <%= render :partial => 'pages/_home_partials/banner' %>
+
+  <%# the browse sections - collections, map, etc. %>
+  <%= render :partial => 'pages/_home_partials/browse' %>
+
+  <%# the context sections - about, news %>
+  <%= render :partial => 'pages/_home_partials/context' %>
+
+</div>

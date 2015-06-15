@@ -1,0 +1,26 @@
+<%# the context sections - about, news %>
+<div id="content_home_context" class="row">
+
+  <div id="content_home_about" class="col-sm-6">
+    <h4><%= t('blacklight.home.context.about.title') %></h4>
+    <p><%= CommonwealthVlrEngine.config[:content][:homepage][:about][:desc_text] %></p>
+
+    <p class="more-info-link">
+      <% if CommonwealthVlrEngine.config[:content][:homepage][:about][:link].present? %>
+          <%= link_to 'Learn more >>', CommonwealthVlrEngine.config[:content][:homepage][:about][:link] %>
+      <% end %>
+    </p>
+  </div>
+
+  <div id="content_home_news" class="col-sm-6">
+    <h4><%= t('blacklight.home.context.news.title') %></h4>
+    <%= render_blog_feed %>
+    <p class="more-info-link">
+      <%= link_to 'More news >>',
+                  CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link],
+                  :target => '_blank' %>
+    </p>
+
+  </div>
+
+</div>
