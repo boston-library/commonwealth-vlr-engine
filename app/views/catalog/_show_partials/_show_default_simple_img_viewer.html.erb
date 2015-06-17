@@ -23,7 +23,7 @@
         $("#img_viewer_osd").css("height", $(window).height() - 60);
         OSd_viewer.viewer = new OpenSeadragon({
             id: "img_viewer_osd",
-            prefixUrl: "/assets/openseadragon/",
+            prefixUrl: "/assets/commonwealth-vlr-engine/openseadragon/",
             tileSources: ['<%= IIIF_SERVER['url'] + image_pid + '/info.json' %>'],
             autoHideControls: false,
             immediateRender: navigator.userAgent.match(/mobile/i),

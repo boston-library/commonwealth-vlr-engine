@@ -2,93 +2,12 @@
 
 development:
   institution:
-    pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: false
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from this totally awesome library.'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
-        link: 'about'
-        link_title: 'About This Site'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'News & Announcements'
+    pid: 'commonwealth:abc123'
 
 test:
   institution:
-    pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: false
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from this totally awesome library.'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
-        link: 'about'
-        link_title: 'About This Site'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'News & Announcements'
+      pid: 'commonwealth:abc123'
 
 production:
   institution:
-    pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: false
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from this totally awesome library.'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest from this totally awesome library.'
-        link: 'about'
-        link_title: 'About This Site'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'News & Announcements'
+      pid: 'commonwealth:abc123'

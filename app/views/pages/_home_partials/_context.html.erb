@@ -3,12 +3,10 @@
 
   <div id="content_home_about" class="col-sm-6">
     <h4><%= t('blacklight.home.context.about.title') %></h4>
-    <p><%= CommonwealthVlrEngine.config[:content][:homepage][:about][:desc_text] %></p>
+    <p><%= t('blacklight.home.context.about.text') %></p>
 
     <p class="more-info-link">
-      <% if CommonwealthVlrEngine.config[:content][:homepage][:about][:link].present? %>
-          <%= link_to 'Learn more >>', CommonwealthVlrEngine.config[:content][:homepage][:about][:link] %>
-      <% end %>
+      <%= link_to 'Learn more >>', about_path %>
     </p>
   </div>
 
@@ -17,7 +15,7 @@
     <%= render_blog_feed %>
     <p class="more-info-link">
       <%= link_to 'More news >>',
-                  CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link],
+                  t('blacklight.home.context.news.blog_url'),
                   :target => '_blank' %>
     </p>
 

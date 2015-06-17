@@ -86,12 +86,12 @@ en:
           form:
             title: 'Email'
             message: 'Comments:'
-          reply_to: 'somebody@example.org'
+          reply_to: '%{message}'
           record_mailer:
-            name: 'SITE NAME'
+            name: 'Totally Awesome Library'
             email: 'somebody@example.org'
           text:
-            subject: 'SITE_NAME E-mail: link to item'
+            subject: 'Totally Awesome Library E-mail: link to item'
             url: 'Link: %{url}'
             message: 'Comments: %{message}'
 
@@ -105,7 +105,6 @@ en:
               options:
                 default: 'please select a topic'
                 repro: 'image reproduction'
-                membership: 'DC membership (library)'
                 account: 'login / sign up for account'
                 research: 'research question'
                 error: 'broken link / site error'
@@ -187,25 +186,45 @@ en:
           selected_items: 'Selected Items'
 
     home:
+          banner:
+            center_text: 'Explore historical collections from this totally awesome library.'
           browse:
             collections:
+              enabled: true
               tagline: 'Explore curated collections of historic materials grouped by topic, date, location, or format.'
             formats:
+              enabled: true
               tagline: 'Photographs, maps, postcards, manuscripts, books, artifacts, and more.'
             institutions:
+              enabled: false
               tagline: 'View materials from libraries, historical societies, museums, and other cultural institutions.'
             maps:
+              enabled: true
               tagline: 'Use the map to search for materials from locations across the globe.'
           context:
             about:
+              text: 'This site provides access to materials of historical interest from this totally awesome library.'
               title: 'About This Site'
             news:
               title: 'News & Announcements'
+              rss_link: 'http://awesomelibrary.org/blog?feed=rss2'
+              blog_title: 'This Awesome Library Blog'
+              blog_url: 'https://awesomelibrary.org/blog'
 
     images:
           zoom: 'Click to zoom in on this image.'
           next: 'View next image'
           prev: 'View previous image'
+
+    institutions:
+          browse:
+            all: 'View all items'
+          facets:
+            title: 'Browse by:'
+          index:
+            page_title: 'Institutions - %{application_name}'
+          nav: 'Institutions'
+          title: 'Institutions'
 
     metadata_display:
           date_range_connector: '–'

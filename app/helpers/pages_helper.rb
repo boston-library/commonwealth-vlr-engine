@@ -3,7 +3,7 @@ require 'rss'
 module PagesHelper
 
   def render_blog_feed
-    source = CommonwealthVlrEngine.config[:content][:homepage][:news][:rss_link]
+    source = t('blacklight.home.context.news.rss_link')
     if source.present?
       feed = Rails.cache.fetch('dc_rss_feed', :expires_in => 60.minutes) do
         RSS::Parser.parse(open(source).read, false).items[0..3]
@@ -22,8 +22,8 @@ module PagesHelper
       content_tag(:ul, content.join().html_safe, :class => 'feed_items')
     else
       content_tag(:p,
-                  'Visit ' + link_to(CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_text],
-                                     CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link],
+                  'Visit ' + link_to(t('blacklight.home.context.news.blog_title'),
+                                     t('blacklight.home.context.news.blog_url'),
                                      :target => '_blank') + ' for the latest updates.')
     end
   rescue

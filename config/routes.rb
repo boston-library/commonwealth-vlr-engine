@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   mount Hydra::RoleManagement::Engine => '/'
 
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
+
   #mount Bpl::InstitutionManagement::Engine => '/'
 
   # not using the default BL pattern below as it requires controller and path to have same name

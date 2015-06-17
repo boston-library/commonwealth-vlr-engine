@@ -1,6 +1,6 @@
 <%# the browse sections - collections, map, etc. %>
 <div id="content_home_browse" class="row">
-  <% if CommonwealthVlrEngine.config[:content][:sections][:maps][:enabled] %>
+  <% if t('blacklight.home.browse.maps.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="map_browse" class="browse_item">
           <%= link_to(content_tag(:i, '', :class => 'fa fa-globe fa-5x'),
@@ -12,7 +12,7 @@
       </div>
   <% end %>
 
-  <% if CommonwealthVlrEngine.config[:content][:sections][:collections][:enabled] %>
+  <% if t('blacklight.home.browse.collections.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="collections_browse" class="browse_item">
           <%= link_to(content_tag(:i, '', :class => 'fa fa-folder-open fa-5x'),
@@ -26,7 +26,7 @@
       </div>
   <% end %>
 
-  <% if CommonwealthVlrEngine.config[:content][:sections][:institutions][:enabled] %>
+  <% if t('blacklight.home.browse.institutions.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="institutions_browse" class="browse_item">
           <%= link_to(content_tag(:i, '', :class => 'fa fa-institution fa-5x'),
@@ -38,7 +38,7 @@
       </div>
   <% end %>
 
-  <% if CommonwealthVlrEngine.config[:content][:sections][:formats][:enabled] %>
+  <% if t('blacklight.home.browse.formats.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="formats_browse" class="browse_item">
           <%= link_to(content_tag(:i, '', :class => 'fa fa-image fa-5x'),
