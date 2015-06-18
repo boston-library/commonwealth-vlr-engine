@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'hydra-head', '7.0.0'
   spec.add_dependency 'hydra-derivatives'
   spec.add_dependency 'hydra-role-management', '0.1.0'
-  spec.add_dependency 'hydra-ldap'
   spec.add_dependency 'bplmodels'
   spec.add_dependency 'bpluser'
   spec.add_dependency 'tzinfo'

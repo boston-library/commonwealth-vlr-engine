@@ -2,5 +2,9 @@
 <div class="col-sm-9 about_content">
   <h2><%= t('blacklight.pages.about.title') %></h2>
 
-  <p>Your content goes here.</p>
+  <ul class="page_list">
+    <li><%= link_to t('blacklight.home.context.about.title'), about_site_path %></li>
+    <li><%= link_to t('blacklight.home.context.news.title'), t('blacklight.home.context.news.blog_url'), :target => '_blank' %></li>
+    <li><%= link_to t('blacklight.pages.contact.title'), feedback_path %></li>
+  </ul>
 </div>

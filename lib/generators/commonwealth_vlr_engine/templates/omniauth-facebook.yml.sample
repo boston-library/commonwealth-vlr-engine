@@ -1,0 +1,14 @@
+test:
+  facebook_key: yourfacebookkey
+  facebook_secret: yourfacebooksecret
+  facebook_scp: email
+
+development:
+  facebook_key:
+  facebook_secret:
+  facebook_scp: email
+
+production:
+  facebook_key:
+  facebook_secret:
+  facebook_scp: email

@@ -21,6 +21,10 @@ module CommonwealthVlrEngine
       @nav_li_active = 'about'
     end
 
+    def about_site
+      @nav_li_active = 'about'
+    end
+
     def explore
       @nav_li_active = 'explore'
     end

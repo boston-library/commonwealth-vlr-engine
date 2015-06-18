@@ -3,9 +3,30 @@
   <h2><%= t('blacklight.pages.explore.title') %></h2>
 
   <ul class="page_list">
-    <li><%= link_to t('blacklight.collections.index.title'), collections_path %></li>
-    <li><%= link_to t('blacklight.maps.title'), map_path %></li>
-    <li><%= link_to t('blacklight.navigation.format'), formats_facet_path %></li>
+    <% if t('blacklight.home.browse.maps.enabled') %>
+        <li>
+          <%= link_to t('blacklight.maps.title'), map_path %><br/>
+          <%= t('blacklight.home.browse.maps.tagline') %>
+        </li>
+    <% end %>
+    <% if t('blacklight.home.browse.collections.enabled') %>
+        <li>
+          <%= link_to t('blacklight.collections.index.title'), collections_path %><br/>
+          <%= t('blacklight.home.browse.collections.tagline') %>
+        </li>
+    <% end %>
+    <% if t('blacklight.home.browse.institutions.enabled') %>
+        <li>
+          <%= link_to t('blacklight.institutions.title'), institutions_path %><br/>
+          <%= t('blacklight.home.browse.institutions.tagline') %>
+        </li>
+    <% end %>
+    <% if t('blacklight.home.browse.formats.enabled') %>
+        <li>
+          <%= link_to t('blacklight.navigation.format'), formats_facet_path %><br/>
+          <%= t('blacklight.home.browse.formats.tagline') %>
+        </li>
+    <% end %>
   </ul>
 
 </div>

@@ -222,13 +222,13 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :ldap, :title => 'BPL admin ldap',
-                  :host => Hydra::LDAP.ldap_config[:host],
-                  :base => Hydra::LDAP.ldap_config[:base],
-                  :uid => Hydra::LDAP.ldap_config[:uid],
-                  :port => Hydra::LDAP.ldap_config[:port],
-                  :bind_dn => Hydra::LDAP.ldap_config[:username],
-                  :password => Hydra::LDAP.ldap_config[:password]
+  #config.omniauth :ldap, :title => 'BPL admin ldap',
+  #                :host => Hydra::LDAP.ldap_config[:host],
+  #                :base => Hydra::LDAP.ldap_config[:base],
+  #                :uid => Hydra::LDAP.ldap_config[:uid],
+  #                :port => Hydra::LDAP.ldap_config[:port],
+  #                :bind_dn => Hydra::LDAP.ldap_config[:username],
+  #                :password => Hydra::LDAP.ldap_config[:password]
 
   # fix-login fix
   #config.omniauth :password, :title => 'BPL local account login',

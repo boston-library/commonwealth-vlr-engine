@@ -1,0 +1,10 @@
+# stores IIIF image server url
+
+development:
+  url: 'http://iiifserver.example.org/'
+
+test:
+  url:
+
+production:
+  url:

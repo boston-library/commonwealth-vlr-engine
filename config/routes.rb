@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
   get 'explore', :to => 'pages#explore', :as => 'explore'
   get 'about', :to => 'pages#about', :as => 'about'
+  get 'about_this_site', :to => 'pages#about_site', :as => 'about_site'
 
 #CommonwealthVlrEngine::Engine.routes.draw do
 

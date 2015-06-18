@@ -3,7 +3,6 @@ require 'blacklight/gallery'
 require 'blacklight'
 require 'blacklight_advanced_search'
 require 'blacklight/maps'
-require 'hydra-ldap'
 require 'hydra/derivatives'
 require 'hydra/role_management' #throws error
 require 'bpluser'

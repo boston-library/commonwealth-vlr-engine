@@ -1,0 +1,12 @@
+# specific text fields for devise sign-in/account views
+
+en:
+
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: 'Awesome Library - Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Awesome Library - Reset password instructions'
+      unlock_instructions:
+        subject: 'Awesome Library - Unlock Instructions'

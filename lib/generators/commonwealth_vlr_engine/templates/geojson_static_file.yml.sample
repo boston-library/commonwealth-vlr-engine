@@ -1,0 +1,10 @@
+# stores location of static file with GeoJSON FeatureCollection for catalog#map
+
+development:
+  filepath: './lib/assets/static_geojson_catalog-map.json'
+
+test:
+  filepath: './lib/assets/static_geojson_catalog-map.json'
+
+production:
+  filepath: './lib/assets/static_geojson_catalog-map.json'

@@ -22,7 +22,7 @@ namespace :vlr_engine do
 
     geojson_features = serialize_geojson(map_facet_values, 'index')
     if geojson_features
-      File.open('./lib/assets/dc_static_geojson_catalog-map.json', 'w') {|f| f.write(geojson_features) }
+      File.open('./lib/assets/static_geojson_catalog-map.json', 'w') {|f| f.write(geojson_features) }
       puts 'The GeoJSON file has successfully been created'
     else
       puts 'ERROR: The GeoJSON file was not created!'
