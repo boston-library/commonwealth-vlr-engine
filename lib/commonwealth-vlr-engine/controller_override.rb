@@ -23,6 +23,7 @@ module CommonwealthVlrEngine
       before_filter :get_object_files, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
       before_filter :mlt_search, :only => [:index]
+      before_filter :add_institution_fields, :only => [:index, :facet]
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
@@ -150,16 +151,17 @@ module CommonwealthVlrEngine
 
       end
 
-    end
+      # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
+      # for some reason won't work if not in the 'included' block
+      def metadata_view
+        @response, @document = fetch(params[:id])
 
-    # displays the MODS XML record. copied from blacklight_marc gem
-    def librarian_view
-      @response, @document = fetch(params[:id])
-
-      respond_to do |format|
-        format.html
-        format.js { render :layout => false }
+        respond_to do |format|
+          format.html
+          format.js { render :layout => false }
+        end
       end
+
     end
 
     # displays values and pagination links for Format field
@@ -188,6 +190,14 @@ module CommonwealthVlrEngine
 
     def set_nav_context
       @nav_li_active = 'search'
+    end
+
+    # add institutions if configured
+    def add_institution_fields
+      if t('blacklight.home.browse.institutions.enabled')
+        blacklight_config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count'
+        blacklight_config.add_index_field 'institution_name_ssim', :label => 'Institution', :helper_method => :index_institution_link
+      end
     end
 
 

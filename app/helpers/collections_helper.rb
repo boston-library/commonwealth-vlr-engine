@@ -1,10 +1,11 @@
 module CollectionsHelper
 
   # link to view all items in a collection
-  def link_to_all_col_items(col_title, institution_name, link_class)
+  def link_to_all_col_items(col_title, institution_name=nil, link_class)
+    facet_params = {blacklight_config.collection_field => [col_title]}
+    facet_params[blacklight_config.institution_field] = institution_name if institution_name
     link_to(t('blacklight.collections.browse.all'),
-            catalog_index_path(:f => {blacklight_config.collection_field => [col_title],
-                                      blacklight_config.institution_field => institution_name}),
+            catalog_index_path(:f => facet_params),
             :class => link_class)
   end
 

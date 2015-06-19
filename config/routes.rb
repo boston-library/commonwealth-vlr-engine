@@ -2,11 +2,7 @@ Rails.application.routes.draw do
 
   mount Bpluser::Engine => '/bpluser'
 
-  mount Hydra::RoleManagement::Engine => '/'
-
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
-
-  #mount Bpl::InstitutionManagement::Engine => '/'
 
   # not using the default BL pattern below as it requires controller and path to have same name
   # blacklight_for :catalog
@@ -45,7 +41,7 @@ Rails.application.routes.draw do
   get 'places', :to => 'catalog#map', :as => 'places_facet'
   get 'formats', :to => 'catalog#formats_facet', :as => 'formats_facet'
 
-  get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+  get 'search/:id/metadata_view', :to => 'catalog#metadata_view', :as => 'metadata_view_catalog'
 
   #HydraHead.add_routes(self) # deprecated in HH7
 

@@ -5,11 +5,6 @@ class User < ActiveRecord::Base
   require 'rest_client'
   # Connects this user object to Hydra behaviors.
   include Hydra::User
-  # Connects this user object to Role-management behaviors.
-  include Hydra::RoleManagement::UserRoles
-
-  # Connects this user object to Institution-management behaviors.
-  #include Bpl::InstitutionManagement::UserInstitutions
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User

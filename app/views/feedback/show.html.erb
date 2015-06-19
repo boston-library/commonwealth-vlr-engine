@@ -31,14 +31,8 @@
       <label class="col-sm-3 control-label"><%= t('blacklight.feedback.form.topic.label') %></label>
        <div class="col-sm-4">
          <%= select_tag(:topic,
-                        options_for_select([t('blacklight.feedback.form.topic.options.default'),
-                                            t('blacklight.feedback.form.topic.options.repro'),
-                                            t('blacklight.feedback.form.topic.options.membership'),
-                                            t('blacklight.feedback.form.topic.options.error'),
-                                            t('blacklight.feedback.form.topic.options.account'),
-                                            t('blacklight.feedback.form.topic.options.research'),
-                                            t('blacklight.feedback.form.topic.options.other')]), :class => 'form-control') %>
-         <%# f.select(:topic, ['image reproduction', 'DC membership', 'logging into my account', 'research question', 'other'], {}, {:class => 'form-control'}) %>
+                        options_for_select(t('blacklight.feedback.form.topic.options').values),
+                        :class => 'form-control') %>
        </div>
     </div>
     <div class="form-group">

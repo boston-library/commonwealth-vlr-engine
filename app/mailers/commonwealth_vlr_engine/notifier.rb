@@ -5,6 +5,7 @@ module CommonwealthVlrEngine
     def feedback(details)
 
       @message = details[:message]
+      @topic = details[:topic]
       @email = details[:email]
       @name = details[:name]
       @recipient = route_email(details[:topic])

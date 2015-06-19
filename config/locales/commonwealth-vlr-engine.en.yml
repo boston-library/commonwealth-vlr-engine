@@ -124,6 +124,7 @@ en:
             name: 'Name: '
             email: 'Email: '
             message: 'Message: '
+            topic: 'Topic: '
 
     folders:
           intro: 'Folders can be used to create, organize, and share your own personal collections of items.'

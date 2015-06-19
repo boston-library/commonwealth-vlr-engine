@@ -42,8 +42,7 @@ class CollectionsController < CatalogController
     @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
     # add params[:f] for proper facet links
-    params[:f] = {blacklight_config.collection_field => [@collection_title],
-                  blacklight_config.institution_field => @document[blacklight_config.institution_field.to_sym]}
+    params[:f] = set_collection_facet_params(@collection_title, @document)
 
     # get the response for the facets representing items in collection
     (@response, @document_list) = search_results({:f => params[:f]}, search_params_logic)
@@ -94,6 +93,13 @@ class CollectionsController < CatalogController
     series_doc_list.first
   end
   helper_method :get_series_image_obj
+
+  # set the correct facet params for facets from the collection
+  def set_collection_facet_params(collection_title, document)
+    facet_params = {blacklight_config.collection_field => [collection_title]}
+    facet_params[blacklight_config.institution_field] = document[blacklight_config.institution_field.to_sym] if t('blacklight.home.browse.institutions.enabled')
+    facet_params
+  end
 
   # Not using this for now
   # find a representative image for a collection if none is assigned
