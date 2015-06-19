@@ -2,7 +2,8 @@
 /* To override, declare variables in your_app/assets/stylesheets/commonwealth_vlr_engine.css.scss, */
 /* putting any locally-declared variables before @import line, and removing !default */
 
-$header_logo_image: 'vlr_logo_img.png' !default;
+$header_logo_image: 'commonwealth-vlr-engine/vlr_logo_img.png' !default;
+$footer_logo_image: 'commonwealth-vlr-engine/vlr_logo_img.png' !default;
 
 $darker_gray: #666666 !default;
 $dark_gray: #A29E9E !default;

@@ -18,11 +18,20 @@
 
   #footer_logo {
     float: left;
-
+/*
     .footer-logo {
       -moz-opacity: 0.50;
       opacity: 0.50;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    }
+*/
+    #footer_logo_link {
+      background:transparent asset_url($footer_logo_image) no-repeat top left;
+      display: inline-block;
+      height: 75px;
+      width: 180px;
+      overflow: hidden;
+      text-indent: -100%;
     }
 
   }

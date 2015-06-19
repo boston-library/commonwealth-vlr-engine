@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # not using the default BL pattern below as it requires controller and path to have same name
   # blacklight_for :catalog
 
+  # this needs to be before BL bookmarks stuff
+  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
+
   # add all BL routes manually -- stopgap solution until patch can be submitted
   # that will allow local app to provide :path option for resources passed as
   # args to blacklight/lib/blacklight/rails/routes.rb#blacklight_for
@@ -38,8 +41,6 @@ Rails.application.routes.draw do
   # :show and :update are for backwards-compatibility with catalog_url named routes
   resources :catalog, :only => [:show, :update]
   # end local BL routes override
-
-  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
   get 'places', :to => 'catalog#map', :as => 'places_facet'
   get 'formats', :to => 'catalog#formats_facet', :as => 'formats_facet'

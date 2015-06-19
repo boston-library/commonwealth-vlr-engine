@@ -175,6 +175,9 @@ en:
             success: 'All items removed.'
             failure: 'Items could not be removed. Please try again later.'
 
+    footer:
+          address: '123 Main Street, Anywhere, MA 01234'
+
     header_links:
           logout: 'Log Out'
           login: 'Sign Up / Log In'
