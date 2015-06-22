@@ -7,14 +7,13 @@ class CollectionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  # show series facet for collections#show
-  configure_blacklight do |config|
-    series_facet = config.facet_fields["related_item_series_ssim"]
-    series_facet.show = true
-    series_facet.if = true # have to include this or it won't display!
-    series_facet.limit = 300
-    series_facet.sort = 'index'
-    series_facet.include_in_request = true
+  # remove collection facet and collapse others
+  before_filter :relation_base_blacklight_config, :only => [:show]
+  before_filter :add_series_facet, :only => [:show]
+
+  # show series facet
+  def add_series_facet
+    blacklight_config.facet_fields['related_item_series_ssim'].include_in_request = true
   end
 
   # Blacklight uses #search_action_url to figure out the right URL for

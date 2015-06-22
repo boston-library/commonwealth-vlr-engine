@@ -56,4 +56,7 @@ class InstitutionsController < CatalogController
 
   before_filter :remove_unwanted_views, :only => [:index]
 
+  # remove collection facet and collapse others
+  before_filter :relation_base_blacklight_config, :only => [:show]
+
 end

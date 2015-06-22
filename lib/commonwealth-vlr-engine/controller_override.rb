@@ -82,15 +82,15 @@ module CommonwealthVlrEngine
         config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
         # solr fields that will be treated as facets by the blacklight application
-        config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count'
-        config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count'
-        config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index'
-        config.add_facet_field 'genre_basic_ssim', :label => 'Format', :limit => 8, :sort => 'count', :helper_method => :render_format
-        config.add_facet_field 'collection_name_ssim', :label => 'Collection', :limit => 8, :sort => 'count'
+        config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count', :collapse => false
+        config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count', :collapse => false
+        config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index', :collapse => false
+        config.add_facet_field 'genre_basic_ssim', :label => 'Format', :limit => 8, :sort => 'count', :helper_method => :render_format, :collapse => false
+        config.add_facet_field 'collection_name_ssim', :label => 'Collection', :limit => 8, :sort => 'count', :collapse => false
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', :label => 'Collection', :include_in_request => false # Collection (local)
         config.add_facet_field 'genre_specific_ssim', :label => 'Genre', :include_in_request => false
-        config.add_facet_field 'related_item_series_ssim', :label => 'Series', :include_in_request => false
+        config.add_facet_field 'related_item_series_ssim', :label => 'Series', :limit => 300, :sort => 'index', :include_in_request => false
         config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :include_in_request => false
         config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :include_in_request => false
         config.add_facet_field 'institution_name_ssim', :label => 'Institution', :include_in_request => false
@@ -162,6 +162,18 @@ module CommonwealthVlrEngine
         end
       end
 
+      # modify facet settings for Collections#show and Institutions#show
+      def relation_base_blacklight_config
+        # don't show collection facet
+        blacklight_config.facet_fields['collection_name_ssim'].show = false
+        blacklight_config.facet_fields['collection_name_ssim'].if = false
+        # collapse remaining facets
+        blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
+        blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
+        blacklight_config.facet_fields['date_facet_ssim'].collapse = true
+        blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+      end
+
     end
 
     # displays values and pagination links for Format field
@@ -195,7 +207,7 @@ module CommonwealthVlrEngine
     # add institutions if configured
     def add_institution_fields
       if t('blacklight.home.browse.institutions.enabled')
-        blacklight_config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count'
+        blacklight_config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count', :collapse => false
         blacklight_config.add_index_field 'institution_name_ssim', :label => 'Institution', :helper_method => :index_institution_link
       end
     end
