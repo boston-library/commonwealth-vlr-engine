@@ -32,5 +32,14 @@ module CommonwealthVlrEngine
     def copy_yml_files
       generate "commonwealth_vlr_engine:yml"
     end
+
+    def insert_to_routes
+      generate 'commonwealth_vlr_engine:routes'
+    end
+
+    def insert_to_environments
+      generate 'commonwealth_vlr_engine:environment'
+    end
+
   end
 end

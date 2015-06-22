@@ -12,7 +12,7 @@ module CommonwealthVlrEngine
   Thank you for installing Commonwealth VLR.
          """
 
-    # Add Commonwealth to the application controller
+    # Add CommonwealthVlrEngine to the routes
     def inject_vlr_routes
       unless IO.read("config/routes.rb").include?('CommonwealthVlrEngine::Engine')
         marker = 'Rails.application.routes.draw do'
@@ -23,13 +23,13 @@ module CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
   root :to => 'pages#home'
 }
-          bl_root_marker = 'root to: "catalog#index"'
-          gsub_file("config/routes.rb", bl_root_marker, "")
-
-          bl_catalog_marker = 'blacklight_for :catalog'
-          gsub_file("config/routes.rb", bl_catalog_marker, "")
-
         end
+
+        bl_root_marker = 'root to: "catalog#index"'
+        gsub_file("config/routes.rb", bl_root_marker, "")
+
+        bl_catalog_marker = 'blacklight_for :catalog'
+        gsub_file("config/routes.rb", bl_catalog_marker, "")
 
       end
     end
