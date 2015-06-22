@@ -19,13 +19,13 @@ module CommonwealthVlrEngine
         insert_into_file 'config/application.rb', :after => marker do
           %q{
 
-  # don't log passwords
-  config.filter_parameters += [:password, password_confirmation]
-  # escape HTML entities in JSON
-  config.active_support.escape_html_entities_in_json = true
-  # mailer settings
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_url_options = { :host => 'awesomelibrary.org' }
+    # don't log passwords
+    config.filter_parameters += [:password, password_confirmation]
+    # escape HTML entities in JSON
+    config.active_support.escape_html_entities_in_json = true
+    # mailer settings
+    config.action_mailer.delivery_method = :sendmail
+    config.action_mailer.default_url_options = { :host => 'awesomelibrary.org' }
 }
 
         end
@@ -39,8 +39,7 @@ module CommonwealthVlrEngine
         marker = '# Precompile additional assets.'
         insert_into_file 'config/initializers/assets.rb', :after => marker do
           %q{
-
-  config.assets.precompile += %w(wdl-viewer/fd-slider.min.css ie_fixes.css *.js)
+Rails.application.config.assets.precompile += %w(wdl-viewer/fd-slider.min.css ie_fixes.css *.js)
 }
 
         end

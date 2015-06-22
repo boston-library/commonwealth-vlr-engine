@@ -22,6 +22,8 @@ module CommonwealthVlrEngine
   # routes for CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
   root :to => 'pages#home'
+
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 }
         end
 

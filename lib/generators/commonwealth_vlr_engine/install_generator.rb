@@ -12,25 +12,25 @@ module CommonwealthVlrEngine
     desc "InstallGenerator Commonwealth VLR Engine"
 
     def verify_blacklight_installed
-      if !IO.read("app/controllers/application_controller.rb").include?('include Blacklight::Controller')
+      if !IO.read('app/controllers/application_controller.rb').include?('include Blacklight::Controller')
          raise "It doesn't look like you have Blacklight installed..."
       end
     end
 
     def insert_to_assets
-      generate "commonwealth_vlr_engine:localassets"
+      generate 'commonwealth_vlr_engine:localassets'
     end
 
     def insert_to_controllers
-      generate "commonwealth_vlr_engine:controller", controller_name
+      generate 'commonwealth_vlr_engine:controller', controller_name
     end
 
     def insert_to_models
-      generate "commonwealth_vlr_engine:model", search_builder_name, document_name
+      generate 'commonwealth_vlr_engine:model', search_builder_name, document_name
     end
 
     def copy_yml_files
-      generate "commonwealth_vlr_engine:yml"
+      generate 'commonwealth_vlr_engine:yml'
     end
 
     def insert_to_routes
@@ -39,6 +39,12 @@ module CommonwealthVlrEngine
 
     def insert_to_environments
       generate 'commonwealth_vlr_engine:environment'
+    end
+
+    def add_vlr_initializers
+      template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
+      template 'config/initializers/devise.rb'
+      template 'config/initializers/secret_token.rb'
     end
 
   end

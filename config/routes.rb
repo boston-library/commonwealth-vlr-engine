@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   mount Bpluser::Engine => '/bpluser'
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
+  #devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 
   # not using the default BL pattern below as it requires controller and path to have same name
   # blacklight_for :catalog

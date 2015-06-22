@@ -25,9 +25,9 @@ module CommonwealthVlrEngine
   include CommonwealthVlrEngine::Controller
   layout 'commonwealth-vlr-engine'
 }
-          remove_marker = "layout 'blacklight'"
-          gsub_file("app/controllers/application_controller.rb", remove_marker, "")
         end
+        remove_marker = "layout 'blacklight'"
+        gsub_file("app/controllers/application_controller.rb", remove_marker, "")
 
       end
     end
