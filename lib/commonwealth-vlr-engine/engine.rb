@@ -24,6 +24,9 @@ module CommonwealthVlrEngine
 
   class Engine < Rails::Engine
 
+    # for db migrations
+    engine_name 'commonwealth_vlr_engine'
+
     # Set some default configurations
     #Blacklight::Configuration.default_values[:view].maps.geojson_field = "geojson"
 

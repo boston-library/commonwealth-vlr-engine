@@ -1,7 +1,9 @@
 require 'rails/generators'
+require 'rails/generators/migration'
 
 module CommonwealthVlrEngine
   class ModelGenerator < Rails::Generators::Base
+    include Rails::Generators::Migration
 
     source_root File.expand_path('../templates', __FILE__)
 
@@ -43,6 +45,11 @@ module CommonwealthVlrEngine
 }
         end
       end
+    end
+
+    # Setup the database migrations
+    def copy_migrations
+      rake 'railties:install:migrations'
     end
 
   end

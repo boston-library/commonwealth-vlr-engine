@@ -49,7 +49,7 @@ module CommonwealthVlrEngine
 
     def bundle_install
       Bundler.with_clean_env do
-        run "bundle install"
+        run 'bundle install'
       end
     end
 
