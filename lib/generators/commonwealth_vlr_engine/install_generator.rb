@@ -33,6 +33,12 @@ module CommonwealthVlrEngine
       generate 'commonwealth_vlr_engine:yml'
     end
 
+    def add_vlr_initializers
+      template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
+      template 'config/initializers/devise.rb'
+      template 'config/initializers/secret_token.rb'
+    end
+
     def insert_to_routes
       generate 'commonwealth_vlr_engine:routes'
     end
@@ -41,10 +47,10 @@ module CommonwealthVlrEngine
       generate 'commonwealth_vlr_engine:environment'
     end
 
-    def add_vlr_initializers
-      template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
-      template 'config/initializers/devise.rb'
-      template 'config/initializers/secret_token.rb'
+    def bundle_install
+      Bundler.with_clean_env do
+        run "bundle install"
+      end
     end
 
   end

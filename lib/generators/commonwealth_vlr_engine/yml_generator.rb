@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
     end
 
     def locale_yml_copy
-      copy_file 'config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml'
+      copy_file('config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml', :force => true)
       copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
     end
 
