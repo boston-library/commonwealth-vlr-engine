@@ -8,7 +8,8 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/controller'
   require 'commonwealth-vlr-engine/render_constraints_override'
   require 'commonwealth-vlr-engine/pages'
-
+  require 'commonwealth-vlr-engine/routes'
+  require 'commonwealth-vlr-engine/route_sets'
 
   def self.config
     @config ||= YAML::load(File.open(config_path))[env]

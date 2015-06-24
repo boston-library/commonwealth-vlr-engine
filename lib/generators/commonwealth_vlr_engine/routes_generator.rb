@@ -19,19 +19,18 @@ module CommonwealthVlrEngine
         insert_into_file "config/routes.rb", :after => marker do
           %q{
 
-  # routes for CommonwealthVlrEngine
-  mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
   root :to => 'pages#home'
 
+  # routes for CommonwealthVlrEngine
+  mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
+
+  # user authentication
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 }
         end
 
         bl_root_marker = 'root to: "catalog#index"'
         gsub_file("config/routes.rb", bl_root_marker, "")
-
-        bl_catalog_marker = 'blacklight_for :catalog'
-        gsub_file("config/routes.rb", bl_catalog_marker, "")
 
       end
     end
