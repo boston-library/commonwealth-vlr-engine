@@ -1,9 +1,16 @@
-/*
- * This is a manifest file that'll be compiled into ie_fixes.css, which will include all the files
- * listed below.
- * don't forget to add this file to config.assets.precompile in application.rb
+/* fixes for IE8 */
 
- *= require_self
- *= require_directory ./ie_fixes
+/* can't use fixed navbar or dropdown menus won't work */
+body.blacklight-institutions-index #header-navbar, body.blacklight-collections-index #header-navbar, body.blacklight-catalog-index #header-navbar {
+    position: relative;
+    z-index: inherit;
+}
 
-*/
+body.blacklight-institutions-index #main-containe, body.blacklight-collections-index #main-containe, body.blacklight-catalog-index #main-container {
+    padding-top: 10px;
+}
+
+/* helps dropdowns not be so wonky */
+#main-container {
+    padding-top: 10px;
+}
