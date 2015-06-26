@@ -21,16 +21,16 @@ module CommonwealthVlrEngine
       generate 'commonwealth_vlr_engine:localassets'
     end
 
+    def copy_yml_files
+      generate 'commonwealth_vlr_engine:yml'
+    end
+
     def insert_to_controllers
       generate 'commonwealth_vlr_engine:controller', controller_name
     end
 
     def insert_to_models
       generate 'commonwealth_vlr_engine:model', search_builder_name, document_name
-    end
-
-    def copy_yml_files
-      generate 'commonwealth_vlr_engine:yml'
     end
 
     def add_vlr_initializers

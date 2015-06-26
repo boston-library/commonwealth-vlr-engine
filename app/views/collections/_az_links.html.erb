@@ -1,13 +1,15 @@
-<div id="collection_az_links" class="well well-sm">
-  <%= content_tag(:span,
-                  t('blacklight.collections.index.a-z_label'),
-                  :class => 'col_a-z_label') %>
-  <%= link_to 'All', collections_path, :class => 'col_a-z_link' %>
-  <% ('A'..'Z').each do |letter| %>
-      <% if ['K','Q','V','X','Y','Z'].include? letter %>
-          <%= content_tag(:span, letter, :class => 'col_a-z_nolink') %>
-      <% else %>
-          <%= link_to_cols_start_with(letter) %>
+<% if should_render_col_az? %>
+    <div id="collection_az_links" class="well well-sm">
+      <%= content_tag(:span,
+                      t('blacklight.collections.index.a-z_label'),
+                      :class => 'col_a-z_label') %>
+      <%= link_to 'All', collections_path, :class => 'col_a-z_link' %>
+      <% ('A'..'Z').each do |letter| %>
+          <% if ['K','Q','V','X','Y','Z'].include? letter %>
+              <%= content_tag(:span, letter, :class => 'col_a-z_nolink') %>
+          <% else %>
+              <%= link_to_cols_start_with(letter) %>
+          <% end %>
       <% end %>
-  <% end %>
-</div>
+    </div>
+<% end %>

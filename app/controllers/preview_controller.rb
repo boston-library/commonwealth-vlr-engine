@@ -60,8 +60,9 @@ class PreviewController < CatalogController
       if solr_document[blacklight_config.flagged_field.to_sym]
         send_icon(filename)
       else
-        iiif_request_url = "#{IIIF_SERVER['url']}#{solr_document[:exemplary_image_ssi]}/full/,800/0/default.jpg"
-        @response = Typhoeus::Request.get(iiif_request_url)
+        access800_datastream_url = view_context.datastream_disseminator_url(solr_document[:exemplary_image_ssi], 'access800')
+        #iiif_request_url = "#{IIIF_SERVER['url']}#{solr_document[:exemplary_image_ssi]}/full/,800/0/default.jpg"
+        @response = Typhoeus::Request.get(access800_datastream_url)
         if @response.headers[/404 Not Found/]
           not_found
         else

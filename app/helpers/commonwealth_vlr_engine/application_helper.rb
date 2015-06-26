@@ -81,11 +81,6 @@ module CommonwealthVlrEngine
       ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
     end
 
-    # create djatoka-friendly non-ssl image path
-    def nonssl_image_uri(pid,datastream_id)
-      datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
-    end
-
     # create an image tag from an IIIF image server
     def iiif_image_tag(image_pid,options)
       image_tag iiif_image_url(image_pid, options), :alt => options[:alt].presence, :class => options[:class].presence

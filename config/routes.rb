@@ -28,10 +28,10 @@ Rails.application.routes.draw do
   get 'feedback/complete', :to => 'feedback#complete'
 
   # folders
+  get 'folders/public', :to => 'folders#public_list', :as => 'public_folders'
   resources :folders
   delete 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
   put 'folder/:id/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_folder_items_actions'
-  get 'folders/public', :to => 'folders#public_list', :as => 'public_folders'
 
   # folder items
   resources :folder_items
