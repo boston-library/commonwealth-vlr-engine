@@ -77,8 +77,9 @@ module CommonwealthVlrEngine
       link_to(field_value + ' County', catalog_index_path(:f => {field => [field_value + ' (county)']}))
     end
 
+    # returns the direct URL to a datastream in Fedora
     def datastream_disseminator_url pid, datastream_id
-      ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
+      "#{FEDORA_URL['url']}/objects/#{pid}/datastreams/#{datastream_id}/content"
     end
 
     # create an image tag from an IIIF image server

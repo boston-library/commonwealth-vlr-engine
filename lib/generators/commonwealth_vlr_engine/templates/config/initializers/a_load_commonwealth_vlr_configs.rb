@@ -1,6 +1,8 @@
 # various app-specific config settings
 # use file name "a_load_commonwealth_vlr_configs" so Rails loads this file before other initializers
 
+FEDORA_URL = YAML.load_file(Rails.root.join('config', 'fedora.yml'))[Rails.env]
+
 GOOGLE_ANALYTICS = YAML.load_file(Rails.root.join('config', 'google_analytics.yml'))[Rails.env]
 
 CONTACT_EMAILS = YAML.load_file(Rails.root.join('config', 'contact_emails.yml'))[Rails.env]
