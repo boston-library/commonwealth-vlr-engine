@@ -18,6 +18,7 @@ require 'omniauth-polaris'
 require 'bootstrap-sass'
 require 'font-awesome-sass'
 require 'unicode'
+require 'madison'
 
 module CommonwealthVlrEngine
   extend ActiveSupport::Autoload

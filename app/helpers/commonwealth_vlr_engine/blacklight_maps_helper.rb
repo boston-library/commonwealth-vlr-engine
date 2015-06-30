@@ -19,7 +19,7 @@ module CommonwealthVlrEngine
         field_values = new_field_values
       end
       if field_values.length == 2 && field_values.last.length == 2
-        state_name = Bplmodels::Constants::STATE_ABBR[field_values.last]
+        state_name = Madison.get_name(field_values.last)
         field_values[field_values.length-1] = state_name if state_name
       end
       field_values.each do |val|
