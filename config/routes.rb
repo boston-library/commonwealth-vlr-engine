@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   # MODS metadata view
   get 'search/:id/metadata_view', :to => 'catalog#metadata_view', :as => 'metadata_view_catalog'
 
-  # downloads
-  resources :downloads, :only => [:show]
-
   # collections
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
