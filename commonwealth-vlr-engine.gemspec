@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'omniauth-facebook'
   spec.add_dependency 'unicode'
   spec.add_dependency 'omniauth-polaris'
-  spec.add_dependency 'madison', '~> 0.4.0'
+  spec.add_dependency 'madison', '~> 0.5.0'
 
 
   spec.add_development_dependency 'bundler', '~> 1.5'
