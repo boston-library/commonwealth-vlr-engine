@@ -10,6 +10,7 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/pages'
   require 'commonwealth-vlr-engine/routes'
   require 'commonwealth-vlr-engine/route_sets'
+  require 'commonwealth-vlr-engine/finder'
 
   def self.config
     @config ||= YAML::load(File.open(config_path))[env]
