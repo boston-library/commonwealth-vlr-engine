@@ -6,8 +6,6 @@ require 'blacklight/maps'
 require 'hydra/derivatives'
 require 'bpluser'
 require 'bplmodels'
-require 'execjs'
-require 'tzinfo'
 require 'typhoeus'
 require 'devise'
 require 'devise-guests'
@@ -21,26 +19,11 @@ require 'unicode'
 require 'madison'
 
 module CommonwealthVlrEngine
-  extend ActiveSupport::Autoload
 
   class Engine < Rails::Engine
 
     # for db migrations
     engine_name 'commonwealth_vlr_engine'
-
-    # Set some default configurations
-    #Blacklight::Configuration.default_values[:view].maps.geojson_field = "geojson"
-
-    # Add our helpers
-    #initializer 'commonwealth-vlr-engine.helpers' do |app|
-    #  ActionView::Base.send :include, BlacklightMapsHelper
-    #end
-
-    config.autoload_paths += %W(
-     #{config.root}/app/controllers
-      #{config.root}/app/models
-      #{Hydra::Engine.root}/app/models/concerns
-    )
 
     config.to_prepare do
       CommonwealthVlrEngine.inject!
