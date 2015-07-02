@@ -1,7 +1,7 @@
 # use to render new image in multi image viewer in catalog#show
 class ImageViewerController < CatalogController
 
-  include CatalogHelper
+  include CommonwealthVlrEngine::CatalogHelper
 
   def show
     @response, @document = fetch(params[:id])
@@ -18,7 +18,8 @@ class ImageViewerController < CatalogController
   def book_viewer
     @response, @document = fetch(params[:id])
     @title = @document[blacklight_config.index.title_field.to_sym]
-    @image_files = has_image_files?(Bplmodels::Finder.getFiles(params[:id]))
+    @image_files = has_image_files?(get_files(params[:id]))
+    puts @image_files.inspect
     render(:layout => 'book_viewer')
   end
 
@@ -26,7 +27,7 @@ class ImageViewerController < CatalogController
 
   def get_page_sequence(document_id, current_img_id)
     image_files = []
-    Bplmodels::Finder.getImageFiles(document_id).each do |img_file|
+    get_image_files(document_id).each do |img_file|
       image_files << img_file['id']
     end
     create_img_sequence(image_files, current_img_id)

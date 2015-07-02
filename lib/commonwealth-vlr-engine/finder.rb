@@ -1,26 +1,26 @@
 module CommonwealthVlrEngine
-  class Finder
-    include Blacklight::SearchHelper
+  module Finder
+    #include Blacklight::SearchHelper
 
-    #def self.getFiles(pid)
-    def self.getFiles(pid)
+    def get_files(pid)
+
       return_hash = {}
       return_hash[:images] = []
       return_hash[:documents] = []
       return_hash[:audio] = []
       return_hash[:generic] = []
 
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_file_of_ssim:\"info:fedora/#{pid}\""}
+      solr_response = repository.search({:q => "is_file_of_ssim:\"info:fedora/#{pid}\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
-        if solr_object['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_AudioFile')
-          return_hash[:audio] << solr_object
-        elsif solr_object['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_ImageFile')
-          return_hash[:images] << solr_object
-        elsif solr_object['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_DocumentFile')
-          return_hash[:documents] << solr_object
+      solr_response.documents.each do |solr_doc|
+        if solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_AudioFile')
+          return_hash[:audio] << solr_doc
+        elsif solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_ImageFile')
+          return_hash[:images] << solr_doc
+        elsif solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_DocumentFile')
+          return_hash[:documents] << solr_doc
         else
-          return_hash[:generic] << solr_object
+          return_hash[:generic] << solr_doc
         end
       end
 
@@ -33,7 +33,7 @@ module CommonwealthVlrEngine
     end
 
 
-    def self.sort_files(file_list)
+    def sort_files(file_list)
       return file_list if file_list.length <= 1
 
       following_key_final = nil
@@ -67,121 +67,121 @@ module CommonwealthVlrEngine
       return return_list
     end
 
-    def self.getImageFiles(pid)
+    def get_image_files(pid)
       return_list = []
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""}
+      solr_response = repository.search({:q => "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return_list << solr_object
       end
       return sort_files(return_list)
     end
 
-    def self.getAudioFiles(pid)
+    def get_audio_files(pid)
       return_list = []
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""}
+      solr_response = repository.search({:q => "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return_list << solr_object
       end
       return sort_files(return_list)
     end
 
-    def self.getDocumentFiles(pid)
+    def get_document_files(pid)
       return_list = []
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""}
+      solr_response = repository.search({:q => "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return_list << solr_object
       end
       return sort_files(return_list)
     end
 
-    def self.getFirstImageFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "-is_following_image_of_ssim:* AND is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""}
+    def get_first_image_file(pid)
+      solr_response = repository.search({:q => "-is_following_image_of_ssim:* AND is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getFirstAudioFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "-is_following_audio_of_ssim:* AND is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""}
+    def get_first_audio_file(pid)
+      solr_response = repository.search({:q => "-is_following_audio_of_ssim:* AND is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getFirstDocumentFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "-is_following_document_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""}
+    def get_first_document_file(pid)
+      solr_response = repository.search({:q => "-is_following_document_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getNextImageFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_following_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""}
+    def get_next_image_file(pid)
+      solr_response = repository.search({:q => "is_following_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getNextAudioFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_following_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""}
+    def get_next_audio_file(pid)
+      solr_response = repository.search({:q => "is_following_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getNextDocumentFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_following_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""}
+    def get_next_document_file(pid)
+      solr_response = repository.search({:q => "is_following_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getPrevImageFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_preceding_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""}
+    def get_prev_image_file(pid)
+      solr_response = repository.search({:q => "is_preceding_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getPrevAudioFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_preceding_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""}
+    def get_prev_audio_file(pid)
+      solr_response = repository.search({:q => "is_preceding_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getPrevDocumentFile(pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "is_preceding_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""}
+    def get_prev_document_file(pid)
+      solr_response = repository.search({:q => "is_preceding_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object
       end
       return nil
     end
 
-    def self.getFileParentObject(file_pid)
-      @solr_response =  Blacklight.solr.get 'select', :params => {:q => "id:\"info\:fedora/#{file_pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_File\""}
+    def get_file_parent_object(file_pid)
+      solr_response = repository.search({:q => "id:\"info\:fedora/#{file_pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_File\""})
 
-      @solr_response["response"]["docs"].each do |solr_object|
+      solr_response.documents.each do |solr_object|
         return solr_object['is_file_of_ssim'].first.split('/')[1]
       end
 

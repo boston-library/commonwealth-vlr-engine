@@ -6,6 +6,7 @@ module CommonwealthVlrEngine
 
       # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
       self.send(:include, ::Hydra::Controller::ControllerBehavior)
+      self.send(:include, CommonwealthVlrEngine::Finder)
 
       if self.respond_to? :search_params_logic
         search_params_logic << :exclude_unwanted_models
@@ -197,7 +198,7 @@ module CommonwealthVlrEngine
     end
 
     def get_object_files
-      @object_files = Bplmodels::Finder.getFiles(params[:id])
+      @object_files = get_files(params[:id])
     end
 
     def set_nav_context
