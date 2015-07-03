@@ -4,8 +4,7 @@ module CommonwealthVlrEngine
 
     included do
 
-      # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
-      self.send(:include, ::Hydra::Controller::ControllerBehavior)
+      # adds behavior for retrieving files for an object
       self.send(:include, CommonwealthVlrEngine::Finder)
 
       if self.respond_to? :search_params_logic
