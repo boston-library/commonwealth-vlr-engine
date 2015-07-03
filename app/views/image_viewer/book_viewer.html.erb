@@ -42,7 +42,7 @@
 <%= render :partial => 'book_viewer_help' %>
 
 <%# JS includes %>
-<%= javascript_include_tag 'commonwealth-vlr-engine/wdl-viewer/jquery.ba-throttle-debounce.min' %>
+<%= javascript_include_tag 'wdl-viewer/jquery.ba-throttle-debounce.min' %>
 <%= javascript_include_tag 'openseadragon' %>
-<%= javascript_include_tag 'commonwealth-vlr-engine/wdl-viewer/wdl-viewer_commonwealth' %>
+<%= javascript_include_tag 'wdl-viewer/wdl-viewer_commonwealth' %>
 <%= render :partial => 'image_viewer/render_book_viewer', :locals => {:image_files => @image_files } %>
