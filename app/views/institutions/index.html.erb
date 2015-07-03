@@ -5,8 +5,7 @@
 
   <h2><%= t('blacklight.institutions.title') %></h2>
 
-  <p>This is a list of institutions that have contributed historical materials to this site. For the full list of Digital Commonwealth member institutions, and information on how to join, see the <a href="http://digitalcommonwealth.memberlodge.org/directory" target="_blank">Member Directory.</a></p>
-  <p>Click the institution name to view their collections. For a map of institutions, click the <%= content_tag :span, '', class: 'glyphicon glyphicon-maps view-icon-maps' %> icon below.</p>
+  <%= render 'institutions/intro_text' %>
 
   <%= render 'catalog/constraints' %>
 

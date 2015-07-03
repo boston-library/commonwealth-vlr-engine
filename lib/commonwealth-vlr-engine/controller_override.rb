@@ -8,7 +8,7 @@ module CommonwealthVlrEngine
       self.send(:include, CommonwealthVlrEngine::Finder)
 
       if self.respond_to? :search_params_logic
-        search_params_logic << :exclude_unwanted_models
+        search_params_logic.concat [:exclude_unwanted_models, :exclude_institutions]
       end
 
       if self.blacklight_config.search_builder_class
