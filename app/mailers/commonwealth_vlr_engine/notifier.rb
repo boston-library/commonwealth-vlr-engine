@@ -16,6 +16,18 @@ module CommonwealthVlrEngine
 
     end
 
+    # re-creating Blacklight RecordMailer#email_record because
+    def email_record(documents, details, url_gen_params)
+
+      subject = I18n.t('blacklight.email.text.subject', :count => documents.length, :title => (documents.first.to_semantic_values[:title] rescue 'N/A') )
+
+      @documents      = documents
+      @message        = details[:message]
+      @url_gen_params = url_gen_params
+
+      mail(:to => details[:to],  :subject => subject)
+    end
+
     private
 
     def route_email(topic)

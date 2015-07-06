@@ -132,6 +132,60 @@ module CommonwealthVlrEngine
       end
     end
 
+    # returns a hash with the location of the OpenSeadragon custom images
+    def osd_nav_images(path_to_directory)
+      {
+          zoomIn: {
+              REST:     image_path("#{path_to_directory}/zoomin_rest.png"),
+              GROUP:    image_path("#{path_to_directory}/zoomin_grouphover.png"),
+              HOVER:    image_path("#{path_to_directory}/zoomin_hover.png"),
+              DOWN:     image_path("#{path_to_directory}/zoomin_pressed.png")
+          },
+          zoomOut: {
+              REST:   image_path("#{path_to_directory}/zoomout_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/zoomout_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/zoomout_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/zoomout_pressed.png")
+          },
+          home: {
+              REST:   image_path("#{path_to_directory}/home_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/home_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/home_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/home_pressed.png")
+          },
+          fullpage: {
+              REST:   image_path("#{path_to_directory}/fullpage_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/fullpage_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/fullpage_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/fullpage_pressed.png")
+          },
+          rotateleft: {
+              REST:   image_path("#{path_to_directory}/rotateleft_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/rotateleft_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/rotateleft_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/rotateleft_pressed.png")
+          },
+          rotateright: {
+              REST:   image_path("#{path_to_directory}/rotateright_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/rotateright_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/rotateright_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/rotateright_pressed.png")
+          },
+          previous: {
+              REST:   image_path("#{path_to_directory}/previous_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/previous_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/previous_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/previous_pressed.png")
+          },
+          next: {
+              REST:   image_path("#{path_to_directory}/next_rest.png"),
+              GROUP:  image_path("#{path_to_directory}/next_grouphover.png"),
+              HOVER:  image_path("#{path_to_directory}/next_hover.png"),
+              DOWN:   image_path("#{path_to_directory}/next_pressed.png")
+          }
+      }.to_json
+    end
+
   end
 end
 

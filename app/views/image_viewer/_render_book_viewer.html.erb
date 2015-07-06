@@ -140,7 +140,8 @@ var $window = $(window),
             dziUrlTemplate: generateDziUrl,
             placeholderSrc: "<%= image_path('commonwealth-vlr-engine/loading-wdl-grid.gif') %>",
             initialView: "page",
-            seadragonPrefixUrl: "/assets/commonwealth-vlr-engine/openseadragon/",
+            seadragonPrefixUrl: '', // "/assets/commonwealth-vlr-engine/openseadragon/"
+            seadragonNavImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
             thumbUrlTemplate: generateThumbUrl
         });
 /* this makes the text on the controls disappear!

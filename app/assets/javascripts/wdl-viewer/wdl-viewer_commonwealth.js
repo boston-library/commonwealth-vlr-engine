@@ -804,6 +804,7 @@
             var seadragon = new OpenSeadragon({
                 id: $container.attr("id"),
                 prefixUrl: this.controller.config.seadragonPrefixUrl,
+                navImages: this.controller.config.seadragonNavImages,
                 tileSources: dziUrl,
                 autoHideControls: false,
                 immediateRender: navigator.userAgent.match(/mobile/i),

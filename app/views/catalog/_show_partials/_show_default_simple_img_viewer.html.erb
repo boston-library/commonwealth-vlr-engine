@@ -23,7 +23,8 @@
         $("#img_viewer_osd").css("height", $(window).height() - 60);
         OSd_viewer.viewer = new OpenSeadragon({
             id: "img_viewer_osd",
-            prefixUrl: "/assets/commonwealth-vlr-engine/openseadragon/",
+            prefixUrl: '', //"/assets/commonwealth-vlr-engine/openseadragon/",
+            navImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
             tileSources: ['<%= IIIF_SERVER['url'] + image_pid + '/info.json' %>'],
             autoHideControls: false,
             immediateRender: navigator.userAgent.match(/mobile/i),
