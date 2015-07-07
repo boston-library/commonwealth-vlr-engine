@@ -4,17 +4,17 @@ $(window).bind("load", function() {
     multi_img_pane_div.css('height', multi_img_pane_div.height());
 });
 
-/* show loading gif while waiting for selected image to load */
 var scrollingContainer = $('#thumbnail_list');
-var scrollTop = scrollingContainer.scrollTop();
+var scrollTarget = scrollingContainer.scrollTop();
 
-$('#multi_img_show_container').find('a.prev_next').click( function () {
+/* show loading gif while waiting for selected image to load */
+$('#multi_img_show_container').on("click", "a.prev_next", function () {
     // display the loading icon
     $('#img_show_container').html('<%= image_tag('commonwealth-vlr-engine/loading.gif',:id => 'loading', :alt => 'Loading...') %>');
     // scroll the thumbnail
     var selected_img = scrollingContainer.find("[data-viewer='" + $(this).data('viewer') + "']");
     var position = selected_img.position().top;
     scrollingContainer.animate({
-        scrollTop: (position + scrollTop) - 200
+        scrollTarget: (position + scrollTarget) - 200
     }, 200);
 });
