@@ -1,5 +1,4 @@
-<%= javascript_include_tag 'openseadragon' %>
-
+<%# this partial creates the OpenSeadragon image viewer modal %>
 <div id="img_viewer_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="<%= object_title.gsub(/\'/,'') %>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -23,7 +22,7 @@
         $("#img_viewer_osd").css("height", $(window).height() - 60);
         OSd_viewer.viewer = new OpenSeadragon({
             id: "img_viewer_osd",
-            prefixUrl: '', //"/assets/commonwealth-vlr-engine/openseadragon/",
+            prefixUrl: '',
             navImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
             tileSources: ['<%= IIIF_SERVER['url'] + image_pid + '/info.json' %>'],
             autoHideControls: false,

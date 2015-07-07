@@ -2,6 +2,7 @@
 
 <% image_files = has_image_files?(@object_files) %>
 <% if image_files %>
+    <%= javascript_include_tag 'openseadragon' %>
     <% case image_files.length %>
         <% when 1 %>
             <%= render :partial => 'catalog/_show_partials/show_default_img',
