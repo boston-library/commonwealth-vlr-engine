@@ -21,8 +21,6 @@ module CommonwealthVlrEngine
 
     # don't log passwords
     config.filter_parameters += [:password]
-    # escape HTML entities in JSON
-    config.active_support.escape_html_entities_in_json = true
     # mailer settings
     config.action_mailer.delivery_method = :sendmail
     config.action_mailer.default_url_options = { :host => 'awesomelibrary.org' }
