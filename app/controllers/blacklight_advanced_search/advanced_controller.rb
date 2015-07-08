@@ -2,7 +2,13 @@
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
   include AdvancedHelper # so we get the #advanced_search_context method
-
+  
+  # Blacklight uses #search_action_url to figure out the right URL for
+  # the global search box
+  def search_action_url options = {}
+    catalog_index_url(options.except(:controller, :action))
+  end
+  helper_method :search_action_url
 
   def index
     @nav_li_active = 'search'
