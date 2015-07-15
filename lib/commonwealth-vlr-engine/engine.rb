@@ -14,6 +14,7 @@ require 'bootstrap-sass'
 require 'font-awesome-sass'
 require 'unicode'
 require 'madison'
+require 'iiif/presentation'
 
 module CommonwealthVlrEngine
 

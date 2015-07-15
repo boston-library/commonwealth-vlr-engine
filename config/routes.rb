@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   get 'about', :to => 'pages#about', :as => 'about'
   get 'about_this_site', :to => 'pages#about_site', :as => 'about_site'
 
+  # IIIF manifest
+  get 'iiif_manifest/:id', :to => 'iiif_manifest#show', :as => 'iiif_manifest'
+
   # DEPRECATED ROUTES AND EXAMPLES
 
   # this is generated into local app via CommonwealthVlrEngine::RoutesGenerator

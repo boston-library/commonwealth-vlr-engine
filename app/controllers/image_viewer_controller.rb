@@ -19,7 +19,6 @@ class ImageViewerController < CatalogController
     @response, @document = fetch(params[:id])
     @title = @document[blacklight_config.index.title_field.to_sym]
     @image_files = has_image_files?(get_files(params[:id]))
-    puts @image_files.inspect
     render(:layout => 'book_viewer')
   end
 
