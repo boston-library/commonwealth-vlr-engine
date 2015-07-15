@@ -33,11 +33,6 @@ Rails.application.routes.draw do
   # folder items
   resources :folder_items
 
-  # image direct paths
-  get 'preview/:id', :to => 'preview#preview', :as => 'preview'
-  get 'full_image/:id', :to => 'preview#full', :as => 'full_image'
-  get 'large_image/:id', :to => 'preview#large', :as => 'large_image'
-
   # user account management (not login/auth)
   resources :users, :only => [:show, :index]
 
