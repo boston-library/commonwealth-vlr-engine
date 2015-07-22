@@ -8,17 +8,19 @@ For now, check out some [slides on this concept](https://goo.gl/GysxNK) presente
 
 # Temporary Install Instructions
 
-  rails new <app_name>
-  cd <app_name>
-  Add the following to your Gemfile:
-    #various utilities
-    gem 'libv8', '~> 3.16.14.3'
+    rails new <app_name>
+    cd <app_name>
 
-    # blacklight
-    gem 'blacklight', '5.13.1'
-    gem 'rsolr', '~> 1.0.6'
-    gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
-  bundle install
-  rails generate blacklight:install
-  rails g commonwealth_vlr_engine:install
-  <configure_yml_files>
+    Add the following to your Gemfile:
+        #various utilities
+        gem 'libv8', '~> 3.16.14.3'
+
+        # blacklight
+        gem 'blacklight', '5.13.1'
+        gem 'rsolr', '~> 1.0.6'
+        gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
+
+    bundle install
+    rails generate blacklight:install
+    rails g commonwealth_vlr_engine:install
+    <configure_various_yml_files>

@@ -9,7 +9,7 @@ module CommonwealthVlrEngine
 
     def config_yml_copy
       #copy_file 'config/solr.yml.sample', 'config/solr.yml' unless File::exists?('config/solr.yml')
-      #copy_file 'config/geojson_static_file.yml.sample', 'config/geojson_static_file.yml' unless File::exists?('config/geojson_static_file.yml')
+      copy_file 'config/geojson_static_file.yml.sample', 'config/geojson_static_file.yml' unless File::exists?('config/geojson_static_file.yml')
       copy_file 'config/google_analytics.yml.sample', 'config/google_analytics.yml' unless File::exists?('config/google_analytics.yml')
       copy_file 'config/contact_emails.yml.sample', 'config/contact_emails.yml' unless File::exists?('config/contact_emails.yml')
       #copy_file 'config/predicate_mappings.yml', 'config/predicate_mappings.yml' unless File::exists?('config/predicate_mappings.yml')
