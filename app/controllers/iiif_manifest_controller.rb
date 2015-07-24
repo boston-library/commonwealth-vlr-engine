@@ -15,13 +15,14 @@ class IiifManifestController < CatalogController
   end
 
   def create_iiif_manifest(document, image_files)
-    manifest = IIIF::Presentation::Manifest.new('@id' => 'http://example.org/my_book')
+    manifest = IIIF::Presentation::Manifest.new('@id' => "#{catalog_index_url}/#{document[:id]}/manifest")
     manifest.label = document[blacklight_config.index.title_field.to_sym]
     manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
-    manifest.metadata = [
-        { 'Foo' => 'Bar' },
-        { 'Baz' => [ 'Quux', 'Corge' ]}
-    ]
+    manifest.metadata = manifest_metadata(document)
+    manifest.description = document[:abstract_tsim].first if document[:abstract_tsim]
+    manifest.attribution = document[:rights_ssm].first if document[:rights_ssm]
+    manifest.license = document[:license_ssm].first if document[:license_ssm]
+    manifest.see_also = document[:identifier_uri_ss] if document[:identifier_uri_ss]
 
     sequence = IIIF::Presentation::Sequence.new
     image_files.each_with_index do |image, index|
@@ -53,6 +54,36 @@ class IiifManifestController < CatalogController
     params = {service_id: base_uri}
     image_resource = IIIF::Presentation::ImageResource.create_image_api_image_resource(params)
     image_resource
+  end
+
+  def manifest_metadata(document)
+    manifest_metadata = []
+    manifest_metadata << {'dc:title' => document[blacklight_config.index.title_field.to_sym]}
+    manifest_metadata << {'dc:date' => render_mods_dates(document).first} if document[:date_start_tsim]
+    #manifest_metadata << {'dc:abstract' => document[:abstract_tsim].first} if document[:abstract_tsim]
+
+    if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
+      names = setup_names_roles(document).first
+      manifest_metadata << {'dc:creator' => names.length == 1 ? names.first : names}
+    end
+
+    if document[:type_of_resource_ssim]
+      formats = document[:type_of_resource_ssim] + document[:genre_basic_ssim].presence.to_a
+      manifest_metadata << {'dc:format' => formats }
+    end
+
+    if document[:publisher_tsim]
+      pubplace = document[:pubplace_tsim] ? document[:pubplace_tsim].first + ' : ' : ''
+      manifest_metadata << {'dc:publisher' => pubplace + document[:publisher_tsim].first }
+    end
+
+    {:lang_term_ssim => 'dc:language', :subject_facet_ssim => 'dc:subject', :physical_location_ssim => 'dc:source'}.each do |k,v|
+      values = document[k]
+      manifest_metadata << {v => values.length == 1 ? values.first : values}
+    end
+
+    #{ 'Foo' => 'Bar' }, { 'Baz' => [ 'Quux', 'Corge' ]}
+    manifest_metadata
   end
 
 

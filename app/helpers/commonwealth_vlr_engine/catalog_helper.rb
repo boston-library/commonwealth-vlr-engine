@@ -80,9 +80,10 @@ module CommonwealthVlrEngine
 
     # render the date in the catalog#index list view
     def index_date_value options={}
-      date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
-      date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
-      render_mods_dates(options[:value].first, date_end, date_start_qualifier)
+      #date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
+      #date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
+      #render_mods_date(options[:value].first, date_end, date_start_qualifier)
+      render_mods_dates(options[:document]).first
     end
 
     # render institution name as a link in catalog#index list view
@@ -206,7 +207,20 @@ module CommonwealthVlrEngine
       end
     end
 
-    def render_mods_dates (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
+    # returns an array of properly-formatted date values
+    def render_mods_dates (document)
+      date_values = []
+      document[:date_start_tsim].each_with_index do |start_date,index|
+        date_type = document[:date_type_ssm] ? document[:date_type_ssm][index] : nil
+        date_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm][index] : nil
+        date_end = document[:date_end_tsim] ? document[:date_end_tsim][index] : nil
+        date_values << render_mods_date(start_date, date_end, date_qualifier, date_type)
+      end
+      date_values
+    end
+
+    # returns a properly-formatted date value as a string
+    def render_mods_date (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
       prefix = ''
       suffix = ''
       date_start_suffix = ''

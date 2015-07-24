@@ -82,15 +82,18 @@
     <% if document[:date_start_tsim] %>
       <dt><%= t('blacklight.metadata_display.fields.date') %>:</dt>
       <dd>
-        <% document[:date_start_tsim].each_with_index do |start_date,index| %>
-            <% date_type = document[:date_type_ssm] ? document[:date_type_ssm][index] : nil %>
-            <% date_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm][index] : nil %>
-            <% date_end = document[:date_end_tsim] ? document[:date_end_tsim][index] : nil %>
-            <%= render_mods_dates(start_date,
+        <% render_mods_dates(document).each do |date| %>
+            <%= date %><br/>
+        <% end %>
+        <%# document[:date_start_tsim].each_with_index do |start_date,index| %>
+            <%# date_type = document[:date_type_ssm] ? document[:date_type_ssm][index] : nil %>
+            <%# date_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm][index] : nil %>
+            <%# date_end = document[:date_end_tsim] ? document[:date_end_tsim][index] : nil %>
+            <%# render_mods_dates(start_date,
                                   date_end,
                                   date_qualifier,
-                                  date_type) %><br />
-        <% end %>
+                                  date_type) %><!-- <br /> -->
+        <%# end %>
       </dd>
     <% end %>
     <%# genre field - basic %>
@@ -207,7 +210,7 @@
                   <% if temporal_subj =~ /-[0-9]{2}$/ %>
                       <%= link_to_facet(temporal_subj,
                                         'subject_facet_ssim',
-                                        render_mods_dates(temporal_subj)) %>
+                                        render_mods_date(temporal_subj)) %>
                   <% else %>
                       <%= link_to_facet(temporal_subj, 'subject_facet_ssim') %><br />
                   <% end %>
