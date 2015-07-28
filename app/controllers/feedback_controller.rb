@@ -10,7 +10,7 @@ class FeedbackController < ApplicationController
     @errors=[]
     if request.post?
       if validate
-        CommonwealthVlrEngine::Notifier.feedback(params).deliver_now
+        Notifier.feedback(params).deliver_now
         redirect_to feedback_complete_path
       end
     end

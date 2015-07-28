@@ -11,6 +11,7 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/routes'
   require 'commonwealth-vlr-engine/route_sets'
   require 'commonwealth-vlr-engine/finder'
+  require 'commonwealth-vlr-engine/notifier'
 
   def self.config
     @config ||= YAML::load(File.open(config_path))[env]
