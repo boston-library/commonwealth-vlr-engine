@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   get 'about_this_site', :to => 'pages#about_site', :as => 'about_site'
 
   # IIIF manifest
-  get 'iiif_manifest/:id', :to => 'iiif_manifest#manifest', :as => 'iiif_manifest'
+  get 'search/:id/manifest', :to => 'iiif_manifest#manifest', :as => 'iiif_manifest'
+  get 'search/:id/canvas/:canvas_image_id', :to => 'iiif_manifest#canvas', :as => 'iiif_canvas'
 
   # DEPRECATED ROUTES AND EXAMPLES
 

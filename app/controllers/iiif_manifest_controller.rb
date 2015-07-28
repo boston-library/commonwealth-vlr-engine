@@ -11,12 +11,30 @@ class IiifManifestController < CatalogController
       iiif_manifest = create_iiif_manifest(document, image_files)
       render :json => iiif_manifest.to_json
     else
-      raise ActionController::RoutingError.new('Not Found')
+      not_found
     end
-    #respond_to do |format|
-    #  format.json
-    #end
   end
+
+  def canvas
+    canvas_response, canvas_document = fetch(params[:canvas_image_id])
+    if canvas_document[:is_file_of_ssim]
+      response, document = fetch(params[:id])
+      image_files = has_image_files?(get_files(params[:id]))
+      if image_files
+        image_index = Hash[image_files.map.with_index.to_a][params[:canvas_image_id]]
+        iiif_canvas = image_annotation_from_id(params[:canvas_image_id],
+                                          "image#{(image_index+1).to_s}",
+                                          document)
+        render :json => iiif_canvas.to_json
+      else
+        not_found
+      end
+    else
+      not_found
+    end
+  end
+
+  private
 
   def create_iiif_manifest(document, image_files)
     manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
@@ -42,25 +60,19 @@ class IiifManifestController < CatalogController
                           value: {'@id' => "#{document[:identifier_uri_ss]}/thumbnail",
                                   'service' => manifest_thumb_svc})
 
-    manifest.sequences.each do |sequence|
-      sequence.canvases.each do |canvas|
-        canvas.images.each do |image|
-          image['on'] = canvas['@id']
-        end
-      end
-    end
-
     manifest
   end
 
   def image_annotation_from_id(image_id, label, document)
     annotation = IIIF::Presentation::Annotation.new
     annotation.resource = image_resource_from_image_id(image_id, document)
-    canvas = IIIF::Presentation::Canvas.new('@id' => "#{document[:identifier_uri_ss]}/canvas/#{image_id}")
+    image_id_suffix = image_id.gsub(/\A[\w-]+:/,'/')
+    canvas = IIIF::Presentation::Canvas.new('@id' => "#{document[:identifier_uri_ss]}/canvas#{image_id_suffix}")
     canvas.label = label
-    canvas.thumbnail = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id.gsub(/\A[\w-]+:/,'/')) + "/thumbnail"
+    canvas.thumbnail = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/thumbnail"
     canvas.width = annotation.resource['width']
     canvas.height = annotation.resource['height']
+    annotation['on'] = canvas['@id']
     canvas.images << annotation
     canvas
   end
@@ -107,7 +119,6 @@ class IiifManifestController < CatalogController
     if document[:identifier_uri_ss]
       identifiers = [document[:identifier_uri_ss]]
       [:identifier_local_other_tsim, :identifier_local_call_tsim, :identifier_local_barcode_tsim, :identifier_isbn_tsim, :local_accession_id_tsim].each do |k|
-        puts "!!!! " + k.to_s + " = " + document[k].to_s
         identifiers = identifiers + document[k] if document[k]
       end
       manifest_metadata << {'dc:identifier' => identifiers.length == 1 ? identifiers.first : identifiers}
@@ -119,6 +130,10 @@ class IiifManifestController < CatalogController
     end
 
     manifest_metadata
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
 
