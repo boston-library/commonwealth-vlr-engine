@@ -47,7 +47,8 @@ Rails.application.routes.draw do
 
   # IIIF manifest
   get 'search/:id/manifest', :to => 'iiif_manifest#manifest', :as => 'iiif_manifest'
-  get 'search/:id/canvas/:canvas_image_id', :to => 'iiif_manifest#canvas', :as => 'iiif_canvas'
+  get 'search/:id/canvas/:canvas_object_id', :to => 'iiif_manifest#canvas', :as => 'iiif_canvas'
+  get 'search/:id/annotation/:annotation_object_id', :to => 'iiif_manifest#annotation', :as => 'iiif_annotation'
 
   # DEPRECATED ROUTES AND EXAMPLES
 

@@ -2,6 +2,17 @@ module CommonwealthVlrEngine
   module CatalogHelper
     include Blacklight::CatalogHelperBehavior
 
+    # returns the CC license terms code for use in URLs, etc.
+    def cc_terms_code(license)
+      license.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase
+    end
+
+    # returns a link to a CC license
+    def cc_url(license)
+      terms_code = cc_terms_code(license)
+      "http://creativecommons.org/licenses/#{terms_code}/3.0"
+    end
+
     # return the image url for the collection gallery view document
     # size = pixel length of square IIIF-created image
     def collection_gallery_url document, size
@@ -150,12 +161,12 @@ module CommonwealthVlrEngine
     end
 
     # insert an icon and link to CC licenses
-    def render_cc_license(terms)
-      terms_code = terms.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase
-      link_to(image_tag('//i.creativecommons.org/l/' + terms_code + '/3.0/80x15.png',
+    def render_cc_license(license)
+      terms_code = cc_terms_code(license)
+      link_to(image_tag("//i.creativecommons.org/l/#{terms_code}/3.0/80x15.png",
                         :alt => 'CC ' + terms_code.upcase + ' icon',
                         :class => 'cc_license_icon'),
-              'http://creativecommons.org/licenses/' + terms_code + '/3.0',
+              cc_url(license),
               :rel => 'license',
               :id => 'cc_license_link',
               :target => '_blank')

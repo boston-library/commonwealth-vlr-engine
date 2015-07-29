@@ -16,13 +16,13 @@ class IiifManifestController < CatalogController
   end
 
   def canvas
-    canvas_response, canvas_document = fetch(params[:canvas_image_id])
+    canvas_response, canvas_document = fetch(params[:canvas_object_id])
     if canvas_document[:is_file_of_ssim]
       response, document = fetch(params[:id])
       image_files = has_image_files?(get_files(params[:id]))
       if image_files
-        image_index = Hash[image_files.map.with_index.to_a][params[:canvas_image_id]]
-        iiif_canvas = image_annotation_from_id(params[:canvas_image_id],
+        image_index = Hash[image_files.map.with_index.to_a][params[:canvas_object_id]]
+        iiif_canvas = canvas_from_id(params[:canvas_object_id],
                                           "image#{(image_index+1).to_s}",
                                           document)
         render :json => iiif_canvas.to_json
@@ -34,22 +34,51 @@ class IiifManifestController < CatalogController
     end
   end
 
+  def annotation
+    response, document = fetch(params[:id])
+    if has_image_files?(get_files(params[:id])).include?(params[:annotation_object_id])
+      annotation = image_annotation_from_image_id(params[:annotation_object_id], document)
+      render :json => annotation.to_json
+    else
+      not_found
+    end
+  end
+
+  after_action :set_access_control_headers, :only => [:manifest, :canvas, :annotation]
+
   private
+
+  # to allow apps to load manifest JSON received from a remote server
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = "*"
+  end
 
   def create_iiif_manifest(document, image_files)
     manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
     manifest.label = document[blacklight_config.index.title_field.to_sym]
-    #manifest.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail"
     manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
     manifest.metadata = manifest_metadata(document)
     manifest.description = document[:abstract_tsim].first if document[:abstract_tsim]
-    manifest.attribution = document[:rights_ssm].first if document[:rights_ssm]
-    manifest.license = document[:license_ssm].first if document[:license_ssm]
+
+    attribution_array = []
+    [:rights_ssm, :license_ssm, :restrictions_on_access_ssm].each do |field|
+      attribution_array = attribution_array + document[field].presence.to_a
+    end
+    manifest.attribution = attribution_array.join(' ') unless attribution_array.blank?
+
+    if document[:license_ssm]
+      document[:license_ssm].each do |license|
+        if license.match(/\(CC\s/)
+          manifest.license = cc_url(license)
+        end
+      end
+    end
+
     manifest.see_also = document[:identifier_uri_ss] if document[:identifier_uri_ss]
 
     sequence = IIIF::Presentation::Sequence.new
     image_files.each_with_index do |image, index|
-      sequence.canvases << image_annotation_from_id(image, "image#{(index+1).to_s}", document)
+      sequence.canvases << canvas_from_id(image, "image#{(index+1).to_s}", document)
     end
     manifest.sequences << sequence
 
@@ -63,18 +92,29 @@ class IiifManifestController < CatalogController
     manifest
   end
 
-  def image_annotation_from_id(image_id, label, document)
-    annotation = IIIF::Presentation::Annotation.new
-    annotation.resource = image_resource_from_image_id(image_id, document)
+  # image_id = id of image object
+  # document = Solr doc of parent object
+  def canvas_from_id(image_id, label, document)
     image_id_suffix = image_id.gsub(/\A[\w-]+:/,'/')
+    annotation = image_annotation_from_image_id(image_id, document)
     canvas = IIIF::Presentation::Canvas.new('@id' => "#{document[:identifier_uri_ss]}/canvas#{image_id_suffix}")
     canvas.label = label
     canvas.thumbnail = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/thumbnail"
     canvas.width = annotation.resource['width']
     canvas.height = annotation.resource['height']
-    annotation['on'] = canvas['@id']
     canvas.images << annotation
     canvas
+  end
+
+  # create an Annotation
+  # image_id = id of image object
+  # document = Solr doc of parent object
+  def image_annotation_from_image_id(image_id, document)
+    image_id_suffix = image_id.gsub(/\A[\w-]+:/,'/')
+    annotation = IIIF::Presentation::Annotation.new('@id' => "#{document[:identifier_uri_ss]}/annotation#{image_id_suffix}")
+    annotation.resource = image_resource_from_image_id(image_id, document)
+    annotation['on'] = "#{document[:identifier_uri_ss]}/canvas#{image_id_suffix}"
+    annotation
   end
 
   def image_resource_from_image_id(page_id, document)
