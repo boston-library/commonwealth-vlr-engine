@@ -129,16 +129,11 @@ class IiifManifestController < CatalogController
   def manifest_metadata(document)
     manifest_metadata = []
     manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: document[blacklight_config.index.title_field.to_sym]}
-    manifest_metadata << {label: 'dc:date', value: render_mods_dates(document).first} if document[:date_start_tsim]
+    manifest_metadata << {label: t('blacklight.metadata_display.fields.date'), value: render_mods_dates(document).first} if document[:date_start_tsim]
 
     if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
       names = setup_names_roles(document).first
       manifest_metadata << {label: t('blacklight.metadata_display.fields.creator'), value: names.length == 1 ? names.first : names}
-    end
-
-    if document[:type_of_resource_ssim]
-      formats = document[:type_of_resource_ssim] + document[:genre_basic_ssim].presence.to_a
-      manifest_metadata << {label: t('blacklight.metadata_display.fields.genre_basic'), value: formats}
     end
 
     if document[:publisher_tsim]
@@ -146,14 +141,18 @@ class IiifManifestController < CatalogController
       manifest_metadata << {label: t('blacklight.metadata_display.fields.publisher'), value: pubplace + document[:publisher_tsim].first}
     end
 
-    {:abstract_tsim => t('blacklight.metadata_display.fields.abstract'), :lang_term_ssim => t('blacklight.metadata_display.fields.language'), :subject_facet_ssim => t('blacklight.metadata_display.fields.subject_topic')}.each do |k,v|
+    some_fields = {
+        :type_of_resource_ssim => t('blacklight.metadata_display.fields.type_of_resource'),
+        :genre_basic_ssim => t('blacklight.metadata_display.fields.genre_basic'),
+        :abstract_tsim => t('blacklight.metadata_display.fields.abstract'),
+        :lang_term_ssim => t('blacklight.metadata_display.fields.language'),
+        :subject_facet_ssim => t('blacklight.metadata_display.fields.subject_topic'),
+        :physical_location_ssim => t('blacklight.metadata_display.fields.location'),
+        :related_item_host_ssim => t('blacklight.metadata_display.fields.collection')
+    }
+    some_fields.each do |k,v|
       values = document[k]
       manifest_metadata << {label: v, value: values.length == 1 ? values.first : values} if values
-    end
-
-    if document[:physical_location_ssim]
-      sources = document[:physical_location_ssim] + document[:collection_name_ssim].presence.to_a
-      manifest_metadata << {label: t('blacklight.metadata_display.fields.location'), value: sources}
     end
 
     if document[:identifier_uri_ss]

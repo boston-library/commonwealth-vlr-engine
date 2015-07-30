@@ -276,6 +276,7 @@ en:
             title_alt: 'Title (alt.)'
             title_uniform: 'Title (uniform)'
             title_translated: 'Title (translated)'
+            type_of_resource: 'Type of Resource'
 
 
     more_like_this:
