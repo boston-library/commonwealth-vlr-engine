@@ -128,32 +128,32 @@ class IiifManifestController < CatalogController
   # returns a basic Dublin Core metadata set array
   def manifest_metadata(document)
     manifest_metadata = []
-    manifest_metadata << {'dc:title' => document[blacklight_config.index.title_field.to_sym]}
-    manifest_metadata << {'dc:date' => render_mods_dates(document).first} if document[:date_start_tsim]
+    manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: document[blacklight_config.index.title_field.to_sym]}
+    manifest_metadata << {label: 'dc:date', value: render_mods_dates(document).first} if document[:date_start_tsim]
 
     if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
       names = setup_names_roles(document).first
-      manifest_metadata << {'dc:creator' => names.length == 1 ? names.first : names}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.creator'), value: names.length == 1 ? names.first : names}
     end
 
     if document[:type_of_resource_ssim]
       formats = document[:type_of_resource_ssim] + document[:genre_basic_ssim].presence.to_a
-      manifest_metadata << {'dc:format' => formats}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.genre_basic'), value: formats}
     end
 
     if document[:publisher_tsim]
       pubplace = document[:pubplace_tsim] ? document[:pubplace_tsim].first + ' : ' : ''
-      manifest_metadata << {'dc:publisher' => pubplace + document[:publisher_tsim].first}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.publisher'), value: pubplace + document[:publisher_tsim].first}
     end
 
-    {:abstract_tsim => 'dc:description', :lang_term_ssim => 'dc:language', :subject_facet_ssim => 'dc:subject'}.each do |k,v|
+    {:abstract_tsim => t('blacklight.metadata_display.fields.abstract'), :lang_term_ssim => t('blacklight.metadata_display.fields.language'), :subject_facet_ssim => t('blacklight.metadata_display.fields.subject_topic')}.each do |k,v|
       values = document[k]
-      manifest_metadata << {v => values.length == 1 ? values.first : values} if values
+      manifest_metadata << {label: v, value: values.length == 1 ? values.first : values} if values
     end
 
     if document[:physical_location_ssim]
       sources = document[:physical_location_ssim] + document[:collection_name_ssim].presence.to_a
-      manifest_metadata << {'dc:source' => sources}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.location'), value: sources}
     end
 
     if document[:identifier_uri_ss]
@@ -161,12 +161,12 @@ class IiifManifestController < CatalogController
       [:identifier_local_other_tsim, :identifier_local_call_tsim, :identifier_local_barcode_tsim, :identifier_isbn_tsim, :local_accession_id_tsim].each do |k|
         identifiers = identifiers + document[k] if document[k]
       end
-      manifest_metadata << {'dc:identifier' => identifiers.length == 1 ? identifiers.first : identifiers}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.id_local_other'), value: identifiers.length == 1 ? identifiers.first : identifiers}
     end
 
     if document[:rights_ssm]
       rights = document[:rights_ssm] + document[:license_ssm].presence.to_a
-      manifest_metadata << {'dc:rights' => rights}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.rights'), value: rights}
     end
 
     manifest_metadata
