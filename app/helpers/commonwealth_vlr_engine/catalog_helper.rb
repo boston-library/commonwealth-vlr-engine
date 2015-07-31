@@ -84,12 +84,7 @@ module CommonwealthVlrEngine
 
     # render collection name as a link in catalog#index list view
     def index_collection_link options={}
-      coll_links = []
-      0.upto options[:document][:collection_pid_ssm].length-1 do |index|
-        coll_links << link_to(options[:value][index],
-                              collection_path(:id => options[:document][:collection_pid_ssm][index]))
-      end
-      coll_links.join(' / ').html_safe
+      setup_collection_links(options[:document]).join(' / ').html_safe
     end
 
 
@@ -198,13 +193,7 @@ module CommonwealthVlrEngine
 
     def render_item_breadcrumb(document)
       if document[:collection_pid_ssm]
-        coll_links = []
-        0.upto document[:collection_pid_ssm].length-1 do |index|
-          coll_links << link_to(document[blacklight_config.collection_field.to_sym][index],
-                                collection_path(:id => document[:collection_pid_ssm][index]),
-                                :class => 'collection_breadcrumb')
-        end
-        coll_links.join(' / ').html_safe
+        setup_collection_links(document).sort.join(' / ').html_safe
       end
     end
 
@@ -254,6 +243,22 @@ module CommonwealthVlrEngine
       mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
       mods_response = Typhoeus::Request.get(mods_xml_file_path)
       mods_xml_text = REXML::Document.new(mods_response.body)
+    end
+
+    # creates an array of collection links
+    # for display on catalog#index list view and catalog#show breadcrumb
+    def setup_collection_links(document, link_class=nil)
+      coll_hash = {}
+      0.upto document[:collection_pid_ssm].length-1 do |index|
+        coll_hash[document[blacklight_config.collection_field.to_sym][index]] = document[:collection_pid_ssm][index]
+      end
+      coll_links = []
+      coll_hash.sort.each do |coll_array|
+        coll_links << link_to(coll_array[0],
+                              collection_path(:id => coll_array[1]),
+                              :class => link_class.presence)
+      end
+      coll_links
     end
 
     # create a list of names and roles to be displayed
