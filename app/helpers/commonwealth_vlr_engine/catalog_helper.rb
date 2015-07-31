@@ -84,16 +84,17 @@ module CommonwealthVlrEngine
 
     # render collection name as a link in catalog#index list view
     def index_collection_link options={}
-      link_to(options[:value].first,
-              collection_path(:id => options[:document][:collection_pid_ssm].first))
+      coll_links = []
+      0.upto options[:document][:collection_pid_ssm].length-1 do |index|
+        coll_links << link_to(options[:value][index],
+                              collection_path(:id => options[:document][:collection_pid_ssm][index]))
+      end
+      coll_links.join(' / ').html_safe
     end
 
 
     # render the date in the catalog#index list view
     def index_date_value options={}
-      #date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
-      #date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
-      #render_mods_date(options[:value].first, date_end, date_start_qualifier)
       render_mods_dates(options[:document]).first
     end
 
@@ -197,12 +198,13 @@ module CommonwealthVlrEngine
 
     def render_item_breadcrumb(document)
       if document[:collection_pid_ssm]
-        connector = content_tag(:span, '',
-                                :class => 'glyphicon glyphicon-arrow-right item-breadcrumb-separator')
-        coll_link = link_to(document[blacklight_config.collection_field.to_sym].first,
-                            collection_path(:id => document[:collection_pid_ssm].first),
-                            :class => 'collection_breadcrumb')
-        coll_link
+        coll_links = []
+        0.upto document[:collection_pid_ssm].length-1 do |index|
+          coll_links << link_to(document[blacklight_config.collection_field.to_sym][index],
+                                collection_path(:id => document[:collection_pid_ssm][index]),
+                                :class => 'collection_breadcrumb')
+        end
+        coll_links.join(' / ').html_safe
       end
     end
 
