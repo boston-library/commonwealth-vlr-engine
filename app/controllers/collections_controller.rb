@@ -83,7 +83,7 @@ class CollectionsController < CatalogController
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
   def get_series_image_obj(series_title,collection_title)
-    self.search_params_logic += [:flagged_filter]
+    self.search_params_logic += [:flagged_filter] unless self.search_params_logic.include?(:flagged_filter)
     series_doc_list = search_results(
         {:f => {'related_item_series_ssim' => series_title,
                 blacklight_config.collection_field => collection_title},
