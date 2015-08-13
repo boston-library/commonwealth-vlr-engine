@@ -15,6 +15,6 @@ $('#multi_img_show_container').on("click", "a.prev_next", function () {
     var selected_img = scrollingContainer.find("[data-viewer='" + $(this).data('viewer') + "']");
     var position = selected_img.position().top;
     scrollingContainer.animate({
-        scrollTarget: (position + scrollTarget) - 200
+        scrollTop: (position + scrollTarget) - 200
     }, 200);
 });
