@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'blacklight', '~>5.13.1'
   spec.add_dependency 'blacklight_advanced_search', '5.1.4'
   spec.add_dependency 'blacklight-gallery', '0.4.0'
-  spec.add_dependency 'blacklight-maps', '0.3.3'
+  spec.add_dependency 'blacklight-maps', '0.4.0'
   spec.add_dependency 'bootstrap-sass', '~> 3.0'
   spec.add_dependency 'font-awesome-sass', '4.1.0'
   spec.add_dependency 'bpluser', '~> 0.0.5'
