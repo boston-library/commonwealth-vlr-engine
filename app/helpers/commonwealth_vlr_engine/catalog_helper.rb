@@ -310,7 +310,7 @@ module CommonwealthVlrEngine
 
     # LOCAL OVERRIDE: don't want to pull thumbnail url from Solr
     def thumbnail_url document
-      if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || controller.action_name == 'show')
+      if document[:exemplary_image_ssi] && !document[blacklight_config.flagged_field.to_sym]
         datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300')
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
