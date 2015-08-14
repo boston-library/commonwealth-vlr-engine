@@ -5,6 +5,10 @@
 // Required by Blacklight-Gallery
 //= require blacklight_gallery.js
 
+// Blacklight-centric Google Analytics event tracking
+//= require blacklight_google_analytics/blacklight_google_analytics
+
+// disable main header dropdown menus on tablet/mobile
 //= require commonwealth-vlr-engine/disable_dropdown_nav
 
 // for IE8 responsiveness
@@ -12,8 +16,6 @@
 
 // bootstrap-accessibility-plugin
 //= require bootstrap-accessibility-plugin/bootstrap-accessibility.min
-
-//= require blacklight_google_analytics/blacklight_google_analytics
 
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
 // from being automatically included on pages that don't need them
