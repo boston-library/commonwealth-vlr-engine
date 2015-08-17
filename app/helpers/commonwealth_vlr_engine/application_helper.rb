@@ -124,6 +124,14 @@ module CommonwealthVlrEngine
       img_metadata
     end
 
+    def insert_opengraph_markup
+      if controller.controller_name == 'catalog' && controller.action_name == 'show'
+        content_for(:head) do
+          render :partial=>'/catalog/opengraph', :locals => {:document => @document}
+        end
+      end
+    end
+
     def insert_google_analytics
       if Rails.env.to_s == 'production'
         content_for(:head) do

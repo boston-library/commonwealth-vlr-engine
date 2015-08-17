@@ -26,6 +26,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% insert_opengraph_markup %>
   <% insert_google_analytics %>
   <%= content_for(:head) %>
 
