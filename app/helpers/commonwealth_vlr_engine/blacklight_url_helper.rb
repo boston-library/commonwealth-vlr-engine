@@ -9,7 +9,8 @@ module CommonwealthVlrEngine
 
       # Delete any request params from facet-specific action, needed
       # to redir to index action properly.
-      new_params.except! *Blacklight::Solr::FacetPaginator.request_keys.values
+      request_keys = blacklight_config.facet_paginator_class.request_keys
+      new_params.except! *request_keys.values
 
       # Force controller#action to be catalog#index.
       new_params[:action] = "index"

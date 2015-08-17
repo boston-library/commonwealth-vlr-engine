@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'rails', '~>4.2.0'
-  spec.add_dependency 'blacklight', '~>5.13.1'
+  spec.add_dependency 'blacklight', '~>5.14.0'
   spec.add_dependency 'blacklight_advanced_search', '5.1.4'
   spec.add_dependency 'blacklight-gallery', '0.4.0'
   spec.add_dependency 'blacklight-maps', '0.4.0'
