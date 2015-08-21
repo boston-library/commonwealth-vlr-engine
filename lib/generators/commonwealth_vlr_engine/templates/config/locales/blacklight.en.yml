@@ -18,6 +18,9 @@ en:
           text:
             subject: 'Totally Awesome Library Digital Collections: contact email'
 
+    footer:
+          address: '123 Main Street, Anywhere, MA 01234'
+    
     home:
           banner:
             center_text: 'Explore historical collections from this totally awesome library.'
