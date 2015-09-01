@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- COPIED FROM https://github.com/boston-library/solr-core-conf/master/solrconfig.xml  -->
+<config>
+  <!-- NOTE: various comments and unused configuration possibilities have been purged
+from this file. Please refer to http://wiki.apache.org/solr/SolrConfigXml,
+as well as the default solrconfig file included with Solr -->
+
+  <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
+
+  <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
+
+  <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
+
+  <!-- solr lib dirs -->
+  <lib dir="../lib/contrib/analysis-extras/lib" />
+  <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
+
+  <dataDir>${solr.data.dir:}</dataDir>
+
+  <requestHandler name="search" class="solr.SearchHandler" default="true">
+    <!-- default values for query parameters can be specified, these
+will be overridden by parameters in the request
+-->
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <str name="q.alt">*:*</str>
+      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+      <int name="qs">1</int>
+      <int name="ps">2</int>
+      <float name="tie">0.01</float>
+      <!-- this qf and pf are used by default, if not otherwise specified by
+client. The default blacklight_config will use these for the
+"keywords" search. See the author_qf/author_pf, title_qf, etc
+below, which the default blacklight_config will specify for
+those searches. You may also be interested in:
+http://wiki.apache.org/solr/LocalParams
+-->
+      <str name="qf">
+        id
+        all_text_timv
+        active_fedora_model_ssim
+        object_type_si
+        title_info_primary_tsi
+        title_info_primary_trans_tsim
+        title_info_alternative_tsim
+        title_info_translated_tsim
+        subtitle_tsim
+        name_personal_tsim
+        name_personal_role_tsim
+        name_corporate_tsim
+        name_corporate_role_tsim
+        name_generic_tsim
+        abstract_tsim
+        genre_basic_tsim
+        genre_specific_tsim
+        publisher_tsim
+        edition_tsim
+        issuance_tsim
+        date_start_tsim
+        date_end_tsim
+        table_of_contents_tsi
+        note_tsim
+        note_resp_tsim
+        note_date_tsim
+        note_performers_tsim
+        note_acquisition_tsim
+        note_ownership_tsim
+        note_citation_tsim
+        note_reference_tsim
+        collection_name_tsim
+        physical_location_tsim
+        sub_location_tsim
+        shelf_locator_tsim
+        subject_topic_tsim
+        subject_name_corporate_tsim
+        subject_name_personal_tsim
+        subject_geographic_tsim
+        subject_scale_tsim
+        subject_temporal_start_tsim
+        subject_temporal_end_tsim
+        subject_title_tsim
+        related_item_host_tsim
+        related_item_series_tsim
+        related_item_subseries_tsim
+        related_item_subsubseries_tsim
+        identifier_local_other_tsim
+        identifier_local_other_invalid_tsim
+        local_accession_id_tsim
+        identifier_local_call_tsim
+        identifier_local_barcode_tsim
+        extent_tsi
+        institution_name_tsim
+        institution_pid_ssi
+      </str>
+      <str name="pf">
+        all_text_timv^10
+      </str>
+
+      <str name="author_qf">
+        name_personal_tsim
+        name_corporate_tsim
+        name_generic_tsim
+        note_resp_tsim
+      </str>
+      <str name="author_pf">
+      </str>
+      <str name="title_qf">
+        title_info_primary_tsi
+        title_info_primary_trans_tsim
+        title_info_alternative_tsim
+        title_info_translated_tsim
+        subtitle_tsim
+      </str>
+      <str name="title_pf">
+      </str>
+      <str name="subject_qf">
+        subject_topic_tsim
+        subject_name_corporate_tsim
+        subject_name_personal_tsim
+        subject_geographic_tsim
+        subject_temporal_start_tsim
+        subject_temporal_end_tsim
+        subject_title_tsim
+      </str>
+      <str name="subject_pf">
+      </str>
+      <str name="place_qf">
+        subject_geographic_tsim
+      </str>
+      <str name="place_pf">
+      </str>
+
+      <str name="fl">
+        *,
+        score
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">active_fedora_model_ssi</str>
+      <str name="facet.field">object_type_si</str>
+
+      <str name="spellcheck">true</str>
+      <str name="spellcheck.dictionary">default</str>
+      <str name="spellcheck.onlyMorePopular">true</str>
+      <str name="spellcheck.extendedResults">false</str>
+      <str name="spellcheck.collate">false</str>
+      <str name="spellcheck.count">5</str>
+
+    </lst>
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+  </requestHandler>
+
+  <requestHandler name="permissions" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="facet">off</str>
+      <str name="echoParams">all</str>
+      <str name="rows">1</str>
+      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+      <str name="fl">
+        id,
+        access_ssim,
+        discover_access_group_ssim,discover_access_person_ssim,
+        read_access_group_ssim,read_access_person_ssim,
+        edit_access_group_ssim,edit_access_person_ssim,
+        depositor_ti,
+        embargo_release_date_dtsi
+        inheritable_access_ssim,
+        inheritable_discover_access_group_ssim,inheritable_discover_access_person_ssim,
+        inheritable_read_access_group_ssim,inheritable_read_access_person_ssim,
+        inheritable_edit_access_group_ssim,inheritable_edit_access_person_ssim,
+        inheritable_embargo_release_date_dtsi
+      </str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="standard" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <str name="defType">lucene</str>
+    </lst>
+  </requestHandler>
+
+  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
+  <requestHandler name="document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="rows">1</str>
+      <str name="mlt">true</str>
+      <str name="mlt.fl">subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim,title_info_primary_tsi</str>
+      <str name="mlt.count">4</str>
+      <str name="mlt.mintf">1</str>
+      <str name="mlt.qf">subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim^3</str>
+      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+
+  <!-- totally experimental, for "more like this" link in catalog#show -->
+  <requestHandler name="mlt" class="solr.MoreLikeThisHandler">
+    <lst name="defaults">
+      <str name="fl">
+        *,
+        score
+      </str>
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="echoParams">explicit</str>
+      <str name="mlt.match.include">false</str>
+      <str name="mlt.mintf">1</str>
+      <str name="mlt.fl">subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim</str>
+      <str name="mlt.qf">subject_facet_ssim^5</str>
+      <str name="q">{!raw f=id v=$id}</str>
+    </lst>
+  </requestHandler>
+
+  <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
+    <str name="queryAnalyzerFieldType">textSpell</str>
+    <!-- Multiple "Spell Checkers" can be declared and used by this component
+(e.g. for title_spell field)
+-->
+    <lst name="spellchecker">
+      <str name="name">default</str>
+      <!-- using DirectSolrSpellChecker as doesn't require rebuilds -->
+      <str name="classname">solr.DirectSolrSpellChecker</str>
+      <str name="field">spell</str>
+      <!-- don't need separate index or build with DirectSolrSpellChecker -->
+      <!-- <str name="spellcheckIndexDir">./spell</str> -->
+      <!-- <str name="buildOnOptimize">true</str> -->
+    </lst>
+  </searchComponent>
+
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
+
+  <requestDispatcher handleSelect="true" >
+    <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
+  </requestDispatcher>
+
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+  <requestHandler name="/update" class="solr.UpdateRequestHandler" />
+  <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
+
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
+  <!-- config for the admin interface -->
+  <admin>
+    <defaultQuery>search</defaultQuery>
+  </admin>
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+
+    <updateLog>
+      <str name="dir">${solr.ulog.dir:}</str>
+    </updateLog>
+
+    <autoCommit>
+      <maxTime>86400000</maxTime>
+      <maxDocs>2000</maxDocs>
+      <openSearcher>true</openSearcher>
+    </autoCommit>
+
+  </updateHandler>
+
+</config>

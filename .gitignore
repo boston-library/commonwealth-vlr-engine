@@ -85,6 +85,5 @@ ehthumbs.db
 /public/data/*
 /public/assets/*
 /jetty/*
-/solr_conf/*
 /fedora_conf/*
 /projectFilesBackup/*
