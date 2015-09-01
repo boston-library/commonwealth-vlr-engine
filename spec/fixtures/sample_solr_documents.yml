@@ -1,0 +1,1102 @@
+---
+- system_create_dtsi:
+  - 2015-01-14T22:29:07Z
+  system_modified_dtsi:
+  - 2015-07-24T14:11:53Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Map
+  id:
+  - bpl-dev:df65v790j
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:29:07Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":431,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v790j+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"dfdffa1c9796ae902554659f1f3b4d5b\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:11:53Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v790j+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"554be875fb521c525a83d3fca79baaad\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:29:07Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v790j+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:29:07Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5342,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v790j+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"b4ef91f4832c4ae3137c78af5f3141c6\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-01-14T22:30:08Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1041,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v790j+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a7b714028b330eb8ec37d1a4c3120f07\"}},\"objLabel\":\"Boston traffic map showing one way streets and parking spaces\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/afmodel:Bplmodels_Map\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:29:07Z\",\"objLastModDate\":\"2015-01-14T22:30:08Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v790j/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v790j/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:df65v790j
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Map
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:000000000
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:000000000
+  label_ssim:
+  - Boston traffic map showing one way streets and parking spaces
+  date_start_dtsi:
+  - 1922-01-01T00:00:00Z
+  date_start_tsim:
+  - 1922
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1920s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - inferred
+  date_facet_yearly_ssim:
+  - 1922s
+  genre_basic_tsim:
+  - Maps
+  genre_basic_ssim:
+  - Maps
+  identifier_local_barcode_tsim:
+  - 39999065645184
+  collection_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  collection_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  collection_pid_ssm:
+  - bpl-dev:000000000
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  admin_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_pid_ssm:
+  - bpl-dev:000000000
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/df65v790j
+  publisher_tsim:
+  - Old Colony Trust Co.
+  pubplace_tsim:
+  - Boston
+  issuance_tsim:
+  - monographic
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Norman B. Leventhal Map Center Collection
+  related_item_host_ssim:
+  - Norman B. Leventhal Map Center Collection
+  name_corporate_tsim:
+  - Old Colony Trust Company (Boston, Mass.)
+  - Walker Lith. & Pub. Co
+  name_corporate_role_tsim:
+  - Creator
+  name_facet_ssim:
+  - Old Colony Trust Company (Boston, Mass.)
+  - Walker Lith. & Pub. Co
+  type_of_resource_ssim:
+  - cartographic
+  extent_tsi:
+  - 2 maps on 1 sheet : ill., maps ; on sheet 36 x 52 cm.
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Norman B. Leventhal Map Center
+  subject_topic_tsim:
+  - Traffic flow--Massachusetts--Boston--Maps
+  - Traffic regulations--Massachusetts--Boston--Maps
+  - Boston (Mass.)--Maps
+  subject_geo_country_ssim:
+  - United States
+  subject_geo_state_ssim:
+  - Massachusetts
+  subject_geo_county_ssim:
+  - Suffolk
+  subject_geo_city_ssim:
+  - Boston
+  subject_geographic_tsim:
+  - United States
+  - Massachusetts
+  - Boston
+  - Suffolk
+  subject_geographic_ssim:
+  - United States
+  - Massachusetts
+  - Boston
+  - Suffolk (county)
+  subject_scale_tsim:
+  - Scale not given.
+  subject_coordinates_geospatial:
+  - 42.35,-71.05
+  subject_point_geospatial:
+  - 42.35,-71.05
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"placename\":\"Boston, MA\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
+  subject_facet_ssim:
+  - Traffic flow--Massachusetts--Boston--Maps
+  - Traffic regulations--Massachusetts--Boston--Maps
+  - Boston (Mass.)--Maps
+  active_fedora_model_suffix_ssi:
+  - Map
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - This work is licensed for use under a Creative Commons Attribution Non-Commercial Share Alike License (CC BY-NC-SA).
+  note_tsim:
+  - Cover title.
+  - Dec. 1, 1922.
+  - "Ancillary maps and insets: Principal motor routes in and out of Boston -- Do Not Turn -- Eaxtracts from \"City of Boston Street Traffic Regulations.\""
+  title_info_primary_tsi:
+  - Boston traffic map showing one way streets and parking spaces
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:df65v791t
+  _version_:
+  - 1507587121496457200
+  timestamp:
+  - 2015-07-24T14:11:57.513Z
+- system_create_dtsi:
+  - 2015-01-14T22:28:31Z
+  system_modified_dtsi:
+  - 2015-06-03T14:40:08Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:df65v791t
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:28:31Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"95c3828ee8c968836530a4ddb6a4b98f\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-14T22:28:32Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"7064493ae623bedd232b2525f95d22cd\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:28:32Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"06_01_007542\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-01-14T22:28:35Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":236053864,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3e2824291bd389595811b78628c7c5dd\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:29:06Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":878,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"bc4dfbe1faf621114a3f0d5d7a00e540\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-01-14T22:29:40Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5031,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"81d1e1b56c6d7af972cd9f32e7c82a4e\"},\"accessMaster\":{\"dsLabel\":\"06_01_007542\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-01-14T22:30:06Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":23635182,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"71f227023f3ff5263a40172479b5e958\"},\"thumbnail300\":{\"dsLabel\":\"06_01_007542\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-01-14T22:30:07Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":56197,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"4f23e2552965d311229c2210f7d11cef\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"06_01_007542\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-06-03T14:40:08Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":420167,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v791t+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a8839f125b74982cf4edf26c08126f81\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"06_01_007542.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:28:31Z\",\"objLastModDate\":\"2015-01-14T22:30:07Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v791t/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v791t/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:df65v790j
+  - info:fedora/bpl-dev:000000000
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:df65v790j
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:df65v790j
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+- system_create_dtsi:
+  - 2014-12-26T20:02:57Z
+  system_modified_dtsi:
+  - 2015-07-24T14:11:24Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::PhotographicPrint
+  id:
+  - bpl-dev:h702q6403
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:57Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":380,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q6403+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"4e92b98c8795d6efe1351601b6d967cc\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:11:24Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1035,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q6403+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3a393e05a8064b0e9213180dac7cea9c\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:57Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q6403+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.2\",\"dsCreateDate\":\"2015-03-10T14:08:54Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5165,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q6403+descMetadata+descMetadata.2\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"77eef7a5066a77e2e366cec043a284d9\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2014-12-26T20:16:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1278,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q6403+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f6a225137b3a6d82b3bf0984c6f7f8ac\"}},\"objLabel\":\"Beauregard\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_PhotographicPrint\",\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:57Z\",\"objLastModDate\":\"2015-03-10T14:08:54Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q6403/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q6403/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:h702q6403
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_PhotographicPrint
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:h702q636h
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:h702q636h
+  label_ssim:
+  - Beauregard
+  date_start_dtsi:
+  - 1859-01-01T00:00:00Z
+  date_start_tsim:
+  - 1859
+  date_end_dtsi:
+  - 1870-12-31T23:59:59.999Z
+  date_end_tsim:
+  - 1870
+  date_facet_ssim:
+  - 1850s
+  - 1860s
+  - 1870s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - approximate
+  date_facet_yearly_ssim:
+  - 1859s
+  - 1860s
+  - 1861s
+  - 1862s
+  - 1863s
+  - 1864s
+  - 1865s
+  - 1866s
+  - 1867s
+  - 1868s
+  - 1869s
+  - 1870s
+  genre_basic_tsim:
+  - Photographs
+  genre_specific_tsim:
+  - Cartes de visite
+  - Portraits
+  genre_basic_ssim:
+  - Photographs
+  genre_specific_ssim:
+  - Cartes de visite
+  - Portraits
+  local_accession_id_tsim:
+  - 13_05_000029
+  collection_name_ssim:
+  - Carte de Visite Collection
+  collection_name_tsim:
+  - Carte de Visite Collection
+  collection_pid_ssm:
+  - bpl-dev:h702q636h
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  admin_set_name_ssim:
+  - Carte de Visite Collection
+  admin_set_name_tsim:
+  - Carte de Visite Collection
+  admin_set_pid_ssm:
+  - bpl-dev:h702q636h
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/h702q6403
+  publisher_tsim:
+  - Published by E & H. T. Anthony
+  pubplace_tsim:
+  - 501 Broadway, New York
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Carte de Visite Collection
+  related_item_host_ssim:
+  - Carte de Visite Collection
+  related_item_series_tsim:
+  - Test Series
+  related_item_series_ssim:
+  - Test Series
+  type_of_resource_ssim:
+  - still image
+  extent_tsi:
+  - 1 photograph : print on card mount ; mount 11 x 7 cm (carte de visite format).
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Print Department
+  subject_topic_tsim:
+  - Military officers
+  subject_geo_country_ssim:
+  - United States
+  subject_geo_state_ssim:
+  - Washington
+  subject_geo_county_ssim:
+  - Walla Walla
+  subject_geo_city_ssim:
+  - Walla Walla
+  subject_geographic_tsim:
+  - United States
+  - Washington
+  - Walla Walla
+  - Walla Walla
+  subject_geographic_ssim:
+  - United States
+  - Washington
+  - Walla Walla
+  - Walla Walla (county)
+  subject_coordinates_geospatial:
+  - 46.05,-118.3333
+  subject_point_geospatial:
+  - 46.05,-118.3333
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-118.3333,46.05]},\"properties\":{\"placename\":\"Walla Walla, WA\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-118.3333,46.05]},\"properties\":{\"country\":\"United States\",\"state\":\"Washington\",\"county\":\"Walla Walla\",\"city\":\"Walla Walla\"}}"
+  subject_name_personal_tsim:
+  - Beauregard, G. T. (Gustave Toutant), 1818-1893
+  subject_facet_ssim:
+  - Beauregard, G. T. (Gustave Toutant), 1818-1893
+  - Military officers
+  active_fedora_model_suffix_ssi:
+  - PhotographicPrint
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - No known restrictions on use.
+  note_tsim:
+  - Title from item or from accompanying material.
+  note_date_tsim:
+  - Date supplied by cataloger.
+  title_info_primary_tsi:
+  - Beauregard
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:h702q641c
+  _version_:
+  - 1507587090864406500
+  timestamp:
+  - 2015-07-24T14:11:28.285Z
+- system_create_dtsi:
+  - 2014-12-26T20:02:53Z
+  system_modified_dtsi:
+  - 2015-06-03T14:38:57Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:h702q642n
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:53Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":387,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"18d709bad7a31b1862f2f4336208fb97\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-03-09T19:48:42Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":937,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"6b7e2cb719c0fe0c493131c58e6308a2\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:54Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"13_05_000029b\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2014-12-26T20:02:54Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":11066820,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3d015470d492e51052957e35e59319e2\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:56Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":876,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"21bb6285e9e7ee4a32d0077583451eb9\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2014-12-26T20:16:14Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4887,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"ca86547467ca13f62ebfa71f3bd8fee0\"},\"accessMaster\":{\"dsLabel\":\"13_05_000029b\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2014-12-26T20:16:17Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1120148,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"ec3a98dc44779b07eda87d5daa05b651\"},\"thumbnail300\":{\"dsLabel\":\"13_05_000029b\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2014-12-26T20:16:17Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":44312,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"57e1a05dbf8661fd5ef84814c9da4918\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"13_05_000029b\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-06-03T14:38:57Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":131300,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q642n+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c33786a743171960e36f50b7095d9ec5\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"13_05_000029b.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:53Z\",\"objLastModDate\":\"2015-03-09T19:48:42Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q642n/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q642n/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:h702q636h
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:h702q6403
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:h702q641c
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:h702q6403
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 3d015470d492e51052957e35e59319e2
+  _version_:
+  - 1502968376425709600
+  timestamp:
+  - 2015-06-03T14:38:58.968Z
+- system_create_dtsi:
+  - 2014-12-26T20:02:48Z
+  system_modified_dtsi:
+  - 2015-06-03T14:38:57Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:h702q641c
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:48Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":387,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"29b952209ccc5fc4be65138eb42a8251\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2014-12-26T20:02:51Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":937,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"0b82edbc53b4e81091f3432d5951508b\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:48Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"13_05_000029a\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2014-12-26T20:02:49Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":11015148,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"81d30bdd9202070d26fa30b68c96956d\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:50Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":876,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"24ca1c032ece0123933b574895c84c8d\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2014-12-26T20:15:51Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4887,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"e20b74a0204d939eba8706ba0f34676a\"},\"accessMaster\":{\"dsLabel\":\"13_05_000029a\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2014-12-26T20:15:55Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1116196,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"961eed44d75f4d35d66a490a7b5b0832\"},\"thumbnail300\":{\"dsLabel\":\"13_05_000029a\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2014-12-26T20:15:56Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":45491,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"b23381b806e4c3e7c8e4cf601246d3db\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"13_05_000029a\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-06-03T14:38:57Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":144131,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q641c+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"1ab2834ed2bf387ee11c0a4c7c6e647d\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"13_05_000029a.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:48Z\",\"objLastModDate\":\"2014-12-26T20:15:56Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q641c/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ah702q641c/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:h702q6403
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:h702q6403
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:h702q6403
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:h702q642n
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 81d30bdd9202070d26fa30b68c96956d
+  _version_:
+  - 1502968375680172000
+  timestamp:
+  - 2015-06-03T14:38:58.256Z
+- system_create_dtsi:
+  - 2015-07-28T16:55:23Z
+  system_modified_dtsi:
+  - 2015-07-28T16:55:55Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::PhotographicPrint
+  id:
+  - bpl-dev:g445cd14k
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-07-28T16:55:23Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":385,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd14k+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a3d1ad7add526489e47de6c1baf15e85\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-07-28T16:55:23Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1176,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd14k+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"25c8b69b1fac8efc850b0c946b9caec9\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-07-28T16:55:23Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":630,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd14k+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2b814f2d28015b8fecac1b7325cf0034\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-07-28T16:55:24Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4072,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd14k+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f11e3f5b133b2d0f2bf9e772325f1298\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-07-28T16:55:55Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1035,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd14k+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"0f03724800d3409fdbae9aceac82c9da\"}},\"objLabel\":\"George Thompson\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_PhotographicPrint\",\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-07-28T16:55:23Z\",\"objLastModDate\":\"2015-07-28T16:55:55Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd14k/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd14k/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:g445cd121
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:g445cd14k
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_PhotographicPrint
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:g445cd121
+  - info:fedora/bpl-dev:g445cd139
+  label_ssim:
+  - George Thompson
+  date_start_dtsi:
+  - 1851-01-01T00:00:00Z
+  date_start_tsim:
+  - 1851
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1850s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - approximate
+  date_facet_yearly_ssim:
+  - 1851s
+  genre_basic_tsim:
+  - Photographs
+  genre_specific_tsim:
+  - Daguerreotypes
+  - Portrait photographs
+  genre_basic_ssim:
+  - Photographs
+  genre_specific_ssim:
+  - Daguerreotypes
+  - Portrait photographs
+  identifier_local_other_invalid_tsim:
+  - Cab.G.3.25
+  local_accession_id_tsim:
+  - 07_05_000003
+  collection_name_ssim:
+  - Cased Photographs
+  - Anti-Slavery Collection
+  collection_name_tsim:
+  - Cased Photographs
+  - Anti-Slavery Collection
+  collection_pid_ssm:
+  - bpl-dev:g445cd121
+  - bpl-dev:g445cd139
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  admin_set_name_ssim:
+  - Cased Photographs
+  admin_set_name_tsim:
+  - Cased Photographs
+  admin_set_pid_ssm:
+  - bpl-dev:g445cd121
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/g445cd14k
+  related_item_host_tsim:
+  - Print Department Collection
+  related_item_host_ssim:
+  - Print Department Collection
+  type_of_resource_ssim:
+  - still image
+  extent_tsi:
+  - 1 photograph : whole plate daguerreotype ; in case 18.5 x 13.5 cm.
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Print Department
+  subject_topic_tsim:
+  - Abolitionists
+  subject_name_personal_tsim:
+  - Thompson, George, 1804-1878
+  subject_facet_ssim:
+  - Thompson, George, 1804-1878
+  - Abolitionists
+  active_fedora_model_suffix_ssi:
+  - PhotographicPrint
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - No known restrictions on use.
+  note_acquisition_tsim:
+  - Gift of the family of William L. Garrison, August 31, 1899.
+  title_info_primary_tsi:
+  - George Thompson
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:g445cd17d
+  _version_:
+  - 1508225045064843300
+  timestamp:
+  - 2015-07-31T15:11:28.837Z
+- system_create_dtsi:
+  - 2015-07-28T16:55:12Z
+  system_modified_dtsi:
+  - 2015-07-28T16:55:54Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:g445cd17d
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-07-28T16:55:12Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2b83b5eb437cb0c924b03ea77dda31f8\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-07-28T16:55:13Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"1fb79615c7bccd104c6c4c42f940d95a\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-07-28T16:55:13Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":630,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2b814f2d28015b8fecac1b7325cf0034\"},\"productionMaster\":{\"dsLabel\":\"07_05_000003\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-07-28T16:55:15Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":61211096,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"cee2676d8686c6c4a5bd5bb271fe7620\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-07-28T16:55:22Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":872,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"7ee8ecda2182e371525c49f584011be4\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-07-28T16:55:48Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5014,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"0ffe06ab6c3d1c410b0067368493120a\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"07_05_000003\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-07-28T16:55:54Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":6140174,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5434e929077b695ff35e7432ead469ea\"},\"thumbnail300\":{\"dsLabel\":\"07_05_000003\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-07-28T16:55:54Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":58444,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c7d5ecb8c600abd81ca34a3c2c749ff2\"},\"access800\":{\"dsLabel\":\"07_05_000003\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-07-28T16:55:54Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":197240,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd17d+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5e74d015a88566e2149b7a47cca21537\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"07_05_000003.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-07-28T16:55:12Z\",\"objLastModDate\":\"2015-07-28T16:55:22Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd17d/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd17d/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:g445cd14k
+  - info:fedora/bpl-dev:g445cd139
+  - info:fedora/bpl-dev:g445cd121
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:g445cd14k
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:g445cd14k
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - cee2676d8686c6c4a5bd5bb271fe7620
+  _version_:
+  - 1507959824655057000
+  timestamp:
+  - 2015-07-28T16:55:54.945Z
+- system_create_dtsi:
+  - 2015-01-14T22:26:25Z
+  system_modified_dtsi:
+  - 2015-07-24T14:11:48Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Map
+  id:
+  - bpl-dev:00000007x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:26:25Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":389,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000007x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"1d8dcfa057b63554048b34c11c379650\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:11:48Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000007x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f7b292dd62a1a511efb3bbaef12ece15\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:26:25Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000007x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:26:25Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000007x+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f3a8703338738443f1933166f5837d4d\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-01-14T22:27:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1041,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000007x+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"032b3608548d517b2f23680fe4696026\"}},\"objLabel\":\"Guide map of Boston\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/afmodel:Bplmodels_Map\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:26:25Z\",\"objLastModDate\":\"2015-01-14T22:27:19Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A00000007x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A00000007x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:00000007x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Map
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:000000000
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:000000000
+  label_ssim:
+  - Guide map of Boston
+  date_start_dtsi:
+  - 1900-01-01T00:00:00Z
+  date_start_tsim:
+  - 1900
+  date_end_dtsi:
+  - 1999-12-31T23:59:59.999Z
+  date_end_tsim:
+  - 1999
+  date_facet_ssim:
+  - 1900s
+  - 1910s
+  - 1920s
+  - 1930s
+  - 1940s
+  - 1950s
+  - 1960s
+  - 1970s
+  - 1980s
+  - 1990s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - inferred
+  genre_basic_tsim:
+  - Maps
+  genre_basic_ssim:
+  - Maps
+  identifier_local_barcode_tsim:
+  - 39999059008290
+  collection_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  collection_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  collection_pid_ssm:
+  - bpl-dev:000000000
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  admin_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_pid_ssm:
+  - bpl-dev:000000000
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/00000007x
+  publisher_tsim:
+  - C.S. Hammond & Co.
+  pubplace_tsim:
+  - New York
+  issuance_tsim:
+  - monographic
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Norman B. Leventhal Map Center Collection
+  related_item_host_ssim:
+  - Norman B. Leventhal Map Center Collection
+  name_corporate_tsim:
+  - C.S. Hammond & Company
+  name_corporate_role_tsim:
+  - Creator
+  name_facet_ssim:
+  - C.S. Hammond & Company
+  type_of_resource_ssim:
+  - cartographic
+  extent_tsi:
+  - 1 map : col. ; 39 x 32 cm.
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Norman B. Leventhal Map Center
+  subject_topic_tsim:
+  - New England News Company
+  - Boston (Mass.)--Maps
+  subject_geo_country_ssim:
+  - United States
+  subject_geo_state_ssim:
+  - Massachusetts
+  subject_geo_county_ssim:
+  - Suffolk
+  subject_geo_city_ssim:
+  - Boston
+  subject_geographic_tsim:
+  - United States
+  - Massachusetts
+  - Boston
+  - Suffolk
+  subject_geographic_ssim:
+  - United States
+  - Massachusetts
+  - Boston
+  - Suffolk (county)
+  subject_scale_tsim:
+  - Scale not given.
+  subject_coordinates_geospatial:
+  - 42.35,-71.05
+  subject_point_geospatial:
+  - 42.35,-71.05
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"placename\":\"Boston, MA\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
+  subject_facet_ssim:
+  - New England News Company
+  - Boston (Mass.)--Maps
+  active_fedora_model_suffix_ssi:
+  - Map
+  rights_ssm:
+  - Rights status not evaluated.
+  license_ssm:
+  - This work is licensed for use under a Creative Commons Attribution Non-Commercial Share Alike License (CC BY-NC-SA).
+  note_tsim:
+  - Includes index to points of interest.
+  title_info_alternative_tsim:
+  - New standard index map of Boston
+  title_info_primary_tsi:
+  - Guide map of Boston
+  title_info_alternative_label_ssm:
+  - Cover title:
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:000000086
+  flagged_content_ssi:
+  - true
+  _version_:
+  - 1507587116485312500
+  timestamp:
+  - 2015-07-24T14:11:52.72Z
+- system_create_dtsi:
+  - 2015-01-14T22:26:16Z
+  system_modified_dtsi:
+  - 2015-06-03T14:39:18Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:000000086
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:26:16Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"40c4fdc2e6f80ede33c05240e4ad116d\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-14T22:26:16Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d432c04743a5a4a2dabcbe1bc49499cb\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:26:16Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"06_01_004865\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-01-14T22:26:17Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":41380584,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"4d1595e5271ff5d107e73e119c6579bb\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:26:24Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":878,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"27b148031619ac096fc81ccdf24bbe37\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-01-14T22:27:11Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5017,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"48306020162da60ad31b658a4193ee2d\"},\"accessMaster\":{\"dsLabel\":\"06_01_004865\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-01-14T22:27:16Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4140109,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"97dc2f32664dd47f3afd6c67383c2277\"},\"thumbnail300\":{\"dsLabel\":\"06_01_004865\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-01-14T22:27:17Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":71690,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"4270eb937226510edddd24798116fc41\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"06_01_004865\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-06-03T14:39:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":294200,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000086+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"23a4c0f3f279c53e70f6809ccd4a2f36\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"06_01_004865.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:26:16Z\",\"objLastModDate\":\"2015-01-14T22:27:17Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000086/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000086/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:00000007x
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:00000007x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:00000007x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 4d1595e5271ff5d107e73e119c6579bb
+  _version_:
+  - 1502968398198341600
+  timestamp:
+  - 2015-06-03T14:39:19.732Z
+- system_create_dtsi:
+  - 2015-01-13T19:53:31Z
+  system_modified_dtsi:
+  - 2015-02-18T18:31:16Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::SystemCollection
+  id:
+  - bpl-dev:000000000
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-13T19:53:31Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":411,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000000+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"67663fb7f4720295e5311871fd7c7636\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-13T19:53:31Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":924,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000000+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"50c6e9afa1157884c48352312ab02067\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-13T19:53:31Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000000+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.1\",\"dsCreateDate\":\"2015-02-18T18:31:16Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1196,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000000+descMetadata+descMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5fcd89d3720312db9ea4bb9313dbf97d\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-13T19:53:31Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000000+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Norman B. Leventhal Map Center Collection\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_SystemCollection\",\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_Collection\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-13T19:53:31Z\",\"objLastModDate\":\"2015-01-13T19:53:31Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000000/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000000/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  oai_set_spec_ssim:
+  - bpl-dev:000000000
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_SystemCollection
+  - info:fedora/afmodel:Bplmodels_Collection
+  - info:fedora/afmodel:Bplmodels_RelationBase
+  is_member_of_ssim:
+  - info:fedora/bpl-dev:4q77fr32b
+  label_ssim:
+  - Norman B. Leventhal Map Center Collection
+  active_fedora_model_suffix_ssi:
+  - Collection
+  title_info_primary_tsi:
+  - Norman B. Leventhal Map Center Collection
+  workflow_state_ssi:
+  - published
+  abstract_tsim:
+  - Tousled artisan single-origin coffee Williamsburg. Sriracha keffiyeh readymade, gluten-free photo booth keytar ennui normcore Schlitz food truck messenger bag distillery chambray. Post-ironic brunch cray viral bicycle rights ennui Bushwick, +1 cornhole Schlitz Banksy keffiyeh. Tilde master cleanse pour-over, shabby chic retro swag synth hoodie fixie lomo fashion axe cold-pressed ugh drinking vinegar. Tousled PBR kogi aesthetic seitan. Tilde squid literally normcore. Slow-carb pour-over meh, cronut American Apparel stumptown tilde crucifix +1 farm-to-table 90's deep v freegan Intelligentsia.
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  exemplary_image_ssi:
+  - bpl-dev:df65v791t
+  _version_:
+  - 1493470309971394600
+  timestamp:
+  - 2015-02-18T18:31:16.934Z
+- system_create_dtsi:
+  - 2014-12-26T20:02:13Z
+  system_modified_dtsi:
+  - 2015-05-06T18:30:27Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::SystemCollection
+  id:
+  - bpl-dev:h702q636h
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:13Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":396,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q636h+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"86fc1c735ff0f7dfc2abd76fe4dc2ee3\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2014-12-26T20:02:13Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":909,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q636h+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"e02bf9d2e739f0b74ae42061808db733\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:13Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q636h+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.2\",\"dsCreateDate\":\"2015-05-06T18:30:27Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":961,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q636h+descMetadata+descMetadata.2\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2212e40df66a5fd1f25a895d1c9a6dcc\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:13Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:h702q636h+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Carte de Visite Collection\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_SystemCollection\",\"info:fedora/afmodel:Bplmodels_Collection\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:13Z\",\"objLastModDate\":\"2015-05-04T20:35:33Z\",\"objDissIndexViewURL\":\"http://localhost:80/fedora/objects/bpl-dev%3Ah702q636h/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"http://localhost:80/fedora/objects/bpl-dev%3Ah702q636h/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_set_name_ssim:
+  - Carte de Visite Collection
+  oai_set_spec_ssim:
+  - bpl-dev:h702q636h
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_SystemCollection
+  - info:fedora/afmodel:Bplmodels_Collection
+  - info:fedora/afmodel:Bplmodels_RelationBase
+  is_member_of_ssim:
+  - info:fedora/bpl-dev:4q77fr32b
+  label_ssim:
+  - Carte de Visite Collection
+  active_fedora_model_suffix_ssi:
+  - Collection
+  title_info_primary_tsi:
+  - Carte de Visite Collection
+  workflow_state_ssi:
+  - published
+  abstract_tsim:
+  - Lorem ipsum
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  exemplary_image_ssi:
+  - bpl-dev:h702q642n
+  _version_:
+  - 1500446225003970600
+  timestamp:
+  - 2015-05-06T18:30:27.934Z
+- system_create_dtsi:
+  - 2015-07-28T15:20:39Z
+  system_modified_dtsi:
+  - 2015-07-28T16:56:48Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::SystemCollection
+  id:
+  - bpl-dev:g445cd139
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-07-28T15:20:39Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":393,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd139+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"6a1593bc884957f48bb5fdbda7f660b2\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-07-28T15:20:39Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":906,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd139+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a31b62bfcc8634c956a543796a78234f\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-07-28T15:20:39Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":630,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd139+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2b814f2d28015b8fecac1b7325cf0034\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-07-28T15:20:40Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":589,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd139+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"e077be0b301ba0604a2171babd24cc3a\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.2\",\"dsCreateDate\":\"2015-07-28T16:56:48Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd139+workflowMetadata+workflowMetadata.2\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Anti-Slavery Collection\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_SystemCollection\",\"info:fedora/afmodel:Bplmodels_Collection\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-07-28T15:20:39Z\",\"objLastModDate\":\"2015-07-28T16:55:10Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd139/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd139/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_set_name_ssim:
+  - Anti-Slavery Collection
+  oai_set_spec_ssim:
+  - bpl-dev:g445cd139
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_SystemCollection
+  - info:fedora/afmodel:Bplmodels_Collection
+  - info:fedora/afmodel:Bplmodels_RelationBase
+  is_member_of_ssim:
+  - info:fedora/bpl-dev:4q77fr32b
+  label_ssim:
+  - Anti-Slavery Collection
+  active_fedora_model_suffix_ssi:
+  - Collection
+  title_info_primary_tsi:
+  - Anti-Slavery Collection
+  workflow_state_ssi:
+  - published
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  exemplary_image_ssi:
+  - bpl-dev:g445cd17d
+  _version_:
+  - 1507959881374630000
+  timestamp:
+  - 2015-07-28T16:56:49.037Z
+- system_create_dtsi:
+  - 2015-07-28T15:20:36Z
+  system_modified_dtsi:
+  - 2015-07-28T16:56:46Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::SystemCollection
+  id:
+  - bpl-dev:g445cd121
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-07-28T15:20:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":387,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd121+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2965846eed3832a5f09d37ae0bf7bcd9\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-07-28T15:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":900,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd121+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3c6f0b3949046e14f619457c08d71ec5\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-07-28T15:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":630,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd121+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"2b814f2d28015b8fecac1b7325cf0034\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-07-28T15:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":583,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd121+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"21eaed0bdb83283fafa0b5920f99aaa5\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.2\",\"dsCreateDate\":\"2015-07-28T16:56:46Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:g445cd121+workflowMetadata+workflowMetadata.2\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Cased Photographs\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_SystemCollection\",\"info:fedora/afmodel:Bplmodels_Collection\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-07-28T15:20:36Z\",\"objLastModDate\":\"2015-07-28T16:55:09Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd121/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Ag445cd121/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  oai_set_name_ssim:
+  - Cased Photographs
+  oai_set_spec_ssim:
+  - bpl-dev:g445cd121
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_SystemCollection
+  - info:fedora/afmodel:Bplmodels_Collection
+  - info:fedora/afmodel:Bplmodels_RelationBase
+  is_member_of_ssim:
+  - info:fedora/bpl-dev:4q77fr32b
+  label_ssim:
+  - Cased Photographs
+  active_fedora_model_suffix_ssi:
+  - Collection
+  title_info_primary_tsi:
+  - Cased Photographs
+  workflow_state_ssi:
+  - published
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  exemplary_image_ssi:
+  - bpl-dev:g445cd17d
+  _version_:
+  - 1507959879964295200,
+  timestamp:
+  - 2015-07-28T16:56:47.692Z
+- system_create_dtsi:
+  - 2014-12-26T20:02:10Z
+  system_modified_dtsi:
+  - 2015-02-18T19:44:18Z
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Institution
+  id:
+  - bpl-dev:4q77fr32b
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:10Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":391,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f829f7ce8992bfa8b28d14ffeeee21f8\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":438,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"efbed8777ee7f72c13e1ad9809527a22\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.5\",\"dsCreateDate\":\"2015-02-18T19:44:18Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1434,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+descMetadata+descMetadata.5\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"8edec72f585e3ee8d9bbbab7c30b1544\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:12Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Boston Public Library\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_Institution\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:10Z\",\"objLastModDate\":\"2015-02-18T19:39:42Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A4q77fr32b/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A4q77fr32b/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:4q77fr32b]
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Institution
+  - info:fedora/afmodel:Bplmodels_RelationBase
+  label_ssim:
+  - Boston Public Library
+  active_fedora_model_suffix_ssi:
+  - Institution
+  title_info_primary_tsi:
+  - Boston Public Library
+  workflow_state_ssi:
+  - published
+  abstract_tsim:
+  - Four loko ennui skateboard anim. Id asymmetrical artisan post-ironic, disrupt cornhole messenger bag deep v lo-fi ea. Roof party ea mustache direct trade semiotics hella. Sustainable elit art party fap. Migas cillum XOXO, Odd Future asymmetrical trust fund slow-carb fixie. Deep v artisan retro, gastropub vero cliche you probably haven't heard of them master cleanse DIY aliquip chia velit hashtag Thundercats. Dolore four loko Etsy gastropub anim ut.
+  institution_url_ss:
+  - http://www.bpl.org/
+  subject_geo_country_ssim:
+  - United States
+  subject_geo_state_ssim:
+  - Massachusetts
+  subject_geo_county_ssim:
+  - Suffolk
+  subject_geo_city_ssim:
+  - Boston
+  subject_geographic_tsim:
+  - United States
+  - Massachusetts
+  - Suffolk
+  - Boston
+  subject_geographic_ssim:
+  - United States
+  - Massachusetts
+  - Suffolk (county)
+  - Boston
+  subject_coordinates_geospatial:
+  - 42.35,-71.05
+  subject_point_geospatial:
+  - 42.35,-71.05
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"placename\":\"Boston, MA\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
+  institution_pid_ssi:
+  - bpl-dev:4q77fr32b
+  _version_:
+  - 1493474904067014700
+  timestamp:
+  - 2015-02-18T19:44:18.203Z
