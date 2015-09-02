@@ -15,7 +15,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_item_id_ssim:
   - oai:digitalcommonwealth.org:bpl-dev:df65v790j
   has_model_ssim:
@@ -59,7 +59,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Norman B. Leventhal Map Center Collection
   admin_set_name_tsim:
@@ -91,7 +91,7 @@
   type_of_resource_ssim:
   - cartographic
   extent_tsi:
-  - 2 maps on 1 sheet : ill., maps ; on sheet 36 x 52 cm.
+  - '2 maps on 1 sheet : ill., maps ; on sheet 36 x 52 cm.'
   digital_origin_ssi:
   - reformatted digital
   internet_media_type_ssim:
@@ -176,7 +176,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/tiff
   identification_0_identity_0_mime_type_tesim:
@@ -209,7 +209,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_item_id_ssim:
   - oai:digitalcommonwealth.org:bpl-dev:h702q6403
   has_model_ssim:
@@ -274,7 +274,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Carte de Visite Collection
   admin_set_name_tsim:
@@ -300,7 +300,7 @@
   type_of_resource_ssim:
   - still image
   extent_tsi:
-  - 1 photograph : print on card mount ; mount 11 x 7 cm (carte de visite format).
+  - '1 photograph : print on card mount ; mount 11 x 7 cm (carte de visite format).'
   digital_origin_ssi:
   - reformatted digital
   internet_media_type_ssim:
@@ -382,7 +382,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/tiff
   identification_0_identity_0_mime_type_tesim:
@@ -420,7 +420,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/tiff
   identification_0_identity_0_mime_type_tesim:
@@ -458,7 +458,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   administrative_set_ssim:
   - info:fedora/bpl-dev:g445cd121
   oai_item_id_ssim:
@@ -514,7 +514,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Cased Photographs
   admin_set_name_tsim:
@@ -530,7 +530,7 @@
   type_of_resource_ssim:
   - still image
   extent_tsi:
-  - 1 photograph : whole plate daguerreotype ; in case 18.5 x 13.5 cm.
+  - '1 photograph : whole plate daguerreotype ; in case 18.5 x 13.5 cm.'
   digital_origin_ssi:
   - reformatted digital
   internet_media_type_ssim:
@@ -584,7 +584,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/tiff
   identification_0_identity_0_mime_type_tesim:
@@ -622,7 +622,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_item_id_ssim:
   - oai:digitalcommonwealth.org:bpl-dev:00000007x
   has_model_ssim:
@@ -675,7 +675,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Norman B. Leventhal Map Center Collection
   admin_set_name_tsim:
@@ -705,7 +705,7 @@
   type_of_resource_ssim:
   - cartographic
   extent_tsi:
-  - 1 map : col. ; 39 x 32 cm.
+  - '1 map : col. ; 39 x 32 cm.'
   digital_origin_ssi:
   - reformatted digital
   internet_media_type_ssim:
@@ -765,7 +765,7 @@
   title_info_primary_tsi:
   - Guide map of Boston
   title_info_alternative_label_ssm:
-  - Cover title:
+  - Cover title
   workflow_state_ssi:
   - published
   processing_state_ssi:
@@ -792,7 +792,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/tiff
   identification_0_identity_0_mime_type_tesim:
@@ -828,7 +828,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_set_name_ssim:
   - Norman B. Leventhal Map Center Collection
   oai_set_spec_ssim:
@@ -838,7 +838,7 @@
   - info:fedora/afmodel:Bplmodels_Collection
   - info:fedora/afmodel:Bplmodels_RelationBase
   is_member_of_ssim:
-  - info:fedora/bpl-dev:4q77fr32b
+  - info:fedora/bpl-dev:abcd12345
   label_ssim:
   - Norman B. Leventhal Map Center Collection
   active_fedora_model_suffix_ssi:
@@ -858,7 +858,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:df65v791t
   timestamp:
@@ -879,7 +879,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_set_name_ssim:
   - Carte de Visite Collection
   oai_set_spec_ssim:
@@ -889,7 +889,7 @@
   - info:fedora/afmodel:Bplmodels_Collection
   - info:fedora/afmodel:Bplmodels_RelationBase
   is_member_of_ssim:
-  - info:fedora/bpl-dev:4q77fr32b
+  - info:fedora/bpl-dev:abcd12345
   label_ssim:
   - Carte de Visite Collection
   active_fedora_model_suffix_ssi:
@@ -909,7 +909,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:h702q642n
   timestamp:
@@ -930,7 +930,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_set_name_ssim:
   - Anti-Slavery Collection
   oai_set_spec_ssim:
@@ -940,7 +940,7 @@
   - info:fedora/afmodel:Bplmodels_Collection
   - info:fedora/afmodel:Bplmodels_RelationBase
   is_member_of_ssim:
-  - info:fedora/bpl-dev:4q77fr32b
+  - info:fedora/bpl-dev:abcd12345
   label_ssim:
   - Anti-Slavery Collection
   active_fedora_model_suffix_ssi:
@@ -958,7 +958,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
   timestamp:
@@ -979,7 +979,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   oai_set_name_ssim:
   - Cased Photographs
   oai_set_spec_ssim:
@@ -989,7 +989,7 @@
   - info:fedora/afmodel:Bplmodels_Collection
   - info:fedora/afmodel:Bplmodels_RelationBase
   is_member_of_ssim:
-  - info:fedora/bpl-dev:4q77fr32b
+  - info:fedora/bpl-dev:abcd12345
   label_ssim:
   - Cased Photographs
   active_fedora_model_suffix_ssi:
@@ -1007,7 +1007,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
   timestamp:
@@ -1021,14 +1021,14 @@
   active_fedora_model_ssi:
   - Bplmodels::Institution
   id:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   object_profile_ssm:
-  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:10Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":391,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f829f7ce8992bfa8b28d14ffeeee21f8\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":438,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"efbed8777ee7f72c13e1ad9809527a22\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.5\",\"dsCreateDate\":\"2015-02-18T19:44:18Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1434,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+descMetadata+descMetadata.5\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"8edec72f585e3ee8d9bbbab7c30b1544\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:12Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:4q77fr32b+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Boston Public Library\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_Institution\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:10Z\",\"objLastModDate\":\"2015-02-18T19:39:42Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A4q77fr32b/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A4q77fr32b/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2014-12-26T20:02:10Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":391,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:abcd12345+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f829f7ce8992bfa8b28d14ffeeee21f8\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":438,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:abcd12345+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"efbed8777ee7f72c13e1ad9809527a22\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:11Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:abcd12345+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.5\",\"dsCreateDate\":\"2015-02-18T19:44:18Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1434,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:abcd12345+descMetadata+descMetadata.5\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"8edec72f585e3ee8d9bbbab7c30b1544\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2014-12-26T20:02:12Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":455,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:abcd12345+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ae8e8f08fb464a98108e6f69b8dd02e\"}},\"objLabel\":\"Boston Public Library\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_RelationBase\",\"info:fedora/afmodel:Bplmodels_Institution\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2014-12-26T20:02:10Z\",\"objLastModDate\":\"2015-02-18T19:39:42Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aabcd12345/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aabcd12345/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
   read_access_group_ssim:
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:4q77fr32b]
+  - admin[bpl-dev:abcd12345]
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_Institution
   - info:fedora/afmodel:Bplmodels_RelationBase
@@ -1071,6 +1071,6 @@
   subject_hiergeo_geojson_ssm:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
   institution_pid_ssi:
-  - bpl-dev:4q77fr32b
+  - bpl-dev:abcd12345
   timestamp:
   - '2015-02-18T19:44:18.203Z'

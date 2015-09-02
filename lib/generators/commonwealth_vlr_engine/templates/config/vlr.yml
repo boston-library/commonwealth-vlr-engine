@@ -2,12 +2,12 @@
 
 development:
   institution:
-    pid: commonwealth:abc123
+    pid: bpl-dev:abcd12345
 
 test:
   institution:
-      pid: commonwealth:abc123
+      pid: bpl-dev:abcd12345
 
 production:
   institution:
-      pid: commonwealth:abc123
+      pid: commonwealth:abcd12345
