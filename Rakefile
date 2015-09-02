@@ -20,7 +20,7 @@ task :fixtures => ['engine_cart:generate'] do
 end
 
 desc "Execute Continuous Integration build"
-task :ci => ['engine_cart:generate', 'jetty:clean', 'blacklight_maps:configure_jetty'] do
+task :ci => ['engine_cart:generate', 'jetty:clean', 'commonwealth_vlr_engine:configure_jetty'] do
 
   require 'jettywrapper'
   jetty_params = Jettywrapper.load_config('test')
