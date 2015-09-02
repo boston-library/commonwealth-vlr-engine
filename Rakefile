@@ -15,7 +15,7 @@ RSpec::Core::RakeTask.new(:spec)
 desc "Load fixtures"
 task :fixtures => ['engine_cart:generate'] do
   EngineCart.within_test_app do
-    system "rake commonwealth_vlr_engine:solr:seed RAILS_ENV=test"
+    system "rake vlr_engine:test_index:seed RAILS_ENV=test"
   end
 end
 

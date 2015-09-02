@@ -17,7 +17,7 @@ class TestAppGenerator < Rails::Generators::Base
   end
 
   def run_vlr_engine_install
-    generate 'commonwealth-vlr-engine:install'
+    generate 'commonwealth_vlr_engine:install'
   end
 
 end

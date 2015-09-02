@@ -1,8 +1,8 @@
 ---
 - system_create_dtsi:
-  - 2015-01-14T22:29:07Z
+  - '2015-01-14T22:29:07Z'
   system_modified_dtsi:
-  - 2015-07-24T14:11:53Z
+  - '2015-07-24T14:11:53Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -29,7 +29,7 @@
   label_ssim:
   - Boston traffic map showing one way streets and parking spaces
   date_start_dtsi:
-  - 1922-01-01T00:00:00Z
+  - '1922-01-01T00:00:00Z'
   date_start_tsim:
   - 1922
   date_end_tsim:
@@ -158,14 +158,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:df65v791t
-  _version_:
-  - 1507587121496457200
   timestamp:
-  - 2015-07-24T14:11:57.513Z
+  - '2015-07-24T14:11:57.513Z'
 - system_create_dtsi:
-  - 2015-01-14T22:28:31Z
+  - '2015-01-14T22:28:31Z'
   system_modified_dtsi:
-  - 2015-06-03T14:40:08Z
+  - '2015-06-03T14:40:08Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -196,9 +194,9 @@
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
 - system_create_dtsi:
-  - 2014-12-26T20:02:57Z
+  - '2014-12-26T20:02:57Z'
   system_modified_dtsi:
-  - 2015-07-24T14:11:24Z
+  - '2015-07-24T14:11:24Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -225,11 +223,11 @@
   label_ssim:
   - Beauregard
   date_start_dtsi:
-  - 1859-01-01T00:00:00Z
+  - '1859-01-01T00:00:00Z'
   date_start_tsim:
   - 1859
   date_end_dtsi:
-  - 1870-12-31T23:59:59.999Z
+  - '1870-12-31T23:59:59.999Z'
   date_end_tsim:
   - 1870
   date_facet_ssim:
@@ -366,14 +364,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:h702q641c
-  _version_:
-  - 1507587090864406500
   timestamp:
-  - 2015-07-24T14:11:28.285Z
+  - '2015-07-24T14:11:28.285Z'
 - system_create_dtsi:
-  - 2014-12-26T20:02:53Z
+  - '2014-12-26T20:02:53Z'
   system_modified_dtsi:
-  - 2015-06-03T14:38:57Z
+  - '2015-06-03T14:38:57Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -406,14 +402,12 @@
   - info:fedora/afmodel:Bplmodels_ImageFile
   checksum_file_md5_ssi:
   - 3d015470d492e51052957e35e59319e2
-  _version_:
-  - 1502968376425709600
   timestamp:
-  - 2015-06-03T14:38:58.968Z
+  - '2015-06-03T14:38:58.968Z'
 - system_create_dtsi:
-  - 2014-12-26T20:02:48Z
+  - '2014-12-26T20:02:48Z'
   system_modified_dtsi:
-  - 2015-06-03T14:38:57Z
+  - '2015-06-03T14:38:57Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -446,14 +440,12 @@
   - info:fedora/afmodel:Bplmodels_ImageFile
   checksum_file_md5_ssi:
   - 81d30bdd9202070d26fa30b68c96956d
-  _version_:
-  - 1502968375680172000
   timestamp:
-  - 2015-06-03T14:38:58.256Z
+  - '2015-06-03T14:38:58.256Z'
 - system_create_dtsi:
-  - 2015-07-28T16:55:23Z
+  - '2015-07-28T16:55:23Z'
   system_modified_dtsi:
-  - 2015-07-28T16:55:55Z
+  - '2015-07-28T16:55:55Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -481,7 +473,7 @@
   label_ssim:
   - George Thompson
   date_start_dtsi:
-  - 1851-01-01T00:00:00Z
+  - '1851-01-01T00:00:00Z'
   date_start_tsim:
   - 1851
   date_end_tsim:
@@ -574,14 +566,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
-  _version_:
-  - 1508225045064843300
   timestamp:
-  - 2015-07-31T15:11:28.837Z
+  - '2015-07-31T15:11:28.837Z'
 - system_create_dtsi:
-  - 2015-07-28T16:55:12Z
+  - '2015-07-28T16:55:12Z'
   system_modified_dtsi:
-  - 2015-07-28T16:55:54Z
+  - '2015-07-28T16:55:54Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -614,14 +604,12 @@
   - info:fedora/afmodel:Bplmodels_ImageFile
   checksum_file_md5_ssi:
   - cee2676d8686c6c4a5bd5bb271fe7620
-  _version_:
-  - 1507959824655057000
   timestamp:
-  - 2015-07-28T16:55:54.945Z
+  - '2015-07-28T16:55:54.945Z'
 - system_create_dtsi:
-  - 2015-01-14T22:26:25Z
+  - '2015-01-14T22:26:25Z'
   system_modified_dtsi:
-  - 2015-07-24T14:11:48Z
+  - '2015-07-24T14:11:48Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -648,11 +636,11 @@
   label_ssim:
   - Guide map of Boston
   date_start_dtsi:
-  - 1900-01-01T00:00:00Z
+  - '1900-01-01T00:00:00Z'
   date_start_tsim:
   - 1900
   date_end_dtsi:
-  - 1999-12-31T23:59:59.999Z
+  - '1999-12-31T23:59:59.999Z'
   date_end_tsim:
   - 1999
   date_facet_ssim:
@@ -786,14 +774,12 @@
   - bpl-dev:000000086
   flagged_content_ssi:
   - true
-  _version_:
-  - 1507587116485312500
   timestamp:
-  - 2015-07-24T14:11:52.72Z
+  - '2015-07-24T14:11:52.72Z'
 - system_create_dtsi:
-  - 2015-01-14T22:26:16Z
+  - '2015-01-14T22:26:16Z'
   system_modified_dtsi:
-  - 2015-06-03T14:39:18Z
+  - '2015-06-03T14:39:18Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -824,14 +810,12 @@
   - info:fedora/afmodel:Bplmodels_ImageFile
   checksum_file_md5_ssi:
   - 4d1595e5271ff5d107e73e119c6579bb
-  _version_:
-  - 1502968398198341600
   timestamp:
-  - 2015-06-03T14:39:19.732Z
+  - '2015-06-03T14:39:19.732Z'
 - system_create_dtsi:
-  - 2015-01-13T19:53:31Z
+  - '2015-01-13T19:53:31Z'
   system_modified_dtsi:
-  - 2015-02-18T18:31:16Z
+  - '2015-02-18T18:31:16Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -877,14 +861,12 @@
   - bpl-dev:4q77fr32b
   exemplary_image_ssi:
   - bpl-dev:df65v791t
-  _version_:
-  - 1493470309971394600
   timestamp:
-  - 2015-02-18T18:31:16.934Z
+  - '2015-02-18T18:31:16.934Z'
 - system_create_dtsi:
-  - 2014-12-26T20:02:13Z
+  - '2014-12-26T20:02:13Z'
   system_modified_dtsi:
-  - 2015-05-06T18:30:27Z
+  - '2015-05-06T18:30:27Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -930,14 +912,12 @@
   - bpl-dev:4q77fr32b
   exemplary_image_ssi:
   - bpl-dev:h702q642n
-  _version_:
-  - 1500446225003970600
   timestamp:
-  - 2015-05-06T18:30:27.934Z
+  - '2015-05-06T18:30:27.934Z'
 - system_create_dtsi:
-  - 2015-07-28T15:20:39Z
+  - '2015-07-28T15:20:39Z'
   system_modified_dtsi:
-  - 2015-07-28T16:56:48Z
+  - '2015-07-28T16:56:48Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -981,14 +961,12 @@
   - bpl-dev:4q77fr32b
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
-  _version_:
-  - 1507959881374630000
   timestamp:
-  - 2015-07-28T16:56:49.037Z
+  - '2015-07-28T16:56:49.037Z'
 - system_create_dtsi:
-  - 2015-07-28T15:20:36Z
+  - '2015-07-28T15:20:36Z'
   system_modified_dtsi:
-  - 2015-07-28T16:56:46Z
+  - '2015-07-28T16:56:46Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -1032,14 +1010,12 @@
   - bpl-dev:4q77fr32b
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
-  _version_:
-  - 1507959879964295200,
   timestamp:
-  - 2015-07-28T16:56:47.692Z
+  - '2015-07-28T16:56:47.692Z'
 - system_create_dtsi:
-  - 2014-12-26T20:02:10Z
+  - '2014-12-26T20:02:10Z'
   system_modified_dtsi:
-  - 2015-02-18T19:44:18Z
+  - '2015-02-18T19:44:18Z'
   object_state_ssi:
   - A
   active_fedora_model_ssi:
@@ -1096,7 +1072,5 @@
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
   institution_pid_ssi:
   - bpl-dev:4q77fr32b
-  _version_:
-  - 1493474904067014700
   timestamp:
-  - 2015-02-18T19:44:18.203Z
+  - '2015-02-18T19:44:18.203Z'
