@@ -79,7 +79,7 @@
             <% end %>
 
             <% # map for collections#show view %>
-            <% unless @response.facet_by_field_name(map_facet_field).items.empty? %>
+            <% unless @response.aggregations[map_facet_field].items.empty? %>
                 <div id="blacklight-collection-map-container">
                   <h4><%= t('blacklight.collections.map.title') %></h4>
                   <%= render :partial => 'catalog/index_map',
