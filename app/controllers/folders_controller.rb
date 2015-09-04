@@ -16,7 +16,7 @@ class FoldersController < CatalogController
 
   before_filter :verify_user, :except => [:index, :show, :public_list]
   before_filter :check_visibility, :only => [:show]
-  before_filter :correct_user, :only => [:update, :destroy]
+  before_filter :correct_user_for_folder, :only => [:update, :destroy]
 
   def index
     if current_user
@@ -25,7 +25,7 @@ class FoldersController < CatalogController
   end
 
   def show
-    # @folder is set by correct_user
+    # @folder is set by correct_user_for_folder
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
     params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
@@ -81,7 +81,7 @@ class FoldersController < CatalogController
   end
 
   def update
-    # @folder is set by correct_user
+    # @folder is set by correct_user_for_folder
     if @folder.update_attributes(folder_params)
       flash[:notice] = "Folder updated."
       redirect_to @folder
@@ -91,7 +91,7 @@ class FoldersController < CatalogController
   end
 
   def destroy
-    # @folder is set by correct_user
+    # @folder is set by correct_user_for_folder
     @folder.destroy
     flash[:notice] = t('blacklight.folders.delete.success')
     redirect_to :action => "index"
@@ -116,11 +116,11 @@ class FoldersController < CatalogController
     def check_visibility
       @folder = Bpluser::Folder.find(params[:id])
       if @folder.visibility != 'public'
-        correct_user
+        correct_user_for_folder
       end
     end
 
-    def correct_user
+    def correct_user_for_folder
       @folder ||= Bpluser::Folder.find(params[:id])
       if current_user
         flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)

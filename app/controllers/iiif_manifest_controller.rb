@@ -23,8 +23,8 @@ class IiifManifestController < CatalogController
       if image_files
         image_index = Hash[image_files.map.with_index.to_a][params[:canvas_object_id]]
         iiif_canvas = canvas_from_id(params[:canvas_object_id],
-                                          "image#{(image_index+1).to_s}",
-                                          document)
+                                     "image#{(image_index+1).to_s}",
+                                     document)
         render :json => iiif_canvas.to_json
       else
         not_found

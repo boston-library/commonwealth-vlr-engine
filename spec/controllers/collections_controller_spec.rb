@@ -83,7 +83,6 @@ describe CollectionsController do
       it "should set the correct facet params" do
         expect(@mock_controller.send(:set_collection_facet_params,'Carte de Visite Collection', @document)[blacklight_config.collection_field][0]).to eq('Carte de Visite Collection')
       end
-
     end
 
   end
