@@ -65,6 +65,7 @@ describe CollectionsController do
       @mock_controller.request = ActionDispatch::TestRequest.new
       @collection_pid = 'bpl-dev:h702q636h'
       @collection_image_pid = 'bpl-dev:h702q642n'
+      @document = {blacklight_config.institution_field.to_sym => 'Boston Public Library'}
     end
 
     describe "get_collection_image_info" do

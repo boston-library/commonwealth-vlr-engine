@@ -1,8 +1,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 
 require 'engine_cart'
-#require 'coveralls'
-#Coveralls.wear!('rails')
+require 'coveralls'
+Coveralls.wear!('rails')
 EngineCart.load_application!
 
 require 'capybara/poltergeist'
