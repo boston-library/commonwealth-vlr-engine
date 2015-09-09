@@ -25,15 +25,14 @@ en:
           banner:
             center_text: 'Explore historical collections from this totally awesome library.'
           browse:
-            sections:
-              maps:
-                enabled: true
-              collections:
-                enabled: true
-              institutions:
-                enabled: false
-              formats:
-                enabled: true
+            maps:
+              enabled: true
+            collections:
+              enabled: true
+            institutions:
+              enabled: false
+            formats:
+              enabled: true
           context:
             about:
               title: 'About This Site'

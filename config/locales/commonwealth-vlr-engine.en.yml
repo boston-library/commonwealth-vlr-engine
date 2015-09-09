@@ -86,7 +86,7 @@ en:
           form:
             title: 'Email'
             message: 'Comments:'
-          reply_to: '%{message}'
+          reply_to: 'somebody@example.org'
           record_mailer:
             name: 'Totally Awesome Library'
             email: 'somebody@example.org'
@@ -292,6 +292,8 @@ en:
             title: 'About'
           contact:
             title: 'Contact Us'
+          explore:
+            title: 'Explore'
 
     saved_searches:
           clear:
