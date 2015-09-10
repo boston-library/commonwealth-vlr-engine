@@ -41,6 +41,8 @@ contact_emails.yml
 iiif_server.yml
 secrets.yml
 blacklight.yml
+# remove coveralls.yml once CI server set up
+.coveralls.yml
 
 # Files to ignore by default in Git #
 #####################################
