@@ -10,9 +10,8 @@ Capybara.javascript_driver = :poltergeist
 
 Capybara.register_driver :poltergeist do |app|
   options = {}
-
+  options[:js_errors] = false
   options[:timeout] = 120 if RUBY_PLATFORM == "java"
-
   Capybara::Poltergeist::Driver.new(app, options)
 end
 

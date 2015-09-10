@@ -5,7 +5,7 @@
 $(document).ready(function() {
 
   $('#appliedParams').find('a').attr('href', function(index,previousValue) {
-    return previousValue.replace(/search/,'institutions');
+    return previousValue.replace(/search\?/,'institutions?');
   });
 
 });

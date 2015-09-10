@@ -39,17 +39,8 @@ body.blacklight-catalog-index {
       background-color: #E2EDFE;
     }
 
-    /* need to use background image here rather than CSS 'content'
-    /* which doesn't work in iOS */
-    .filterName {
-      background: asset-url('blacklight/separator.gif') no-repeat right center;
-      padding-right:14px;
-
-      &:after {
-        content: none;
-        padding-left: 2px;
-      }
-
+    .filterName:after {
+      padding-left: 2px;
     }
 
   }

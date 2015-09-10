@@ -230,6 +230,10 @@ en:
           nav: 'Institutions'
           title: 'Institutions'
 
+    maps:
+          interactions:
+            institutions_search: 'View institutions from this location'
+
     metadata_display:
           date_range_connector: '–'
           fields:

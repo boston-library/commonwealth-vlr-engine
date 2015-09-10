@@ -1,5 +1,7 @@
 # CommonwealthVlrEngine
 
+[![Coverage Status](https://coveralls.io/repos/boston-library/Commonwealth-public-interface/badge.svg?branch=master&service=github)](https://coveralls.io/github/boston-library/Commonwealth-public-interface?branch=master)
+
 A plugin for Blacklight that provides base functionality for virtual local repositories (VLRs) pulling content from the main [Digital Commonwealth](http://digitalcommonwealth.org) repository managed by the Boston Public Library.
 
 More documentation coming soon. This project is currently in high development and in a very beta state.

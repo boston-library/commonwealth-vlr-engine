@@ -152,6 +152,8 @@
   - "Ancillary maps and insets: Principal motor routes in and out of Boston -- Do Not Turn -- Eaxtracts from \"City of Boston Street Traffic Regulations.\""
   title_info_primary_tsi:
   - Boston traffic map showing one way streets and parking spaces
+  title_info_primary_ssort:
+  - Boston traffic map showing one way streets and parking spaces
   workflow_state_ssi:
   - published
   processing_state_ssi:
@@ -358,6 +360,8 @@
   - Date supplied by cataloger.
   title_info_primary_tsi:
   - Beauregard
+  title_info_primary_ssort:
+  - Beauregard
   workflow_state_ssi:
   - published
   processing_state_ssi:
@@ -559,6 +563,8 @@
   note_acquisition_tsim:
   - Gift of the family of William L. Garrison, August 31, 1899.
   title_info_primary_tsi:
+  - George Thompson
+  title_info_primary_ssort:
   - George Thompson
   workflow_state_ssi:
   - published
@@ -764,6 +770,8 @@
   - New standard index map of Boston
   title_info_primary_tsi:
   - Guide map of Boston
+  title_info_primary_ssort:
+  - Guide map of Boston
   title_info_alternative_label_ssm:
   - Cover title
   workflow_state_ssi:
@@ -845,6 +853,8 @@
   - Collection
   title_info_primary_tsi:
   - Norman B. Leventhal Map Center Collection
+  title_info_primary_ssort:
+  - Norman B. Leventhal Map Center Collection
   workflow_state_ssi:
   - published
   abstract_tsim:
@@ -895,6 +905,8 @@
   active_fedora_model_suffix_ssi:
   - Collection
   title_info_primary_tsi:
+  - Carte de Visite Collection
+  title_info_primary_ssort:
   - Carte de Visite Collection
   workflow_state_ssi:
   - published
@@ -947,6 +959,8 @@
   - Collection
   title_info_primary_tsi:
   - Anti-Slavery Collection
+  title_info_primary_ssort:
+  - Anti-Slavery Collection
   workflow_state_ssi:
   - published
   physical_location_ssim:
@@ -996,6 +1010,8 @@
   - Collection
   title_info_primary_tsi:
   - Cased Photographs
+  title_info_primary_ssort:
+  - Cased Photographs
   workflow_state_ssi:
   - published
   physical_location_ssim:
@@ -1037,6 +1053,8 @@
   active_fedora_model_suffix_ssi:
   - Institution
   title_info_primary_tsi:
+  - Boston Public Library
+  title_info_primary_ssort:
   - Boston Public Library
   workflow_state_ssi:
   - published
