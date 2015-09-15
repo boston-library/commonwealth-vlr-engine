@@ -1,10 +1,11 @@
-# stores location of static file with GeoJSON FeatureCollection for catalog#map
+# stores path to static file with GeoJSON FeatureCollection for catalog#map
+# Rails.root.to_s + '/' must be appended by methods calling this value (makes specs easier)
 
 development:
-  filepath: './lib/assets/static_geojson_catalog-map.json'
+  filepath: 'lib/assets/static_geojson_catalog-map.json'
 
 test:
-  filepath: './lib/assets/static_geojson_catalog-map.json'
+  filepath: 'lib/assets/static_geojson_catalog-map.json'
 
 production:
-  filepath: './lib/assets/static_geojson_catalog-map.json'
+  filepath: 'lib/assets/static_geojson_catalog-map.json'

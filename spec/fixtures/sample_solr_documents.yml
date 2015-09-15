@@ -1092,3 +1092,571 @@
   - bpl-dev:abcd12345
   timestamp:
   - '2015-02-18T19:44:18.203Z'
+- system_create_dtsi:
+  - '2015-01-14T22:25:38Z'
+  system_modified_dtsi:
+  - '2015-07-24T14:11:53Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Map
+  id:
+  - bpl-dev:00000003t
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:25:38Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":413,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000003t+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"431e0bc295a865291d2838e4e50f0653\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:11:53Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000003t+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"61d17b9bd8467ab46df23a700842d265\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:25:38Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000003t+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:25:38Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":6493,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000003t+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c2bc04789c235cf19a8b20fbc8bd1086\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-01-14T22:27:29Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1041,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:00000003t+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"b8be209bc8c74392536a8c4e70398187\"}},\"objLabel\":\"Map of the county of Norfolk, Massachusetts\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/afmodel:Bplmodels_Map\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:25:38Z\",\"objLastModDate\":\"2015-01-14T22:27:29Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A00000003t/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A00000003t/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:00000003t
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Map
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:000000000
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:000000000
+  label_ssim:
+  - Map of the county of Norfolk, Massachusetts
+  date_start_dtsi:
+  - '1858-01-01T00:00:00Z'
+  date_start_tsim:
+  - 1858
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1850s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - nil
+  date_facet_yearly_ssim:
+  - 1858s
+  table_of_contents_tsi:
+  - "Inset maps: Jamaica Plain -- Brookline -- Geological map of Norfolk County, Mass. -- West Medway -- Medway -- South Dedham -- Dedham -- East Medway -- West Dedham -- Wrentham -- Bellingham -- Harrison Squares, Commercial Point (Dorchester) -- Meeting House Hill (Dorchester) -- Neponset & Port Norfolk, Dorchester -- Lower Mills, Dorchester & Milton -- Fairmount (Milton) -- Newton Lower Falls -- Railway Village -- Braintree, South Braintree -- Dorchester -- Upper Mills -- Foxborough -- East Stoughton -- Sheldonville -- Medfield -- Stoughton -- South Canton -- Randolph -- West Roxbury -- Franklin -- Sharon -- Quincy Point -- West Quincy -- North Weymouth -- South Randolph -- Ponkapog (Canton) -- East Weymouth -- East Braintree and Weymouth Landing -- Quincy -- Cohassett -- Roxbury with portions of Dorchester, W. Roxbury & c -- Walpole -- South Weymouth -- South Walpole -- Plimptonville & East Walpole."
+  genre_basic_tsim:
+  - Maps
+  genre_basic_ssim:
+  - Maps
+  identifier_local_barcode_tsim:
+  - 39999058999747
+  collection_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  collection_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  collection_pid_ssm:
+  - bpl-dev:000000000
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:abcd12345
+  admin_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_pid_ssm:
+  - bpl-dev:000000000
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/00000003t
+  publisher_tsim:
+  - Smith & Bumstead
+  pubplace_tsim:
+  - New York
+  issuance_tsim:
+  - monographic
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Norman B. Leventhal Map Center Collection
+  related_item_host_ssim:
+  - Norman B. Leventhal Map Center Collection
+  name_personal_tsim:
+  - Walling, Henry Francis, 1825-1888
+  name_personal_role_tsim:
+  - Creator
+  name_facet_ssim:
+  - Walling, Henry Francis, 1825-1888
+  type_of_resource_ssim:
+  - cartographic
+  extent_tsi:
+  - '1 map : col. ; 146 x 155 cm.'
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Norman B. Leventhal Map Center
+  subject_topic_tsim:
+  - Real property--Massachusetts--Norfolk County--Maps
+  - Landowners--Massachusetts--Norfolk County--Maps
+  - Norfolk County (Mass.)--Maps
+  subject_geo_country_ssim:
+  - United States
+  subject_geo_state_ssim:
+  - Massachusetts
+  subject_geo_county_ssim:
+  - Norfolk
+  subject_geographic_tsim:
+  - United States
+  - Massachusetts
+  - Norfolk
+  subject_geographic_ssim:
+  - United States
+  - Massachusetts
+  - Norfolk (county)
+  subject_scale_tsim:
+  - Scale [ca. 1:40,000]
+  subject_coordinates_geospatial:
+  - 42.1667,-71.25
+  subject_point_geospatial:
+  - 42.1667,-71.25
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.25,42.1667]},\"properties\":{\"placename\":\"Norfolk (county), MA\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.25,42.1667]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Norfolk\"}}"
+  subject_facet_ssim:
+  - Real property--Massachusetts--Norfolk County--Maps
+  - Landowners--Massachusetts--Norfolk County--Maps
+  - Norfolk County (Mass.)--Maps
+  active_fedora_model_suffix_ssi:
+  - Map
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - This work is licensed for use under a Creative Commons Attribution Non-Commercial Share Alike License (CC BY-NC-SA).
+  note_tsim:
+  - Relief shown by hachures.
+  - Shows land ownership, roads, railroads, mills, schools, etc.
+  - Includes 4 views of residences and boot factory, a table of distances, business directory and statistical table.
+  note_resp_tsim:
+  - the details from actual surveys under the direction of Henry F. Walling ; engraved, printed, colored & mounted at H.F. Walling's map establishment.
+  title_info_primary_tsi:
+  - Map of the county of Norfolk, Massachusetts
+  title_info_primary_ssort:
+  - Map of the county of Norfolk, Massachusetts
+  subtitle_tsim:
+  - based upon the trigonometrical survey of the state
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:000000043
+  timestamp:
+  - '2015-07-24T14:11:56.036Z'
+- system_create_dtsi:
+  - '2015-01-20T21:19:57Z'
+  system_modified_dtsi:
+  - '2015-07-24T14:12:00Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Map
+  id:
+  - bpl-dev:qf85nb285
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-20T21:19:57Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":408,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb285+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c21f989b08aa51064820c82739be9324\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:12:00Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb285+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3aa39961ab8b95b1c59ccb6073019e9f\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-20T21:19:58Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb285+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-01-20T21:19:58Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4447,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb285+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f9d4cd028a91acf8b9a7b09ff6d05054\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-01-20T21:20:44Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1041,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb285+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"df82463cd9638e48b18755482bba71e4\"}},\"objLabel\":\"A map of part of the Isthmus of Darien\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/afmodel:Bplmodels_Map\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-20T21:19:57Z\",\"objLastModDate\":\"2015-01-20T21:20:44Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aqf85nb285/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aqf85nb285/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  title_info_nonSort_ssm:
+  - A
+  title_info_0_nonSort_ssm:
+  - A
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:qf85nb285
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Map
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:000000000
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:000000000
+  label_ssim:
+  - A map of part of the Isthmus of Darien
+  date_start_dtsi:
+  - '1700-01-01T00:00:00Z'
+  date_start_tsim:
+  - 1700
+  date_end_dtsi:
+  - '1799-12-31T23:59:59.999Z'
+  date_end_tsim:
+  - 1799
+  date_facet_ssim:
+  - 1700s
+  - 1710s
+  - 1720s
+  - 1730s
+  - 1740s
+  - 1750s
+  - 1760s
+  - 1770s
+  - 1780s
+  - 1790s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - inferred
+  genre_basic_tsim:
+  - Maps
+  genre_basic_ssim:
+  - Maps
+  identifier_local_barcode_tsim:
+  - 39999059004596
+  collection_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  collection_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  collection_pid_ssm:
+  - bpl-dev:000000000
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:abcd12345
+  admin_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_pid_ssm:
+  - bpl-dev:000000000
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/qf85nb285
+  issuance_tsim:
+  - monographic
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Norman B. Leventhal Map Center Collection
+  related_item_host_ssim:
+  - Norman B. Leventhal Map Center Collection
+  type_of_resource_ssim:
+  - cartographic
+  extent_tsi:
+  - '1 ms. map : col. ; 38 x 70 cm.'
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Norman B. Leventhal Map Center
+  subject_topic_tsim:
+  - Panama, Isthmus of (Panama)--Maps, Manuscript
+  subject_geo_country_ssim:
+  - Panama
+  subject_geographic_tsim:
+  - Panama
+  - Panama, Isthmus of
+  subject_geographic_ssim:
+  - Panama
+  - Panama, Isthmus of
+  subject_scale_tsim:
+  - Scale [ca. 1:190,080]
+  subject_coordinates_geospatial:
+  - 9,-80
+  subject_point_geospatial:
+  - 9,-80
+  subject_geojson_facet_ssim:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80.0,9.0]},\"properties\":{\"placename\":\"Panama, Isthmus of, Panama\"}}"
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80.0,9.0]},\"properties\":{\"country\":\"Panama\",\"other\":\"Panama, Isthmus of\"}}"
+  subject_facet_ssim:
+  - Panama, Isthmus of (Panama)--Maps, Manuscript
+  active_fedora_model_suffix_ssi:
+  - Map
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - This work is licensed for use under a Creative Commons Attribution Non-Commercial Share Alike License (CC BY-NC-SA).
+  note_tsim:
+  - Oriented with north to the bottom.
+  - Includes names of towns and rivers.
+  title_info_primary_tsi:
+  - A map of part of the Isthmus of Darien
+  title_info_primary_ssort:
+  - A map of part of the Isthmus of Darien
+  subtitle_tsim:
+  - shewing the communication with Panama, from Portobello & Chagre both by land, and by water
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:qf85nb29f
+  timestamp:
+  - '2015-07-24T14:12:04.869Z'
+- system_create_dtsi:
+  - '2015-01-14T22:28:28Z'
+  system_modified_dtsi:
+  - '2015-07-24T14:11:50Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Map
+  id:
+  - bpl-dev:df65v788h
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:28:28Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":565,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v788h+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"b9c0ba791e4d834cc08fc88cadd41064\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-07-24T14:11:50Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1021,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v788h+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"14a054211b42bccc58f565ed8d71aac5\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:28:28Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v788h+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:28:28Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5414,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v788h+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"23ebec2c037c94bfe79e24806cced85b\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-01-14T22:29:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1041,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v788h+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"23d072cc45c1fe4096a303dcc9b6fabe\"}},\"objLabel\":\"Map of the North Sea and lands as known in popular geography, 1877, with an original identification of the Frisland, Islanda, Crolandia, St. Thomas, Podanda, and Duilo of the Zeni map and voyages\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/afmodel:Bplmodels_SimpleObjectBase\",\"info:fedora/afmodel:Bplmodels_Map\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:28:28Z\",\"objLastModDate\":\"2015-01-14T22:29:02Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v788h/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v788h/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:df65v788h
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Map
+  - info:fedora/afmodel:Bplmodels_SimpleObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:000000000
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:000000000
+  label_ssim:
+  - Map of the North Sea and lands as known in popular geography, 1877, with an original identification of the Frisland, Islanda, Crolandia, St. Thomas, Podanda, and Duilo of the Zeni map and voyages
+  date_start_dtsi:
+  - '1877-01-01T00:00:00Z'
+  date_start_tsim:
+  - 1877
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1870s
+  date_type_ssm:
+  - dateCreated
+  date_start_qualifier_ssm:
+  - nil
+  date_facet_yearly_ssim:
+  - 1877s
+  genre_basic_tsim:
+  - Maps
+  genre_basic_ssim:
+  - Maps
+  identifier_local_barcode_tsim:
+  - 39999065645176
+  collection_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  collection_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  collection_pid_ssm:
+  - bpl-dev:000000000
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:abcd12345
+  admin_set_name_ssim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_name_tsim:
+  - Norman B. Leventhal Map Center Collection
+  admin_set_pid_ssm:
+  - bpl-dev:000000000
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/df65v788h
+  publisher_tsim:
+  - [George E. Emery]
+  pubplace_tsim:
+  - Lynn, MA
+  issuance_tsim:
+  - monographic
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Norman B. Leventhal Map Center Collection
+  related_item_host_ssim:
+  - Norman B. Leventhal Map Center Collection
+  name_personal_tsim:
+  - Zeno, Niccolò, d. ca. 1395
+  - Zeno, Antonio, d. ca. 1405
+  name_personal_role_tsim:
+  - Creator
+  name_facet_ssim:
+  - Zeno, Niccolò, d. ca. 1395
+  - Zeno, Antonio, d. ca. 1405
+  type_of_resource_ssim:
+  - cartographic
+  extent_tsi:
+  - '1 map ; 11 x 20 cm., on sheet 19 x 26 cm.'
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/tiff
+  - image/jpeg
+  - image/jp2
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  sub_location_tsim:
+  - Norman B. Leventhal Map Center
+  subject_topic_tsim:
+  - Arctic regions--Maps
+  - North Sea--Maps
+  subject_geo_area_ssim:
+  - Arctic
+  subject_geographic_tsim:
+  - Arctic
+  - North Sea (sea)
+  subject_geographic_ssim:
+  - Arctic
+  - North Sea (sea)
+  subject_scale_tsim:
+  - Scale not given.
+  subject_hiergeo_geojson_ssm:
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\"},\"properties\":{\"area\":\"Arctic\"}}"
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\"},\"properties\":{\"other\":\"North Sea (sea)\"}}"
+  subject_facet_ssim:
+  - Arctic regions--Maps
+  - North Sea--Maps
+  active_fedora_model_suffix_ssi:
+  - Map
+  rights_ssm:
+  - No known copyright restrictions.
+  license_ssm:
+  - This work is licensed for use under a Creative Commons Attribution Non-Commercial Share Alike License (CC BY-NC-SA).
+  note_resp_tsim:
+  - by G. E. Emery.
+  title_info_primary_tsi:
+  - Map of the North Sea and lands as known in popular geography, 1877, with an original identification of the Frisland, Islanda, Crolandia, St. Thomas, Podanda, and Duilo of the Zeni map and voyages
+  title_info_primary_ssort:
+  - Map of the North Sea and lands as known in popular geography, 1877, with an original identification of the Frisland, Islanda, Crolandia, St. Thomas, Podanda, and Duilo of the Zeni map and voyages
+  subtitle_tsim:
+  - "1380 -- together with the true locality of the Lost East Greenland Colony; also, the Hvidserk, Blaaserk, North Bottome, Furderstranda and Western Sea of the Icelandic Sagas, etc., as located from historical investigations by George E. Emery"
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:df65v789s
+  timestamp:
+  - '2015-07-24T14:11:53.292Z'
+- system_create_dtsi:
+  - '2015-01-14T22:24:09Z'
+  system_modified_dtsi:
+  - '2015-06-03T14:40:21Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:000000043
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:24:09Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"eef4e1cd483e1553f49b35c0b56048f4\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-14T22:24:09Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"5ca37a41376da48deae3098a5a62f911\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:24:09Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"06_01_003248\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-01-14T22:24:21Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":595418604,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"80b38155d6f84f05551fee9f15501fad\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:25:37Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":878,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"272da705615eee23868c66051db9d745\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-01-14T22:26:28Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4653,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"f82d7c2cc3ad6e5af274b044a3def63e\"},\"accessMaster\":{\"dsLabel\":\"06_01_003248\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-01-14T22:27:25Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":59437629,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a4d574f50f54861d34ccdf18a40c2127\"},\"thumbnail300\":{\"dsLabel\":\"06_01_003248\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-01-14T22:27:27Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":68435,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"63a5016465047016da23462e1b655b97\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"06_01_003248\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-06-03T14:40:21Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":297144,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:000000043+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"7a96f4abb987c53f7d600a9e21e99ce4\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"06_01_003248.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:24:09Z\",\"objLastModDate\":\"2015-01-14T22:27:27Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000043/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A000000043/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:00000003t
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:00000003t
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:00000003t
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 80b38155d6f84f05551fee9f15501fad
+  timestamp:
+  - '2015-06-03T14:40:22.489Z'
+- system_create_dtsi:
+  - '2015-01-14T22:28:10Z'
+  system_modified_dtsi:
+  - '2015-05-22T20:46:37Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:df65v789s
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-14T22:28:10Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"1b413d02db787c80bb03038da159516d\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-14T22:28:11Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c3e577abcb03379ac2aafd7164733092\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:28:11Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"06_01_007541\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-01-14T22:28:12Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":82696896,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"6b05f66dc1b335192c565cb42209c92f\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-14T22:28:27Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":878,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"94f5102e86d4d2a221910aae77417779\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-01-14T22:28:50Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4888,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"c85c146dfa7acc5813a4c4849085d510\"},\"accessMaster\":{\"dsLabel\":\"06_01_007541\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-01-14T22:29:00Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":8293247,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"db73b24207e5178a3c37cae42f6d71ed\"},\"thumbnail300\":{\"dsLabel\":\"06_01_007541\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-01-14T22:29:01Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":48765,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"79ed1335c1cba4bdfb3109a43b94b11c\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"06_01_007541\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-05-22T20:46:37Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":287042,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:df65v789s+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"cccb6031290e9401c562a5ce5ae657f1\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"06_01_007541.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-14T22:28:10Z\",\"objLastModDate\":\"2015-01-14T22:29:01Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v789s/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Adf65v789s/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:df65v788h
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:df65v788h
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:df65v788h
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 6b05f66dc1b335192c565cb42209c92f
+  timestamp:
+  - '2015-05-22T20:46:38.438Z'
+- system_create_dtsi:
+  - '2015-01-20T21:19:39Z'
+  system_modified_dtsi:
+  - '2015-05-22T20:47:13Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:qf85nb29f
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-01-20T21:19:39Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":386,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"9c2ff62a0036484d760b7099a310e99c\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-01-20T21:19:40Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":828,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"b3c9aecd008f4aa4394edae5207cfb2f\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-01-20T21:19:41Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":607,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d3858dbe7e743c5d8ae54e89d4c25223\"},\"productionMaster\":{\"dsLabel\":\"06_01_004165\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-01-20T21:19:43Z\",\"dsState\":\"A\",\"dsMIME\":\"image/tiff\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":96343832,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"0c9835f219952d5c641cd516b58aa0b4\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-01-20T21:19:55Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":878,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"83c5b54b9778930571a76c27f9b61278\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-01-20T21:20:32Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5013,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"a04d676a48cda57f4c12d9407d5f55f3\"},\"accessMaster\":{\"dsLabel\":\"06_01_004165\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-01-20T21:20:40Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":9626169,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"d144035050617e6708299f37b4ccfa1a\"},\"thumbnail300\":{\"dsLabel\":\"06_01_004165\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-01-20T21:20:42Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":45152,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"3dd77710324e24def9c6ea2f7a9f5467\"},\"preProductionNegativeMaster\":{},\"access800\":{\"dsLabel\":\"06_01_004165\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-05-22T20:47:13Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":307439,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:qf85nb29f+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"MD5\",\"dsChecksum\":\"0a1119dc9107a100206a4c39f8e0414f\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"06_01_004165.tif\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-01-20T21:19:39Z\",\"objLastModDate\":\"2015-01-20T21:20:42Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aqf85nb29f/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Aqf85nb29f/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/tiff
+  identification_0_identity_0_mime_type_tesim:
+  - image/tiff
+  mime_type_tesim:
+  - image/tiff
+  is_exemplary_image_of_ssim:
+  - info:fedora/bpl-dev:qf85nb285
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:qf85nb285
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:qf85nb285
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  checksum_file_md5_ssi:
+  - 0c9835f219952d5c641cd516b58aa0b4
+  timestamp:
+  - '2015-05-22T20:47:13.842Z'
