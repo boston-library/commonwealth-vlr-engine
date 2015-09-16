@@ -179,7 +179,7 @@ module CommonwealthVlrEngine
     end
 
     def get_file_parent_object(file_pid)
-      solr_response = repository.search({:q => "id:\"info\:fedora/#{file_pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_File\""})
+      solr_response = repository.search({:q => "id:\"#{file_pid}\" AND has_model_ssim:\"info:fedora/afmodel:Bplmodels_File\""})
 
       solr_response.documents.each do |solr_object|
         return solr_object['is_file_of_ssim'].first.split('/')[1]
