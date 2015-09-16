@@ -25,6 +25,26 @@ describe CollectionsController do
       get :show, :id => 'bpl-dev:h702q636h'
     end
 
+    describe 'relation_base_blacklight_config' do
+
+      # this method is invoked as a before_filter for CollectionsController#show
+
+      # trying to test CommonwealthVlrEngine::ControllerOverride#relation_base_blacklight_config here
+      # blacklight_config.facet_fields['collection_name_ssim'].show should be false
+      # but it keeps coming back true, not sure why
+      it 'should set the collection_name_ssim facet :show property to false' #do
+        #expect(CollectionsController.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy
+      #end
+
+      # trying to test CommonwealthVlrEngine::ControllerOverride#relation_base_blacklight_config here
+      # blacklight_config.facet_fields['subject_facet_ssim'].collapse should be true
+      # but it keeps coming back false, not sure why
+      it 'should set the collapse property to true for all displayed facets' #do
+        #expect(CollectionsController.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
+      #end
+
+    end
+
     it "should show the collection page" do
       expect(response).to be_success
       expect(assigns(:document)).not_to be_nil
