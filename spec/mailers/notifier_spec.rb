@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Notifier do
+describe CommonwealthVlrEngine::Notifier do
 
   describe "feedback" do
 
