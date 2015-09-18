@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe CommonwealthVlrEngine::RenderConstraintsOverride do
 
-  class CommonwealthVlrEngineControllerTestClass < CatalogController
+  class RenderConstraintsOverrideTestClass < CatalogController
     attr_accessor :params
   end
 
   before(:each) do
-    @fake_controller = CommonwealthVlrEngineControllerTestClass.new
+    @fake_controller = RenderConstraintsOverrideTestClass.new
     @fake_controller.extend(CommonwealthVlrEngine::RenderConstraintsOverride)
     @fake_controller.params = { mlt_id: 'bpl-dev:h702q6403' }
   end

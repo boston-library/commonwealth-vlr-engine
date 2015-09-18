@@ -49,6 +49,7 @@ module CommonwealthVlrEngine
     end
 
     #from psu scholarsphere
+    # TODO: this isn't used anywhere in the app, get rid of it?
     def link_to_field(fieldname, fieldvalue, displayvalue = nil)
       p = {:search_field => fieldname, :q => '"'+fieldvalue+'"'}
       link_url = catalog_index_path(p)
