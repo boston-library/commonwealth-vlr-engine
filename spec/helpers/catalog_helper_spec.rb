@@ -10,14 +10,15 @@ describe CatalogHelper do
 
   #let(:test_controller) { CatalogHelperTestClass.new }
 
-  class FinderTestClass
-    cattr_accessor :blacklight_config
+  class FinderTestClass < CatalogController
+    cattr_accessor :blacklight_config, :controller_name
 
     include Blacklight::SearchHelper
     include CommonwealthVlrEngine::Finder
 
     def initialize blacklight_config
       self.blacklight_config = blacklight_config
+      self.controller_name = 'catalog'
     end
 
   end
@@ -35,6 +36,7 @@ describe CatalogHelper do
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
+
 #    @fake_controller = RenderConstraintsOverrideTestClass.new
 #    @fake_controller.extend(CommonwealthVlrEngine::RenderConstraintsOverride)
 #    @fake_controller.params = { mlt_id: 'bpl-dev:h702q6403' }
@@ -42,20 +44,33 @@ describe CatalogHelper do
 
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
-  let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
   let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
   let(:files_hash) { finder_test_class.get_files(item_pid) }
 
-  describe '#cc_terms_code' do
-    it 'should return the right value' do
-      expect(helper.cc_terms_code(license)).to eq('by-nc-nd')
-    end
-  end
+  describe 'Creative Commons license helpers' do
 
-  describe '#cc_url' do
-    it 'should return the right value' do
-      expect(helper.cc_url(license)).to eq('http://creativecommons.org/licenses/by-nc-nd/3.0')
+    let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
+    let (:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/3.0' }
+
+    describe '#cc_terms_code' do
+      it 'should return the right value' do
+        expect(helper.cc_terms_code(license)).to eq('by-nc-nd')
+      end
     end
+
+    describe '#cc_url' do
+      it 'should return the right value' do
+        expect(helper.cc_url(license)).to eq(cc_url)
+      end
+    end
+
+    describe '#render_cc_license' do
+      it 'should render the CC link and image' do
+        expect(helper.render_cc_license(license)).to include('href="' + cc_url)
+        expect(helper.render_cc_license(license)).to include('src="//i.creativecommons.org/l/')
+      end
+    end
+
   end
 
   describe '#collection_gallery_url' do
@@ -105,6 +120,109 @@ describe CatalogHelper do
       it 'should return true if there are documents, audio, or generic files' do
         expect(helper.has_downloadable_files?(files_hash)).to be_truthy
       end
+    end
+
+  end
+
+  describe '#has_image_files?' do
+    it 'should return an array of ImageFile pids' do
+      expect(helper.has_image_files?(files_hash).length).to eq(2)
+      expect(helper.has_image_files?(files_hash).first).to eq(image_pid)
+    end
+  end
+
+  describe 'collection link helpers' do
+
+    let(:doc_with_two_cols) { Blacklight.default_index.search({:q => 'id:"bpl-dev:g445cd14k"', :rows => 1}).documents.first }
+
+    describe '#index_collection_link' do
+
+      describe 'for an item with one collection affiliation' do
+        it 'should render the collection link' do
+          expect(helper.index_collection_link({document: document})).to include('<a href="/collections/bpl-dev:h702q636h')
+        end
+      end
+
+      describe 'for an item with two collection affiliations' do
+        it 'should render two collection links' do
+          expect(helper.index_collection_link({document: doc_with_two_cols}).scan(/<a href="\/collections/).length).to eq(2)
+        end
+      end
+
+    end
+
+    describe '#setup_collection_links' do
+
+      describe 'for an item with one collection affiliation' do
+        it 'should return a single link' do
+          expect(helper.setup_collection_links(document).length).to eq(1)
+        end
+      end
+
+      describe 'for an item with two collection affiliations' do
+        it 'should render two collection links' do
+          expect(helper.setup_collection_links(doc_with_two_cols).length).to eq(2)
+        end
+      end
+
+    end
+
+  end
+
+  describe '#index_relation_base_icon' do
+
+    let(:coll_doc) { Blacklight.default_index.search({:q => 'id:"bpl-dev:h702q636h"', :rows => 1}).documents.first }
+
+    before do
+      allow(helper).to receive(:document_index_view_type).and_return('index')
+      allow(helper).to receive_messages(controller: finder_test_class)
+    end
+
+    it 'should return a collection icon' do
+      expect(helper.index_relation_base_icon(coll_doc)).to include('dc_collection-icon.png')
+    end
+
+  end
+
+  describe '#index_slideshow_img_url' do
+    it 'should return a IIIF image URL if there is an exemplary image' do
+      expect(helper.index_slideshow_img_url(document)).to eq("#{IIIF_SERVER['url']}#{image_pid}/full/,500/0/default.jpg")
+    end
+  end
+
+  describe '#index_title_length' do
+    it 'should return the default length if no params[:view] is present' do
+      expect(helper.index_title_length).to eq(130)
+    end
+  end
+
+  describe '#institution_icon_path' do
+    it 'should return the right value' do
+      expect(helper.institution_icon_path).to include('dc_institution-icon.png')
+    end
+  end
+
+  describe '#normalize_date' do
+    it 'should return normalized date values' do
+      expect(helper.normalize_date('2015-07-05')).to eq('July 5, 2015')
+      expect(helper.normalize_date('2015-07')).to eq('July 2015')
+    end
+  end
+
+  describe '#render_hiergo_subject' do
+
+    before { @rendered_hiergeo = helper.render_hiergo_subject(document[:subject_hiergeo_geojson_ssm].first, ' | ') }
+
+    it 'should return a set of links to geographic subjects' do
+      expect(@rendered_hiergeo.scan(/href=\"\/search\?f%5Bsubject_geographic_ssim/).length).to eq(3)
+    end
+
+    it 'should join the links using the separator' do
+      expect(@rendered_hiergeo.scan(/<span> \| <\/span>/).length).to eq(2)
+    end
+
+    it 'should add the county label to the county value' do
+      expect(@rendered_hiergeo).to include(' (county)')
     end
 
   end
