@@ -56,9 +56,9 @@ module CommonwealthVlrEngine
     end
 
     def extra_body_classes
-      @extra_body_classes ||= ['blacklight-' + controller.controller_name, 'blacklight-' + [controller.controller_name, controller.action_name].join('-')]
+      @extra_body_classes ||= ['blacklight-' + controller_name, 'blacklight-' + [controller_name, controller.action_name].join('-')]
       # if this is the home page
-      if controller.controller_name == 'pages' && controller.action_name =='home'
+      if controller_name == 'pages' && action_name =='home'
         @extra_body_classes.push('blacklight-home')
       else
         @extra_body_classes
@@ -103,7 +103,7 @@ module CommonwealthVlrEngine
     def index_relation_base_icon document
       if document[blacklight_config.view_config(document_index_view_type).display_type_field]
         display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
-        if controller.controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
+        if controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
           image_tag("commonwealth-vlr-engine/dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
         else
           ''

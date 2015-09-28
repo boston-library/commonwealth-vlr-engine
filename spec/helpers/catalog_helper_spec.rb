@@ -3,49 +3,30 @@ require 'spec_helper'
 describe CatalogHelper do
 
   include Blacklight::SearchHelper
-  #include CommonwealthVlrEngine::Finder
-
-  #class CatalogHelperTestClass < CatalogController
-  #end
-
-  #let(:test_controller) { CatalogHelperTestClass.new }
 
   class FinderTestClass < CatalogController
-    cattr_accessor :blacklight_config, :controller_name
+    cattr_accessor :blacklight_config
 
     include Blacklight::SearchHelper
     include CommonwealthVlrEngine::Finder
 
     def initialize blacklight_config
       self.blacklight_config = blacklight_config
-      self.controller_name = 'catalog'
     end
 
   end
 
   let(:blacklight_config) { CatalogController.blacklight_config }
-
   let(:finder_test_class) { FinderTestClass.new blacklight_config }
-
-#  before do
-#    @obj = FinderTestClass.new blacklight_config
-#    @item_pid = 'bpl-dev:h702q6403'
-#    @image1_pid = 'bpl-dev:h702q641c'
-#    @image2_pid = 'bpl-dev:h702q642n'
-#  end
+  let(:item_pid) { 'bpl-dev:h702q6403' }
+  let(:image_pid) { 'bpl-dev:h702q641c' }
+  let (:collection_pid) { 'bpl-dev:h702q636h' }
+  let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
+  let(:files_hash) { finder_test_class.get_files(item_pid) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
-
-#    @fake_controller = RenderConstraintsOverrideTestClass.new
-#    @fake_controller.extend(CommonwealthVlrEngine::RenderConstraintsOverride)
-#    @fake_controller.params = { mlt_id: 'bpl-dev:h702q6403' }
   end
-
-  let(:item_pid) { 'bpl-dev:h702q6403' }
-  let(:image_pid) { 'bpl-dev:h702q641c' }
-  let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
-  let(:files_hash) { finder_test_class.get_files(item_pid) }
 
   describe 'Creative Commons license helpers' do
 
@@ -139,7 +120,7 @@ describe CatalogHelper do
 
       describe 'for an item with one collection affiliation' do
         it 'should render the collection link' do
-          expect(helper.index_collection_link({document: document})).to include('<a href="/collections/bpl-dev:h702q636h')
+          expect(helper.index_collection_link({document: document})).to include('<a href="/collections/' + collection_pid)
         end
       end
 
@@ -171,11 +152,11 @@ describe CatalogHelper do
 
   describe '#index_relation_base_icon' do
 
-    let(:coll_doc) { Blacklight.default_index.search({:q => 'id:"bpl-dev:h702q636h"', :rows => 1}).documents.first }
+    let(:coll_doc) { Blacklight.default_index.search({:q => 'id:"' + collection_pid + '"', :rows => 1}).documents.first }
 
     before do
       allow(helper).to receive(:document_index_view_type).and_return('index')
-      allow(helper).to receive_messages(controller: finder_test_class)
+      allow(helper).to receive(:controller_name).and_return('catalog')
     end
 
     it 'should return a collection icon' do
@@ -225,6 +206,73 @@ describe CatalogHelper do
       expect(@rendered_hiergeo).to include(' (county)')
     end
 
+  end
+
+  describe '#render_item_breadcrumb' do
+    it 'should render the output of #setup_collection_links()' do
+      expect(helper.render_item_breadcrumb(document)).to include('<a href="/collections/' + collection_pid)
+    end
+  end
+
+  describe '#render_mlt_search_link' do
+    it 'should render a search link with the mlt_id param' do
+      expect(helper.render_mlt_search_link(document).match(/href=[a-z"\\\/?]*mlt_id=[a-z0-9]+/)).to be_truthy
+    end
+  end
+
+  describe '#render_mods_dates' do
+    it 'should return an array of date values' do
+      expect(helper.render_mods_dates(document).first).not_to be_nil
+    end
+  end
+
+  describe '#render_mods_date' do
+
+    describe 'date with start, end, and qualifier' do
+      it 'should return the correct date value' do
+        expect(helper.render_mods_date('1984', '1985', 'approximate')).to eq('[ca. 1984–1985]')
+      end
+    end
+
+    describe 'copyright date' do
+      it 'should return the correct date value' do
+        expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('c1984')
+      end
+    end
+
+  end
+
+  describe '#render_mods_xml_record' do
+    before { @mods_xml_doc = helper.render_mods_xml_record(item_pid) }
+    it 'should return the XML document for the MODS record' do
+      expect(@mods_xml_doc.class).to eq(REXML::Document)
+      expect(@mods_xml_doc.to_s).to include('<mods:title>Beauregard</mods:title>')
+    end
+  end
+
+  describe '#setup_names_roles' do
+
+    let(:doc_with_names) { Blacklight.default_index.search({:q => 'id:"bpl-dev:df65v788h"', :rows => 1}).documents.first }
+    before { @names, @roles = helper.setup_names_roles(doc_with_names) }
+
+    it 'should return two arrays of values' do
+      expect(@names.length).to eq(2)
+      expect(@roles.first).not_to be_nil
+    end
+
+    it 'should have the correct values in the arrays' do
+      expect(@names[0]).to include('Niccolo')
+      expect(@roles[0]).to eq('Cartographer')
+      expect(@names[1]).to include('Antonio')
+      expect(@roles[1]).to eq('Creator')
+    end
+
+  end
+
+  describe '#should_autofocus_on_search_box?' do
+    it 'should return false' do
+      expect(helper.should_autofocus_on_search_box?).to be_falsey
+    end
   end
 
   describe 'thumbnail creation helpers' do
