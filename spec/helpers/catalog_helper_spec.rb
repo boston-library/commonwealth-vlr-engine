@@ -4,7 +4,7 @@ describe CatalogHelper do
 
   include Blacklight::SearchHelper
 
-  class FinderTestClass < CatalogController
+  class CatalogHelperTestClass < CatalogController
     cattr_accessor :blacklight_config
 
     include Blacklight::SearchHelper
@@ -17,12 +17,12 @@ describe CatalogHelper do
   end
 
   let(:blacklight_config) { CatalogController.blacklight_config }
-  let(:finder_test_class) { FinderTestClass.new blacklight_config }
+  let(:catalog_helper_test_class) { CatalogHelperTestClass.new blacklight_config }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let (:collection_pid) { 'bpl-dev:h702q636h' }
   let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
-  let(:files_hash) { finder_test_class.get_files(item_pid) }
+  let(:files_hash) { catalog_helper_test_class.get_files(item_pid) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
