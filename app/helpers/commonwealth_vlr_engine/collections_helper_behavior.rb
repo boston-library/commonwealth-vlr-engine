@@ -14,8 +14,7 @@ module CommonwealthVlrEngine
     def link_to_cols_start_with(letter)
       link_to(letter,
               collections_path(:q => 'title_info_primary_ssort:' + letter + '*'),
-              :class => 'col_a-z_link'
-      )
+              :class => 'col_a-z_link')
     end
 
     # whether the A-Z link menu should be displayed in collections#index
