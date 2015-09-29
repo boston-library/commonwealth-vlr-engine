@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+<channel>
+	<title>News &#38; Announcements - Digital Commonwealth</title>
+	<atom:link href="http://blog.somelibrary.org/?feed=rss2" rel="self" type="application/rss+xml" />
+	<link>http://blog.somelibrary.org</link>
+	<description></description>
+	<lastBuildDate>Tue, 15 Sep 2015 03:32:42 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<item>
+		<title>Event 1</title>
+		<link>http://blog.somelibrary.org/?p=942</link>
+		<comments>http://blog.somelibrary.org/?p=942#comments</comments>
+		<pubDate>Tue, 15 Sep 2015 03:25:56 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.somelibrary.org/?p=942</guid>
+		<description>Description</description>
+				<content:encoded>Content</content:encoded>
+		</item>
+<item>
+<title>Event 2</title>
+		<link>http://blog.somelibrary.org/?p=941</link>
+		<comments>http://blog.somelibrary.org/?p=941#comments</comments>
+		<pubDate>Mon, 14 Sep 2015 03:25:56 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.somelibrary.org/?p=941</guid>
+		<description>Description 2</description>
+				<content:encoded>Content</content:encoded>
+		</item>
+<item>
+<title>Event 3</title>
+		<link>http://blog.somelibrary.org/?p=940</link>
+		<comments>http://blog.somelibrary.org/?p=940#comments</comments>
+		<pubDate>Sun, 13 Sep 2015 03:25:56 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.somelibrary.org/?p=940</guid>
+		<description>Description 3</description>
+				<content:encoded>Content</content:encoded>
+		</item>
+<item>
+<title>Event 4</title>
+		<link>http://blog.somelibrary.org/?p=939</link>
+		<comments>http://blog.somelibrary.org/?p=939#comments</comments>
+		<pubDate>Sat, 12 Sep 2015 03:25:56 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.somelibrary.org/?p=939</guid>
+		<description>Description 4</description>
+				<content:encoded>Content</content:encoded>
+		</item>
+	</channel>
+</rss>
+
