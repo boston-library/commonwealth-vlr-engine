@@ -4,9 +4,38 @@ require 'spec_helper'
 
 describe InstitutionsHelper do
 
+  let(:blacklight_config) { CatalogController.blacklight_config }
+
+  before(:each) do
+    allow(helper).to receive_messages(blacklight_config: blacklight_config)
+  end
+
+  describe '#link_to_all_inst_items' do
+    before { @institution_title = 'Foo Institution'}
+    it 'should create a search link with the correct institution params' do
+      expect(helper.link_to_all_inst_items('foo')).to include("#{blacklight_config.institution_field}%5D%5B%5D=Foo+Institution")
+    end
+  end
+
   # TODO: figure out how to run this spec without setting instance variables
   # which cause other specs to fail when run in a CI/run-all-specs context
   # this spec passes on its own
+
+  describe 'render_institutions_index' do
+
+    before :each do
+      allow(helper).to receive_messages(document_index_view_type: :maps)
+    end
+
+    describe 'with "maps" document_index_view_type' do
+
+      it 'should render the catalog/index_map_institutions partial' #do
+        #expect(helper.render_institutions_index).to include('div#institutions-index-map')
+      #end
+
+    end
+
+  end
 
 =begin
 
