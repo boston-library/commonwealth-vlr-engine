@@ -620,6 +620,9 @@
 
             var lastPage = ((this.controller.maxIndex - this.controller.currentIndex) < 1);
 
+            /* ***commonwealth changes*** */
+            var firstPage = (this.controller.currentIndex == 1);
+
             var overflow = false;
 
             // CSS transforms rotate display but not the DOM element's height/width:
@@ -629,7 +632,10 @@
                 overflow = ($nextPage.outerHeight() + $currentPage.outerHeight() + 20 >= $window.height());
             }
 
-            if (lastPage || overflow) {
+            /* ***commonwealth changes*** */
+            /* don't show $nextPage if viewing the first page */
+            /* (which is usually the jacket/cover, so this keeps gutter aligned properly) */
+            if (firstPage || lastPage || overflow) {
                 $nextPage.hide();
             } else {
                 $nextPage.show()
