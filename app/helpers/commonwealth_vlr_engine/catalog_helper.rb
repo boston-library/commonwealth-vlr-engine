@@ -32,17 +32,20 @@ module CommonwealthVlrEngine
       'commonwealth-vlr-engine/dc_collection-icon.png'
     end
 
-    def create_download_links(files_hash, link_class)
+    def create_download_links(document, files_hash, link_class)
       file_types = [files_hash[:documents], files_hash[:audio], files_hash[:generic]]
       download_links = []
       file_types.each do |file_type|
         file_type.each do |file|
           object_profile_json = JSON.parse(file['object_profile_ssm'].first)
           file_name_ext = object_profile_json["objLabel"].split('.')
-          download_links << link_to(file_name_ext[0],
+          download_link_title = document['identifier_ia_id_ssi'] ? ia_download_title(file_name_ext[1]) : file_name_ext[0]
+          download_links << link_to(download_link_title,
                                     datastream_disseminator_url(file['id'],'productionMaster'),
                                     :target => '_blank',
-                                    :class => link_class) + content_tag(:span, '(' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')', :class => 'download_info')
+                                    :class => link_class) + content_tag(:span,
+                                                                        "(.#{file_name_ext[1]}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
+                                                                        :class => 'download_info')
         end
       end
       download_links
@@ -80,6 +83,22 @@ module CommonwealthVlrEngine
         end
       end
       image_file_pids
+    end
+
+    # render the file type names for Internet Archive book item download links
+    def ia_download_title(file_extension)
+      case file_extension
+        when 'mobi'
+          'Kindle'
+        when 'zip'
+          'Daisy'
+        when 'pdf'
+          'PDF'
+        when 'epub'
+          'EPUB'
+        else
+          file_extension.upcase
+      end
     end
 
     # render collection name as a link in catalog#index list view
