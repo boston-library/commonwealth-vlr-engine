@@ -421,6 +421,14 @@
           <% end %>
         </dd>
     <% end %>
+    <% if document[:classification_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.classification') %>:</dt>
+        <dd>
+          <% document[:classification_tsim].each do |classification| %>
+              <%= classification %><br />
+          <% end %>
+        </dd>
+    <% end %>
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
         <dt><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>

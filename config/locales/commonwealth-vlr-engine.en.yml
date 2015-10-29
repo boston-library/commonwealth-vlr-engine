@@ -239,6 +239,7 @@ en:
           fields:
             abstract: 'Description'
             access: 'Restrictions'
+            classification: 'Classification'
             collection: 'Collection (local)'
             creator: 'Creator'
             date: 'Date'
