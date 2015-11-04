@@ -5,13 +5,14 @@ describe CommonwealthVlrEngine::IiifManifest do
   include Blacklight::SearchHelper
 
   class IiifManifestTestClass < IiifManifestController
+    include CommonwealthVlrEngine::Finder
   end
 
-  let(:document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:h702q6403\"", :rows => 1}).documents.first }
-  let(:image_files) { ['bpl-dev:h702q641c', 'bpl-dev:h702q642n'] }
-  let(:image_id_suffix) { image_files.first.gsub(/\A[\w-]+:/,'/') }
-
   before { @obj = IiifManifestTestClass.new }
+
+  let(:document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:h702q6403\"", :rows => 1}).documents.first }
+  let(:image_files) { @obj.get_files(document.id)[:images] }
+  let(:image_id_suffix) { image_files.first.id.gsub(/\A[\w-]+:/,'/') }
 
   describe 'create_iiif_manifest' do
 
@@ -38,7 +39,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   describe 'canvas_from_id' do
 
-    before { @canvas = @obj.canvas_from_id(image_files.first, 'image1', document) }
+    before { @canvas = @obj.canvas_from_id(image_files.first.id, 'image1', document) }
 
     it 'should create an instance of IIIF::Presentation::Canvas' do
       expect(@canvas).not_to be_nil
@@ -58,7 +59,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   describe 'image_annotation_from_image_id' do
 
-    before { @annotation = @obj.image_annotation_from_image_id(image_files.first, document) }
+    before { @annotation = @obj.image_annotation_from_image_id(image_files.first.id, document) }
 
     it 'should create an instance of IIIF::Presentation::Annotation' do
       expect(@annotation).not_to be_nil
@@ -77,7 +78,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   describe 'image_resource_from_image_id' do
 
-    before { @image_resource = @obj.image_resource_from_image_id(image_files.first, document) }
+    before { @image_resource = @obj.image_resource_from_image_id(image_files.first.id, document) }
 
     it 'should create an instance of IIIF::Presentation::ImageResource' do
       expect(@image_resource).not_to be_nil
@@ -106,6 +107,16 @@ describe CommonwealthVlrEngine::IiifManifest do
     it 'should have a bunch of metadata about the item' do
       expect(@manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.title') }[:value]).to eq(document[IiifManifestTestClass.blacklight_config.index.title_field.to_sym])
       expect(@manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.collection') }[:value]).to eq(document[:related_item_host_ssim].first)
+    end
+
+  end
+
+  describe 'label_for_canvas' do
+
+    before { @label_for_canvas = @obj.label_for_canvas(image_files.first, 0) }
+
+    it 'should return the correct label' do
+      expect(@label_for_canvas).to eq('Front')
     end
 
   end

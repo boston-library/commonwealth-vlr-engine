@@ -6,8 +6,8 @@ class IiifManifestController < CatalogController
 
   def manifest
     response, document = fetch(params[:id])
-    image_files = has_image_files?(get_files(params[:id]))
-    if image_files
+    image_files = get_files(params[:id])[:images]
+    if image_files.length > 0
       iiif_manifest = create_iiif_manifest(document, image_files)
       render :json => iiif_manifest.to_json
     else
@@ -23,7 +23,7 @@ class IiifManifestController < CatalogController
       if image_files
         image_index = Hash[image_files.map.with_index.to_a][params[:canvas_object_id]]
         iiif_canvas = canvas_from_id(params[:canvas_object_id],
-                                     "image#{(image_index+1).to_s}",
+                                     label_for_canvas(canvas_document, image_index),
                                      document)
         render :json => iiif_canvas.to_json
       else
