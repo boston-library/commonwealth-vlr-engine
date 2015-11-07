@@ -357,9 +357,8 @@
     <% if document[:table_of_contents_tsi] %>
       <dt><%= t('blacklight.metadata_display.fields.toc') %>:</dt>
       <dd>
-        <%= toc_content = document[:table_of_contents_tsi].split('--') %>
-        <% toc_content.each do |toc_entry| %>
-            <%= toc_entry %><br />
+        <% document[:table_of_contents_tsi].split('--').each do |toc_entry| %>
+            <%= toc_entry.strip %><br />
         <% end %>
       </dd>
     <% end %>
