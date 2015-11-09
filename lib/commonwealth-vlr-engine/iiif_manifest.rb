@@ -136,14 +136,15 @@ module CommonwealthVlrEngine
     # image_doc = ImageFile Solr document
     # index = the index of the page in the image_files array
     def label_for_canvas(image_doc, index)
-      if image_doc[:page_type_ssi]
-        case image_doc[:page_type_ssi]
+      page_type = image_doc[:page_type_ssi]
+      if page_type && page_type != 'Normal'
+        case page_type
           when 'Title'
             'Title page'
           when 'Contents'
             'Table of Contents'
           else
-            image_doc[:page_type_ssi]
+            page_type
         end
       elsif image_doc[:page_num_label_ssi]
         "page #{image_doc[:page_num_label_ssi]}"
