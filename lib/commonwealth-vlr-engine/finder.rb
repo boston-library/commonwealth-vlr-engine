@@ -71,6 +71,16 @@ module CommonwealthVlrEngine
       return return_list
     end
 
+    def get_volume_objects(pid)
+      return_list = []
+      solr_response = repository.search({:q => "is_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\"", :rows => 1000})
+
+      solr_response.documents.each do |solr_object|
+        return_list << solr_object
+      end
+      return sort_files(return_list)
+    end
+
     def get_image_files(pid)
       return_list = []
       solr_response = repository.search({:q => "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"", :rows => 1000})
@@ -104,6 +114,16 @@ module CommonwealthVlrEngine
     def get_ereader_files(pid)
       return_list = []
       solr_response = repository.search({:q => "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", :rows => 1000})
+
+      solr_response.documents.each do |solr_object|
+        return_list << solr_object
+      end
+      return sort_files(return_list)
+    end
+
+    def get_first_volume_object(pid)
+      return_list = []
+      solr_response = repository.search({:q => "-is_following_volume_of_ssim:* AND is_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\""})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object
@@ -147,6 +167,15 @@ module CommonwealthVlrEngine
       return nil
     end
 
+    def get_next_volume_object(pid)
+      solr_response = repository.search({:q => "is_following_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\""})
+
+      solr_response.documents.each do |solr_object|
+        return solr_object
+      end
+      return nil
+    end
+
     def get_next_image_file(pid)
       solr_response = repository.search({:q => "is_following_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
 
@@ -176,6 +205,15 @@ module CommonwealthVlrEngine
 
     def get_next_ereader_file(pid)
       solr_response = repository.search({:q => "is_following_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\""})
+
+      solr_response.documents.each do |solr_object|
+        return solr_object
+      end
+      return nil
+    end
+
+    def get_prev_volume_object(pid)
+      solr_response = repository.search({:q => "is_preceding_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\""})
 
       solr_response.documents.each do |solr_object|
         return solr_object
@@ -216,6 +254,16 @@ module CommonwealthVlrEngine
       solr_response.documents.each do |solr_object|
         return solr_object
       end
+      return nil
+    end
+
+    def get_volume_parent_object(volume_pid)
+      solr_response = repository.search({:q => "id:\"#{volume_pid}\" AND has_model_ssim:\"info:fedora/afmodel:Bplmodels_Volume\""})
+
+      solr_response.documents.each do |solr_object|
+        return solr_object['is_volume_of_ssim'].first.split('/')[1]
+      end
+
       return nil
     end
 
