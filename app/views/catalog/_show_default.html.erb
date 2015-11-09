@@ -52,7 +52,7 @@
   <div id="sidebar" class="<%= show_sidebar_classes %>">
     <%# render files to download %>
     <% if has_downloadable_files?(@object_files) %>
-        <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:object_files => @object_files} %>
+        <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:document => @document, :object_files => @object_files} %>
     <% end %>
 
     <% # bookmark/folder/sharing functions -%>

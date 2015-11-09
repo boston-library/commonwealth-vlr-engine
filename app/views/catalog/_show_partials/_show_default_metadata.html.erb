@@ -357,7 +357,9 @@
     <% if document[:table_of_contents_tsi] %>
       <dt><%= t('blacklight.metadata_display.fields.toc') %>:</dt>
       <dd>
-        <%= document[:table_of_contents_tsi] %>
+        <% document[:table_of_contents_tsi].split('--').each do |toc_entry| %>
+            <%= toc_entry.strip %><br />
+        <% end %>
       </dd>
     <% end %>
     <%# local-accession id field %>
@@ -418,6 +420,14 @@
         <dd>
           <% document[:identifier_lccn_tsim].each do |lccn| %>
               <%= lccn %><br />
+          <% end %>
+        </dd>
+    <% end %>
+    <% if document[:classification_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.classification') %>:</dt>
+        <dd>
+          <% document[:classification_tsim].each do |classification| %>
+              <%= classification %><br />
           <% end %>
         </dd>
     <% end %>

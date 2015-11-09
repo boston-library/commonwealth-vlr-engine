@@ -22,7 +22,7 @@ class BlacklightAdvancedSearch::QueryParser
   # LOCAL ADDITION format date input for Solr
   def add_date_range_to_queries(params)
     range_start = params[:date_start].blank? || params[:date_start].match(/[\D]+/) ? '*' : params[:date_start] + '-01-01T00:00:00.000Z'
-    range_end = params[:date_end].blank? || params[:date_start].match(/[\D]+/) ? '*' : params[:date_end] + '-12-31T23:59:59.999Z'
+    range_end = params[:date_end].blank? || params[:date_end].match(/[\D]+/) ? '*' : params[:date_end] + '-12-31T23:59:59.999Z'
     date_query = '(date_start_dtsi:[' + range_start + ' TO ' + range_end + ']  OR
 (date_start_dtsi:[* TO ' + range_end + '] AND date_end_dtsi:[' + range_start + ' TO *]))'
     date_query

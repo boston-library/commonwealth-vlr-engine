@@ -7,7 +7,7 @@ module CommonwealthVlrEngine
 
     # create an IIIF manifest
     # document = SolrDocument
-    # image_files = an array of ImageFile PIDs
+    # image_files = an array of ImageFile Solr documents
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
       manifest.label = document[blacklight_config.index.title_field.to_sym]
@@ -33,7 +33,7 @@ module CommonwealthVlrEngine
 
       sequence = IIIF::Presentation::Sequence.new
       image_files.each_with_index do |image, index|
-        sequence.canvases << canvas_from_id(image, "image#{(index+1).to_s}", document)
+        sequence.canvases << canvas_from_id(image.id, label_for_canvas(image, index), document)
       end
       manifest.sequences << sequence
 
@@ -130,6 +130,27 @@ module CommonwealthVlrEngine
       end
 
       manifest_metadata
+    end
+
+    # returns the appropriate label for the page/file
+    # image_doc = ImageFile Solr document
+    # index = the index of the page in the image_files array
+    def label_for_canvas(image_doc, index)
+      page_type = image_doc[:page_type_ssi]
+      if page_type && page_type != 'Normal'
+        case page_type
+          when 'Title'
+            'Title page'
+          when 'Contents'
+            'Table of Contents'
+          else
+            page_type
+        end
+      elsif image_doc[:page_num_label_ssi]
+        "page #{image_doc[:page_num_label_ssi]}"
+      else
+        "image #{(index+1).to_s}"
+      end
     end
 
   end

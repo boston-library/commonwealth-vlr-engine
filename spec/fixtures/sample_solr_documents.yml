@@ -442,6 +442,8 @@
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
+  page_type_ssi:
+  - Front
   checksum_file_md5_ssi:
   - 81d30bdd9202070d26fa30b68c96956d
   timestamp:

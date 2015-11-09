@@ -2,7 +2,7 @@ module CommonwealthVlrEngine
   module ApplicationHelper
 
     # show the display-friendly value for the Format facet
-    def render_format value
+    def render_format(value)
       case value
         when 'Albums'
           'Albums/Scrapbooks'
@@ -10,16 +10,12 @@ module CommonwealthVlrEngine
           'Drawings/Illustrations'
         when 'Maps'
           'Maps/Atlases'
-        when 'Documents'
-          'Documents'
         when 'Motion pictures'
           'Film/Video'
         when 'Music'
           'Music (recordings)'
         when 'Objects'
           'Objects/Artifacts'
-        when 'Prints'
-          'Prints'
         when 'Musical notation'
           'Sheet music'
         when 'Sound recordings'
@@ -31,6 +27,10 @@ module CommonwealthVlrEngine
         else
           value
       end
+    end
+
+    def render_format_index(args)
+      render_format(args[:document][args[:field]])
     end
 
     # return the path to the icon for objects with no thumbnail

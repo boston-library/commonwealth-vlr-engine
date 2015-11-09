@@ -29,7 +29,7 @@ describe CommonwealthVlrEngine::Finder do
 
     it 'should create a hash with the file objects' do
       expect(return_hash.empty?).to be_falsey
-      expect(return_hash.length).to eq(4)
+      expect(return_hash.length).to eq(5)
     end
 
     it 'should have an :images key with a hash of Bplmodel::ImageFile SolrDocs as the value' do

@@ -11,6 +11,13 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#render_format_index' do
+    let(:args) { {document: {genre_field: 'Maps'}, field: :genre_field} }
+    it 'should return the right value' do
+      expect(helper.render_format_index(args)).to eq('Maps/Atlases')
+    end
+  end
+
   describe '#render_object_icon_path' do
     it 'should return the right value' do
       expect(helper.render_object_icon_path('sound recording')).to eq('commonwealth-vlr-engine/dc_audio-icon.png')

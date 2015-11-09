@@ -5,7 +5,7 @@
 
   <div class="panel-body">
     <ul class="nav nav-list">
-      <% create_download_links(object_files, 'sidebar_downloads_link').each do |link| %>
+      <% create_download_links(document, object_files, 'sidebar_downloads_link').each do |link| %>
         <li class="download_list_item"><%= link %></li>
       <% end %>
         <!-- <li class="download_info"><%# t('blacklight.downloads.link_info') %></li> -->

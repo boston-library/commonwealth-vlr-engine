@@ -81,7 +81,7 @@ describe CatalogHelper do
     before do
       # copy :images to :documents, since we don't have any non-image items to test with at the moment
       files_hash[:documents] = files_hash[:images]
-      @download_links = helper.create_download_links(files_hash, 'link_class')
+      @download_links = helper.create_download_links(document, files_hash, 'link_class')
     end
 
     describe '#create_download_links' do
@@ -100,6 +100,13 @@ describe CatalogHelper do
     describe '#has_downloadable_files?' do
       it 'should return true if there are documents, audio, or generic files' do
         expect(helper.has_downloadable_files?(files_hash)).to be_truthy
+      end
+    end
+
+    describe '#ia_download_title' do
+      it 'should return the correct download title' do
+        expect(helper.ia_download_title('mobi')).to eq('Kindle')
+        expect(helper.ia_download_title('zip')).to eq('Daisy')
       end
     end
 
