@@ -6,17 +6,7 @@
     <% if document[blacklight_config.index.title_field.to_sym] %>
       <dt><%= t('blacklight.metadata_display.fields.title') %>:</dt>
       <dd>
-        <%# document[blacklight_config.index.title_field.to_sym].each do |title| %>
-            <%= document[blacklight_config.index.title_field.to_sym] %>
-            <% if document[:subtitle_tsim] %>
-                : <%= document[:subtitle_tsim].first %>
-            <% end %>
-            <% if document[:title_info_primary_trans_tsim] %>
-                <% document[:title_info_primary_trans_tsim].each do |parallel_title| %>
-                    = <%= parallel_title %>
-                <% end %>
-            <% end %>
-        <%# end %>
+        <%= render_main_title(document) %>
       </dd>
     <% end %>
     <%# translated title field %>

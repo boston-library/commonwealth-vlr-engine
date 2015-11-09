@@ -63,4 +63,23 @@ describe IiifManifestController do
 
   end
 
+  describe 'get collection' do
+
+    before(:each) do
+      get :collection, :id => 'bpl-dev:TK'
+      @response_body = JSON.parse(response.body)
+    end
+
+    it 'should render an IIIF Collection' do
+      expect(response).to be_success
+      expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
+    end
+
+    it 'should conform to the IIIF manifest spec' do
+      expect(@response_body["resource"]["@id"]).to have_content('TK')
+      expect(@response_body["manifests"].first["@id"]).to include('TK')
+    end
+
+  end
+
 end

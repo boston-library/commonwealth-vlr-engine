@@ -10,16 +10,12 @@ module CommonwealthVlrEngine
     # image_files = an array of ImageFile Solr documents
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
-      manifest.label = document[blacklight_config.index.title_field.to_sym]
+      manifest.label = render_main_title(document)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
       manifest.metadata = manifest_metadata(document)
       manifest.description = document[:abstract_tsim].first if document[:abstract_tsim]
 
-      attribution_array = []
-      [:rights_ssm, :license_ssm, :restrictions_on_access_ssm].each do |field|
-        attribution_array = attribution_array + document[field].presence.to_a
-      end
-      manifest.attribution = attribution_array.join(' ') unless attribution_array.blank?
+      manifest.attribution = manifest_attribution(document).presence
 
       if document[:license_ssm]
         document[:license_ssm].each do |license|
@@ -85,11 +81,37 @@ module CommonwealthVlrEngine
       image_resource
     end
 
+    # return an IIIF Collection resource (for multi-part works)
+    # document = SolrDocument of series object
+    # manifest_docs = Array of SolrDocument of volume-level objects
+    def collection_for_manifests(document, manifest_docs)
+      collection = IIIF::Presentation::Collection.new('@id' => document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
+      collection.label = 'Multi-part work description'
+      collection.viewing_hint = 'multi-part'
+      collection.attribution = manifest_attribution(document).presence
+      collection.metadata = manifest_metadata(document)
+      collection.description = 'This document describes an IIIF Collection, which points to a series of IIIF Manifests comprising the individual items in this multi-volume work'
+      if document[:license_ssm]
+        document[:license_ssm].each do |license|
+          if license.match(/\(CC\s/)
+            collection.license = cc_url(license)
+          end
+        end
+      end
+      collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
+      manifest_docs.each do |manifest_doc|
+        manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc.id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
+        collection.manifests << {'@id' => manifest_id,
+                                 '@type' => 'sc:Manifest',
+                                 'label' => render_main_title(manifest_doc)}
+      end
+    end
+
     # returns a basic Dublin Core-esque metadata set array
     # document = SolrDocument
     def manifest_metadata(document)
       manifest_metadata = []
-      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: document[blacklight_config.index.title_field.to_sym]}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: render_main_title(document)}
       manifest_metadata << {label: t('blacklight.metadata_display.fields.date'), value: render_mods_dates(document).first} if document[:date_start_tsim]
 
       if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
@@ -130,6 +152,15 @@ module CommonwealthVlrEngine
       end
 
       manifest_metadata
+    end
+
+    # returns the appropriate attribution statement
+    def manifest_attribution(document)
+      attribution_array = []
+      [:rights_ssm, :license_ssm, :restrictions_on_access_ssm].each do |field|
+        attribution_array = attribution_array + document[field].presence.to_a
+      end
+      attribution_array.blank? ? nil : attribution_array.join(' ')
     end
 
     # returns the appropriate label for the page/file

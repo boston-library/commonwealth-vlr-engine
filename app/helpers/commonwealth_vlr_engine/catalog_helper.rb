@@ -216,6 +216,20 @@ module CommonwealthVlrEngine
       end
     end
 
+    # output properly formatted title, subtitle, parallel title, etc.
+    def render_main_title(document)
+      title_output = document[blacklight_config.index.title_field.to_sym]
+      if document[:subtitle_tsim]
+        title_output << " : #{document[:subtitle_tsim].first}"
+      end
+      if document[:title_info_primary_trans_tsim]
+        document[:title_info_primary_trans_tsim].each do |parallel_title|
+          title_output << " = #{parallel_title}"
+        end
+      end
+      title_output
+    end
+
     # render the 'more like this' search link if doc has subjects
     def render_mlt_search_link(document)
       if document[:subject_facet_ssim] || document[:subject_geo_city_ssim]

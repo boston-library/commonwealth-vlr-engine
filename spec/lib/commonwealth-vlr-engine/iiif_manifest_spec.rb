@@ -96,6 +96,29 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   end
 
+  describe 'collection_for_manifests' do
+
+    let(:series_document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:TK\"", :rows => 1}).documents.first }
+    let(:manifest_docs) { @obj.get_files(series_document.id)[:volumes] }
+
+    before { @collection = @obj.collection_for_manifests(series_document, manifest_docs) }
+
+    it 'should create an instance of IIIF::Presentation::Collection' do
+      expect(@collection).not_to be_nil
+      expect(@collection.class).to eq(IIIF::Presentation::Collection)
+    end
+
+    it 'should have contain a list of manifests' do
+      expect(@collection.manifests.length).to eq(2)
+      expect(@collection.manifests.first['@id']).to include(document[:identifier_uri_ss])
+    end
+
+    it 'should have the right id' do
+      expect(@collection['@id']).to eq(series_document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
+    end
+
+  end
+
   describe 'manifest_metadata' do
 
     before { @manifest_metadata = @obj.manifest_metadata(document) }

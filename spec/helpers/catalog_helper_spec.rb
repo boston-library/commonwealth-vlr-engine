@@ -221,6 +221,13 @@ describe CatalogHelper do
     end
   end
 
+  describe '#render_main_title' do
+    let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
+    it 'should render the title correctly' do
+      expect(helper.render_main_title(doc_with_subtitle)).to include('Massachusetts : based')
+    end
+  end
+
   describe '#render_mlt_search_link' do
     it 'should render a search link with the mlt_id param' do
       expect(helper.render_mlt_search_link(document).match(/href=[a-z"\\\/?]*mlt_id=[a-z0-9]+/)).to be_truthy

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get 'search/:id/manifest', :to => 'iiif_manifest#manifest', :as => 'iiif_manifest'
   get 'search/:id/canvas/:canvas_object_id', :to => 'iiif_manifest#canvas', :as => 'iiif_canvas'
   get 'search/:id/annotation/:annotation_object_id', :to => 'iiif_manifest#annotation', :as => 'iiif_annotation'
+  get 'search/:id/iiif_collection', :to => 'iiif_manifest#collection', :as => 'iiif_collection'
 
   # DEPRECATED ROUTES AND EXAMPLES
 
