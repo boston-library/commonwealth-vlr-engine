@@ -25,6 +25,8 @@ module CommonwealthVlrEngine
       before_filter :mlt_search, :only => [:index]
       before_filter :add_institution_fields, :only => [:index, :facet]
 
+      helper_method :has_volumes?
+
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
@@ -196,6 +198,7 @@ module CommonwealthVlrEngine
       end
     end
 
+    # TODO: refactor how views access files/volumes/etc.
     def get_object_files
       @object_files = get_files(params[:id])
     end
@@ -212,6 +215,27 @@ module CommonwealthVlrEngine
       end
     end
 
+    # TODO: refactor how views access files/volumes/etc.
+    # returns the child or sibling volumes for Book or Volume objects (respectively)
+    # needs to be in ControllerOverride so Finder methods can be used
+    def has_volumes?(document)
+      case document[blacklight_config.show.display_type_field.to_sym]
+=begin
+        when 'Volume'
+          if document[:is_volume_of_ssim] # need this because series obj may not exist yet
+            all_vols = get_volume_objects(document[:is_volume_of_ssim].first.gsub(/info:fedora\//,''))
+            volumes = all_vols.reject { |doc| doc.id == document.id } # remove current volume from list
+          else
+            volumes = nil
+          end
+=end
+        when 'Book'
+          volumes = get_volume_objects(document.id)
+        else
+          volumes = nil
+      end
+      volumes.presence
+    end
 
   end
 

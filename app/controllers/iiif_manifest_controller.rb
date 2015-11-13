@@ -6,12 +6,11 @@ class IiifManifestController < CatalogController
 
   def manifest
     response, document = fetch(params[:id])
-    object_files = get_files(params[:id])
-    #image_files = get_files(params[:id])[:images]
-    if object_files[:images].length > 0
+    image_files = get_image_files(params[:id])
+    if image_files.length > 0
       iiif_manifest = create_iiif_manifest(document, image_files)
       render :json => iiif_manifest.to_json
-    elsif object_files[:volumes].length > 0
+    elsif get_volume_objects(params[:id]).length > 0
       redirect_to iiif_collection_path(params[:id])
     else
       not_found
@@ -49,9 +48,9 @@ class IiifManifestController < CatalogController
 
   def collection
     response, document = fetch(params[:id])
-    object_files = get_files(params[:id])
-    if object_files[:volumes].length > 0
-      iiif_collection = collection_for_manifests(document, object_files[:volumes])
+    volumes = get_volume_objects(params[:id])
+    if volumes.length > 0
+      iiif_collection = collection_for_manifests(document, volumes)
       render :json => iiif_collection.to_json
     else
       not_found

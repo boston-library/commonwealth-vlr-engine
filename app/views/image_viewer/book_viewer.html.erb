@@ -1,10 +1,11 @@
-<% @page_title = @title + ' - ' + application_name %>
+<% book_title = render_main_title(@document) %>
+<% @page_title = book_title + ' - ' + application_name %>
 <div id="viewer" data-group="1" data-index="1">
   <header>
     <nav>
       <h1>
-        Title: <%= link_to @title,
-                           solr_document_path(params[:id]),
+        Title: <%= link_to book_title,
+                           solr_document_path(book_id(@document)),
                            :id => 'header_title_link' %>
       </h1>
     </nav>
@@ -12,14 +13,14 @@
   <div id="viewport">
     <div id="pages">
       <div class="page current">
-        <%= iiif_image_tag(@image_files.first, {:size => 'pct:30', :alt => @title}) %>
+        <%= iiif_image_tag(@image_files.first, {:size => 'pct:30', :alt => book_title}) %>
       </div>
     </div>
   </div>
   <footer>
     <nav class="toolbar">
       <div class="item-detail-nav">
-        <%= link_to(solr_document_path(params[:id]), :id => 'back_to_item_link') do %>
+        <%= link_to(solr_document_path(book_id(@document)), :id => 'back_to_item_link') do %>
             <%= content_tag(:i, '', :class => 'fa fa-angle-double-left') + ' ' + t('blacklight.book_viewer.item_link') %>
         <% end %>
       </div>

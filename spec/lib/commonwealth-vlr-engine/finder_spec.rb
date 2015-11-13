@@ -113,5 +113,19 @@ describe CommonwealthVlrEngine::Finder do
 
   end
 
+  describe 'get_volume_objects' do
+
+    let(:pid) { 'bpl-dev:TK' }
+    let (:return_list) { @obj.get_volume_objects(pid) }
+
+    it 'should return an array of hashes with the Volume objects and files' do
+      expect(return_list.empty?).to be_falsey
+      expect(return_list.length).to eq(2)
+      expect(return_list[0][:vol_doc]['active_fedora_model_ssi']).to eq('Bplmodels::Volume')
+      expect(return_list[0][:vol_files]['active_fedora_model_ssi']).to eq('Bplmodels::Volume')
+    end
+
+  end
+
 
 end

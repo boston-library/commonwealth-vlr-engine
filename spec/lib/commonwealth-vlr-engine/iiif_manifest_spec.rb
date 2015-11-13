@@ -134,6 +134,16 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   end
 
+  describe 'manifest_attribution' do
+
+    before { @manifest_attribution = @obj.manifest_attribution(document) }
+
+    it 'should create an attribution string' do
+      expect(@manifest_attribution).to include('No known copyright restrictions')
+    end
+
+  end
+
   describe 'label_for_canvas' do
 
     before { @label_for_canvas = @obj.label_for_canvas(image_files.first, 0) }

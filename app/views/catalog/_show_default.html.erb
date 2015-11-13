@@ -1,6 +1,7 @@
 <%# show the object image(s)/file(s) and metadata %>
-
+<%# TODO: refactor how views access files/volumes/etc. %>
 <% image_files = has_image_files?(@object_files) %>
+<% volumes = has_volumes?(@document) %>
 <% if image_files %>
     <%= javascript_include_tag 'openseadragon' %>
     <% case image_files.length %>
@@ -21,8 +22,8 @@
 
 <div class="row">
 
-  <%# show thumbnail or icon if object has no images %>
-  <% if !image_files || book_reader %>
+  <%# show thumbnail or icon if object has no images, or volume list %>
+  <% if !image_files || book_reader || volumes %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
@@ -34,8 +35,14 @@
               <%= img %>
             </div>
           <% end %>
+          <% if volumes %>
+              <%= render :partial => 'catalog/_show_partials/show_volumes',
+                         :locals => {:document => @document, :volumes => volumes} %>
+          <% end %>
       </div>
   <% end %>
+
+
 
   <div class="<%= params[:action]%>_details col-sm-8">
 

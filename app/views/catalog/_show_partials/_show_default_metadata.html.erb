@@ -6,7 +6,7 @@
     <% if document[blacklight_config.index.title_field.to_sym] %>
       <dt><%= t('blacklight.metadata_display.fields.title') %>:</dt>
       <dd>
-        <%= render_main_title(document) %>
+        <%= render_full_title(document) %>
       </dd>
     <% end %>
     <%# translated title field %>

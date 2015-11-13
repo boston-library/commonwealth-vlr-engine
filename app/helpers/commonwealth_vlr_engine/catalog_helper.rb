@@ -33,7 +33,7 @@ module CommonwealthVlrEngine
     end
 
     def create_download_links(document, files_hash, link_class)
-      file_types = [files_hash[:documents], files_hash[:audio], files_hash[:generic]]
+      file_types = [files_hash[:documents], files_hash[:ereader], files_hash[:audio], files_hash[:generic]]
       download_links = []
       file_types.each do |file_type|
         file_type.each do |file|
@@ -187,6 +187,26 @@ module CommonwealthVlrEngine
               :target => '_blank')
     end
 
+    # output properly formatted full title, with subtitle, parallel title, etc.
+    def render_full_title(document)
+      title_output = document[blacklight_config.index.title_field.to_sym]
+      if document[:subtitle_tsim]
+        title_output << " : #{document[:subtitle_tsim].first}"
+      end
+      if document[:title_info_partnum_tsi]
+        title_output << ". #{document[:title_info_partnum_tsi]}"
+      end
+      if document[:title_info_partname_tsi]
+        title_output << ". #{document[:title_info_partname_tsi]}"
+      end
+      if document[:title_info_primary_trans_tsim]
+        document[:title_info_primary_trans_tsim].each do |parallel_title|
+          title_output << " = #{parallel_title}"
+        end
+      end
+      title_output
+    end
+
     # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
     def render_hiergo_subject(geojson_feature, separator, separator_class=nil)
       output_array = []
@@ -216,16 +236,14 @@ module CommonwealthVlrEngine
       end
     end
 
-    # output properly formatted title, subtitle, parallel title, etc.
+    # output properly formatted title with volume info, but no subtitle
     def render_main_title(document)
       title_output = document[blacklight_config.index.title_field.to_sym]
-      if document[:subtitle_tsim]
-        title_output << " : #{document[:subtitle_tsim].first}"
+      if document[:title_info_partnum_tsi]
+        title_output << ". #{document[:title_info_partnum_tsi]}"
       end
-      if document[:title_info_primary_trans_tsim]
-        document[:title_info_primary_trans_tsim].each do |parallel_title|
-          title_output << " = #{parallel_title}"
-        end
+      if document[:title_info_partname_tsi]
+        title_output << ". #{document[:title_info_partname_tsi]}"
       end
       title_output
     end
@@ -276,6 +294,25 @@ module CommonwealthVlrEngine
       mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
       mods_response = Typhoeus::Request.get(mods_xml_file_path)
       mods_xml_text = REXML::Document.new(mods_response.body)
+    end
+
+    def render_volume_list_heading(document)
+      if document[blacklight_config.index.display_type_field.to_sym] == 'Volume'
+        t('blacklight.volumes_list.title.volume')
+      else
+        t('blacklight.volumes_list.title.series')
+      end
+    end
+
+    def render_volume_title(document)
+      vol_title_info = [document[:title_info_partnum_tsi], document[:title_info_partname_tsi]]
+      if vol_title_info[0]
+        vol_title_info[1] ? vol_title_info[0].capitalize + ': ' + vol_title_info[1] : vol_title_info[0].capitalize
+      elsif vol_title_info[1]
+        vol_title_info[1].capitalize
+      else
+        render_main_title(document)
+      end
     end
 
     # creates an array of collection links

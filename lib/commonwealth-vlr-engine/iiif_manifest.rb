@@ -100,18 +100,19 @@ module CommonwealthVlrEngine
       end
       collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
       manifest_docs.each do |manifest_doc|
-        manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc.id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
+        manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc[:vol_doc].id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
         collection.manifests << {'@id' => manifest_id,
                                  '@type' => 'sc:Manifest',
-                                 'label' => render_main_title(manifest_doc)}
+                                 'label' => render_main_title(manifest_doc[:vol_doc])}
       end
+      collection
     end
 
     # returns a basic Dublin Core-esque metadata set array
     # document = SolrDocument
     def manifest_metadata(document)
       manifest_metadata = []
-      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: render_main_title(document)}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: render_full_title(document)}
       manifest_metadata << {label: t('blacklight.metadata_display.fields.date'), value: render_mods_dates(document).first} if document[:date_start_tsim]
 
       if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]

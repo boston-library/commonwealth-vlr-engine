@@ -358,6 +358,11 @@ en:
     users:
           account_heading: 'My Account'
 
+    volumes_list:
+          title:
+            series: 'Volumes Available'
+            volume: 'Other Volumes Available'
+
   errors:
     messages:
       expired: "has expired, please request a new one"

@@ -73,12 +73,17 @@ module CommonwealthVlrEngine
 
     def get_volume_objects(pid)
       return_list = []
+      volumes_list = []
       solr_response = repository.search({:q => "is_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\"", :rows => 1000})
 
       solr_response.documents.each do |solr_object|
-        return_list << solr_object
+        volumes_list << solr_object
       end
-      return sort_files(return_list)
+      sort_files(volumes_list).each do |volume|
+        volume_files = get_files(volume.id)
+        return_list << {vol_doc: volume, vol_files: volume_files.except(:images)}
+      end
+      return_list
     end
 
     def get_image_files(pid)
