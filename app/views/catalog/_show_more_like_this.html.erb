@@ -6,7 +6,7 @@
       )
   %>
   <%= link_to_document(document,
-                       truncate(document[blacklight_config.index.title_field.to_sym],
+                       truncate(render_main_title(document),
                                 :length => 70,
                                 :separator => ' ',
                                 :omission => ' ...'),

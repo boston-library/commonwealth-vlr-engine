@@ -4,51 +4,32 @@
   </div>
 
   <div class="panel-body">
-    <!--
     <ul class="nav nav-list">
-      <%# volumes.each do |volume| %>
-          <li class="volume_list_item">
-            <%# link_to_document volume, render_volume_title(volume) %>
-          </li>
-      <%# end %>
-    </ul> -->
-    <%# volumes.first[:vol_files].inspect %>
-    <% volumes.each_with_index do |volume, index| %>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="heading_<%= index %>">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= index %>" aria-expanded="false" aria-controls="collapse_<%= index %>">
-                <%= render_volume_title(volume[:vol_doc]) %>
-              </a>
-            </h4>
-          </div>
-          <div id="collapse_<%= index %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= index %>">
-            <div class="panel-body">
-              <div class="read_volume_link">
-                <i class="fa fa-book"></i>
-                <%= link_to(t('blacklight.book_viewer.link_to_reader'),
-                            book_viewer_path(volume[:vol_doc].id),
+      <% volumes.each_with_index do |volume, index| %>
+          <li class="volume_listing" id="volume_listing_<%= index %>">
+            <a class="collapsed volume_title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= index %>" aria-expanded="false" aria-controls="collapse_<%= index %>">
+              <%= render_volume_title(volume[:vol_doc]) %>
+            </a>
+            <div id="collapse_<%= index %>" class="volume_details panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= index %>">
+              <div class="read_volume_link_wrap">
+                <%= link_to(book_viewer_path(volume[:vol_doc].id),
                             :class => 'book_viewer_link btn',
-                            :rel => 'nofollow') %>
+                            :rel => 'nofollow') do %>
+                    <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
+                <% end %>
               </div>
               <div class="download_volume_links">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-download"></i> Downloads</button>
-                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <% create_download_links(volume[:vol_doc], volume[:vol_files], 'volume_downloads_link').each do |link| %>
-                        <li class="download_list_item"><%= link %></li>
-                    <% end %>
-                  </ul>
-                </div>
+                <i class="fa fa-download"></i> Downloads
+                <ul class="volume_downloads">
+                  <% create_download_links(volume[:vol_doc], volume[:vol_files], 'volume_downloads_link').each do |link| %>
+                      <li class="download_list_item"><%= link %></li>
+                  <% end %>
+                </ul>
               </div>
             </div>
-          </div>
-        </div>
-    <% end %>
+          </li>
+      <% end %>
+    </ul>
   </div>
 
 </div>

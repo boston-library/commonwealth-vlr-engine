@@ -287,17 +287,81 @@
     bottom: 12px;
     position: absolute;
     right: 56px;
+  }
 
-    a {
-      color: $lighter_gray;
-      background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
-      padding: 0px 5px;
-    }
-
+  a.book_viewer_link {
+    color: $lighter_gray;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
+    padding: 0px 5px;
   }
 
   #volumes_wrapper {
     margin-top: 10px;
+
+    .panel-heading {
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .panel-body {
+      padding: 10px 5px;
+
+      .nav-list {
+
+        li.volume_listing {
+          margin-bottom: 10px;
+
+          .volume_title {
+            font-size: 16px;
+            padding: 5px;
+            background-color: #eeeeee;
+            border-radius: 3px 3px 0 0;
+
+            &.collapsed {
+              background: none;
+
+              &:hover {
+                background-color: #eeeeee;
+                border-radius: 3px;
+              }
+
+            }
+
+          }
+
+          .volume_details {
+            background-color: #eeeeee;
+            border-radius: 0 0 3px 3px;
+
+            .read_volume_link_wrap {
+              margin: 0 0 0 10px;
+              padding-top: 10px;
+            }
+
+            .download_volume_links {
+              margin: 10px 0 0 15px;
+              padding-bottom: 10px;
+
+              ul.volume_downloads {
+                list-style-type: none;
+                padding-left: 10px;
+
+                li {
+                  padding: 1px 0;
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -342,6 +406,24 @@
 
 }
 
+/* download link styles */
+li.download_list_item {
+  font-size: 12px;
+
+  a {
+    padding: 10px 5px 0 0;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+  }
+
+  .download_info {
+    font-size: 10px;
+    color: $dark_gray;
+  }
+
+}
+
 
 #sidebar {
 
@@ -355,24 +437,6 @@
 
     .panel-body {
       padding:0 10px 10px 10px;
-
-      li.download_list_item {
-        font-size: 12px;
-
-        a {
-          padding: 10px 5px 0 0;
-          word-wrap: break-word;
-          -ms-word-break: break-all;
-          word-break: break-word;
-        }
-
-        .download_info {
-          font-size: 10px;
-          color: $dark_gray;
-        }
-
-      }
-
     }
 
   }
