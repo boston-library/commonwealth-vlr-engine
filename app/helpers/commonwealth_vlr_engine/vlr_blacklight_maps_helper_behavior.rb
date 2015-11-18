@@ -1,5 +1,5 @@
 module CommonwealthVlrEngine
-  module BlacklightMapsHelper
+  module VlrBlacklightMapsHelperBehavior
     include Blacklight::BlacklightMapsHelperBehavior
 
     # OVERRIDE: convert state abbreviations, deal with complex locations, etc.

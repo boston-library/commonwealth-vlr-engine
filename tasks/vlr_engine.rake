@@ -5,7 +5,7 @@ namespace :vlr_engine do
   desc 'generate the static geojson file for catalog#map view'
   task :create_geojson => :environment do
 
-    include CommonwealthVlrEngine::BlacklightMapsHelper
+    include BlacklightMapsHelper
 
     def blacklight_config
       CatalogController.blacklight_config
