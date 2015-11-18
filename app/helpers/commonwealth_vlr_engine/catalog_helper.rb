@@ -296,14 +296,6 @@ module CommonwealthVlrEngine
       mods_xml_text = REXML::Document.new(mods_response.body)
     end
 
-    def render_volume_list_heading(document)
-      if document[blacklight_config.index.display_type_field.to_sym] == 'Volume'
-        t('blacklight.volumes_list.title.volume')
-      else
-        t('blacklight.volumes_list.title.series')
-      end
-    end
-
     def render_volume_title(document)
       vol_title_info = [document[:title_info_partnum_tsi], document[:title_info_partname_tsi]]
       if vol_title_info[0]

@@ -280,12 +280,6 @@ describe CatalogHelper do
     end
   end
 
-  describe '#render_volume_list_heading' do
-    it 'should return the correct value' do
-      expect(helper.render_volume_list_heading({blacklight_config.index.display_type_field.to_sym => 'Volume'})).to include('Other')
-    end
-  end
-
   describe '#setup_names_roles' do
 
     let(:doc_with_names) { Blacklight.default_index.search({:q => 'id:"bpl-dev:df65v788h"', :rows => 1}).documents.first }

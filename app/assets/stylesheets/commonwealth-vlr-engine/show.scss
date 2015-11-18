@@ -296,7 +296,7 @@
   }
 
   #volumes_wrapper {
-    margin-top: 10px;
+    margin: 10px 0 0;
 
     .panel-heading {
       font-weight: bold;
@@ -697,7 +697,7 @@ li.download_list_item {
 
     #thumb_img_show_container {
       text-align: left;
-      background-color: none;
+      background-color: unset;
       border: none;
       border-radius: 0;
       @include box-shadow(none);
@@ -707,6 +707,10 @@ li.download_list_item {
 
     #book_viewer_link_wrap {
         right: 28px;
+    }
+
+    #volumes_wrapper {
+      float: left;
     }
 
   }

@@ -1,21 +1,22 @@
 <div class="panel panel-default" id="volumes_wrapper">
   <div class="panel-heading">
-    <%= render_volume_list_heading(document) %>
+    <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
   </div>
 
   <div class="panel-body">
     <ul class="nav nav-list">
       <% volumes.each_with_index do |volume, index| %>
+          <% volume_title = render_volume_title(volume[:vol_doc]) %>
           <li class="volume_listing" id="volume_listing_<%= index %>">
             <a class="collapsed volume_title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= index %>" aria-expanded="false" aria-controls="collapse_<%= index %>">
-              <%= render_volume_title(volume[:vol_doc]) %>
+              <%= volume_title %>
             </a>
             <div id="collapse_<%= index %>" class="volume_details panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= index %>">
               <div class="read_volume_link_wrap">
                 <%= link_to(book_viewer_path(volume[:vol_doc].id),
                             :class => 'book_viewer_link btn',
                             :rel => 'nofollow') do %>
-                    <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
+                    <i class="fa fa-book"></i> Read <%= volume_title %>
                 <% end %>
               </div>
               <div class="download_volume_links">
