@@ -66,7 +66,7 @@ describe IiifManifestController do
   describe 'get collection' do
 
     before(:each) do
-      get :collection, :id => 'bpl-dev:TK'
+      get :collection, :id => 'bpl-dev:3j334b469'
       @response_body = JSON.parse(response.body)
     end
 
@@ -76,8 +76,8 @@ describe IiifManifestController do
     end
 
     it 'should conform to the IIIF manifest spec' do
-      expect(@response_body["resource"]["@id"]).to have_content('TK')
-      expect(@response_body["manifests"].first["@id"]).to include('TK')
+      expect(@response_body["@type"]).to eq('sc:Collection')
+      expect(@response_body["manifests"].first["@id"]).to include('3j334603p')
     end
 
   end

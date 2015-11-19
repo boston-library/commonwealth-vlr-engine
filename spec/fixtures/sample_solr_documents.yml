@@ -1662,3 +1662,763 @@
   - 0c9835f219952d5c641cd516b58aa0b4
   timestamp:
   - '2015-05-22T20:47:13.842Z'
+- system_create_dtsi:
+  - '2015-11-18T21:07:02Z'
+  system_modified_dtsi:
+  - '2015-11-18T21:22:13Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Book
+  id:
+  - bpl-dev:7s75dn48d
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:07:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":456,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-11-18T21:07:02Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1030,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:07:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":4316,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-11-18T21:22:13Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":18141,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marc\":{\"dsLabel\":\"MARC metadata\",\"dsVersionID\":\"marc.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/marc\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1501,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+marc+marc.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marcXML\":{\"dsLabel\":\"MARC XML metadata\",\"dsVersionID\":\"marcXML.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5174,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+marcXML+marcXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"iaMeta\":{\"dsLabel\":\"Internet Archive metadata\",\"dsVersionID\":\"iaMeta.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1999,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+iaMeta+iaMeta.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"scanData\":{\"dsLabel\":\"Internet Archive scanData metadata\",\"dsVersionID\":\"scanData.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":96881,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+scanData+scanData.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"plainText\":{\"dsLabel\":\"Plain Text representation of this object\",\"dsVersionID\":\"plainText.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":36120,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+plainText+plainText.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuXML\":{\"dsLabel\":\"XML version of DJVU output\",\"dsVersionID\":\"djvuXML.0\",\"dsCreateDate\":\"2015-11-18T21:07:03Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":356200,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn48d+djvuXML+djvuXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"abbyy\":{}},\"objLabel\":\"Outline lessons in housekeeping, including cooking, laundering, dairying, and nursing\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ComplexObjectBase\",\"info:fedora/afmodel:Bplmodels_Book\",\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:07:02Z\",\"objLastModDate\":\"2015-11-18T21:07:03Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn48d/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn48d/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:7s75dn48d
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Book
+  - info:fedora/afmodel:Bplmodels_ComplexObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  label_ssim:
+  - Outline lessons in housekeeping, including cooking, laundering, dairying, and nursing
+  date_start_dtsi:
+  - '1911-01-01T00:00:00Z'
+  date_start_tsim:
+  - 1911
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1910s
+  date_type_ssm:
+  - dateIssued
+  date_start_qualifier_ssm:
+  - nil
+  date_facet_yearly_ssim:
+  - 1911s
+  genre_basic_tsim:
+  - Books
+  genre_basic_ssim:
+  - Books
+  identifier_local_call_tsim:
+  - 8002.77
+  identifier_local_barcode_tsim:
+  - 39999078010400
+  identifier_lccn_tsim:
+  - 11035227
+  identifier_ia_id_ssi:
+  - outlinelessonsin00unit
+  collection_name_ssim:
+  - Books from the Boston Public Library
+  collection_name_tsim:
+  - Books from the Boston Public Library
+  collection_pid_ssm:
+  - bpl-dev:xs55mc046
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:zs25x848x
+  admin_set_name_ssim:
+  - Books from the Boston Public Library
+  admin_set_name_tsim:
+  - Books from the Boston Public Library
+  admin_set_pid_ssm:
+  - bpl-dev:xs55mc046
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/7s75dn48d
+  publisher_tsim:
+  - Govt. Print. Off.
+  pubplace_tsim:
+  - Washington
+  issuance_tsim:
+  - single unit
+  classification_tsim:
+  - E97.U5874
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Boston Public Library Collection
+  related_item_host_ssim:
+  - Boston Public Library Collection
+  name_corporate_tsim:
+  - United States. Office of Educational Affairs.
+  name_corporate_role_tsim:
+  - Creator
+  name_facet_ssim:
+  - United States. Office of Educational Affairs.
+  type_of_resource_ssim:
+  - text
+  extent_tsi:
+  - '23 p. : ill. ; 25 cm.'
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/jpeg
+  - image/jp2
+  - application/pdf
+  - application/epub+zip
+  - application/x-mobipocket-ebook
+  - application/zip
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  subject_topic_tsim:
+  - Education
+  - Home economics
+  - Study and teaching
+  subject_facet_ssim:
+  - Education
+  - Home economics
+  - Study and teaching
+  active_fedora_model_suffix_ssi:
+  - Book
+  rights_ssm:
+  - Rights status not evaluated.
+  license_ssm:
+  - No known restrictions on use.
+  note_tsim:
+  - 'At head of title: Office of Educational affairs.'
+  - "\"Reference books\": p. 5."
+  title_info_primary_tsi:
+  - Outline lessons in housekeeping, including cooking, laundering, dairying, and nursing
+  subtitle_tsim:
+  - for use in schools.
+  ocr_tiv:
+  - "PREFACE. This publication has been compiled from the results of practical experience in the work of instruction in the schools. It is believed that it is a comprehensive and practical manual that will be of material assistance to the teacher, but every teacher is urged to forward suggestions in order that the manual may be improved when a second edition is issued. OUTLINE LESSONS IN HOUSEKEEPINa INTRODUCTION. Matrons and teachers everywhere are asked to reahze the impor- tance of systematic instruction in the several Hnes of household work. Their judgment is relied upon at all times as to the fitness and appro- priateness of the lesson to be given, and they may deviate from the regular course given herein, if it seems best, in order that the training may be better adapted to the needs of the pupils in the several sections."
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:7s75dn55t
+  text_direction_ssi:
+  - lr
+  marc_md5_sum_ssi:
+  - 828d35b84df3a1ee31b883bc72a65946
+  iaMeta_matcher_md5_ssi:
+  - 956e00f7352ae68a56f22427551066be
+  timestamp:
+  - '2015-11-18T21:22:14.23Z'
+- system_create_dtsi:
+  - '2015-11-18T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-18T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn59x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0011\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0011\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0011\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0011\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0011\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0011\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn59x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0011.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn59x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn59x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn58n
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn60p
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - RIGHT
+  page_num_label_ssi:
+  - 5
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "OUTLINE LESSONS IN HOUSEKEEPINa INTRODUCTION. Matrons and teachers everywhere are asked to reahze the impor- tance of systematic instruction in the several Hnes of household work. Their judgment is relied upon at all times as to the fitness and appro- priateness of the lesson to be given, and they may deviate from the regular course given herein, if it seems best, in order that the training may be better adapted to the needs of the pupils in the several sections."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-18T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-18T17:20:37Z'
+  system_modified_dtsi:
+  - '2015-11-18T19:32:47Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Volume
+  id:
+  - bpl-dev:3j334603p
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":392,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.2\",\"dsCreateDate\":\"2015-11-18T17:20:51Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1317,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+RELS-EXT+RELS-EXT.2\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5042,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.1\",\"dsCreateDate\":\"2015-11-18T19:32:47Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":119285,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+workflowMetadata+workflowMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marc\":{\"dsLabel\":\"MARC metadata\",\"dsVersionID\":\"marc.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/marc\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2614,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+marc+marc.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marcXML\":{\"dsLabel\":\"MARC XML metadata\",\"dsVersionID\":\"marcXML.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":6542,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+marcXML+marcXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"iaMeta\":{\"dsLabel\":\"Internet Archive metadata\",\"dsVersionID\":\"iaMeta.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2885,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+iaMeta+iaMeta.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"scanData\":{\"dsLabel\":\"Internet Archive scanData metadata\",\"dsVersionID\":\"scanData.0\",\"dsCreateDate\":\"2015-11-18T17:20:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":688958,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+scanData+scanData.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"plainText\":{\"dsLabel\":\"Plain Text representation of this object\",\"dsVersionID\":\"plainText.0\",\"dsCreateDate\":\"2015-11-18T17:20:38Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1198577,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+plainText+plainText.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuXML\":{\"dsLabel\":\"XML version of DJVU output\",\"dsVersionID\":\"djvuXML.0\",\"dsCreateDate\":\"2015-11-18T17:20:38Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":11618804,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334603p+djvuXML+djvuXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"abbyy\":{}},\"objLabel\":\"The woman's book\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_ComplexObjectBase\",\"info:fedora/afmodel:Bplmodels_Volume\",\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T17:20:37Z\",\"objLastModDate\":\"2015-11-18T17:20:51Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334603p/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334603p/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  title_info_nonSort_ssm:
+  - The
+  title_info_0_nonSort_ssm:
+  - The
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  is_preceding_volume_of_ssim:
+  - info:fedora/bpl-dev:rf55z9490
+  is_volume_of_ssim:
+  - info:fedora/bpl-dev:3j334b469
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:3j334603p
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Volume
+  - info:fedora/afmodel:Bplmodels_ComplexObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  label_ssim:
+  - The woman's book
+  identifier_local_barcode_tsim:
+  - 39999063781148
+  identifier_ia_id_ssi:
+  - womansbookdealin01unse
+  collection_name_ssim:
+  - Books from the Boston Public Library
+  collection_name_tsim:
+  - Books from the Boston Public Library
+  collection_pid_ssm:
+  - bpl-dev:xs55mc046
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:zs25x848x
+  admin_set_name_ssim:
+  - Books from the Boston Public Library
+  admin_set_name_tsim:
+  - Books from the Boston Public Library
+  admin_set_pid_ssm:
+  - bpl-dev:xs55mc046
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/3j334603p
+  related_item_host_tsim:
+  - Boston Public Library Collection
+  related_item_host_ssim:
+  - Boston Public Library Collection
+  internet_media_type_ssim:
+  - image/jpeg
+  - image/jp2
+  - application/pdf
+  - application/epub+zip
+  - application/x-mobipocket-ebook
+  - application/zip
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  active_fedora_model_suffix_ssi:
+  - Volume
+  rights_ssm:
+  - Rights status not evaluated.
+  license_ssm:
+  - No known restrictions on use.
+  title_info_primary_tsi:
+  - The  woman's book
+  title_info_partnum_tsi:
+  - v.1
+  subtitle_tsim:
+  - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  ocr_tiv:
+  - "Designed by Frieda V. Redmond. OCCUPATIONS FOR WOMEN. By p. G. HUBERT, Jr. The New Fields of Work Open. Art Study and Art Workers. Women Architects. Teaching. Typewriting and Stenography. Women's Exchanges. Occupations for the Inexperienced. The Trained Nurse. Women Physicians and Lawyers. Newspaper Work and Pay. Dress-making and Millinery. Work Done at Home. The Stage as a Profession. Novel Occupations Followed. Women as Local Photographers. How Women Workers are Swindled."
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:3j3346146
+  text_direction_ssi:
+  - lr
+  marc_md5_sum_ssi:
+  - 159d9904be9c773b72beaaa58049c6a3
+  iaMeta_matcher_md5_ssi:
+  - 486b502fa785a7f9779c2353083d40dd
+  timestamp:
+  - '2015-11-18T19:32:49.014Z'
+- system_create_dtsi:
+  - '2015-11-18T16:57:36Z'
+  system_modified_dtsi:
+  - '2015-11-18T17:27:35Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:3j334628j
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T16:57:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T16:57:38Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T16:57:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"womansbookdealin01unse_0025\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T16:57:36Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1146175,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T16:57:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for womansbookdealin01unse_0025\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T16:57:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2043,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for womansbookdealin01unse_0025\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T16:57:37Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":8950,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T16:57:37Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T17:27:25Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5350,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"womansbookdealin01unse_0025\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T17:27:34Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1146175,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"womansbookdealin01unse_0025\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T17:27:35Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":23986,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"womansbookdealin01unse_0025\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T17:27:35Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":155634,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334628j+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"womansbookdealin01unse_0025.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T16:57:36Z\",\"objLastModDate\":\"2015-11-18T16:57:38Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334628j/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334628j/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:3j334603p
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:3j3346278
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:3j334603p
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:3j334629t
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - RIGHT
+  page_num_label_ssi:
+  - 1
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Designed by Frieda V. Redmond. OCCUPATIONS FOR WOMEN. By p. G. HUBERT, Jr. The New Fields of Work Open. Art Study and Art Workers. Women Architects. Teaching. Typewriting and Stenography. Women's Exchanges. Occupations for the Inexperienced. The Trained Nurse. Women Physicians and Lawyers. Newspaper Work and Pay. Dress-making and Millinery. Work Done at Home. The Stage as a Profession. Novel Occupations Followed. Women as Local Photographers. How Women Workers are Swindled."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-18T17:27:35.361Z'
+- system_create_dtsi:
+  - '2015-11-18T16:01:17Z'
+  system_modified_dtsi:
+  - '2015-11-18T18:49:15Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Volume
+  id:
+  - bpl-dev:rf55z9490
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T16:01:17Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":392,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.4\",\"dsCreateDate\":\"2015-11-18T17:20:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1317,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+RELS-EXT+RELS-EXT.4\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.1\",\"dsCreateDate\":\"2015-11-18T16:43:46Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+rightsMetadata+rightsMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.1\",\"dsCreateDate\":\"2015-11-18T16:43:46Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5042,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+descMetadata+descMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.2\",\"dsCreateDate\":\"2015-11-18T18:49:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":118209,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+workflowMetadata+workflowMetadata.2\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marc\":{\"dsLabel\":\"MARC metadata\",\"dsVersionID\":\"marc.1\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/marc\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2614,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+marc+marc.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marcXML\":{\"dsLabel\":\"MARC XML metadata\",\"dsVersionID\":\"marcXML.0\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":6542,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+marcXML+marcXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"iaMeta\":{\"dsLabel\":\"Internet Archive metadata\",\"dsVersionID\":\"iaMeta.0\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2847,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+iaMeta+iaMeta.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"scanData\":{\"dsLabel\":\"Internet Archive scanData metadata\",\"dsVersionID\":\"scanData.0\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":691303,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+scanData+scanData.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"plainText\":{\"dsLabel\":\"Plain Text representation of this object\",\"dsVersionID\":\"plainText.0\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1105870,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+plainText+plainText.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuXML\":{\"dsLabel\":\"XML version of DJVU output\",\"dsVersionID\":\"djvuXML.0\",\"dsCreateDate\":\"2015-11-18T16:43:47Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10566505,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9490+djvuXML+djvuXML.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"abbyy\":{}},\"objLabel\":\"The woman's book\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_Volume\",\"info:fedora/afmodel:Bplmodels_ComplexObjectBase\",\"info:fedora/afmodel:Bplmodels_ObjectBase\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T16:01:17Z\",\"objLastModDate\":\"2015-11-18T17:20:47Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Arf55z9490/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Arf55z9490/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  title_info_nonSort_ssm:
+  - The
+  title_info_0_nonSort_ssm:
+  - The
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  is_following_volume_of_ssim:
+  - info:fedora/bpl-dev:3j334603p
+  is_volume_of_ssim:
+  - info:fedora/bpl-dev:3j334b469
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:rf55z9490
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Volume
+  - info:fedora/afmodel:Bplmodels_ComplexObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  label_ssim:
+  - The woman's book
+  identifier_local_barcode_tsim:
+  - 39999082702109
+  identifier_ia_id_ssi:
+  - womansbookdealin02unse
+  collection_name_ssim:
+  - Books from the Boston Public Library
+  collection_name_tsim:
+  - Books from the Boston Public Library
+  collection_pid_ssm:
+  - bpl-dev:xs55mc046
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:zs25x848x
+  admin_set_name_ssim:
+  - Books from the Boston Public Library
+  admin_set_name_tsim:
+  - Books from the Boston Public Library
+  admin_set_pid_ssm:
+  - bpl-dev:xs55mc046
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/rf55z9490
+  related_item_host_tsim:
+  - Boston Public Library Collection
+  related_item_host_ssim:
+  - Boston Public Library Collection
+  internet_media_type_ssim:
+  - image/jpeg
+  - image/jp2
+  - application/pdf
+  - application/epub+zip
+  - application/x-mobipocket-ebook
+  - application/zip
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  active_fedora_model_suffix_ssi:
+  - Volume
+  rights_ssm:
+  - Rights status not evaluated.
+  license_ssm:
+  - No known restrictions on use.
+  title_info_primary_tsi:
+  - The  woman's book
+  title_info_partnum_tsi:
+  - v.2
+  subtitle_tsim:
+  - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  ocr_tiv:
+  - "The Home Grounds. itself, but, after all this has been con- sidered, there still remain some wise suggestions that should be followed in nearly all cases. Give plenty of space in front of the house, in order to exhibit it to better effect and to secure at the same time greater privacy from the street."
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:rf55z9600
+  text_direction_ssi:
+  - lr
+  marc_md5_sum_ssi:
+  - 159d9904be9c773b72beaaa58049c6a3
+  iaMeta_matcher_md5_ssi:
+  - d7105fab082e3c4ab6ade7c1b03c7a85
+  timestamp:
+  - '2015-11-18T18:49:17.589Z'
+- system_create_dtsi:
+  - '2015-11-18T15:38:32Z'
+  system_modified_dtsi:
+  - '2015-11-18T16:50:05Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:rf55z9732
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T15:38:32Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T15:38:34Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T15:38:32Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"womansbookdealin02unse_0026\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T15:38:33Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1037062,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T15:38:33Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.1\",\"dsCreateDate\":\"2015-11-18T16:33:23Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":493,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+pageMetadata+pageMetadata.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for womansbookdealin02unse_0026\",\"dsVersionID\":\"ocrMaster.1\",\"dsCreateDate\":\"2015-11-18T16:33:23Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":3966,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+ocrMaster+ocrMaster.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for womansbookdealin02unse_0026\",\"dsVersionID\":\"djvuCoords.1\",\"dsCreateDate\":\"2015-11-18T16:33:23Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":18852,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+djvuCoords+djvuCoords.1\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T16:49:55Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5350,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"womansbookdealin02unse_0026\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T16:50:04Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1037062,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"womansbookdealin02unse_0026\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T16:50:04Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":26121,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"womansbookdealin02unse_0026\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T16:50:05Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":190017,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:rf55z9732+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"womansbookdealin02unse_0026.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T15:38:32Z\",\"objLastModDate\":\"2015-11-18T16:33:23Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Arf55z9732/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3Arf55z9732/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:rf55z9490
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:rf55z972s
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:rf55z9490
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:rf55z974b
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - LEFT
+  page_num_label_ssi:
+  - 4
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "The Home Grounds. itself, but, after all this has been con- sidered, there still remain some wise suggestions that should be followed in nearly all cases. Give plenty of space in front of the house, in order to exhibit it to better effect and to secure at the same time greater privacy from the street."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-18T16:50:05.07Z'
+- system_create_dtsi:
+  - '2015-11-18T21:04:15Z'
+  system_modified_dtsi:
+  - '2015-11-18T21:09:30Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn58n
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:16Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0010\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":616661,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0010\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":1115,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0010\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5084,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:15Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":493,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:22Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5348,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0010\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:29Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":616661,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0010\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:30Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":15250,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0010\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:30Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":98815,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn58n+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0010.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:15Z\",\"objLastModDate\":\"2015-11-18T21:04:16Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn58n/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn58n/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn57c
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn59x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - LEFT
+  page_num_label_ssi:
+  - 4
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "PREFACE. This publication has been compiled from the results of practical experience in the work of instruction in the schools. It is believed that it is a comprehensive and practical manual that will be of material assistance to the teacher, but every teacher is urged to forward suggestions in order that the manual may be improved when a second edition is issued."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-18T21:09:30.2Z'
+- system_create_dtsi:
+  - '2015-11-18T17:20:53Z'
+  system_modified_dtsi:
+  - '2015-11-18T17:20:53Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::Book
+  id:
+  - bpl-dev:3j334b469
+  object_profile_ssm:
+  - "{\"datastreams\":{\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2015-11-18T17:20:53Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":1030,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b469+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:53Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b469+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:53Z\",\"dsState\":\"A\",\"dsMIME\":\"application/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5322,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b469+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:53Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":118221,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b469+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"marc\":{},\"marcXML\":{},\"iaMeta\":{},\"scanData\":{},\"plainText\":{},\"djvuXML\":{},\"abbyy\":{}},\"objLabel\":null,\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T17:20:53Z\",\"objLastModDate\":\"2015-11-18T17:20:53Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334b469/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334b469/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  title_info_nonSort_ssm:
+  - The
+  title_info_0_nonSort_ssm:
+  - The
+  is_member_of_collection_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  administrative_set_ssim:
+  - info:fedora/bpl-dev:xs55mc046
+  oai_item_id_ssim:
+  - oai:digitalcommonwealth.org:bpl-dev:3j334b469
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_Book
+  - info:fedora/afmodel:Bplmodels_ComplexObjectBase
+  - info:fedora/afmodel:Bplmodels_ObjectBase
+  date_start_dtsi:
+  - '1894-01-01T00:00:00Z'
+  date_start_tsim:
+  - 1894
+  date_end_tsim:
+  - nil
+  date_facet_ssim:
+  - 1890s
+  date_type_ssm:
+  - dateIssued
+  date_start_qualifier_ssm:
+  - nil
+  date_facet_yearly_ssim:
+  - 1894s
+  table_of_contents_tsi:
+  - "v. I. Occupations for women, by P. G. Hubert, jr. Women in their business affairs, by W. O. Stoddard. The principles of housekeeping, by Lillian W. Betts. Society and social usages, by Constance C. Harrison. The aesthetics of dress, by Eva W. McGlasson. Dress from a practical standpoint, by several writers. Hygiene in the home, by J. W. Roosevelt. The training of children, by Kate D. Wiggin. The education of women, by Lyman Abbott. Books and reading, by T. W. Higginson. The art of travel, by Elizabeth Bisland.--v. 2. The home grounds, by Samuel Parsons, jr. The flower garden, by J. N. Gerard. House building, by Helen C. Candee. House decoration and furnishing, by Mary G. Humphreys. Women's opportunties in town and country, by Mary C. Jones. Woman's handiwork, by Constance C. Harrison. Supplementary information, by various writers."
+  genre_basic_tsim:
+  - Books
+  genre_basic_ssim:
+  - Books
+  identifier_local_call_tsim:
+  - 4003.121
+  identifier_local_barcode_tsim:
+  - 39999082702109
+  identifier_lccn_tsim:
+  - 09006931
+  identifier_ia_id_ssi:
+  - womansbookdealin02unse
+  collection_name_ssim:
+  - Books from the Boston Public Library
+  collection_name_tsim:
+  - Books from the Boston Public Library
+  collection_pid_ssm:
+  - bpl-dev:xs55mc046
+  institution_name_ssim:
+  - Boston Public Library
+  institution_name_tsim:
+  - Boston Public Library
+  institution_pid_ssi:
+  - bpl-dev:zs25x848x
+  admin_set_name_ssim:
+  - Books from the Boston Public Library
+  admin_set_name_tsim:
+  - Books from the Boston Public Library
+  admin_set_pid_ssm:
+  - bpl-dev:xs55mc046
+  identifier_uri_ss:
+  - http://ark-hydradev.bpl.org/ark:/50959/3j334b469
+  publisher_tsim:
+  - C. Scribner's sons
+  pubplace_tsim:
+  - New York
+  classification_tsim:
+  - HQ1221.W8
+  lang_term_ssim:
+  - English
+  related_item_host_tsim:
+  - Boston Public Library Collection
+  related_item_host_ssim:
+  - Boston Public Library Collection
+  type_of_resource_ssim:
+  - text
+  extent_tsi:
+  - '2 v., col. plates : col. ill. (part col.), forms ; 25 cm.'
+  digital_origin_ssi:
+  - reformatted digital
+  internet_media_type_ssim:
+  - image/jpeg
+  - image/jp2
+  - application/pdf
+  - application/epub+zip
+  - application/x-mobipocket-ebook
+  - application/zip
+  physical_location_ssim:
+  - Boston Public Library
+  physical_location_tsim:
+  - Boston Public Library
+  subject_topic_tsim:
+  - Women
+  - Employment
+  - Home economics
+  - Social and moral questions
+  - Interior decoration
+  subject_facet_ssim:
+  - Women
+  - Employment
+  - Home economics
+  - Women
+  - Social and moral questions
+  - Interior decoration
+  active_fedora_model_suffix_ssi:
+  - Book
+  rights_ssm:
+  - Rights status not evaluated.
+  license_ssm:
+  - No known restrictions on use.
+  note_tsim:
+  - Appendix, v. 2, gives bibliographies on various subjects treated in the text.
+  title_info_primary_tsi:
+  - The  woman's book
+  subtitle_tsim:
+  - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  ocr_tiv:
+  - "Designed by Frieda V. Redmond. OCCUPATIONS FOR WOMEN. By p. G. HUBERT, Jr. The New Fields of Work Open. Art Study and Art Workers. Women Architects. Teaching. Typewriting and Stenography. Women's Exchanges. Occupations for the Inexperienced. The Trained Nurse. Women Physicians and Lawyers. Newspaper Work and Pay. Dress-making and Millinery. Work Done at Home. The Stage as a Profession. Novel Occupations Followed. Women as Local Photographers. How Women Workers are Swindled. The Home Grounds. itself, but, after all this has been con- sidered, there still remain some wise suggestions that should be followed in nearly all cases. Give plenty of space in front of the house, in order to exhibit it to better effect and to secure at the same time greater privacy from the street."
+  workflow_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  exemplary_image_ssi:
+  - bpl-dev:3j3346146
+  marc_md5_sum_ssi:
+  - 159d9904be9c773b72beaaa58049c6a3
+  iaMeta_matcher_md5_ssi:
+  - d7105fab082e3c4ab6ade7c1b03c7a85
+  timestamp:
+  - '2015-11-18T17:20:55.415Z'
+- system_create_dtsi:
+  - '2015-11-18T17:20:25Z'
+  system_modified_dtsi:
+  - '2015-11-18T19:32:29Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::EreaderFile
+  id:
+  - bpl-dev:3j334b41x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T17:20:25Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":398,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T17:20:29Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":826,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:25Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"womansbookdealin01unse\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T17:20:25Z\",\"dsState\":\"A\",\"dsMIME\":\"application/epub+zip\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":3100582,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T17:20:26Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":909,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T19:32:29Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2952,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:3j334b41x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{},\"thumbnail300\":{},\"access800\":{},\"ocrMaster\":{},\"djvuCoords\":{},\"ARCHV-EXIF\":{},\"pageMetadata\":{}},\"objLabel\":\"womansbookdealin01unse.epub\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_EreaderFile\",\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T17:20:25Z\",\"objLastModDate\":\"2015-11-18T17:20:29Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334b41x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A3j334b41x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:zs25x848x]
+  identification_identity_mime_type_tesim:
+  - application/epub+zip
+  - application/epub+zip
+  - application/zip
+  - application/epub+zip
+  identification_0_identity_0_mime_type_tesim:
+  - application/epub+zip
+  - application/epub+zip
+  - application/epub+zip
+  identification_0_identity_2_mime_type_tesim:
+  - application/zip
+  mime_type_tesim:
+  - application/epub+zip
+  - application/vnd.oasis.opendocument.text
+  - application/zip
+  - application/epub+zip
+  is_ereader_of_ssim:
+  - info:fedora/bpl-dev:3j334603p
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:3j334603p
+  is_preceding_ereader_of_ssim:
+  - info:fedora/bpl-dev:3j334b426
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_EreaderFile
+  derivative_processsed_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-18T19:32:30.275Z'

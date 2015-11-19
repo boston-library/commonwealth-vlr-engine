@@ -98,8 +98,8 @@ describe CommonwealthVlrEngine::IiifManifest do
 
   describe 'collection_for_manifests' do
 
-    let(:series_document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:TK\"", :rows => 1}).documents.first }
-    let(:manifest_docs) { @obj.get_files(series_document.id)[:volumes] }
+    let(:series_document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:3j334b469\"", :rows => 1}).documents.first }
+    let(:manifest_docs) { @obj.get_volume_objects(series_document.id) }
 
     before { @collection = @obj.collection_for_manifests(series_document, manifest_docs) }
 
@@ -110,7 +110,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     it 'should have contain a list of manifests' do
       expect(@collection.manifests.length).to eq(2)
-      expect(@collection.manifests.first['@id']).to include(document[:identifier_uri_ss])
+      expect(@collection.manifests.first['@id']).to include('3j334603p')
     end
 
     it 'should have the right id' do
