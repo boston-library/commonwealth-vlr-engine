@@ -1,6 +1,5 @@
 module CommonwealthVlrEngine
   module Finder
-    #include Blacklight::SearchHelper
 
     def get_files(pid)
 

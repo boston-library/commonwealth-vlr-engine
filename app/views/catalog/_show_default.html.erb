@@ -38,6 +38,7 @@
           <% if volumes %>
               <%= render :partial => 'catalog/_show_partials/show_volumes',
                          :locals => {:document => @document, :volumes => volumes} %>
+              <%= javascript_include_tag('commonwealth-vlr-engine/volumes_list') %>
           <% end %>
       </div>
   <% end %>

@@ -8,7 +8,7 @@
       <% volumes.each_with_index do |volume, index| %>
           <% volume_title = render_volume_title(volume[:vol_doc]) %>
           <li class="volume_listing" id="volume_listing_<%= index %>">
-            <a class="collapsed volume_title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= index %>" aria-expanded="false" aria-controls="collapse_<%= index %>">
+            <a class="collapsed volume_title" role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapse_<%= index %>" href="<%= solr_document_path(volume[:vol_doc].id) %>" aria-expanded="false" aria-controls="collapse_<%= index %>">
               <%= volume_title %>
             </a>
             <div id="collapse_<%= index %>" class="volume_details panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= index %>">

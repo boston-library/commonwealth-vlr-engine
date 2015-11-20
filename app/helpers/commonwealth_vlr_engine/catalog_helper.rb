@@ -71,7 +71,8 @@ module CommonwealthVlrEngine
     def has_downloadable_files? files_hash
       files_hash[:documents].present? ||
           files_hash[:audio].present? ||
-          files_hash[:generic].present?
+          files_hash[:generic].present? ||
+          files_hash[:ereader].present?
     end
 
     def has_image_files? files_hash

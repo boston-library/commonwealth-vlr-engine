@@ -216,19 +216,10 @@ module CommonwealthVlrEngine
     end
 
     # TODO: refactor how views access files/volumes/etc.
-    # returns the child or sibling volumes for Book or Volume objects (respectively)
-    # needs to be in ControllerOverride so Finder methods can be used
+    # returns the child volumes for Book objects (if they exist)
+    # needs to be in this module because CommonwealthVlrEngine::Finder methods aren't accessible in helpers/views
     def has_volumes?(document)
       case document[blacklight_config.show.display_type_field.to_sym]
-=begin
-        when 'Volume'
-          if document[:is_volume_of_ssim] # need this because series obj may not exist yet
-            all_vols = get_volume_objects(document[:is_volume_of_ssim].first.gsub(/info:fedora\//,''))
-            volumes = all_vols.reject { |doc| doc.id == document.id } # remove current volume from list
-          else
-            volumes = nil
-          end
-=end
         when 'Book'
           volumes = get_volume_objects(document.id)
         else
