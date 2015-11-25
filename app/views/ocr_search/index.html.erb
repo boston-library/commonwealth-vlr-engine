@@ -1,0 +1,29 @@
+<div class="ocr_pagination top">
+  <%# render :partial=>'facet_pagination' %>
+</div>
+
+<div class="modal-header">
+  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 class="modal-title"><%#  %></h3>
+</div>
+<div class="modal-body">
+  <div class="facet_extended_list">
+    <%# render_facet_limit(@display_facet, layout: false) %>
+    <%= @image_pid_list.inspect %>
+    <% if @response.empty? %>
+        <%= render 'catalog/zero_results' %>
+    <% else %>
+        <%= render collection: @document_list,
+                   as: :document,
+                   partial: 'index_ocr_list',
+                   locals: {count: @document_list.count} %>
+    <%- end %>
+  </div>
+</div>
+
+<div class="modal-footer">
+
+  <div class="ocr_pagination bottom">
+    <%# render :partial=>'facet_pagination' %>
+  </div>
+</div>

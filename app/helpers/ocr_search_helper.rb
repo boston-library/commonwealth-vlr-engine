@@ -1,0 +1,3 @@
+module OcrSearchHelper
+  include CommonwealthVlrEngine::OcrSearchHelperBehavior
+end

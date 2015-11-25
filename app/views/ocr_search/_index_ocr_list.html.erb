@@ -1,0 +1,6 @@
+<div class="ocr_search_result">
+  <%#  %>
+  <%# render_page_link(document, @image_pid_list, params[:id]) %><br/>
+  <%# document.presenter.render_field_value(document.highlight_field(blacklight_config.ocr_search_field)) %>
+  <%= render_index_field_value document, field: blacklight_config.ocr_search_field %>
+</div>

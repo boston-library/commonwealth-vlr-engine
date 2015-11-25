@@ -20,6 +20,10 @@
     <% end %>
 <% end %>
 
+<div class="ocr_search">
+  <%= link_to('View search results', ocr_search_path(ocr_q: 'instruction')) %>
+</div>
+
 <div class="row">
 
   <%# show thumbnail or icon if object has no images, or volume list %>

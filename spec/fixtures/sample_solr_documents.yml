@@ -1678,7 +1678,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   administrative_set_ssim:
   - info:fedora/bpl-dev:xs55mc046
   oai_item_id_ssim:
@@ -1728,7 +1728,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:zs25x848x
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Books from the Boston Public Library
   admin_set_name_tsim:
@@ -1827,7 +1827,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/jp2
   identification_0_identity_0_mime_type_tesim:
@@ -1879,7 +1879,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   title_info_nonSort_ssm:
   - The
   title_info_0_nonSort_ssm:
@@ -1915,7 +1915,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:zs25x848x
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Books from the Boston Public Library
   admin_set_name_tsim:
@@ -1983,7 +1983,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/jp2
   identification_0_identity_0_mime_type_tesim:
@@ -2035,7 +2035,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   title_info_nonSort_ssm:
   - The
   title_info_0_nonSort_ssm:
@@ -2071,7 +2071,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:zs25x848x
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Books from the Boston Public Library
   admin_set_name_tsim:
@@ -2139,7 +2139,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/jp2
   identification_0_identity_0_mime_type_tesim:
@@ -2191,7 +2191,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - image/jp2
   identification_0_identity_0_mime_type_tesim:
@@ -2243,7 +2243,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   title_info_nonSort_ssm:
   - The
   title_info_0_nonSort_ssm:
@@ -2297,7 +2297,7 @@
   institution_name_tsim:
   - Boston Public Library
   institution_pid_ssi:
-  - bpl-dev:zs25x848x
+  - bpl-dev:abcd12345
   admin_set_name_ssim:
   - Books from the Boston Public Library
   admin_set_name_tsim:
@@ -2390,7 +2390,7 @@
   - public
   edit_access_group_ssim:
   - superuser
-  - admin[bpl-dev:zs25x848x]
+  - admin[bpl-dev:abcd12345]
   identification_identity_mime_type_tesim:
   - application/epub+zip
   - application/epub+zip

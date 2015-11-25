@@ -47,5 +47,12 @@ module CommonwealthVlrEngine
       solr_parameters[:fq] << '-active_fedora_model_suffix_ssi:"Volume"'
     end
 
+    # set params for ocr field searching
+    def ocr_search_params(solr_parameters = {})
+      solr_parameters[:hl] = true
+      solr_parameters[:'hl.fl'] = blacklight_config.ocr_search_field
+      solr_parameters[:fl] = "id, #{blacklight_config.page_num_field}"
+    end
+
   end
 end

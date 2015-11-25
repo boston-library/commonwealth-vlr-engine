@@ -77,6 +77,10 @@ module CommonwealthVlrEngine
         # institution name field
         config.institution_field = 'institution_name_ssim'
 
+        # book stuff
+        config.ocr_search_field = 'ocr_tsiv'
+        config.page_num_field = 'page_num_label_ssi'
+
         config.default_solr_params = {:qt => 'search', :rows => 20}
 
         # solr field configuration for search results/index views

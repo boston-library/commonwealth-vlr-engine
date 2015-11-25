@@ -51,6 +51,9 @@ Rails.application.routes.draw do
   get 'search/:id/annotation/:annotation_object_id', :to => 'iiif_manifest#annotation', :as => 'iiif_annotation'
   get 'search/:id/iiif_collection', :to => 'iiif_manifest#collection', :as => 'iiif_collection'
 
+  # OCR search results
+  get 'search/:id/fulltext', :to => 'ocr_search#index', :as => 'ocr_search'
+
   # DEPRECATED ROUTES AND EXAMPLES
 
   # this is generated into local app via CommonwealthVlrEngine::RoutesGenerator
