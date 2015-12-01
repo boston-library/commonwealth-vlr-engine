@@ -292,6 +292,11 @@ en:
     navigation:
           format: 'Formats'
 
+    ocr:
+          search:
+            results:
+              title: 'Search inside this work'
+
     pages:
           about:
             title: 'About'

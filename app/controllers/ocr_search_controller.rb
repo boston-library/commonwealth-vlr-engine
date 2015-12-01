@@ -17,11 +17,12 @@ class OcrSearchController < CatalogController
   end
 
   def index
-    @image_pid_list = get_files(params[:id]) #has_image_files?
+    @image_pid_list = has_image_files?(get_files(params[:id]))
     self.search_params_logic.delete_if { |v| [:exclude_unwanted_models, :institution_limit].include?(v) }
     self.search_params_logic += [:ocr_search_params]
     ocr_search_params = {:q => {"is_file_of_ssim" => "info:fedora/#{params[:id]}",
                                 blacklight_config.ocr_search_field => params[:ocr_q]}}
+    ocr_search_params[:page] = params[:page] if params[:page]
     (@response, @document_list) = search_results(ocr_search_params, search_params_logic)
 
     respond_to do |format|

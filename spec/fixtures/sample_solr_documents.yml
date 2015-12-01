@@ -1840,8 +1840,8 @@
   - info:fedora/bpl-dev:7s75dn58n
   is_image_of_ssim:
   - info:fedora/bpl-dev:7s75dn48d
-  is_preceding_image_of_ssim:
-  - info:fedora/bpl-dev:7s75dn60p
+#  is_preceding_image_of_ssim:
+#  - info:fedora/bpl-dev:7s75dn60p
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
@@ -1992,12 +1992,12 @@
   - image/jp2
   is_file_of_ssim:
   - info:fedora/bpl-dev:3j334603p
-  is_following_image_of_ssim:
-  - info:fedora/bpl-dev:3j3346278
+#  is_following_image_of_ssim:
+#  - info:fedora/bpl-dev:3j3346278
   is_image_of_ssim:
   - info:fedora/bpl-dev:3j334603p
-  is_preceding_image_of_ssim:
-  - info:fedora/bpl-dev:3j334629t
+#  is_preceding_image_of_ssim:
+#  - info:fedora/bpl-dev:3j334629t
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
@@ -2148,12 +2148,12 @@
   - image/jp2
   is_file_of_ssim:
   - info:fedora/bpl-dev:rf55z9490
-  is_following_image_of_ssim:
-  - info:fedora/bpl-dev:rf55z972s
+#  is_following_image_of_ssim:
+#  - info:fedora/bpl-dev:rf55z972s
   is_image_of_ssim:
   - info:fedora/bpl-dev:rf55z9490
-  is_preceding_image_of_ssim:
-  - info:fedora/bpl-dev:rf55z974b
+#  is_preceding_image_of_ssim:
+#  - info:fedora/bpl-dev:rf55z974b
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
@@ -2200,8 +2200,8 @@
   - image/jp2
   is_file_of_ssim:
   - info:fedora/bpl-dev:7s75dn48d
-  is_following_image_of_ssim:
-  - info:fedora/bpl-dev:7s75dn57c
+#  is_following_image_of_ssim:
+#  - info:fedora/bpl-dev:7s75dn57c
   is_image_of_ssim:
   - info:fedora/bpl-dev:7s75dn48d
   is_preceding_image_of_ssim:

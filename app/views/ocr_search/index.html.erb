@@ -1,29 +1,29 @@
-<div class="ocr_pagination top">
-  <%# render :partial=>'facet_pagination' %>
-</div>
-
 <div class="modal-header">
   <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h3 class="modal-title"><%#  %></h3>
+  <h3 class="modal-title"><%= t('blacklight.ocr.search.results.title') %></h3>
 </div>
 <div class="modal-body">
   <div class="facet_extended_list">
-    <%# render_facet_limit(@display_facet, layout: false) %>
-    <%= @image_pid_list.inspect %>
     <% if @response.empty? %>
         <%= render 'catalog/zero_results' %>
     <% else %>
-        <%= render collection: @document_list,
-                   as: :document,
-                   partial: 'index_ocr_list',
-                   locals: {count: @document_list.count} %>
+        <div id="ocr_search_details" data-ajax-modal="preserve">
+          <%= pluralize(@response.total.to_i, 'result') %> found for "<%= params[:ocr_q] %>"<br/>
+          <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
+        </div>
+        <div id="ocr_search_results">
+          <%= render collection: @document_list,
+                     as: :document,
+                     partial: 'index_ocr_list',
+                     locals: {count: @document_list.count} %>
+        </div>
     <%- end %>
   </div>
 </div>
 
 <div class="modal-footer">
-
-  <div class="ocr_pagination bottom">
-    <%# render :partial=>'facet_pagination' %>
+  <div id="ocr_pagination" class="bottom">
+    <%= render :partial => 'catalog/results_pagination' %>
   </div>
 </div>
+<%= javascript_include_tag 'commonwealth-vlr-engine/ocr_pagination' %>

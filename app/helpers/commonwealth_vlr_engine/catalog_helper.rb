@@ -241,7 +241,9 @@ module CommonwealthVlrEngine
     # output properly formatted title with volume info, but no subtitle
     def render_main_title(document)
       title_output = ''
-      title_output << document[blacklight_config.index.title_field.to_sym]
+      if document[blacklight_config.index.title_field.to_sym]
+        title_output << document[blacklight_config.index.title_field.to_sym]
+      end
       if document[:title_info_partnum_tsi]
         title_output << ". #{document[:title_info_partnum_tsi]}"
       end

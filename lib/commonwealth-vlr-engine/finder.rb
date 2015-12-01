@@ -26,13 +26,13 @@ module CommonwealthVlrEngine
         end
       end
 
-       return_hash[:images] = sort_files(return_hash[:images])
-       return_hash[:documents] = sort_files(return_hash[:documents])
-       return_hash[:audio] = sort_files(return_hash[:audio])
-       return_hash[:ereader] = sort_files(return_hash[:ereader])
-       return_hash[:generic] = sort_files(return_hash[:generic])
+      return_hash[:images] = sort_files(return_hash[:images])
+      return_hash[:documents] = sort_files(return_hash[:documents])
+      return_hash[:audio] = sort_files(return_hash[:audio])
+      return_hash[:ereader] = sort_files(return_hash[:ereader])
+      return_hash[:generic] = sort_files(return_hash[:generic])
 
-       return return_hash
+      return return_hash
     end
 
 

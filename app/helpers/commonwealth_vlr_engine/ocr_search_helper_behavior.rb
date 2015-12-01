@@ -19,7 +19,5 @@ module CommonwealthVlrEngine
               :rel => 'nofollow'
     end
 
-
-
   end
 end

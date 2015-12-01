@@ -21,7 +21,9 @@
 <% end %>
 
 <div class="ocr_search">
-  <%= link_to('View search results', ocr_search_path(ocr_q: 'instruction')) %>
+  <%= link_to('View search results',
+              ocr_search_path(ocr_q: 'instruction'),
+              :data => {:ajax_modal => 'trigger'}) %>
 </div>
 
 <div class="row">
