@@ -24,6 +24,7 @@
 @import 'index';
 @import 'institutions';
 @import 'pages';
+@import 'search_inside';
 @import 'searches';
 @import 'show';
 @import 'signin';

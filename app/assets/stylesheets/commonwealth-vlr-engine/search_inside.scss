@@ -1,0 +1,75 @@
+/* styles for 'Search inside' modal popup */
+
+#ocr_search_wrapper {
+  min-height: 35px;
+
+  #ocr_search_form_wrapper {
+    width: 50%;
+    display: inline-block;
+
+    .ocr-search-form {
+
+      .search_q {
+        border-radius: 4px 0 0 4px;
+      }
+
+      .submit-search-text {
+        display: none;
+      }
+
+    }
+
+  }
+
+  #zero_results_ocr {
+    margin-top: 15px;
+  }
+
+  #ocr_search_details {
+    margin-top: 10px;
+    width: 100%;
+    float: left;
+
+    #ocr_search_terms {
+      float: left;
+    }
+
+    .page_links {
+      float: right;
+      padding: 0;
+      border: none;
+    }
+
+  }
+
+  #ocr_search_results {
+
+    .ocr_search_result {
+      margin-bottom: 12px;
+
+      .ocr_page_link {
+        background: none;
+      }
+
+      .ocr_snippet {
+        background: none;
+      }
+
+    }
+
+  }
+
+}
+
+#ocr_pagination {
+
+  #pagination_links {
+    margin: 0;
+
+    ul.pagination {
+      margin: 0;
+    }
+
+  }
+
+}
