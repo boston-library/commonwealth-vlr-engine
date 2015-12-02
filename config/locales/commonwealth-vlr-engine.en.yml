@@ -294,8 +294,11 @@ en:
 
     ocr:
           search:
+            form:
+              q: 'Search inside this item...'
+            link: 'Search inside'
             results:
-              title: 'Search inside this work'
+              title: 'Search inside this item'
 
     pages:
           about:

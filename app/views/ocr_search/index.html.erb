@@ -3,13 +3,16 @@
   <h3 class="modal-title"><%= t('blacklight.ocr.search.results.title') %></h3>
 </div>
 <div class="modal-body">
-  <div class="facet_extended_list">
-    <% if @response.empty? %>
-        <%= render 'catalog/zero_results' %>
+  <div id="ocr_search_wrapper">
+    <%= render :partial => 'search_form_ocr' %>
+    <% if params[:ocr_q] && @response.empty? %>
+        <%= render 'zero_results_ocr' %>
     <% else %>
         <div id="ocr_search_details" data-ajax-modal="preserve">
-          <%= pluralize(@response.total.to_i, 'result') %> found for "<%= params[:ocr_q] %>"<br/>
-          <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
+          <% if params[:ocr_q] %>
+            <span id="ocr_search_terms">Showing results for "<%= params[:ocr_q] %>":</span>
+            <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
+          <% end %>
         </div>
         <div id="ocr_search_results">
           <%= render collection: @document_list,
@@ -17,7 +20,7 @@
                      partial: 'index_ocr_list',
                      locals: {count: @document_list.count} %>
         </div>
-    <%- end %>
+    <% end %>
   </div>
 </div>
 

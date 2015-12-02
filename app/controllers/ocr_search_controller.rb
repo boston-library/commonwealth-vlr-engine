@@ -8,12 +8,13 @@ class OcrSearchController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  before_filter :remove_facets, :only => [:index]
+  before_filter :modify_config_for_ocr, :only => [:index]
 
-  # show series facet
-  def remove_facets
+  # modify Solr query/response for OCR searches
+  def modify_config_for_ocr
     blacklight_config.add_facet_fields_to_solr_request = false
     blacklight_config.add_index_field blacklight_config.ocr_search_field, :highlight => true
+    blacklight_config.default_per_page = 10
   end
 
   def index

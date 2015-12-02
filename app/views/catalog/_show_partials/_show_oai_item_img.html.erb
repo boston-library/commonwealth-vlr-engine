@@ -1,0 +1,5 @@
+<%= link_to(img,
+            document[:identifier_uri_ss],
+            :target => '_blank',
+            :title => t('blacklight.oai_objects.link_to_item',
+                        :institution_name => return_oai_inst_name(document))) %>

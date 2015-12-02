@@ -2,12 +2,24 @@
             book_viewer_path(document.id),
             :title => t('blacklight.book_viewer.link_to_reader'),
             :rel => 'nofollow') %>
-
-<div id="book_viewer_link_wrap">
-  <%= link_to(book_viewer_path(document.id),
-              :class => 'book_viewer_link btn',
-              :rel => 'nofollow') do %>
-      <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
-  <% end %>
-</div>
+<div id="book_actions_links_wrap">
+  <ul id="book_actions_links">
+    <li id="book_viewer_link_wrap">
+      <%= link_to(book_viewer_path(document.id),
+                  :class => 'book_viewer_link btn',
+                  :rel => 'nofollow') do %>
+          <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
+      <% end %>
+    </li>
+    <% if document['identifier_ia_id_ssi'] %>
+        <li id="search_inside_link_wrap">
+          <%= link_to(ocr_search_path(:ocr_q => current_search_session.query_params['q'].presence),
+                      :class => 'search_inside_link btn',
+                      :rel => 'nofollow',
+                      :data => {:ajax_modal => 'trigger'}) do %>
+              <i class="fa fa-search"></i> <%= t('blacklight.ocr.search.link') %>
+          <% end %>
+        </li>
+    <% end %>
+  </ul>
 </div>
