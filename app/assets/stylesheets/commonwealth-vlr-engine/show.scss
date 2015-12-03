@@ -558,11 +558,6 @@ li.download_list_item {
       padding: 10px;
     }
 
-    #book_viewer_link_wrap {
-      bottom: 18px;
-      right: 90px;
-    }
-
   }
 
   #multi_img_show_container {
@@ -617,12 +612,8 @@ li.download_list_item {
 
   }
 
-  #thumbnail_wrapper {
-
-    #book_viewer_link_wrap {
-      right: 28px;
-    }
-
+  a.book_viewer_link, a.search_inside_link {
+    margin-top: 5px;
   }
 
   #img_show_container {
@@ -705,14 +696,18 @@ li.download_list_item {
       width: 100%;
     }
 
-    #book_viewer_link_wrap {
-        right: 28px;
+    #book_actions_links_wrap {
+      text-align: center;
     }
 
     #volumes_wrapper {
       float: left;
     }
 
+  }
+
+  a.book_viewer_link, a.search_inside_link {
+    margin-top: 5px;
   }
 
   #img_viewer_modal {
