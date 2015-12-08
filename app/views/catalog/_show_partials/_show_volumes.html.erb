@@ -24,7 +24,7 @@
                   <% if document['identifier_ia_id_ssi'] %>
                       <li class="vol_search_inside_link_wrap">
                         <%= link_to(ocr_search_path(:id => volume[:vol_doc].id,
-                                                    :ocr_q => current_search_session.query_params['q'].presence),
+                                                    :ocr_q => ocr_q_params(current_search_session)),
                                     :class => 'search_inside_link btn',
                                     :rel => 'nofollow',
                                     :data => {:ajax_modal => 'trigger'}) do %>

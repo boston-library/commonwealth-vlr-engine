@@ -1,6 +1,17 @@
 module CommonwealthVlrEngine
   module OcrSearchHelperBehavior
 
+
+    # if current_search_session exists, use query_params['q'], otherwise nil
+    # @current_search_session is defined in Blacklight::SearchContext
+    def ocr_q_params(current_search_session)
+      if current_search_session
+        current_search_session.query_params['q']
+      else
+        nil
+      end
+    end
+
     # link to the book viewer, using page number or image index
     # @document = SolrDocument
     # @image_pid_list = an ordered Array of image pids for the book object

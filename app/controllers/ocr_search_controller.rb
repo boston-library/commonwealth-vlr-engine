@@ -34,4 +34,10 @@ class OcrSearchController < CatalogController
     end
   end
 
+  private
+
+  def start_new_search_session?
+    false
+  end
+
 end
