@@ -15,7 +15,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
 
   end
 
-  let(:blacklight_config) { Blacklight::Configuration.new }
+  let(:blacklight_config) { CatalogController.blacklight_config }
   let(:blacklight_params) { Hash.new }
   let(:solr_parameters) { Blacklight::Solr::Request.new }
 
@@ -23,13 +23,15 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
 
   describe 'exclude_unwanted_models' do
 
+    let(:excluded_result) { @obj.exclude_unwanted_models(solr_parameters).to_s }
+
     it 'should add parameters to exclude unwanted models' do
-      expect(@obj.exclude_unwanted_models(solr_parameters).to_s).to include('afmodel:Bplmodels_File')
+      expect(excluded_result).to include('afmodel:Bplmodels_File')
     end
 
     it 'should add parameters to exclude non-published items' do
-      expect(@obj.exclude_unwanted_models(solr_parameters).to_s).to include('draft')
-      expect(@obj.exclude_unwanted_models(solr_parameters).to_s).to include('needs_review')
+      expect(excluded_result).to include('draft')
+      expect(excluded_result).to include('needs_review')
     end
 
   end
@@ -72,6 +74,23 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
 
     it 'should add parameters to require institutions' do
       expect(@obj.collections_filter(solr_parameters).to_s).to include('+active_fedora_model_suffix_ssi:\"Collection\"')
+    end
+
+  end
+
+  describe 'ocr_search_params' do
+
+    before do
+      @obj.ocr_search_params(solr_parameters)
+    end
+
+    it 'should add parameters for field highlighting' do
+      expect(solr_parameters.to_s).to include('"hl"=>true')
+      expect(solr_parameters.to_s).to include("\"hl.fl\"=>\"#{blacklight_config.ocr_search_field}\"")
+    end
+
+    it 'should set the :fl params' do
+      expect(solr_parameters.to_s).to include("\"fl\"=>\"id, #{blacklight_config.page_num_field}\"")
     end
 
   end

@@ -15,20 +15,20 @@
               </span>
               <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
             </div>
+            <div id="ocr_search_results">
+              <%= render collection: @document_list,
+                         as: :document,
+                         partial: 'index_ocr_list',
+                         locals: {count: @document_list.count} %>
+            </div>
         <% end %>
-        <div id="ocr_search_results">
-          <%= render collection: @document_list,
-                     as: :document,
-                     partial: 'index_ocr_list',
-                     locals: {count: @document_list.count} %>
-        </div>
     <% end %>
   </div>
 </div>
 
 <div id="ocr_modal_footer" class="modal-footer">
   <div id="ocr_pagination" class="bottom">
-    <%= render :partial => 'catalog/results_pagination' %>
+    <%= render :partial => 'catalog/results_pagination' if params[:ocr_q] %>
   </div>
 </div>
 <%= javascript_include_tag 'commonwealth-vlr-engine/ocr_pagination' %>
