@@ -1840,8 +1840,8 @@
   - info:fedora/bpl-dev:7s75dn58n
   is_image_of_ssim:
   - info:fedora/bpl-dev:7s75dn48d
-#  is_preceding_image_of_ssim:
-#  - info:fedora/bpl-dev:7s75dn60p
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn60x
   has_model_ssim:
   - info:fedora/afmodel:Bplmodels_File
   - info:fedora/afmodel:Bplmodels_ImageFile
@@ -2422,3 +2422,315 @@
   - none
   timestamp:
   - '2015-11-18T19:32:30.275Z'
+- system_create_dtsi:
+  - '2015-11-19T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-19T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn60x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0012\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0012\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0012\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0012\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0012\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0012\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn60x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0012.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn60x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn60x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn59x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn61x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - LEFT
+  page_num_label_ssi:
+  - 6
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Pariatur bespoke occaecat direct trade wolf, accusamus small batch synth VHS kickstarter magna kitsch."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-19T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-20T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-20T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn61x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0013\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0013\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0013\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0013\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0013\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0013\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn61x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0013.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn61x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn61x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn60x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn62x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - RIGHT
+  page_num_label_ssi:
+  - 7
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Aliqua aliquip meggings pork belly small batch. Chia dreamcatcher church-key tacos."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-20T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-21T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-21T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn62x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0014\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0014\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0014\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0014\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0014\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0014\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn62x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0014.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn62x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn62x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn61x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn63x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - LEFT
+  page_num_label_ssi:
+  - 8
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Umami wayfarers tempor, heirloom est fingerstache banjo marfa sed meh put a bird on it chartreuse before they sold out incididunt."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-21T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-22T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-22T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn63x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0015\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0015\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0015\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0015\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0015\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0015\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn63x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0015.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn63x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn63x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn62x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn64x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - RIGHT
+  page_num_label_ssi:
+  - 9
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Aute distillery assumenda skateboard, synth deep v fanny pack scenester."
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-22T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-23T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-23T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn64x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0016\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0016\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0016\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0016\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0016\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0016\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn64x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0016.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn64x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn64x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn63x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_preceding_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn65x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - LEFT
+  page_num_label_ssi:
+  - 10
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Non tempor vegan, ethical tacos odio pabst photo booth selvage chambray poutine"
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-23T21:09:44.574Z'
+- system_create_dtsi:
+  - '2015-11-24T21:04:18Z'
+  system_modified_dtsi:
+  - '2015-11-24T21:09:44Z'
+  object_state_ssi:
+  - A
+  active_fedora_model_ssi:
+  - Bplmodels::ImageFile
+  id:
+  - bpl-dev:7s75dn65x
+  object_profile_ssm:
+  - "{\"datastreams\":{\"DC\":{\"dsLabel\":\"Dublin Core Record for this object\",\"dsVersionID\":\"DC1.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":\"http://www.openarchives.org/OAI/2.0/oai_dc/\",\"dsControlGroup\":\"X\",\"dsSize\":402,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+DC+DC1.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.1\",\"dsCreateDate\":\"2015-11-18T21:04:20Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":926,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+RELS-EXT+RELS-EXT.1\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":631,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"productionMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0017\",\"dsVersionID\":\"productionMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+productionMaster+productionMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"workflowMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"workflowMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:18Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":920,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+workflowMetadata+workflowMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ocrMaster\":{\"dsLabel\":\"Plain OCR Text for outlinelessonsin00unit_0017\",\"dsVersionID\":\"ocrMaster.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":2427,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+ocrMaster+ocrMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"djvuCoords\":{\"dsLabel\":\"DJVU Coords for outlinelessonsin00unit_0017\",\"dsVersionID\":\"djvuCoords.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"application/json\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":10904,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+djvuCoords+djvuCoords.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"pageMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"pageMetadata.0\",\"dsCreateDate\":\"2015-11-18T21:04:19Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":494,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+pageMetadata+pageMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"characterization\":{\"dsLabel\":null,\"dsVersionID\":\"characterization.0\",\"dsCreateDate\":\"2015-11-18T21:09:36Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":5349,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+characterization+characterization.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"preProductionNegativeMaster\":{},\"accessMaster\":{\"dsLabel\":\"outlinelessonsin00unit_0017\",\"dsVersionID\":\"accessMaster.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jp2\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":821555,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+accessMaster+accessMaster.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"thumbnail300\":{\"dsLabel\":\"outlinelessonsin00unit_0017\",\"dsVersionID\":\"thumbnail300.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":22824,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+thumbnail300+thumbnail300.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"access800\":{\"dsLabel\":\"outlinelessonsin00unit_0017\",\"dsVersionID\":\"access800.0\",\"dsCreateDate\":\"2015-11-18T21:09:44Z\",\"dsState\":\"A\",\"dsMIME\":\"image/jpeg\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":145887,\"dsVersionable\":false,\"dsInfoType\":null,\"dsLocation\":\"bpl-dev:7s75dn65x+access800+access800.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"ARCHV-EXIF\":{}},\"objLabel\":\"outlinelessonsin00unit_0017.jp2\",\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/afmodel:Bplmodels_File\",\"info:fedora/afmodel:Bplmodels_ImageFile\",\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2015-11-18T21:04:18Z\",\"objLastModDate\":\"2015-11-18T21:04:20Z\",\"objDissIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn65x/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"https://localhost:443/fedora/objects/bpl-dev%3A7s75dn65x/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+  read_access_group_ssim:
+  - public
+  edit_access_group_ssim:
+  - superuser
+  - admin[bpl-dev:abcd12345]
+  identification_identity_mime_type_tesim:
+  - image/jp2
+  identification_0_identity_0_mime_type_tesim:
+  - image/jp2
+  mime_type_tesim:
+  - image/jp2
+  is_file_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+  is_following_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn64x
+  is_image_of_ssim:
+  - info:fedora/bpl-dev:7s75dn48d
+#  is_preceding_image_of_ssim:
+#  - info:fedora/bpl-dev:7s75dn65x
+  has_model_ssim:
+  - info:fedora/afmodel:Bplmodels_File
+  - info:fedora/afmodel:Bplmodels_ImageFile
+  derivative_processsed_ssi:
+  - true
+  page_type_ssi:
+  - Normal
+  hand_side_ssi:
+  - RIGHT
+  page_num_label_ssi:
+  - 11
+  page_num_label_type_ssi:
+  - original
+  ocr_tsiv:
+  - "Wayfarers tilde poutine, blue bottle typewriter incididunt scenester ex banh mi selfies 90's chia raw denim health goth"
+  has_djvu_json_ssi:
+  - true
+  checksum_file_md5_ssi:
+  - none
+  timestamp:
+  - '2015-11-24T21:09:44.574Z'
