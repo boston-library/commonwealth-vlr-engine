@@ -1,12 +1,18 @@
 module CommonwealthVlrEngine
   module CommonwealthSearchBuilder
 
-    # keep file assets and unpublished items from appearing in search results
+    # keep file assets from appearing in search results
     def exclude_unwanted_models(solr_parameters = {})
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '-has_model_ssim:"info:fedora/afmodel:Bplmodels_File"'
+    end
+
+    # keep draft/review and in-process items from appearing in search results
+    def exclude_unpublished_items(solr_parameters = {})
+      solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '-workflow_state_ssi:"draft"'
       solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
+      solr_parameters[:fq] << '-processing_state_ssi:"derivatives"'
       # can't implement below until all records have this field
       # solr_parameters[:fq] << '+workflow_state_ssi:"published"'
       # solr_parameters[:fq] << '+processing_state_ssi:"complete"'

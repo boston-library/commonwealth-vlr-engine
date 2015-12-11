@@ -60,7 +60,7 @@ describe OcrSearchHelper do
       end
 
       it 'should have the correct label' do
-        expect(@ocr_page_link).to include('Image 1 of 2')
+        expect(@ocr_page_link).to include('Image 1 of 8')
       end
 
     end

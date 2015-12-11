@@ -243,12 +243,14 @@ module CommonwealthVlrEngine
       title_output = ''
       if document[blacklight_config.index.title_field.to_sym]
         title_output << document[blacklight_config.index.title_field.to_sym]
-      end
-      if document[:title_info_partnum_tsi]
-        title_output << ". #{document[:title_info_partnum_tsi]}"
-      end
-      if document[:title_info_partname_tsi]
-        title_output << ". #{document[:title_info_partname_tsi]}"
+        if document[:title_info_partnum_tsi]
+          title_output << ". #{document[:title_info_partnum_tsi]}"
+        end
+        if document[:title_info_partname_tsi]
+          title_output << ". #{document[:title_info_partname_tsi]}"
+        end
+      else
+        title_output << document.id
       end
       title_output.squish
     end

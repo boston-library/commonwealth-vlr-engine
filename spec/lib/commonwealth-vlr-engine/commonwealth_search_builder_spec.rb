@@ -23,15 +23,20 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
 
   describe 'exclude_unwanted_models' do
 
-    let(:excluded_result) { @obj.exclude_unwanted_models(solr_parameters).to_s }
-
     it 'should add parameters to exclude unwanted models' do
-      expect(excluded_result).to include('afmodel:Bplmodels_File')
+      expect(@obj.exclude_unwanted_models(solr_parameters).to_s).to include('afmodel:Bplmodels_File')
     end
 
+  end
+
+  describe 'exclude_unpublished_items' do
+
+    let(:excluded_unpublished) { @obj.exclude_unpublished_items(solr_parameters).to_s }
+
     it 'should add parameters to exclude non-published items' do
-      expect(excluded_result).to include('draft')
-      expect(excluded_result).to include('needs_review')
+      expect(excluded_unpublished).to include('draft')
+      expect(excluded_unpublished).to include('needs_review')
+      expect(excluded_unpublished).to include('derivatives')
     end
 
   end

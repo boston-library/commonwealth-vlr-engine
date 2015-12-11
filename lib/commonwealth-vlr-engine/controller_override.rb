@@ -8,7 +8,7 @@ module CommonwealthVlrEngine
       self.send(:include, CommonwealthVlrEngine::Finder)
 
       if self.respond_to? :search_params_logic
-        search_params_logic.concat [:exclude_unwanted_models, :exclude_institutions, :exclude_volumes]
+        search_params_logic.concat [:exclude_unwanted_models, :exclude_unpublished_items, :exclude_institutions, :exclude_volumes]
       end
 
       if self.blacklight_config.search_builder_class
@@ -198,7 +198,7 @@ module CommonwealthVlrEngine
     # if this is 'more like this' search, solr id = params[:mlt_id]
     def mlt_search
       if params[:mlt_id]
-        CatalogController.search_params_logic += [:set_solr_id_for_mlt]
+        CatalogController.search_params_logic = CatalogController.search_params_logic | [:set_solr_id_for_mlt]
       end
     end
 

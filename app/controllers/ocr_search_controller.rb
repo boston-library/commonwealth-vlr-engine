@@ -9,10 +9,10 @@ class OcrSearchController < CatalogController
   copy_blacklight_config_from(CatalogController)
 
   before_filter :modify_config_for_ocr, :only => [:index]
+  before_filter :modify_search_params_logic_for_ocr, :only => [:index]
+  after_filter :restore_search_params_logic, :only => [:index]
 
   def index
-    self.search_params_logic.delete_if { |v| [:exclude_unwanted_models, :institution_limit].include?(v) }
-    self.search_params_logic += [:ocr_search_params]
     if params[:ocr_q]
       @image_pid_list = has_image_files?(get_files(params[:id]))
       ocr_search_params = {:q => {"is_file_of_ssim" => "info:fedora/#{params[:id]}",
@@ -38,6 +38,19 @@ class OcrSearchController < CatalogController
     blacklight_config.add_facet_fields_to_solr_request = false
     blacklight_config.add_index_field blacklight_config.ocr_search_field, :highlight => true
     blacklight_config.default_per_page = 10
+  end
+
+  # modify Solr search_params_logic for OCR searches
+  def modify_search_params_logic_for_ocr
+    @original_search_params_logic = CatalogController.search_params_logic.dup
+    self.search_params_logic.delete_if { |v| [:exclude_unwanted_models, :institution_limit].include?(v) }
+    self.search_params_logic += [:ocr_search_params]
+  end
+
+  # restore Solr search_params_logic to its original state
+  # otherwise changes made by #modify_search_params_logic_for_ocr carry over to other controllers!
+  def restore_search_params_logic
+    CatalogController.search_params_logic = @original_search_params_logic
   end
 
   # don't add OCR searches to Blacklight's search history/session
