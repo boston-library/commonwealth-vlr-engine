@@ -198,7 +198,7 @@ module CommonwealthVlrEngine
     # if this is 'more like this' search, solr id = params[:mlt_id]
     def mlt_search
       if params[:mlt_id]
-        CatalogController.search_params_logic = CatalogController.search_params_logic | [:set_solr_id_for_mlt]
+        CatalogController.search_params_logic += [:set_solr_id_for_mlt] unless CatalogController.search_params_logic.include? :set_solr_id_for_mlt
       end
     end
 

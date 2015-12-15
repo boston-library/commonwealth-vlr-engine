@@ -10,7 +10,6 @@ class OcrSearchController < CatalogController
 
   before_filter :modify_config_for_ocr, :only => [:index]
   before_filter :modify_search_params_logic_for_ocr, :only => [:index]
-  after_filter :restore_search_params_logic, :only => [:index]
 
   def index
     if params[:ocr_q]
@@ -42,15 +41,8 @@ class OcrSearchController < CatalogController
 
   # modify Solr search_params_logic for OCR searches
   def modify_search_params_logic_for_ocr
-    @original_search_params_logic = CatalogController.search_params_logic.dup
-    self.search_params_logic.delete_if { |v| [:exclude_unwanted_models, :institution_limit].include?(v) }
-    self.search_params_logic += [:ocr_search_params]
-  end
-
-  # restore Solr search_params_logic to its original state
-  # otherwise changes made by #modify_search_params_logic_for_ocr carry over to other controllers!
-  def restore_search_params_logic
-    CatalogController.search_params_logic = @original_search_params_logic
+    self.search_params_logic -= [:exclude_unwanted_models, :institution_limit]
+    self.search_params_logic += [:ocr_search_params] unless self.search_params_logic.include?(:ocr_search_params)
   end
 
   # don't add OCR searches to Blacklight's search history/session
