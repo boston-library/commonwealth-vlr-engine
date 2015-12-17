@@ -126,6 +126,12 @@ function generateThumbUrl(group, index) {
     return '<%= datastream_disseminator_url('xyz', 'thumbnail300') %>'.replace("xyz", pid)
 }
 
+// return JSON coords datastream URL
+function generateWordCoordsUrl(group, index) {
+    var pid = image_files[index-1];
+    return '<%= datastream_disseminator_url('xyz', 'djvuCoords') %>'.replace("xyz", pid)
+}
+
 var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
 
 var image_server = "<%= IIIF_SERVER['url'] %>";
@@ -142,7 +148,9 @@ var $window = $(window),
             initialView: "page",
             seadragonPrefixUrl: '', // "/assets/commonwealth-vlr-engine/openseadragon/"
             seadragonNavImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
-            thumbUrlTemplate: generateThumbUrl
+            thumbUrlTemplate: generateThumbUrl,
+            fts: <%= @document[:identifier_ia_id_ssi] ? 'true' : 'false' %>,
+            wordCoordinatesUrlTemplate: generateWordCoordsUrl
         });
 /* this makes the text on the controls disappear!
  if (Modernizr.fontface) {

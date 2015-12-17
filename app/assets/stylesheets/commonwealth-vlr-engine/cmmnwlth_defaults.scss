@@ -31,6 +31,7 @@ $error_bg: #f2dede !default;
 $error_border: #eed3d7 !default;
 
 $viewer_bg: #111111 !default;
+$search_highlight: yellow !default;
 
 @mixin rounded-corners($radius) {
   -moz-border-radius: $radius;

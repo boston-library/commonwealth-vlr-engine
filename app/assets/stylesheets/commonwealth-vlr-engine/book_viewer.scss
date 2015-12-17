@@ -238,6 +238,15 @@
             margin-left: 10px;
           }
 
+          .highlighted {
+            position: absolute;
+            z-index: 200;
+            opacity: .4;
+            background-color: $search_highlight;
+            box-shadow: 0 0 4px 2px $search_highlight;
+            border-radius: 3px;
+          }
+
         }
 
       }

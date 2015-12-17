@@ -80,6 +80,7 @@
 
         this.config = config;
         this.rotation = config.viewportRotation || 0;
+        this.searchText = ""; // SEARCH ADD
 
         config.placeholderSrc = config.placeholderSrc || placeholderImage;
         // TODO: Adjust image max size based on the viewport
@@ -112,6 +113,9 @@
         /* *** commonwealth changes *** */
         if ($.isFunction(config.thumbUrlTemplate)) {
             this.generateThumbUrl = config.thumbUrlTemplate;
+        }
+        if ($.isFunction(config.wordCoordinatesUrlTemplate)) {
+            this.generateWordCoordinatesUrl = config.wordCoordinatesUrlTemplate;
         }
 
         this.pageView = new PageView(this, $pages, config);
@@ -183,6 +187,52 @@
             .on("click", function () {
                 $("#help").toggle();
             });
+
+        // SEARCH ADD
+        if (config.fts) {
+            var $search = $('<div id="content-search"></div>').appendTo($viewer).hide(),
+                q = $.deparam(document.location.search)['?q'];
+
+            this.setSearchText(q || "");
+            this.loadSearchResultPageList();
+            this.search = new WDL.ItemSearchController($search.get(0), $viewer, config);
+
+            var $searchToggle = $('<button id="toggle-search" type="button"></button>')
+                .text(gettext("Search"))
+                .appendTo("footer .toolbar .controls")
+                .on("click", function () {
+                    console.log('$searchToggle click event fired');
+                    $("#content-search").toggle()
+                        .find("input[type=search]")
+                        .trigger("focus");
+                    $searchToggle.toggleClass("active");
+                });
+
+            if (q) {
+                this.search.setQuery(q);
+            }
+
+            if (this.search.query) {
+                console.log('this.search.query = TRUE');
+                $searchToggle.trigger("click");
+            }
+
+            $viewer.on("search-query-changed", function (evt, newQuery) {
+                if (newQuery) {
+                    console.log('firing search-query-changed with newQuery');
+                    document.location.hash = "q=" + encodeURIComponent(newQuery);
+                    $("a.item-detail").each(function () { // can't find any elements matching this!!
+                        this.href = this.href.replace(/($|#.*$)/, document.location.hash);
+                    });
+                } else {
+                    console.log('firing search-query-changed without newQuery')
+                    document.location.hash = "";
+                }
+
+                controller.activeView.updateSearch();
+            });
+        }
+        // END SEARCH ADD
 
         $groupControl.on("change", function() {
             controller.setGroup(parseInt($groupControl.val(), 10));
@@ -353,6 +403,7 @@
         });
 
         var headerHeight = $header.height();
+
         $viewer.on("mousemove", function (evt) {
             if (evt.pageY < headerHeight * 2) {
                 $viewer.trigger("show-header");
@@ -396,8 +447,22 @@
 
     ViewController.prototype = {
         generatePageUrl: function (group, index) {
-            return this.config.pageUrlTemplate.replace('{group}', group).replace('{index}', index);
+            // return this.config.pageUrlTemplate.replace('{group}', group).replace('{index}', index); // SEARCH ADD
+            // SEARCH ADD
+            var url = this.config.pageUrlTemplate.replace('{group}', group).replace('{index}', index);
+            /* don't need this if using location.search rather than location.hash
+            if (this.search && this.search.query) {
+                url += "#q=" + encodeURIComponent(this.search.query);
+            }
+            */
+            return url;
+            // SEARCH ADD
         },
+        // SEARCH ADD
+        generateWordCoordinatesUrl: function (group, index) {
+            return this.config.wordCoordinatesUrlTemplate.replace('{group}', group).replace('{index}', index);
+        },
+        // END SEARCH ADD
         generateImageUrl: function (group, index, maxEdge) {
             return this.config.imageUrlTemplate.replace(/\{([^}]+)\}/g, function(match, name) {
                 switch (name) {
@@ -541,7 +606,39 @@
             if (this.activeView && this.activeView.setRotation) {
                 this.activeView.setRotation(this.rotation);
             }
+        }, // SEARCH ADD
+        // SEARCH ADD
+        setSearchText: function (text) {
+            this.searchText = $.trim(text);
+            if (this.searchText) { // may not need this either
+                console.log('firing setSearchText with searchText');
+                //document.location.search = "?q=" + encodeURIComponent(this.searchText);
+                $("a.item-detail").each(function () { // can't find any matching element
+                    this.href = this.href.replace(/($|#.*$)/, document.location.hash);
+                });
+            } else { // may not need this
+                console.log('firing setSearchText w/no searchText');
+                //document.location.hash = "";
+            }
+        },
+        loadSearchResultPageList: function () {
+            if (!this.config.fts || !this.config.matchingPagesUrl || !this.searchText) {
+                this.searchResultPages = [];
+                return;
+            }
+            console.log('firing loadSearchResultPageList (wdl-viewer)');
+
+            WDL.ajaxRetry({
+                url: this.config.matchingPagesUrl,
+                dataType: "json",
+                data: {q: this.searchText}
+            }).success($.proxy(function (data) {
+                console.log('ajaxRetry (from loadSearchResultPageList (wdl-viewer)) success');
+                this.searchResultPages = data;
+                $("#search .result-count").removeAttr("hidden").text(data.length + " pages");
+            }, this));
         }
+        // END SEARCH ADD
     };
 
     function PageView(controller, $container, config) {
@@ -611,6 +708,7 @@
             }
 
             this.setRotation(this.controller.rotation);
+            this.updateSearch(); //  SEARCH ADD
         };
 
         this.checkViewportConstraints = function() {
@@ -665,6 +763,61 @@
                 );
             }
         };
+
+        // SEARCH ADD
+        this.updateSearch = function () {
+            if (!config.fts || !controller.search || !controller.search.query) {
+                return;
+            }
+
+            console.log('firing updateSearch');
+            $pages.find(".highlighted").remove();
+
+            var terms = controller.search.terms;
+
+            this.applySearchHighlighting(controller.currentGroup, controller.currentIndex, terms);
+            if (controller.currentIndex < controller.maxIndex) {
+                this.applySearchHighlighting(controller.currentGroup, controller.currentIndex + 1, terms);
+            }
+        };
+
+        this.applySearchHighlighting = function (group, index, terms) {
+            console.log('firing applySearchHighlighting');
+            WDL.ajaxRetry({
+                url: controller.generateWordCoordinatesUrl(group, index, terms),
+                success: function (data) {
+                    console.log('ajaxRetry (from applySearchHighlighting) success');
+                    if (group != controller.currentGroup ||
+                        (index != controller.currentIndex && index != controller.currentIndex + 1)) {
+                        return;
+                    }
+
+                    var $page = index == controller.currentIndex ? $currentPage : $nextPage;
+
+                    var master_height = data.height,
+                        master_width = data.width;
+
+                    $.each(data.words, function (k, v) {
+                        if (!WDL.Search.inTerms(k, terms)) {
+                            return;
+                        }
+
+                        // Response format is x1, y1, x2, y2
+                        for (var i=0; i < v.length; i++) {
+                            var coords = v[i];
+
+                            $('<div class="highlighted">').css({
+                                "left":     WDL.Search.formatPercentage(coords[0] / master_width),
+                                "top":      WDL.Search.formatPercentage(Math.max(0, (coords[3] / master_height) - 0.01)),
+                                "right":    WDL.Search.formatPercentage(1.0 - coords[2] / master_width),
+                                "bottom":   WDL.Search.formatPercentage(1.0 - Math.min(1.0, (coords[1] / master_height) + 0.01)),
+                            }).insertAfter($page);
+                        }
+                    });
+                }
+            });
+        };
+        // END SEARCH ADD
 
         $currentPage.on("load", $.proxy(function () {
             $currentPage.stop(true, false).fadeTo(100, 1.0);
@@ -946,7 +1099,31 @@
             $container.on("scroll", gridScrollHandler);
 
             $container.trigger("scroll");
+
+            this.updateSearch(); // SEARCH ADD
         };
+
+        // SEARCH ADD
+        this.updateSearch = function () {
+            if (!config.fts || !controller.search || !controller.search.query) {
+                return;
+            }
+
+            console.log('updateSearch (grid view) fired');
+            var $pages = $container.children();
+
+            $pages.filter(".hit").removeClass("hit");
+
+            var results = controller.search.results;
+            for (var i = 0; i < results.length; i++) {
+                var result = results[i];
+                if (result[0] == controller.currentGroup) {
+                    // Note conversion from page numbers to zero-based index:
+                    $pages.eq(result[1] - 1).addClass("hit");
+                }
+            }
+        };
+        // END SEARCH ADD
 
         this.hide = function () {
             $container.off("scroll", gridScrollHandler);
