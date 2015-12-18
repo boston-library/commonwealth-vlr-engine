@@ -191,22 +191,25 @@
         // SEARCH ADD
         if (config.fts) {
             var $search = $('<div id="content-search"></div>').appendTo($viewer).hide(),
-                q = $.deparam(document.location.search)['?q'];
+                q = $.deparam(document.location.search)['?ocr_q'];
 
             this.setSearchText(q || "");
             this.loadSearchResultPageList();
             this.search = new WDL.ItemSearchController($search.get(0), $viewer, config);
 
-            var $searchToggle = $('<button id="toggle-search" type="button"></button>')
-                .text(gettext("Search"))
+            var $searchToggle = $('<a id="toggle-search" data-ajax-modal="trigger" class="btn btn-link"><i class="fa fa-search"></i></a>')
+                //.text(gettext("Search"))
+                .attr("href", q ? config.ocrSearchPath + '?ocr_q=' + q : config.ocrSearchPath)
+                //.data("ajax_modal", "trigger") // not working!
                 .appendTo("footer .toolbar .controls")
-                .on("click", function () {
+                /*.on("click", function () {
                     console.log('$searchToggle click event fired');
                     $("#content-search").toggle()
                         .find("input[type=search]")
                         .trigger("focus");
                     $searchToggle.toggleClass("active");
-                });
+                })*/;
+            console.log('$searchToggle data = ' + $searchToggle.data());
 
             if (q) {
                 this.search.setQuery(q);

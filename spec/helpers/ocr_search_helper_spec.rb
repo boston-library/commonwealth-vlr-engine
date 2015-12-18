@@ -43,7 +43,7 @@ describe OcrSearchHelper do
       before { @ocr_page_link = helper.render_page_link(document, image_pid_list, book_pid) }
 
       it 'should create a link to the book viewer' do
-        expect(@ocr_page_link).to include("href=\"/book_viewer/#{book_pid}#1/1")
+        expect(@ocr_page_link).to include("href=\"/book_viewer/#{book_pid}?ocr_q=#1/1")
       end
 
       it 'should have the correct label' do

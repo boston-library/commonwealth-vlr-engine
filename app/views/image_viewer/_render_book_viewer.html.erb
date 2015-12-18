@@ -150,7 +150,8 @@ var $window = $(window),
             seadragonNavImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
             thumbUrlTemplate: generateThumbUrl,
             fts: <%= @document[:identifier_ia_id_ssi] ? 'true' : 'false' %>,
-            wordCoordinatesUrlTemplate: generateWordCoordsUrl
+            wordCoordinatesUrlTemplate: generateWordCoordsUrl,
+            ocrSearchPath: "<%= ocr_search_path %>"
         });
 /* this makes the text on the controls disappear!
  if (Modernizr.fontface) {
