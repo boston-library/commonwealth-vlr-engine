@@ -32,3 +32,14 @@
   </div>
 </div>
 <%= javascript_include_tag 'commonwealth-vlr-engine/ocr_pagination' %>
+<script type="text/javascript">
+    //$(".ocr-search-form").on("submit", function () {
+    //    console.log('ocr-search-form event has fired');
+    //    $viewer.trigger("search-query-changed", ['foo']);
+    //});
+    $(".book_page_link").on("click", function () {
+        console.log('book_page_link event has fired');
+        $('#ajax-modal').modal('hide');
+        $viewer.trigger("goto-page", [1, this.href.match(/\d+$/)]);
+    });
+</script>

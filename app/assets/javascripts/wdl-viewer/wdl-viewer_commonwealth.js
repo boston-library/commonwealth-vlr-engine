@@ -200,6 +200,7 @@
             var $searchToggle = $('<a id="toggle-search" data-ajax-modal="trigger" class="btn btn-link"><i class="fa fa-search"></i></a>')
                 //.text(gettext("Search"))
                 .attr("href", q ? config.ocrSearchPath + '?ocr_q=' + q : config.ocrSearchPath)
+                .attr("title", "Search")
                 //.data("ajax_modal", "trigger") // not working!
                 .appendTo("footer .toolbar .controls")
                 /*.on("click", function () {
@@ -209,7 +210,6 @@
                         .trigger("focus");
                     $searchToggle.toggleClass("active");
                 })*/;
-            console.log('$searchToggle data = ' + $searchToggle.data());
 
             if (q) {
                 this.search.setQuery(q);

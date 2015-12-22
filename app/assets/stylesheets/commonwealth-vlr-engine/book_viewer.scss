@@ -6,7 +6,6 @@
   height: 100%;
   overflow: hidden;
   background-color: black;
-  color: #999999;
 
   * {
     -webkit-box-sizing: border-box;
@@ -159,6 +158,7 @@
       }
 
       .toolbar {
+        color: #999999;
         white-space: nowrap;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -241,7 +241,7 @@
           .highlighted {
             position: absolute;
             z-index: 200;
-            opacity: .3;
+            opacity: .25;
             background-color: $search_highlight;
             box-shadow: 0 0 4px 2px $search_highlight;
             border-radius: 3px;
