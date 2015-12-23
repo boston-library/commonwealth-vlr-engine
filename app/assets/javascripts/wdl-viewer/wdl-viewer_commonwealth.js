@@ -1,6 +1,7 @@
-/*global navigator, window, document, Element, Modernizr, jQuery, Image, OpenSeadragon */
+/*global navigator, window, document, Element, Modernizr, jQuery, Image, OpenSeadragon, WDL */
 /* this is a modified version of the wdl-viewer JS */
 /* https://github.com/LibraryOfCongress/wdl-viewer/src/js/wdl-viewer.js */
+/* Thanks to Chris Adams (https://github.com/acdha) for help with adaptation */
 /* all local changes are marked with: *** commonwealth changes *** */
 
 (function ($) {
@@ -80,7 +81,7 @@
 
         this.config = config;
         this.rotation = config.viewportRotation || 0;
-        this.searchText = ""; // SEARCH ADD
+        this.searchText = null; // *** commonwealth changes ***
 
         config.placeholderSrc = config.placeholderSrc || placeholderImage;
         // TODO: Adjust image max size based on the viewport
@@ -130,6 +131,19 @@
         /* *** commonwealth changes *** */
         /* add classes for bootstrap and font-awesome */
         // Add toolbar features which only work with JavaScript:
+        if (this.seadragonView) {
+            $('<button id="toggle-seadragon" class="btn btn-link" type="button"><i class="fa fa-plus"></i></button>')
+                .attr("title","Zoom")
+                .appendTo("footer .toolbar .controls")
+                .on("click", $.proxy(function () {
+                    if (this.activeView == this.seadragonView) {
+                        this.openPageView();
+                    } else {
+                        this.openSeadragonView();
+                    }
+                }, this));
+        }
+
         if (Modernizr.canvas || Modernizr.csstransforms) {
             $('<button id="rotate-left" class="requires-rotation btn btn-link" type="button"><i class="fa fa-undo"></i></button>')
                 // .text(gettext("Rotate Left"))
@@ -145,19 +159,6 @@
                 .appendTo("footer .toolbar .controls")
                 .on("click", $.proxy(function () {
                     this.rotate();
-                }, this));
-        }
-
-        if (this.seadragonView) {
-            $('<button id="toggle-seadragon" class="btn btn-link" type="button"><i class="fa fa-search-plus"></i></button>')
-                .attr("title","Zoom")
-                .appendTo("footer .toolbar .controls")
-                .on("click", $.proxy(function () {
-                    if (this.activeView == this.seadragonView) {
-                        this.openPageView();
-                    } else {
-                        this.openSeadragonView();
-                    }
                 }, this));
         }
 
@@ -188,54 +189,20 @@
                 $("#help").toggle();
             });
 
-        // SEARCH ADD
+        /* ***commonwealth changes (search add)*** */
         if (config.fts) {
-            var $search = $('<div id="content-search"></div>').appendTo($viewer).hide(),
-                q = $.deparam(document.location.search)['?ocr_q'];
-
-            this.setSearchText(q || "");
-            this.loadSearchResultPageList();
-            this.search = new WDL.ItemSearchController($search.get(0), $viewer, config);
-
-            var $searchToggle = $('<a id="toggle-search" data-ajax-modal="trigger" class="btn btn-link"><i class="fa fa-search"></i></a>')
-                //.text(gettext("Search"))
-                .attr("href", q ? config.ocrSearchPath + '?ocr_q=' + q : config.ocrSearchPath)
-                .attr("title", "Search")
-                //.data("ajax_modal", "trigger") // not working!
-                .appendTo("footer .toolbar .controls")
-                /*.on("click", function () {
-                    console.log('$searchToggle click event fired');
-                    $("#content-search").toggle()
-                        .find("input[type=search]")
-                        .trigger("focus");
-                    $searchToggle.toggleClass("active");
-                })*/;
+            var q = $.deparam(document.location.search)['?ocr_q'];
 
             if (q) {
-                this.search.setQuery(q);
+                controller.searchText = this.setSearchText(q);
             }
 
-            if (this.search.query) {
-                console.log('this.search.query = TRUE');
-                $searchToggle.trigger("click");
-            }
-
-            $viewer.on("search-query-changed", function (evt, newQuery) {
-                if (newQuery) {
-                    console.log('firing search-query-changed with newQuery');
-                    document.location.hash = "q=" + encodeURIComponent(newQuery);
-                    $("a.item-detail").each(function () { // can't find any elements matching this!!
-                        this.href = this.href.replace(/($|#.*$)/, document.location.hash);
-                    });
-                } else {
-                    console.log('firing search-query-changed without newQuery')
-                    document.location.hash = "";
-                }
-
-                controller.activeView.updateSearch();
-            });
+            var $searchToggle = $('<a id="toggle-search" data-ajax-modal="trigger" class="btn btn-link"><i class="fa fa-search"></i></a>')
+                .attr("href", this.setSearchToggleHref())
+                .attr("title", "Search this work")
+                //.data("ajax_modal", "trigger") // not working!
+                .prependTo("footer .toolbar .controls");
         }
-        // END SEARCH ADD
 
         $groupControl.on("change", function() {
             controller.setGroup(parseInt($groupControl.val(), 10));
@@ -284,6 +251,9 @@
             switch (evt.which) {
                 case 80: // p
                     $("#toggle-grid").trigger("click");
+                    return false;
+                case 81: // q
+                    $searchToggle.trigger("click");
                     return false;
                 case 191: // ?
                     $help.show();
@@ -336,6 +306,13 @@
         $viewer.on("goto-previous-page", $.proxy(this.goToPreviousPage, this));
 
         $viewer.on("goto-page", function (evt, newGroup, newIndex) {
+            controller.setGroup(parseInt(newGroup, 10), parseInt(newIndex, 10));
+        });
+
+        /* *** commonwealth addition *** */
+        $viewer.on("goto-page-search", function (evt, newGroup, newIndex, query) {
+            controller.searchText = controller.setSearchText(query);
+            $searchToggle.attr("href", controller.setSearchToggleHref());
             controller.setGroup(parseInt(newGroup, 10), parseInt(newIndex, 10));
         });
 
@@ -450,22 +427,18 @@
 
     ViewController.prototype = {
         generatePageUrl: function (group, index) {
-            // return this.config.pageUrlTemplate.replace('{group}', group).replace('{index}', index); // SEARCH ADD
-            // SEARCH ADD
+            // commonwealth changes (search add)
             var url = this.config.pageUrlTemplate.replace('{group}', group).replace('{index}', index);
-            /* don't need this if using location.search rather than location.hash
-            if (this.search && this.search.query) {
-                url += "#q=" + encodeURIComponent(this.search.query);
+
+            if (this.searchText) {
+                return "?ocr_q=" + encodeURIComponent(this.searchText) + url
+            } else {
+                return url;
             }
-            */
-            return url;
-            // SEARCH ADD
         },
-        // SEARCH ADD
         generateWordCoordinatesUrl: function (group, index) {
             return this.config.wordCoordinatesUrlTemplate.replace('{group}', group).replace('{index}', index);
         },
-        // END SEARCH ADD
         generateImageUrl: function (group, index, maxEdge) {
             return this.config.imageUrlTemplate.replace(/\{([^}]+)\}/g, function(match, name) {
                 switch (name) {
@@ -609,39 +582,15 @@
             if (this.activeView && this.activeView.setRotation) {
                 this.activeView.setRotation(this.rotation);
             }
-        }, // SEARCH ADD
-        // SEARCH ADD
-        setSearchText: function (text) {
-            this.searchText = $.trim(text);
-            if (this.searchText) { // may not need this either
-                console.log('firing setSearchText with searchText');
-                //document.location.search = "?q=" + encodeURIComponent(this.searchText);
-                $("a.item-detail").each(function () { // can't find any matching element
-                    this.href = this.href.replace(/($|#.*$)/, document.location.hash);
-                });
-            } else { // may not need this
-                console.log('firing setSearchText w/no searchText');
-                //document.location.hash = "";
-            }
         },
-        loadSearchResultPageList: function () {
-            if (!this.config.fts || !this.config.matchingPagesUrl || !this.searchText) {
-                this.searchResultPages = [];
-                return;
-            }
-            console.log('firing loadSearchResultPageList (wdl-viewer)');
-
-            WDL.ajaxRetry({
-                url: this.config.matchingPagesUrl,
-                dataType: "json",
-                data: {q: this.searchText}
-            }).success($.proxy(function (data) {
-                console.log('ajaxRetry (from loadSearchResultPageList (wdl-viewer)) success');
-                this.searchResultPages = data;
-                $("#search .result-count").removeAttr("hidden").text(data.length + " pages");
-            }, this));
+        /* *** commonwealth changes (search add) -- setSearchText preps ocr_q params for search *** */
+        setSearchText: function (text) {
+            return decodeURIComponent($.trim(text));
+        },
+        /* *** commonwealth changes (search add) -- setSearchToggleHref sets target of search control link *** */
+        setSearchToggleHref: function () {
+            return this.searchText ? this.config.ocrSearchPath + '?ocr_q=' + this.searchText : this.config.ocrSearchPath;
         }
-        // END SEARCH ADD
     };
 
     function PageView(controller, $container, config) {
@@ -711,7 +660,7 @@
             }
 
             this.setRotation(this.controller.rotation);
-            this.updateSearch(); //  SEARCH ADD
+            this.updateSearch();
         };
 
         this.checkViewportConstraints = function() {
@@ -767,16 +716,15 @@
             }
         };
 
-        // SEARCH ADD
+        /* commonwealth changes (search add) */
         this.updateSearch = function () {
-            if (!config.fts || !controller.search || !controller.search.query) {
+            if (!config.fts || !controller.searchText) { // !controller.search || !controller.search.query) {
                 return;
             }
 
-            console.log('firing updateSearch');
             $pages.find(".highlighted").remove();
 
-            var terms = controller.search.terms;
+            var terms = this.processTerms(controller.searchText); // controller.search.terms;
 
             this.applySearchHighlighting(controller.currentGroup, controller.currentIndex, terms);
             if (controller.currentIndex < controller.maxIndex) {
@@ -785,11 +733,9 @@
         };
 
         this.applySearchHighlighting = function (group, index, terms) {
-            console.log('firing applySearchHighlighting');
             WDL.ajaxRetry({
                 url: controller.generateWordCoordinatesUrl(group, index, terms),
                 success: function (data) {
-                    console.log('ajaxRetry (from applySearchHighlighting) success');
                     if (group != controller.currentGroup ||
                         (index != controller.currentIndex && index != controller.currentIndex + 1)) {
                         return;
@@ -813,14 +759,26 @@
                                 "left":     WDL.Search.formatPercentage(coords[0] / master_width),
                                 "top":      WDL.Search.formatPercentage(Math.max(0, (coords[3] / master_height) - 0.01)),
                                 "right":    WDL.Search.formatPercentage(1.0 - coords[2] / master_width),
-                                "bottom":   WDL.Search.formatPercentage(1.0 - Math.min(1.0, (coords[1] / master_height) + 0.01)),
+                                "bottom":   WDL.Search.formatPercentage(1.0 - Math.min(1.0, (coords[1] / master_height) + 0.01))
                             }).insertAfter($page);
                         }
                     });
                 }
             });
         };
-        // END SEARCH ADD
+
+        /* commonwealth changes (search add) - taken from WDL.Search */
+        this.processTerms = function (text) {
+            var terms = [text];
+            var mergeterms = $.merge(terms, $.map(terms[0].split(/\s/), function (i) {
+                return $.merge(i, $.map(i.split(/b/), $.trim));
+            }));
+
+            var terms_output = $.grep(mergeterms, function (i) {
+                return $.trim(i).length > 0;
+            });
+            return terms_output;
+        };
 
         $currentPage.on("load", $.proxy(function () {
             $currentPage.stop(true, false).fadeTo(100, 1.0);
@@ -1103,16 +1061,16 @@
 
             $container.trigger("scroll");
 
-            this.updateSearch(); // SEARCH ADD
+            // this.updateSearch(); // not showing search results in grid view for now
         };
 
-        // SEARCH ADD
+        // not showing search results in grid view for now
+        /*
         this.updateSearch = function () {
             if (!config.fts || !controller.search || !controller.search.query) {
                 return;
             }
 
-            console.log('updateSearch (grid view) fired');
             var $pages = $container.children();
 
             $pages.filter(".hit").removeClass("hit");
@@ -1126,7 +1084,7 @@
                 }
             }
         };
-        // END SEARCH ADD
+        */
 
         this.hide = function () {
             $container.off("scroll", gridScrollHandler);

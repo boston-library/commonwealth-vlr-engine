@@ -33,7 +33,15 @@
         </select>
       </label>
       <div class="index">
-        <label>Page <input type="number" disabled class="current-index" value="1" min="1" max="1" step="1"></label> <label class="max-index-label">of <span class="max-index">1</span></label> <input disabled id="index" type="range" value="1" min="1" max="1" step="1"> <a id="previous_page" class="page previous disabled btn" title="<%= t('blacklight.book_viewer.controls.previous') %>"><i class="fa fa-arrow-left"></i></a> <a id="next_page" class="page next disabled btn" title="<%= t('blacklight.book_viewer.controls.next') %>"><i class="fa fa-arrow-right"></i></a>
+        <label>Image <input type="number" disabled class="current-index" value="1" min="1" max="1" step="1"></label>
+        <label class="max-index-label">of <span class="max-index">1</span></label>
+        <input disabled id="index" type="range" value="1" min="1" max="1" step="1">
+        <a id="previous_page" class="page previous disabled btn" title="<%= t('blacklight.book_viewer.controls.previous') %>">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+        <a id="next_page" class="page next disabled btn" title="<%= t('blacklight.book_viewer.controls.next') %>">
+          <i class="fa fa-arrow-right"></i>
+        </a>
       </div>
       <div class="controls"></div>
     </nav>

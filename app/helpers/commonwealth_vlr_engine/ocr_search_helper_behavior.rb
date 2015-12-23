@@ -24,7 +24,7 @@ module CommonwealthVlrEngine
         link_title = "Image #{index_of_doc+1} of #{image_pid_list.count}"
       end
       link_to link_title,
-              "#{book_viewer_path(book_id)}?ocr_q=#{params[:ocr_q]}#1/#{index_of_doc+1}",
+              "#{book_viewer_path(book_id)}?ocr_q=#{url_encode(params[:ocr_q])}#1/#{index_of_doc+1}",
               :class => 'book_page_link',
               :rel => 'nofollow'
     end
