@@ -57,6 +57,7 @@ module CommonwealthVlrEngine
     def ocr_search_params(solr_parameters = {})
       solr_parameters[:hl] = true
       solr_parameters[:'hl.fl'] = blacklight_config.ocr_search_field
+      solr_parameters[:'hl.fragsize'] = 150
       solr_parameters[:fl] = "id, #{blacklight_config.page_num_field}"
     end
 

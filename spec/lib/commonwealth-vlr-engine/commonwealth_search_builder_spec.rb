@@ -91,6 +91,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
 
     it 'should add parameters for field highlighting' do
       expect(solr_parameters.to_s).to include('"hl"=>true')
+      expect(solr_parameters.to_s).to include('hl.fragsize')
       expect(solr_parameters.to_s).to include("\"hl.fl\"=>\"#{blacklight_config.ocr_search_field}\"")
     end
 
