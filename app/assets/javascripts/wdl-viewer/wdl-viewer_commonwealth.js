@@ -136,7 +136,7 @@
                 .attr("title","Zoom")
                 .appendTo("footer .toolbar .controls")
                 .on("click", $.proxy(function () {
-                    if (this.activeView == this.seadragonView) {
+                    if ((this.activeView == this.seadragonView) || (this.activeView == this.gridView)) {
                         this.openPageView();
                     } else {
                         this.openSeadragonView();
@@ -561,7 +561,7 @@
             }
             this.activeView = this.gridView;
             this.activeView.show();
-            this.viewer.attr("data-active-view", "grid").trigger("hide-footer");
+            this.viewer.attr("data-active-view", "grid"); // *** commonwealth changes *** .trigger("hide-footer")
         },
         openSeadragonView: function () {
             if (!this.seadragonView || this.activeView == this.seadragonView) {
@@ -611,7 +611,12 @@
             $container.hide();
         };
 
+        /* *** commonwealth changes *** */
         this.show = function () {
+            var seadragon_toggle = $("#toggle-seadragon");
+            seadragon_toggle.attr("title","Zoom");
+            seadragon_toggle.find("i").attr("class", "fa fa-plus");
+            
             $container.show();
             this.update();
         };
@@ -816,7 +821,7 @@
             // $("#toggle-seadragon").text(gettext("Zoom"));
             var toggle = $("#toggle-seadragon");
             toggle.attr("title","Zoom");
-            toggle.find("i").attr("class", "fa fa-search-plus");
+            toggle.find("i").attr("class", "fa fa-plus");
 
             if (this.seadragon) {
                 this.seadragon.close();
@@ -1027,7 +1032,12 @@
             }
         });
 
+        /* *** commonwealth changes *** */
         this.show = function () {
+            var seadragon_toggle = $("#toggle-seadragon");
+            seadragon_toggle.attr("title","Read");
+            seadragon_toggle.find("i").attr("class", "fa fa-book");
+
             var container = $container.empty().get(0);
 
             for (var i=1; i <= controller.maxIndex; i++) {
