@@ -79,3 +79,20 @@
   }
 
 }
+
+/* Landscape phone to portrait tablet (iPad) */
+@media (max-width: 767px) {
+
+  #ocr_search_modal {
+
+    #ocr_search_wrapper {
+
+      #ocr_search_form_wrapper {
+        width: 75%;
+      }
+
+    }
+
+  }
+
+}
