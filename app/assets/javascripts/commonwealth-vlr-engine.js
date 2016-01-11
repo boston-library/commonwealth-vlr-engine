@@ -15,7 +15,7 @@
 //= require respond/respond.min
 
 // bootstrap-accessibility-plugin
-//= require bootstrap-accessibility-plugin/bootstrap-accessibility.min
+//= require bootstrap-accessibility-plugin/bootstrap-accessibility
 
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
 // from being automatically included on pages that don't need them

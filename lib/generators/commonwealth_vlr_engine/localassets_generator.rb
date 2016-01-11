@@ -14,8 +14,8 @@ module CommonwealthVlrEngine
           %q{
 //
 // Required by Commonwealth-VLR-Engine
-//= require commonwealth-vlr-engine
 //= require bootstrap/carousel
+//= require commonwealth-vlr-engine
 
 }
         end

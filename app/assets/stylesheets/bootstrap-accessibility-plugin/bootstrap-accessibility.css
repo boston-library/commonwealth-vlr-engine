@@ -1,71 +1,105 @@
-.btn:focus {
-    outline: dotted 1px black;
+.btn:focus{
+    outline:dotted 2px #000;
 }
 
-div.active:focus {
-    outline: dotted 1px black;
+div.active:focus{
+    outline:dotted 1px #000;
 }
 
-a:focus {
-    outline: dotted 1px black;
+a:focus{
+    outline:dotted 1px #000;
 }
 
-.close:hover, .close:focus {
-    outline: dotted 1px black;
+.close:hover,.close:focus{
+    outline:dotted 1px #000;
 }
 
 /* hover effect is a bit ugly, so modifying this */
 /* replaced by rule below
-.nav > li > a:hover, .nav > li > a:focus {
-    outline: dotted 1px black;
+.nav>li>a:hover,.nav>li>a:focus{
+    outline:dotted 1px #000;
 }
 */
 
-.nav > li > a:focus {
-    outline: dotted 1px black;
+.nav>li>a:focus{
+    outline: dotted 1px #000;
 }
 
-.carousel-inner > .item {
-    position: absolute;
-    top: -999999em;
-    display: block;
-    -webkit-transition: 0.6s ease-in-out left;
-    -moz-transition: 0.6s ease-in-out left;
-    -o-transition: 0.6s ease-in-out left;
-    transition: 0.6s ease-in-out left;
-}
-.carousel-inner > .active {
-    top: 0;
-}
-.carousel-inner > .active,
-.carousel-inner > .next,
-.carousel-inner > .prev {
-    position: relative;
-}
-.carousel-inner > .next,
-.carousel-inner > .prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
+.carousel-indicators li,.carousel-indicators li.active{
+    height:18px;
+    width:18px;
+    border-width:2px;
+    position:relative;
+    box-shadow:0px 0px 0px 1px #808080;
+    -moz-boxshadow:0px 0px 0px 1px #808080;
+    -webkit-boxshadow:0px 0px 0px 1px #808080;
 }
 
-.alert-success {
-    color: #2d4821;
+.carousel-indicators.active li{
+    background-color:rgba(100,149,253,0.6);
 }
 
-.alert-info {
-    color: #214c62;
+.carousel-indicators.active li.active{
+    background-color:white;
 }
 
-.alert-warning {
-    color: #6c4a00;
-    background-color: #f9f1c6;
+.carousel-tablist-highlight{
+    display:block;
+    position:absolute;
+    outline:2px solid transparent;
+    background-color:transparent;
+    box-shadow:0px 0px 0px 1px transparent;
+    -moz-boxshadow:0px 0px 0px 1px transparent;
+    -webkit-boxshadow:0px 0px 0px 1px transparent;
 }
 
-.alert-danger {
-    color: #d2322d;
+.carousel-tablist-highlight.focus{
+    outline:2px solid #6495ED;
+    background-color:rgba(0,0,0,0.4);
 }
 
-.alert-danger:hover {
-    color: #a82824;
+a.carousel-control:focus{
+    outline:2px solid #6495ED;
+    background-image:linear-gradient(to right, transparent 0px, rgba(0,0,0,0.5) 100%);
+    box-shadow:0px 0px 0px 1px #000000;
+    -moz-boxshadow:0px 0px 0px 1px #000000;
+    -webkit-boxshadow:0px 0px 0px 1px #000000;
+}
+
+.carousel-pause-button{
+    position:absolute;
+    top:-30em;
+    left:-300em;
+    display:block;
+}
+
+.carousel-pause-button.focus{
+    top:0.5em;
+    left:0.5em;
+}
+
+.carousel:hover .carousel-caption,.carousel.contrast .carousel-caption{
+    background-color:rgba(0,0,0,0.5);
+    z-index:10;
+}
+
+.alert-success{
+    color:#2d4821;
+}
+
+.alert-info{
+    color:#214c62;
+}
+
+.alert-warning{
+    color:#6c4a00;
+    background-color:#f9f1c6;
+}
+
+.alert-danger{
+    color:#d2322d;
+}
+
+.alert-danger:hover{
+    color:#a82824;
 }

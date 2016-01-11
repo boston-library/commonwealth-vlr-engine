@@ -7,7 +7,6 @@ $(top_pagination_selector + ", " + bottom_pagination_selector).on("click", Black
 
 /* if the window is displayed in the WDL-Viewer context, page links should trigger page changes via JS */
 if ($("body.wdl-viewer").length) {
-    console.log('SCRIPT THINKS THIS IS VIEWER');
     $(".book_page_link").on("click", function () {
         $('#ajax-modal').modal('hide');
         $viewer.trigger("goto-page-search",
