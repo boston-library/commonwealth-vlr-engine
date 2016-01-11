@@ -12,6 +12,7 @@ class OcrSearchController < CatalogController
   before_filter :modify_search_params_logic_for_ocr, :only => [:index]
 
   def index
+    @doc_response, @document = fetch(params[:id])
     if params[:ocr_q]
       @image_pid_list = has_image_files?(get_files(params[:id]))
       ocr_search_params = {:q => {"is_file_of_ssim" => "info:fedora/#{params[:id]}",
