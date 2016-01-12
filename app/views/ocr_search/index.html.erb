@@ -1,10 +1,10 @@
 <div class="modal-header">
   <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h3 id="ocr_search_modal_title" class="modal-title">
+  <h4 id="ocr_search_modal_title" class="modal-title">
     <%= truncate("#{t('blacklight.ocr.search.results.title')}: #{@document[blacklight_config.index.title_field.to_sym]}",
-                 length: 40,
+                 length: 55,
                  separator: ' ') %>
-  </h3>
+  </h4>
 </div>
 <div id="ocr_search_modal" class="modal-body">
   <div id="ocr_search_wrapper">
