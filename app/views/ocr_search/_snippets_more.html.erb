@@ -1,0 +1,15 @@
+<%# additional ocr snippets, with a Bootstrap collapse toggle control %>
+<div class="collapse ocr_snippet" id="<%= "snippet_collapse_#{counter}" %>">
+  <% snippets.each do |snippet| %>
+    <%= content_tag('div',
+                    "... #{snippet} ...".html_safe,
+                    class: 'ocr_snippet') %>
+  <% end %>
+</div>
+<%= link_to(t('blacklight.ocr.search.results.snippets.more'),
+            "#snippet_collapse_#{counter}",
+            data: {toggle: 'collapse'},
+            'aria-expanded' => 'false',
+            'aria-controls' => "#snippet_collapse_#{counter}",
+            class: 'ocr_snippets_expand')
+%>

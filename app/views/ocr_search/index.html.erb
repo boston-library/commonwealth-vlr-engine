@@ -17,6 +17,7 @@
               <span id="ocr_search_terms">
                 Results for: <span id="ocr_search_term">"<%= params[:ocr_q] %>"</span>
               </span>
+              <%= render :partial => 'catalog/sort_widget' %>
               <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
             </div>
             <div id="ocr_search_results">

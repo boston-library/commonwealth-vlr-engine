@@ -11,6 +11,20 @@ module CommonwealthVlrEngine
       end
     end
 
+    # print the ocr snippets. if more than one, separate with <br/>
+    def render_ocr_snippets options={}
+      snippets = options[:value]
+      snippets_content = [content_tag('div',
+                                      "... #{snippets.first} ...".html_safe,
+                                      class: 'ocr_snippet first_snippet')]
+      if snippets.length > 1
+        snippets_content << render(partial: 'ocr_search/snippets_more',
+                                   locals: {snippets: snippets.drop(1),
+                                            counter: options[:counter]})
+      end
+      snippets_content.join("\n").html_safe
+    end
+
     # link to the book viewer, using page number or image index
     # @document = SolrDocument (page object)
     # @image_pid_list = an ordered Array of image pids for the book object
@@ -25,8 +39,8 @@ module CommonwealthVlrEngine
       end
       link_to link_title,
               "#{book_viewer_path(book_id)}?ocr_q=#{url_encode(params[:ocr_q])}#1/#{index_of_doc+1}",
-              :class => 'book_page_link',
-              :rel => 'nofollow'
+              class: 'book_page_link',
+              rel: 'nofollow'
     end
 
   end

@@ -95,10 +95,6 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilder do
       expect(solr_parameters.to_s).to include("\"hl.fl\"=>\"#{blacklight_config.ocr_search_field}\"")
     end
 
-    it 'should set the :fl params' do
-      expect(solr_parameters.to_s).to include("\"fl\"=>\"id, #{blacklight_config.page_num_field}\"")
-    end
-
   end
 
 

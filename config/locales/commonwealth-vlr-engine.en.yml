@@ -298,7 +298,13 @@ en:
               q: 'Search inside this item...'
             link: 'Search inside'
             results:
+              snippets:
+                less: 'view less'
+                more: 'view more matches'
+              term_freq:
+                start: 'match'
               title: 'Search inside'
+
 
     pages:
           about:
