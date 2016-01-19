@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'font-awesome-sass', '4.1.0'
   spec.add_dependency 'bpluser', '~> 0.0.5'
   spec.add_dependency 'typhoeus'
-  spec.add_dependency 'devise-guests', '~> 0.3'
+  spec.add_dependency 'devise-guests', '0.3.3'
   spec.add_dependency 'devise', '~> 3.4.1'
   spec.add_dependency 'omniauth'
   spec.add_dependency 'omniauth-ldap'
