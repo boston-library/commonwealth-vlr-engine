@@ -164,6 +164,14 @@
         -moz-user-select: none;
         user-select: none;
 
+        a.btn, button {
+
+          &:focus {
+            outline: none;
+          }
+
+        }
+
         .index label {
           font-weight: normal;
         }
