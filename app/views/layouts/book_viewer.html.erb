@@ -20,7 +20,8 @@
   <%= content_for(:head) %>
 
   <%= javascript_include_tag 'wdl-viewer/modernizr-wdl.min' %>
-  <%= javascript_include_tag 'wdl-viewer/jquery-deparam' %>
+  <%# could re-include jquery-deparam if we drop support for IE8? %>
+  <%# javascript_include_tag 'wdl-viewer/jquery-deparam' %>
   <%= javascript_include_tag 'wdl-viewer/wdl-search' %>
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

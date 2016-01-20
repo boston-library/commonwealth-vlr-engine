@@ -191,7 +191,8 @@
 
         /* ***commonwealth changes (search add)*** */
         if (config.fts) {
-            var q = $.deparam(document.location.search)['?ocr_q'];
+            // IE8 doesn't support some methods used in jquery-deparam
+            var q = decodeURIComponent(document.location.search.split('ocr_q=')[1]); // $.deparam(document.location.search)['?ocr_q']
 
             if (q) {
                 controller.searchText = this.setSearchText(q);
