@@ -9,7 +9,7 @@
 
     function matchesTerm(haystack, needle) {
         var key = haystack.toLocaleLowerCase();
-        return key.indexOf(needle) > -1;
+        return key.indexOf(needle.toLocaleLowerCase()) > -1;
     }
 
     function inTerms(a, b) {
