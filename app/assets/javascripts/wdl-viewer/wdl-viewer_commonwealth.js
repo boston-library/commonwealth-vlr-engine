@@ -194,7 +194,7 @@
             // IE8 doesn't support some methods used in jquery-deparam
             var q = decodeURIComponent(document.location.search.split('ocr_q=')[1]); // $.deparam(document.location.search)['?ocr_q']
 
-            if (q) {
+            if (q && (q != 'undefined')) {
                 controller.searchText = this.setSearchText(q);
             }
 
