@@ -1,3 +1,3 @@
 <div id="zero_results_ocr">
-  No results found for "<%= params[:ocr_q] %>" in the text of this item. Please try another search.
+  No results found for "<%= params[:ocr_q].gsub(/\A"|"\Z/, '') %>" in the text of this item. Please try another search.
 </div>

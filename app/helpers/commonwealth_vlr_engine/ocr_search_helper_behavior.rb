@@ -1,6 +1,12 @@
 module CommonwealthVlrEngine
   module OcrSearchHelperBehavior
 
+    # return the term frequency as an integer
+    # if Solr returns 0, change to 1 (most likely phrase search)
+    def compute_term_freq(term_freq)
+      term_freq > 0 ? term_freq : term_freq+1
+    end
+
     # if current_search_session exists, return query_params['q'], otherwise return nil
     # @current_search_session is defined in Blacklight::SearchContext
     def ocr_q_params(current_search_session)

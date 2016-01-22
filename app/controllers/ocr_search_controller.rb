@@ -15,8 +15,8 @@ class OcrSearchController < CatalogController
     @doc_response, @document = fetch(params[:id])
     if params[:ocr_q]
       @image_pid_list = has_image_files?(get_files(params[:id]))
-      ocr_search_params = {q: {"is_file_of_ssim" => "info:fedora/#{params[:id]}",
-                               blacklight_config.ocr_search_field => params[:ocr_q]}}
+      ocr_search_params = {q: params[:ocr_q],
+                           f: {'is_file_of_ssim' => "info:fedora/#{params[:id]}"}}
       ocr_search_params[:page] = params[:page] if params[:page]
       ocr_search_params[:sort] = params[:sort] if params[:sort]
       # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
@@ -57,9 +57,13 @@ class OcrSearchController < CatalogController
 
   # create the Solr function query to return term frequency
   def termfreq_query(ocr_search_terms)
-    search_terms = ocr_search_terms.split(' ')
+    search_terms = if ocr_search_terms =~ (/\A"[\s\S]*"\z/) # phrase search
+                       [ocr_search_terms.gsub(/"/,'')]
+                     else
+                       ocr_search_terms.gsub(/"/,'').split(' ')
+                   end
     if search_terms.length == 1
-      "term_freq:termfreq(#{blacklight_config.ocr_search_field},\"#{ocr_search_terms}\")"
+      "term_freq:termfreq(#{blacklight_config.ocr_search_field},\"#{search_terms.first}\")"
     else
       termfreq_array = search_terms.map { |v| "termfreq(#{blacklight_config.ocr_search_field},\"#{v}\")" }
       "term_freq:sum(#{termfreq_array.join(',')})"

@@ -4,7 +4,7 @@
     <dd>
       <% if document[:term_freq] %>
           <div class="ocr_term_freq">
-            <%= pluralize(document[:term_freq].to_i, t('blacklight.ocr.search.results.term_freq.start')) %>
+            <%= pluralize(compute_term_freq(document[:term_freq].to_i), t('blacklight.ocr.search.results.term_freq.start')) %>
           </div>
       <% end %>
       <div class="ocr_snippets">
