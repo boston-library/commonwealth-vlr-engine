@@ -26,6 +26,16 @@
                          partial: 'index_ocr_list',
                          locals: {count: @document_list.count} %>
             </div>
+        <% elsif ocr_q_params(current_search_session) %>
+            <div id="ocr_search_suggest">
+              Enter search terms above, or search for
+              "<%= link_to(current_search_session.query_params['q'].gsub(/\A"|"\Z/, ''),
+                           ocr_search_path(:ocr_q => current_search_session.query_params['q']),
+                           :class => '',
+                           :rel => 'nofollow',
+                           :data => {:ajax_modal => 'trigger'}) %>"
+              in the text of this item.
+            </div>
         <% end %>
     <% end %>
   </div>

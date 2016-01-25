@@ -41,92 +41,103 @@ http://wiki.apache.org/solr/LocalParams
         all_text_timv
         active_fedora_model_ssim
         object_type_si
-        title_info_primary_tsi
-        title_info_primary_trans_tsim
-        title_info_alternative_tsim
-        title_info_translated_tsim
-        subtitle_tsim
-        name_personal_tsim
+        title_info_primary_tsi^100
+        title_info_primary_trans_tsim^80
+        title_info_alternative_tsim^80
+        title_info_translated_tsim^80
+        subtitle_tsim^80
+        name_personal_tsim^20
         name_personal_role_tsim
-        name_corporate_tsim
+        name_corporate_tsim^20
         name_corporate_role_tsim
-        name_generic_tsim
-        abstract_tsim
+        name_generic_tsim^20
+        abstract_tsim^30
         genre_basic_tsim
         genre_specific_tsim
-        publisher_tsim
+        publisher_tsim^20
         edition_tsim
         issuance_tsim
         date_start_tsim
         date_end_tsim
-        table_of_contents_tsi
-        note_tsim
-        note_resp_tsim
+        table_of_contents_tsi^30
+        note_tsim^10
+        note_resp_tsim^20
         note_date_tsim
-        note_performers_tsim
-        note_acquisition_tsim
-        note_ownership_tsim
-        note_citation_tsim
-        note_reference_tsim
-        collection_name_tsim
-        physical_location_tsim
+        note_performers_tsim^10
+        note_acquisition_tsim^10
+        note_ownership_tsim^10
+        note_citation_tsim^10
+        note_reference_tsim^10
+        collection_name_tsim^10
+        physical_location_tsim^20
         sub_location_tsim
         shelf_locator_tsim
-        subject_topic_tsim
-        subject_name_corporate_tsim
-        subject_name_personal_tsim
-        subject_geographic_tsim
+        subject_topic_tsim^50
+        subject_name_corporate_tsim^50
+        subject_name_personal_tsim^50
+        subject_geographic_tsim^50
         subject_scale_tsim
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim
-        related_item_host_tsim
-        related_item_series_tsim
-        related_item_subseries_tsim
-        related_item_subsubseries_tsim
+        subject_title_tsim^50
+        related_item_host_tsim^10
+        related_item_series_tsim^10
+        related_item_subseries_tsim^10
+        related_item_subsubseries_tsim^10
         identifier_local_other_tsim
         identifier_local_other_invalid_tsim
         local_accession_id_tsim
         identifier_local_call_tsim
         identifier_local_barcode_tsim
+        classification_tsim
         extent_tsi
-        institution_name_tsim
+        institution_name_tsim^10
         institution_pid_ssi
+        ocr_tiv^0.5
+        ocr_tsiv^0.5
       </str>
       <str name="pf">
         all_text_timv^10
       </str>
 
       <str name="author_qf">
-        name_personal_tsim
-        name_corporate_tsim
-        name_generic_tsim
-        note_resp_tsim
+        name_personal_tsim^20
+        name_corporate_tsim^20
+        name_generic_tsim^20
+        note_resp_tsim^20
       </str>
       <str name="author_pf">
       </str>
       <str name="title_qf">
-        title_info_primary_tsi
-        title_info_primary_trans_tsim
-        title_info_alternative_tsim
-        title_info_translated_tsim
-        subtitle_tsim
+        title_info_primary_tsi^100
+        title_info_primary_trans_tsim^80
+        title_info_alternative_tsim^80
+        title_info_translated_tsim^80
+        subtitle_tsim^80
       </str>
       <str name="title_pf">
       </str>
       <str name="subject_qf">
-        subject_topic_tsim
-        subject_name_corporate_tsim
-        subject_name_personal_tsim
-        subject_geographic_tsim
+        subject_topic_tsim^50
+        subject_name_corporate_tsim^50
+        subject_name_personal_tsim^50
+        subject_geographic_tsim^50
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim
+        subject_title_tsim^50
       </str>
       <str name="subject_pf">
       </str>
       <str name="place_qf">
-        subject_geographic_tsim
+        subject_geographic_tsim^50
+        subject_topic_tsim^20
+        title_info_primary_tsi^10
+        subtitle_tsim^5
+        abstract_tsim^5
+        table_of_contents_tsi^5
+        note_tsim^5
+        institution_name_tsim^10
+        physical_location_tsim^10
       </str>
       <str name="place_pf">
       </str>

@@ -4,14 +4,31 @@ describe 'OCR search index view' do
 
   let(:book_pid) { 'bpl-dev:7s75dn48d' }
 
-  describe 'with no search params' do
-    it 'should display the search form' do
-      visit ocr_search_path(id: book_pid)
-      expect(page).to have_selector('form.ocr-search-form')
+  describe 'loading the search form' do
+
+    describe 'with no current_search_session params' do
+      it 'should display the search form' do
+        visit ocr_search_path(id: book_pid)
+        expect(page).to have_selector('form.ocr-search-form')
+      end
     end
+
+    describe 'with current_search_session params' do
+
+      before do
+        visit catalog_index_path(q: 'foo')
+      end
+
+      it 'should display the suggestion link' do
+        visit ocr_search_path(id: book_pid)
+        expect(page).to have_selector('#ocr_search_suggest')
+      end
+
+    end
+
   end
 
-  describe 'with search params' do
+  describe 'running a search' do
 
     before { visit ocr_search_path(id: book_pid) }
 

@@ -13,7 +13,7 @@
     </li>
     <% if document['identifier_ia_id_ssi'] %>
         <li id="search_inside_link_wrap">
-          <%= link_to(ocr_search_path(:ocr_q => ocr_q_params(current_search_session)),
+          <%= link_to(ocr_search_path,
                       :class => 'search_inside_link btn',
                       :rel => 'nofollow',
                       :data => {:ajax_modal => 'trigger'}) do %>

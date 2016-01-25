@@ -1,3 +1,9 @@
 <div id="zero_results_ocr">
-  No results found for "<%= params[:ocr_q].gsub(/\A"|"\Z/, '') %>" in the text of this item. Please try another search.
+  <%= t('blacklight.ocr.search.zero_results.message', terms: params[:ocr_q].gsub(/\A"|"\Z/, '')) %>
+  <h5>Search Tips</h5>
+  <ul id="ocr_search_tips_list">
+    <li><%= t 'blacklight.ocr.search.zero_results.use_fewer_keywords' %></li>
+    <li><%= t 'blacklight.ocr.search.zero_results.no_quotes' %></li>
+    <li>If you're still having trouble, <%= link_to 'contact us', feedback_path %> and we'll try and help.</li>
+  </ul>
 </div>

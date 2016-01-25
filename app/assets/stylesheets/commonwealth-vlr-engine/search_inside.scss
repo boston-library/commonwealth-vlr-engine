@@ -28,6 +28,15 @@
     #zero_results_ocr {
       margin-top: 10px;
       padding-bottom: 10px;
+
+      h5 {
+        font-weight: bold;
+      }
+
+    }
+
+    #ocr_search_suggest {
+      padding-bottom: 10px;
     }
 
     #ocr_search_details {

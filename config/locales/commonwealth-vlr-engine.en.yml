@@ -304,6 +304,10 @@ en:
               term_freq:
                 start: 'match'
               title: 'Search inside'
+            zero_results:
+              message: 'No results found for "%{terms}" in the text of this item. Please try another search.'
+              no_quotes: 'Remove any quotation marks from your search terms.'
+              use_fewer_keywords: 'Try using fewer keywords in your search.'
 
 
     pages:
