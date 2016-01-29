@@ -169,6 +169,11 @@ div.blacklight-institution {
 
 @media (max-width: 767px) {
 
+  /* need this or sidebar covers pagination links */
+  body.blacklight-institutions-index #sidebar {
+    float: left;
+  }
+
   div.blacklight-institution {
 
     #institution_search_tools {

@@ -442,6 +442,11 @@ h4.collection-provenance {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
+  /* need this or sidebar covers pagination links */
+  body.blacklight-collections-index #sidebar {
+    float: left;
+  }
+
   div.collections-list {
 
     #collection_az_links {
