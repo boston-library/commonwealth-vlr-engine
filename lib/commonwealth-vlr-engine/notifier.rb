@@ -12,7 +12,7 @@ module CommonwealthVlrEngine
 
       mail(:to => @recipient,
            :from => t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
-           :subject => t('blacklight.feedback.text.subject'))
+           :subject => t('blacklight.feedback.text.subject', identifier: Time.now.strftime('%s')))
 
     end
 
