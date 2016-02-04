@@ -13,7 +13,11 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">View Content</button>
         <!-- <button type="button" class="btn btn-danger">Back to Search</button> -->
-        <%= link_back_to_catalog(:class => 'btn btn-danger') if current_search_session %>
+        <% if current_search_session %>
+            <%= link_back_to_catalog(:class => 'btn btn-danger') %>
+        <% else %>
+            <%= link_to t('blacklight.back_to_search'), catalog_index_path, :class => 'btn btn-danger' %>
+        <% end %>
       </div>
     </div>
   </div>

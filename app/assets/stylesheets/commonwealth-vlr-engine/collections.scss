@@ -2,20 +2,20 @@
 
 /* collections#index */
 
-div.collections-list {
+#collection_az_links, #institution_az_links {
+  margin-bottom: 10px;
 
-  #collection_az_links {
-    margin-bottom: 10px;
-
-    .col_a-z_link, .col_a-z_nolink {
-      padding-left:7px;
-    }
-
-    .col_a-z_nolink {
-      color:$dark_gray;
-    }
-
+  .col_a-z_link, .col_a-z_nolink {
+    padding-left:7px;
   }
+
+  .col_a-z_nolink {
+    color:$dark_gray;
+  }
+
+}
+
+div.collections-list {
 
   /* don't display sort or view-type widgets */
   #sort-dropdown, .view-type {
@@ -283,14 +283,10 @@ h4.collection-provenance {
 /* Large desktop */
 @media (min-width: 1200px) {
 
-  div.collections-list {
+  #collection_az_links, #institution_az_links {
 
-    #collection_az_links {
-
-      .col_a-z_link, .col_a-z_nolink {
-        padding-left:13px;
-      }
-
+    .col_a-z_link, .col_a-z_nolink {
+      padding-left:13px;
     }
 
   }
@@ -359,14 +355,10 @@ h4.collection-provenance {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 991px) {
 
-  div.collections-list {
+  #collection_az_links, #institution_az_links {
 
-    #collection_az_links {
-
-      .col_a-z_link, .col_a-z_nolink {
-        padding-left:1px;
-      }
-
+    .col_a-z_link, .col_a-z_nolink {
+      padding-left:1px;
     }
 
   }
@@ -442,19 +434,15 @@ h4.collection-provenance {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
-  /* need this or sidebar covers pagination links */
+
   body.blacklight-collections-index #sidebar {
     float: left;
   }
 
-  div.collections-list {
+  #collection_az_links, #institution_az_links {
 
-    #collection_az_links {
-
-      .col_a-z_link, .col_a-z_nolink {
-        padding-left:2px;
-      }
-
+    .col_a-z_link, .col_a-z_nolink {
+      padding-left:2px;
     }
 
   }

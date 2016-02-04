@@ -227,6 +227,7 @@ en:
             title: 'Browse by:'
           index:
             page_title: 'Institutions - %{application_name}'
+            a-z_label: 'Browse by name:'
           nav: 'Institutions'
           title: 'Institutions'
 

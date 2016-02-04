@@ -20,6 +20,12 @@ describe InstitutionsHelper do
     end
   end
 
+  describe '#link_to_insts_start_with' do
+    it 'should create a search link with the correct params' do
+      expect(helper.link_to_insts_start_with('A')).to include('href="/institutions?q=physical_location_ssim%3AA%2A"')
+    end
+  end
+
   describe 'render_institutions_index' do
 
     before { (@response, @document_list) = search_results({}, search_params_logic) }
@@ -42,6 +48,12 @@ describe InstitutionsHelper do
       remove_instance_variable(:@document_list)
     }
 
+  end
+
+  describe '#should_render_inst_az?' do
+    it 'should return false' do
+     expect(helper.should_render_inst_az?).to be_falsey
+    end
   end
 
 end

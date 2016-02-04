@@ -1,0 +1,15 @@
+<% if should_render_inst_az? %>
+    <div id="institution_az_links" class="well well-sm">
+      <%= content_tag(:span,
+                      t('blacklight.institutions.index.a-z_label'),
+                      :class => 'col_a-z_label') %>
+      <%= link_to 'All', institutions_path, :class => 'col_a-z_link' %>
+      <% ('A'..'Z').each do |letter| %>
+          <% if ['V','X','Z'].include? letter %>
+              <%= content_tag(:span, letter, :class => 'col_a-z_nolink') %>
+          <% else %>
+              <%= link_to_insts_start_with(letter) %>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>
