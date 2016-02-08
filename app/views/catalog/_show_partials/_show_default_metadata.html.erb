@@ -56,7 +56,7 @@
       <% names, roles = setup_names_roles(document) %>
       <% names.each_with_index do |name, index| %>
         <dt><%= roles[index] %>:</dt>
-        <dd><%= name %></dd>
+        <dd><%= link_to_facet(name, 'name_facet_ssim') %></dd>
       <% end %>
     <% end %>
     <%# note @type="statement of responsibility" field %>
