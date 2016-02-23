@@ -3,43 +3,46 @@
 
   <div id="signup_wrapper">
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal', :role => 'form'}) do |f| %>
+<%= form_for(resource,
+             as: resource_name,
+             url: registration_path(resource_name),
+             html: {class: 'form-horizontal', role: 'form'}) do |f| %>
     <%= devise_error_messages! %>
 
         <div class="form-group">
           <label class="col-sm-2 control-label" for="inputFirstName">First name</label>
           <div class="col-sm-4">
-            <%= f.text_field :first_name, :class => 'form-control' %>
+            <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
           </div>
         </div>
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputLastName">Last name</label>
         <div class="col-sm-4">
-          <%= f.text_field :last_name, :class => 'form-control' %>
+          <%= f.text_field :last_name, class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputEmail">Email</label>
         <div class="col-sm-4">
-          <%= f.text_field :email, :class => 'form-control' %>
+          <%= f.text_field :email, class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputPassword">Password</label>
         <div class="col-sm-4">
-          <%= f.password_field :password, :class => 'form-control' %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputPassword">Re-enter password</label>
         <div class="col-sm-4">
-          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+          <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-4">
-          <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
-          <%= link_to 'Cancel', root_path, :class => 'btn btn-default' %>
+          <%= f.submit 'Sign up', class: 'btn btn-primary' %>
+          <%= link_to 'Cancel', root_path, class: 'btn btn-default' %>
         </div>
       </div>
 

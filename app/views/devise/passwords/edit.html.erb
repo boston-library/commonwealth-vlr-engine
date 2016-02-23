@@ -1,20 +1,23 @@
 <div class="col-sm-9">
   <h2>Change your password</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :id => 'password_edit', :class => 'form-horizontal', :role => 'form' }) do |f| %>
+<%= form_for(resource,
+             as: resource_name,
+             url: password_path(resource_name),
+             html: { method: :put, id: 'password_edit', class: 'form-horizontal', role: 'form' }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputPassword">New password</label>
         <div class="col-sm-4">
-          <%= f.password_field :password, :class => 'form-control' %>
+          <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label" for="inputPassword">Confirm new password</label>
         <div class="col-sm-4">
-          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+          <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">

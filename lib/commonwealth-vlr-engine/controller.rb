@@ -22,6 +22,7 @@ module CommonwealthVlrEngine
       # store last url - this is needed for post-login redirect to whatever the user last visited.
       if (request.path != "/users/sign_in" &&
           request.path != "/users/sign_up" &&
+          request.path != "/users/password" &&
           request.path != "/users/password/new" &&
           request.path != "/users/password/edit" &&
           request.path != "/users/confirmation" &&
