@@ -18,14 +18,20 @@ Create a new Rails app:
 $ rails new app_name
 $ cd app_name
 ```
-Add Blacklight and Commonwealth-VLR-Engine to your Gemfile:
+Add Blacklight to your Gemfile:
 ```ruby
-gem 'blacklight'
-gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
+gem 'blacklight', '~>5.14.0'
 ```
-Then run the install:
+Run the Blacklight install:
 ```
 $ rails generate blacklight:install
+```
+Then add Commonwealth-VLR-Engine to your Gemfile:
+```ruby
+gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
+```
+Run the VLR-Engine install:
+```
 $ rails generate commonwealth_vlr_engine:install
 $ rake db:migrate
 ```
