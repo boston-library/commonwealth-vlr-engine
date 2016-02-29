@@ -314,6 +314,15 @@ module CommonwealthVlrEngine
       end
     end
 
+    # return the correct name of the institution to link to for OAI objects
+    def return_oai_inst_name(document)
+      if document[blacklight_config.institution_field.to_sym]
+        document[blacklight_config.institution_field.to_sym].first
+      else
+        t('blacklight.oai_objects.default_inst_name')
+      end
+    end
+
     # creates an array of collection links
     # for display on catalog#index list view and catalog#show breadcrumb
     def setup_collection_links(document, link_class=nil)

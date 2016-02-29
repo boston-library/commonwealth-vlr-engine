@@ -293,6 +293,11 @@ en:
     navigation:
           format: 'Formats'
 
+    oai_objects:
+          default_inst_name: 'the contributing institution'
+          link_to_item: 'View this item at %{institution_name}'
+          link_to_item_label: 'Link to Item'
+
     ocr:
           search:
             form:
