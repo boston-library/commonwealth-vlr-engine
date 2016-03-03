@@ -7,7 +7,11 @@
 
   <%= render 'institutions/intro_text' %>
 
-  <%= render 'institutions/az_links' %>
+  <% if should_render_inst_az? %>
+      <%= render partial: 'catalog/az_links', locals: {az_label: t('blacklight.institutions.index.a-z_label'),
+                                                       az_link_path: 'institutions_path',
+                                                       az_exclude: ['V','X','Z']} %>
+  <% end %>
 
   <%= render 'catalog/constraints' %>
 

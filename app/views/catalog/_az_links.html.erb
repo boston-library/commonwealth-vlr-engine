@@ -1,0 +1,15 @@
+<div class="item_az_links well well-sm">
+  <%= content_tag(:span,
+                  az_label,
+                  :class => 'az_label') %>
+  <%= link_to 'All', send(az_link_path), :class => 'az_link' %>
+  <% ('A'..'Z').each do |letter| %>
+      <% if az_exclude.include? letter %>
+          <%= content_tag(:span, letter, :class => 'az_nolink') %>
+      <% elsif params[:q] && params[:q].match(/ssort:#{letter}\*/) %>
+          <%= content_tag(:span, letter, :class => 'az_active') %>
+      <% else %>
+          <%= link_to_az_value(letter, 'title_info_primary_ssort', az_link_path, 'az_link') %>
+      <% end %>
+  <% end %>
+</div>

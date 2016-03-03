@@ -344,6 +344,8 @@ en:
             label: 'View as %{view}'
             action: 'View as'
             submit: 'Update'
+          constraints:
+            az_search: 'Starts with'
           form:
             collection: 'Search this collection...'
             search:

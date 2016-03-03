@@ -2,15 +2,19 @@
 
 /* collections#index */
 
-#collection_az_links, #institution_az_links {
+.item_az_links {
   margin-bottom: 10px;
 
-  .col_a-z_link, .col_a-z_nolink {
+  .az_link, .az_nolink, .az_active {
     padding-left:7px;
   }
 
-  .col_a-z_nolink {
+  .az_nolink {
     color:$dark_gray;
+  }
+
+  .az_active {
+    font-weight: bold;
   }
 
 }
@@ -283,9 +287,9 @@ h4.collection-provenance {
 /* Large desktop */
 @media (min-width: 1200px) {
 
-  #collection_az_links, #institution_az_links {
+  .item_az_links {
 
-    .col_a-z_link, .col_a-z_nolink {
+    .az_link, .az_nolink {
       padding-left:13px;
     }
 
@@ -355,9 +359,9 @@ h4.collection-provenance {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 991px) {
 
-  #collection_az_links, #institution_az_links {
+  .item_az_links {
 
-    .col_a-z_link, .col_a-z_nolink {
+    .az_link, .az_nolink {
       padding-left:1px;
     }
 
@@ -439,9 +443,9 @@ h4.collection-provenance {
     float: left;
   }
 
-  #collection_az_links, #institution_az_links {
+  .item_az_links {
 
-    .col_a-z_link, .col_a-z_nolink {
+    .az_link, .az_nolink {
       padding-left:2px;
     }
 

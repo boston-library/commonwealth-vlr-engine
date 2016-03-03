@@ -15,6 +15,15 @@ module CommonwealthVlrEngine
       !params[:mlt_id].blank?
     end
 
+    # override to deal with A-Z link result display
+    def render_constraint_element(label, value, options = {})
+      if value.match(/ssort:[A-Z]+\*/)
+        label = t('blacklight.search.constraints.az_search')
+        value = value.match(/[A-Z]+/)[0]
+      end
+      super
+    end
+
     # override to add method to show constraint for 'more like this' search
     def render_constraints(localized_params = params)
       render_mlt_query(localized_params) + super

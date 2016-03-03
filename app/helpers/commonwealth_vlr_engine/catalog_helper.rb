@@ -166,6 +166,15 @@ module CommonwealthVlrEngine
       'commonwealth-vlr-engine/dc_institution-icon.png'
     end
 
+    # link to items starting with a specific letter
+    def link_to_az_value(letter, field, search_path, link_class=nil)
+      new_params = params.except(:controller, :action, :q)
+      new_params[:q] = "#{field}:#{letter}*"
+      link_to(letter,
+              self.send(search_path, new_params),
+              class: link_class)
+    end
+
     def normalize_date(date)
       if date.length == 10
         Date.parse(date).strftime('%B %-d, %Y')

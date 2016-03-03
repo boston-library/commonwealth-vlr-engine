@@ -5,7 +5,11 @@
 
   <h2><%= t('blacklight.collections.index.title') %></h2>
 
-  <%= render 'collections/az_links' %>
+  <% if should_render_col_az? %>
+      <%= render partial: 'catalog/az_links', locals: {az_label: t('blacklight.collections.index.a-z_label'),
+                                                       az_link_path: 'collections_path',
+                                                       az_exclude: ['Q','X']} %>
+  <% end %>
 
   <%= render 'catalog/sort_and_per_page' %>
 

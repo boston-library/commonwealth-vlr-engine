@@ -8,13 +8,6 @@ module CommonwealthVlrEngine
               :class => link_class)
     end
 
-    # link to institutions starting with a specific letter
-    def link_to_insts_start_with(letter)
-      link_to(letter,
-              institutions_path(:q => 'physical_location_ssim:' + letter + '*'),
-              :class => 'col_a-z_link')
-    end
-
     # replaces render_document_index in institutions/index partial
     # so we can use local index_map_institutions partial for map view
     def render_institutions_index documents = nil, locals = {}

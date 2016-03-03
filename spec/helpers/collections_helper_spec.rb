@@ -16,12 +16,6 @@ describe CollectionsHelper do
     end
   end
 
-  describe '#link_to_cols_start_with' do
-    it 'should create a search link with the correct params' do
-      expect(helper.link_to_cols_start_with('A')).to include('href="/collections?q=title_info_primary_ssort%3AA%2A"')
-    end
-  end
-
   # TODO: figure out why this spec doesn't pass when run in CI/run-all-specs testing
   # getting NoMethodError: private method 'should_render_col_az?' called
   # works fine in context of this single spec though

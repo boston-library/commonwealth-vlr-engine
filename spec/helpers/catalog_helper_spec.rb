@@ -204,6 +204,12 @@ describe CatalogHelper do
     end
   end
 
+  describe '#link_to_az_value' do
+    it 'should create a link with the correct letter, field, and path' do
+      expect(helper.link_to_az_value('X', 'some_field_name', 'collections_path')).to include('collections?q=some_field_name%3AX%2A')
+    end
+  end
+
   describe '#normalize_date' do
     it 'should return normalized date values' do
       expect(helper.normalize_date('2015-07-05')).to eq('July 5, 2015')
