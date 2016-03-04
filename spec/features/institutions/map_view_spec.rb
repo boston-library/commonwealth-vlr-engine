@@ -24,11 +24,10 @@ describe 'Institutions#index map view', js: true do
 
       before { find('div.leaflet-popup-content a').click }
 
-      it 'should have .constraints > a.remove that links to instititions#index' do
+      it 'should have .constraints > a.remove that links to institutions#index' do
         within ('#appliedParams') do
           expect(page.html).to include('/institutions?')
         end
-
       end
 
     end

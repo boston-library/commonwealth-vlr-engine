@@ -47,5 +47,21 @@ module CommonwealthVlrEngine
       page_sequence
     end
 
+    # override of Blacklight::Controller#search_action_path
+    # for proper constraints linking in collections#index and institutions#index
+    def search_action_path *args
+      if args.first.is_a? Hash
+        args.first[:only_path] = true
+      end
+
+      if params[:controller] == 'institutions' && params[:action] == 'index'
+        institutions_url *args
+      elsif params[:controller] == 'collections' && params[:action] == 'index'
+        collections_url *args
+      else
+        search_action_url *args
+      end
+    end
+
   end
 end
