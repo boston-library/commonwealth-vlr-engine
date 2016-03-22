@@ -74,9 +74,17 @@ describe ApplicationHelper do
   end
 
   describe '#get_image_metadata' do
+
     it 'should return a hash with the height and width of the image' do
-      expect(helper.get_image_metadata(image_pid)).to eq({:height=>2448, :width=>1496})
+      expect(helper.get_image_metadata(image_pid)).to eq({height: 2448, width: 1496})
     end
+
+    describe 'when IIIF server is unresponsive' do
+      it 'should return a hash with the height and width of the image set to 0' do
+        expect(helper.get_image_metadata('bpl-dev:xyz1234')).to eq({height: 0, width: 0})
+      end
+    end
+
   end
 
   describe 'content_for(:head) helpers' do
