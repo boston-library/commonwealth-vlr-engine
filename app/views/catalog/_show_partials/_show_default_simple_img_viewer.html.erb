@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
     OSd_viewer = {};
-    $('#img_viewer_link').click(function() {
+    $('#img_viewer_link, #img_show_zoom_cue').click(function() {
         $('#img_viewer_modal').modal();
         $("#img_viewer_osd").css("height", $(window).height() - 60);
         OSd_viewer.viewer = new OpenSeadragon({

@@ -140,17 +140,37 @@
   text-align: center;
   margin-bottom: 1em;
 
-  #loading {
+  #img_show_canvas {
+    display: inline-block;
     position: relative;
-    top: 150px;
-  }
+    max-width: 100%;
 
-  img.img_show {
-    border: 1px solid $light_gray;
-    width:auto;
-    max-width:100%;
-    //height: 100%;
-    max-height: 600px;
+    #img_show_zoom_cue {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: white;
+
+      .img_zoom_icon {
+        opacity: 0.7;
+        font-size: 32px;
+      }
+
+    }
+
+    #loading {
+      position: relative;
+      top: 150px;
+    }
+
+    img.img_show {
+      border: 1px solid $light_gray;
+      width:auto;
+      max-width:100%;
+      //height: 100%;
+      max-height: 600px;
+    }
+
   }
 
   .carousel-control {
