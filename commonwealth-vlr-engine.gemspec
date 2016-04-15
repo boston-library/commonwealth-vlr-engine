@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'blacklight-maps', '0.4.0'
   spec.add_dependency 'bootstrap-sass', '~> 3.0'
   spec.add_dependency 'font-awesome-sass', '4.1.0'
-  spec.add_dependency 'bpluser', '~> 0.0.6'
+  spec.add_dependency 'bpluser', '~> 0.0.7'
   spec.add_dependency 'typhoeus'
   spec.add_dependency 'devise-guests', '0.3.3'
   spec.add_dependency 'devise', '~> 3.4.1'
