@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   require 'cgi'
   require 'openssl'
   require 'rest_client'
+  require 'devise'
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
