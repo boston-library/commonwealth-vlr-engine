@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   # Connects this user object to the BPL omniauth service
   include Bpluser::User
+
   self.table_name = "users"
 
 end
