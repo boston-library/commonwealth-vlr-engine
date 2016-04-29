@@ -88,6 +88,15 @@ describe CollectionsController do
       @document = {blacklight_config.institution_field.to_sym => 'Boston Public Library'}
     end
 
+    # :collections_filter doesn't seem to be getting added, not sure why
+    # may be same issue affecting specs for #relation_base_blacklight_config above
+    describe "collections_limit" do
+      it "should add :collections filter to search_params_logic" #do
+        #get :index, :id => 'bpl-dev:000000000'
+        #expect(CollectionsController.search_params_logic).to include(:collections_filter)
+      #end
+    end
+
     describe "get_collection_image_info" do
       it "should return a hash with the collection image object title and pid" do
         expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true})
