@@ -1,9 +1,11 @@
 <% @page_title = t('blacklight.collections.index.page_title', :application_name => application_name) %>
 <% content_for(:head) { render_opensearch_response_metadata } %>
 
-<div id="content" class="col-sm-9 collections-list">
-
+<div id="collections_index_title" class="col-sm-12">
   <h2><%= t('blacklight.collections.index.title') %></h2>
+</div>
+
+<div id="content" class="col-sm-9 collections-list">
 
   <% if should_render_col_az? %>
       <%= render partial: 'catalog/az_links', locals: {az_label: t('blacklight.collections.index.a-z_label'),
@@ -23,7 +25,6 @@
 
 </div>
 
-<%# not using facets at the moment %>
 <div id="sidebar" class="col-sm-3">
-  <%# render :partial=>'facets' %>
-</div><!--/well -->
+  <%= render 'catalog/search_sidebar' %>
+</div>

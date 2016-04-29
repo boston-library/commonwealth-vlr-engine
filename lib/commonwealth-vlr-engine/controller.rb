@@ -52,11 +52,13 @@ module CommonwealthVlrEngine
     def search_action_path *args
       if args.first.is_a? Hash
         args.first[:only_path] = true
+        # Rails 4.2 deprecated url helpers accepting string keys for 'controller' or 'action'
+        args[0] = args.first.except(:controller, :action)
       end
 
       if params[:controller] == 'institutions' && params[:action] == 'index'
         institutions_url *args
-      elsif params[:controller] == 'collections' && params[:action] == 'index'
+      elsif params[:controller] == 'collections' && (params[:action] == 'index' || params[:action] == 'facet')
         collections_url *args
       else
         search_action_url *args

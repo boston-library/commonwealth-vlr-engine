@@ -869,6 +869,9 @@
   - Boston Public Library
   institution_name_tsim:
   - Boston Public Library
+  genre_basic_ssim:
+  - Collections
+  - Maps
   institution_pid_ssi:
   - bpl-dev:abcd12345
   exemplary_image_ssi:
@@ -922,6 +925,9 @@
   - Boston Public Library
   institution_name_tsim:
   - Boston Public Library
+  genre_basic_ssim:
+  - Collections
+  - Photographs
   institution_pid_ssi:
   - bpl-dev:abcd12345
   exemplary_image_ssi:
@@ -973,6 +979,9 @@
   - Boston Public Library
   institution_name_tsim:
   - Boston Public Library
+  genre_basic_ssim:
+  - Collections
+  - Photographs
   institution_pid_ssi:
   - bpl-dev:abcd12345
   exemplary_image_ssi:
@@ -1024,6 +1033,9 @@
   - Boston Public Library
   institution_name_tsim:
   - Boston Public Library
+  genre_basic_ssim:
+  - Collections
+  - Photographs
   institution_pid_ssi:
   - bpl-dev:abcd12345
   exemplary_image_ssi:

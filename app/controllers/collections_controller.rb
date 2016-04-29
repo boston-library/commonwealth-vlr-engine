@@ -10,6 +10,7 @@ class CollectionsController < CatalogController
   # remove collection facet and collapse others
   before_filter :relation_base_blacklight_config, :only => [:show]
   before_filter :add_series_facet, :only => [:show]
+  before_filter :collections_limit, :only => [:index, :facet]
 
   # show series facet
   def add_series_facet
@@ -25,7 +26,6 @@ class CollectionsController < CatalogController
 
   def index
     @nav_li_active = 'explore'
-    self.search_params_logic += [:collections_filter]
     (@response, @document_list) = search_results(params, search_params_logic)
     params[:view] = 'list'
     params[:sort] = 'title_info_primary_ssort asc'
@@ -59,7 +59,14 @@ class CollectionsController < CatalogController
 
   end
 
+
+
   private
+
+  # filter out non-collection items
+  def collections_limit
+    self.search_params_logic += [:collections_filter]
+  end
 
   # find the title and pid for the object representing the collection image
   def get_collection_image_info(image_pid, collection_pid)
