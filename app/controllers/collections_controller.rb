@@ -8,14 +8,10 @@ class CollectionsController < CatalogController
   copy_blacklight_config_from(CatalogController)
 
   # remove collection facet and collapse others
-  before_filter :relation_base_blacklight_config, :only => [:show]
-  before_filter :add_series_facet, :only => [:show]
+  before_filter :relation_base_blacklight_config, :only => [:index, :show]
+  before_filter :add_series_facet, :only => :show
   before_filter :collections_limit, :only => [:index, :facet]
-
-  # show series facet
-  def add_series_facet
-    blacklight_config.facet_fields['related_item_series_ssim'].include_in_request = true
-  end
+  before_filter :collapse_institution_facet, :only => :index
 
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
@@ -59,9 +55,18 @@ class CollectionsController < CatalogController
 
   end
 
-
-
   private
+
+  # show series facet
+  def add_series_facet
+    blacklight_config.facet_fields['related_item_series_ssim'].include_in_request = true
+  end
+
+  # collapse the institution facet, if Institutions supported
+  def collapse_institution_facet
+    return unless t('blacklight.home.browse.institutions.enabled')
+    blacklight_config.facet_fields['physical_location_ssim'].collapse = true
+  end
 
   # filter out non-collection items
   def collections_limit
