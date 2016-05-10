@@ -1,0 +1,3 @@
+module FeedbackHelper
+  include CommonwealthVlrEngine::FeedbackHelperBehavior
+end

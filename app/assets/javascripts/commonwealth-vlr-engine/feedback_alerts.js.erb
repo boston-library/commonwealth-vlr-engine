@@ -1,0 +1,19 @@
+/* replaces help text depending on value selected from 'message type' drop-down */
+$(document).ready (function () {
+    var topic_dropdown = $('#message_type_select');
+    var help_text_div = $('#contact_help_text');
+    var topic_options = JSON.parse('<%= I18n.t('blacklight.feedback.form.topic.options').to_json.html_safe %>');
+    var topic_options_keys = Object.keys(topic_options);
+    $(topic_dropdown).change(function() {
+        var selected_option = topic_dropdown.val();
+        for (var i = 0; i < topic_options_keys.length; i++) {
+            if (selected_option == topic_options[topic_options_keys[i]].option) {
+                if (topic_options[topic_options_keys[i]].help_text != '') {
+                    help_text_div.html(topic_options[topic_options_keys[i]].help_text).toggleClass("hidden", false);
+                } else {
+                    help_text_div.toggleClass("hidden", true)
+                }
+            }
+        }
+    });
+});

@@ -19,7 +19,7 @@ module CommonwealthVlrEngine
     private
 
     def route_email(topic)
-      if topic == t('blacklight.feedback.form.topic.options.repro')
+      if topic == t('blacklight.feedback.form.topic.options.repro.option')
         recipient_email = CONTACT_EMAILS['image_requests']
       else
         recipient_email = CONTACT_EMAILS['site_admin']

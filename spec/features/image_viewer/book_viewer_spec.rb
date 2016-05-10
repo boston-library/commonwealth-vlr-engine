@@ -49,7 +49,7 @@ describe 'book_viewer', js: true do
         describe 'starting a new search' do
 
           before do
-            click_link('toggle-search')
+            find('#toggle-search').trigger('click')
           end
 
           it 'should display the results for the most recent search' do

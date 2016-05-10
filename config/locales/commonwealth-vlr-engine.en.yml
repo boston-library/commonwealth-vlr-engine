@@ -103,12 +103,27 @@ en:
             topic:
               label: 'Topic'
               options:
-                default: 'please select a topic'
-                repro: 'image reproduction'
-                account: 'login / sign up for account'
-                research: 'research question'
-                error: 'broken link / site error'
-                other: 'other'
+                default:
+                  option: 'please select a topic'
+                  help_text: ''
+                repro:
+                  option: 'image reproduction'
+                  help_text: '<i aria-hidden=\"true\" class=\"fa fa-exclamation-triangle fa-2x\"></i> Please be sure to include a link to the image in your message.'
+                account:
+                  option: 'login / sign up for account'
+                  help_text: 'Choose this option if you have questions about signing in or signing up for a user account.'
+                research:
+                  option: 'research question'
+                  help_text: '<i aria-hidden=\"true\" class=\"fa fa-exclamation-triangle fa-2x\"></i> Please be advised we can only answer research questions related to materials found on this web site.'
+                error:
+                  option: 'broken link / site error'
+                  help_text: '<i aria-hidden=\"true\" class=\"fa fa-exclamation-triangle fa-2x\"></i> Please include a link to the page with the broken link or incorrect information, or the specific error message, if possible.'
+                feature:
+                  option: 'site feature suggestion'
+                  help_text: 'We welcome suggestions for improved functionality for this site. Please include as much detail as possible with your suggestion.'
+                other:
+                  option: 'other'
+                  help_text: ''
           blurb: 'We welcome your comments and feedback.'
           title: 'Contact Us'
           valid_name: 'Please enter your name.'
