@@ -4,7 +4,7 @@ en:
 
     advanced_search:
           page_title: 'Search'
-          title: 'Search - %{application_name}'
+          title: 'Advanced Search - %{application_name}'
           limit: 'Narrow your search:'
 
     application_name: 'SITE_NAME'
@@ -190,6 +190,9 @@ en:
             confirm: 'Are you sure you want to remove all items?'
             success: 'All items removed.'
             failure: 'Items could not be removed. Please try again later.'
+
+    formats:
+          page_title: 'Formats - %{application_name}'
 
     footer:
           address: '123 Main Street, Anywhere, MA 01234'
