@@ -4,6 +4,7 @@ class FoldersController < CatalogController
   # Give Bookmarks access to the CatalogController configuration
   include Blacklight::Configurable
   include Blacklight::SearchHelper
+  include Blacklight::TokenBasedUser
 
   copy_blacklight_config_from(CatalogController)
 
@@ -19,8 +20,8 @@ class FoldersController < CatalogController
   before_filter :correct_user_for_folder, :only => [:update, :destroy]
 
   def index
-    if current_user
-      @folders = current_user.folders
+    if current_or_guest_user
+      @folders = current_or_guest_user.folders
     end
   end
 
@@ -122,8 +123,8 @@ class FoldersController < CatalogController
 
     def correct_user_for_folder
       @folder ||= Bpluser::Folder.find(params[:id])
-      if current_user
-        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
+      if current_or_guest_user
+        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_or_guest_user.folders.include?(@folder)
       else
         flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
       end
