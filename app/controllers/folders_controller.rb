@@ -20,6 +20,7 @@ class FoldersController < CatalogController
   before_filter :correct_user_for_folder, :only => [:update, :destroy]
 
   def index
+    flash[:notice] = flash[:notice].html_safe if flash[:notice].present? and flash[:notice] == %Q[You are viewing your saved Digital Stacks items in a temporary session. To persist these inside of a full account, please click the <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a> link.]
     if current_or_guest_user
       @folders = current_or_guest_user.folders
     end
