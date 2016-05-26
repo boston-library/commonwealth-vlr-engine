@@ -27,6 +27,8 @@ class FoldersController < CatalogController
   end
 
   def show
+    flash[:notice] = flash[:notice].html_safe if flash[:notice].present? and flash[:notice] == %Q[You are viewing your saved Digital Stacks items in a temporary session. To persist these inside of a full account, please click the <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a> link.]
+
     # @folder is set by correct_user_for_folder
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
