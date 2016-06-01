@@ -10,7 +10,7 @@ class FoldersController < CatalogController
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url options = {}
-    catalog_index_url(options.except(:controller, :action))
+    search_catalog_url(options.except(:controller, :action))
   end
   helper_method :search_action_url
 
@@ -58,7 +58,7 @@ class FoldersController < CatalogController
   #      if @folder.save
   #        flash[:success] = "Folder created; " + t('blacklight.folder_items.add.success')
   #        current_user.folders.first.folder_items.create!(:document_id => params['id'].first)
-  #        redirect_to catalog_path(params['id']) unless request.xhr?
+  #        redirect_to solr_document_path(params['id']) unless request.xhr?
   #      else
   #        flash[:error] = t('blacklight.folders.create.error.no_save')
   #      end

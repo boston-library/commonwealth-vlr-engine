@@ -1,9 +1,9 @@
 <% nav_links = {
         :search => {
                 :basic => {:nav_link_title => t('blacklight.search.nav.basic'),
-                           :nav_link_path => catalog_index_path},
+                           :nav_link_path => search_catalog_path},
                 :advanced => {:nav_link_title => t('blacklight.search.nav.advanced'),
-                              :nav_link_path => advanced_search_path}
+                              :nav_link_path => blacklight_advanced_search_engine.advanced_search_path}
         },
         :explore => {},
         :about => {

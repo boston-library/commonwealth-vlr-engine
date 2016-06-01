@@ -27,8 +27,8 @@
   </div>
 </div>
 <div class="pull-right">
-  <%= submit_tag 'Search', :class=>'btn btn-primary advanced_submit', :id=>'advanced_search' %>
-  <%= link_to 'Start over', {:controller => 'advanced', :action => 'index'}, :class =>'reset btn btn-default' %>
+  <%= submit_tag t('blacklight_advanced_search.form.search_btn'), :class=>'btn btn-primary advanced_submit', :id=>'advanced_search' %>
+  <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>'reset btn btn-default' %>
 </div>
 
 <%# search_fields_for_advanced_search.each do |key, field_def| -%>

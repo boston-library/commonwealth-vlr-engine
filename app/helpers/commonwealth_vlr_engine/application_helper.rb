@@ -52,16 +52,16 @@ module CommonwealthVlrEngine
     # TODO: this isn't used anywhere in the app, get rid of it?
     def link_to_field(fieldname, fieldvalue, displayvalue = nil)
       p = {:search_field => fieldname, :q => '"'+fieldvalue+'"'}
-      link_url = catalog_index_path(p)
+      link_url = search_catalog_path(p)
       display = displayvalue.blank? ? fieldvalue: displayvalue
       link_to(display, link_url)
     end
 
     def link_to_facet(field_value, field, displayvalue = nil)
       if field == 'genre_basic_ssim'
-        link_to(render_format(field_value), catalog_index_path(:f => {field => [field_value]}))
+        link_to(render_format(field_value), search_catalog_path(:f => {field => [field_value]}))
       else
-        link_to(displayvalue.presence || field_value, catalog_index_path(:f => {field => [field_value]}))
+        link_to(displayvalue.presence || field_value, search_catalog_path(:f => {field => [field_value]}))
       end
     end
 
@@ -71,11 +71,11 @@ module CommonwealthVlrEngine
       fields.each_with_index do |field, index|
         facets[field] = [field_values[index]]
       end
-      link_to(displayvalue.presence || field_values[0], catalog_index_path(:f => facets))
+      link_to(displayvalue.presence || field_values[0], search_catalog_path(:f => facets))
     end
 
     def link_to_county_facet(field_value, field)
-      link_to(field_value + ' County', catalog_index_path(:f => {field => [field_value + ' (county)']}))
+      link_to(field_value + ' County', search_catalog_path(:f => {field => [field_value + ' (county)']}))
     end
 
     # returns the direct URL to a datastream in Fedora
@@ -145,52 +145,52 @@ module CommonwealthVlrEngine
     def osd_nav_images(path_to_directory)
       {
           zoomIn: {
-              REST:     image_path("#{path_to_directory}/zoomin_rest.png"),
-              GROUP:    image_path("#{path_to_directory}/zoomin_grouphover.png"),
-              HOVER:    image_path("#{path_to_directory}/zoomin_hover.png"),
-              DOWN:     image_path("#{path_to_directory}/zoomin_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/zoomin_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/zoomin_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/zoomin_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/zoomin_pressed.png")
           },
           zoomOut: {
-              REST:   image_path("#{path_to_directory}/zoomout_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/zoomout_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/zoomout_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/zoomout_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/zoomout_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/zoomout_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/zoomout_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/zoomout_pressed.png")
           },
           home: {
-              REST:   image_path("#{path_to_directory}/home_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/home_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/home_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/home_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/home_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/home_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/home_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/home_pressed.png")
           },
           fullpage: {
-              REST:   image_path("#{path_to_directory}/fullpage_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/fullpage_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/fullpage_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/fullpage_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/fullpage_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/fullpage_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/fullpage_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/fullpage_pressed.png")
           },
           rotateleft: {
-              REST:   image_path("#{path_to_directory}/rotateleft_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/rotateleft_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/rotateleft_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/rotateleft_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/rotateleft_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/rotateleft_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/rotateleft_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/rotateleft_pressed.png")
           },
           rotateright: {
-              REST:   image_path("#{path_to_directory}/rotateright_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/rotateright_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/rotateright_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/rotateright_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/rotateright_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/rotateright_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/rotateright_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/rotateright_pressed.png")
           },
           previous: {
-              REST:   image_path("#{path_to_directory}/previous_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/previous_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/previous_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/previous_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/previous_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/previous_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/previous_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/previous_pressed.png")
           },
           next: {
-              REST:   image_path("#{path_to_directory}/next_rest.png"),
-              GROUP:  image_path("#{path_to_directory}/next_grouphover.png"),
-              HOVER:  image_path("#{path_to_directory}/next_hover.png"),
-              DOWN:   image_path("#{path_to_directory}/next_pressed.png")
+              REST:   path_to_image("#{path_to_directory}/next_rest.png"),
+              GROUP:  path_to_image("#{path_to_directory}/next_grouphover.png"),
+              HOVER:  path_to_image("#{path_to_directory}/next_hover.png"),
+              DOWN:   path_to_image("#{path_to_directory}/next_pressed.png")
           }
       }.to_json
     end

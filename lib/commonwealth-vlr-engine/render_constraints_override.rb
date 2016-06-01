@@ -32,13 +32,14 @@ module CommonwealthVlrEngine
     # Render the 'more like this' query constraints
     def render_mlt_query(localized_params = params)
       # So simple don't need a view template, we can just do it here.
-      scope = localized_params.delete(:route_set) || self
       return ''.html_safe if localized_params[:mlt_id].blank?
 
       render_constraint_element(t('blacklight.more_like_this.constraint_label'),
                                 localized_params[:mlt_id],
                                 :classes => ['mlt'],
-                                :remove => scope.url_for(localized_params.merge(:mlt_id=>nil, :qt=>nil, :action=>'index')))
+                                :remove => remove_constraint_url(localized_params.merge(:mlt_id=>nil,
+                                                                                        :qt=>nil,
+                                                                                        :action=>'index')))
     end
 
     # include render_search_to_s_mlt() in rendered constraints

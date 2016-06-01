@@ -18,7 +18,7 @@ namespace :vlr_engine do
     @controller = BlacklightGeojsonTestClass.new
     @controller.request = ActionDispatch::TestRequest.new
 
-    (@response, @document_list) = @controller.search_results({},@controller.search_params_logic)
+    (@response, @document_list) = @controller.search_results({})
 
     geojson_features = serialize_geojson(map_facet_values, 'index')
     if geojson_features

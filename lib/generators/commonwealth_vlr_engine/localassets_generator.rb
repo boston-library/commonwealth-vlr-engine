@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
         end
       end
 
-      copy_file "commonwealth_vlr_engine.css.scss", "app/assets/stylesheets/commonwealth_vlr_engine.css.scss"
+      copy_file "commonwealth_vlr_engine.scss", "app/assets/stylesheets/commonwealth_vlr_engine.scss"
 
     end
 

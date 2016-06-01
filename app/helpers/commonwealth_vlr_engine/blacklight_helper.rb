@@ -16,17 +16,9 @@ module CommonwealthVlrEngine
     # local override to use custom #document_heading method (above) for catalog#show title heading
     def render_document_heading(*args)
       options = args.extract_options!
-
-      tag_or_document = args.first
-
-      if tag_or_document.is_a? String or tag_or_document.is_a? Symbol
-        Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#render_document_heading with a tag argument is deprecated; pass e.g. `tag: :h4` instead")
-        tag = tag_or_document
-        document = @document
-      else
-        tag = options.fetch(:tag, :h4)
-        document = tag_or_document || @document
-      end
+      document = args.first
+      tag = options.fetch(:tag, :h4)
+      document = document || @document
 
       content_tag(tag, document_heading(document), itemprop: "name")
     end

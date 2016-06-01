@@ -269,7 +269,7 @@ module CommonwealthVlrEngine
       if document[:subject_facet_ssim] || document[:subject_geo_city_ssim]
         content_tag :div, :id => 'more_mlt_link_wrapper' do
           link_to t('blacklight.more_like_this.more_mlt_link'),
-                  catalog_index_path(:mlt_id => document.id,
+                  search_catalog_path(:mlt_id => document.id,
                                      :qt => 'mlt'),
                   :id => 'more_mlt_link'
         end

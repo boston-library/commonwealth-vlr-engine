@@ -1,12 +1,14 @@
 <div id="documents">
   <% display_facet.items.each do |item| -%>
       <% series_title = facet_display_value(solr_field, item) %>
+      <% series_object = get_series_image_obj(series_title, @collection_title) %>
       <div class="document col-sm-3">
         <div class="thumbnail">
-          <%= link_to(create_thumb_img_element(get_series_image_obj(series_title,
-                                                                    @collection_title),
-                                               %w(series_thumbnail)),
-                      add_facet_params_and_redirect(solr_field, item)) %>
+          <% if series_object %>
+            <%= link_to(create_thumb_img_element(series_object,
+                                                 %w(series_thumbnail)),
+                        add_facet_params_and_redirect(solr_field, item)) %>
+          <% end %>
           <div class="caption">
             <%= (link_to(series_title,
                          add_facet_params_and_redirect(solr_field, item),

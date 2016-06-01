@@ -16,7 +16,7 @@ describe 'OCR search index view' do
     describe 'with current_search_session params' do
 
       before do
-        visit catalog_index_path(q: 'foo')
+        visit search_catalog_path(q: 'foo')
       end
 
       it 'should display the suggestion link' do

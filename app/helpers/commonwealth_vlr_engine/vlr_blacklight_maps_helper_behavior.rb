@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
     # OVERRIDE: convert state abbreviations, deal with complex locations, etc.
     # create a link to a location name facet value
     def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
-      search_path = catalogpath || 'catalog_index_path'
+      search_path = catalogpath || 'search_catalog_path'
       new_params = params
       new_params[:view] = default_document_index_view_type
       field_values = field_value.split(', ')

@@ -1,5 +1,5 @@
 module CommonwealthVlrEngine
-  module CommonwealthSearchBuilder
+  module CommonwealthSearchBuilderBehavior
 
     # keep file assets from appearing in search results
     def exclude_unwanted_models(solr_parameters = {})
@@ -28,6 +28,12 @@ module CommonwealthVlrEngine
     def flagged_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << "-#{blacklight_config.flagged_field}:[* TO *]"
+    end
+
+    # limit results to a single institution
+    def institution_limit(solr_parameters = {})
+      solr_parameters[:fq] ||= []
+      solr_parameters[:fq] << '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
     end
 
     # used by InstitutionsController#index
@@ -64,3 +70,4 @@ module CommonwealthVlrEngine
 
   end
 end
+

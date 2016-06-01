@@ -5,7 +5,7 @@
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
     <li class="active"><a href="#">Basic</a></li>
-    <li class="hidden-xs"><%= link_to 'Advanced', advanced_search_path %></li>
+    <li class="hidden-xs"><%= link_to 'Advanced', blacklight_advanced_search_engine.advanced_search_path %></li>
   </ul>
 
   <div class="tab-content">
@@ -22,7 +22,7 @@
                          :method => :get,
                          :id => 'basic_search_form',
                          :class => 'basic-search-form form-inline' do %>
-                <%= render_hash_as_hidden_fields(params_for_search().except(:q, :qt, :page, :f, :sort)) %>
+                <%= render_hash_as_hidden_fields(search_state.params_for_search().except(:q, :qt, :page, :f, :sort)) %>
                 <label for="q_basic" class="sr-only">
                   <%= t('blacklight.search.form.search.label') %>
                 </label>

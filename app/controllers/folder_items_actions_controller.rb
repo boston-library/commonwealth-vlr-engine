@@ -13,10 +13,10 @@ class FolderItemsActionsController < ApplicationController
       case params[:commit]
         # email
         when t('blacklight.tools.email')
-          redirect_to email_catalog_path(:id => items)
+          redirect_to email_solr_document_path(:id => items)
         # cite
         when t('blacklight.tools.citation')
-          redirect_to citation_catalog_path(:id => items)
+          redirect_to citation_solr_document_path(:id => items)
         # remove
         when t('blacklight.tools.remove')
           if params[:origin] == "folders"

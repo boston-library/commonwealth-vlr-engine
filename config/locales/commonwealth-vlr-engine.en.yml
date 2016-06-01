@@ -4,7 +4,7 @@ en:
 
     advanced_search:
           page_title: 'Search'
-          title: 'Advanced Search - %{application_name}'
+          title: 'Search - %{application_name}'
           limit: 'Narrow your search:'
 
     application_name: 'SITE_NAME'

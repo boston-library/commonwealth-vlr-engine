@@ -1,15 +1,15 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 class BookmarksController < CatalogController
 
   include Blacklight::Bookmarks
 
   # LOCAL OVERRIDE to render update.js.erb partial when bookmark created
   def create
-    if params[:bookmarks]
-      @bookmarks = params[:bookmarks]
-    else
-      @bookmarks = [{ document_id: params[:id], document_type: blacklight_config.document_model.to_s }]
-    end
+    @bookmarks = if params[:bookmarks]
+                   params[:bookmarks]
+                 else
+                   [{ document_id: params[:id], document_type: blacklight_config.document_model.to_s }]
+                 end
 
     current_or_guest_user.save! unless current_or_guest_user.persisted?
 
@@ -21,9 +21,9 @@ class BookmarksController < CatalogController
       # success ? render(json: { bookmarks: { count: current_or_guest_user.bookmarks.count }}) : render(:text => "", :status => "500")
       success ? render(:update) : render(:text => "", :status => "500")
     else
-      if @bookmarks.length > 0 && success
+      if @bookmarks.any? && success
         flash[:notice] = I18n.t('blacklight.bookmarks.add.success', :count => @bookmarks.length)
-      elsif @bookmarks.length > 0
+      elsif @bookmarks.any?
         flash[:error] = I18n.t('blacklight.bookmarks.add.failure', :count => @bookmarks.length)
       end
 

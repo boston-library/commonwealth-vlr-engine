@@ -9,7 +9,6 @@ class OcrSearchController < CatalogController
   copy_blacklight_config_from(CatalogController)
 
   before_filter :modify_config_for_ocr, :only => [:index]
-  before_filter :modify_search_params_logic_for_ocr, :only => [:index]
 
   def index
     @doc_response, @document = fetch(params[:id])
@@ -22,7 +21,7 @@ class OcrSearchController < CatalogController
       # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
       blacklight_config.default_solr_params[:fl] =
           "id,#{blacklight_config.page_num_field},#{termfreq_query(params[:ocr_q])}"
-      (@response, @document_list) = search_results(ocr_search_params, search_params_logic)
+      (@response, @document_list) = search_results(ocr_search_params)
     else
       (@response, @document_list) = {},[]
     end
@@ -39,6 +38,7 @@ class OcrSearchController < CatalogController
 
   # modify Solr query/response for OCR searches
   def modify_config_for_ocr
+    blacklight_config.search_builder_class = CommonwealthOcrSearchBuilder
     blacklight_config.sort_fields = {}
     blacklight_config.add_sort_field 'score desc, system_create_dtsi asc', label: 'relevance'
     blacklight_config.add_sort_field 'system_create_dtsi asc', label: 'page #'
@@ -47,12 +47,6 @@ class OcrSearchController < CatalogController
                                       highlight: true,
                                       helper_method: 'render_ocr_snippets'
     blacklight_config.default_per_page = 5
-  end
-
-  # modify Solr search_params_logic for OCR searches
-  def modify_search_params_logic_for_ocr
-    self.search_params_logic -= [:exclude_unwanted_models, :institution_limit]
-    self.search_params_logic += [:ocr_search_params] unless self.search_params_logic.include?(:ocr_search_params)
   end
 
   # create the Solr function query to return term frequency

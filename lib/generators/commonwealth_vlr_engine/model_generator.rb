@@ -12,26 +12,13 @@ module CommonwealthVlrEngine
 
     desc """
   This generator makes the following changes to your application:
-   1. Injects the institution limiter into search_builder.rb
-   2. Adds OpenSeadragon suppoer to solr_document.rb
+   1. Adds commonwealth_search_builder.rb to app/models
+   2. Adds OpenSeadragon support to solr_document.rb
   Thank you for Installing Commonwealth VLR.
          """
 
-    # Limit the institutions
     def inject_search_builder_behavior
-      unless IO.read("app/models/#{search_builder_model}.rb").include?('def institutions_filter')
-        marker = 'Blacklight::Solr::SearchBuilderBehavior'
-        insert_into_file "app/models/#{search_builder_model}.rb", :after => marker do
-          %q{
-
-  # limit to a specific institution
-  def institution_limit(solr_parameters = {})
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
-  end
-}
-        end
-      end
+      copy_file "commonwealth_search_builder.rb", "app/models/commonwealth_search_builder.rb"
     end
 
     # OpenSeadragon support?

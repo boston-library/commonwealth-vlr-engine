@@ -18,7 +18,7 @@
 
   <title><%= render_page_title %></title>
   <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => 'xml') %>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <%= favicon_link_tag %>
   <%= favicon_link_tag 'dc_mobile-icons_60x60.png', :rel => 'apple-touch-icon', :type => 'image/png'  %>
   <%= favicon_link_tag 'dc_mobile-icons_76x76.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '76x76' %>
   <%= favicon_link_tag 'dc_mobile-icons_120x120.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '120x120' %>
@@ -43,7 +43,7 @@
 <%= render :partial => 'shared/ajax_modal' %>
 
 <!-- /container -->
-<div id="main-container" class="container">
+<div id="main-container" class="<%= container_classes %>">
 
   <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 

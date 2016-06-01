@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount Bpluser::Engine => '/bpluser'
+  mount BlacklightAdvancedSearch::Engine => '/'
 
   # alias for map browse
   get 'places', :to => 'catalog#map', :as => 'places_facet'
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
 
   # folder items
   resources :folder_items
+
+  # bookmarks item actions
+  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
   # user account management (not login/auth)
   resources :users, :only => [:show, :index]

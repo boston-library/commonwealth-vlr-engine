@@ -1,7 +1,7 @@
 class CollectionsController < CatalogController
 
   ##
-  # Give Bookmarks access to the CatalogController configuration
+  # Give CollectionsController access to the CatalogController configuration
   include Blacklight::Configurable
   include Blacklight::SearchHelper
 
@@ -16,13 +16,13 @@ class CollectionsController < CatalogController
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url options = {}
-    catalog_index_url(options.except(:controller, :action))
+    search_catalog_url(options.except(:controller, :action))
   end
   helper_method :search_action_url
 
   def index
     @nav_li_active = 'explore'
-    (@response, @document_list) = search_results(params, search_params_logic)
+    (@response, @document_list) = search_results(params)
     params[:view] = 'list'
     params[:sort] = 'title_info_primary_ssort asc'
 
@@ -40,7 +40,7 @@ class CollectionsController < CatalogController
     params[:f] = set_collection_facet_params(@collection_title, @document)
 
     # get the response for the facets representing items in collection
-    (@response, @document_list) = search_results({:f => params[:f]}, search_params_logic)
+    (@response, @document_list) = search_results({:f => params[:f]})
 
     # get an image for the collection
     if @document[:exemplary_image_ssi]
@@ -70,7 +70,7 @@ class CollectionsController < CatalogController
 
   # filter out non-collection items
   def collections_limit
-    self.search_params_logic += [:collections_filter]
+    blacklight_config.search_builder_class = CommonwealthCollectionsSearchBuilder
   end
 
   # find the title and pid for the object representing the collection image
@@ -92,15 +92,12 @@ class CollectionsController < CatalogController
     col_img_info
   end
 
-  # find a representative image for a series
-  # TODO better exception handling for items which don't have exemplary_image
+  # find a representative image/item for a series
   def get_series_image_obj(series_title,collection_title)
-    self.search_params_logic += [:flagged_filter] unless self.search_params_logic.include?(:flagged_filter)
-    series_doc_list = search_results(
-        {:f => {'related_item_series_ssim' => series_title,
-                blacklight_config.collection_field => collection_title},
-         :rows => 1},
-        search_params_logic)[1]
+    blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
+    series_doc_list = search_results({f: {'related_item_series_ssim' => series_title,
+                                          blacklight_config.collection_field => collection_title},
+                                      rows: 1})[1]
     series_doc_list.first
   end
   helper_method :get_series_image_obj
@@ -111,18 +108,5 @@ class CollectionsController < CatalogController
     facet_params[blacklight_config.institution_field] = document[blacklight_config.institution_field.to_sym] if t('blacklight.home.browse.institutions.enabled')
     facet_params
   end
-
-  # Not using this for now
-  # find a representative image for a collection if none is assigned
-  # TODO better exception handling for items which don't have exemplary_image
-  #def get_collection_image_pid(collection_title)
-  #  (@default_coll_img_resp, @default_coll_img_doc_list) = search_results(
-  #      {:f => {blacklight_config.collection_field => collection_title,
-  #              'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'},
-  #       :rows => 1
-  #      })
-  #  @default_coll_img_doc_list.first[:exemplary_image_ssi]
-  #end
-  #helper_method :get_collection_image_pid
 
 end

@@ -72,7 +72,7 @@ describe FolderItemsActionsController do
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-dev:g445cd14k"]
-          expect(response).to redirect_to(citation_catalog_path(:id => ["bpl-dev:g445cd14k"]))
+          expect(response).to redirect_to(citation_solr_document_path(:id => ["bpl-dev:g445cd14k"]))
       end
 
     end
@@ -89,7 +89,7 @@ describe FolderItemsActionsController do
             :origin => "folders",
             :id => @folder,
             :selected => ["bpl-dev:g445cd14k"]
-        expect(response).to redirect_to(email_catalog_path(:id => ["bpl-dev:g445cd14k"]))
+        expect(response).to redirect_to(email_solr_document_path(:id => ["bpl-dev:g445cd14k"]))
       end
 
     end

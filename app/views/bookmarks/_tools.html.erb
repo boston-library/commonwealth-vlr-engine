@@ -1,14 +1,14 @@
 <ul class="bookmarkTools nav nav-pills">
   <li class="cite">
     <%= link_to t('blacklight.tools.citation'),
-                citation_catalog_path(:sort=>params[:sort],
+                citation_solr_document_path(:sort=>params[:sort],
                                       :per_page=>params[:per_page],
                                       :id => @response.documents.map {|doc| doc.id}),
                 {:id => 'citeLink', :name => 'citation', :class => 'btn btn-default', :data => {:ajax_modal => 'trigger'}} %>
   </li>
   <li class="email">
     <%= link_to t('blacklight.tools.email'),
-                email_catalog_path(:sort=>params[:sort],
+                email_solr_document_path(:sort=>params[:sort],
                                    :per_page=>params[:per_page],
                                    :id => @response.documents.map {|doc| doc.id}),
                 :class => 'lightboxLink btn btn-default',

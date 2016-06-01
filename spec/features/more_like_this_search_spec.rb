@@ -16,7 +16,7 @@ describe 'more like this search' do
   end
 
   it 'should show the constraint for a more-like-this search' do
-    visit catalog_index_path(:mlt_id => 'bpl-dev:df65v790j', :qt => 'mlt')
+    visit search_catalog_path(:mlt_id => 'bpl-dev:df65v790j', :qt => 'mlt')
     expect(page).to have_selector('#appliedParams span.mlt')
   end
 

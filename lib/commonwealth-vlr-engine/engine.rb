@@ -23,9 +23,9 @@ module CommonwealthVlrEngine
     # for db migrations
     engine_name 'commonwealth_vlr_engine'
 
-    config.to_prepare do
-      CommonwealthVlrEngine.inject!
-    end
+    #config.to_prepare do
+    #  CommonwealthVlrEngine.inject!
+    #end
 
     # This makes our rake tasks visible.
     rake_tasks do
@@ -36,5 +36,11 @@ module CommonwealthVlrEngine
       end
       #load "#{config.root}/tasks/dc_public.rake"
     end
+
+    # needs to be explicit as of sprockets-rails >=3.*
+    initializer 'commonwealth.assets.precompile' do |app|
+      app.config.assets.precompile += %w(commonwealth-vlr-engine/*.png commonwealth-vlr-engine/*.gif commonwealth-vlr-engine/openseadragon/*.png)
+    end
+
   end
 end

@@ -82,7 +82,7 @@
             <% unless @response.aggregations[map_facet_field].items.empty? %>
                 <div id="blacklight-collection-map-container">
                   <h4><%= t('blacklight.collections.map.title') %></h4>
-                  <%= render :partial => 'catalog/index_map',
+                  <%# render :partial => 'catalog/index_map',
                              :locals => {:geojson_features => serialize_geojson(map_facet_values,
                                                                                 'index')} %>
                   </div>

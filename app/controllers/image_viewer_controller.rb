@@ -10,8 +10,8 @@ class ImageViewerController < CatalogController
     @page_sequence = get_page_sequence(@document.id, params[:view])
     respond_to do |format|
       format.js
-      format.html { redirect_to catalog_path(@document.id,
-                                             :view => params[:view]) }
+      format.html { redirect_to solr_document_path(@document.id,
+                                                   :view => params[:view]) }
     end
   end
 

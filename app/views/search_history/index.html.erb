@@ -30,7 +30,7 @@
       <%=t('blacklight.search_history.recent')%>
       <small>
         [<%= link_to t('blacklight.search_history.clear.action_title'),
-                     clear_search_history_path,
+                     blacklight.clear_search_history_path,
                      :id => 'clear_search_history',
                      :method => :delete,
                      :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
@@ -43,12 +43,12 @@
               <%- if has_user_authentication_provider? -%>
                   <td class="actions">
                     <%- if current_or_guest_user && search.saved? -%>
-                        <%# button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class => 'btn btn-default' %>
+                        <%# button_to t('blacklight.search_history.forget'), blacklight.forget_search_path(search.id), :class => 'btn btn-default' %>
                          <%= content_tag(:span, '', :class => 'glyphicon glyphicon-ok') %>
                          In your <%= link_to t('blacklight.saved_searches.title'),
                                             saved_searches_path %>
                     <%- else -%>
-                        <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class => 'btn btn-default' %>
+                        <%= button_to t('blacklight.search_history.save'), blacklight.save_search_path(search.id), :method => :put, :class => 'btn btn-default' %>
                     <%- end -%>
                   </td>
               <%- end -%>
