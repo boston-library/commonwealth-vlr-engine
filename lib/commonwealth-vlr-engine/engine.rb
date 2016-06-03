@@ -23,10 +23,6 @@ module CommonwealthVlrEngine
     # for db migrations
     engine_name 'commonwealth_vlr_engine'
 
-    #config.to_prepare do
-    #  CommonwealthVlrEngine.inject!
-    #end
-
     # This makes our rake tasks visible.
     rake_tasks do
       Dir.chdir(File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))) do

@@ -29,8 +29,12 @@ module CommonwealthVlrEngine
 }
         end
 
+        # remove Blacklight root
         bl_root_marker = 'root to: "catalog#index"'
         gsub_file("config/routes.rb", bl_root_marker, "")
+
+        # change '/catalog' to '/search'
+        gsub_file("config/routes.rb", /\/catalog/, "/search")
 
       end
     end

@@ -12,6 +12,11 @@ module CommonwealthVlrEngine
       # add BlacklightAdvancedSearch
       self.send(:include, BlacklightAdvancedSearch::Controller)
 
+      # add BlacklightMaps
+      self.send(:include, BlacklightMaps::ControllerOverride)
+      self.send(:include, BlacklightMaps::RenderConstraintsOverride)
+      self.send(:helper, BlacklightMaps::RenderConstraintsOverride)
+
       before_filter :get_object_files, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
       before_filter :mlt_search, :only => [:index]
@@ -193,7 +198,7 @@ module CommonwealthVlrEngine
     # if this is 'more like this' search, solr id = params[:mlt_id]
     def mlt_search
       if params[:mlt_id]
-        CatalogController.default_processor_chain += [:set_solr_id_for_mlt] unless CatalogController.default_processor_chain.include? :set_solr_id_for_mlt
+        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
       end
     end
 

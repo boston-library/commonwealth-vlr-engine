@@ -13,7 +13,7 @@ module CommonwealthVlrEngine
     def render_institutions_index documents = nil, locals = {}
       documents ||= @document_list
       if document_index_view_type.to_s == 'maps'
-        render :partial => 'catalog/index_map_institutions',
+        render :partial => 'catalog/index_mapview_institutions',
                :locals => {:geojson_features => serialize_geojson(map_facet_values,
                                                                   nil,
                                                                   {partial: 'institutions/map_institutions_search'})}

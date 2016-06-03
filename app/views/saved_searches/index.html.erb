@@ -43,7 +43,7 @@
           <tr>
             <td><%= link_to_previous_search(search.query_params) %></td>
             <td><%# button_to content_tag(:i, '', :class => 'icon-remove'),
-                              forget_search_path(search.id) %>
+                              blacklight.forget_search_path(search.id) %>
                 <%= link_to(content_tag(:span, '',
                                         :class => 'glyphicon glyphicon-remove'),
                             blacklight.forget_search_path(search.id),

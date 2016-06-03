@@ -7,11 +7,11 @@
           <% if series_object %>
             <%= link_to(create_thumb_img_element(series_object,
                                                  %w(series_thumbnail)),
-                        add_facet_params_and_redirect(solr_field, item)) %>
+                        path_for_facet(solr_field, item)) %>
           <% end %>
           <div class="caption">
             <%= (link_to(series_title,
-                         add_facet_params_and_redirect(solr_field, item),
+                         path_for_facet(solr_field, item),
                          :class=> 'facet_select')).html_safe %><!-- <br/>
                 <span class="series_facet_count">
                   <%# render_facet_count(item.hits) + ' items' %>

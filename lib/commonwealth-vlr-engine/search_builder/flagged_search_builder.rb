@@ -7,4 +7,8 @@ class CommonwealthFlaggedSearchBuilder < Blacklight::SearchBuilder
       :exclude_unpublished_items, :flagged_filter
   ]
 
+  unless I18n.t('blacklight.home.browse.institutions.enabled')
+    self.default_processor_chain += [:institution_limit]
+  end
+
 end

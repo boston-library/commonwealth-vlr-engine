@@ -10,8 +10,8 @@
         </button>
         <ul id="user-util-links-list" class="dropdown-menu">
           <li><%= link_to t('blacklight.header_links.folders'), folders_path %></li>
-          <li><%= link_to t('blacklight.header_links.saved_searches'), saved_searches_path %></li>
-          <li><%= link_to t('blacklight.header_links.search_history'), search_history_path %></li>
+          <li><%= link_to t('blacklight.header_links.saved_searches'), blacklight.saved_searches_path %></li>
+          <li><%= link_to t('blacklight.header_links.search_history'), blacklight.search_history_path %></li>
           <li><%= link_to t('devise.registrations.edit'), edit_user_registration_path %></li>
           <li><%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %></li>
         </ul>

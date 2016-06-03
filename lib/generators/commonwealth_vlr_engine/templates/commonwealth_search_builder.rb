@@ -2,6 +2,7 @@ class CommonwealthSearchBuilder < Blacklight::SearchBuilder
 
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
+  include BlacklightMaps::MapsSearchBuilderBehavior
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
@@ -9,7 +10,7 @@ class CommonwealthSearchBuilder < Blacklight::SearchBuilder
       :exclude_volumes, :add_advanced_parse_q_to_solr, :add_advanced_search_to_solr
   ]
 
-  unless t('blacklight.home.browse.institutions.enabled')
+  unless I18n.t('blacklight.home.browse.institutions.enabled')
     self.default_processor_chain += [:institution_limit]
   end
 

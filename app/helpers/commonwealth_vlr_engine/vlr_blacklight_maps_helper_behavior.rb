@@ -7,7 +7,6 @@ module CommonwealthVlrEngine
     def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
       search_path = catalogpath || 'search_catalog_path'
       new_params = params
-      new_params[:view] = default_document_index_view_type
       field_values = field_value.split(', ')
       if field_values.last.match(/[\.\)]/) # Mass.)
         field_values = [field_values.join(', ')]
@@ -23,24 +22,29 @@ module CommonwealthVlrEngine
         field_values[field_values.length-1] = state_name if state_name
       end
       field_values.each do |val|
+        # new_params = new_params.to_hash
         place = val.match(/\(county\)/) ? val : val.gsub(/\s\([a-z]*\)\z/,'')
-        new_params = add_facet_params(field, place, new_params) unless params[:f] && params[:f][field] && params[:f][field].include?(place)
-        new_params[:view] = default_document_index_view_type
+        unless params[:f] && params[:f][field] && params[:f][field].include?(place)
+          # have to initialize SearchState with existing params as Hash, not HashWithIndifferentAccess
+          new_params = Blacklight::SearchState.new(new_params.to_hash,
+                                                   blacklight_config).add_facet_params(field, place)
+        end
       end
+      new_params[:view] = default_document_index_view_type
       link_to(displayvalue.presence || field_value,
               self.send(search_path,new_params.except(:id, :spatial_search_type, :coordinates)))
     end
 
     # OVERRIDE: use a static file for catalog#map so page loads faster
     # render the map for #index and #map views
-    def render_index_map
+    def render_index_mapview
       static_geojson_file_loc = "#{Rails.root.to_s}/#{GEOJSON_STATIC_FILE['filepath']}"
       if Rails.env.to_s == 'production' && params[:action] == 'map' && File::exists?(static_geojson_file_loc)
         geojson_for_map = File.open(static_geojson_file_loc).first
       else
         geojson_for_map = serialize_geojson(map_facet_values)
       end
-      render :partial => 'catalog/index_map',
+      render :partial => 'catalog/index_mapview',
              :locals => {:geojson_features => geojson_for_map}
     end
 
