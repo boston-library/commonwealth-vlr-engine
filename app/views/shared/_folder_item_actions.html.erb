@@ -18,7 +18,6 @@
 <% end %>
 
 <% if current_user && !current_user.folders.empty? %>
-      <% existing_folders = current_user.folders %>
       <div class="btn-group folder-item-control" id="copy_folder_item_control">
         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
           <%= content_tag(:span, '', :class => 'glyphicon glyphicon-random') + ' ' + t('blacklight.tools.copy_to') %> <span class="caret"></span>
@@ -39,7 +38,7 @@
                 <% end %>
               </li>
           <% end %>
-          <% existing_folders.each do |folder| %>
+          <% current_user.folders.each do |folder| %>
               <% if @folder && folder.id == @folder.id %>
                 <%# do nothing %>
               <% else %>

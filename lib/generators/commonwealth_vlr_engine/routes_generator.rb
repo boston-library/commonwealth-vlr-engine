@@ -26,6 +26,10 @@ module CommonwealthVlrEngine
 
   # user authentication
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
+
+  # bookmarks item actions
+  # this has to be in local app for bookmark item actions to work
+  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 }
         end
 
