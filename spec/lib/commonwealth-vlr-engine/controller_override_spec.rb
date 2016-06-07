@@ -7,7 +7,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
   end
 
   before { @obj = ControllerOverrideTestClass.new }
-
+=begin
   describe 'search_params_logic' do
 
     it 'should have exclude_unwanted_models included' do
@@ -19,7 +19,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
     end
 
   end
-
+=end
   describe 'search_builder_class' do
 
     it 'should have CommonwealthSearchBuilder included' do

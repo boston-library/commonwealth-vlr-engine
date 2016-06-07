@@ -36,7 +36,7 @@ describe CatalogController do
     end
 
   end
-
+=begin
   describe 'mlt_search' do
 
     it 'should include :set_solr_id_for_mlt in search_params_logic' do
@@ -45,7 +45,7 @@ describe CatalogController do
     end
 
   end
-
+=end
   describe 'get_object_files' do
 
     it 'should retrieve the files for the item' do

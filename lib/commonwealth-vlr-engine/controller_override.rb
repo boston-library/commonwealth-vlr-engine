@@ -14,8 +14,6 @@ module CommonwealthVlrEngine
 
       # add BlacklightMaps
       self.send(:include, BlacklightMaps::ControllerOverride)
-      self.send(:include, BlacklightMaps::RenderConstraintsOverride)
-      self.send(:helper, BlacklightMaps::RenderConstraintsOverride)
 
       before_filter :get_object_files, :only => [:show]
       before_filter :set_nav_context, :only => [:index]

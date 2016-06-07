@@ -7,7 +7,7 @@ describe InstitutionsHelper do
   include Blacklight::SearchHelper
 
   let(:blacklight_config) { CatalogController.blacklight_config }
-  let(:search_params_logic) { CatalogController.search_params_logic += [:institutions_filter] }
+  #let(:search_params_logic) { CatalogController.search_params_logic += [:institutions_filter] }
 
   before :each do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
@@ -22,7 +22,7 @@ describe InstitutionsHelper do
 
   describe 'render_institutions_index' do
 
-    before { (@response, @document_list) = search_results({}, search_params_logic) }
+    before { (@response, @document_list) = search_results({}) }
 
     describe 'with default document_index_view_type' do
       before { allow(helper).to receive_messages(document_index_view_type: :list) }
