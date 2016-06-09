@@ -4,7 +4,6 @@ module CommonwealthVlrEngine
 
     included do
 
-      # adds behavior for retrieving files for an object
       self.send(:include, CommonwealthVlrEngine::Finder)
       self.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
       self.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride)

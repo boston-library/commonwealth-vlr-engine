@@ -1,11 +1,19 @@
 require 'spec_helper'
 
-# tests for controller actions added to CatalogController via CommonwealthVlrEngine::ControllerOverride
+# tests for controller actions and configuration added to CatalogController via CommonwealthVlrEngine::ControllerOverride
 describe CatalogController do
 
   render_views
 
   #include CommonwealthVlrEngine::Finder
+
+  describe 'search_builder_class' do
+
+    it 'should use CommonwealthSearchBuilder' do
+      expect(CatalogController.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
+    end
+
+  end
 
   describe 'GET "metadata_view"' do
 
@@ -36,21 +44,30 @@ describe CatalogController do
     end
 
   end
-=begin
+
   describe 'mlt_search' do
 
-    it 'should include :set_solr_id_for_mlt in search_params_logic' do
+    it 'should modify the config to use the correct search builder class' do
       get :index, :mlt_id => 'bpl-dev:df65v790j'
-      expect(CatalogController.search_params_logic).to include(:set_solr_id_for_mlt)
+      expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthMltSearchBuilder)
     end
 
   end
-=end
+
   describe 'get_object_files' do
 
     it 'should retrieve the files for the item' do
       get :show, :id => 'bpl-dev:df65v790j'
       expect(assigns(:object_files)).to_not be_nil
+    end
+
+  end
+
+  describe 'add_institution_fields' do
+
+    it 'should add the institution-related facet fields to the config' do
+      get :index
+      expect(controller.blacklight_config.facet_fields['physical_location_ssim']).to_not be_nil
     end
 
   end

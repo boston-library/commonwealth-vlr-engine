@@ -61,4 +61,17 @@ describe InstitutionsController do
 
   end
 
+  describe 'private methods and before_filters' do
+
+    describe 'institutions_index_config' do
+      it 'should set the appropriate blacklight_config properties' do
+        get :index
+        expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthInstitutionsSearchBuilder)
+        expect(controller.blacklight_config.view.to_s).not_to include('gallery')
+      end
+
+    end
+
+  end
+
 end

@@ -51,6 +51,10 @@ describe OcrSearchController do
         expect(blacklight_config.add_facet_fields_to_solr_request).to eq(false)
       end
 
+      it 'should use the correct search builder class' do
+        expect(blacklight_config.search_builder_class).to eq(CommonwealthOcrSearchBuilder)
+      end
+
       let(:ocr_field) { blacklight_config.index_fields[blacklight_config.ocr_search_field] }
 
       it 'should add the ocr_search_field to the index_fields config' do

@@ -82,14 +82,14 @@ describe CollectionsController do
         expect(@mock_controller.blacklight_config.facet_fields['physical_location_ssim'].collapse).to eq(true)
       end
     end
-=begin
+
     describe 'collections_limit' do
-      it 'should add :collections filter to search_params_logic' do
+      it 'should set the correct search builder class' do
         @mock_controller.send(:collections_limit)
-        expect(@mock_controller.search_params_logic).to include(:collections_filter)
+        expect(@mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
       end
     end
-=end
+
     describe 'get_collection_image_info' do
       it 'should return a hash with the collection image object title and pid' do
         expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true})

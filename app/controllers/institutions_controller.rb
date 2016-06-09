@@ -7,6 +7,10 @@ class InstitutionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
+  before_filter :institutions_index_config, :only => [:index]
+  # remove collection facet and collapse others
+  before_filter :relation_base_blacklight_config, :only => [:show]
+
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url options = {}
@@ -46,6 +50,8 @@ class InstitutionsController < CatalogController
 
   end
 
+  private
+
   # remove grid view from blacklight_config, use correct SearchBuilder for index view
   def institutions_index_config
     blacklight_config.search_builder_class = CommonwealthInstitutionsSearchBuilder
@@ -53,10 +59,5 @@ class InstitutionsController < CatalogController
     blacklight_config.view.delete(:masonry)
     blacklight_config.view.delete(:slideshow)
   end
-
-  before_filter :institutions_index_config, :only => [:index]
-
-  # remove collection facet and collapse others
-  before_filter :relation_base_blacklight_config, :only => [:show]
 
 end

@@ -7,7 +7,6 @@ describe InstitutionsHelper do
   include Blacklight::SearchHelper
 
   let(:blacklight_config) { CatalogController.blacklight_config }
-  #let(:search_params_logic) { CatalogController.search_params_logic += [:institutions_filter] }
 
   before :each do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
@@ -31,16 +30,22 @@ describe InstitutionsHelper do
     end
 
     describe 'with "maps" document_index_view_type' do
-      before { allow(helper).to receive_messages(document_index_view_type: :maps) }
+
+      before do
+        allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(CatalogController.new))
+        allow(helper).to receive_messages(document_index_view_type: :maps)
+      end
+
       subject { helper.render_institutions_index }
       it { should have_selector 'div#institutions-index-map' }
+
     end
 
     # remove the instance variables so they don't mess up other specs
-    after {
+    after do
       remove_instance_variable(:@response)
       remove_instance_variable(:@document_list)
-    }
+    end
 
   end
 

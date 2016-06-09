@@ -20,4 +20,6 @@ class TestAppGenerator < Rails::Generators::Base
     generate 'commonwealth_vlr_engine:install'
   end
 
+  # TODO: configure various YAML files, run db migrations, set institutions = true, etc.
+
 end
