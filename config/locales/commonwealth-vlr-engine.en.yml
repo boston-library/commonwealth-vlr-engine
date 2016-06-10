@@ -284,6 +284,7 @@ en:
             note_date: 'Notes (date)'
             note_ownership: 'Notes (ownership)'
             note_performers: 'Performers'
+            note_physical: 'Notes (object)'
             note_reference: 'Notes (citation)'
             note_resp: 'Name on Item'
             publisher: 'Publisher'

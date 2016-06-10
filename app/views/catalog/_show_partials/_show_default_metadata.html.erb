@@ -319,6 +319,15 @@
           <% end %>
         </dd>
     <% end %>
+    <%# note @type="citation/refernce" field %>
+    <% if document[:note_physical_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.note_physical') %>:</dt>
+        <dd>
+          <% document[:note_physical_tsim].each do |physical_note| %>
+              <%= physical_note %><br />
+          <% end %>
+        </dd>
+    <% end %>
     <%# extent field %>
     <% if document[:extent_tsi] %>
       <dt><%= t('blacklight.metadata_display.fields.extent') %>:</dt>
