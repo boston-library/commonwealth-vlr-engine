@@ -36,3 +36,11 @@ $ rails generate commonwealth_vlr_engine:install
 $ rake db:migrate
 ```
 You will then need to configure various YAML files to point to existing Solr, Fedora, and IIIF image servers.
+
+## Blacklight Version Compatibility
+The table below indicates which versions of Commonwealth-VLR-Engine are compatible with which versions of Blacklight.
+
+VLR-Engine version | works with Blacklight version
+----------------------- | ---------------------
+0.0.2 | >= 6.1.0
+0.0.1 | >= 5.14.0 to < 6.*  
