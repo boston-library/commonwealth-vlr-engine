@@ -84,6 +84,15 @@
             display: none;
           }
 
+          .tt-menu {
+            min-width: 120px;
+
+            .tt-suggestion {
+              font-size: 12px;
+            }
+
+          }
+
         }
 
       }

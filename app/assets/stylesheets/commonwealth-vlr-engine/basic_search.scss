@@ -5,9 +5,14 @@
 
   #basic_search_form {
 
+    .twitter-typeahead {
+      width: 45%;
+      margin-right: 4px;
+    }
+
     #q_basic {
       @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05));
-      width: 45%;
+      width: 100%;
     }
 
     #basic_search_indexes {

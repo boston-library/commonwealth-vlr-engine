@@ -29,4 +29,5 @@
 @import 'searches';
 @import 'show';
 @import 'signin';
+@import 'twitter_typeahead';
 @import 'users';
