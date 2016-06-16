@@ -4,6 +4,7 @@ class FoldersController < CatalogController
   # Give Bookmarks access to the CatalogController configuration
   include Blacklight::Configurable
   include Blacklight::SearchHelper
+  include Blacklight::TokenBasedUser
 
   copy_blacklight_config_from(CatalogController)
 
@@ -19,12 +20,15 @@ class FoldersController < CatalogController
   before_filter :correct_user_for_folder, :only => [:update, :destroy]
 
   def index
-    if current_user
-      @folders = current_user.folders
+    flash[:notice] = flash[:notice].html_safe if flash[:notice].present? and flash[:notice] == %Q[Welcome! You're viewing Digital Stacks items using a link from a temporary card. To save these items to a free permanent account, click <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a>.]
+    if current_or_guest_user
+      @folders = current_or_guest_user.folders
     end
   end
 
   def show
+    flash[:notice] = flash[:notice].html_safe if flash[:notice].present? and flash[:notice] == %Q[Welcome! You're viewing Digital Stacks items using a link from a temporary card. To save these items to a free permanent account, click <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a>.]
+
     # @folder is set by correct_user_for_folder
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
@@ -122,8 +126,8 @@ class FoldersController < CatalogController
 
     def correct_user_for_folder
       @folder ||= Bpluser::Folder.find(params[:id])
-      if current_user
-        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
+      if current_or_guest_user
+        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_or_guest_user.folders.include?(@folder)
       else
         flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
       end
