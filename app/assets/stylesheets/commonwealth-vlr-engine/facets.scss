@@ -1,14 +1,30 @@
-/* styles for facets */
+/* styles for facets and formats page */
+
+body.blacklight-catalog-formats_facet {
+
+  .facet_pagination.top {
+    padding: 15px 15px 0;
+  }
+
+  .prev_next_links {
+    display: none;
+  }
+
+  .modal-header {
+    padding: 0 15px 15px;
+  }
+
+}
 
 #facets {
 
   div.top-panel-heading {
     background-color: #F5F5F5;
-    padding: 10px 15px 0px;
+    padding: 10px 15px 0;
     border: 1px solid $facets_border;
 
     h4 {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
   }
