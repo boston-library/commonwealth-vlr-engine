@@ -33,7 +33,7 @@ module CommonwealthVlrEngine
     end
 
     def create_download_links(document, files_hash, link_class)
-      file_types = [files_hash[:documents], files_hash[:ereader], files_hash[:audio], files_hash[:generic]]
+      file_types = [files_hash[:audio], files_hash[:documents], files_hash[:ereader], files_hash[:generic]]
       download_links = []
       file_types.each do |file_type|
         file_type.each do |file|
@@ -44,7 +44,7 @@ module CommonwealthVlrEngine
                                     datastream_disseminator_url(file['id'],'productionMaster'),
                                     :target => '_blank',
                                     :class => link_class) + content_tag(:span,
-                                                                        "(.#{file_name_ext[1]}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
+                                                                        "(#{file_name_ext[1].upcase}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
                                                                         :class => 'download_info')
         end
       end

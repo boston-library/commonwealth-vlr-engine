@@ -11,7 +11,7 @@
           <i class="fa fa-book"></i> <%= t('blacklight.book_viewer.link_to_reader') %>
       <% end %>
     </li>
-    <% if document['identifier_ia_id_ssi'] %>
+    <% if document['identifier_ia_id_ssi'] || document['has_searchable_text_bsi'] %>
         <li id="search_inside_link_wrap">
           <%= link_to(ocr_search_path,
                       :class => 'search_inside_link btn',
