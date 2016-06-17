@@ -5,6 +5,7 @@ module CommonwealthVlrEngine
     def exclude_unwanted_models(solr_parameters = {})
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '-has_model_ssim:"info:fedora/afmodel:Bplmodels_File"'
+      solr_parameters[:fq] << '-has_model_ssim:"info:fedora/fedora-system:ContentModel-3.0"'
     end
 
     # keep draft/review and in-process items from appearing in search results
