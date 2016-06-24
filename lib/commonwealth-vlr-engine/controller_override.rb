@@ -189,7 +189,8 @@ module CommonwealthVlrEngine
       @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
 
       @facet = blacklight_config.facet_fields['genre_basic_ssim']
-      @response = get_facet_field_response(@facet.key, params)
+
+      @response = get_facet_field_response(@facet.key, params, {"f.genre_basic_ssim.facet.limit" => -1})
       @display_facet = @response.aggregations[@facet.key]
       @pagination = facet_paginator(@facet, @display_facet)
 
