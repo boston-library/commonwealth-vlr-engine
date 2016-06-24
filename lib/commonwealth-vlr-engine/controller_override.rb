@@ -8,6 +8,9 @@ module CommonwealthVlrEngine
       self.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
       self.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride)
 
+      # Override some blacklight methods like settings bookmarks to false
+      self.send(:include, CommonwealthVlrEngine::BlacklightOverride)
+
       # add BlacklightAdvancedSearch
       self.send(:include, BlacklightAdvancedSearch::Controller)
 
@@ -47,7 +50,8 @@ module CommonwealthVlrEngine
 
         # configuration for search results/index views
         config.index.partials = [:thumbnail, :index_header, :index]
-        config.index.document_actions = nil # don't show bookmark control
+        #config.index.document_actions
+        #config.index.document_actions = nil # don't show bookmark control
 
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
