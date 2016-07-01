@@ -305,7 +305,7 @@ module CommonwealthVlrEngine
       def add_commonwealthvlr_default_tool opts = {}
         blacklight_config.add_show_tools_partial :add_this, partial: 'add_this', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
         blacklight_config.add_show_tools_partial :folder_items, partial: 'folder_item_control', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
-        blacklight_config.add_show_tools_partial :email, partial: 'show_sharing_tools', unless: Proc.new { |context, config, options| options[:document][:active_fedora_model_suffix_ssi].include?['Collection','Institution','OAICollection','SystemCollection'] }
+        blacklight_config.add_show_tools_partial :email, partial: 'show_sharing_tools', if: Proc.new { |context, config, options| options[:document].respond_to?( :to_email_text ) and !['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
         blacklight_config.add_show_tools_partial :cite, partial: 'show_cite_tools', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
       end
     end
