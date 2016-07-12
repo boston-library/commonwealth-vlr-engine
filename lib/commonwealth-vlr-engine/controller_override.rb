@@ -47,7 +47,8 @@ module CommonwealthVlrEngine
 
         # configuration for search results/index views
         config.index.partials = [:thumbnail, :index_header, :index]
-        config.index.document_actions = nil # don't show bookmark control
+        #config.index.document_actions
+        config.index.document_actions.delete(:bookmark) # don't show bookmark control
 
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
