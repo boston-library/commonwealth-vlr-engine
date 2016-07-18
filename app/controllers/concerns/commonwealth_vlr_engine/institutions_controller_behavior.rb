@@ -46,7 +46,7 @@ module CommonwealthVlrEngine
 
     end
 
-    private
+    protected
 
     # remove grid view from blacklight_config, use correct SearchBuilder for index view
     def institutions_index_config
