@@ -35,16 +35,7 @@
       </div>
     </div>
 
-    <% if @institution_image_pid %>
-        <%= iiif_image_tag(@institution_image_pid,
-                           {:size => 'pct:20',
-                            :alt => @institution_title,
-                            :class => 'institution_img_show'}) %>
-    <% else %>
-        <%= image_tag(institution_icon_path,
-                      :alt => @institution_title,
-                      :class => 'institution_img_show') %>
-    <% end %>
+    <%= create_thumb_img_element(@document, ['institution_img_show']) %>
 
     <div id="institution_desc">
 

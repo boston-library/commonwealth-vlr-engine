@@ -41,8 +41,8 @@ module CommonwealthVlrEngine
         config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
         config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
         config.view.maps.placename_field = 'subject_geographic_ssim'
-        config.view.maps.maxzoom = 13
-        config.view.maps.show_initial_zoom = 9
+        config.view.maps.maxzoom = 14
+        config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
 
         # helper that returns thumbnail URLs

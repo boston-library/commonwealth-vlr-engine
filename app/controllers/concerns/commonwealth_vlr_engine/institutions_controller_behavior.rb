@@ -40,18 +40,13 @@ module CommonwealthVlrEngine
       # get the response for the facets representing items in collection
       (@response, @document_list) = search_results({:f => params[:f]})
 
-      # get an image for the institution
-      if @document[:exemplary_image_ssi]
-        @institution_image_pid = @document[:exemplary_image_ssi]
-      end
-
       respond_to do |format|
         format.html
       end
 
     end
 
-    protected
+    private
 
     # remove grid view from blacklight_config, use correct SearchBuilder for index view
     def institutions_index_config
