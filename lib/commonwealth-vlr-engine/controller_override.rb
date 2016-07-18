@@ -61,7 +61,7 @@ module CommonwealthVlrEngine
         config.advanced_search = {
             qt: 'search',
             url_key: 'advanced',
-            query_parser: 'dismax',
+            query_parser: 'edismax',
             form_solr_parameters: {
                 'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
                 'facet.limit' => -1, # return all facet values
