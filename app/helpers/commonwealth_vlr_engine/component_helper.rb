@@ -4,6 +4,8 @@ module CommonwealthVlrEngine
     include Blacklight::ComponentHelperBehavior
 
     # add extra tools to show view -- folders, social sharing, etc.
+
+=begin
     def render_show_doc_actions(document=@document, options={})
       wrapping_class = options.delete(:documentFunctions) || options.delete(:wrapping_class) || 'documentFunctions'
       content = []
@@ -16,6 +18,8 @@ module CommonwealthVlrEngine
       end
       content_tag('div', content.join("\n").html_safe, :class=> wrapping_class)
     end
+=end
+
 
   end
 
