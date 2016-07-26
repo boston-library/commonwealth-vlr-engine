@@ -343,6 +343,9 @@ en:
           explore:
             title: 'Explore'
 
+    range_limit:
+          submit_limit: 'Apply'
+
     saved_searches:
           clear:
                   action_title: 'clear all'

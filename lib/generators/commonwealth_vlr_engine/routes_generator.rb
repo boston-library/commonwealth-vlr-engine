@@ -30,6 +30,8 @@ module CommonwealthVlrEngine
   # bookmarks item actions
   # this has to be in local app for bookmark item actions to work
   put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
+
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 }
         end
 
@@ -39,6 +41,12 @@ module CommonwealthVlrEngine
 
         # change '/catalog' to '/search'
         gsub_file("config/routes.rb", /\/catalog/, "/search")
+
+        # for blacklight_range_limit
+        bl_routes_marker = /concerns :searchable.*$/
+        inject_into_file 'config/routes.rb', after: bl_routes_marker do
+          "\n    concerns :range_searchable\n"
+        end
 
       end
     end

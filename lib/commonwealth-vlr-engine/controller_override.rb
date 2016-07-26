@@ -14,6 +14,9 @@ module CommonwealthVlrEngine
       # add BlacklightMaps
       self.send(:include, BlacklightMaps::ControllerOverride)
 
+      # add BlacklightRangeLimit
+      self.send(:include, BlacklightRangeLimit::ControllerOverride)
+
       before_filter :get_object_files, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
       before_filter :mlt_search, :only => [:index]
@@ -98,7 +101,7 @@ module CommonwealthVlrEngine
         # solr fields that will be treated as facets by the blacklight application
         config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse:  false
         config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'date_facet_ssim', label: 'Date', limit: 8, sort: 'index', collapse:  false
+        config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true, :collapse => false
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse:  false
         config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse:  false
         # link_to_facet fields (not in facets sidebar of search results)

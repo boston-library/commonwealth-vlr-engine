@@ -17,6 +17,9 @@
 // bootstrap-accessibility-plugin
 //= require bootstrap-accessibility-plugin/bootstrap-accessibility
 
+// blacklight_range_limit
+//= require 'blacklight_range_limit'
+
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
 // from being automatically included on pages that don't need them
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive

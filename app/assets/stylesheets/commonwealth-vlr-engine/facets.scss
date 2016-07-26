@@ -75,6 +75,70 @@ body.blacklight-catalog-formats_facet {
     font-size: 12px;
   }
 
+  /* blacklight_range_limit */
+  .range_limit {
+    margin-bottom: 10px;
+
+    form.range_limit {
+      line-height: 2;
+    }
+
+    input.range_begin, input.range_end {
+      height: 25px;
+      padding: 6px;
+      width: 46px;
+    }
+
+    input.submit {
+      height: 25px;
+      padding: 2px 6px 6px;
+      margin-left: 3px;
+    }
+
+    .slider {
+      margin-left: 5px;
+
+      &.slider-horizontal {
+
+        & .slider-track {
+          height: 7px;
+          background-color: $light_gray;
+          background-image: linear-gradient(to bottom, #d9d9d9, $lighter_gray);
+          border-bottom: 1px solid #d9d9d9;
+        }
+
+        & .slider-handle {
+          margin-left: -5px;
+          background-color: $dark_gray;
+          background-image: linear-gradient(to bottom, $dark_gray, $dark_gray)
+        }
+
+      }
+
+    }
+
+    .slider_js .slider-selection {
+      background-color: $light_gray;
+      box-shadow: none;
+    }
+
+    .slider-handle {
+      height: 15px;
+      width: 10px;
+      opacity: 1;
+
+      &.round {
+        border-radius: 5px;
+      }
+
+    }
+
+    .distribution {
+      margin-left: -8px;
+    }
+
+  }
+
 }
 
 /* responsive styles */
