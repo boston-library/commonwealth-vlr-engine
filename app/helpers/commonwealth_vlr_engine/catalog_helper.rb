@@ -306,6 +306,31 @@ module CommonwealthVlrEngine
       end
     end
 
+    # have to override to display non-typical constraints
+    # (e.g. coordinates, mlt, range limit, advanced search)
+    # need this until:
+    # https://github.com/projectblacklight/blacklight_advanced_search/issues/53
+    # https://github.com/projectblacklight/blacklight-maps/issues/84
+    # https://github.com/projectblacklight/blacklight_range_limit/issues/49
+    # are resolved
+    def render_search_to_page_title(params)
+      # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
+      html_constraints = render_search_to_s(params).gsub(/<span class="filterValues">/,' ')
+      html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/,' / ')
+      sanitize(html_constraints, :tags=>[])
+
+      ## TODO: remove above and uncomment lines below after all issues have been resolved with
+      ##       blacklight_advanced_search, blacklight_range_limit, and blacklight-maps
+      # constraints = [render_search_to_page_title_mlt(params), super(params)]
+      # constraints.reject { |item| item.blank? }.join(' / ')
+    end
+
+    # TODO: uncomment and write spec after issues identified with render_search_to_page_title resolved
+    #def render_search_to_page_title_mlt(params)
+    #  return "".html_safe if params[:mlt_id].blank?
+    #  "#{t('blacklight.search.filters.label', :label => t('blacklight.more_like_this.constraint_label'))} #{h(params[:mlt_id])}"
+    #end
+
     def render_mods_xml_record(document_id)
       mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
       mods_response = Typhoeus::Request.get(mods_xml_file_path)

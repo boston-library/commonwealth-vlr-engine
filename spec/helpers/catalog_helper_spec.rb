@@ -292,6 +292,13 @@ describe CatalogHelper do
 
   end
 
+  describe '#render_search_to_page_title' do
+    before { @page_title = helper.render_search_to_page_title({mlt_id: item_pid}) }
+    it 'should return the correct string for the page title' do
+      expect(@page_title).to include(I18n.t('blacklight.more_like_this.constraint_label'))
+    end
+  end
+
   describe '#render_mods_xml_record' do
     before { @mods_xml_doc = helper.render_mods_xml_record(item_pid) }
     it 'should return the XML document for the MODS record' do

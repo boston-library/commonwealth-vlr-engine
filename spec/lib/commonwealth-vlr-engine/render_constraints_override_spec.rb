@@ -80,16 +80,6 @@ describe CommonwealthVlrEngine::RenderConstraintsOverride do
 
     end
 
-    describe "render_search_to_s_mlt" do
-
-      it "should return render_search_to_s_element when mlt params are present" do
-        expect(@fake_controller).to receive(:render_search_to_s_element)
-        expect(@fake_controller).to receive(:render_filter_value)
-        @fake_controller.render_search_to_s_mlt(@test_params)
-      end
-
-    end
-
   end
 
 
