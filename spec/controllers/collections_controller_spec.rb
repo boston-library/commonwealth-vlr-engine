@@ -127,6 +127,10 @@ describe CollectionsController do
         expect(@mock_controller.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
       end
 
+      it 'should remove the citation tool from the show tools' do
+        expect(@mock_controller.blacklight_config.show.document_actions[:cite]).to be_empty
+      end
+
     end
 
   end

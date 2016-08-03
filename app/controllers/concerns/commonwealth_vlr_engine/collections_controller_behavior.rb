@@ -52,7 +52,7 @@ module CommonwealthVlrEngine
     end
 
     def range_limit
-      redirect_to range_limit_catalog_path(params) and return
+      redirect_to range_limit_catalog_path(params.except('controller', 'action')) and return
     end
 
     protected

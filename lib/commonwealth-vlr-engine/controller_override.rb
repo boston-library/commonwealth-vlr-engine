@@ -24,9 +24,6 @@ module CommonwealthVlrEngine
 
       helper_method :has_volumes?
 
-      remove_default_tool_configs
-      add_commonwealthvlr_default_tool
-
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
@@ -53,16 +50,6 @@ module CommonwealthVlrEngine
 
         # configuration for search results/index views
         config.index.partials = [:thumbnail, :index_header, :index]
-
-        #Actions configuration
-        #blacklight_config.show.document_actions
-        config.index.document_actions.delete(:bookmark) # don't show default bookmark control
-        config.show.document_actions.delete(:bookmark) # don't show default bookmark control
-
-        config.show.document_actions.delete(:email)
-        #config.add_show_tools_partial :email, if: Proc.new { |context, config, options| options[:document].respond_to?( :to_email_text ) and !options[:document][:active_fedora_model_suffix_ssi].include?['Collection','Institution','OAICollection','SystemCollection'] }, partial: 'show_sharing_tools'
-        #config.add_show_tools_partial :cite, if: Proc.new { |context, config, options| !options[:document]['active_fedora_model_suffix_ssi'].include?['Collection','Institution','OAICollection','SystemCollection'] }, partial: 'show_cite_tools'
-
 
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
@@ -167,6 +154,21 @@ module CommonwealthVlrEngine
         config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
+        # remove BL default show tools
+        config.show.document_actions.delete(:email)
+        config.show.document_actions.delete(:sms)
+        config.show.document_actions.delete(:bookmark)
+        config.show.document_actions.delete(:citation)
+
+        # index actions to remove
+        config.index.document_actions.delete(:bookmark)
+
+        # add our custom tools
+        config.add_show_tools_partial :add_this, partial: 'add_this'
+        config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
+        config.add_show_tools_partial :custom_email, partial: 'show_sharing_tools'
+        config.add_show_tools_partial :cite, partial: 'show_cite_tools'
+
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -180,7 +182,7 @@ module CommonwealthVlrEngine
         end
       end
 
-      # modify facet settings for Collections#show and Institutions#show
+      # modify BL config settings for Collections#show and Institutions#show
       def relation_base_blacklight_config
         # don't show collection facet
         blacklight_config.facet_fields['collection_name_ssim'].show = false
@@ -190,6 +192,11 @@ module CommonwealthVlrEngine
         blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
         blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
         blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+        # remove item-centric show tools (for admin)
+        blacklight_config.show.document_actions.delete(:add_this)
+        blacklight_config.show.document_actions.delete(:folder_items)
+        blacklight_config.show.document_actions.delete(:custom_email)
+        blacklight_config.show.document_actions.delete(:cite)
       end
 
     end
@@ -282,35 +289,6 @@ module CommonwealthVlrEngine
 
       # let guest_user know we've moved some bookmarks from under it
       guest_user.reload if guest_user.persisted?
-    end
-
-    module ClassMethods
-
-      ##
-      # There is a default configuration included that you can see at:
-      # https://github.com/projectblacklight/blacklight/blob/d55d6f566d203a092f7f40987a37d8988df5500d/app/controllers/concerns/blacklight/default_component_configuration.rb
-      #
-      # It is included by Blacklight::Catalog that then is included by all local CatalogControllers. Simply disabling it
-      # in the blacklight config block isn't feasible as that include re-adds those components on ever page view while
-      # it seems the blacklight config block is only ever run once? Or could be some other reason.
-      def remove_default_tool_configs opts = {}
-        #Show actions to remove
-        blacklight_config.show.document_actions.delete(:email)
-        blacklight_config.show.document_actions.delete(:sms)
-        blacklight_config.show.document_actions.delete(:bookmark)
-        blacklight_config.show.document_actions.delete(:citation)
-
-        #Index actions to remove
-        blacklight_config.index.document_actions.delete(:bookmark)
-      end
-
-
-      def add_commonwealthvlr_default_tool opts = {}
-        blacklight_config.add_show_tools_partial :add_this, partial: 'add_this', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
-        blacklight_config.add_show_tools_partial :folder_items, partial: 'folder_item_control', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
-        blacklight_config.add_show_tools_partial :custom_email, partial: 'show_sharing_tools', if: Proc.new { |context, config, options| options[:document].respond_to?( :to_email_text ) and !['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
-        blacklight_config.add_show_tools_partial :cite, partial: 'show_cite_tools', unless: Proc.new { |context, config, options| ['Collection','Institution','OAICollection','SystemCollection'].include?(options[:document]['active_fedora_model_suffix_ssi']) }
-      end
     end
 
   end
