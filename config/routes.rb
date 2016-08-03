@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get 'search/:id/metadata_view', :to => 'catalog#metadata_view', :as => 'metadata_view_catalog'
 
   # collections
+  get 'collections/range_limit', to: 'collections#range_limit'
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
   # institutions
+  get 'institutions/range_limit', to: 'institutions#range_limit'
   resources :institutions, :only => [:index, :show]
   get 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
 

@@ -188,7 +188,7 @@ module CommonwealthVlrEngine
         # collapse remaining facets
         blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
         blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
-        blacklight_config.facet_fields['date_facet_ssim'].collapse = true
+        blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
         blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
       end
 

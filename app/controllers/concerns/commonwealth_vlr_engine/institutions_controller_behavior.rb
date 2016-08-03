@@ -46,6 +46,10 @@ module CommonwealthVlrEngine
 
     end
 
+    def range_limit
+      redirect_to range_limit_catalog_path(params) and return
+    end
+
     protected
 
     # remove grid view from blacklight_config, use correct SearchBuilder for index view

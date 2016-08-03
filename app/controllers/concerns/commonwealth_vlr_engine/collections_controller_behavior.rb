@@ -51,6 +51,10 @@ module CommonwealthVlrEngine
 
     end
 
+    def range_limit
+      redirect_to range_limit_catalog_path(params) and return
+    end
+
     protected
 
     # show series facet
