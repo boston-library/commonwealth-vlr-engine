@@ -52,6 +52,13 @@ describe CollectionsController do
 
   end
 
+  describe 'GET "range_limit"' do
+    it 'should redirect to range_limit_catalog_path' do
+      get :range_limit
+      expect(response).to be_redirect
+    end
+  end
+
   describe 'private methods and before_filters' do
 
     # for testing private methods
