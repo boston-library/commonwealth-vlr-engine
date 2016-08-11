@@ -1,0 +1,3 @@
+module DownloadsHelper
+  include CommonwealthVlrEngine::DownloadsHelperBehavior
+end

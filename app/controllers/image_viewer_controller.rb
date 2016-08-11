@@ -5,9 +5,9 @@ class ImageViewerController < CatalogController
 
   def show
     @response, @document = fetch(params[:id])
-    #@img_to_show = params[:view]
     @title = @document[blacklight_config.index.title_field.to_sym]
-    @page_sequence = get_page_sequence(@document.id, params[:view])
+    # @object_files is already set by before_filter in CommonwealthVlrEngine::ControllerOverride
+    @page_sequence = create_img_sequence(image_file_pids(@object_files[:images]), params[:view])
     respond_to do |format|
       format.js
       format.html { redirect_to solr_document_path(@document.id,
@@ -17,18 +17,8 @@ class ImageViewerController < CatalogController
 
   def book_viewer
     @response, @document = fetch(params[:id])
-    @image_files = has_image_files?(get_files(params[:id]))
+    @image_files = image_file_pids(get_image_files(params[:id]))
     render(:layout => 'book_viewer')
-  end
-
-  private
-
-  def get_page_sequence(document_id, current_img_id)
-    image_files = []
-    get_image_files(document_id).each do |img_file|
-      image_files << img_file['id']
-    end
-    create_img_sequence(image_files, current_img_id)
   end
 
 end

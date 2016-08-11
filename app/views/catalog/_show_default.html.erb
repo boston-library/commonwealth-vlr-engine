@@ -1,21 +1,20 @@
 <%# show the object image(s)/file(s) and metadata %>
 <%# TODO: refactor how views access files/volumes/etc., this is getting REALLY ugly %>
-<% image_files = has_image_files?(@object_files) %>
 <% volumes = has_volumes?(@document) %>
 <% book_reader = false %>
 <% oai_object = @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' ? true : false %>
-<% if image_files %>
+<% if has_image_files?(@object_files) %>
     <%= javascript_include_tag 'openseadragon' %>
-    <% case image_files.length %>
+    <% case @object_files[:images].length %>
         <% when 1 %>
             <%= render :partial => 'catalog/_show_partials/show_default_img',
                        :locals => {:document => @document,
-                                   :image_pid => image_files.first,
+                                   :image_pid => @object_files[:images][0]['id'],
                                    :page_sequence => {:total => 1}} %>
         <% when 2..7 %>
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
                        :locals => {:document => @document,
-                                   :image_files => image_files} %>
+                                   :image_files => image_file_pids(@object_files[:images])} %>
         <% else %>
             <% book_reader = true %>
     <% end %>
@@ -24,7 +23,7 @@
 <div class="row">
 
   <%# show thumbnail or icon if object has no images, or volume list %>
-  <% if !image_files || book_reader || volumes %>
+  <% if !has_image_files?(@object_files) || book_reader || volumes %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
@@ -59,13 +58,14 @@
   </div>
 
   <div id="sidebar" class="<%= show_sidebar_classes %>">
-    <%# render files to download %>
-    <% if has_downloadable_files?(@object_files) %>
-        <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:document => @document, :object_files => @object_files} %>
-    <% end %>
 
     <% # bookmark/folder/sharing functions -%>
     <%= render_document_sidebar_partial  %>
+
+    <%# render files to download %>
+    <% if has_downloadable_files?(@document, @object_files) %>
+        <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:document => @document, :object_files => @object_files} %>
+    <% end %>
 
     <%# map view %>
     <%= render :partial => 'catalog/show_maplet_default' %>

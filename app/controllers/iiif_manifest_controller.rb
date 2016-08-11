@@ -21,7 +21,7 @@ class IiifManifestController < CatalogController
     canvas_response, canvas_document = fetch(params[:canvas_object_id])
     if canvas_document[:is_file_of_ssim]
       response, document = fetch(params[:id])
-      image_files = has_image_files?(get_files(params[:id]))
+      image_files = image_file_pids(get_image_files(params[:id]))
       if image_files
         image_index = Hash[image_files.map.with_index.to_a][params[:canvas_object_id]]
         iiif_canvas = canvas_from_id(params[:canvas_object_id],
@@ -38,7 +38,7 @@ class IiifManifestController < CatalogController
 
   def annotation
     response, document = fetch(params[:id])
-    if has_image_files?(get_files(params[:id])).include?(params[:annotation_object_id])
+    if image_file_pids(get_image_files(params[:id])).include?(params[:annotation_object_id])
       annotation = image_annotation_from_image_id(params[:annotation_object_id], document)
       render :json => annotation.to_json
     else
