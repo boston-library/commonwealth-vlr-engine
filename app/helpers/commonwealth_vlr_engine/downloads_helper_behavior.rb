@@ -10,13 +10,11 @@ module CommonwealthVlrEngine
           object_profile_json = JSON.parse(file['object_profile_ssm'].first)
           file_name_ext = object_profile_json["objLabel"].split('.')
           download_link_title = document['identifier_ia_id_ssi'] ? ia_download_title(file_name_ext[1]) : file_name_ext[0]
-          download_links << link_to(download_link_title,
-                                    datastream_disseminator_url(file['id'],'productionMaster'),
-                                    target: '_blank',
-                                    rel: 'nofollow',
-                                    class: link_class) + content_tag(:span,
-                                                                        "(#{file_name_ext[1].upcase}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
-                                                                        class: 'download_info')
+          download_links << render_file_download_link(file['id'],
+                                                      download_link_title,
+                                                      object_profile_json,
+                                                      'productionMaster',
+                                                      link_class)
         end
       end
       download_links
@@ -54,8 +52,9 @@ module CommonwealthVlrEngine
       case image_files_hash.length
         when 1
           object_profile_json = JSON.parse(image_files_hash.first['object_profile_ssm'].first)
-          render_single_image_download_links(image_files_hash.first['id'], object_profile_json, link_class)
+          single_image_download_links(image_files_hash.first['id'], object_profile_json, link_class)
         else
+          []
       end
     end
 
@@ -64,7 +63,7 @@ module CommonwealthVlrEngine
       document[:license_ssm].to_s =~ /Creative Commons/ || document[:license_ssm].to_s =~ /No known restrictions/
     end
 
-    def render_image_download_link(image_pid, object_profile_json, datastream_id, link_class)
+    def render_file_download_link(file_pid, link_title, object_profile_json, datastream_id, link_class)
       if datastream_id == 'accessFull'
         file_type = 'JPEG'
         file_size = 'WHO KNOWS'
@@ -72,8 +71,8 @@ module CommonwealthVlrEngine
         file_type = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
         file_size = number_to_human_size(object_profile_json["datastreams"][datastream_id]["dsSize"])
       end
-      link_to(t("blacklight.downloads.images.#{datastream_id}"),
-              download_path(image_pid, datastream_id: datastream_id),
+      link_to(link_title,
+              download_path(file_pid, datastream_id: datastream_id),
               target: '_blank',
               rel: 'nofollow',
               class: link_class) + content_tag(:span,
@@ -81,10 +80,22 @@ module CommonwealthVlrEngine
                                                   class: 'download_info')
     end
 
-    def render_single_image_download_links(image_pid, object_profile_json, link_class)
-      [render_image_download_link(image_pid, object_profile_json, 'productionMaster', link_class),
-       render_image_download_link(image_pid, object_profile_json, 'accessFull', link_class),
-       render_image_download_link(image_pid, object_profile_json, 'access800', link_class)]
+    def single_image_download_links(image_pid, object_profile_json, link_class)
+      [render_file_download_link(image_pid,
+                                  t('blacklight.downloads.images.productionMaster'),
+                                  object_profile_json,
+                                  'productionMaster',
+                                  link_class),
+       render_file_download_link(image_pid,
+                                 t('blacklight.downloads.images.accessFull'),
+                                 object_profile_json,
+                                 'accessFull',
+                                 link_class),
+       render_file_download_link(image_pid,
+                                 t('blacklight.downloads.images.access800'),
+                                 object_profile_json,
+                                 'access800',
+                                 link_class)]
     end
 
   end
