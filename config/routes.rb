@@ -57,6 +57,9 @@ Rails.application.routes.draw do
   # OCR search results
   get 'search/:id/fulltext', :to => 'ocr_search#index', :as => 'ocr_search'
 
+  # downloads
+  resources :downloads, :only => [:show]
+
   # DEPRECATED ROUTES AND EXAMPLES
 
   # this is generated into local app via CommonwealthVlrEngine::RoutesGenerator

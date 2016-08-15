@@ -12,10 +12,11 @@ module CommonwealthVlrEngine
           download_link_title = document['identifier_ia_id_ssi'] ? ia_download_title(file_name_ext[1]) : file_name_ext[0]
           download_links << link_to(download_link_title,
                                     datastream_disseminator_url(file['id'],'productionMaster'),
-                                    :target => '_blank',
-                                    :class => link_class) + content_tag(:span,
+                                    target: '_blank',
+                                    rel: 'nofollow',
+                                    class: link_class) + content_tag(:span,
                                                                         "(#{file_name_ext[1].upcase}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
-                                                                        :class => 'download_info')
+                                                                        class: 'download_info')
         end
       end
       download_links
@@ -63,42 +64,27 @@ module CommonwealthVlrEngine
       document[:license_ssm].to_s =~ /Creative Commons/ || document[:license_ssm].to_s =~ /No known restrictions/
     end
 
-    def render_full_image_link(image_pid, object_profile_json, link_class)
-      file_type = 'JPEG'
-      link_to(file_type,
-              iiif_image_url(image_pid,{}),
-              :target => '_blank',
-              :class => link_class) + content_tag(:span,
-                                                  "(#{file_type}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
-                                                  :class => 'download_info')
-    end
-
-    def render_large_image_link(image_pid, object_profile_json, link_class)
-      file_type = object_profile_json["datastreams"]["access800"]["dsMIME"].split('/')[1].upcase
-      link_to(file_type,
-              datastream_disseminator_url(image_pid,'access800'),
-              :target => '_blank',
-              :download => 'WHATEVER.JPEG',
-              :class => link_class) + content_tag(:span,
-                                                  "(#{file_type}, #{number_to_human_size(object_profile_json["datastreams"]["access800"]["dsSize"])})",
-                                                  :class => 'download_info')
-    end
-
-    def render_master_image_link(image_pid, object_profile_json, link_class)
-      file_type = object_profile_json["datastreams"]["productionMaster"]["dsMIME"].split('/')[1].upcase
-      link_to(file_type,
-              datastream_disseminator_url(image_pid,'productionMaster'),
-              :download => 'WHATEVER.TIFF',
-              :target => '_blank',
-              :class => link_class) + content_tag(:span,
-                                                  "(#{file_type}, #{number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"])})",
-                                                  :class => 'download_info')
+    def render_image_download_link(image_pid, object_profile_json, datastream_id, link_class)
+      if datastream_id == 'accessFull'
+        file_type = 'JPEG'
+        file_size = 'WHO KNOWS'
+      else
+        file_type = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
+        file_size = number_to_human_size(object_profile_json["datastreams"][datastream_id]["dsSize"])
+      end
+      link_to(t("blacklight.downloads.images.#{datastream_id}"),
+              download_path(image_pid, datastream_id: datastream_id),
+              target: '_blank',
+              rel: 'nofollow',
+              class: link_class) + content_tag(:span,
+                                                  "(#{file_type}, #{file_size})",
+                                                  class: 'download_info')
     end
 
     def render_single_image_download_links(image_pid, object_profile_json, link_class)
-      [render_master_image_link(image_pid, object_profile_json, link_class),
-       render_full_image_link(image_pid, object_profile_json, link_class),
-       render_large_image_link(image_pid, object_profile_json, link_class)]
+      [render_image_download_link(image_pid, object_profile_json, 'productionMaster', link_class),
+       render_image_download_link(image_pid, object_profile_json, 'accessFull', link_class),
+       render_image_download_link(image_pid, object_profile_json, 'access800', link_class)]
     end
 
   end

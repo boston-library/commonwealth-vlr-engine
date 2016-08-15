@@ -81,6 +81,10 @@ en:
     downloads:
           link_info: '(links open in new window)'
           title: 'Downloads'
+          images:
+            access800: 'Large'
+            accessFull: 'Full'
+            productionMaster: 'Master'
 
     email:
           form:
