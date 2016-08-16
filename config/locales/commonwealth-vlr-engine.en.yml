@@ -84,6 +84,9 @@ en:
           images:
             access800: 'Large'
             accessFull: 'Full'
+            ia_zip:
+              title: 'All page images'
+              info: 'JPEG2000 ZIP, from Internet Archive'
             productionMaster: 'Master'
 
     email:

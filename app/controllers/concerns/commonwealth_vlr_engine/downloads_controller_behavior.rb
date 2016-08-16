@@ -3,6 +3,7 @@ module CommonwealthVlrEngine
   module DownloadsControllerBehavior
     extend ActiveSupport::Concern
 
+    include Blacklight::Catalog
     include CommonwealthVlrEngine::Streaming
     include CommonwealthVlrEngine::ApplicationHelper
 
