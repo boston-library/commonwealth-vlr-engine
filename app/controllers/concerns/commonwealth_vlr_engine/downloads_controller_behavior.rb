@@ -133,7 +133,7 @@ module CommonwealthVlrEngine
     def prepare_file_headers
       send_file_headers! content_options
       response.headers['Content-Type'] = mime_type
-      response.headers['Content-Length'] ||= file_size.to_s
+      response.headers['Content-Length'] ||= file_size.to_s if file_size
       # Prevent Rack::ETag from calculating a digest over body
       response.headers['Last-Modified'] = Time.new(@solr_document[:system_modified_dtsi]).utc.strftime("%a, %d %b %Y %T GMT")
       self.content_type = mime_type
