@@ -7,7 +7,10 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::Streaming
     include CommonwealthVlrEngine::ApplicationHelper
     include CommonwealthVlrEngine::Finder
-    require 'zip'
+    # for some reason have to require AND include Zipline, or you get 'uninitialized constant' errors
+    require 'zipline'
+    include Zipline
+    require 'open-uri'
 
     # Responds to http requests to show the file
     def show
@@ -21,7 +24,8 @@ module CommonwealthVlrEngine
           if !@file_list.empty?
             @object_id = params[:id]
             @zip = true
-            send_content
+            # send_content
+            send_zipped_content # experimenting
           else
             not_found
           end
@@ -34,6 +38,18 @@ module CommonwealthVlrEngine
     end
 
     protected
+
+    def send_zipped_content
+      files_array = []
+      @file_list.each_with_index do |file,index|
+        params[:id] = file[:id] # hack this so file_name returns correct value
+        @solr_document = file
+        files_array << [file_url, "#{(index+1).to_s}_#{file_name_with_extension}"]
+      end
+      params[:id] = @object_id # reset
+      file_mappings = files_array.lazy.map { |url, path| [open(url), path] }
+      zipline(file_mappings, "#{file_name}.zip")
+    end
 
     # Handle the HTTP show request
     def send_content
