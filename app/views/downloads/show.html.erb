@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="downloads_modal_title" class="modal-title">
+    <%= truncate("#{t('blacklight.downloads.title')}: #{render_main_title(@parent_document)}",
+                 length: 55,
+                 separator: ' ') %>
+  </h4>
+</div>
+<div id="downloads_modal" class="modal-body">
+  <%= render partial: 'terms_of_use', locals: {document: @parent_document} %>
+</div>
+
+<div id="downloads_modal_footer" class="modal-footer">
+  <%= link_to("Download #{download_link_title(@document, @object_profile, params[:datastream_id])} (#{file_type_string(params[:datastream_id], @object_profile)}, #{file_size_string(params[:datastream_id], @object_profile)})",
+              trigger_downloads_path(@document.id, datastream_id: params[:datastream_id]),
+              class: 'trigger_download btn btn-primary',
+              rel: 'nofollow',
+              target: '_blank') %>
+  <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+</div>
+<%= javascript_include_tag 'commonwealth-vlr-engine/download_utils' %>

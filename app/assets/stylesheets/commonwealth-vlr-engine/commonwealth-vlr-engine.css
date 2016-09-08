@@ -16,6 +16,7 @@
 @import 'book_viewer';
 @import 'carousel';
 @import 'collections';
+@import 'downloads';
 @import 'facets';
 @import 'feedback';
 @import 'folders';

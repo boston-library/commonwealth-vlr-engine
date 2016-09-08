@@ -12,6 +12,8 @@ module CommonwealthVlrEngine
       before_filter :institutions_index_config, :only => [:index]
       # remove collection facet and collapse others
       before_filter :relation_base_blacklight_config, :only => [:show]
+
+      helper_method :search_action_url
     end
 
     def index
@@ -51,6 +53,11 @@ module CommonwealthVlrEngine
     end
 
     protected
+
+    # Blacklight uses #search_action_url to figure out the right URL for the global search box
+    def search_action_url options = {}
+      search_catalog_url(options.except(:controller, :action))
+    end
 
     # remove grid view from blacklight_config, use correct SearchBuilder for index view
     def institutions_index_config

@@ -79,6 +79,7 @@ en:
     did_you_mean: 'Search for %{options} instead?'
 
     downloads:
+          cc: 'Learn more about this Creative Commons license'
           link_info: '(links open in new window)'
           title: 'Downloads'
           images:

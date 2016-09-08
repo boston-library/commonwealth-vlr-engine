@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
   # downloads
   resources :downloads, :only => [:show]
+  get 'start_download/:id', :to => 'downloads#trigger_download', :as => 'trigger_downloads'
 
   # DEPRECATED ROUTES AND EXAMPLES
 

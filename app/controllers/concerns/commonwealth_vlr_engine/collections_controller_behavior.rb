@@ -14,6 +14,9 @@ module CommonwealthVlrEngine
       before_filter :add_series_facet, :only => :show
       before_filter :collections_limit, :only => [:index, :facet]
       before_filter :collapse_institution_facet, :only => :index
+
+      helper_method :search_action_url
+      helper_method :get_series_image_obj
     end
 
     def index
@@ -56,6 +59,20 @@ module CommonwealthVlrEngine
     end
 
     protected
+
+    # Blacklight uses #search_action_url to figure out the right URL for the global search box
+    def search_action_url options = {}
+      search_catalog_url(options.except(:controller, :action))
+    end
+
+    # find a representative image/item for a series
+    def get_series_image_obj(series_title,collection_title)
+      blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
+      series_doc_list = search_results({f: {'related_item_series_ssim' => series_title,
+                                            blacklight_config.collection_field => collection_title},
+                                        rows: 1})[1]
+      series_doc_list.first
+    end
 
     # show series facet
     def add_series_facet

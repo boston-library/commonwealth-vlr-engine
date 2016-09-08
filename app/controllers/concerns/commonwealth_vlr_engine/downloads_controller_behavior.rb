@@ -12,9 +12,31 @@ module CommonwealthVlrEngine
     include Zipline
     require 'open-uri'
 
-    # Responds to http requests to show the file
+    included do
+      copy_blacklight_config_from(CatalogController)
+      helper_method :search_action_url
+    end
+
+    # render a page/modal with license terms, download links, etc
     def show
-      @solr_document = fetch(params[:id])[1]
+      @doc_response, @document = fetch(params[:id])
+      if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
+        parent_response, @parent_document = fetch(@document[:is_file_of_ssim].first.gsub(/info:fedora\//,''))
+        @object_profile = JSON.parse(@document['object_profile_ssm'].first)
+      else
+        @parent_document = @document
+        @object_profile = nil
+      end
+
+      respond_to do |format|
+        format.html # for users w/o JS
+        format.js { render :layout => false } # download modal window
+      end
+    end
+
+    # initiates the file download
+    def trigger_download
+      response, @solr_document = fetch(params[:id])
       if !@solr_document.empty? && params[:datastream_id]
         if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
           send_content
@@ -35,6 +57,12 @@ module CommonwealthVlrEngine
     end
 
     protected
+
+    # Blacklight uses #search_action_url to figure out the right URL for
+    # the global search box
+    def search_action_url options = {}
+      search_catalog_url(options.except(:controller, :action))
+    end
 
     # Handle the HTTP show request
     def send_content
