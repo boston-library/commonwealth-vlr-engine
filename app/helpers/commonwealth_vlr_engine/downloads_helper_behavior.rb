@@ -8,8 +8,6 @@ module CommonwealthVlrEngine
       other_file_types.each do |file_type|
         file_type.each do |file|
           object_profile_json = JSON.parse(file['object_profile_ssm'].first)
-          #file_name_ext = object_profile_json["objLabel"].split('.')
-          #download_link_title = document['identifier_ia_id_ssi'] ? ia_download_title(file_name_ext[1]) : file_name_ext[0]
           download_links << file_download_link(file['id'],
                                                download_link_title(document, object_profile_json),
                                                object_profile_json,
@@ -27,11 +25,15 @@ module CommonwealthVlrEngine
     end
 
     def download_link_title(document, object_profile, datastream_id=nil)
-      if document[:has_model_ssim].include? "info:fedora/afmodel:Bplmodels_ImageFile"
+      if !object_profile || (document[:has_model_ssim].include? "info:fedora/afmodel:Bplmodels_ImageFile")
         link_title = t("blacklight.downloads.images.#{datastream_id}")
       else
         file_name_ext = object_profile["objLabel"].split('.')
-        link_title = document['identifier_ia_id_ssi'] ? ia_download_title(file_name_ext[1]) : file_name_ext[0]
+        if document[:identifier_ia_id_ssi] || (document[:active_fedora_model_ssi] == "Bplmodels::EreaderFile")
+          link_title = ia_download_title(file_name_ext[1])
+        else
+          link_title = file_name_ext[0]
+        end
       end
       link_title
     end
@@ -55,10 +57,6 @@ module CommonwealthVlrEngine
           'Kindle'
         when 'zip'
           'Daisy'
-        when 'pdf'
-          'PDF'
-        when 'epub'
-          'EPUB'
         else
           file_extension.upcase
       end
@@ -66,9 +64,6 @@ module CommonwealthVlrEngine
 
     # create a link to the JP2 zip download at Internet Archive
     def ia_zip_download_link(ia_identifier)
-      #render_download_link(t('blacklight.downloads.images.ia_zip.title'),
-      #                     "https://archive.org/download/#{ia_identifier}/#{ia_identifier}_jp2.zip",
-      #                     "(#{t('blacklight.downloads.images.ia_zip.info')})")
       link_to(t('blacklight.downloads.images.ia_zip.title'),
               "https://archive.org/download/#{ia_identifier}/#{ia_identifier}_jp2.zip",
               {class: download_link_class,
@@ -91,22 +86,9 @@ module CommonwealthVlrEngine
           if image_files_hash.length == 1
             object_profile = object_profile_json
             object_id = image_files_hash.first['id']
-            #image_links << file_download_link(image_files_hash.first['id'],
-            #                                  t("blacklight.downloads.images.#{datastream_id}"),
-            #                                  object_profile_json,
-            #                                  datastream_id,
-            #                                  {class: download_link_class,
-            #                                   rel: 'nofollow',
-            #                                   data: {:ajax_modal => 'trigger'}})
           else
             object_profile = nil
             object_id = document[:id]
-            #image_links << multifile_download_link(document[:id],
-            #                                       t("blacklight.downloads.images.#{datastream_id}"),
-            #                                       object_profile_json,
-            #                                       datastream_id,
-            #                                       {rel: 'nofollow',
-            #                                        data: {:ajax_modal => 'trigger'}})
           end
           image_links << file_download_link(object_id,
                                             t("blacklight.downloads.images.#{datastream_id}"),
@@ -125,19 +107,7 @@ module CommonwealthVlrEngine
       document[:license_ssm].to_s =~ /(Creative Commons|No known restrictions)/
     end
 
-    #def render_download_link(link_title, link_path, link_options ={}, span_content)
-    #  link_to(link_title,
-    #          link_path,
-    #          link_options) + content_tag(:span,
-    #                                      span_content,
-    #                                      class: 'download_info')
-    #end
-
     def file_download_link(object_pid, link_title, object_profile_json, datastream_id, link_options={})
-      #render_download_link(link_title,
-      #                     download_path(file_pid, datastream_id: datastream_id),
-      #                     link_options,
-      #                     "(#{file_type_string(datastream_id, object_profile_json)}, #{file_size_string(datastream_id, object_profile_json)})")
       link_to(link_title,
               download_path(object_pid, datastream_id: datastream_id),
               link_options) + content_tag(:span,
@@ -145,17 +115,9 @@ module CommonwealthVlrEngine
                                           class: 'download_info')
     end
 
-    #def multifile_download_link(object_pid, link_title, object_profile_json, datastream_id, link_options={})
-      #file_type = datastream_id == 'productionMaster' ? 'TIFF' : 'JPEG'
-    #  render_download_link(link_title,
-    #                       download_path(object_pid, datastream_id: datastream_id),
-    #                       link_options,
-    #                       "(#{file_type_string(datastream_id, object_profile_json)}, #{file_size_string(datastream_id, object_profile_json)})")
-    #end
-
     def file_type_string(datastream_id, object_profile_json)
       if object_profile_json
-        if datastream_id == 'accessFull'
+        if datastream_id == 'accessFull' || datastream_id == 'access800'
           file_type_string = 'JPEG'
         else
           #file_type_string = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
