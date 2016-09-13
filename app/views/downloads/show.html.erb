@@ -15,11 +15,14 @@
               class: 'trigger_download btn btn-primary',
               rel: 'nofollow',
               target: '_blank') do %>
-      <%= "Download #{download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
-                                          @object_profile,
-                                          params[:datastream_id])} (#{file_type_string(params[:datastream_id],
-                                                                                       @object_profile)}, #{file_size_string(params[:datastream_id],
-                                                                                                                             @object_profile)})" %>
+      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+      <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
+                                                   @object_profile,
+                                                   params[:datastream_id]),
+                               length: 40,
+                               omission: '...')} (#{file_type_string(params[:datastream_id],
+                                                                     @object_profile)}, #{file_size_string(params[:datastream_id],
+                                                                                                           @object_profile)})" %>
   <% end %>
   <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
 </div>

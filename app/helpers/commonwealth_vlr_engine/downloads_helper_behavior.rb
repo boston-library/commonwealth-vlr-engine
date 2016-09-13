@@ -1,11 +1,15 @@
 module CommonwealthVlrEngine
   module DownloadsHelperBehavior
 
+    # create an array of download links
+    # images have to be handled by a separate function since there are multiple sizes
     def create_download_links(document, files_hash)
-      other_file_types = [files_hash[:audio], files_hash[:documents], files_hash[:ereader], files_hash[:generic]]
       download_links = []
-      download_links.concat(image_download_links(document, files_hash[:images])) unless files_hash[:images].empty?
-      other_file_types.each do |file_type|
+      non_img_file_types = [files_hash[:audio], files_hash[:documents], files_hash[:ereader], files_hash[:generic]]
+      if has_downloadable_images?(document, files_hash) && !files_hash[:images].empty?
+        download_links.concat(image_download_links(document, files_hash[:images]))
+      end
+      non_img_file_types.each do |file_type|
         file_type.each do |file|
           object_profile_json = JSON.parse(file['object_profile_ssm'].first)
           download_links << file_download_link(file['id'],
