@@ -83,12 +83,12 @@ en:
           link_info: '(links open in new window)'
           title: 'Downloads'
           images:
-            access800: 'Large'
-            accessFull: 'Full'
+            access800: 'Medium (800px)'
+            accessFull: 'Original (full resolution)'
             ia_zip:
               title: 'All page images'
-              info: 'JPEG2000 ZIP, from Internet Archive'
-            productionMaster: 'Master'
+              info: 'JPEG2000, multi-file ZIP'
+            productionMaster: 'Master (full resolution, uncompressed)'
 
     email:
           form:

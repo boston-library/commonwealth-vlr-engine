@@ -42,7 +42,7 @@ module CommonwealthVlrEngine
       link_title
     end
 
-    def has_downloadable_files? document, files_hash
+    def has_downloadable_files?(document, files_hash)
       has_downloadable_images?(document, files_hash) ||
           files_hash[:documents].present? ||
           files_hash[:audio].present? ||
@@ -50,7 +50,7 @@ module CommonwealthVlrEngine
           files_hash[:ereader].present?
     end
 
-    def has_downloadable_images? document, files_hash
+    def has_downloadable_images?(document, files_hash)
       has_image_files?(files_hash) && license_allows_download?(document)
     end
 
@@ -91,7 +91,7 @@ module CommonwealthVlrEngine
             object_profile = object_profile_json
             object_id = image_files_hash.first['id']
           else
-            object_profile = nil
+            object_profile = setup_zip_object_profile(image_files_hash, datastream_id)
             object_id = document[:id]
           end
           image_links << file_download_link(object_id,
@@ -127,8 +127,9 @@ module CommonwealthVlrEngine
           #file_type_string = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
           file_type_string = object_profile_json["objLabel"].split('.')[1].upcase
         end
+      file_type_string << ', multi-file ZIP' if object_profile_json["zip"]
       else
-        file_type_string = datastream_id == 'productionMaster' ? 'TIFF' : 'JPEG'
+        file_type_string = datastream_id == 'productionMaster' ? 'TIF' : 'JPEG'
       end
       file_type_string
     end
@@ -137,14 +138,30 @@ module CommonwealthVlrEngine
       if object_profile_json
         if datastream_id == 'accessFull'
           file_size_string = '~' +
-              number_to_human_size((object_profile_json["datastreams"]["productionMaster"]["dsSize"].to_i * 0.083969078).to_i.to_s)
+              number_to_human_size((object_profile_json["datastreams"]["productionMaster"]["dsSize"] * 0.083969078))
         else
           file_size_string = number_to_human_size(object_profile_json["datastreams"][datastream_id]["dsSize"])
         end
       else
-        file_size_string = 'ZIP'
+        file_size_string = 'multi-file ZIP'
       end
       file_size_string
+    end
+
+    # create a composite object_profile_json object from multiple file objects
+    # used to display size of ZIP archive
+    def setup_zip_object_profile(image_files_hash, datastream_id)
+      datastream_id_to_use = datastream_id == 'accessFull' ? 'productionMaster' : datastream_id
+      object_profile = {zip: true,
+                        objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
+                        datastreams: {datastream_id_to_use.to_sym => {}}}
+      image_size = 0
+      image_files_hash.each do |image_file|
+        img_object_profile_json = JSON.parse(image_file['object_profile_ssm'].first)
+        image_size += img_object_profile_json["datastreams"][datastream_id_to_use]["dsSize"]
+      end
+      object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = image_size
+      object_profile.deep_stringify_keys
     end
 
   end
