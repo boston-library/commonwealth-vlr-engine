@@ -141,6 +141,7 @@ module CommonwealthVlrEngine
               number_to_human_size((object_profile_json["datastreams"]["productionMaster"]["dsSize"] * 0.083969078))
         else
           file_size_string = number_to_human_size(object_profile_json["datastreams"][datastream_id]["dsSize"])
+          file_size_string.insert(0,'~') if object_profile_json["zip"]
         end
       else
         file_size_string = 'multi-file ZIP'
@@ -155,12 +156,21 @@ module CommonwealthVlrEngine
       object_profile = {zip: true,
                         objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
                         datastreams: {datastream_id_to_use.to_sym => {}}}
-      image_size = 0
+      zip_size = 0
       image_files_hash.each do |image_file|
         img_object_profile_json = JSON.parse(image_file['object_profile_ssm'].first)
-        image_size += img_object_profile_json["datastreams"][datastream_id_to_use]["dsSize"]
+        zip_size += img_object_profile_json["datastreams"][datastream_id_to_use]["dsSize"]
       end
-      object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = image_size
+      # estimate compression, pretty rough
+      zip_size = case datastream_id
+                   when 'productionMaster'
+                     zip_size * 0.798
+                   when 'accessFull'
+                     zip_size * 0.839
+                   else
+                     zip_size * 0.927
+                 end
+      object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = zip_size
       object_profile.deep_stringify_keys
     end
 
