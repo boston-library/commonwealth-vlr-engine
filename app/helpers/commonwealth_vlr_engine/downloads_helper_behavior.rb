@@ -16,9 +16,7 @@ module CommonwealthVlrEngine
                                                download_link_title(document, object_profile_json),
                                                object_profile_json,
                                                'productionMaster',
-                                               {class: download_link_class,
-                                                rel: 'nofollow',
-                                                data: {:ajax_modal => 'trigger'}})
+                                               download_link_options)
         end
       end
       download_links
@@ -26,6 +24,10 @@ module CommonwealthVlrEngine
 
     def download_link_class
       'sidebar_downloads_link'
+    end
+
+    def download_link_options
+      {class: download_link_class, rel: 'nofollow', data: {:ajax_modal => 'trigger'}}
     end
 
     def download_link_title(document, object_profile, datastream_id=nil)
@@ -66,23 +68,18 @@ module CommonwealthVlrEngine
       end
     end
 
-    # create a link to the JP2 zip download at Internet Archive
-    def ia_zip_download_link(ia_identifier)
-      link_to(t('blacklight.downloads.images.ia_zip.title'),
-              "https://archive.org/download/#{ia_identifier}/#{ia_identifier}_jp2.zip",
-              {class: download_link_class,
-               target: '_blank'}) + content_tag(:span,
-                                                "(#{t('blacklight.downloads.images.ia_zip.info')})",
-                                                class: 'download_info')
-    end
-
     def image_datastreams
       %w(productionMaster accessFull access800)
     end
 
     def image_download_links(document, image_files_hash)
       if document[:identifier_ia_id_ssi]
-        [ia_zip_download_link(document[:identifier_ia_id_ssi])]
+        #[ia_zip_download_link(document[:identifier_ia_id_ssi])]
+        [file_download_link(document[:id],
+                            t("blacklight.downloads.images.accessFull"),
+                            nil,
+                            'JPEG2000',
+                            download_link_options)]
       else
         object_profile_json = JSON.parse(image_files_hash.first['object_profile_ssm'].first)
         image_links = []
@@ -98,9 +95,7 @@ module CommonwealthVlrEngine
                                             t("blacklight.downloads.images.#{datastream_id}"),
                                             object_profile,
                                             datastream_id,
-                                            {class: download_link_class,
-                                             rel: 'nofollow',
-                                             data: {:ajax_modal => 'trigger'}})
+                                            download_link_options)
         end
         image_links
       end
@@ -127,9 +122,16 @@ module CommonwealthVlrEngine
           #file_type_string = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
           file_type_string = object_profile_json["objLabel"].split('.')[1].upcase
         end
-      file_type_string << ', multi-file ZIP' if object_profile_json["zip"]
+        file_type_string << ', multi-file ZIP' if object_profile_json["zip"]
       else
-        file_type_string = datastream_id == 'productionMaster' ? 'TIF' : 'JPEG'
+        file_type_string = case datastream_id
+                             when 'productionMaster'
+                               'TIF'
+                             when 'JPEG2000'
+                               datastream_id
+                             else
+                               'JPEG'
+                           end
       end
       file_type_string
     end
@@ -172,6 +174,14 @@ module CommonwealthVlrEngine
                  end
       object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = zip_size
       object_profile.deep_stringify_keys
+    end
+
+    def url_for_download(document, datastream_id)
+      if document[:identifier_ia_id_ssi] && datastream_id == 'JPEG2000'
+        "https://archive.org/download/#{document[:identifier_ia_id_ssi]}/#{document[:identifier_ia_id_ssi]}_jp2.zip"
+      else
+        trigger_downloads_path(document.id, datastream_id: datastream_id)
+      end
     end
 
   end

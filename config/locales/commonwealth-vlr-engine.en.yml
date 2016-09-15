@@ -85,9 +85,7 @@ en:
           images:
             access800: 'Medium (800px)'
             accessFull: 'Original (full resolution)'
-            ia_zip:
-              title: 'All page images'
-              info: 'JPEG2000, multi-file ZIP'
+            JPEG2000: 'Original (full resolution)'
             productionMaster: 'Master (full resolution, uncompressed)'
 
     email:

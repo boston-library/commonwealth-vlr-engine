@@ -47,6 +47,10 @@ module CommonwealthVlrEngine
       page_sequence
     end
 
+    def not_found
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     # override of Blacklight::Controller#search_action_path
     # for proper constraints linking in collections#index and institutions#index
     def search_action_path *args

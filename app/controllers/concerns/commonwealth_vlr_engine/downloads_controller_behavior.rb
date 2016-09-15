@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
     def show
       @doc_response, @document = fetch(params[:id])
       if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
-        parent_response, @parent_document = fetch(@document[:is_file_of_ssim].first.gsub(/info:fedora\//,''))
+        parent_response, @parent_document = fetch(parent_id(@document))
         @object_profile = JSON.parse(@document['object_profile_ssm'].first)
       else
         @parent_document = @document
@@ -39,6 +39,7 @@ module CommonwealthVlrEngine
       response, @solr_document = fetch(params[:id])
       if !@solr_document.empty? && params[:datastream_id]
         if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
+          @object_id = parent_id(@solr_document)
           send_content
         elsif @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_ObjectBase'
           @file_list = get_image_files(params[:id])
@@ -51,8 +52,6 @@ module CommonwealthVlrEngine
         else
           not_found
         end
-      else
-        not_found
       end
     end
 
@@ -80,11 +79,10 @@ module CommonwealthVlrEngine
     def send_zipped_content
       files_array = []
       @file_list.each_with_index do |file,index|
-        params[:id] = file[:id] # hack this so file_name returns correct value
+        params[:id] = file[:id] # hack this so file_url returns correct value
         @solr_document = file
         files_array << [file_url, "#{(index+1).to_s}_#{file_name_with_extension}"]
       end
-      params[:id] = @object_id # reset
       file_mappings = files_array.lazy.map { |url, path| [open(url), path] }
       zipline(file_mappings, "#{file_name}.zip")
     end
@@ -119,7 +117,7 @@ module CommonwealthVlrEngine
 
     # @return [String] the filename
     def file_name
-      "#{params[:id]}_#{params[:datastream_id]}"
+      "#{@object_id}_#{params[:datastream_id]}"
     end
 
     # @return [String] the filename with extension
@@ -138,10 +136,6 @@ module CommonwealthVlrEngine
       else
         'image/jpeg'
       end
-    end
-
-    def not_found
-      raise ActionController::RoutingError.new('Not Found')
     end
 
     def prepare_file_headers
@@ -173,6 +167,10 @@ module CommonwealthVlrEngine
     end
 
     private
+
+    def parent_id(document)
+      document[:is_file_of_ssim].first.gsub(/info:fedora\//,'')
+    end
 
     def stream_body(iostream)
       iostream.each do |in_buff|

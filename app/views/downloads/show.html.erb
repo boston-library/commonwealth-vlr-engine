@@ -11,7 +11,7 @@
 </div>
 
 <div id="downloads_modal_footer" class="modal-footer">
-  <%= link_to(trigger_downloads_path(@document.id, datastream_id: params[:datastream_id]),
+  <%= link_to(url_for_download(@document, params[:datastream_id]),
               class: 'trigger_download btn btn-primary',
               rel: 'nofollow',
               target: '_blank') do %>

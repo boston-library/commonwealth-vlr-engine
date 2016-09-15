@@ -66,9 +66,4 @@ class IiifManifestController < CatalogController
     headers['Access-Control-Allow-Origin'] = "*"
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
-
-
 end
