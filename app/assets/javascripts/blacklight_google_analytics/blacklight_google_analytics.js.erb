@@ -162,4 +162,15 @@ $(function() {
         }
     })
 
+    // start download button clicks
+    $("#downloads_start_links").find("a").off("click").click(function(){
+      try{
+        var action = 'trigger_download';
+        var label = $(this).attr('class').split(' ').pop();
+        ga('send', 'event', category, action, label);
+      } catch(err) {
+        BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+      }
+    })
+
 });

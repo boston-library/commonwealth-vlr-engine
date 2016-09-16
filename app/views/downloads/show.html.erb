@@ -10,9 +10,9 @@
   <%= render partial: 'terms_of_use', locals: {document: @parent_document} %>
 </div>
 
-<div id="downloads_modal_footer" class="modal-footer">
+<div id="downloads_start_links" class="modal-footer">
   <%= link_to(url_for_download(@document, params[:datastream_id]),
-              class: 'trigger_download btn btn-primary',
+              class: 'trigger_download btn btn-primary ' + params[:datastream_id],
               rel: 'nofollow',
               target: '_blank') do %>
       <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
