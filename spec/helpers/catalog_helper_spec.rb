@@ -76,47 +76,22 @@ describe CatalogHelper do
     end
   end
 
-  describe 'download_links helpers' do
+  describe 'image file helpers' do
 
-    before do
-      # copy :images to :documents, since we don't have any non-image items to test with at the moment
-      files_hash[:documents] = files_hash[:images]
-      @download_links = helper.create_download_links(document, files_hash, 'link_class')
-    end
-
-    describe '#create_download_links' do
-
-      it 'should return an array of links' do
-        expect(@download_links.length).to eq(2)
-        expect(@download_links.first.match(/\A<a[a-z =\\"_]*href=/)).to be_truthy
-      end
-
-      it 'should link to the productionMaster datastream' do
-        expect(@download_links.first).to include("href=\"#{FEDORA_URL['url']}/objects/#{image_pid}/datastreams/productionMaster/content")
-      end
-
-    end
-
-    describe '#has_downloadable_files?' do
-      it 'should return true if there are documents, audio, or generic files' do
-        expect(helper.has_downloadable_files?(files_hash)).to be_truthy
+    describe '#has_image_files?' do
+      it 'should return true' do
+        expect(helper.has_image_files?(files_hash)).to be_truthy
       end
     end
 
-    describe '#ia_download_title' do
-      it 'should return the correct download title' do
-        expect(helper.ia_download_title('mobi')).to eq('Kindle')
-        expect(helper.ia_download_title('zip')).to eq('Daisy')
+    describe '#image_file_pids' do
+      let (:image_file_pids_result) { helper.image_file_pids(files_hash[:images]) }
+      it 'should return an array of ImageFile pids' do
+        expect(image_file_pids_result.length).to eq(2)
+        expect(image_file_pids_result.first).to eq(image_pid)
       end
     end
 
-  end
-
-  describe '#has_image_files?' do
-    it 'should return an array of ImageFile pids' do
-      expect(helper.has_image_files?(files_hash).length).to eq(2)
-      expect(helper.has_image_files?(files_hash).first).to eq(image_pid)
-    end
   end
 
   describe '#has_volumes?' do

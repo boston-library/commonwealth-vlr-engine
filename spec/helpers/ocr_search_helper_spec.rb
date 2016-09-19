@@ -36,7 +36,7 @@ describe OcrSearchHelper do
     let(:book_pid) { 'bpl-dev:7s75dn48d' }
     let(:page_pid) { 'bpl-dev:7s75dn58n' }
     let(:document) { Blacklight.default_index.search({:q => "id:\"#{page_pid}\"", :rows => 1}).documents.first }
-    let(:image_pid_list) { ocr_search_helper_test_class.has_image_files?(ocr_search_helper_test_class.get_files(book_pid)) }
+    let(:image_pid_list) { ocr_search_helper_test_class.image_file_pids(ocr_search_helper_test_class.get_image_files(book_pid)) }
 
     describe 'with a page_num_field value' do
 

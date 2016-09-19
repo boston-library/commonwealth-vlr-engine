@@ -37,7 +37,7 @@
               <div class="download_volume_links">
                 <i class="fa fa-download"></i> Downloads
                 <ul class="volume_downloads">
-                  <% create_download_links(volume[:vol_doc], volume[:vol_files], 'volume_downloads_link').each do |link| %>
+                  <% create_download_links(volume[:vol_doc], volume[:vol_files]).each do |link| %>
                       <li class="download_list_item"><%= link %></li>
                   <% end %>
                 </ul>

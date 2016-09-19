@@ -74,7 +74,6 @@ module CommonwealthVlrEngine
 
     def image_download_links(document, image_files_hash)
       if document[:identifier_ia_id_ssi]
-        #[ia_zip_download_link(document[:identifier_ia_id_ssi])]
         [file_download_link(document[:id],
                             t("blacklight.downloads.images.accessFull"),
                             nil,
