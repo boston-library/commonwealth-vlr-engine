@@ -18,6 +18,7 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
       before_filter :get_object_files, :only => [:show]
+      before_filter :mlt_results_for_show, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
       before_filter :mlt_search, :only => [:index]
       before_filter :add_institution_fields, :only => [:index, :facet]
@@ -169,6 +170,9 @@ module CommonwealthVlrEngine
         config.add_show_tools_partial :custom_email, partial: 'show_sharing_tools'
         config.add_show_tools_partial :cite, partial: 'show_cite_tools'
 
+        # add 'more like this' params in catalog#show
+        #config.default_document_solr_params = mlt_params_for_show
+
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -253,6 +257,30 @@ module CommonwealthVlrEngine
     end
 
     protected
+
+    # run a separate search for more like this items
+    # so we can explicitly set params to exclude unwanted items
+    def mlt_results_for_show
+      blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+=begin
+      mlt_qf = if t('blacklight.home.browse.institutions.enabled')
+                 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim^3'
+               else
+                 'related_item_host_ssim^100 institution_name_ssim^50 subject_facet_ssim^10 subject_geo_city_ssim^5'
+               end
+      mlt_solr_params = {id: params[:id],
+                         qt: 'mlt',
+                         'mlt.fl' => 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim,title_info_primary_tsi',
+                         # 'mlt.count' => 4,
+                         'mlt.match.include' => false,
+                         rows: 4,
+                         'mlt.mintf' => 1,
+                         'mlt.qf' => mlt_qf
+      }
+=end
+      (@mlt_response, @mlt_document_list) = search_results(mlt_id: params[:id], rows: 4)
+    end
+
     ##
     # When a user logs in, transfer any saved searches or bookmarks to the current_user
     def transfer_guest_user_actions_to_current_user

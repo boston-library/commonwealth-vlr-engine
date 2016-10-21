@@ -226,11 +226,10 @@ module CommonwealthVlrEngine
     # render the 'more like this' search link if doc has subjects
     def render_mlt_search_link(document)
       if document[:subject_facet_ssim] || document[:subject_geo_city_ssim]
-        content_tag :div, :id => 'more_mlt_link_wrapper' do
+        content_tag :div, id: 'more_mlt_link_wrapper' do
           link_to t('blacklight.more_like_this.more_mlt_link'),
-                  search_catalog_path(:mlt_id => document.id,
-                                     :qt => 'mlt'),
-                  :id => 'more_mlt_link'
+                  search_catalog_path(mlt_id: document.id),
+                  id: 'more_mlt_link'
         end
       end
     end

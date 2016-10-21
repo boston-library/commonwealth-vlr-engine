@@ -51,8 +51,9 @@
     <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 
     <%# more like this %>
-    <% unless @document.more_like_this.empty? %>
-        <%= render :partial => 'catalog/more_like_this', :locals => {:document => @document} %>
+    <% unless @mlt_document_list.empty? %>
+        <%= render partial: 'catalog/more_like_this',
+                   locals: {document: @document, mlt_document_list: @mlt_document_list} %>
     <% end %>
 
   </div>
