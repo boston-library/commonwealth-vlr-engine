@@ -9,13 +9,13 @@ class BlacklightAdvancedSearch::QueryParser
   # LOCAL OVERRIDE of BlacklightAdvancedSearch::ParsingNestingParser#process_query
   def process_query(params,config)
     queries = []
-    keyword_queries.each do |field,query|
-      queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
-    end
+    queries = keyword_queries.map do |field, query|
+      queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+    end.join(" #{keyword_op} ")
     if params[:date_start].blank? && params[:date_end].blank?
-      queries.join( ' ' + keyword_op + ' ')
+      queries
     else
-      queries.join( ' ' + keyword_op + ' ') + ' AND ' + add_date_range_to_queries(params)
+      queries.blank? ? add_date_range_to_queries(params) : [queries, add_date_range_to_queries(params)].join(' AND ')
     end
   end
 
