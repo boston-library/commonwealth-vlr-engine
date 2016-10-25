@@ -17,6 +17,7 @@ module CommonwealthVlrEngine
       # add BlacklightRangeLimit
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
+      # HEADS UP: these filters get inherited by any subclass of CatalogController
       before_filter :get_object_files, :only => [:show]
       before_filter :mlt_results_for_show, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
@@ -219,30 +220,6 @@ module CommonwealthVlrEngine
       render :facet
     end
 
-    # if this is 'more like this' search, solr id = params[:mlt_id]
-    def mlt_search
-      if params[:mlt_id]
-        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
-      end
-    end
-
-    # TODO: refactor how views access files/volumes/etc.
-    def get_object_files
-      @object_files = get_files(params[:id])
-    end
-
-    def set_nav_context
-      @nav_li_active = 'search'
-    end
-
-    # add institutions if configured
-    def add_institution_fields
-      if t('blacklight.home.browse.institutions.enabled')
-        blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse:  false
-        blacklight_config.add_index_field 'institution_name_ssim', label: 'Institution', helper_method: :index_institution_link
-      end
-    end
-
     # TODO: refactor how views access files/volumes/etc.
     # returns the child volumes for Book objects (if they exist)
     # needs to be in this module because CommonwealthVlrEngine::Finder methods aren't accessible in helpers/views
@@ -256,31 +233,44 @@ module CommonwealthVlrEngine
       volumes.presence
     end
 
-    protected
+    private
 
-    # run a separate search for more like this items
-    # so we can explicitly set params to exclude unwanted items
-    def mlt_results_for_show
-      blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
-=begin
-      mlt_qf = if t('blacklight.home.browse.institutions.enabled')
-                 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim^3'
-               else
-                 'related_item_host_ssim^100 institution_name_ssim^50 subject_facet_ssim^10 subject_geo_city_ssim^5'
-               end
-      mlt_solr_params = {id: params[:id],
-                         qt: 'mlt',
-                         'mlt.fl' => 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim,title_info_primary_tsi',
-                         # 'mlt.count' => 4,
-                         'mlt.match.include' => false,
-                         rows: 4,
-                         'mlt.mintf' => 1,
-                         'mlt.qf' => mlt_qf
-      }
-=end
-      (@mlt_response, @mlt_document_list) = search_results(mlt_id: params[:id], rows: 4)
+    # if this is 'more like this' search, solr id = params[:mlt_id]
+    def mlt_search
+      if controller_name == 'catalog' && params[:mlt_id]
+        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+      end
     end
 
+    # TODO: refactor how views access files/volumes/etc.
+    def get_object_files
+      if controller_name == 'catalog' || controller_name == 'image_viewer'
+        @object_files = get_files(params[:id])
+      end
+    end
+
+    def set_nav_context
+      @nav_li_active = 'search' if controller_name == 'catalog'
+    end
+
+    # add institutions if configured
+    def add_institution_fields
+      if t('blacklight.home.browse.institutions.enabled')
+        blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse:  false
+        blacklight_config.add_index_field 'institution_name_ssim', label: 'Institution', helper_method: :index_institution_link
+      end
+    end
+
+    # run a separate search for 'more like this' items
+    # so we can explicitly set params to exclude unwanted items
+    def mlt_results_for_show
+      if controller_name == 'catalog'
+        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+        (@mlt_response, @mlt_document_list) = search_results(mlt_id: params[:id], rows: 4)
+      end
+    end
+
+    protected
     ##
     # When a user logs in, transfer any saved searches or bookmarks to the current_user
     def transfer_guest_user_actions_to_current_user

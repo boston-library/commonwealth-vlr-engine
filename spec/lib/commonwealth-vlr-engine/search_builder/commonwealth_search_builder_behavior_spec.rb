@@ -72,12 +72,22 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   end
 
-  describe 'set_solr_id_for_mlt' do
+  describe 'mlt_params' do
 
-    subject { search_builder.with({mlt_id: 'bpl-dev:12345678'}) }
+    let(:builder_with_params) { search_builder.with({mlt_id: 'bpl-dev:12345678'}) }
+
+    before do
+      builder_with_params.mlt_params(solr_parameters)
+    end
 
     it 'should set the id param to the mlt_id value' do
-      expect(subject.set_solr_id_for_mlt(solr_parameters)).to eq('bpl-dev:12345678')
+      expect(solr_parameters['id']).to eq('bpl-dev:12345678')
+    end
+
+    it 'should set the mlt query params' do
+      expect(solr_parameters['qt']).to eq('mlt')
+      expect(solr_parameters['mlt.fl']).to be_truthy
+      expect(solr_parameters['mlt.qf']).to be_truthy
     end
 
   end

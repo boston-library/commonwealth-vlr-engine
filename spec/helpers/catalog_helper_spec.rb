@@ -261,7 +261,7 @@ describe CatalogHelper do
 
     describe 'copyright date' do
       it 'should return the correct date value' do
-        expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('c1984')
+        expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('(c) 1984')
       end
     end
 

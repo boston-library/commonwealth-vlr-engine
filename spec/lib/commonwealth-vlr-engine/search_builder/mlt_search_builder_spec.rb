@@ -10,7 +10,7 @@ describe CommonwealthMltSearchBuilder do
   describe 'processor chain' do
 
     it 'should add the right methods to the processor chain' do
-      expect(@obj.processor_chain).to include(:set_solr_id_for_mlt)
+      expect(@obj.processor_chain).to include(:mlt_params)
     end
 
   end
