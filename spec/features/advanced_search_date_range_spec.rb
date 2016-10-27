@@ -32,5 +32,5 @@ describe 'advanced search date range behavior' do
     end
 
   end
-  
+
 end

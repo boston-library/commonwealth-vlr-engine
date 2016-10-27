@@ -267,6 +267,8 @@ module CommonwealthVlrEngine
       if controller_name == 'catalog'
         blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
         (@mlt_response, @mlt_document_list) = search_results(mlt_id: params[:id], rows: 4)
+        # have to reset to CommonwealthSearchBuilder, or prev/next links won't work
+        blacklight_config.search_builder_class = CommonwealthSearchBuilder
       end
     end
 
