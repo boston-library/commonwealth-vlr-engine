@@ -6,6 +6,8 @@ en:
           page_title: 'Search'
           title: 'Search - %{application_name}'
           limit: 'Narrow your search:'
+          constraints:
+            date: 'Date Range'
 
     application_name: 'SITE_NAME'
     application_desc: 'SITE DESCRIPTION'
