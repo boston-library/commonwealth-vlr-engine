@@ -12,7 +12,8 @@ module CommonwealthVlrEngine
       # remove collection facet and collapse others
       before_filter :relation_base_blacklight_config, :only => [:index, :show]
       before_filter :add_series_facet, :only => :show
-      before_filter :collections_limit, :only => [:index, :facet]
+      before_filter :collections_limit, :only => :index
+      before_filter :collections_limit_for_facets, :only => :facet
       before_filter :collapse_institution_facet, :only => :index
 
       helper_method :search_action_url
@@ -85,9 +86,16 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['physical_location_ssim'].collapse = true
     end
 
-    # filter out non-collection items
+    # find only collection objects
     def collections_limit
       blacklight_config.search_builder_class = CommonwealthCollectionsSearchBuilder
+    end
+
+    # find only collection object data for facet results
+    def collections_limit_for_facets
+      unless request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
+        self.collections_limit
+      end
     end
 
     # find the title and pid for the object representing the collection image

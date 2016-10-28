@@ -52,7 +52,8 @@ module CommonwealthVlrEngine
     end
 
     # override of Blacklight::Controller#search_action_path
-    # for proper constraints linking in collections#index and institutions#index
+    # for proper constraints and facet links in collections and institution views
+    # gets a bit tricky for collections#facet, since this has multiple contexts (collections#index and collections#show)
     def search_action_path *args
       if args.first.is_a? Hash
         args.first[:only_path] = true
@@ -62,8 +63,18 @@ module CommonwealthVlrEngine
 
       if params[:controller] == 'institutions' && params[:action] == 'index'
         institutions_url *args
-      elsif params[:controller] == 'collections' && (params[:action] == 'index' || params[:action] == 'facet')
-        collections_url *args
+      elsif params[:controller] == 'collections'
+        if params[:action] == 'index'
+          collections_url *args
+        elsif params[:action] == 'facet'
+          if request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
+            search_action_url *args
+          else
+            collections_url *args
+          end
+        else
+          search_action_url *args
+        end
       else
         search_action_url *args
       end
