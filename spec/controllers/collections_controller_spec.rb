@@ -97,6 +97,15 @@ describe CollectionsController do
       end
     end
 
+    # TODO: spec for case where request.query_parameters exist
+    # can't figure out how to set these in a spec
+    describe 'collections_limit_for_facets' do
+      it 'should set the correct search builder class' do
+        @mock_controller.send(:collections_limit_for_facets)
+        expect(@mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
+      end
+    end
+
     describe 'get_collection_image_info' do
       it 'should return a hash with the collection image object title and pid' do
         expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true})

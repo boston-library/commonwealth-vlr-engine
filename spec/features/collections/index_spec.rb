@@ -18,6 +18,12 @@ describe 'Collections#index view' do #, js: true do
       end
     end
 
+    it 'should have facet links that route to collections#index' do
+      within ('#facet-genre_basic_ssim') do
+        expect(page).to have_selector("a[href*='/collections?']")
+      end
+    end
+
     describe 'click on facet value' do
 
       before { click_link('Photographs') }

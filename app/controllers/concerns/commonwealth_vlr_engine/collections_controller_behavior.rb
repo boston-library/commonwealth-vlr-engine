@@ -91,7 +91,12 @@ module CommonwealthVlrEngine
       blacklight_config.search_builder_class = CommonwealthCollectionsSearchBuilder
     end
 
-    # find only collection object data for facet results
+    # find object data for facet results
+    # collections#facet can be called within BOTH collections#index and collections#show contexts
+    # when collections#index, want to limit to collection objects
+    # when collections#show, should be objects that are child of collection
+    # so we use the check below, since request.query_parameters['f'] is only added in collections#show
+    # via set_collection_facet_params
     def collections_limit_for_facets
       unless request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
         self.collections_limit
