@@ -25,6 +25,13 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#date_range_constraints_to_s' do
+    let(:sample_params) { {date_start: '1970', date_end: '2000'} }
+    it 'should return the right string' do
+      expect(helper.date_range_constraints_to_s(sample_params)).to eq('1970-2000')
+    end
+  end
+
   describe '#link_to_facet' do
 
     it 'should create a link to catalog#index with the facet params and display value' do

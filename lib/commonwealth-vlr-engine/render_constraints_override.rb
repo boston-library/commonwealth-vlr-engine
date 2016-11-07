@@ -34,15 +34,8 @@ module CommonwealthVlrEngine
       # So simple don't need a view template, we can just do it here.
       return ''.html_safe if localized_params[:date_start].blank? && localized_params[:date_end].blank?
 
-      date_constraint = if localized_params[:date_start].blank?
-                          "before #{localized_params[:date_end]}"
-                        elsif localized_params[:date_end].blank?
-                          "after #{localized_params[:date_start]}"
-                        else
-                          "#{localized_params[:date_start]}-#{localized_params[:date_end]}"
-                        end
       render_constraint_element(t('blacklight.advanced_search.constraints.date'),
-                                date_constraint,
+                                date_range_constraints_to_s(localized_params),
                                 :classes => ['date_range'],
                                 :remove => remove_constraint_url(localized_params.merge(date_start: nil,
                                                                                         date_end: nil,
