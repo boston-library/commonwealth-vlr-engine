@@ -235,6 +235,22 @@ module CommonwealthVlrEngine
 
     private
 
+    # LOCAL OVERRIDE of Blacklight::SearchHelper
+    # needed so that Solr query for prev/next/total in catalog#show view uses correct SearchBuilder class
+    # because params added exclusively in SearchBuilder methods don't get saved by current_search_session
+    def get_previous_and_next_documents_for_search(index, request_params, extra_controller_params={})
+      search_builder_to_use = request_params[:mlt_id] ? CommonwealthMltSearchBuilder.new(self) : search_builder
+      p = previous_and_next_document_params(index)
+      query = search_builder_to_use.with(request_params).start(p.delete(:start)).rows(p.delete(:rows)).merge(extra_controller_params).merge(p)
+      response = repository.search(query)
+      document_list = response.documents
+
+      # only get the previous doc if there is one
+      prev_doc = document_list.first if index > 0
+      next_doc = document_list.last if (index + 1) < response.total
+      [response, [prev_doc, next_doc]]
+    end
+
     # if this is 'more like this' search, solr id = params[:mlt_id]
     def mlt_search
       if controller_name == 'catalog' && params[:mlt_id]
