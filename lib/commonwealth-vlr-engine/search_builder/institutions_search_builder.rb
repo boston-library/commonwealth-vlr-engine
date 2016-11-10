@@ -5,7 +5,7 @@ class CommonwealthInstitutionsSearchBuilder < Blacklight::SearchBuilder
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
-      :exclude_unpublished_items, :institutions_filter
+      :site_filter, :exclude_unpublished_items, :institutions_filter
   ]
 
 end

@@ -4,7 +4,7 @@ class CommonwealthCollectionsSearchBuilder < Blacklight::SearchBuilder
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
-      :exclude_unpublished_items, :collections_filter
+      :site_filter, :exclude_unpublished_items, :collections_filter
   ]
 
   unless I18n.t('blacklight.home.browse.institutions.enabled')

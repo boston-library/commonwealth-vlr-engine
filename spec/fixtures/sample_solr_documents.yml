@@ -160,6 +160,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:df65v791t
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:11:57.513Z'
 - system_create_dtsi:
@@ -368,6 +374,11 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:h702q641c
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:11:28.285Z'
 - system_create_dtsi:
@@ -574,6 +585,11 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-31T15:11:28.837Z'
 - system_create_dtsi:
@@ -784,6 +800,12 @@
   - bpl-dev:000000086
   flagged_content_ssi:
   - true
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:11:52.72Z'
 - system_create_dtsi:
@@ -876,6 +898,12 @@
   - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:df65v791t
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-02-18T18:31:16.934Z'
 - system_create_dtsi:
@@ -932,6 +960,11 @@
   - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:h702q642n
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-05-06T18:30:27.934Z'
 - system_create_dtsi:
@@ -986,6 +1019,11 @@
   - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-28T16:56:49.037Z'
 - system_create_dtsi:
@@ -1040,6 +1078,11 @@
   - bpl-dev:abcd12345
   exemplary_image_ssi:
   - bpl-dev:g445cd17d
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-28T16:56:47.692Z'
 - system_create_dtsi:
@@ -1104,6 +1147,10 @@
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
   institution_pid_ssi:
   - bpl-dev:abcd12345
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
   timestamp:
   - '2015-02-18T19:44:18.203Z'
 - system_create_dtsi:
@@ -1267,6 +1314,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:000000043
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:11:56.036Z'
 - system_create_dtsi:
@@ -1418,6 +1471,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:qf85nb29f
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:12:04.869Z'
 - system_create_dtsi:
@@ -1564,6 +1623,12 @@
   - complete
   exemplary_image_ssi:
   - bpl-dev:df65v789s
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  - nblmc
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-07-24T14:11:53.292Z'
 - system_create_dtsi:
@@ -1821,6 +1886,11 @@
   - 828d35b84df3a1ee31b883bc72a65946
   iaMeta_matcher_md5_ssi:
   - 956e00f7352ae68a56f22427551066be
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-11-18T21:22:14.23Z'
 - system_create_dtsi:
@@ -1977,6 +2047,11 @@
   - 159d9904be9c773b72beaaa58049c6a3
   iaMeta_matcher_md5_ssi:
   - 486b502fa785a7f9779c2353083d40dd
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-11-18T19:32:49.014Z'
 - system_create_dtsi:
@@ -2384,6 +2459,11 @@
   - 159d9904be9c773b72beaaa58049c6a3
   iaMeta_matcher_md5_ssi:
   - d7105fab082e3c4ab6ade7c1b03c7a85
+  destination_site_ssim:
+  - commonwealth
+  - bpl
+  harvesting_status_bsi:
+  - true
   timestamp:
   - '2015-11-18T17:20:55.415Z'
 - system_create_dtsi:

@@ -20,6 +20,14 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   let(:search_builder) { search_builder_class.new(context) }
 
+  describe 'site_filter' do
+
+    it 'should add parameters to filter items with the correct site' do
+      expect(search_builder.site_filter(solr_parameters).to_s).to include('destination_site_ssim')
+    end
+
+  end
+
   describe 'exclude_unwanted_models' do
 
     it 'should add parameters to exclude unwanted models' do

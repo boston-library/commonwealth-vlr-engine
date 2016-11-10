@@ -1,6 +1,12 @@
 module CommonwealthVlrEngine
   module CommonwealthSearchBuilderBehavior
 
+    # only return items corresponding to the correct site
+    def site_filter(solr_parameters = {})
+      solr_parameters[:fq] ||= []
+      solr_parameters[:fq] << '+destination_site_ssim:"' + CommonwealthVlrEngine.config[:site] + '"'
+    end
+
     # keep file assets from appearing in search results
     def exclude_unwanted_models(solr_parameters = {})
       solr_parameters[:fq] ||= []

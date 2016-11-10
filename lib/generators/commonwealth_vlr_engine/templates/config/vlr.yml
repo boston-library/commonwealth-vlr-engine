@@ -1,13 +1,16 @@
 # stores VLR settings
 
 development:
+  site: commonwealth
   institution:
     pid: bpl-dev:abcd12345
 
 test:
+  site: commonwealth
   institution:
       pid: bpl-dev:abcd12345
 
 production:
+  site: commonwealth
   institution:
       pid: commonwealth:abcd12345
