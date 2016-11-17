@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'blacklight-gallery', '0.5.0'
   spec.add_dependency 'blacklight-maps', '0.5.0'
   spec.add_dependency 'blacklight_range_limit', '6.0.0'
+  spec.add_dependency 'openseadragon', '0.3.1'
   spec.add_dependency 'bootstrap-sass', '~> 3.0'
   spec.add_dependency 'font-awesome-sass', '4.1.0'
   spec.add_dependency 'bpluser' #, '~> 0.0.7'
