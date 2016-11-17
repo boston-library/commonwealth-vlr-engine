@@ -208,6 +208,11 @@ module CommonwealthVlrEngine
       }.to_json
     end
 
+    # adds apple-touch-icon tags to <head>
+    def render_mobile_icon_tags
+      render partial: 'shared/mobile_icon_tags'
+    end
+
   end
 end
 
