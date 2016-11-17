@@ -54,10 +54,10 @@ module CommonwealthVlrEngine
       solr_parameters[:id] = blacklight_params[:mlt_id]
       solr_parameters[:qt] = 'mlt'
       solr_parameters[:mlt] = true
-      solr_parameters[:'mlt.fl'] = 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim,title_info_primary_tsi'
+      solr_parameters[:'mlt.fl'] = 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim'
       solr_parameters[:'mlt.match.include'] = false
       solr_parameters[:'mlt.mintf'] = 1
-      solr_parameters[:'mlt.qf'] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim^3'
+      solr_parameters[:'mlt.qf'] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim'
     end
 
     # used by CollectionsController#index
