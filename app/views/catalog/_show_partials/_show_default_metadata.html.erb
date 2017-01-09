@@ -34,11 +34,11 @@
       </dd>
     <% end %>
     <%# uniform title field %>
-    <% if document[:title_info_uniform_tsim] %>
+    <% if document[:title_info_uniform_ssim] %>
         <dt><%= t('blacklight.metadata_display.fields.title_uniform') %>:</dt>
         <dd>
-          <% document[:title_info_uniform_tsim].each do |uniform_title| %>
-              <%= uniform_title %><br />
+          <% document[:title_info_uniform_ssim].each do |uniform_title| %>
+              <%= link_to_facet(uniform_title, 'title_info_uniform_ssim') %><br />
           <% end %>
         </dd>
     <% end %>

@@ -101,6 +101,7 @@ module CommonwealthVlrEngine
         config.add_facet_field 'related_item_subsubseries_ssim', label: 'Sub-subseries', include_in_request: false
         config.add_facet_field 'institution_name_ssim', label: 'Institution', include_in_request: false
         config.add_facet_field 'name_facet_ssim', label: 'Name', include_in_request: false
+        config.add_facet_field 'title_info_uniform_ssim', label: 'Title (uniform)', include_in_request: false
         # facet for blacklight-maps catalog#index map view
         # have to use '-2' to get all values
         # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
