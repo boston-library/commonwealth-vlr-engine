@@ -1872,6 +1872,8 @@
   - Outline lessons in housekeeping, including cooking, laundering, dairying, and nursing
   subtitle_tsim:
   - for use in schools.
+  has_searchable_text_bsi:
+  - true
   ocr_tiv:
   - "PREFACE. This publication has been compiled from the results of practical experience in the work of instruction in the schools. It is believed that it is a comprehensive and practical manual that will be of material assistance to the teacher, but every teacher is urged to forward suggestions in order that the manual may be improved when a second edition is issued. OUTLINE LESSONS IN HOUSEKEEPINa INTRODUCTION. Matrons and teachers everywhere are asked to reahze the impor- tance of systematic instruction in the several Hnes of household work. Their judgment is relied upon at all times as to the fitness and appro- priateness of the lesson to be given, and they may deviate from the regular course given herein, if it seems best, in order that the training may be better adapted to the needs of the pupils in the several sections."
   workflow_state_ssi:
@@ -2033,6 +2035,8 @@
   - v.1
   subtitle_tsim:
   - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  has_searchable_text_bsi:
+  - true
   ocr_tiv:
   - "Designed by Frieda V. Redmond. OCCUPATIONS FOR WOMEN. By p. G. HUBERT, Jr. The New Fields of Work Open. Art Study and Art Workers. Women Architects. Teaching. Typewriting and Stenography. Women's Exchanges. Occupations for the Inexperienced. The Trained Nurse. Women Physicians and Lawyers. Newspaper Work and Pay. Dress-making and Millinery. Work Done at Home. The Stage as a Profession. Novel Occupations Followed. Women as Local Photographers. How Women Workers are Swindled."
   workflow_state_ssi:
@@ -2194,6 +2198,8 @@
   - v.2
   subtitle_tsim:
   - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  has_searchable_text_bsi:
+  - true
   ocr_tiv:
   - "The Home Grounds. itself, but, after all this has been con- sidered, there still remain some wise suggestions that should be followed in nearly all cases. Give plenty of space in front of the house, in order to exhibit it to better effect and to secure at the same time greater privacy from the street."
   workflow_state_ssi:
@@ -2444,9 +2450,11 @@
   note_tsim:
   - Appendix, v. 2, gives bibliographies on various subjects treated in the text.
   title_info_primary_tsi:
-  - The  woman's book
+  - The woman's book
   subtitle_tsim:
   - dealing practically with the modern conditions of home-life, self-support, education, opportunties, and every-day problems.
+  has_searchable_text_bsi:
+  - true
   ocr_tiv:
   - "Designed by Frieda V. Redmond. OCCUPATIONS FOR WOMEN. By p. G. HUBERT, Jr. The New Fields of Work Open. Art Study and Art Workers. Women Architects. Teaching. Typewriting and Stenography. Women's Exchanges. Occupations for the Inexperienced. The Trained Nurse. Women Physicians and Lawyers. Newspaper Work and Pay. Dress-making and Millinery. Work Done at Home. The Stage as a Profession. Novel Occupations Followed. Women as Local Photographers. How Women Workers are Swindled. The Home Grounds. itself, but, after all this has been con- sidered, there still remain some wise suggestions that should be followed in nearly all cases. Give plenty of space in front of the house, in order to exhibit it to better effect and to secure at the same time greater privacy from the street."
   workflow_state_ssi:

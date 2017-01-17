@@ -32,7 +32,7 @@ describe 'more like this search' do
     end
 
     it 'should show the correct item count' do
-      expect(page).to have_selector('.page_links strong:last-of-type', text: '5')
+      expect(page).to have_selector('.page_links strong:last-of-type', text: '4')
     end
 
   end

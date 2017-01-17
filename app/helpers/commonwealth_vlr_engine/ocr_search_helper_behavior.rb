@@ -9,10 +9,7 @@ module CommonwealthVlrEngine
 
     # determine of the item has text content that can be searched
     def has_searchable_text?(document)
-      return true if document['has_searchable_text_bsi']
-      if document['identifier_ia_id_ssi']
-        return true unless document['title_info_uniform_ssim'] && document['title_info_uniform_ssim'].match(/Liberator/)
-      end
+      document['has_searchable_text_bsi']
     end
 
     # if current_search_session exists, return query_params['q'], otherwise return nil
