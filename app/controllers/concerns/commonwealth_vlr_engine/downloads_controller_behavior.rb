@@ -108,7 +108,7 @@ module CommonwealthVlrEngine
     end
 
     def file_extension
-      if params[:datastream_id] == 'productionMaster'
+      if params[:datastream_id] =~ /Master/
         JSON.parse(@solr_document[:object_profile_ssm].first)["objLabel"].split('.')[1]
       else
         'jpg'
@@ -131,7 +131,7 @@ module CommonwealthVlrEngine
     end
 
     def mime_type
-      if params[:datastream_id] == 'productionMaster'
+      if params[:datastream_id] =~ /Master/
         @solr_document[:mime_type_tesim].first
       else
         'image/jpeg'

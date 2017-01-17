@@ -68,8 +68,13 @@ module CommonwealthVlrEngine
       end
     end
 
-    def image_datastreams
-      %w(productionMaster accessFull access800)
+    def image_datastreams(object_profile_json)
+      image_datastreams = []
+      stored_datastreams = %w(productionMaster access800 georectifiedMaster)
+      stored_datastreams.each do |datastream_id|
+        image_datastreams << datastream_id if object_profile_json["datastreams"][datastream_id]
+      end
+      image_datastreams.insert(1, 'accessFull')
     end
 
     def image_download_links(document, image_files_hash)
@@ -82,7 +87,7 @@ module CommonwealthVlrEngine
       else
         object_profile_json = JSON.parse(image_files_hash.first['object_profile_ssm'].first)
         image_links = []
-        image_datastreams.each do |datastream_id|
+        image_datastreams(object_profile_json).each do |datastream_id|
           if image_files_hash.length == 1
             object_profile = object_profile_json
             object_id = image_files_hash.first['id']

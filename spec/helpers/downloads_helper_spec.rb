@@ -30,7 +30,7 @@ describe DownloadsHelper do
     # copy :images to :documents, since we don't have any non-image items to test with at the moment
     files_hash[:documents] = files_hash[:images]
     @download_links = helper.create_download_links(document, files_hash)
-    @image_datastreams_output = helper.image_datastreams
+    @image_datastreams_output = helper.image_datastreams(object_profile)
   end
 
   describe '#create_download_links' do
