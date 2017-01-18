@@ -19,7 +19,7 @@ class BookmarksController < CatalogController
 
     if request.xhr?
       # success ? render(json: { bookmarks: { count: current_or_guest_user.bookmarks.count }}) : render(:text => "", :status => "500")
-      success ? render(:update) : render(:text => "", :status => "500")
+      success ? render(:update) : render(plain: '', status: '500')
     else
       if @bookmarks.any? && success
         flash[:notice] = I18n.t('blacklight.bookmarks.add.success', :count => @bookmarks.length)
@@ -27,7 +27,12 @@ class BookmarksController < CatalogController
         flash[:error] = I18n.t('blacklight.bookmarks.add.failure', :count => @bookmarks.length)
       end
 
-      redirect_to :back
+      if respond_to? :redirect_back
+        redirect_back fallback_location: bookmarks_path
+      else
+        # Deprecated in Rails 5.0
+        redirect_to :back
+      end
     end
   end
 
