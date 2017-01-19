@@ -12,9 +12,9 @@ describe ApplicationHelper do
   end
 
   describe '#render_format_index' do
-    let(:args) { {document: {genre_field: 'Maps'}, field: :genre_field} }
+    let(:opts) { {value: ['Maps']} }
     it 'should return the right value' do
-      expect(helper.render_format_index(args)).to eq('Maps/Atlases')
+      expect(helper.render_format_index(opts)).to eq('Maps/Atlases')
     end
   end
 

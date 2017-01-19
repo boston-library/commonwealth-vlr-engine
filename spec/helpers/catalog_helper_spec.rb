@@ -324,27 +324,29 @@ describe CatalogHelper do
 
     describe '#thumbnail_url' do
 
+      let(:document_to_hash) { document.to_h }
+
       it 'should return the datastream path if there is an exemplary_image_ssi value' do
         expect(helper.thumbnail_url(document)).to eq("#{FEDORA_URL['url']}/objects/#{image_pid}/datastreams/thumbnail300/content")
       end
 
       describe 'with no exemplary image' do
 
-        before { document.delete(:exemplary_image_ssi) }
+        before { document_to_hash.delete('exemplary_image_ssi') }
 
         it 'should return the proper icon if there is a type_of_resource_ssim value' do
-          expect(helper.thumbnail_url(document)).to include('dc_image-icon.png')
+          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon.png')
         end
 
         describe 'with no type_of_resource_ssim value' do
 
           before do
-            document.delete(:type_of_resource_ssim)
-            document[blacklight_config.index.display_type_field.to_sym] = 'Collection'
+            document_to_hash.delete('type_of_resource_ssim')
+            document_to_hash[blacklight_config.index.display_type_field] = 'Collection'
           end
 
           it 'should return the collection icon' do
-            expect(helper.thumbnail_url(document)).to include('dc_collection-icon.png')
+            expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_collection-icon.png')
           end
 
         end
@@ -353,10 +355,10 @@ describe CatalogHelper do
 
       describe 'flagged item' do
 
-        before { document[blacklight_config.flagged_field.to_sym] = true }
+        before { document_to_hash[blacklight_config.flagged_field] = true }
 
         it 'should return the icon rather than the exemplary image' do
-          expect(helper.thumbnail_url(document)).to include('dc_image-icon.png')
+          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon.png')
         end
 
       end

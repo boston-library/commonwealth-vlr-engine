@@ -29,8 +29,8 @@ module CommonwealthVlrEngine
       end
     end
 
-    def render_format_index(args)
-      render_format(args[:document][args[:field]])
+    def render_format_index(options={})
+      options[:value].map { |v| render_format(v) }.join('; ')
     end
 
     # return the path to the icon for objects with no thumbnail

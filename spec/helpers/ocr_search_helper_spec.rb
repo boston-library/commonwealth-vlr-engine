@@ -62,8 +62,9 @@ describe OcrSearchHelper do
     describe 'without page_num_field value' do
 
       before do
-        page_document[blacklight_config.page_num_field.to_sym] = nil
-        @ocr_page_link = helper.render_page_link(page_document, image_pid_list, book_pid)
+        no_page_num = page_document.to_h
+        no_page_num[blacklight_config.page_num_field] = nil
+        @ocr_page_link = helper.render_page_link(SolrDocument.new(no_page_num), image_pid_list, book_pid)
       end
 
       it 'should have the correct label' do

@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
     # initiates the file download
     def trigger_download
       response, @solr_document = fetch(params[:id])
-      if !@solr_document.empty? && params[:datastream_id]
+      if !@solr_document.to_h.empty? && params[:datastream_id]
         if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
           @object_id = parent_id(@solr_document)
           send_content

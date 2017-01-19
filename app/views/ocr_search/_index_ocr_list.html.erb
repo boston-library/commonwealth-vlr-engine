@@ -1,3 +1,4 @@
+<% doc_presenter = index_presenter(document) %>
 <div class="ocr_search_result">
   <dl class="defList ocr_defList dl-horizontal">
     <dt><span class="ocr_page_link"><%= render_page_link(document, @image_pid_list, params[:id]) %></span></dt>
@@ -8,9 +9,8 @@
           </div>
       <% end %>
       <div class="ocr_snippets">
-        <%= render_index_field_value document,
-                                     field: blacklight_config.ocr_search_field,
-                                     counter: document_counter_with_offset(document_counter) %>
+        <%= doc_presenter.field_value(blacklight_config.ocr_search_field,
+                                      {counter: document_counter_with_offset(document_counter)}) %>
       </div>
     </dd>
   </dl>
