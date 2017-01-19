@@ -67,7 +67,7 @@ module BlacklightAdvancedSearch::RenderConstraintsOverride
     if is_advanced_search? localized_params
       true
     else
-      !(localized_params[:q].blank? and localized_params[:f].blank? and localized_params[:f_inclusive].blank? and localized_params[:mlt_id].blank? and localized_params[:coordinates].blank?)
+      !(localized_params[:q].blank? && localized_params[:f].blank? && localized_params[:f_inclusive].blank? && localized_params[:mlt_id].blank? && localized_params[:coordinates].blank?)
     end
   end
 

@@ -41,7 +41,7 @@
   date_start_qualifier_ssm:
   - inferred
   date_facet_yearly_ssim:
-  - 1922s
+  - 1922
   genre_basic_tsim:
   - Maps
   genre_basic_ssim:
@@ -247,18 +247,18 @@
   date_start_qualifier_ssm:
   - approximate
   date_facet_yearly_ssim:
-  - 1859s
-  - 1860s
-  - 1861s
-  - 1862s
-  - 1863s
-  - 1864s
-  - 1865s
-  - 1866s
-  - 1867s
-  - 1868s
-  - 1869s
-  - 1870s
+  - 1859
+  - 1860
+  - 1861
+  - 1862
+  - 1863
+  - 1864
+  - 1865
+  - 1866
+  - 1867
+  - 1868
+  - 1869
+  - 1870
   genre_basic_tsim:
   - Photographs
   genre_specific_tsim:
@@ -502,7 +502,7 @@
   date_start_qualifier_ssm:
   - approximate
   date_facet_yearly_ssim:
-  - 1851s
+  - 1851
   genre_basic_tsim:
   - Photographs
   genre_specific_tsim:
@@ -1195,7 +1195,7 @@
   date_start_qualifier_ssm:
   - nil
   date_facet_yearly_ssim:
-  - 1858s
+  - 1858
   table_of_contents_tsi:
   - "Inset maps: Jamaica Plain -- Brookline -- Geological map of Norfolk County, Mass. -- West Medway -- Medway -- South Dedham -- Dedham -- East Medway -- West Dedham -- Wrentham -- Bellingham -- Harrison Squares, Commercial Point (Dorchester) -- Meeting House Hill (Dorchester) -- Neponset & Port Norfolk, Dorchester -- Lower Mills, Dorchester & Milton -- Fairmount (Milton) -- Newton Lower Falls -- Railway Village -- Braintree, South Braintree -- Dorchester -- Upper Mills -- Foxborough -- East Stoughton -- Sheldonville -- Medfield -- Stoughton -- South Canton -- Randolph -- West Roxbury -- Franklin -- Sharon -- Quincy Point -- West Quincy -- North Weymouth -- South Randolph -- Ponkapog (Canton) -- East Weymouth -- East Braintree and Weymouth Landing -- Quincy -- Cohassett -- Roxbury with portions of Dorchester, W. Roxbury & c -- Walpole -- South Weymouth -- South Walpole -- Plimptonville & East Walpole."
   genre_basic_tsim:
@@ -1521,7 +1521,7 @@
   date_start_qualifier_ssm:
   - nil
   date_facet_yearly_ssim:
-  - 1877s
+  - 1877
   genre_basic_tsim:
   - Maps
   genre_basic_ssim:
@@ -1781,7 +1781,7 @@
   date_start_qualifier_ssm:
   - nil
   date_facet_yearly_ssim:
-  - 1911s
+  - 1911
   genre_basic_tsim:
   - Books
   genre_basic_ssim:
@@ -2364,7 +2364,7 @@
   date_start_qualifier_ssm:
   - nil
   date_facet_yearly_ssim:
-  - 1894s
+  - 1894
   table_of_contents_tsi:
   - "v. I. Occupations for women, by P. G. Hubert, jr. Women in their business affairs, by W. O. Stoddard. The principles of housekeeping, by Lillian W. Betts. Society and social usages, by Constance C. Harrison. The aesthetics of dress, by Eva W. McGlasson. Dress from a practical standpoint, by several writers. Hygiene in the home, by J. W. Roosevelt. The training of children, by Kate D. Wiggin. The education of women, by Lyman Abbott. Books and reading, by T. W. Higginson. The art of travel, by Elizabeth Bisland.--v. 2. The home grounds, by Samuel Parsons, jr. The flower garden, by J. N. Gerard. House building, by Helen C. Candee. House decoration and furnishing, by Mary G. Humphreys. Women's opportunties in town and country, by Mary C. Jones. Woman's handiwork, by Constance C. Harrison. Supplementary information, by various writers."
   genre_basic_tsim:

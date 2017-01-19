@@ -159,10 +159,11 @@ describe DownloadsHelper do
 
     describe 'item from Internet Archive' do
 
-      before { document[:identifier_ia_id_ssi] = 'foo' }
+      let (:document_to_hash) { document.to_h }
+      before { document_to_hash['identifier_ia_id_ssi'] = 'foo' }
 
       it 'should return the correct link path for an Internet Archive item' do
-        expect(helper.url_for_download(document, 'JPEG2000')).to include('archive.org')
+        expect(helper.url_for_download(SolrDocument.new(document_to_hash), 'JPEG2000')).to include('archive.org')
       end
 
     end
