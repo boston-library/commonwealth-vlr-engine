@@ -42,5 +42,6 @@ The table below indicates which versions of Commonwealth-VLR-Engine are compatib
 
 VLR-Engine version | works with Blacklight version
 ----------------------- | ---------------------
-0.0.2 | >= 6.1.0
+0.0.7 | >= 6.3.0 to < 7.*
+0.0.2 | >= 6.1.0 to < 6.3
 0.0.1 | >= 5.14.0 to < 6.*  
