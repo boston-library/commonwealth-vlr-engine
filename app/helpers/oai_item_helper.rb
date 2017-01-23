@@ -1,0 +1,3 @@
+module OaiItemHelper
+  include CommonwealthVlrEngine::OaiItemHelperBehavior
+end

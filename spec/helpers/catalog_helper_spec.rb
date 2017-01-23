@@ -282,12 +282,6 @@ describe CatalogHelper do
     end
   end
 
-  describe '#return_oai_inst_name' do
-    it 'should return the institution name' do
-      expect(helper.return_oai_inst_name(document)).to eq('Boston Public Library')
-    end
-  end
-
   describe '#setup_names_roles' do
 
     let(:doc_with_names) { Blacklight.default_index.search({:q => 'id:"bpl-dev:df65v788h"', :rows => 1}).documents.first }

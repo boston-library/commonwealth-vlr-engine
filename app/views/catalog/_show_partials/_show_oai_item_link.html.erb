@@ -2,7 +2,6 @@
   <%= link_to(document[:identifier_uri_ss],
               :class => 'view_oai_item',
               :target => '_blank' ) do %>
-      <%= t('blacklight.oai_objects.link_to_item',
-            :institution_name => return_oai_inst_name(document)) %> <span class="glyphicon glyphicon-share"></span>
+      <%= oai_link_text(document) %> <span class="glyphicon glyphicon-share"></span>
   <% end %>
 </div>
