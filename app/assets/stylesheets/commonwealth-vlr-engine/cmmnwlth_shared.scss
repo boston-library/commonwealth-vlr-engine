@@ -73,3 +73,23 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
     display:none;
   }
 }
+
+#modal-transition {
+  display: none;
+  border-radius: $border-radius-large;
+  background-color: rgba(0,0,0,.1);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+
+  #modal-transition-loading {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+  }
+
+}

@@ -275,7 +275,7 @@
 
   #thumb_img_show_container {
     text-align: center;
-    background-color: $lighter_gray;
+    background-color: $very_light_gray;
     border: 1px solid $well_border_color;
     border-radius: 4px;
     @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05) inset);
@@ -381,7 +381,7 @@
 }
 
 a.book_viewer_link, a.search_inside_link {
-  color: $lighter_gray;
+  color: $very_light_gray;
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
   padding: 0px 5px;
   margin-bottom: 2px;

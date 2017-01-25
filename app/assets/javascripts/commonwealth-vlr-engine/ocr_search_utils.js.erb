@@ -1,10 +1,20 @@
 /* various utilities for ocr search results display in Bootstrap modal and WDL-Viewer contexts */
 
-/* pagination links should preserve the modal rather than reloading the page */
 var top_pagination_selector = '#ocr_search_details .page_links a';
 var bottom_pagination_selector = '#ocr_pagination #pagination_links a';
 var relevancy_link_selector = '#sort-dropdown a';
-$(top_pagination_selector + ", " + bottom_pagination_selector + ", " + relevancy_link_selector).on("click", Blacklight.ajaxModal.modalAjaxLinkClick);
+var page_rel_selectors = top_pagination_selector + ", " + bottom_pagination_selector + ", " + relevancy_link_selector;
+
+/* pagination links should preserve the modal rather than reloading the page */
+$(page_rel_selectors).on("click", Blacklight.ajaxModal.modalAjaxLinkClick);
+
+/* show loading status for results, next page, etc. */
+$(page_rel_selectors).on("click", function() {
+  addModalTransition();
+});
+$('.ocr-search-form').submit(function() {
+  addModalTransition();
+});
 
 /* if the window is displayed in the WDL-Viewer context, page links should trigger page changes via JS */
 if ($("body.wdl-viewer").length) {
@@ -30,3 +40,8 @@ $('.ocr_snippets_expand').on('click', function() {
         $(this).text('<%= I18n.t('blacklight.ocr.search.results.snippets.more') %>');
     }
 });
+
+// add the .modal-transition class
+function addModalTransition () {
+  $('#modal-transition').toggle();
+}
