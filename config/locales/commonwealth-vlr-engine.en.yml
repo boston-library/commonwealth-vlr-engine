@@ -60,9 +60,6 @@ en:
     breadcrumb:
           separator: ' > '
 
-    citation:
-          chicago: 'Chicago Style:'
-
     collections:
           browse:
             all: 'View All Items'

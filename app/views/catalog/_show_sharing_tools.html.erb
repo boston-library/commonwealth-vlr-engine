@@ -1,3 +1,3 @@
 <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-envelope') + ' ' + t('blacklight.tools.email'),
             email_solr_document_path(:id => @document),
-            {:id => 'emailLink', :data => {:ajax_modal => 'trigger'}} %>
+            {:id => 'emailLink', rel: 'nofollow', :data => {:ajax_modal => 'trigger'}} %>

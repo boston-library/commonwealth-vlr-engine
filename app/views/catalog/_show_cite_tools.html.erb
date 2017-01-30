@@ -1,3 +1,3 @@
 <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.citation'),
             citation_solr_document_path(:id => @document),
-            {:id => 'citeLink', :data => {:ajax_modal => 'trigger'}} %>
+            {id: 'citeLink', rel: 'nofollow', data: {ajax_modal: 'trigger'}} %>
