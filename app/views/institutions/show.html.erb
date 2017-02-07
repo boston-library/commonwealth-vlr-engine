@@ -37,22 +37,18 @@
 
     <%= create_thumb_img_element(@document, ['institution_img_show']) %>
 
-    <div id="institution_desc">
+    <div id="institution_desc_wrap">
 
-      <% if @document[:abstract_tsim] %>
-          <% @document[:abstract_tsim].each do |abstract| %>
-              <%= abstract.html_safe %><br/><br/>
-          <% end %>
-      <% end %>
+      <%= render_institution_desc(@document[:abstract_tsim]) if @document[:abstract_tsim] %>
 
       <% if @document[:institution_url_ss] %>
-        <ul>
-        <li id="institution_site_link">
-          <%= link_to 'Visit institution web site',
-                      @document[:institution_url_ss],
-                      :class => 'institution_site_link',
-                      :target => '_blank' %>
-        </li>
+        <ul id="institution_site_link_wrap">
+          <li id="institution_site_link">
+            <%= link_to 'Visit institution web site',
+                        @document[:institution_url_ss],
+                        :class => 'institution_site_link',
+                        :target => '_blank' %>
+          </li>
         </ul>
       <% end %>
 
@@ -92,5 +88,15 @@
       -->
       <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
   <% end %>
+
+  <script type="text/javascript">
+    $('.institution_desc_expand').on('click', function() {
+      toggleText($(this),
+          '<%= I18n.t('blacklight.institutions.description.more') %>',
+          '<%= I18n.t('blacklight.institutions.description.less') %>');
+      $('#institution_desc_collapse, #institution_desc_static').toggleClass('institution_desc_inline');
+      //$('#institution_desc_static').toggleClass('institution_desc_inline');
+    });
+  </script>
 
 </div>

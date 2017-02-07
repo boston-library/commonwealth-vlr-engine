@@ -34,11 +34,9 @@ $('#ocr_q').on('keydown', function (e) {
 
 /* toggle the ocr snippets collapse link text */
 $('.ocr_snippets_expand').on('click', function() {
-    if ($(this).text() === '<%= I18n.t('blacklight.ocr.search.results.snippets.more') %>') {
-        $(this).text('<%= I18n.t('blacklight.ocr.search.results.snippets.less') %>');
-    } else {
-        $(this).text('<%= I18n.t('blacklight.ocr.search.results.snippets.more') %>');
-    }
+  toggleText($(this),
+      '<%= I18n.t('blacklight.ocr.search.results.snippets.more') %>',
+      '<%= I18n.t('blacklight.ocr.search.results.snippets.less') %>');
 });
 
 // add the .modal-transition class

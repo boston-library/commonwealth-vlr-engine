@@ -247,6 +247,9 @@ en:
     institutions:
           browse:
             all: 'View all items'
+          description:
+            less: 'less...'
+            more: 'more...'
           facets:
             title: 'Browse by:'
           index:

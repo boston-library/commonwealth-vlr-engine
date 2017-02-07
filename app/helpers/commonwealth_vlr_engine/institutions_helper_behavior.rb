@@ -8,6 +8,29 @@ module CommonwealthVlrEngine
               :class => link_class)
     end
 
+    # render the institution description, truncating w/'more' link if more than 2 paragraphs
+    def render_institution_desc(abstract)
+      desc_content = []
+      abstract.map! { |v| v.gsub(/\\[rn]/,'').gsub(/<br[ \/]*>/,'<br/>').split('<br/><br/>') }.flatten!
+      desc_content << content_tag(:div,
+                                  abstract[0..1].join('<br/><br/>').html_safe,
+                                  id: 'institution_desc_static',
+                                  class: 'institution_desc institution_desc_inline')
+      if abstract.length > 2
+        desc_content << content_tag(:div,
+                                    "#{abstract[2..abstract.length-1].join('<br/><br/>')}".html_safe,
+                                    id: 'institution_desc_collapse',
+                                    class: 'no-js collapse institution_desc')
+        desc_content << link_to(t('blacklight.institutions.description.more'),
+                                '#institution_desc_collapse',
+                                data: {toggle: 'collapse'},
+                                'aria-expanded' => 'false',
+                                'aria-controls' => '#institution_desc_collapse',
+                                class: 'institution_desc_expand')
+      end
+      desc_content.join('').html_safe
+    end
+
     # replaces render_document_index in institutions/index partial
     # so we can use local index_map_institutions partial for map view
     def render_institutions_index documents = nil, locals = {}

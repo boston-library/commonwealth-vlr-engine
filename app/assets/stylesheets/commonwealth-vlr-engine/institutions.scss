@@ -120,11 +120,35 @@ div.blacklight-institution {
 
   }
 
-  #institution_desc {
+  #institution_desc_wrap {
 
     ol, ul {
       display: inline-block;
     }
+
+    #institution_desc_static {
+      margin-bottom: 20px;
+    }
+
+    #institution_desc_collapse.no-js {
+      display: block;
+    }
+
+    .institution_desc_inline {
+      display:inline;
+      margin-bottom: unset;
+    }
+
+    .institution_desc_expand {
+      display: inline;
+      margin-left: 7px;
+    }
+
+    #institution_site_link_wrap {
+      display: block;
+      margin-top: 10px;
+    }
+
 
   }
 

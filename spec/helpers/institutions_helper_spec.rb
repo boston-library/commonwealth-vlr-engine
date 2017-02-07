@@ -7,6 +7,7 @@ describe InstitutionsHelper do
   include Blacklight::SearchHelper
 
   let(:blacklight_config) { CatalogController.blacklight_config }
+  let(:institution) { Blacklight.default_index.search({:q => "id:\"bpl-dev:abcd12345\"", :rows => 1}).documents.first }
 
   before :each do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
@@ -16,6 +17,15 @@ describe InstitutionsHelper do
     before { @institution_title = 'Foo Institution'}
     it 'should create a search link with the correct institution params' do
       expect(helper.link_to_all_inst_items('foo')).to include("#{blacklight_config.institution_field}%5D%5B%5D=Foo+Institution")
+    end
+  end
+
+  describe '#render_institution_desc' do
+    let(:render_institution_desc_output) { helper.render_institution_desc(institution[:abstract_tsim]) }
+    it 'should create the correct HTML content' do
+      expect(render_institution_desc_output).to include('institution_desc_static')
+      expect(render_institution_desc_output).to include('institution_desc_collapse')
+      expect(render_institution_desc_output).to include('institution_desc_expand')
     end
   end
 
