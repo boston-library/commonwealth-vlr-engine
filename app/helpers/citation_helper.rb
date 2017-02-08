@@ -82,7 +82,7 @@ module CitationHelper
     names = []
     if document[:name_personal_tsim] || document[:name_generic_tsim]
       non_corp_names = document[:name_personal_tsim].presence.to_a.concat(document[:name_generic_tsim].presence.to_a)
-      non_corp_names = non_corp_names.map { |pers_name| pers_name.gsub(/, [[d\.][ca\.][b\.] ]* \d.*/,'') }
+      non_corp_names.map! { |pers_name| pers_name.gsub(/, [[d\.][ca\.][b\.] ]*\d.*/,'') }
       # for APA, names should be "Lastname, F." format
       if citation_style == 'apa'
         non_corp_names = non_corp_names.map do |pers_name|
@@ -100,7 +100,6 @@ module CitationHelper
       names.concat(non_corp_names)
     end
     names.concat(document[:name_corporate_tsim]) if document[:name_corporate_tsim]
-    # TODO: switch name order of last name in name list if multiple authors
     # if multiple creators, put ', ' between each, but ', and/& ' before last one
     name_output = ''
     if names.length > 1
