@@ -5,9 +5,7 @@ class FolderItemsActionsController < ApplicationController
     @folder = Bpluser::Folder.find(params[:id]) if params[:origin] == "folders"
     @user = current_or_guest_user
     if params[:selected]
-      sort = params[:sort] ? params[:sort] : ""
-      per_page = params[:per_page] ? params[:per_page] : ""
-      view = params[:view] ? params[:view] : ""
+      view_params = params.extract!(:sort, :per_page, :view)
       items = params[:selected]
 
       case params[:commit]
@@ -25,19 +23,15 @@ class FolderItemsActionsController < ApplicationController
             else
               flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
             end
-            redirect_to folder_path(:id => @folder,
-                                    :sort => sort,
-                                    :per_page => per_page,
-                                    :view => view)
+            redirect_to folder_path(@folder,
+                                    view_params)
           else
             if current_or_guest_user.bookmarks.where(:document_id => items).delete_all
               flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
             else
               flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
             end
-            redirect_to bookmarks_path(:sort => sort,
-                                      :per_page => per_page,
-                                      :view => view)
+            redirect_to bookmarks_path(view_params)
           end
         # copy
         when /#{t('blacklight.tools.copy_to')}/

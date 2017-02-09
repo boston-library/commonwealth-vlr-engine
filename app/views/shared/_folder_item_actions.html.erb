@@ -59,7 +59,7 @@
       </div>
 <% end %>
 
-<%= hidden_field_tag(:per_page, params[:per_page]) %>
-<%= hidden_field_tag(:sort, params[:sort]) %>
-<%= hidden_field_tag(:view, params[:view]) %>
+<%= hidden_field_tag(:per_page, params[:per_page]) if params[:per_page] %>
+<%= hidden_field_tag(:sort, params[:sort]) if params[:sort] %>
+<%= hidden_field_tag(:view, params[:view]) if params[:view] %>
 <%= hidden_field_tag(:origin, params[:controller]) %>
