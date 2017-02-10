@@ -72,7 +72,7 @@ module CommonwealthVlrEngine
       image_datastreams = []
       stored_datastreams = %w(productionMaster access800 georectifiedMaster)
       stored_datastreams.each do |datastream_id|
-        image_datastreams << datastream_id if object_profile_json["datastreams"][datastream_id]
+        image_datastreams << datastream_id unless object_profile_json["datastreams"][datastream_id].blank?
       end
       image_datastreams.insert(1, 'accessFull')
     end
