@@ -44,10 +44,11 @@
       <% if @document[:institution_url_ss] %>
         <ul id="institution_site_link_wrap">
           <li id="institution_site_link">
-            <%= link_to 'Visit institution web site',
-                        @document[:institution_url_ss],
+            <%= link_to @document[:institution_url_ss],
                         :class => 'institution_site_link',
-                        :target => '_blank' %>
+                        :target => '_blank' do %>
+                Visit institution web site <span class="glyphicon glyphicon-share"></span>
+            <% end %>
           </li>
         </ul>
       <% end %>
@@ -95,7 +96,6 @@
           '<%= I18n.t('blacklight.institutions.description.more') %>',
           '<%= I18n.t('blacklight.institutions.description.less') %>');
       $('#institution_desc_collapse, #institution_desc_static').toggleClass('institution_desc_inline');
-      //$('#institution_desc_static').toggleClass('institution_desc_inline');
     });
   </script>
 

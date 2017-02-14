@@ -231,24 +231,30 @@ http://wiki.apache.org/solr/LocalParams
     </lst>
   </requestHandler>
 
+  <!-- HAVE TO COMMENT OUT THE SUGGESTER< OR WE GET:
+  RSolr::Error::Http - 500 Internal Server Error
+      #   Error:     {msg=SolrCore 'blacklight-core' is not available due to init failure: Error loading class
+      'solr.SuggestComponent'}
+  -->
+
   <!-- suggest searchComponent for autocomplete -->
-  <searchComponent name="suggest" class="solr.SuggestComponent">
+  <!-- <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
-      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <str name="lookupImpl">FuzzyLookupFactory</str> -->
       <!-- need to investigate how this affects performance, will build manually for now -->
       <!-- <str name="buildOnCommit">true</str> -->
-      <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
-      <float name="threshold">.00004</float> <!-- may need to tweak for production -->
-      <str name="field">spell</str>
-      <str name="suggestAnalyzerFieldType">string</str>
+      <!-- <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
+      <float name="threshold">.00004</float> --> <!-- may need to tweak for production -->
+      <!-- <str name="field">spell</str>
+      <str name="suggestAnalyzerFieldType">string</str> -->
       <!-- weightField only used with DocumentDictionaryFactory -->
       <!-- <str name="weightField">title_info_primary_tsi</str> -->
-    </lst>
-  </searchComponent>
+    <!-- </lst>
+  </searchComponent> -->
 
   <!-- suggest requestHandler for autocomplete -->
-  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+  <!-- <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="suggest">true</str>
       <str name="suggest.count">10</str>
@@ -257,7 +263,7 @@ http://wiki.apache.org/solr/LocalParams
     <arr name="components">
       <str>suggest</str>
     </arr>
-  </requestHandler>
+  </requestHandler> -->
 
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <str name="queryAnalyzerFieldType">textSpell</str>

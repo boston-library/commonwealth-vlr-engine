@@ -9,9 +9,11 @@ module CommonwealthVlrEngine
     end
 
     # render the institution description, truncating w/'more' link if more than 2 paragraphs
+    # abstract = document[:abstract_tsim] field
     def render_institution_desc(abstract)
       desc_content = []
-      abstract.map! { |v| v.gsub(/\\[rn]/,'').gsub(/<br[ \/]*>/,'<br/>').split('<br/><br/>') }.flatten!
+      # double quotes in #delete arg below are correct, DO NOT CHANGE
+      abstract.map! { |v| v.delete("\n").delete("\r").gsub(/<br[ \/]*>/,'<br/>').split('<br/><br/>') }.flatten!
       desc_content << content_tag(:div,
                                   abstract[0..1].join('<br/><br/>').html_safe,
                                   id: 'institution_desc_static',
