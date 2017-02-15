@@ -150,9 +150,11 @@
       right: 10px;
       top: 10px;
       color: white;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, .2);
+      box-shadow: 0 0 14px -4px #000000;
 
       .img_zoom_icon {
-        opacity: 0.7;
         font-size: 32px;
       }
 
