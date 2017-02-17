@@ -1,22 +1,23 @@
 <%# show the object image(s)/file(s) and metadata %>
 <%# TODO: refactor how views access files/volumes/etc., this is getting REALLY ugly %>
 <% volumes = has_volumes?(@document) %>
-<% book_reader = false %>
+<% book_reader = has_searchable_text?(@document) ? true : false %>
 <% oai_object = @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' ? true : false %>
-<% if has_image_files?(@object_files) %>
-    <%= javascript_include_tag 'openseadragon' %>
+<% if !book_reader && has_image_files?(@object_files) %>
     <% case @object_files[:images].length %>
-        <% when 1 %>
-            <%= render :partial => 'catalog/_show_partials/show_default_img',
-                       :locals => {:document => @document,
-                                   :image_pid => @object_files[:images][0]['id'],
-                                   :page_sequence => {:total => 1}} %>
-        <% when 2..7 %>
-            <%= render :partial => 'catalog/_show_partials/show_multi_img',
-                       :locals => {:document => @document,
-                                   :image_files => image_file_pids(@object_files[:images])} %>
-        <% else %>
-            <% book_reader = true %>
+    <% when 1 %>
+      <%= javascript_include_tag 'openseadragon' %>
+      <%= render :partial => 'catalog/_show_partials/show_default_img',
+                 :locals => {:document => @document,
+                             :image_pid => @object_files[:images][0]['id'],
+                             :page_sequence => {:total => 1}} %>
+    <% when 2..7 %>
+      <%= javascript_include_tag 'openseadragon' %>
+      <%= render :partial => 'catalog/_show_partials/show_multi_img',
+                 :locals => {:document => @document,
+                             :image_files => image_file_pids(@object_files[:images])} %>
+    <% else %>
+      <% book_reader = true %>
     <% end %>
 <% end %>
 
