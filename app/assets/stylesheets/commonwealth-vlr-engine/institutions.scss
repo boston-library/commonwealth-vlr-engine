@@ -146,7 +146,11 @@ div.blacklight-institution {
 
     #institution_site_link_wrap {
       margin-top: 15px;
-      padding-left: 20px;
+
+      ul {
+        padding-left: 20px;
+      }
+
     }
 
   }
