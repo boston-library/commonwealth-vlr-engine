@@ -396,12 +396,17 @@ a.book_viewer_link, a.search_inside_link {
   width:100%;
   padding: 0 0 1.5em 0;
 
+  .no-js {
+    display: block;
+  }
+
   h3 {
     padding-left:1em;
   }
 
   dl.defList {
     width: 97%;
+    margin-bottom: 0px;
 
     dt {
       padding: 2px 0 0;
@@ -425,6 +430,16 @@ a.book_viewer_link, a.search_inside_link {
       }
 
     }
+
+  }
+
+  #metadata_collapse_link_wrap {
+    margin-top: 7px;
+
+    #metadata_expand_heading {
+      color: $very_dark_gray;
+    }
+
   }
 
 }
@@ -497,7 +512,7 @@ li.download_list_item {
 
 .mods_link_wrapper {
   float: right;
-  margin: 1em 1em 0 0;
+  margin: 0 13px 0 0;
 
   a {
     color:$dark_gray;

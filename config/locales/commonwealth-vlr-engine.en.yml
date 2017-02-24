@@ -263,7 +263,9 @@ en:
             institutions_search: 'View institutions from this location'
 
     metadata_display:
+          collapse: 'show less...'
           date_range_connector: '–'
+          expand: 'more item info...'
           fields:
             abstract: 'Description'
             access: 'Restrictions'
