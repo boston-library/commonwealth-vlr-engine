@@ -7,6 +7,3 @@ function toggleText (e, text1, text2) {
     })
 }
 
-$(document).ready(function() {
-    $('.no-js').removeClass('no-js').addClass('js');
-});

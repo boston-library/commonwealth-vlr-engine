@@ -208,6 +208,13 @@
             <% end %>
           </dd>
       <% end %>
+      <%# extent field %>
+      <% if document[:extent_tsi] %>
+          <dt><%= t('blacklight.metadata_display.fields.extent') %>:</dt>
+          <dd>
+            <%= document[:extent_tsi] %>
+          </dd>
+      <% end %>
       <%# URI field %>
       <% if document[:identifier_uri_ss] %>
           <% oai_object = true if document[:active_fedora_model_suffix_ssi] == 'OAIObject' %>
@@ -221,18 +228,9 @@
           </dd>
       <% end %>
       <%# rights field %>
-      <%# TODO: Remove use_and_reproduction_ssm after November 2014 update has run %>
-      <% if document[:use_and_reproduction_ssm] || document[:rights_ssm] || document[:license_ssm]  %>
+      <% if document[:rights_ssm] || document[:license_ssm]  %>
           <dt><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
           <dd>
-            <% if document[:use_and_reproduction_ssm] %>
-                <% document[:use_and_reproduction_ssm].each do |terms| %>
-                    <%= terms %><br />
-                    <% if terms.match(/\(CC\s/) %>
-                        <%= render_cc_license(terms) %><br />
-                    <% end %>
-                <% end %>
-            <% end %>
             <% if document[:rights_ssm] %>
                 <% document[:rights_ssm].each do |rights| %>
                     <%= rights %><br />
@@ -260,7 +258,7 @@
     </dl>
   </div>
 
-  <div id="item_metadata_expand" class="no-js collapse">
+  <div id="item_metadata_expand" class="collapse">
     <dl class="defList dl-horizontal">
       <%# publisher field %>
       <% if document[:publisher_tsim] %>
@@ -362,13 +360,6 @@
             <% document[:note_physical_tsim].each do |physical_note| %>
                 <%= physical_note %><br />
             <% end %>
-          </dd>
-      <% end %>
-      <%# extent field %>
-      <% if document[:extent_tsi] %>
-          <dt><%= t('blacklight.metadata_display.fields.extent') %>:</dt>
-          <dd>
-            <%= document[:extent_tsi] %>
           </dd>
       <% end %>
       <%# geo scale field %>
@@ -478,8 +469,9 @@
     </dl>
   </div>
 
-  <div id="metadata_collapse_link_wrap">
-    <dl class="defList dl-horizontal">
+  <% if expand_metadata_link?(document) %>
+    <div id="metadata_collapse_link_wrap" class="js-controls">
+      <dl class="defList dl-horizontal">
         <dt>
           <%= link_to(t('blacklight.metadata_display.expand'),
                       '#item_metadata_expand',
@@ -502,7 +494,17 @@
           <% end %>
         </dd>
       </dl>
-  </div>
+    </div>
+
+    <script type="text/javascript">
+      $('.metadata_display_expand').on('click', function() {
+        toggleText($('#metadata_expand_heading'),
+            '<%= I18n.t('blacklight.metadata_display.expand') %>',
+            '<%= I18n.t('blacklight.metadata_display.collapse') %>');
+        $('#metadata_expand_link').find('span').toggleClass('glyphicon-chevron-up');
+      });
+    </script>
+  <% end %>
 
   <div class="mods_link_wrapper">
     <%= link_to t('blacklight.tools.librarian_view.link'),
@@ -511,12 +513,3 @@
   </div>
 
 </div>
-
-<script type="text/javascript">
-  $('.metadata_display_expand').on('click', function() {
-    toggleText($('#metadata_expand_heading'),
-        '<%= I18n.t('blacklight.metadata_display.expand') %>',
-        '<%= I18n.t('blacklight.metadata_display.collapse') %>');
-    $('#metadata_expand_link').find('span').toggleClass('glyphicon-chevron-up');
-  });
-</script>

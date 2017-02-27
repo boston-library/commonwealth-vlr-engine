@@ -92,3 +92,16 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
   }
 
 }
+
+.no-js {
+
+  #item_metadata_expand, #institution_desc_collapse, .ocr_snippet {
+    display: block;
+  }
+
+  .js-controls {
+    display: none;
+    visibility: hidden;
+  }
+
+}

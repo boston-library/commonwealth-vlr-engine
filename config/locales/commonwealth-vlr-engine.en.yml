@@ -265,7 +265,7 @@ en:
     metadata_display:
           collapse: 'show less...'
           date_range_connector: '–'
-          expand: 'more item info...'
+          expand: 'show more...'
           fields:
             abstract: 'Description'
             access: 'Restrictions'

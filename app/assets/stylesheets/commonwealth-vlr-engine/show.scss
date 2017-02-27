@@ -396,10 +396,6 @@ a.book_viewer_link, a.search_inside_link {
   width:100%;
   padding: 0 0 1.5em 0;
 
-  .no-js {
-    display: block;
-  }
-
   h3 {
     padding-left:1em;
   }
@@ -437,7 +433,7 @@ a.book_viewer_link, a.search_inside_link {
     margin-top: 7px;
 
     #metadata_expand_heading {
-      color: $very_dark_gray;
+      font-weight: normal;
     }
 
   }

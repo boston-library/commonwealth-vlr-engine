@@ -22,13 +22,13 @@ module CommonwealthVlrEngine
         desc_content << content_tag(:div,
                                     "#{abstract[2..abstract.length-1].join('<br/><br/>')}".html_safe,
                                     id: 'institution_desc_collapse',
-                                    class: 'no-js collapse institution_desc')
+                                    class: 'collapse institution_desc')
         desc_content << link_to(t('blacklight.institutions.description.more'),
                                 '#institution_desc_collapse',
                                 data: {toggle: 'collapse'},
                                 'aria-expanded' => 'false',
                                 'aria-controls' => '#institution_desc_collapse',
-                                class: 'institution_desc_expand')
+                                class: 'institution_desc_expand js-controls')
       end
       desc_content.join('').html_safe
     end

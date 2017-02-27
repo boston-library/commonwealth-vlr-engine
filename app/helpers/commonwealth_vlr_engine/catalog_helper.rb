@@ -39,6 +39,20 @@ module CommonwealthVlrEngine
                 :class => image_classes)
     end
 
+    # determine whether to render the 'show more' expand/collapse link in catalog#show metadata display
+    def expand_metadata_link?(document)
+      keys_to_eval = document.keys
+      keys_to_eval.delete('identifier_uri_ss')
+      return true if !keys_to_eval.grep(/note/).empty? || !keys_to_eval.grep(/identifier/).empty?
+      # other fields, roughly in order of how often they appear in metadata records
+      other_expand_fields = %w(lang_term_ssim pubplace_tsim local_accession_id_tsim publisher_tsim subject_scale_tsim
+                               edition_tsim table_of_contents_tsi classification_tsim related_item_isreferencedby_ssm)
+      other_expand_fields.each do |field_key|
+        return true if keys_to_eval.include? field_key
+      end
+      false
+    end
+
     def extra_body_classes
       @extra_body_classes ||= ['blacklight-' + controller_name, 'blacklight-' + [controller_name, controller.action_name].join('-')]
       # if this is the home page
