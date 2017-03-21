@@ -388,6 +388,17 @@
             <% end %>
           </dd>
       <% end %>
+      <%# relatedItem @type='constituent' field %>
+      <% if document[:related_item_constituent_ssim] %>
+          <dt><%= t('blacklight.metadata_display.fields.constituent') %>:</dt>
+          <dd>
+            <% document[:related_item_constituent_ssim].each do |constituent| %>
+                <% constituent.split('--').each do |constituent_entry| %>
+                    <%= constituent_entry.strip %><br />
+                <% end %>
+            <% end %>
+          </dd>
+      <% end %>
       <%# local-accession id field %>
       <% if document[:local_accession_id_tsim] %>
           <dt><%= t('blacklight.metadata_display.fields.id_local_acc') %>:</dt>

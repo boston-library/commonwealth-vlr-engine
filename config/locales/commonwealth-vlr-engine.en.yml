@@ -271,6 +271,7 @@ en:
             access: 'Restrictions'
             classification: 'Classification'
             collection: 'Collection (local)'
+            constituent: 'Includes'
             creator: 'Creator'
             date: 'Date'
             edition: 'Edition'
