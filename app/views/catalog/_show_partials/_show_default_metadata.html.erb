@@ -370,6 +370,14 @@
                 <%= scale %><br />
             <% end %>
       <% end %>
+      <%# geo projection field %>
+      <% if document[:subject_projection_tsim] %>
+          <dt><%= t('blacklight.metadata_display.fields.projection') %>:</dt>
+          <dd>
+            <% document[:subject_projection_tsim].each do |projection| %>
+                <%= projection %><br />
+            <% end %>
+      <% end %>
       <%# lang field %>
       <% if document[:lang_term_ssim] %>
           <dt><%= t('blacklight.metadata_display.fields.language') %>:</dt>

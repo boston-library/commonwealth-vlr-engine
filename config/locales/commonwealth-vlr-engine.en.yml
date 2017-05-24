@@ -299,6 +299,7 @@ en:
             note_physical: 'Notes (object)'
             note_reference: 'Notes (citation)'
             note_resp: 'Name on Item'
+            projection: 'Projection'
             publisher: 'Publisher'
             pubplace: 'Place of origin'
             referenced_by: 'Referenced by'
