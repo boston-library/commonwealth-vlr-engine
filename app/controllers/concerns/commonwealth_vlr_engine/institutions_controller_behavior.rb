@@ -34,7 +34,11 @@ module CommonwealthVlrEngine
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
       # get the response for collection objects
-      @collex_response, @collex_documents = search_results({:f => {'active_fedora_model_suffix_ssi' => 'Collection','institution_pid_ssi' => params[:id]},:rows => 100, :sort => 'title_info_primary_ssort asc'})
+      collex_f_params = {blacklight_config.index.display_type_field => 'Collection',
+                         'institution_pid_ssi' => params[:id]}
+      @collex_response, @collex_documents = search_results({:f => collex_f_params,
+                                                            :rows => 200,
+                                                            :sort => 'title_info_primary_ssort asc'})
 
       # add params[:f] for proper facet links
       params[:f] = {blacklight_config.institution_field => [@institution_title]}
