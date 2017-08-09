@@ -19,6 +19,11 @@
           </li>
       <% end %>
   <% end %>
+  <% unless public_domain?(document) %>
+    <li>
+      <%= render partial: 'downloads/indemnification' %>
+    </li>
+  <% end %>
   <li>
     <%= link_to t('blacklight.pages.contact.title'), feedback_path %> if you have questions about usage or reproduction.
   </li>

@@ -106,7 +106,7 @@ module CommonwealthVlrEngine
     end
 
     # parse the license statement and return true if image downloads are allowed
-    def license_allows_download? document
+    def license_allows_download?(document)
       document[:license_ssm].to_s =~ /(Creative Commons|No known restrictions)/
     end
 
@@ -153,6 +153,13 @@ module CommonwealthVlrEngine
         file_size_string = 'multi-file ZIP'
       end
       file_size_string
+    end
+
+    def public_domain?(document)
+      pubdom_regex = /[Pp]ublic domain/
+      (document[:date_end_dtsi] && document[:date_end_dtsi][0..3].to_i < 1923) ||
+        document[:rights_ssm].to_s =~ pubdom_regex ||
+        document[:license_ssm].to_s =~ pubdom_regex
     end
 
     # create a composite object_profile_json object from multiple file objects

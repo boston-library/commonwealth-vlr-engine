@@ -87,6 +87,7 @@ en:
             georectifiedMaster: 'GeoTIFF (georeferenced)'
             JPEG2000: 'Original (full resolution)'
             productionMaster: 'Master (full resolution, uncompressed)'
+          indemnification: 'Notice: This digital file may be subject to copyright law of the United States (Title 17, U.S. Code) governing the making of reproductions of copyrighted material. The person using this content may be liable for any infringement.'
 
     email:
           form:

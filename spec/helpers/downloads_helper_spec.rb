@@ -134,6 +134,12 @@ describe DownloadsHelper do
     end
   end
 
+  describe '#public_domain?' do
+    it 'should return true if the item is pre-1923 or has an explicit rights/license statement' do
+      expect(helper.public_domain?(document)).to be_truthy
+    end
+  end
+
   describe '#setup_zip_object_profile' do
 
     let (:zip_object_profile) { helper.setup_zip_object_profile(files_hash[:images], @image_datastreams_output[0]) }
