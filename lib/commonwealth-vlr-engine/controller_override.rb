@@ -32,6 +32,9 @@ module CommonwealthVlrEngine
         #set default per-page
         config.default_per_page = 20
 
+        # allow responses >100 rows
+        config.max_per_page = 500
+
         #blacklight-gallery stuff
         config.view.gallery.default = true
         config.view.gallery.partials = [:index_header]
