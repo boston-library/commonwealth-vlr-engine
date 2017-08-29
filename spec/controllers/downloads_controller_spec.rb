@@ -38,13 +38,15 @@ describe DownloadsController do
 
   describe "GET 'trigger_download'" do
 
+    let(:file_name) { @item_id.gsub(/:/,'_') }
+
     describe 'file object (single item download)' do
 
       it 'should be successful and set the right headers' do
         get :trigger_download, :id => @first_image_pid, :datastream_id => @datastream_id
         expect(response).to be_success
         expect(response.headers['Content-Type']).to eq('image/jpeg')
-        expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{@item_id}_#{@datastream_id}.jpg\"")
+        expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{file_name}_#{@datastream_id}.jpg\"")
       end
 
     end
@@ -55,7 +57,7 @@ describe DownloadsController do
         get :trigger_download, :id => @item_id, :datastream_id => @datastream_id
         expect(response).to be_success
         expect(response.headers['Content-Type']).to eq('application/zip')
-        expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{@item_id}_#{@datastream_id}.zip\"")
+        expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{file_name}_#{@datastream_id}.zip\"")
       end
 
     end

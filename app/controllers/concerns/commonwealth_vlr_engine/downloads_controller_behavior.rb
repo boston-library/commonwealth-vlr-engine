@@ -117,7 +117,7 @@ module CommonwealthVlrEngine
 
     # @return [String] the filename
     def file_name
-      "#{@object_id}_#{params[:datastream_id]}"
+      "#{@object_id.gsub(/:/,'_')}_#{params[:datastream_id]}"
     end
 
     # @return [String] the filename with extension
