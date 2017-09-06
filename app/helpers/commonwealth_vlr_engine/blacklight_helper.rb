@@ -2,12 +2,12 @@ module CommonwealthVlrEngine
   module BlacklightHelper
     include Blacklight::BlacklightHelperBehavior
 
-    # local override to allow using CommonwealthVlrEngine::CatalogHelper#render_main_title
+    # local override to allow using CommonwealthVlrEngine::CatalogHelper#render_full_title
     # for catalog#show title heading
     def document_heading document=nil
       document ||= @document
       if document[blacklight_config.index.title_field.to_sym]
-        render_main_title(document)
+        render_full_title(document)
       else
         @document.id
       end
