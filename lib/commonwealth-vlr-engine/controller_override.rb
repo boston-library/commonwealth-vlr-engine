@@ -70,7 +70,8 @@ module CommonwealthVlrEngine
             query_parser: 'edismax',
             form_solr_parameters: {
                 'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
-                'facet.limit' => -1, # return all facet values
+                'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+                'f.collection_name_ssim.facet.limit' => -1,
                 'facet.sort' => 'index' # sort by byte order of values
             }
         }
