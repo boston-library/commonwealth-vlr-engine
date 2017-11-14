@@ -188,7 +188,7 @@ module CommonwealthVlrEngine
           title_output << " = #{parallel_title}"
         end
       end
-      title_output.squish
+      title_output.gsub(/\.\./, '.').squish
     end
 
     # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
@@ -234,7 +234,7 @@ module CommonwealthVlrEngine
       else
         title_output << document.id
       end
-      title_output.squish
+      title_output.gsub(/\.\./, '.').squish
     end
 
     # render the 'more like this' search link if doc has subjects
