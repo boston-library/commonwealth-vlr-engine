@@ -173,20 +173,24 @@ module CommonwealthVlrEngine
     # output properly formatted full title, with subtitle, parallel title, etc.
     def render_full_title(document)
       title_output = ''
-      title_output << document[blacklight_config.index.title_field.to_sym]
-      if document[:subtitle_tsim]
-        title_output << " : #{document[:subtitle_tsim].first}"
-      end
-      if document[:title_info_partnum_tsi]
-        title_output << ". #{document[:title_info_partnum_tsi]}"
-      end
-      if document[:title_info_partname_tsi]
-        title_output << ". #{document[:title_info_partname_tsi]}"
-      end
-      if document[:title_info_primary_trans_tsim]
-        document[:title_info_primary_trans_tsim].each do |parallel_title|
-          title_output << " = #{parallel_title}"
+      if document[blacklight_config.index.title_field.to_sym]
+        title_output << document[blacklight_config.index.title_field.to_sym]
+        if document[:subtitle_tsim]
+          title_output << " : #{document[:subtitle_tsim].first}"
         end
+        if document[:title_info_partnum_tsi]
+          title_output << ". #{document[:title_info_partnum_tsi]}"
+        end
+        if document[:title_info_partname_tsi]
+          title_output << ". #{document[:title_info_partname_tsi]}"
+        end
+        if document[:title_info_primary_trans_tsim]
+          document[:title_info_primary_trans_tsim].each do |parallel_title|
+            title_output << " = #{parallel_title}"
+          end
+        end
+      else
+        title_output << document.id
       end
       title_output.gsub(/\.\./, '.').squish
     end
