@@ -198,7 +198,7 @@
   left: 7px;
   top: 9px;
   width: 98%;
-  z-index: 20;
+  z-index: 1001; /* to cover twitter-typeahead in home page search bar */
 }
 
 .navbar-collapse {
