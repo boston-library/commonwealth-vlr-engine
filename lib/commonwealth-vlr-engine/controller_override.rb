@@ -72,7 +72,8 @@ module CommonwealthVlrEngine
                 'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
                 'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
                 'f.collection_name_ssim.facet.limit' => -1,
-                'facet.sort' => 'index' # sort by byte order of values
+                'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
+                'f.collection_name_ssim.facet.sort' => 'index'
             }
         }
 
