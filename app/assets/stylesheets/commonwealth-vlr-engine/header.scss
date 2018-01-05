@@ -161,6 +161,7 @@
 
       li.dropdown .dropdown-menu {
         margin: 0;
+        z-index: 1001; /* to cover twitter-typeahead in home page search bar */
 
         > li > a:hover {
           color:#FFFFFF;
