@@ -40,20 +40,20 @@
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :password, class: 'control-label col-sm-2' %>
+          <%= f.label t('devise.registrations.password.new'), class: 'control-label col-sm-2' %>
           <div class="col-sm-4">
             <%= f.password_field :password, class: 'form-control', autocomplete: 'off' %>
             <span class="help-block">(leave blank if you don't want to change your password)</span>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :password_confirmation, class: 'control-label col-sm-2' %>
+          <%= f.label t('devise.registrations.password.new_confirm'), class: 'control-label col-sm-2' %>
           <div class="col-sm-4">
             <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off' %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :current_password, class: 'control-label col-sm-2' %>
+          <%= f.label t('devise.registrations.password.old'), class: 'control-label col-sm-2' %>
           <div class="col-sm-4">
             <%= f.password_field :current_password, class: 'form-control', autocomplete: 'off' %>
             <span class="help-block">(we need your current password to confirm your changes)</span>
