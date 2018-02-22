@@ -113,6 +113,7 @@ module CommonwealthVlrEngine
         config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
 
         # solr fields to be displayed in the index (search results) view
+        config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
         config.add_index_field 'date_start_tsim', label: 'Date', helper_method: :index_date_value
