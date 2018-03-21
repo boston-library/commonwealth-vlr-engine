@@ -56,6 +56,14 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   end
 
+  describe 'exclude_collections' do
+
+    it 'should add parameters to exclude collections' do
+      expect(search_builder.exclude_collections(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Collection\"')
+    end
+
+  end
+
   describe 'flagged_filter' do
 
     it 'should add parameters to exclude flagged items' do
