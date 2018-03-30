@@ -4,10 +4,17 @@ describe IiifManifestController do
 
   render_views
 
+  before(:each) do
+    @item_ark = 'h702q6403'
+    @item_pid = "bpl-dev:#{@item_ark}"
+    @image_ark = 'h702q641c'
+    @image_pid = "bpl-dev:#{@image_ark}"
+  end
+
   describe 'get manifest' do
 
     before(:each) do
-      get :manifest, :id => 'bpl-dev:h702q6403'
+      get :manifest, :id => @item_pid
       @response_body = JSON.parse(response.body)
     end
 
@@ -19,7 +26,7 @@ describe IiifManifestController do
     it 'should conform to the IIIF manifest spec' do
       expect(@response_body["sequences"].length).to eq(1)
       expect(@response_body["sequences"].first["canvases"].length).to eq(2)
-      expect(@response_body["sequences"].first["canvases"].first["images"].first["resource"]["@id"]).to have_content('h702q641c')
+      expect(@response_body["sequences"].first["canvases"].first["images"].first["resource"]["@id"]).to have_content(@image_ark)
     end
 
   end
@@ -27,7 +34,7 @@ describe IiifManifestController do
   describe 'get canvas' do
 
     before(:each) do
-      get :canvas, :id => 'bpl-dev:h702q6403', :canvas_object_id => 'bpl-dev:h702q641c'
+      get :canvas, :id => @item_pid, :canvas_object_id => @image_pid
       @response_body = JSON.parse(response.body)
     end
 
@@ -37,9 +44,9 @@ describe IiifManifestController do
     end
 
     it 'should conform to the IIIF manifest spec' do
-      expect(@response_body).to have_content('h702q6403/canvas/h702q641c')
+      expect(@response_body).to have_content("#{@item_ark}/canvas/#{@image_ark}")
       expect(@response_body["images"].length).to eq(1)
-      expect(@response_body["images"].first["resource"]["@id"]).to have_content('h702q641c')
+      expect(@response_body["images"].first["resource"]["@id"]).to have_content(@image_ark)
     end
 
   end
@@ -47,7 +54,7 @@ describe IiifManifestController do
   describe 'get annotation' do
 
     before(:each) do
-      get :annotation, :id => 'bpl-dev:h702q6403', :annotation_object_id => 'bpl-dev:h702q641c'
+      get :annotation, :id => @item_pid, :annotation_object_id => @image_pid
       @response_body = JSON.parse(response.body)
     end
 
@@ -57,8 +64,8 @@ describe IiifManifestController do
     end
 
     it 'should conform to the IIIF manifest spec' do
-      expect(@response_body).to have_content('h702q6403/annotation/h702q641c')
-      expect(@response_body["resource"]["@id"]).to have_content('h702q641c')
+      expect(@response_body).to have_content("#{@item_ark}/annotation/#{@image_ark}")
+      expect(@response_body["resource"]["@id"]).to have_content(@image_ark)
     end
 
   end
@@ -80,6 +87,28 @@ describe IiifManifestController do
       expect(@response_body["manifests"].first["@id"]).to include('3j334603p')
     end
 
+  end
+
+  describe 'caching' do
+
+    before(:each) do
+      get :manifest, :id => @item_pid
+      #post :cache_invalidate, :id => @item_pid
+      #@response_body = JSON.parse(response.body)
+    end
+    
+    it 'should cache the manifest' do
+      expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_truthy
+    end
+
+    describe 'cache_invalidate' do
+      it 'should remove the cached manifest' do
+        post :cache_invalidate, :id => @item_pid
+        expect(JSON.parse(response.body)['result']).to be_truthy
+        expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_falsey
+      end
+    end
+    
   end
 
 end
