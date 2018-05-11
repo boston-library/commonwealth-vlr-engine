@@ -52,10 +52,15 @@ module CommonwealthVlrEngine
       annotation = image_annotation_from_image_id(image_id, document)
       canvas = IIIF::Presentation::Canvas.new('@id' => "#{document[:identifier_uri_ss]}/canvas#{image_id_suffix}")
       canvas.label = label
-      canvas.thumbnail = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/thumbnail"
       canvas.width = annotation.resource['width']
       canvas.height = annotation.resource['height']
       canvas.images << annotation
+      # Mirador has a bug where Canvas thumbnails crash the viewer
+      # https://github.com/ProjectMirador/mirador/issues/1452
+      # uncomment below if this gets fixed at some point
+      # canvas_thumb_svc = canvas.images.first.resource.service
+      # canvas.thumbnail = {'@id' => document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/thumbnail",
+      #                     'service' => canvas_thumb_svc}
       canvas
     end
 
