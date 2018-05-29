@@ -18,7 +18,8 @@ module CommonwealthVlrEngine
     def collection_gallery_url document, size
       exemplary_image_pid = document[:exemplary_image_ssi]
       if exemplary_image_pid
-        if exemplary_image_pid.match(/oai/)
+        if exemplary_image_pid.match(/oai/) ||
+           document['exemplary_image_iiif_bsi'] == false
           datastream_disseminator_url(exemplary_image_pid,'thumbnail300')
         else
           iiif_square_img_path(exemplary_image_pid, size)
