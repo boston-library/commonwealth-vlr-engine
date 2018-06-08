@@ -10,6 +10,7 @@ module CommonwealthVlrEngine
     # image_files = an array of ImageFile Solr documents
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
+      manifest.service = search_service(document) if document[:has_searchable_text_bsi]
       manifest.label = render_main_title(document)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
       manifest.metadata = manifest_metadata(document)
@@ -188,6 +189,14 @@ module CommonwealthVlrEngine
       else
         "image #{(index+1).to_s}"
       end
+    end
+
+    def search_service(document)
+      return unless Rails.application.routes.url_helpers.respond_to?(:solr_document_iiif_search_path)
+      search_svc = IIIF::Service.new('@id' => "#{document[:indentifier_uri_ss]}/iiif_search")
+      search_svc['context'] = 'http://iiif.io/api/search/1/context.json'
+      search_svc['profile'] = 'http://iiif.io/api/search/1/search'
+      search_svc
     end
 
   end
