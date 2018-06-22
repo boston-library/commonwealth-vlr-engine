@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
       return_hash[:ereader] = []
       return_hash[:generic] = []
 
-      solr_response = repository.search({:q => "is_file_of_ssim:\"info:fedora/#{pid}\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_file_of_ssim:\"info:fedora/#{pid}\"", :rows => 5000})
 
       solr_response.documents.each do |solr_doc|
         if solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_AudioFile')
@@ -73,7 +73,7 @@ module CommonwealthVlrEngine
     def get_volume_objects(pid)
       return_list = []
       volumes_list = []
-      solr_response = repository.search({:q => "is_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_volume_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_Volume\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         volumes_list << solr_object
@@ -87,7 +87,7 @@ module CommonwealthVlrEngine
 
     def get_image_files(pid)
       return_list = []
-      solr_response = repository.search({:q => "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object
@@ -97,7 +97,7 @@ module CommonwealthVlrEngine
 
     def get_audio_files(pid)
       return_list = []
-      solr_response = repository.search({:q => "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object
@@ -107,7 +107,7 @@ module CommonwealthVlrEngine
 
     def get_document_files(pid)
       return_list = []
-      solr_response = repository.search({:q => "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object
@@ -117,7 +117,7 @@ module CommonwealthVlrEngine
 
     def get_ereader_files(pid)
       return_list = []
-      solr_response = repository.search({:q => "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", :rows => 1000})
+      solr_response = repository.search({:q => "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object
