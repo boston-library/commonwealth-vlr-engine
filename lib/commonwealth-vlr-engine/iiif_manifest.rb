@@ -191,11 +191,15 @@ module CommonwealthVlrEngine
       end
     end
 
+    # set up the search service object
+    # (@context and profile need to be at "0" for Universal Viewer to work)
+    # document = SolrDocument
     def search_service(document)
       return unless Rails.application.routes.url_helpers.respond_to?(:solr_document_iiif_search_path)
-      search_svc = IIIF::Service.new('@id' => "#{document[:indentifier_uri_ss]}/iiif_search")
-      search_svc['context'] = 'http://iiif.io/api/search/1/context.json'
-      search_svc['profile'] = 'http://iiif.io/api/search/1/search'
+      search_svc = IIIF::Service.new('@id' => "#{document[:identifier_uri_ss]}/iiif_search")
+      search_svc['@context'] = 'http://iiif.io/api/search/0/context.json'
+      search_svc['profile'] = 'http://iiif.io/api/search/0/search'
+      search_svc['label'] = 'Search within this item'
       search_svc
     end
 
