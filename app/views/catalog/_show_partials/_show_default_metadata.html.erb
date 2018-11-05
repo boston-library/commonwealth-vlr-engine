@@ -299,6 +299,15 @@
             <% end %>
           </dd>
       <% end %>
+      <%# note @type="venue" field %>
+      <% if document[:note_venue_tsim] %>
+          <dt><%= t('blacklight.metadata_display.fields.note_venue') %>:</dt>
+          <dd>
+            <% document[:note_venue_tsim].each do |venue| %>
+                <%= venue %><br />
+            <% end %>
+          </dd>
+      <% end %>
       <%# note @type="ownership" field %>
       <% if document[:note_ownership_tsim] %>
           <dt><%= t('blacklight.metadata_display.fields.note_ownership') %>:</dt>

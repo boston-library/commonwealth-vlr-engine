@@ -300,6 +300,7 @@ en:
             note_physical: 'Notes (object)'
             note_reference: 'Notes (citation)'
             note_resp: 'Name on Item'
+            note_venue: 'Notes (venue)'
             projection: 'Projection'
             publisher: 'Publisher'
             pubplace: 'Place of origin'
