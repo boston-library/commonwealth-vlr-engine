@@ -28,29 +28,7 @@
 
           <div class="col-sm-9">
             <div id="collection_img">
-              <% if @collection_image_pid && @collection_image_info %>
-                  <% image_title = @collection_image_info[:title] %>
-                  <% if @collection_image_pid.match(/oai/) || @collection_image_info[:access_master] == false %>
-                       <% img_element = image_tag(datastream_disseminator_url(@collection_image_pid,'thumbnail300'),
-                                                  :alt => image_title,
-                                                  :class => 'collection_img_show') %>
-                  <% else %>
-                      <% img_element = iiif_image_tag(@collection_image_pid,
-                                                      {:size => 'pct:20',
-                                                       :alt => image_title,
-                                                       :class => 'collection_img_show'}) %>
-                  <% end %>
-              <%= link_to(img_element,
-                          solr_document_path(@collection_image_info[:pid])) %>
-              <div id="collection_img_caption">
-                <%= link_to(image_title,
-                            solr_document_path(@collection_image_info[:pid])) %>
-              </div>
-              <% else %>
-                <%= image_tag(collection_icon_path,
-                              :alt => @collection_title,
-                              :class => 'collection_img_show') %>
-              <% end %>
+              <%= render_collection_image('collection_img_show') %>
             </div>
             <div id="collection_search_tools" class="well well-sm">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>

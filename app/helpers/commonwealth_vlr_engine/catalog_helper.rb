@@ -20,9 +20,9 @@ module CommonwealthVlrEngine
       if exemplary_image_pid
         if exemplary_image_pid.match(/oai/) ||
            document['exemplary_image_iiif_bsi'] == false
-          datastream_disseminator_url(exemplary_image_pid,'thumbnail300')
+          datastream_disseminator_url(exemplary_image_pid, 'thumbnail300')
         else
-          iiif_square_img_path(exemplary_image_pid, size)
+          iiif_image_url(exemplary_image_pid, {region: "square", size: "#{size},"})
         end
       else
         collection_icon_path

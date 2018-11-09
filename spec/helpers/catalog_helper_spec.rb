@@ -61,7 +61,7 @@ describe CatalogHelper do
     end
 
     it 'should return a IIIF URL if this is a repository item' do
-      expect(helper.collection_gallery_url({exemplary_image_ssi: image_pid},'300')).to include("#{IIIF_SERVER['url']}#{image_pid}/0,476,1496,1496/300,300/0/default.jpg")
+      expect(helper.collection_gallery_url({exemplary_image_ssi: image_pid},'300')).to include("#{IIIF_SERVER['url']}#{image_pid}/square/300,/0/default.jpg")
     end
 
     it 'should return the icon path if there is no exemplary_image_ssi value' do
