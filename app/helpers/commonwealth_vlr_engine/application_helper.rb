@@ -4,7 +4,7 @@ module CommonwealthVlrEngine
     # show the display-friendly value for the Format facet
     def render_format(value)
       case value
-        when 'Albums'
+      when 'Albums (Books)'
           'Albums/Scrapbooks'
         when 'Drawings'
           'Drawings/Illustrations'
@@ -202,4 +202,3 @@ module CommonwealthVlrEngine
 
   end
 end
-

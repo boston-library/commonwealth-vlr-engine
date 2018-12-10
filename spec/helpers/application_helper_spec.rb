@@ -6,7 +6,7 @@ describe ApplicationHelper do
 
   describe '#render_format' do
     it 'should return the right value' do
-      expect(helper.render_format('Albums')).to eq('Albums/Scrapbooks')
+      expect(helper.render_format('Albums (Books)')).to eq('Albums/Scrapbooks')
       expect(helper.render_format('Correspondence')).to eq('Letters/Correspondence')
     end
   end
@@ -39,7 +39,7 @@ describe ApplicationHelper do
     end
 
     it 'should use render_format if the field_name is "genre_basic_ssim"' do
-      expect(helper.link_to_facet('Albums', 'genre_basic_ssim')).to include('search?f%5Bgenre_basic_ssim%5D%5B%5D=Albums">Albums/Scrapbooks')
+      expect(helper.link_to_facet('Albums (Books)', 'genre_basic_ssim')).to include('search?f%5Bgenre_basic_ssim%5D%5B%5D=Albums+%28Books%29">Albums/Scrapbooks')
     end
 
   end
