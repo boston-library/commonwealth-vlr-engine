@@ -1,3 +1,49 @@
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+end
+
+require 'rdoc/task'
+RDoc::Task.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'CommonwealthVlrEngine'
+  rdoc.options << '--line-numbers'
+  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+Bundler::GemHelper.install_tasks
+
+Rake::Task.define_task(:environment)
+
+load 'lib/railties/commonwealth_vlr_engine.rake'
+
+task default: :ci
+
+require 'engine_cart/rake_task'
+
+require 'solr_wrapper'
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
+desc 'Run test suite'
+task ci: ['engine_cart:generate'] do
+  SolrWrapper.wrap do |solr|
+    FileUtils.cp File.join(__dir__, 'lib', 'generators', 'commonwealth_vlr_engine', 'templates', 'solr', 'conf'),
+                 File.join(solr.instance_dir, 'conf')
+    solr.with_collection do
+      within_test_app do
+        system 'RAILS_ENV=test rake commonwealth_vlr_engine:test_index:seed'
+      end
+      Rake::Task['spec'].invoke
+    end
+  end
+end
+
+=begin
+-------------------------------
 require "bundler/gem_tasks"
 
 ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.6.0.zip"
@@ -41,3 +87,4 @@ namespace :commonwealth_vlr_engine do
     end
   end
 end
+=end

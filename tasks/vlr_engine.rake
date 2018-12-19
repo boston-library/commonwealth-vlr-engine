@@ -29,18 +29,4 @@ namespace :vlr_engine do
     end
 
   end
-
-  desc "Put sample data into test app solr"
-  namespace :test_index do
-    task :seed do
-      require 'yaml'
-      docs = YAML::load(File.open(File.expand_path(File.join('..', '..', '..', 'fixtures', 'sample_solr_documents.yml'), __FILE__)))
-      #Blacklight.solr.add docs
-      #Blacklight.solr.commit
-      conn = Blacklight.default_index.connection
-      conn.add docs
-      conn.commit
-    end
-  end
-
 end

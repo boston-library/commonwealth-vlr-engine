@@ -89,3 +89,7 @@ ehthumbs.db
 /jetty/*
 /fedora_conf/*
 /projectFilesBackup/*
+
+# test app #
+#########################
+.internal_test_app
