@@ -1,5 +1,4 @@
 # rake tasks for Commonwealth-public-interface
-
 namespace :vlr_engine do
 
   desc 'generate the static geojson file for catalog#map view'

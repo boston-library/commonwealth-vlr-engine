@@ -18,15 +18,7 @@ Create a new Rails app:
 $ rails new app_name
 $ cd app_name
 ```
-Add Blacklight to your Gemfile:
-```ruby
-gem 'blacklight', '~>5.14.0'
-```
-Run the Blacklight install:
-```
-$ rails generate blacklight:install
-```
-Then add Commonwealth-VLR-Engine to your Gemfile:
+Add Commonwealth-VLR-Engine to your Gemfile:
 ```ruby
 gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
 ```
@@ -44,4 +36,49 @@ VLR-Engine version | works with Blacklight version
 ----------------------- | ---------------------
 0.0.7 | >= 6.3.0 to < 7.*
 0.0.2 | >= 6.1.0 to < 6.3
-0.0.1 | >= 5.14.0 to < 6.*  
+0.0.1 | >= 5.14.0 to < 6.* 
+ 
+## Development / Testing
+
+After cloning the repository, and running `bundle install`, run `bundle exec rake` from the project's root directory, which will:
+1. Generate the test application at `.internal_test_app`
+2. Run `Blacklight` and `CommonwealthVlrEngine` generators
+3. Start Solr and index the sample Solr docs from `spec/fixtures`
+4. Run all specs
+
+NOTE: Many of the specs will fail initially. Check the YAML files in `.internal_test_app/conig` (especially `fedora.yml` and `iiif_server.yml`) and make sure they're pointing to the correct URLs.
+
+### Useful Development commands
+
+Generate the test application at `.internal_test_app`:
+```
+$ rake engine_cart:generate
+```
+Destroy the test application at `.internal_test_app`:
+```
+$ rake engine_cart:clean
+```
+Start Solr (run in new terminal from project home):
+```
+$ solr_wrapper
+```
+Stop Solr:
+```
+Ctrl-C
+```
+Purge Solr (Solr must be running):
+```
+$ solr_wrapper clean
+```
+Index sample Solr docs (run from `internal_test_app`):
+```
+# Solr must be running
+$ RAILS_ENV=test bundle exec rake vlr_engine:test_index:seed 
+```
+Run specs (Solr and BPL Dev IIIF image server must be running):
+```
+# run all tests
+$ bundle exec rake spec
+# run a single spec
+$ bundle exec rake spec SPEC=./spec/models/some_model_spec.rb # run one spec
+```

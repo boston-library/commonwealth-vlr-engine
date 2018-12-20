@@ -30,6 +30,9 @@ module CommonwealthVlrEngine
         Dir.glob(File.join('tasks', '*.rake')).each do |railtie|
           load railtie
         end
+        Dir.glob(File.join('lib/railties', '*.rake')).each do |railtie|
+          load railtie
+        end
       end
       #load "#{config.root}/tasks/dc_public.rake"
     end

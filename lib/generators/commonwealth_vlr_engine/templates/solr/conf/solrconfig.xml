@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- COPIED FROM https://github.com/boston-library/solr-core-conf/master/solrconfig.xml  -->
+<!-- NOTE: there are a few changes to make this work in dev/test environment
+     Those are indicated with ***DEV/TEST MOD*** -->
 <config>
   <!-- NOTE: various comments and unused configuration possibilities have been purged
 from this file. Please refer to http://wiki.apache.org/solr/SolrConfigXml,
@@ -12,8 +14,14 @@ as well as the default solrconfig file included with Solr -->
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
   <!-- solr lib dirs -->
+  <!-- ***DEV/TEST MOD*** -->
+  <!-- TO RUN IN PRODUCTION
   <lib dir="../lib/contrib/analysis-extras/lib" />
   <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
+  -->
+  <!-- TO RUN WITH SOLR_WRAPPER -->
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
   <dataDir>${solr.data.dir:}</dataDir>
 
@@ -41,11 +49,11 @@ http://wiki.apache.org/solr/LocalParams
         all_text_timv
         active_fedora_model_ssim
         object_type_si
-        title_info_primary_tsi^100
-        title_info_primary_trans_tsim^80
-        title_info_alternative_tsim^80
-        title_info_translated_tsim^80
-        title_info_uniform_tsim^80
+        title_info_primary_tsi^500
+        title_info_primary_trans_tsim^100
+        title_info_alternative_tsim^100
+        title_info_translated_tsim^100
+        title_info_uniform_tsim^50
         subtitle_tsim^80
         name_personal_tsim^20
         name_personal_role_tsim
@@ -73,14 +81,15 @@ http://wiki.apache.org/solr/LocalParams
         physical_location_tsim^20
         sub_location_tsim
         shelf_locator_tsim
-        subject_topic_tsim^50
-        subject_name_corporate_tsim^50
-        subject_name_personal_tsim^50
-        subject_geographic_tsim^50
+        subject_topic_tsim^100
+        subject_name_corporate_tsim^100
+        subject_name_personal_tsim^100
+        subject_geographic_tsim^100
         subject_scale_tsim
+        subject_projection_tsim
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim^50
+        subject_title_tsim^100
         related_item_host_tsim^10
         related_item_series_tsim^10
         related_item_subseries_tsim^10
@@ -110,30 +119,30 @@ http://wiki.apache.org/solr/LocalParams
       <str name="author_pf">
       </str>
       <str name="title_qf">
-        title_info_primary_tsi^100
-        title_info_primary_trans_tsim^80
-        title_info_alternative_tsim^80
-        title_info_translated_tsim^80
-        title_info_uniform_tsim^80
+        title_info_primary_tsi^500
+        title_info_primary_trans_tsim^100
+        title_info_alternative_tsim^100
+        title_info_translated_tsim^100
+        title_info_uniform_tsim^50
         subtitle_tsim^80
       </str>
       <str name="title_pf">
       </str>
       <str name="subject_qf">
-        subject_topic_tsim^50
-        subject_name_corporate_tsim^50
-        subject_name_personal_tsim^50
-        subject_geographic_tsim^50
+        subject_topic_tsim^100
+        subject_name_corporate_tsim^100
+        subject_name_personal_tsim^100
+        subject_geographic_tsim^100
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim^50
+        subject_title_tsim^100
       </str>
       <str name="subject_pf">
       </str>
       <str name="place_qf">
-        subject_geographic_tsim^50
-        subject_topic_tsim^20
-        title_info_primary_tsi^10
+        subject_geographic_tsim^200
+        subject_topic_tsim^50
+        title_info_primary_tsi^20
         subtitle_tsim^5
         abstract_tsim^5
         table_of_contents_tsi^5
@@ -231,30 +240,24 @@ http://wiki.apache.org/solr/LocalParams
     </lst>
   </requestHandler>
 
-  <!-- HAVE TO COMMENT OUT THE SUGGESTER< OR WE GET:
-  RSolr::Error::Http - 500 Internal Server Error
-      #   Error:     {msg=SolrCore 'blacklight-core' is not available due to init failure: Error loading class
-      'solr.SuggestComponent'}
-  -->
-
   <!-- suggest searchComponent for autocomplete -->
-  <!-- <searchComponent name="suggest" class="solr.SuggestComponent">
+  <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
-      <str name="lookupImpl">FuzzyLookupFactory</str> -->
+      <str name="lookupImpl">FuzzyLookupFactory</str>
       <!-- need to investigate how this affects performance, will build manually for now -->
       <!-- <str name="buildOnCommit">true</str> -->
-      <!-- <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
-      <float name="threshold">.00004</float> --> <!-- may need to tweak for production -->
-      <!-- <str name="field">spell</str>
-      <str name="suggestAnalyzerFieldType">string</str> -->
+      <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
+      <float name="threshold">.00004</float> <!-- may need to tweak for production -->
+      <str name="field">spell</str>
+      <str name="suggestAnalyzerFieldType">string</str>
       <!-- weightField only used with DocumentDictionaryFactory -->
       <!-- <str name="weightField">title_info_primary_tsi</str> -->
-    <!-- </lst>
-  </searchComponent> -->
+    </lst>
+  </searchComponent>
 
   <!-- suggest requestHandler for autocomplete -->
-  <!-- <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="suggest">true</str>
       <str name="suggest.count">10</str>
@@ -263,7 +266,7 @@ http://wiki.apache.org/solr/LocalParams
     <arr name="components">
       <str>suggest</str>
     </arr>
-  </requestHandler> -->
+  </requestHandler>
 
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <str name="queryAnalyzerFieldType">textSpell</str>
@@ -288,6 +291,9 @@ http://wiki.apache.org/solr/LocalParams
   </requestDispatcher>
 
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+  <!-- ***DEV/TEST MOD*** -->
+  <!-- the update, admin and admin/ping requestHandlers don't seem to be used in Blacklight 6 or Hyrax -->
+  <!--
   <requestHandler name="/update" class="solr.UpdateRequestHandler" />
   <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
 
@@ -299,6 +305,7 @@ http://wiki.apache.org/solr/LocalParams
       <str name="echoParams">all</str>
     </lst>
   </requestHandler>
+  -->
 
   <!-- config for the admin interface -->
   <admin>

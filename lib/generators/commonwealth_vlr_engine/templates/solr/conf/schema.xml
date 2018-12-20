@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- COPIED FROM https://github.com/boston-library/solr-core-conf/master/schema.xml  -->
+<!-- NOTE: there are a few changes to make this work in dev/test environment
+     Those are indicated with ***DEV/TEST MOD*** -->
+
 <schema name="Hydra" version="1.5">
   <!-- NOTE: various comments and unused configuration possibilities have been purged
 from this file. Please refer to http://wiki.apache.org/solr/SchemaXml,
@@ -379,8 +382,10 @@ users normally should not need to know about them.
 For more information about this and other Spatial fields new to Solr 4, see:
 http://wiki.apache.org/solr/SolrAdaptersForLuceneSpatial4
 -->
+    <!-- ***DEV/TEST MOD*** -->
+    <!-- @units is not supported after Solr4, use @distanceUnits instead -->
     <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
-               geo="true" distErrPct="0.025" maxDistErr="0.000009" units="degrees" />
+               geo="true" distErrPct="0.025" maxDistErr="0.000009" distanceUnits="degrees" />
 
     <fieldType name="text" class="solr.TextField" omitNorms="false">
       <analyzer>
@@ -415,7 +420,7 @@ http://wiki.apache.org/solr/SolrAdaptersForLuceneSpatial4
         <filter class="solr.TrimFilterFactory" />
         <filter class="solr.PatternReplaceFilterFactory"
                 pattern="(^[^a-z0-9]*)|([^a-z0-9\s])" replacement="" replace="all"
-                />
+        />
       </analyzer>
     </fieldType>
 
