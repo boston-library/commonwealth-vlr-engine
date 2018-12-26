@@ -62,6 +62,7 @@ blacklight.yml
 .config
 .yardoc
 Gemfile.lock
+/spec/test_app_templates/Gemfile.extra
 InstalledFiles
 _yardoc
 doc/

@@ -17,7 +17,7 @@ describe CatalogController do
 
   describe 'GET "metadata_view"' do
 
-    before { get :metadata_view, :id => 'bpl-dev:h702q6403'}
+    before { get :metadata_view, params: {id: 'bpl-dev:h702q6403'}}
 
     it 'should respond to the #metadata_view action' do
       expect(response).to be_success
@@ -48,7 +48,7 @@ describe CatalogController do
   describe 'mlt_search' do
 
     it 'should modify the config to use the correct search builder class' do
-      get :index, :mlt_id => 'bpl-dev:df65v790j'
+      get :index, params: {mlt_id: 'bpl-dev:df65v790j'}
       expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthMltSearchBuilder)
     end
 
@@ -57,7 +57,7 @@ describe CatalogController do
   describe 'get_object_files' do
 
     it 'should retrieve the files for the item' do
-      get :show, :id => 'bpl-dev:df65v790j'
+      get :show, params: {id: 'bpl-dev:df65v790j'}
       expect(assigns(:object_files)).to_not be_nil
     end
 
@@ -76,6 +76,7 @@ describe CatalogController do
 
     it 'should set the nav context' do
       get :index
+      awesome_print response.body
       expect(assigns(:nav_li_active)).to eq('search')
     end
 

@@ -7,7 +7,7 @@ describe OcrSearchController do
     describe 'with no ocr_q search params' do
 
       it 'should render the page' do
-        get :index, :id => 'bpl-dev:7s75dn48d'
+        get :index, params: { id: 'bpl-dev:7s75dn48d'}
         expect(response).to be_success
         expect(assigns(:document_list)).to be_empty
       end
@@ -18,7 +18,7 @@ describe OcrSearchController do
 
       describe 'with blank ocr_q search params' do
 
-        before { get :index, :id => 'bpl-dev:7s75dn48d', :ocr_q => '' }
+        before { get :index, params: {id: 'bpl-dev:7s75dn48d', ocr_q: '' }}
 
         it 'should render the page' do
           expect(response).to be_success
@@ -29,7 +29,7 @@ describe OcrSearchController do
 
       describe 'with valid ocr_q search params' do
 
-        before { get :index, :id => 'bpl-dev:7s75dn48d', :ocr_q => 'instruction' }
+        before { get :index, params: {id: 'bpl-dev:7s75dn48d', ocr_q: 'instruction' }}
 
         it 'should render the page' do
           expect(response).to be_success

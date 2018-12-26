@@ -1,17 +1,22 @@
 source 'https://rubygems.org'
 
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
 # Specify your gem's dependencies in commonwealth-vlr-engine.gemspec
 gemspec
 
 group :test do
   gem 'coveralls', require: false
+  gem 'rails-controller-testing'
 end
 
+gem 'omniauth-polaris', github: 'boston-library/omniauth-polaris', branch: 'update-5.2', require: false
 # BEGIN ENGINE_CART BLOCK
 # engine_cart: 1.2.0
 # engine_cart stanza: 0.10.0
 # the below comes from engine_cart, a gem used to test this Rails engine gem in the context of a Rails app.
 file = File.expand_path('Gemfile', ENV['ENGINE_CART_DESTINATION'] || ENV['RAILS_ROOT'] || File.expand_path('.internal_test_app', File.dirname(__FILE__)))
+puts file
 if File.exist?(file)
   begin
     eval_gemfile file

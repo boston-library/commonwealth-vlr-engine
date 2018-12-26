@@ -6,7 +6,7 @@ class ImageViewerController < CatalogController
   def show
     @response, @document = fetch(params[:id])
     @title = @document[blacklight_config.index.title_field.to_sym]
-    # @object_files is already set by before_filter in CommonwealthVlrEngine::ControllerOverride
+    # @object_files is already set by before_action in CommonwealthVlrEngine::ControllerOverride
     @page_sequence = create_img_sequence(image_file_pids(@object_files[:images]), params[:view])
     respond_to do |format|
       format.js

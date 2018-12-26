@@ -8,7 +8,7 @@ class OcrSearchController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  before_filter :modify_config_for_ocr, :only => [:index]
+  before_action :modify_config_for_ocr, :only => [:index]
 
   def index
     @doc_response, @document = fetch(params[:id])

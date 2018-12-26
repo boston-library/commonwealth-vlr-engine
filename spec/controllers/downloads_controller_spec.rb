@@ -15,7 +15,7 @@ describe DownloadsController do
     describe 'file object (single item download)' do
 
       it 'should be successful and set the right instance variables' do
-        xhr :get, :show, :id => @first_image_pid, :datastream_id => @datastream_id
+        get :show, xhr: true, params: { :id => @first_image_pid, :datastream_id => @datastream_id }
         expect(response).to be_success
         expect(assigns(:parent_document).id).to eq(@item_id)
         expect(assigns(:object_profile).class).to eq(Hash)
@@ -26,7 +26,7 @@ describe DownloadsController do
     describe 'top-level object (ZIP download)' do
 
       it 'should be successful and set the right instance variables' do
-        xhr :get, :show, :id => @item_id, :datastream_id => @datastream_id
+        get show xhr: true, params: {:id => @item_id, :datastream_id => @datastream_id}
         expect(response).to be_success
         expect(assigns(:parent_document)).to eq(assigns(:document))
         expect(assigns(:object_profile)).to be_nil
@@ -43,7 +43,7 @@ describe DownloadsController do
     describe 'file object (single item download)' do
 
       it 'should be successful and set the right headers' do
-        get :trigger_download, :id => @first_image_pid, :datastream_id => @datastream_id
+        get :trigger_download, params: {:id => @first_image_pid, :datastream_id => @datastream_id }
         expect(response).to be_success
         expect(response.headers['Content-Type']).to eq('image/jpeg')
         expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{file_name}_#{@datastream_id}.jpg\"")
@@ -54,7 +54,7 @@ describe DownloadsController do
     describe 'top-level object (ZIP download)' do
 
       it 'should be successful and set the right instance variables' do
-        get :trigger_download, :id => @item_id, :datastream_id => @datastream_id
+        get :trigger_download, params: {:id => @item_id, :datastream_id => @datastream_id }
         expect(response).to be_success
         expect(response.headers['Content-Type']).to eq('application/zip')
         expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{file_name}_#{@datastream_id}.zip\"")

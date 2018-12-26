@@ -22,7 +22,7 @@ describe CollectionsController do
   describe 'GET "show"' do
 
     before(:each) do
-      get :show, :id => 'bpl-dev:h702q636h'
+      get :show, params: {id: 'bpl-dev:h702q636h'}
     end
 
     it 'should show the collection page' do
@@ -59,7 +59,7 @@ describe CollectionsController do
     end
   end
 
-  describe 'private methods and before_filters' do
+  describe 'private methods and before_actions' do
 
     # for testing private methods
     class CollectionsControllerTestClass < CollectionsController

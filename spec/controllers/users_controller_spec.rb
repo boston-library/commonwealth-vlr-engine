@@ -16,7 +16,7 @@ describe UsersController do
 
     describe 'non-logged-in user' do
       it 'should redirect to the sign-in page' do
-        get :show, :id => @test_user.id
+        get :show, params: {id: @test_user.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -35,7 +35,7 @@ describe UsersController do
         end
 
         it 'should redirect to the home page' do
-          get :show, :id => @test_user2.id
+          get :show, params: {id: @test_user2.id }
           expect(response).to redirect_to(root_path)
         end
 
@@ -48,7 +48,7 @@ describe UsersController do
         end
 
         it 'should show the user#show page' do
-          get :show, :id => @test_user.id
+          get :show, params: {id: @test_user.id}
           expect(response).to be_success
           expect(response.body).to have_selector('#user_account_links_list')
         end

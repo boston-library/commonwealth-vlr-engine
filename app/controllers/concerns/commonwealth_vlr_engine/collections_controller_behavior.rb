@@ -10,11 +10,11 @@ module CommonwealthVlrEngine
       copy_blacklight_config_from(CatalogController)
 
       # remove collection facet and collapse others
-      before_filter :relation_base_blacklight_config, :only => [:index, :show]
-      before_filter :add_series_facet, :only => :show
-      before_filter :collections_limit, :only => :index
-      before_filter :collections_limit_for_facets, :only => :facet
-      before_filter :collapse_institution_facet, :only => :index
+      before_action :relation_base_blacklight_config, :only => [:index, :show]
+      before_action :add_series_facet, :only => :show
+      before_action :collections_limit, :only => :index
+      before_action :collections_limit_for_facets, :only => :facet
+      before_action :collapse_institution_facet, :only => :index
 
       helper_method :search_action_url
       helper_method :get_series_image_obj

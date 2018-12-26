@@ -9,9 +9,9 @@ module CommonwealthVlrEngine
     included do
       copy_blacklight_config_from(CatalogController)
 
-      before_filter :institutions_index_config, :only => [:index]
+      before_action :institutions_index_config, :only => [:index]
       # remove collection facet and collapse others
-      before_filter :relation_base_blacklight_config, :only => [:show]
+      before_action :relation_base_blacklight_config, :only => [:show]
 
       helper_method :search_action_url
     end

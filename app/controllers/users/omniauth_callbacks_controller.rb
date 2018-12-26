@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # this is the only spot where we allow CSRF, our openid / oauth redirect
   # will not have a CSRF token, however the payload is all validated so its safe
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   include Bpluser::Users::OmniauthCallbacksController
 end

@@ -14,7 +14,7 @@ describe IiifManifestController do
   describe 'get manifest' do
 
     before(:each) do
-      get :manifest, :id => @item_pid
+      get :manifest, params: {id: @item_pid}
       @response_body = JSON.parse(response.body)
     end
 
@@ -34,7 +34,7 @@ describe IiifManifestController do
   describe 'get canvas' do
 
     before(:each) do
-      get :canvas, :id => @item_pid, :canvas_object_id => @image_pid
+      get :canvas, params: {id:  @item_pid, canvas_object_id: @image_pid }
       @response_body = JSON.parse(response.body)
     end
 
@@ -54,7 +54,7 @@ describe IiifManifestController do
   describe 'get annotation' do
 
     before(:each) do
-      get :annotation, :id => @item_pid, :annotation_object_id => @image_pid
+      get :annotation, params: {id:  @item_pid, annotation_object_id: @image_pid }
       @response_body = JSON.parse(response.body)
     end
 
@@ -73,7 +73,7 @@ describe IiifManifestController do
   describe 'get collection' do
 
     before(:each) do
-      get :collection, :id => 'bpl-dev:3j334b469'
+      get :collection, params: {id: 'bpl-dev:3j334b469'}
       @response_body = JSON.parse(response.body)
     end
 
@@ -92,11 +92,11 @@ describe IiifManifestController do
   describe 'caching' do
 
     before(:each) do
-      get :manifest, :id => @item_pid
+      get :manifest, params: {id:  @item_pid }
       #post :cache_invalidate, :id => @item_pid
       #@response_body = JSON.parse(response.body)
     end
-    
+
     it 'should cache the manifest' do
       expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_truthy
     end
@@ -108,7 +108,7 @@ describe IiifManifestController do
         expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_falsey
       end
     end
-    
+
   end
 
 end

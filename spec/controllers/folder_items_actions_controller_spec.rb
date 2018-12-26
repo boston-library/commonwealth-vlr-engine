@@ -40,7 +40,7 @@ describe FolderItemsActionsController do
   describe "folder_item_actions: copy" do
 
     before(:each) do
-      @test_folder2_attr = {:title => "Other Test Folder Title",:visibility => 'private'}
+      @test_folder2_attr = {:title => "Other Test Folder Title", :visibility => 'private'}
       @folder2 = @test_user.folders.create!(@test_folder2_attr)
     end
 

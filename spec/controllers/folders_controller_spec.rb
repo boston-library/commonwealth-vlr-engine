@@ -72,7 +72,7 @@ describe FoldersController do
     describe "non-logged in user" do
 
       it "should redirect to the login page" do
-        delete :destroy, :id => @test_user.folders.first.id
+        delete :destroy, params: {id: @test_user.folders.first.id}
         expect(response).to be_redirect
       end
 
@@ -86,12 +86,12 @@ describe FoldersController do
 
       it "should delete the folder" do
         expect {
-          delete :destroy, :id => @test_user.folders.first.id
+          delete :destroy, params: {id: @test_user.folders.first.id }
         }.to change(Bpluser::Folder, :count).by(-1)
       end
 
       it "should redirect to the folders page" do
-        delete :destroy, :id => @test_user.folders.first.id
+        delete :destroy, params: {id:  @test_user.folders.first.id}
         expect(response).to redirect_to(:controller => 'folders', :action => 'index')
       end
 
@@ -120,7 +120,7 @@ describe FoldersController do
   describe "GET show" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
+      @test_folder_attr = {:title => "Test Folder Title", :visibility => 'private'}
       @folder = @test_user.folders.create!(@test_folder_attr)
     end
 
@@ -129,7 +129,7 @@ describe FoldersController do
       describe 'private folder' do
 
         it "should redirect to the login page" do
-          get :show, :id => @folder.id
+          get :show, params: {id: @folder.id }
           expect(response).to be_redirect
         end
 
@@ -138,12 +138,12 @@ describe FoldersController do
       describe 'public folder' do
 
         before(:each) do
-          @public_test_folder_attr = {:title => "Public Test Folder Title",:visibility => 'public'}
+          @public_test_folder_attr = {:title => "Public Test Folder Title", :visibility => 'public'}
           @public_folder = @test_user.folders.create!(@public_test_folder_attr)
         end
 
         it "should show the folder" do
-          get :show, :id => @public_folder.id
+          get :show, params: { id: @public_folder.id }
           expect(response.body).to have_selector("h2", :text => @public_folder.title)
         end
 
@@ -158,7 +158,7 @@ describe FoldersController do
       end
 
       it "should show the folder title" do
-        get :show, :id => @folder.id
+        get :show, params: {id: @folder.id }
         expect(response.body).to have_selector("h2", :text => @folder.title)
       end
 
@@ -169,7 +169,7 @@ describe FoldersController do
         end
 
         it "should show a link to the folder item" do
-          get :show, :id => @folder.id
+          get :show, params: {id:  @folder.id}
           expect(response.body).to have_selector("a[href='/search/" + @test_folder_item.document_id + "']")
         end
 
@@ -181,7 +181,7 @@ describe FoldersController do
 
       before(:each) do
         sign_in @test_user
-        @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
+        @test_folder_attr = {:title => "Test Folder Title", :visibility => 'private'}
         @folder = @test_user.folders.create!(@test_folder_attr)
         sign_out @test_user
         @other_user_attr = {
@@ -193,7 +193,7 @@ describe FoldersController do
       end
 
       it "should not allow access to another user's folder" do
-        get :show, :id => @folder.id
+        get :show, params: {id:  @folder.id }
         expect(response).to redirect_to(root_path)
       end
 
@@ -224,12 +224,12 @@ describe FoldersController do
 
         it "should not create a folder" do
           expect {
-            post :create, :folder => {:title => ""}
+            post :create, params: {:folder => {:title => ""}}
           }.not_to change(Bpluser::Folder, :count)
         end
 
         it "should re-render the create page" do
-          post :create, :folder => {:title => ""}
+          post :create, params: {:folder => {:title => ""} }
           expect(response).to render_template('folders/new')
         end
 
@@ -239,12 +239,12 @@ describe FoldersController do
 
         it "should create a folder" do
           expect do
-            post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
+            post :create, params: {:folder => {:title => "Whatever, man",:visibility => 'private'}}
           end.to change(Bpluser::Folder, :count).by(1)
         end
 
         it "should redirect to the folders page" do
-          post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
+          post :create, params: {:folder => {:title => "Whatever, man", :visibility => 'private'}}
           expect(response).to redirect_to(:controller => 'folders', :action => 'index')
         end
 
@@ -279,7 +279,7 @@ describe FoldersController do
       end
 
       it "should show the edit form with the correct title value" do
-        get :edit, :id => @folder.id
+        get :edit, params: {id: @folder.id }
         expect(response.body).to have_field("folder_title", :with => @folder.title)
       end
 
@@ -290,7 +290,7 @@ describe FoldersController do
   describe "PUT update" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
+      @test_folder_attr = {:title => "Test Folder Title", :visibility => 'private'}
       @folder = @test_user.folders.create!(@test_folder_attr)
     end
 
@@ -313,13 +313,13 @@ describe FoldersController do
       describe "failure" do
 
         it "should not update the folder" do
-          put :update, :id => @folder.id, :folder => {:title => ""}
+          put :update, params: {:id => @folder.id, :folder => {:title => ""} }
           @folder.reload
           expect(@folder.title).not_to eq("")
         end
 
         it "should re-render the edit form" do
-          put :update, :id => @folder.id, :folder => {:title => ""}
+          put :update, params: {:id => @folder.id, :folder => {:title => ""} }
           expect(response).to render_template('folders/edit')
         end
 

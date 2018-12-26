@@ -18,14 +18,14 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
-      before_filter :get_object_files, :only => [:show]
-      before_filter :mlt_results_for_show, :only => [:show]
-      before_filter :set_nav_context, :only => [:index]
-      before_filter :mlt_search, :only => [:index]
-      before_filter :add_institution_fields, :only => [:index, :facet]
+      before_action :get_object_files, :only => [:show]
+      before_action :mlt_results_for_show, :only => [:show]
+      before_action :set_nav_context, :only => [:index]
+      before_action :mlt_search, :only => [:index]
+      before_action :add_institution_fields, :only => [:index, :facet]
 
       helper_method :has_volumes?
-
+      alias_method  :guest_uid_authentication_key, :guest_email_authentication_key
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
