@@ -20,7 +20,7 @@ describe CatalogController do
     before { get :metadata_view, params: {id: 'bpl-dev:h702q6403'}}
 
     it 'should respond to the #metadata_view action' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:document)).to_not be_nil
     end
 
@@ -35,7 +35,7 @@ describe CatalogController do
     before { get :formats_facet }
 
     it 'should respond to the #formats_facet action' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:display_facet)).to_not be_nil
     end
 
@@ -76,7 +76,6 @@ describe CatalogController do
 
     it 'should set the nav context' do
       get :index
-      awesome_print response.body
       expect(assigns(:nav_li_active)).to eq('search')
     end
 

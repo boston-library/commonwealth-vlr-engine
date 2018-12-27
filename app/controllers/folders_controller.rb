@@ -31,7 +31,7 @@ class FoldersController < CatalogController
 
     # @folder is set by correct_user_for_folder
     @folder_items = @folder.folder_items
-    folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
+    folder_items_ids = @folder_items.pluck(:document_id)
     params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
     @response, @document_list = fetch(folder_items_ids)
 
@@ -104,7 +104,7 @@ class FoldersController < CatalogController
   # return a list of publicly visible folders that have items
   def public_list
     # TODO create a named scope for this query in Bplmodels::Folder?
-    @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).uniq.order('updated_at DESC')
+    @folders = Bpluser::Folder.includes(:folder_items).where(visibility: 'public').order(updated_at: :desc)
   end
 
   private

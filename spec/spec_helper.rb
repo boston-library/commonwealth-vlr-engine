@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require 'engine_cart'
 require 'coveralls'
+require 'awesome_print'
 Coveralls.wear!('rails')
 EngineCart.load_application!
 

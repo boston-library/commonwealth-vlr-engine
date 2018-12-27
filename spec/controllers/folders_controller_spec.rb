@@ -107,7 +107,7 @@ describe FoldersController do
 
     it "should return http success" do
       get :new
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "should display the form" do
@@ -328,13 +328,13 @@ describe FoldersController do
       describe "success" do
 
         it "should update the folder" do
-          put :update, :id => @folder.id, :folder => {:title => "New Folder Title"}
+          put :update, params: {:id => @folder.id, :folder => {:title => "New Folder Title"}}
           @folder.reload
           expect(@folder.title).to eq("New Folder Title")
         end
 
         it "should redirect to the folders show page" do
-          put :update, :id => @folder.id, :folder => {:title => "New Folder Title"}
+          put :update, params: {:id => @folder.id, :folder => {:title => "New Folder Title"}}
           expect(response).to redirect_to(:controller => 'folders', :action => 'show')
         end
 
@@ -354,7 +354,7 @@ describe FoldersController do
 
     it 'should show the public list' do
       get :public_list
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_css('body.blacklight-folders-public_list')
     end
 

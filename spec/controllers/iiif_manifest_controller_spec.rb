@@ -19,7 +19,7 @@ describe IiifManifestController do
     end
 
     it 'should render an IIIF manifest' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -39,7 +39,7 @@ describe IiifManifestController do
     end
 
     it 'should render an IIIF canvas' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -59,7 +59,7 @@ describe IiifManifestController do
     end
 
     it 'should render an IIIF annotation' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -78,7 +78,7 @@ describe IiifManifestController do
     end
 
     it 'should render an IIIF Collection' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -103,7 +103,7 @@ describe IiifManifestController do
 
     describe 'cache_invalidate' do
       it 'should remove the cached manifest' do
-        post :cache_invalidate, :id => @item_pid
+        post :cache_invalidate, params: {:id => @item_pid}
         expect(JSON.parse(response.body)['result']).to be_truthy
         expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_falsey
       end

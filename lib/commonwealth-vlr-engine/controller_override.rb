@@ -25,7 +25,6 @@ module CommonwealthVlrEngine
       before_action :add_institution_fields, :only => [:index, :facet]
 
       helper_method :has_volumes?
-      alias_method  :guest_uid_authentication_key, :guest_email_authentication_key
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
@@ -187,7 +186,6 @@ module CommonwealthVlrEngine
       # for some reason won't work if not in the 'included' block
       def metadata_view
         @response, @document = fetch(params[:id])
-
         respond_to do |format|
           format.html
           format.js { render :layout => false }

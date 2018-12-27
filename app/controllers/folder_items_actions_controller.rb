@@ -5,7 +5,7 @@ class FolderItemsActionsController < ApplicationController
     @folder = Bpluser::Folder.find(params[:id]) if params[:origin] == "folders"
     @user = current_or_guest_user
     if params[:selected]
-      view_params = params.extract!(:sort, :per_page, :view)
+      view_params = params.permit(:sort, :per_page, :view)
       items = params[:selected]
 
       case params[:commit]
@@ -46,7 +46,7 @@ class FolderItemsActionsController < ApplicationController
               folder_to_update.folder_items.create!(:document_id => item_id) and folder_to_update.touch unless folder_to_update.has_folder_item(item_id)
             end
           end
-          redirect_to :back
+          redirect_back(fallback_location: root_path)
           if success
             folder_display_name = destination == t('blacklight.bookmarks.title') ? t('blacklight.bookmarks.title') : folder_to_update.title
             flash[:notice] = t('blacklight.folders.update_items.copy.success',
@@ -57,7 +57,7 @@ class FolderItemsActionsController < ApplicationController
       end
 
     else
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
       flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
     end
 

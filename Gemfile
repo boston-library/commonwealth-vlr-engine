@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/boston-library/#{repo}.git" }
 
 # Specify your gem's dependencies in commonwealth-vlr-engine.gemspec
 gemspec
@@ -9,8 +9,9 @@ group :test do
   gem 'coveralls', require: false
   gem 'rails-controller-testing'
 end
-
-gem 'omniauth-polaris', github: 'boston-library/omniauth-polaris', branch: 'update-5.2', require: false
+#TODO remove bottom two gems once they are published to ruby gems
+gem 'bpluser', github: 'bpluser', branch: 'update-5.2', ref: '98e34bb' ,require: false
+gem 'omniauth-polaris', github: 'omniauth-polaris', branch: 'update-5.2', require: false
 # END ENGINE_CART BLOCK
 # BEGIN ENGINE_CART BLOCK
 # engine_cart: 2.0.1

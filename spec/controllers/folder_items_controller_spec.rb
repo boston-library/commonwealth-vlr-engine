@@ -33,7 +33,7 @@ describe FolderItemsController do
       it "should create a new folder item using ajax" do
         expect {
           post :create, xhr: true, params: {id: "bpl-dev:g445cd14k", folder_id: @folder.id }
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(@test_user.existing_folder_item_for("bpl-dev:g445cd14k")).not_to be_nil
         }.to change(Bpluser::FolderItem, :count).by(1)
       end
@@ -61,7 +61,7 @@ describe FolderItemsController do
       it "should delete a folder item using ajax" do
         expect {
           delete :destroy, xhr: true ,params: {id: "bpl-dev:g445cd14k" }
-          expect(response).to be_success
+          expect(response).to be_successful
         }.to change(Bpluser::FolderItem, :count).by(-1)
       end
 

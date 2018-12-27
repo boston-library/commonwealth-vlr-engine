@@ -53,8 +53,8 @@ class BlacklightAdvancedSearch::QueryParser
   end
 
   # LOCAL OVERRIDE of BlacklightAdvancedSearch::QueryParser#initialize
-  def initialize(params,config)
-    @params = HashWithIndifferentAccess.new(prepare_params(params))
+  def initialize(params, config)
+    @params = HashWithIndifferentAccess.new(prepare_params(params.permit!))
     @config = config
   end
 

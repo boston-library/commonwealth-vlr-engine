@@ -1,10 +1,10 @@
 # stores IIIF image server url
 
 development:
-  url: http://iiifserver.example.org/
+  url: https://iiifdev.bpl.org/
 
 test:
-  url:
+  url: https://iiifdev.bpl.org/
 
 production:
   url:

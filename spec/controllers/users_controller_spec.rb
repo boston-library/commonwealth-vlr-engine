@@ -49,7 +49,7 @@ describe UsersController do
 
         it 'should show the user#show page' do
           get :show, params: {id: @test_user.id}
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(response.body).to have_selector('#user_account_links_list')
         end
 

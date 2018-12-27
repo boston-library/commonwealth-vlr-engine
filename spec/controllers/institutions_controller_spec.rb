@@ -8,7 +8,7 @@ describe InstitutionsController do
 
     it "should show the institutions page" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector("div.blacklight-institution")
       expect(assigns(:document_list)).not_to be_nil
     end
@@ -43,7 +43,7 @@ describe InstitutionsController do
 
     it "should show the institution page" do
       get :show, params: {id: @institution_id }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector("div.blacklight-institution")
       expect(assigns(:document)).not_to be_nil
     end

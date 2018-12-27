@@ -24,11 +24,12 @@ describe FolderItemsActionsController do
 
       it "should remove the selected items" do
         expect {
-          put :folder_item_actions,
+          put :folder_item_actions, params: {
               :commit => "Remove",
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-dev:h702q6403", "bpl-dev:g445cd14k"]
+            }
           expect(response).to be_redirect
         }.to change(@folder.folder_items, :count).by(-2)
       end
@@ -49,11 +50,11 @@ describe FolderItemsActionsController do
       it "should copy the selected items to folder2" do
         expect {
           @request.env['HTTP_REFERER'] = '/folders/' + @folder.id.to_s
-          put :folder_item_actions,
+          put :folder_item_actions, params: {
               :commit => "Copy to " + @folder2.id.to_s,
               :origin => "folders",
               :id => @folder,
-              :selected => ["bpl-dev:h702q6403", "bpl-dev:g445cd14k"]
+              :selected => ["bpl-dev:h702q6403", "bpl-dev:g445cd14k"] }
           expect(response).to be_redirect
         }.to change(@folder2.folder_items, :count).by(2)
       end
@@ -67,11 +68,12 @@ describe FolderItemsActionsController do
     describe "success" do
 
       it "should redirect to the cite url" do
-        put :folder_item_actions,
+        put :folder_item_actions, params: {
               :commit => "Cite",
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-dev:g445cd14k"]
+            }
           expect(response).to redirect_to(citation_solr_document_path(:id => ["bpl-dev:g445cd14k"]))
       end
 
@@ -84,11 +86,12 @@ describe FolderItemsActionsController do
     describe "success" do
 
       it "should redirect to the email url" do
-        put :folder_item_actions,
+        put :folder_item_actions, params: {
             :commit => "Email",
             :origin => "folders",
             :id => @folder,
             :selected => ["bpl-dev:g445cd14k"]
+          }
         expect(response).to redirect_to(email_solr_document_path(:id => ["bpl-dev:g445cd14k"]))
       end
 

@@ -6,7 +6,7 @@ module CommonwealthVlrEngine
     # create a link to a location name facet value
     def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
       search_path = catalogpath || 'search_catalog_path'
-      new_params = params
+      new_params = params.permit!
       field_values = field_value.split(', ')
       if field_values.last.match(/[\.\)]/) # Mass.)
         field_values = [field_values.join(', ')]

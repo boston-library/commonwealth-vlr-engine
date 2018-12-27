@@ -8,7 +8,7 @@ describe FeedbackController do
 
     it "should render the contact form" do
       get :show
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector("form[id='feedback_form']")
     end
 

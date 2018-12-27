@@ -28,7 +28,7 @@ class FolderItemsController < CatalogController
     end
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: root_path) }
       format.js
     end
 
@@ -48,7 +48,7 @@ class FolderItemsController < CatalogController
     Bpluser::FolderItem.find(folder_item.id).destroy
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: root_path) }
       format.js
     end
 

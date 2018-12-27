@@ -15,7 +15,7 @@ describe ImageViewerController do
   describe "GET 'show'" do
     it 'should render the partial using ajax with the new image' do
       get :show, xhr: true, params: { :id => @item_id, :view => @second_image_pid}
-      expect(response).to be_success
+      expect(response).to be_successful
       # not great, but OK for now
       expect(response.body).to match /#{@second_image_pid}/
     end
@@ -24,7 +24,7 @@ describe ImageViewerController do
   describe 'get #book_viewer' do
     it 'should render the book viewer' do
       get :book_viewer, params: {id: @item_id}
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector('#viewer')
     end
   end
