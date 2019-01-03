@@ -1,7 +1,7 @@
 //
 // Required by Blacklight-Maps
 //= require blacklight-maps
-
+//= require leaflet.markercluster
 // Required by Blacklight-Gallery
 //= require blacklight_gallery.js
 
