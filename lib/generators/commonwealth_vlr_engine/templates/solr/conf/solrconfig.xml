@@ -223,7 +223,7 @@ http://wiki.apache.org/solr/LocalParams
   </requestHandler>
 
   <!-- totally experimental, for "more like this" link in catalog#show -->
-  <requestHandler name="mlt" class="solr.MoreLikeThisHandler">
+  <requestHandler name="mlt_qparser" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="fl">
         *,
@@ -236,7 +236,7 @@ http://wiki.apache.org/solr/LocalParams
       <str name="mlt.mintf">1</str>
       <str name="mlt.fl">subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim</str>
       <str name="mlt.qf">subject_facet_ssim^5</str> -->
-      <str name="q">{!raw f=id v=$id}</str>
+      <str name="q">{!mlt mintf=1 mindf=1 qf=$qf v=$id}</str>
     </lst>
   </requestHandler>
 

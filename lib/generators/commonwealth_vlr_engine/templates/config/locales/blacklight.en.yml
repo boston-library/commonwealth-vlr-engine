@@ -20,7 +20,7 @@ en:
 
     footer:
           address: '123 Main Street, Anywhere, MA 01234'
-    
+
     home:
           banner:
             center_text: 'Explore historical collections from this totally awesome library.'
@@ -30,7 +30,7 @@ en:
             collections:
               enabled: true
             institutions:
-              enabled: false
+              enabled: true
             formats:
               enabled: true
           context:

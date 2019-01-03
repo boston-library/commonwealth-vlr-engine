@@ -24,6 +24,7 @@ module CommonwealthVlrEngine
   # adds some site-wide behavior into the application controller
   include CommonwealthVlrEngine::Controller
   layout 'commonwealth-vlr-engine'
+  skip_after_action :discard_flash_if_xhr
 }
         end
         remove_marker = "layout 'blacklight'"

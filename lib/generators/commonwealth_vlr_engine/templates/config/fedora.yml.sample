@@ -1,6 +1,6 @@
 development:
-  url: http://fedoradev.bpl.org
+  url: http://fedoradev.bpl.org/fedora
 test: &TEST
-  url: http://fedoradev.bpl.org
+  url: http://fedoradev.bpl.org/fedora
 production:
   url: http://your.production.server:8080/fedora
