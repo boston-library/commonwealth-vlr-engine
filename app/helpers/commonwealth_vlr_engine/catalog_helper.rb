@@ -142,7 +142,7 @@ module CommonwealthVlrEngine
 
     # link to items starting with a specific letter
     def link_to_az_value(letter, field, search_path, link_class=nil)
-      new_params = params.except(:controller, :action, :q, :page)
+      new_params = params.permit!.except(:controller, :action, :q, :page)
       new_params[:q] = "#{field}:#{letter}*"
       link_to(letter,
               self.send(search_path, new_params),
