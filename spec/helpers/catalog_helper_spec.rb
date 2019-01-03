@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CatalogHelper do
 
@@ -156,7 +156,8 @@ describe CatalogHelper do
     end
 
     it 'should return a collection icon' do
-      expect(helper.index_relation_base_icon(coll_doc)).to include('dc_collection-icon.png')
+      expect(helper.index_relation_base_icon(coll_doc)).to include('dc_collection-icon')
+      expect(helper.index_relation_base_icon(coll_doc)).to include('.png')
     end
 
   end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CollectionsHelper do
 
@@ -28,7 +28,7 @@ describe CollectionsHelper do
     # (1) 'should_receive' is deprecated and not able to figure out replacement
     # (2) not sure that testing rendering partial is even appropriate, might be better as view spec
     it 'should render the correct partial' do
-      helper.should_receive(:render)
+      expect(helper).to receive(:render)
       helper.render_collection_image
     end
   end

@@ -1,20 +1,10 @@
-ENV["RAILS_ENV"] ||= 'test'
-
+require 'awesome_print'
+require 'pry-rescue'
 require 'engine_cart'
 require 'coveralls'
-require 'awesome_print'
+
 Coveralls.wear!('rails')
 EngineCart.load_application!
-
-require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
-
-Capybara.register_driver :poltergeist do |app|
-  options = {}
-  options[:js_errors] = false
-  options[:timeout] = 120 if RUBY_PLATFORM == "java"
-  Capybara::Poltergeist::Driver.new(app, options)
-end
 
 if ENV["COVERAGE"] or ENV["CI"]
   require 'simplecov'
@@ -25,17 +15,9 @@ if ENV["COVERAGE"] or ENV["CI"]
   end
 end
 
-require 'commonwealth-vlr-engine'
-
-require 'rspec/rails'
-require 'capybara/rspec'
-
-
 RSpec.configure do |config|
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.infer_spec_type_from_file_location!
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+  config.shared_context_metadata_behavior = :apply_to_host_groups
 end

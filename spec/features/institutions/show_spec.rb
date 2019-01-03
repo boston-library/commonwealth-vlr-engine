@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Institutions#show view', js: true do
 
@@ -13,11 +13,7 @@ describe 'Institutions#show view', js: true do
     end
 
     describe 'expanded description' do
-
-      before do
-        page.find('.institution_desc_expand').click
-      end
-
+      before { find('.institution_desc_expand').click }
       it 'should show the #institution_desc_collapse content when the link is clicked' do
         expect(page).to have_selector('#institution_desc_collapse', visible: true)
       end

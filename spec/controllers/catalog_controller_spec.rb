@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # tests for controller actions and configuration added to CatalogController via CommonwealthVlrEngine::ControllerOverride
 describe CatalogController do

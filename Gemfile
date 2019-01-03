@@ -8,10 +8,11 @@ gemspec
 group :test do
   gem 'coveralls', require: false
   gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 #TODO remove bottom two gems once they are published to ruby gems
-gem 'bpluser', github: 'bpluser', branch: 'update-5.2', ref: '98e34bb' ,require: false
-gem 'omniauth-polaris', github: 'omniauth-polaris', branch: 'update-5.2', require: false
 # END ENGINE_CART BLOCK
 # BEGIN ENGINE_CART BLOCK
 # engine_cart: 2.0.1
