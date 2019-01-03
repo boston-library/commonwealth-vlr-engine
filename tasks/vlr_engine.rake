@@ -15,7 +15,7 @@ namespace :vlr_engine do
     end
 
     @controller = BlacklightGeojsonTestClass.new
-    @controller.request = ActionDispatch::TestRequest.new
+    @controller.request = ActionDispatch::TestRequest.create
 
     (@response, @document_list) = @controller.search_results({})
 
