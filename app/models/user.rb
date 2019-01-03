@@ -1,14 +1,10 @@
-class User < ActiveRecord::Base
-  require 'base64'
-  require 'cgi'
-  require 'openssl'
-  require 'rest_client'
+class User < ApplicationRecord
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
 
   # Connects this user object to the BPL omniauth service
-  include Bpluser::User
+  include Bpluser::Concerns::Users
 
   self.table_name = "users"
 
