@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'blacklight_range_limit', '~> 6.3.3'
   s.add_dependency 'openseadragon', '0.5.0'
   s.add_dependency 'font-awesome-sass', '4.1.0'
-  s.add_dependency 'bpluser', '~> 0.1.14'
+  s.add_dependency 'bpluser', '0.1.16'
   s.add_dependency 'typhoeus', '1.3.1'
   s.add_dependency 'unicode', '~> 0.4.0'
   s.add_dependency 'madison', '~> 0.5.0'
