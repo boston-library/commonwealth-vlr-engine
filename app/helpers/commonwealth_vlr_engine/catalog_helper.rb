@@ -292,7 +292,12 @@ module CommonwealthVlrEngine
     # are resolved
     def render_search_to_page_title(params)
       # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
-      html_constraints = render_search_to_s(params).gsub(/<span class="filterValues">/,' ')
+      if params.respond_to?(:permit)
+        permitted_params = params.permit(:f).to_h
+      else
+        permitted_params = params
+      end
+      html_constraints = render_search_to_s(permitted_params).gsub(/<span class="filterValues">/,' ')
       html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/,' / ')
       sanitize(html_constraints, :tags=>[])
 

@@ -187,7 +187,9 @@ module CommonwealthVlrEngine
       def metadata_view
         @response, @document = fetch(params[:id])
         respond_to do |format|
-          format.html
+          format.html do
+            render layout: false if request.xhr?
+          end
           format.js { render :layout => false }
         end
       end

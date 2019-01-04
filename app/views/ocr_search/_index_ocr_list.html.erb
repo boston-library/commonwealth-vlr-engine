@@ -9,7 +9,7 @@
           </div>
       <% end %>
       <div class="ocr_snippets">
-        <%= doc_presenter.field_value(blacklight_config.ocr_search_field,
+        <%= doc_presenter.field_value(blacklight_config.index_fields[blacklight_config.ocr_search_field],
                                       {counter: document_counter_with_offset(document_counter)}) %>
       </div>
     </dd>

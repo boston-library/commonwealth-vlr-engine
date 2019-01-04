@@ -26,7 +26,7 @@ require 'selenium/webdriver'
 # Capybara.default_max_wait_time = 5
 
 
-Capybara.javascript_driver = :selenium_chrome
+Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.default_max_wait_time = 5
 
 
@@ -57,5 +57,18 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  #JS Error Output
+  config.after(:each, type: :feature, js: true) do
+    errors = page.driver.browser.manage.logs.get(:browser)
+    unless errors.blank?
+      aggregate_failures 'javascript errrors' do
+        errors.each do |error|
+          STDERR.puts "#{error.level.upcase}: javascript warning"
+          STDERR.puts error.message
+        end
+      end
+    end
   end
 end
