@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
       collex_f_params = {blacklight_config.index.display_type_field => 'Collection',
                          'institution_pid_ssi' => params[:id]}
       @collex_response, @collex_documents = search_results({:f => collex_f_params,
-                                                            :rows => 200,
+                                                            :rows => 500,
                                                             :sort => 'title_info_primary_ssort asc'})
 
       # add params[:f] for proper facet links
