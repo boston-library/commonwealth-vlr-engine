@@ -120,39 +120,38 @@ module CommonwealthVlrEngine
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|
           field.label = 'All Fields'
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+          field.solr_parameters = { 'spellcheck.dictionary': 'default' }
         end
 
         config.add_search_field('title') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$title_qf',
-              pf: '$title_pf'
+          field.solr_parameters = { 
+            'spellcheck.dictionary': 'default',
+            qf: '${title_qf}',
+            pf: '${title_pf}'
           }
         end
 
         config.add_search_field('subject') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.qt = 'search'
-          field.solr_local_parameters = {
-              qf: '$subject_qf',
-              pf: '$subject_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${subject_qf}',
+            pf: '${subject_pf}'
           }
         end
 
         config.add_search_field('place') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$place_qf',
-              pf: '$place_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${place_qf}',
+            pf: '${place_pf}'
           }
         end
 
         config.add_search_field('creator') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$author_qf',
-              pf: '$author_pf'
+          field.solr_parameters = { 
+            'spellcheck.dictionary': 'default',
+            qf: '${author_qf}',
+            pf: '${author_pf}'
           }
         end
 
