@@ -60,15 +60,15 @@ RSpec.configure do |config|
   end
 
   #JS Error Output
-  config.after(:each, type: :feature, js: true) do
-    errors = page.driver.browser.manage.logs.get(:browser)
-    unless errors.blank?
-      aggregate_failures 'javascript errrors' do
-        errors.each do |error|
-          STDERR.puts "#{error.level.upcase}: javascript warning"
-          STDERR.puts error.message
-        end
-      end
-    end
-  end
+  # config.after(:each, type: :feature, js: true) do
+  #   errors = page.driver.browser.manage.logs.get(:browser)
+  #   unless errors.blank?
+  #     aggregate_failures 'javascript errrors' do
+  #       errors.each do |error|
+  #         STDERR.puts "#{error.level.upcase}: javascript warning"
+  #         STDERR.puts error.message
+  #       end
+  #     end
+  #   end
+  # end
 end

@@ -49,7 +49,7 @@ module CommonwealthVlrEngine
           %q{
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
-
+    config.fetch_many_document_params = { fl: '*' }
     # limit Advanced Search facets to this institution
     # can't call SearchBuilder.institution_limit because it's an instance method, not a class method
     config.advanced_search[:form_solr_parameters]['fq'] = '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
