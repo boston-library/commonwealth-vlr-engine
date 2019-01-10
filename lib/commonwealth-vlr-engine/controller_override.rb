@@ -129,6 +129,10 @@ module CommonwealthVlrEngine
             qf: '${title_qf}',
             pf: '${title_pf}'
           }
+          field.solr_adv_parameters = {
+            qf: '$title_qf',
+            pf: '$title_pf',
+          }
         end
 
         config.add_search_field('subject') do |field|
@@ -136,6 +140,10 @@ module CommonwealthVlrEngine
             'spellcheck.dictionary': 'default',
             qf: '${subject_qf}',
             pf: '${subject_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$subject_qf',
+            pf: '$subject_pf',
           }
         end
 
@@ -145,13 +153,21 @@ module CommonwealthVlrEngine
             qf: '${place_qf}',
             pf: '${place_pf}'
           }
+          field.solr_adv_parameters = {
+            qf: '$place_qf',
+            pf: '$place_pf',
+          }
         end
 
         config.add_search_field('creator') do |field|
-          field.solr_parameters = { 
+          field.solr_parameters = {
             'spellcheck.dictionary': 'default',
             qf: '${author_qf}',
             pf: '${author_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$author_qf',
+            pf: '$author_pf',
           }
         end
 
