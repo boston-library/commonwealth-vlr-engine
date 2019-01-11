@@ -89,13 +89,14 @@ describe ApplicationHelper do
   end
 
   describe 'content_for(:head) helpers' do
-
     # TODO: replace these placeholders with real specs
-
     describe '#insert_opengraph_markup' do
-      it 'should render the catalog/opengraph partial' #do
+      it 'should render the catalog/opengraph partial' do
+        # binding.pry
+        # allow(controller).to receive_messages(:controller_name => "catalog", :action_name => "show")
+        # expect(helper.insert_opengraph_markup)
         #expect(helper.insert_opengraph_markup).to eq(???)
-      #end
+      end
     end
 
     describe '#insert_google_analytics' do

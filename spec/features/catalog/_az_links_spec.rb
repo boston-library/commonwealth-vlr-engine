@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-include CommonwealthVlrEngine::CollectionsHelperBehavior
-
 # set this helper to return true so AZ links are rendered
-def should_render_col_az?
-  true
-end
+
 
 describe 'a-z links' do
-
+  before(:all) do
+     CommonwealthVlrEngine::CollectionsHelperBehavior.module_eval do
+      def should_render_col_az?
+        true
+      end
+    end
+  end
   it 'should show the a-z links' do
     visit collections_path
     within ('.item_az_links') do
@@ -23,5 +25,11 @@ describe 'a-z links' do
     end
     expect(page).to have_selector('.document-title-heading', :text => 'Carte de Visite Collection')
   end
-
+  after(:all) do
+     CommonwealthVlrEngine::CollectionsHelperBehavior.module_eval do
+      def should_render_col_az?
+        false
+      end
+    end
+  end
 end
