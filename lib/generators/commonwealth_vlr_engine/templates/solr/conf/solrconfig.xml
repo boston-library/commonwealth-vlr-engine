@@ -13,13 +13,7 @@ as well as the default solrconfig file included with Solr -->
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
-  <!-- solr lib dirs -->
-  <!-- ***DEV/TEST MOD*** -->
-  <!-- TO RUN IN PRODUCTION
-  <lib dir="../lib/contrib/analysis-extras/lib" />
-  <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
-  -->
-  <!-- TO RUN WITH SOLR_WRAPPER -->
+  <!-- extra solr lib dirs -->
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
@@ -94,9 +88,11 @@ http://wiki.apache.org/solr/LocalParams
         related_item_subsubseries_tsim^10
         identifier_local_other_tsim
         identifier_local_other_invalid_tsim
-        local_accession_id_tsim
+        identifier_local_accession_tsim
         identifier_local_call_tsim
+        identifier_local_call_invalid_tsim
         identifier_local_barcode_tsim
+        identifier_local_barcode_invalid_tsim
         identifier_isbn_tsim
         identifier_lccn_tsim
         identifier_ia_id_ssi
@@ -104,6 +100,7 @@ http://wiki.apache.org/solr/LocalParams
         extent_tsi
         institution_name_tsim^10
         institution_pid_ssi
+        filenames_ssim
         ocr_tiv^0.5
         ocr_tsiv^0.5
       </str>
