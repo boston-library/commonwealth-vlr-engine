@@ -765,12 +765,16 @@
   - Suffolk (county)
   subject_scale_tsim:
   - Scale not given.
+  subject_bbox_geospatial:
+  - ENVELOPE(67.98, 138.41, 55.84, 13.66)
   subject_coordinates_geospatial:
   - 42.35,-71.05
+  - ENVELOPE(67.98, 138.41, 55.84, 13.66)
   subject_point_geospatial:
   - 42.35,-71.05
   subject_geojson_facet_ssim:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"placename\":\"Boston, MA\"}}"
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[67.98660428353074,13.663240493613458],[138.41911376837953,13.663240493613458],[138.41911376837953,55.84595061343333],[67.98660428353074,55.84595061343333],[67.98660428353074,13.663240493613458]]]},\"bbox\":[67.98660428353074,13.663240493613458,138.41911376837953,55.84595061343333]}"
   subject_hiergeo_geojson_ssm:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
   subject_facet_ssim:
@@ -1442,12 +1446,16 @@
   - Panama, Isthmus of
   subject_scale_tsim:
   - Scale [ca. 1:190,080]
+  subject_bbox_geospatial:
+  - ENVELOPE(115.0, -100.0, 75.0, 40.0)
   subject_coordinates_geospatial:
   - 9,-80
+  - ENVELOPE(115.0, -100.0, 75.0, 40.0)
   subject_point_geospatial:
   - 9,-80
   subject_geojson_facet_ssim:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80.0,9.0]},\"properties\":{\"placename\":\"Panama, Isthmus of, Panama\"}}"
+  - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-245.0,40.0],[-100.0,40.0],[-100.0,75.0],[-245.0,75.0],[-245.0,40.0]]]},\"bbox\":[-245.0,40.0,-100.0,75.0]}"
   subject_hiergeo_geojson_ssm:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80.0,9.0]},\"properties\":{\"country\":\"Panama\",\"other\":\"Panama, Isthmus of\"}}"
   subject_facet_ssim:

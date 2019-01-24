@@ -179,9 +179,31 @@ Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z -->
   <copyField source="*_tsi" dest="spell"/>
   <copyField source="*_tsim" dest="spell"/>
 
-  <copyField source="*_tsi" dest="suggest"/>
-  <copyField source="*_tsim" dest="suggest"/>
-
+  <!-- we define fields for suggest explicitly here because general rules like:
+         <copyField source="*_tsim" dest="suggest"/> or
+         <copyField source="*_ssim" dest="suggest"/>
+       result in too much noise -->
+  <!-- note, TOC, abstract, and OCR fields are intentionally omitted -->
+  <copyField source="collection_name_ssim" dest="suggest"/>
+  <copyField source="genre_basic_ssim" dest="suggest"/>
+  <copyField source="genre_specific_ssim" dest="suggest"/>
+  <copyField source="institution_name_ssim" dest="suggest"/>
+  <copyField source="name_facet_ssim" dest="suggest"/>
+  <copyField source="physical_location_ssim" dest="suggest"/>
+  <copyField source="publisher_tsim" dest="suggest"/>
+  <copyField source="pubplace_tsim" dest="suggest"/>
+  <copyField source="related_item_host_ssim" dest="suggest"/>
+  <copyField source="related_item_series_ssim" dest="suggest"/>
+  <copyField source="related_item_subseries_ssim" dest="suggest"/>
+  <copyField source="related_item_subsubseries_ssim" dest="suggest"/>
+  <copyField source="subject_geographic_ssim" dest="suggest"/>
+  <copyField source="subject_facet_ssim" dest="suggest"/>
+  <copyField source="subtitle_tsim" dest="suggest"/>
+  <copyField source="title_info_alternative_tsim" dest="suggest"/>
+  <copyField source="title_info_uniform_tsim" dest="suggest"/>
+  <copyField source="title_info_primary_trans_tsim" dest="suggest"/>
+  <copyField source="title_info_translated_tsim" dest="suggest"/>
+  <copyField source="title_info_primary_tsi" dest="suggest"/>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
@@ -346,15 +368,25 @@ http://wiki.apache.org/solr/SolrAdaptersForLuceneSpatial4
       </analyzer>
     </fieldType>
 
+    <!-- suggest fieldType -->
+    <!-- StandardTokenizerFactory = field broken into individual word tokens -->
+    <!-- LowerCaseFilterFactory = we need this, or user query has to be case-sensitive -->
+    <!-- ShingleFilterFactory = allows phrases to be be created from word tokens -->
+    <!--                        @fillerToken removes '_' created by StopFilterFactory -->
+    <!-- PatternReplaceFilterFactory = removes trailing and double spaces caused by removal of -->
+    <!--                               '_' character by ShingleFilterFactory -->
     <fieldType class="solr.TextField" name="textSuggest" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ShingleFilterFactory" maxShingleSize="4" fillerToken="" outputUnigramsIfNoShingles="true"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="(^ | $)" replacement=""/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="(\s{2,})" replacement=" "/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
-
   </types>
 
 </schema>
