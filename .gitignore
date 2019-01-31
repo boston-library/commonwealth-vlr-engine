@@ -43,6 +43,7 @@ secrets.yml
 blacklight.yml
 # remove coveralls.yml once CI server set up
 .coveralls.yml
+.ruby-version
 
 # Files to ignore by default in Git #
 #####################################
