@@ -48,6 +48,7 @@ module CommonwealthVlrEngine
         config.view.maps.maxzoom = 14
         config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
+        config.view.maps.spatial_query_dist = 0.2
 
         # helper that returns thumbnail URLs
         config.index.thumbnail_method = :create_thumb_img_element
