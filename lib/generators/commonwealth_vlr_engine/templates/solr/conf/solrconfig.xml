@@ -11,6 +11,8 @@ as well as the default solrconfig file included with Solr -->
 
   <luceneMatchVersion>6.1.0</luceneMatchVersion>
 
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
   <!-- extra solr lib dirs -->
@@ -279,10 +281,11 @@ http://wiki.apache.org/solr/LocalParams
       <str name="name">mySuggester</str>
       <str name="lookupImpl">FuzzyLookupFactory</str>
       <bool name="exactMatchFirst">true</bool>
-      <!-- <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str> -->
+      <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
       <!-- <float name="threshold">.00004</float> --> <!-- may need to tweak for production -->
       <str name="field">suggest</str>
       <str name="suggestAnalyzerFieldType">textSuggest</str>
+      <str name="buildOnStartup">false</str>
     </lst>
   </searchComponent>
 
