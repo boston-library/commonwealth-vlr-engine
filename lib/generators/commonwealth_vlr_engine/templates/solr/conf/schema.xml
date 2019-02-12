@@ -198,12 +198,14 @@ Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z -->
   <copyField source="related_item_subsubseries_ssim" dest="suggest"/>
   <copyField source="subject_geographic_ssim" dest="suggest"/>
   <copyField source="subject_facet_ssim" dest="suggest"/>
+  <!--
   <copyField source="subtitle_tsim" dest="suggest"/>
   <copyField source="title_info_alternative_tsim" dest="suggest"/>
   <copyField source="title_info_uniform_tsim" dest="suggest"/>
   <copyField source="title_info_primary_trans_tsim" dest="suggest"/>
   <copyField source="title_info_translated_tsim" dest="suggest"/>
   <copyField source="title_info_primary_tsi" dest="suggest"/>
+  -->
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
