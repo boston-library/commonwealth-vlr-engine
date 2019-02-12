@@ -239,7 +239,9 @@ module CommonwealthVlrEngine
       else
         title_output << document.id
       end
-      title_output.gsub(/[^\.]\.\.[^\.]/, '.').squish
+      regex = /[^\.]\.\.[^\.]/ # double periods, but not ellipsis
+      title_output.gsub!(/\.\./, '.') if title_output =~ regex
+      title_output.squish
     end
 
     # render the 'more like this' search link if doc has subjects

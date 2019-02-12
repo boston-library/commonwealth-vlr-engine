@@ -2,7 +2,7 @@
   <%= form_tag search_action_url,
                :method => :get,
                :class => 'search-query-form form-inline collection-search' do %>
-      <%= render_hash_as_hidden_fields(search_state.params_for_search().except('q', 'search_field', 'qt', 'page')) %>
+      <%= render_hash_as_hidden_fields(search_state.params_for_search.except('q', 'search_field', 'qt', 'page')) %>
 
       <div class="input-group pull-left">
         <label for="q_coll" class="sr-only"><%= t('blacklight.search.form.collection') %></label>

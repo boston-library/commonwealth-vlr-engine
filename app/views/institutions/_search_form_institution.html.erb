@@ -3,7 +3,7 @@
                :method => :get,
                :class => 'search-query-form form-inline institution-search' do %>
 
-      <%= render_hash_as_hidden_fields(search_state.params_for_search().except('q', 'search_field', 'qt', 'page')) %>
+      <%= render_hash_as_hidden_fields(search_state.params_for_search.except('q', 'search_field', 'qt', 'page')) %>
 
       <div class="input-group pull-left">
         <label for="q_inst" class="sr-only"><%= t('blacklight.search.form.institution') %></label>
