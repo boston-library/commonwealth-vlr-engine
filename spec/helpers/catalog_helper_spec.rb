@@ -219,17 +219,22 @@ describe CatalogHelper do
 
   describe 'title helpers' do
 
-    describe '#render_full_title' do
-      let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
-      it 'should render the title correctly' do
-        expect(helper.render_full_title(doc_with_subtitle)).to include('Massachusetts : based')
-      end
-    end
+    describe '#render_title' do
 
-    describe '#render_main_title' do
-      it 'should render the title correctly' do
-        expect(helper.render_main_title({title_info_primary_tsi: 'Foo', title_info_partnum_tsi: 'vol.2'})).to eq('Foo. vol.2')
+      describe 'full title with subtitle' do
+        let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
+        it 'should render the title correctly' do
+          expect(helper.render_title(doc_with_subtitle)).to include('Massachusetts : based')
+        end
       end
+
+      describe 'main title' do
+        it 'should render the title correctly' do
+          expect(helper.render_title({title_info_primary_tsi: 'Foo', title_info_partnum_tsi: 'vol.2'},
+                                     false)).to eq('Foo. vol.2')
+        end
+      end
+
     end
 
     describe '#render_volume_title' do

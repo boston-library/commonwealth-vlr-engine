@@ -11,7 +11,7 @@ module CommonwealthVlrEngine
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
       manifest.service = search_service(document) if document[:has_searchable_text_bsi]
-      manifest.label = render_main_title(document)
+      manifest.label = render_title(document, false)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
       manifest.metadata = manifest_metadata(document)
       manifest.description = document[:abstract_tsim].first if document[:abstract_tsim]
@@ -109,7 +109,7 @@ module CommonwealthVlrEngine
         manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc[:vol_doc].id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
         collection.manifests << {'@id' => manifest_id,
                                  '@type' => 'sc:Manifest',
-                                 'label' => render_main_title(manifest_doc[:vol_doc])}
+                                 'label' => render_title(manifest_doc[:vol_doc], false)}
       end
       collection
     end
@@ -118,7 +118,7 @@ module CommonwealthVlrEngine
     # document = SolrDocument
     def manifest_metadata(document)
       manifest_metadata = []
-      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: render_full_title(document)}
+      manifest_metadata << {label: t('blacklight.metadata_display.fields.title'), value: render_title(document)}
       manifest_metadata << {label: t('blacklight.metadata_display.fields.date'), value: render_mods_dates(document).first} if document[:date_start_tsim]
 
       if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]

@@ -6,7 +6,7 @@
     <%= link_to_document document, img, counter: document_counter_with_offset(document_counter) %>
     <div class="caption">
       <%= link_to_document document,
-                           truncate(render_full_title(document),
+                           truncate(render_title(document),
                                     separator: ' ',
                                     length: index_title_length) + index_relation_base_icon(document),
                            counter: document_counter_with_offset(document_counter) %>

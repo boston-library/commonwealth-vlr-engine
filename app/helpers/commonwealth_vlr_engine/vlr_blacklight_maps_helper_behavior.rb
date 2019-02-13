@@ -62,16 +62,11 @@ module CommonwealthVlrEngine
 
     def render_spatial_search_link coordinates
       if coordinates.length == 4
-        puts "HEY BBROXXXXX"
-        puts "BBOX = #{coordinates}"
-        #link_to_bbox_search(coordinates)
+        link_to_bbox_search(coordinates)
       else
-        puts "POINTS ARE COOL"
-        puts "COORDINATES = #{coordinates}"
         link_to_point_search(coordinates)
       end
     end
-
 
     # OVERRIDE: allow controller.action name to be passed, allow @controller
     # pass the document or facet values to BlacklightMaps::GeojsonExport
