@@ -29,7 +29,9 @@ module CommonwealthVlrEngine
       end
 
       respond_to do |format|
-        format.html # for users w/o JS
+        format.html do
+          render layout: false if request.xhr?
+        end# for users w/o JS
         format.js { render :layout => false } # download modal window
       end
     end

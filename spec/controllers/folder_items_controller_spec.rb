@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe FolderItemsController do
 
@@ -24,7 +24,7 @@ describe FolderItemsController do
       it "should create a new folder item" do
         expect {
           @request.env['HTTP_REFERER'] = '/folder_items/new'
-          post :create, :id => "bpl-dev:h702q6403", :folder_id => @folder.id
+          post :create, params: {id:  "bpl-dev:h702q6403", folder_id: @folder.id }
           expect(response).to be_redirect
           expect(@test_user.existing_folder_item_for("bpl-dev:h702q6403")).not_to be_nil
         }.to change(Bpluser::FolderItem, :count).by(1)
@@ -32,8 +32,8 @@ describe FolderItemsController do
 
       it "should create a new folder item using ajax" do
         expect {
-          xhr :post, :create, :id => "bpl-dev:g445cd14k", :folder_id => @folder.id
-          expect(response).to be_success
+          post :create, xhr: true, params: {id: "bpl-dev:g445cd14k", folder_id: @folder.id }
+          expect(response).to be_successful
           expect(@test_user.existing_folder_item_for("bpl-dev:g445cd14k")).not_to be_nil
         }.to change(Bpluser::FolderItem, :count).by(1)
       end
@@ -53,15 +53,15 @@ describe FolderItemsController do
       it "should delete a folder item" do
         expect {
           @request.env['HTTP_REFERER'] = '/folder_items'
-          delete :destroy, :id => "bpl-dev:g445cd14k"
+          delete :destroy, params: {id: "bpl-dev:g445cd14k"}
           expect(response).to be_redirect
         }.to change(Bpluser::FolderItem, :count).by(-1)
       end
 
       it "should delete a folder item using ajax" do
         expect {
-          xhr :delete, :destroy, :id => "bpl-dev:g445cd14k"
-          expect(response).to be_success
+          delete :destroy, xhr: true ,params: {id: "bpl-dev:g445cd14k" }
+          expect(response).to be_successful
         }.to change(Bpluser::FolderItem, :count).by(-1)
       end
 
@@ -78,7 +78,7 @@ describe FolderItemsController do
       end
 
       it "should clear the folder's folder items" do
-        delete :clear, :id => @folder
+        delete :clear, params: { id: @folder.id }
         expect(@folder.folder_items.count).to eq(0)
       end
 

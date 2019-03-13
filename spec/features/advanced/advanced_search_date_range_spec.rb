@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'advanced search date range behavior' do
+describe 'advanced search date range behavior', js: true do
 
   before { visit blacklight_advanced_search_engine.advanced_search_path }
 
@@ -9,7 +9,7 @@ describe 'advanced search date range behavior' do
     expect(page).to have_selector('#date_range_end')
   end
 
-  describe 'submitting data' do
+  describe 'submitting data', js: true do
 
     before do
       within '#date_range_limit' do

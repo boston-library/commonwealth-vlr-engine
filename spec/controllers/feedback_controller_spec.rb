@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe FeedbackController do
 
@@ -8,7 +8,7 @@ describe FeedbackController do
 
     it "should render the contact form" do
       get :show
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector("form[id='feedback_form']")
     end
 
@@ -25,7 +25,7 @@ describe FeedbackController do
       end
 
       it "should display an error message for invalid submission" do
-        post :show, :name => '%^*)(', :email => 'thisnotvalid', :topic => 'whatever', :message => '%^*)('
+        post :show, params: {:name => '%^*)(', :email => 'thisnotvalid', :topic => 'whatever', :message => '%^*)(' }
         expect(response.body).to have_selector("div[id='error_explanation']")
         expect(response).not_to redirect_to(feedback_complete_path)
       end
@@ -35,12 +35,12 @@ describe FeedbackController do
     describe "success" do
 
       it "should redirect to the complete path" do
-        post :show, :name => 'Testy McGee', :email => 'test@test.edu', :topic => 'whatever', :message => 'Test message'
+        post :show, params: {:name => 'Testy McGee', :email => 'test@test.edu', :topic => 'whatever', :message => 'Test message'}
         expect(response).to redirect_to(feedback_complete_path)
       end
 
       it "should create the email" do
-        post :show, :name => 'Testy McGee', :email => 'test@test.edu', :topic => 'whatever', :message => 'Test message'
+        post :show, params: {:name => 'Testy McGee', :email => 'test@test.edu', :topic => 'whatever', :message => 'Test message'}
         expect(ActionMailer::Base.deliveries.last.body.encoded).to include('Test message')
       end
 

@@ -1,21 +1,26 @@
-require 'blacklight'
-require 'blacklight/gallery'
-require 'blacklight_advanced_search'
-require 'blacklight/maps'
-require 'blacklight_range_limit'
-require 'bpluser'
-require 'typhoeus'
-require 'devise'
-require 'devise-guests'
-require 'omniauth'
-require 'omniauth-ldap'
-require 'omniauth-facebook'
-require 'omniauth-polaris'
-require 'bootstrap-sass'
-require 'font-awesome-sass'
-require 'unicode'
-require 'madison'
-require 'iiif/presentation'
+begin
+  require 'blacklight'
+  require 'blacklight/gallery'
+  require 'blacklight_advanced_search'
+  require 'blacklight/maps'
+  require 'blacklight_range_limit'
+  require 'bpluser'
+  require 'typhoeus'
+  require 'devise'
+  require 'devise-guests'
+  require 'omniauth'
+  require 'omniauth-ldap'
+  require 'omniauth-facebook'
+  require 'omniauth-polaris'
+  require 'bootstrap-sass'
+  require 'font-awesome-sass'
+  require 'unicode'
+  require 'madison'
+  require 'rsolr' unless defined? RSolr
+  require 'iiif/presentation'
+rescue LoadError => e
+  puts "A Gem Dpenedency is Missing....#{e.message}"
+end
 
 module CommonwealthVlrEngine
 
@@ -28,6 +33,9 @@ module CommonwealthVlrEngine
     rake_tasks do
       Dir.chdir(File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))) do
         Dir.glob(File.join('tasks', '*.rake')).each do |railtie|
+          load railtie
+        end
+        Dir.glob(File.join('lib/railties', '*.rake')).each do |railtie|
           load railtie
         end
       end

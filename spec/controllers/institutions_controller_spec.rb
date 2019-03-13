@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InstitutionsController do
 
@@ -8,7 +8,7 @@ describe InstitutionsController do
 
     it "should show the institutions page" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to have_selector("div.blacklight-institution")
       expect(assigns(:document_list)).not_to be_nil
     end
@@ -27,7 +27,7 @@ describe InstitutionsController do
     describe "map view" do
 
       it "should show the map on institutions page" do
-        get :index, :view => 'maps'
+        get :index, params: { view: 'maps' }
         expect(response.body).to have_selector("#institutions-index-map")
       end
 
@@ -42,19 +42,19 @@ describe InstitutionsController do
     end
 
     it "should show the institution page" do
-      get :show, :id => @institution_id
-      expect(response).to be_success
+      get :show, params: {id: @institution_id }
+      expect(response).to be_successful
       expect(response.body).to have_selector("div.blacklight-institution")
       expect(assigns(:document)).not_to be_nil
     end
 
     it "should show some facets" do
-      get :show, :id => @institution_id
+      get :show, params: { id: @institution_id }
       expect(response.body).to have_selector("#facets")
     end
 
     it "should show a list of collections" do
-      get :show, :id => @institution_id
+      get :show, params: {id:  @institution_id }
       expect(response.body).to have_selector("#institution_collections")
       expect(assigns(:document_list)).not_to be_nil
     end
@@ -68,7 +68,7 @@ describe InstitutionsController do
     end
   end
 
-  describe 'private methods and before_filters' do
+  describe 'private methods and before_actions' do
 
     describe 'institutions_index_config' do
       it 'should set the appropriate blacklight_config properties' do

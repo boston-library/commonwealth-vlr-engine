@@ -23,6 +23,10 @@ module CommonwealthVlrEngine
     .with_indifferent_access
   end
 
+  def self.root
+    @root ||= File.expand_path(File.dirname(File.dirname(__FILE__)))
+  end
+
   def self.app_root
     return @app_root if @app_root
     @app_root = Rails.root if defined?(Rails) and defined?(Rails.root)

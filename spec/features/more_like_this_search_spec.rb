@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'more like this search' do
 
@@ -32,7 +32,7 @@ describe 'more like this search' do
     end
 
     it 'should show the correct item count' do
-      expect(page).to have_selector('.page_links strong:last-of-type', text: '4')
+      expect(page).to have_selector('.page_links strong:last-of-type', text: '5')
     end
 
   end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'openseadragon image viewer modal' do
 
@@ -6,8 +6,8 @@ describe 'openseadragon image viewer modal' do
     visit solr_document_path(:id => 'bpl-dev:h702q6403')
   end
 
-  it 'should display the OSd viewer modal when the image is clicked', :js => true do
-    find('#img_viewer_link').trigger('click')
+  it 'should display the OSD viewer modal when the image is clicked', :js => true do
+    find('#img_viewer_link').click
     expect(page).to have_selector('.openseadragon-container')
   end
 

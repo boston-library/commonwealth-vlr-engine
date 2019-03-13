@@ -20,6 +20,10 @@ class TestAppGenerator < Rails::Generators::Base
     generate 'commonwealth_vlr_engine:install'
   end
 
+  def set_up_solr
+    generate 'commonwealth_vlr_engine:solr'
+  end
+
   # TODO: configure various YAML files, run db migrations, set institutions = true, etc.
 
 end

@@ -18,14 +18,13 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
-      before_filter :get_object_files, :only => [:show]
-      before_filter :mlt_results_for_show, :only => [:show]
-      before_filter :set_nav_context, :only => [:index]
-      before_filter :mlt_search, :only => [:index]
-      before_filter :add_institution_fields, :only => [:index, :facet]
+      before_action :get_object_files, :only => [:show]
+      before_action :mlt_results_for_show, :only => [:show]
+      before_action :set_nav_context, :only => [:index]
+      before_action :mlt_search, :only => [:index]
+      before_action :add_institution_fields, :only => [:index, :facet]
 
       helper_method :has_volumes?
-
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
@@ -49,6 +48,7 @@ module CommonwealthVlrEngine
         config.view.maps.maxzoom = 14
         config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
+        config.view.maps.spatial_query_dist = 0.2
 
         # helper that returns thumbnail URLs
         config.index.thumbnail_method = :create_thumb_img_element
@@ -121,39 +121,54 @@ module CommonwealthVlrEngine
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|
           field.label = 'All Fields'
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+          field.solr_parameters = { 'spellcheck.dictionary': 'default' }
         end
 
         config.add_search_field('title') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$title_qf',
-              pf: '$title_pf'
+          field.solr_parameters = { 
+            'spellcheck.dictionary': 'default',
+            qf: '${title_qf}',
+            pf: '${title_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$title_qf',
+            pf: '$title_pf',
           }
         end
 
         config.add_search_field('subject') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.qt = 'search'
-          field.solr_local_parameters = {
-              qf: '$subject_qf',
-              pf: '$subject_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${subject_qf}',
+            pf: '${subject_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$subject_qf',
+            pf: '$subject_pf',
           }
         end
 
         config.add_search_field('place') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$place_qf',
-              pf: '$place_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${place_qf}',
+            pf: '${place_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$place_qf',
+            pf: '$place_pf',
           }
         end
 
         config.add_search_field('creator') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$author_qf',
-              pf: '$author_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${author_qf}',
+            pf: '${author_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$author_qf',
+            pf: '$author_pf',
           }
         end
 
@@ -187,9 +202,10 @@ module CommonwealthVlrEngine
       # for some reason won't work if not in the 'included' block
       def metadata_view
         @response, @document = fetch(params[:id])
-
         respond_to do |format|
-          format.html
+          format.html do
+            render layout: false if request.xhr?
+          end
           format.js { render :layout => false }
         end
       end

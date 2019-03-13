@@ -1,6 +1,6 @@
 development:
-  url: http://127.0.0.1:8983/fedora
+  url: http://fedoradev.bpl.org/fedora
 test: &TEST
-  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/fedora-test" %>
+  url: http://fedoradev.bpl.org/fedora
 production:
   url: http://your.production.server:8080/fedora

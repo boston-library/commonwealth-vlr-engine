@@ -17,6 +17,7 @@ module CommonwealthVlrEngine
       copy_file 'config/iiif_server.yml.sample', 'config/iiif_server.yml' unless File::exists?('config/iiif_server.yml')
       copy_file 'config/omniauth-facebook.yml.sample', 'config/omniauth-facebook.yml' unless File::exists?('config/omniauth-facebook.yml')
       copy_file 'config/omniauth-polaris.yml.sample', 'config/omniauth-polaris.yml' unless File::exists?('config/omniauth-polaris.yml')
+      copy_file 'config/secrets.yml.sample', 'config/secrets.yml' unless File::exists?('config/secrets.yml')
       copy_file 'config/vlr.yml', 'config/vlr.yml' unless File::exists?('config/vlr.yml')
     end
 

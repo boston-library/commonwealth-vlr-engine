@@ -9,7 +9,7 @@ module CommonwealthVlrEngine
 
     included do
 
-      after_filter :store_location
+      after_action :store_location
 
       # extra head content
       helper_method :create_img_sequence

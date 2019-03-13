@@ -142,7 +142,7 @@ module CommonwealthVlrEngine
 
     # link to items starting with a specific letter
     def link_to_az_value(letter, field, search_path, link_class=nil)
-      new_params = params.except(:controller, :action, :q, :page)
+      new_params = params.permit!.except(:controller, :action, :q, :page)
       new_params[:q] = "#{field}:#{letter}*"
       link_to(letter,
               self.send(search_path, new_params),
@@ -169,31 +169,6 @@ module CommonwealthVlrEngine
               :rel => 'license',
               :id => 'cc_license_link',
               :target => '_blank')
-    end
-
-    # output properly formatted full title, with subtitle, parallel title, etc.
-    def render_full_title(document)
-      title_output = ''
-      if document[blacklight_config.index.title_field.to_sym]
-        title_output << document[blacklight_config.index.title_field.to_sym]
-        if document[:subtitle_tsim]
-          title_output << " : #{document[:subtitle_tsim].first}"
-        end
-        if document[:title_info_partnum_tsi]
-          title_output << ". #{document[:title_info_partnum_tsi]}"
-        end
-        if document[:title_info_partname_tsi]
-          title_output << ". #{document[:title_info_partname_tsi]}"
-        end
-        if document[:title_info_primary_trans_tsim]
-          document[:title_info_primary_trans_tsim].each do |parallel_title|
-            title_output << " = #{parallel_title}"
-          end
-        end
-      else
-        title_output << document.id
-      end
-      title_output.gsub(/[^\.]\.\.[^\.]/, '.').squish
     end
 
     # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
@@ -223,23 +198,6 @@ module CommonwealthVlrEngine
       if document[:collection_pid_ssm]
         setup_collection_links(document).sort.join(' / ').html_safe
       end
-    end
-
-    # output properly formatted title with volume info, but no subtitle
-    def render_main_title(document)
-      title_output = ''
-      if document[blacklight_config.index.title_field.to_sym]
-        title_output << document[blacklight_config.index.title_field.to_sym]
-        if document[:title_info_partnum_tsi]
-          title_output << ". #{document[:title_info_partnum_tsi]}"
-        end
-        if document[:title_info_partname_tsi]
-          title_output << ". #{document[:title_info_partname_tsi]}"
-        end
-      else
-        title_output << document.id
-      end
-      title_output.gsub(/[^\.]\.\.[^\.]/, '.').squish
     end
 
     # render the 'more like this' search link if doc has subjects
@@ -292,7 +250,13 @@ module CommonwealthVlrEngine
     # are resolved
     def render_search_to_page_title(params)
       # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
-      html_constraints = render_search_to_s(params).gsub(/<span class="filterValues">/,' ')
+      if params.respond_to?(:permit!)
+        params_for_constraints = params.permit!.to_h
+      else
+        params_for_constraints = params
+      end
+
+      html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/,' ')
       html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/,' / ')
       sanitize(html_constraints, :tags=>[])
 
@@ -314,6 +278,35 @@ module CommonwealthVlrEngine
       mods_xml_text = REXML::Document.new(mods_response.body)
     end
 
+    # output properly formatted title
+    # if full = true, include subtitle, parallel title, etc.
+    # if full = false, output with volume info, but no subtitle or parallel title
+    def render_title(document, full=true)
+      title_output = ''
+      if document[blacklight_config.index.title_field.to_sym]
+        title_output << document[blacklight_config.index.title_field.to_sym]
+        if document[:subtitle_tsim] && full
+          title_output << " : #{document[:subtitle_tsim].first}"
+        end
+        if document[:title_info_partnum_tsi]
+          title_output << ". #{document[:title_info_partnum_tsi]}"
+        end
+        if document[:title_info_partname_tsi]
+          title_output << ". #{document[:title_info_partname_tsi]}"
+        end
+        if document[:title_info_primary_trans_tsim] && full
+          document[:title_info_primary_trans_tsim].each do |parallel_title|
+            title_output << " = #{parallel_title}"
+          end
+        end
+      else
+        title_output << document.id
+      end
+      regex = /[^\.]\.\.[^\.]/ # double periods, but not ellipsis
+      title_output.gsub!(/\.\./, '.') if title_output =~ regex
+      title_output.squish
+    end
+
     def render_volume_title(document)
       vol_title_info = [document[:title_info_partnum_tsi], document[:title_info_partname_tsi]]
       if vol_title_info[0]
@@ -321,7 +314,7 @@ module CommonwealthVlrEngine
       elsif vol_title_info[1]
         vol_title_info[1].capitalize
       else
-        render_main_title(document)
+        render_title(document, false)
       end
     end
 

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PagesController do
 
@@ -12,7 +12,7 @@ describe PagesController do
     end
 
     it 'should respond to the #home action' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:carousel_slides)).to_not be_nil
     end
 
@@ -26,7 +26,7 @@ describe PagesController do
 
     it 'should render the the #about action' do
       get :about
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:nav_li_active)).to_not be_nil
       expect(response.body).to have_selector('.about_content')
     end
@@ -37,7 +37,7 @@ describe PagesController do
 
     it 'should render the the #about_site action' do
       get :about_site
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:nav_li_active)).to_not be_nil
       expect(response.body).to have_selector('.about_content')
     end
@@ -48,7 +48,7 @@ describe PagesController do
 
     it 'should render the the #explore action' do
       get :explore
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:nav_li_active)).to_not be_nil
       expect(response.body).to have_selector('.explore_content')
     end

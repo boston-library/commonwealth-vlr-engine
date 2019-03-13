@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount Bpluser::Engine => '/bpluser'
+  # mount Bpluser::Engine => '/bpluser'
   mount BlacklightAdvancedSearch::Engine => '/'
 
   # alias for map browse

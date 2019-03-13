@@ -391,6 +391,7 @@ en:
             az_search: 'Starts with'
           form:
             collection: 'Search this collection...'
+            institution: "Search this institution's collections..."
             search:
               label: 'Search for'
           facets:

@@ -6,7 +6,7 @@ module CommonwealthVlrEngine
     # create a link to a location name facet value
     def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
       search_path = catalogpath || 'search_catalog_path'
-      new_params = params
+      new_params = params.permit!
       field_values = field_value.split(', ')
       if field_values.last.match(/[\.\)]/) # Mass.)
         field_values = [field_values.join(', ')]
@@ -35,6 +35,18 @@ module CommonwealthVlrEngine
               self.send(search_path,new_params.except(:id, :spatial_search_type, :coordinates)))
     end
 
+    # OVERRIDE: have to call .permit on map-centric params
+    # TODO: remove this once blacklight-maps updated for Rails 5 support
+    # create a link to a spatial search for a set of point coordinates
+    def link_to_point_search point_coordinates
+      new_params = params.except(:controller, :action, :view, :id, :spatial_search_type, :coordinates)
+      new_params[:spatial_search_type] = "point"
+      new_params[:coordinates] = "#{point_coordinates[1]},#{point_coordinates[0]}"
+      new_params[:view] = default_document_index_view_type
+      link_to(t('blacklight.maps.interactions.point_search'),
+              search_catalog_path(new_params.permit(:spatial_search_type, :coordinates)))
+    end
+
     # OVERRIDE: use a static file for catalog#map so page loads faster
     # render the map for #index and #map views
     def render_index_mapview
@@ -48,6 +60,13 @@ module CommonwealthVlrEngine
              :locals => {:geojson_features => geojson_for_map}
     end
 
+    def render_spatial_search_link coordinates
+      if coordinates.length == 4
+        link_to_bbox_search(coordinates)
+      else
+        link_to_point_search(coordinates)
+      end
+    end
 
     # OVERRIDE: allow controller.action name to be passed, allow @controller
     # pass the document or facet values to BlacklightMaps::GeojsonExport

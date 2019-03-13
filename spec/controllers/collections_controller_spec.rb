@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CollectionsController do
 
@@ -13,7 +13,7 @@ describe CollectionsController do
   describe 'GET "index"' do
     it 'should show the collections page' do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:document_list)).not_to be_nil
       expect(response.body).to have_selector('.blacklight-collection')
     end
@@ -22,11 +22,11 @@ describe CollectionsController do
   describe 'GET "show"' do
 
     before(:each) do
-      get :show, :id => 'bpl-dev:h702q636h'
+      get :show, params: {id: 'bpl-dev:h702q636h'}
     end
 
     it 'should show the collection page' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(assigns(:document)).not_to be_nil
       expect(response.body).to have_selector('.blacklight-collection')
     end
@@ -59,7 +59,7 @@ describe CollectionsController do
     end
   end
 
-  describe 'private methods and before_filters' do
+  describe 'private methods and before_actions' do
 
     # for testing private methods
     class CollectionsControllerTestClass < CollectionsController
@@ -69,7 +69,7 @@ describe CollectionsController do
     before(:each) do
       @mock_controller = CollectionsControllerTestClass.new
       @mock_controller.params = {}
-      @mock_controller.request = ActionDispatch::TestRequest.new
+      @mock_controller.request = ActionDispatch::TestRequest.create
       @mock_controller.send(:add_institution_fields)
       @collection_pid = 'bpl-dev:h702q636h'
       @collection_image_pid = 'bpl-dev:h702q642n'

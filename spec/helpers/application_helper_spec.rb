@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
 
@@ -77,7 +77,7 @@ describe ApplicationHelper do
   describe '#get_image_metadata' do
 
     it 'should return a hash with the height, width, and aspect ratio of the image' do
-      expect(helper.get_image_metadata(image_pid)).to eq({height: 2448, width: 1496, aspect_ratio: 1.6363636363636365})
+      expect(helper.get_image_metadata(image_pid)).to eq({height: 2448, width: 1496, aspect_ratio: 0.6111111111111112})
     end
 
     describe 'when IIIF server is unresponsive' do
@@ -89,13 +89,14 @@ describe ApplicationHelper do
   end
 
   describe 'content_for(:head) helpers' do
-
     # TODO: replace these placeholders with real specs
-
     describe '#insert_opengraph_markup' do
-      it 'should render the catalog/opengraph partial' #do
+      it 'should render the catalog/opengraph partial' do
+        # binding.pry
+        # allow(controller).to receive_messages(:controller_name => "catalog", :action_name => "show")
+        # expect(helper.insert_opengraph_markup)
         #expect(helper.insert_opengraph_markup).to eq(???)
-      #end
+      end
     end
 
     describe '#insert_google_analytics' do
@@ -108,7 +109,8 @@ describe ApplicationHelper do
 
   describe '#osd_nav_images' do
     it 'should return a hash with the path to the OpenSeadragon control images' do
-      expect(JSON.parse(helper.osd_nav_images('path/to/directory'))['zoomIn']['REST']).to eq('/images/path/to/directory/zoomin_rest.png')
+      assets_root = File.join(CommonwealthVlrEngine.root, 'app', 'assets', 'images', 'commonwealth-vlr-engine', 'opeanseadragon')
+      expect(JSON.parse(helper.osd_nav_images(assets_root))['zoomIn']['REST']).to eq("#{assets_root}/zoomin_rest.png")
     end
   end
 

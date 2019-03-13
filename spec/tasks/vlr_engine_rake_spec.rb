@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'rake'
 
 describe 'vlr_engine namespace rake tasks' do
@@ -14,7 +14,7 @@ describe 'vlr_engine namespace rake tasks' do
     let :run_rake_task do
       Rake::Task['vlr_engine:create_geojson'].reenable
       Rake.application.invoke_task 'vlr_engine:create_geojson'
-      @file_path = "#{Rails.root.to_s}/#{GEOJSON_STATIC_FILE['filepath']}"
+      @file_path = "#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}"
     end
 
     it 'should create the geojson file' do

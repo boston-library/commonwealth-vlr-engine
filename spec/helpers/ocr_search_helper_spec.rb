@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe OcrSearchHelper do
 
@@ -20,6 +20,7 @@ describe OcrSearchHelper do
   let(:book_document) { Blacklight.default_index.search({:q => "id:\"#{book_pid}\"", :rows => 1}).documents.first }
 
   before(:each) do
+
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
   end
 

@@ -117,7 +117,7 @@ module CommonwealthVlrEngine
         iiif_info = JSON.parse(iiif_response.body)
         height = iiif_info["height"].to_i
         width = iiif_info["width"].to_i
-        aspect_ratio = width.to_f/height
+        aspect_ratio = (width.to_f / height.to_f).to_f
         img_metadata = {height: height, width: width, aspect_ratio: aspect_ratio}
       else
         img_metadata = {height: 0, width: 0, aspect_ratio: 0}

@@ -3,47 +3,43 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'commonwealth-vlr-engine/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = 'commonwealth-vlr-engine'
-  spec.version       = CommonwealthVlrEngine::VERSION
-  spec.authors       = ['Eben English', 'Steven Anderson']
-  spec.email         = ['eenglish@bpl.org', 'sanderson@bpl.org']
-  spec.summary       = %q{Blacklight plugin for virtual local repositories from Digital Commonwealth}
-  spec.homepage      = ''
-  spec.license       = 'Apache 2.0'
+Gem::Specification.new do |s|
+  s.name          = 'commonwealth-vlr-engine'
+  s.version       = CommonwealthVlrEngine::VERSION
+  s.authors       = ['Eben English', 'Steven Anderson', 'Ben Barber']
+  s.email         = ['eenglish@bpl.org', 'sanderson@bpl.org', 'bbarber@bpl.org']
+  s.summary       = %q{Blacklight plugin for virtual local repositories from Digital Commonwealth}
+  s.homepage      = ''
+  s.license       = 'Apache 2.0'
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ['lib']
+  s.files         = `git ls-files -z`.split("\x0")
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~>4.2.0'
-  spec.add_dependency 'blacklight', '>= 6.3.0'
-  spec.add_dependency 'blacklight_advanced_search', '6.2.1'
-  spec.add_dependency 'blacklight-gallery', '0.6.1'
-  spec.add_dependency 'blacklight-maps', '0.5.0'
-  spec.add_dependency 'leaflet-rails', '~> 0.7.3' # remove once blacklight-maps has been updated
-  spec.add_dependency 'blacklight_range_limit', '6.0.0'
-  spec.add_dependency 'openseadragon', '0.3.1'
-  spec.add_dependency 'bootstrap-sass', '~> 3.0'
-  spec.add_dependency 'font-awesome-sass', '4.1.0'
-  spec.add_dependency 'bpluser' #, '~> 0.0.7'
-  spec.add_dependency 'typhoeus'
-  spec.add_dependency 'devise-guests', '0.3.3'
-  spec.add_dependency 'omniauth'
-  spec.add_dependency 'omniauth-ldap'
-  spec.add_dependency 'omniauth-facebook'
-  spec.add_dependency 'unicode'
-  spec.add_dependency 'omniauth-polaris'
-  spec.add_dependency 'madison', '~> 0.5.0'
-  spec.add_dependency 'iiif-presentation', '~> 0.2.0'
-  spec.add_dependency 'zipline'
+  s.required_ruby_version = '~> 2.4'
 
-  spec.add_development_dependency 'bundler', '~> 1.5'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec-rails', '~> 3.0'
-  spec.add_development_dependency 'jettywrapper'
-  spec.add_development_dependency 'engine_cart', '~> 0.4.0'
-  spec.add_development_dependency 'capybara'
-  spec.add_development_dependency 'poltergeist', '>= 1.5.0'
+  s.add_dependency 'rails', '>= 5', '< 6'
+  s.add_dependency 'blacklight', '>= 6.19.0', '< 7.0.0'
+  s.add_dependency 'blacklight_advanced_search', '6.4.1'
+  s.add_dependency 'blacklight-gallery', '0.11.0'
+  s.add_dependency 'blacklight-maps', '0.5.1'
+  s.add_dependency 'blacklight_range_limit', '~> 6.3.3'
+  s.add_dependency 'font-awesome-sass', '4.1.0'
+  s.add_dependency 'bpluser', '~> 0.1.18'
+  s.add_dependency 'typhoeus', '1.3.1'
+  s.add_dependency 'unicode', '~> 0.4.0'
+  s.add_dependency 'madison', '~> 0.5.0'
+  s.add_dependency 'rsolr', '>= 1.0', '< 3'
+  s.add_dependency 'iiif-presentation', '~> 0.2.0'
+  s.add_dependency 'zipline', '~> 1.0.2'
+
+  s.add_development_dependency 'pry-rails'
+  s.add_development_dependency 'pry-rescue'
+  s.add_development_dependency 'pry-stack_explorer'
+  s.add_development_dependency 'solr_wrapper', '2.1.0'
+  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'rspec-rails', '3.8'
+  s.add_development_dependency 'engine_cart', '2.0.1'
+  s.add_development_dependency 'capybara', '>= 2', '< 4'
 end

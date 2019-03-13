@@ -8,7 +8,7 @@
       <% if document[blacklight_config.index.title_field.to_sym] %>
           <dt><%= t('blacklight.metadata_display.fields.title') %>:</dt>
           <dd>
-            <%= render_full_title(document) %>
+            <%= render_title(document) %>
           </dd>
       <% end %>
       <%# translated title field %>
@@ -417,10 +417,10 @@
           </dd>
       <% end %>
       <%# local-accession id field %>
-      <% if document[:local_accession_id_tsim] %>
+      <% if document[:identifier_local_accession_tsim] %>
           <dt><%= t('blacklight.metadata_display.fields.id_local_acc') %>:</dt>
           <dd>
-            <% document[:local_accession_id_tsim].each do |accession| %>
+            <% document[:identifier_local_accession_tsim].each do |accession| %>
                 <%= accession %><br />
             <% end %>
           </dd>
@@ -442,20 +442,34 @@
           </dd>
       <% end %>
       <%# local-call id field %>
-      <% if document[:identifier_local_call_tsim] %>
+      <% if document[:identifier_local_call_tsim] || document[:identifier_local_call_invalid_tsim] %>
           <dt><%= t('blacklight.metadata_display.fields.id_local_call') %>:</dt>
           <dd>
-            <% document[:identifier_local_call_tsim].each do |local_call| %>
-                <%= local_call %><br />
+            <% if document[:identifier_local_call_tsim] %>
+                <% document[:identifier_local_call_tsim].each do |local_call| %>
+                    <%= local_call %><br />
+                <% end %>
+            <% end %>
+            <% if document[:identifier_local_call_invalid_tsim] %>
+                <% document[:identifier_local_call_invalid_tsim].each do |local_call_invalid| %>
+                    <%= local_call_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+                <% end %>
             <% end %>
           </dd>
       <% end %>
       <%# local-barcode id field %>
-      <% if document[:identifier_local_barcode_tsim] %>
+      <% if document[:identifier_local_barcode_tsim] || document[:identifier_local_barcode_invalid_tsim] %>
           <dt><%= t('blacklight.metadata_display.fields.id_local_barcode') %>:</dt>
           <dd>
-            <% document[:identifier_local_barcode_tsim].each do |barcode| %>
-                <%= barcode %><br />
+            <% if document[:identifier_local_barcode_tsim] %>
+                <% document[:identifier_local_barcode_tsim].each do |barcode| %>
+                    <%= barcode %><br />
+                <% end %>
+            <% end %>
+            <% if document[:identifier_local_barcode_invalid_tsim] %>
+                <% document[:identifier_local_barcode_invalid_tsim].each do |barcode_invalid| %>
+                    <%= barcode_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+                <% end %>
             <% end %>
           </dd>
       <% end %>

@@ -8,7 +8,7 @@ class OcrSearchController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  before_filter :modify_config_for_ocr, :only => [:index]
+  before_action :modify_config_for_ocr, :only => [:index]
 
   def index
     @doc_response, @document = fetch(params[:id])
@@ -32,7 +32,9 @@ class OcrSearchController < CatalogController
 
     respond_to do |format|
       # Draw the facet selector for users who have javascript disabled:
-      format.html
+      format.html do
+        return render layout: false if request.xhr?
+      end
       # Draw the partial for the ocr search results modal window:
       format.js { render :layout => false }
     end

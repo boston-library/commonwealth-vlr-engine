@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe IiifManifestController do
 
@@ -14,12 +14,12 @@ describe IiifManifestController do
   describe 'get manifest' do
 
     before(:each) do
-      get :manifest, :id => @item_pid
+      get :manifest, params: {id: @item_pid}
       @response_body = JSON.parse(response.body)
     end
 
     it 'should render an IIIF manifest' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -34,12 +34,12 @@ describe IiifManifestController do
   describe 'get canvas' do
 
     before(:each) do
-      get :canvas, :id => @item_pid, :canvas_object_id => @image_pid
+      get :canvas, params: {id:  @item_pid, canvas_object_id: @image_pid }
       @response_body = JSON.parse(response.body)
     end
 
     it 'should render an IIIF canvas' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -54,12 +54,12 @@ describe IiifManifestController do
   describe 'get annotation' do
 
     before(:each) do
-      get :annotation, :id => @item_pid, :annotation_object_id => @image_pid
+      get :annotation, params: {id:  @item_pid, annotation_object_id: @image_pid }
       @response_body = JSON.parse(response.body)
     end
 
     it 'should render an IIIF annotation' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -73,12 +73,12 @@ describe IiifManifestController do
   describe 'get collection' do
 
     before(:each) do
-      get :collection, :id => 'bpl-dev:3j334b469'
+      get :collection, params: {id: 'bpl-dev:3j334b469'}
       @response_body = JSON.parse(response.body)
     end
 
     it 'should render an IIIF Collection' do
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(@response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
     end
 
@@ -92,23 +92,23 @@ describe IiifManifestController do
   describe 'caching' do
 
     before(:each) do
-      get :manifest, :id => @item_pid
+      get :manifest, params: {id:  @item_pid }
       #post :cache_invalidate, :id => @item_pid
       #@response_body = JSON.parse(response.body)
     end
-    
+
     it 'should cache the manifest' do
       expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_truthy
     end
 
     describe 'cache_invalidate' do
       it 'should remove the cached manifest' do
-        post :cache_invalidate, :id => @item_pid
+        post :cache_invalidate, params: {:id => @item_pid}
         expect(JSON.parse(response.body)['result']).to be_truthy
         expect(Rails.cache.exist?(@item_pid, { namespace: 'manifest' })).to be_falsey
       end
     end
-    
+
   end
 
 end

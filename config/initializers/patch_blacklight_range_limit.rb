@@ -12,6 +12,7 @@ RangeLimitHelper.module_eval do
     # into displaying results, not placeholder page. Kind of hacky,
     # but works for now.
     my_params["search_field"] ||= "dummy_range"
+    my_params = my_params.permit! unless my_params.is_a?(Hash)
     search_catalog_path(my_params.except('controller', 'action'))
   end
 

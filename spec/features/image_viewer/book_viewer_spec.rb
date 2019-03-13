@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'book_viewer', js: true do
 
@@ -49,7 +49,7 @@ describe 'book_viewer', js: true do
         describe 'starting a new search' do
 
           before do
-            find('#toggle-search').trigger('click')
+            find('#toggle-search').click
           end
 
           it 'should display the results for the most recent search' do

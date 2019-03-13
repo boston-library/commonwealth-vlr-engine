@@ -12,9 +12,9 @@ module CommonwealthVlrEngine
     desc "InstallGenerator Commonwealth VLR Engine"
 
     def verify_blacklight_installed
-      if !IO.read('app/controllers/application_controller.rb').include?('include Blacklight::Controller')
-         raise "It doesn't look like you have Blacklight installed..."
-      end
+      return if IO.read('app/controllers/application_controller.rb').include?('include Blacklight::Controller')
+      say_status('info', 'BLACKLIGHT NOT INSTALLED; GENERATING BLACKLIGHT', :blue)
+      generate 'blacklight:install --devise'
     end
 
     def insert_to_assets

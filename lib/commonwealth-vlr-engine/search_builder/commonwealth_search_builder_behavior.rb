@@ -58,12 +58,14 @@ module CommonwealthVlrEngine
     # for 'more like this' search -- set solr id param to params[:mlt_id]
     def mlt_params(solr_parameters = {})
       solr_parameters[:id] = blacklight_params[:mlt_id]
-      solr_parameters[:qt] = 'mlt'
-      solr_parameters[:mlt] = true
-      solr_parameters[:'mlt.fl'] = 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim'
-      solr_parameters[:'mlt.match.include'] = false
-      solr_parameters[:'mlt.mintf'] = 1
-      solr_parameters[:'mlt.qf'] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim'
+      solr_parameters[:qt] = 'mlt_qparser'
+      # solr_parameters[:mlt] = true
+      # solr_parameters[:'mlt.fl'] = 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim'
+      # solr_parameters[:'mlt.match.include'] = false
+      # solr_parameters[:'mlt.mintf'] = 1
+      # Changed this to get around the solr more like this handler facets being broken issue
+      #See https://gist.github.com/ebenenglish/512b0aacb91df67a3ba94b390533c8c2 for more info
+      solr_parameters[:qf] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim'
     end
 
     # used by CollectionsController#index
@@ -89,4 +91,3 @@ module CommonwealthVlrEngine
 
   end
 end
-

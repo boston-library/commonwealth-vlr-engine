@@ -24,6 +24,16 @@ module CommonwealthVlrEngine
     # mailer settings
     config.action_mailer.delivery_method = :sendmail
     config.action_mailer.default_url_options = { :host => 'awesomelibrary.org' }
+    #Added these to handle some CORS issues seen in the javascript during an OCR search.
+    #Ideally this should be handled by a rack/cors initializer.
+    #See https://github.com/cyu/rack-cors for more info
+    config.action_dispatch.default_headers.merge!(
+      {
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'POST, PUT, DELETE, GET, OPTIONS',
+        'Access-Control-Max-Age' => "1728000",
+       'Access-Control-Allow-Headers' =>'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+     })
 }
 
         end

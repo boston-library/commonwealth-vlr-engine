@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
@@ -101,9 +101,8 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
     end
 
     it 'should set the mlt query params' do
-      expect(solr_parameters['qt']).to eq('mlt')
-      expect(solr_parameters['mlt.fl']).to be_truthy
-      expect(solr_parameters['mlt.qf']).to be_truthy
+      expect(solr_parameters['qt']).to eq('mlt_qparser')
+      expect(solr_parameters['qf']).to be_truthy
     end
 
   end
