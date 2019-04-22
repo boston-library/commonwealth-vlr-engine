@@ -18,6 +18,9 @@ class FoldersController < CatalogController
   before_action :verify_user, :except => [:index, :show, :public_list]
   before_action :check_visibility, :only => [:show]
   before_action :correct_user_for_folder, :only => [:update, :destroy]
+  before_action :set_solr_http_post, only: [:show]
+
+  after_action :unset_solr_http_post, only: [:show]
 
   def index
     flash[:notice] = flash[:notice].html_safe if flash[:notice].present? and flash[:notice] == %Q[Welcome! You're viewing Digital Stacks items using a link from a temporary card. To save these items to a free permanent account, click <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a>.]
@@ -133,4 +136,13 @@ class FoldersController < CatalogController
       end
     end
 
+    def set_solr_http_post
+      unless blacklight_config.http_post == :post
+        blacklight_config.http_method = :post
+      end
+    end
+
+    def unset_solr_http_post
+      blacklight_config.http_method = :get
+    end
 end

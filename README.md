@@ -36,8 +36,8 @@ VLR-Engine version | works with Blacklight version
 ----------------------- | ---------------------
 0.0.7 | >= 6.3.0 to < 7.*
 0.0.2 | >= 6.1.0 to < 6.3
-0.0.1 | >= 5.14.0 to < 6.* 
- 
+0.0.1 | >= 5.14.0 to < 6.*
+
 ## Development / Testing
 
 After cloning the repository, and running `bundle install`, run `bundle exec rake` from the project's root directory, which will:
@@ -73,7 +73,7 @@ $ solr_wrapper clean
 Index sample Solr docs (run from `internal_test_app`):
 ```
 # Solr must be running
-$ RAILS_ENV=test bundle exec rake vlr_engine:test_index:seed 
+$ RAILS_ENV=test bundle exec rake commonwealth_vlr_engine:test_index:seed 
 ```
 Run specs (Solr and BPL Dev IIIF image server must be running):
 ```
