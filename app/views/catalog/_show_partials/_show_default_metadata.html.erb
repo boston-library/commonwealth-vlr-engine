@@ -26,8 +26,8 @@
             <% if document[:title_info_alternative_label_ssm] %>
                 <%= document[:title_info_alternative_label_ssm].first %>
             <% else %>
-                <%= t('blacklight.metadata_display.fields.title_alt') %>:
-            <% end %>
+                <%= t('blacklight.metadata_display.fields.title_alt') %>
+            <% end %>:
           </dt>
           <dd>
             <% document[:title_info_alternative_tsim].each do |alt_title| %>
