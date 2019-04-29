@@ -7,7 +7,7 @@ require 'pry-rails'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'selenium/webdriver'
+require 'webdrivers'
 
 # Capybara.register_driver :poltergeist do |app|
 #   options = {}
@@ -24,7 +24,6 @@ require 'selenium/webdriver'
 # Capybara.javascript_driver = Capybara.default_driver
 # Capybara.current_driver = Capybara.default_driver
 # Capybara.default_max_wait_time = 5
-
 
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.default_max_wait_time = 5

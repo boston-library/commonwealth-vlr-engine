@@ -9,14 +9,12 @@ group :test do
   gem 'coveralls', require: false
   gem 'rails-controller-testing'
   gem 'database_cleaner'
-  gem 'chromedriver-helper'
-  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 3.0'
 end
-#TODO remove bottom two gems once they are published to ruby gems
-# END ENGINE_CART BLOCK
 # BEGIN ENGINE_CART BLOCK
-# engine_cart: 2.0.1
+# engine_cart: 2.2.1
 # engine_cart stanza: 0.10.0
+
 # the below comes from engine_cart, a gem used to test this Rails engine gem in the context of a Rails app.
 file = File.expand_path('Gemfile', ENV['ENGINE_CART_DESTINATION'] || ENV['RAILS_ROOT'] || File.expand_path('.internal_test_app', File.dirname(__FILE__)))
 if File.exist?(file)

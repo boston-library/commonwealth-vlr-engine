@@ -54,6 +54,12 @@ Generate the test application at `.internal_test_app`:
 ```
 $ rake engine_cart:generate
 ```
+NOTE: after running this you need to delete these two lines lin the `.internal_test_app`  `Gemfile`s :test group
+```
+   gem 'selenium-webdriver'
+   gem 'chromedriver-helper'
+```
+Re-run `bundle install` in the root of `.internal_test_app`
 Destroy the test application at `.internal_test_app`:
 ```
 $ rake engine_cart:clean
@@ -73,7 +79,7 @@ $ solr_wrapper clean
 Index sample Solr docs (run from `internal_test_app`):
 ```
 # Solr must be running
-$ RAILS_ENV=test bundle exec rake commonwealth_vlr_engine:test_index:seed 
+$ RAILS_ENV=test bundle exec rake commonwealth_vlr_engine:test_index:seed
 ```
 Run specs (Solr and BPL Dev IIIF image server must be running):
 ```
