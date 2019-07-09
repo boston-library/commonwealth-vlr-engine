@@ -1,8 +1,10 @@
 # use to render new image in multi image viewer in catalog#show
 class IiifManifestController < CatalogController
-
   include CommonwealthVlrEngine::CatalogHelper
   include CommonwealthVlrEngine::IiifManifest
+
+  skip_before_action :verify_authenticity_token, only: [:cache_invalidate]
+  after_action :set_access_control_headers, only: [:manifest, :canvas, :annotation, :collection]
 
   def manifest
     image_files = get_image_files(params[:id])
@@ -64,10 +66,8 @@ class IiifManifestController < CatalogController
   def cache_invalidate
     result = Rails.cache.delete(params[:id], { namespace: cache_namespace }) ? true : false
     status = result ? :ok : :not_found
-    render json: {result: result}.as_json, status: status
+    render json: { result: result }.as_json, status: status
   end
-
-  after_action :set_access_control_headers, :only => [:manifest, :canvas, :annotation, :collection]
 
   private
 
@@ -79,5 +79,4 @@ class IiifManifestController < CatalogController
   def cache_namespace
     'manifest'
   end
-
 end
