@@ -8,6 +8,7 @@ module CommonwealthVlrEngine
       return_hash[:documents] = []
       return_hash[:audio] = []
       return_hash[:ereader] = []
+      return_hash[:video] = []
       return_hash[:generic] = []
 
       solr_response = repository.search({:q => "is_file_of_ssim:\"info:fedora/#{pid}\"", :rows => 5000})
@@ -21,6 +22,8 @@ module CommonwealthVlrEngine
           return_hash[:documents] << solr_doc
         elsif solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_EreaderFile')
           return_hash[:ereader] << solr_doc
+        elsif solr_doc['has_model_ssim'].include?('info:fedora/afmodel:Bplmodels_VideoFile')
+          return_hash[:video] << solr_doc
         else
           return_hash[:generic] << solr_doc
         end
@@ -30,6 +33,7 @@ module CommonwealthVlrEngine
       return_hash[:documents] = sort_files(return_hash[:documents])
       return_hash[:audio] = sort_files(return_hash[:audio])
       return_hash[:ereader] = sort_files(return_hash[:ereader])
+      return_hash[:video] = sort_files(return_hash[:video])
       return_hash[:generic] = sort_files(return_hash[:generic])
 
       return return_hash
@@ -118,6 +122,16 @@ module CommonwealthVlrEngine
     def get_ereader_files(pid)
       return_list = []
       solr_response = repository.search({:q => "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", :rows => 5000})
+
+      solr_response.documents.each do |solr_object|
+        return_list << solr_object
+      end
+      return sort_files(return_list)
+    end
+
+    def get_video_files(pid)
+      return_list = []
+      solr_response = repository.search({:q => "is_video_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_VideoFile\"", :rows => 5000})
 
       solr_response.documents.each do |solr_object|
         return_list << solr_object

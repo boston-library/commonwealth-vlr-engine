@@ -2,6 +2,7 @@
 <%# TODO: refactor how views access files/volumes/etc., this is getting REALLY ugly %>
 <% volumes = has_volumes?(@document) %>
 <% book_reader = has_searchable_text?(@document) ? true : false %>
+<% video = has_video_files?(@object_files) %>
 <% oai_object = @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' ? true : false %>
 <% if !book_reader && has_image_files?(@object_files) %>
     <% case @object_files[:images].length %>
@@ -21,10 +22,16 @@
     <% end %>
 <% end %>
 
+<% if video %>
+  <%= render :partial => 'catalog/_show_partials/show_video_player',
+             :locals => { :document => @document,
+                          :video_pid => @object_files[:video][0]['id'] } %>
+<% end %>
+
 <div class="row">
 
   <%# show thumbnail or icon if object has no images, or volume list %>
-  <% if !has_image_files?(@object_files) || book_reader || volumes %>
+  <% if (!has_image_files?(@object_files) || book_reader || volumes) && !video %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>

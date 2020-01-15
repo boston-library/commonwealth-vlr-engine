@@ -94,6 +94,13 @@ describe CatalogHelper do
 
   end
 
+  describe '#has_video_files?' do
+    it 'should return true' do
+      files_hash[:video] = [SolrDocument.new] # TODO create a video file fixture in sample solr docs
+      expect(helper.has_video_files?(files_hash)).to be_truthy
+    end
+  end
+
   describe '#has_volumes?' do
 
     let (:book_with_volumes_pid) { 'bpl-dev:3j334b469' }

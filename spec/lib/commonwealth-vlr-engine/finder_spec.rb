@@ -25,11 +25,11 @@ describe CommonwealthVlrEngine::Finder do
 
   describe 'get_files' do
 
-    let (:return_hash) { @obj.get_files(@item_pid) }
+    let(:return_hash) { @obj.get_files(@item_pid) }
 
     it 'should create a hash with the file objects' do
       expect(return_hash.empty?).to be_falsey
-      expect(return_hash.length).to eq(5)
+      expect(return_hash.length).to eq(6)
     end
 
     it 'should have an :images key with a hash of Bplmodel::ImageFile SolrDocs as the value' do
@@ -40,6 +40,13 @@ describe CommonwealthVlrEngine::Finder do
 
     it 'should have the right ImageFile objects for the item' do
       expect(return_hash[:images].to_s).to include(@image1_pid)
+    end
+
+    # TODO: specs for each file type, and associated get_* methods
+    it 'should have keys for other file types' do
+      %i(documents audio ereader video generic).each do |k|
+        expect(return_hash[k]).not_to be_nil
+      end
     end
 
     describe 'sort_files' do
@@ -56,7 +63,7 @@ describe CommonwealthVlrEngine::Finder do
   describe 'get_image_files' do
 
     let(:pid) { 'bpl-dev:h702q6403' }
-    let (:return_list) { @obj.get_image_files(pid) }
+    let(:return_list) { @obj.get_image_files(pid) }
 
     it 'should create an array with the ImageFile objects' do
       expect(return_list.empty?).to be_falsey
@@ -72,7 +79,7 @@ describe CommonwealthVlrEngine::Finder do
 
   describe 'get_first_image_file' do
 
-    let (:response) { @obj.get_first_image_file(@item_pid) }
+    let(:response) { @obj.get_first_image_file(@item_pid) }
 
     it 'should return the first ImageFile object' do
       expect(response).not_to be_nil
@@ -83,7 +90,7 @@ describe CommonwealthVlrEngine::Finder do
 
   describe 'get_next_image_file' do
 
-    let (:response) { @obj.get_next_image_file(@image1_pid) }
+    let(:response) { @obj.get_next_image_file(@image1_pid) }
 
     it 'should return the next ImageFile object' do
       expect(response).not_to be_nil
@@ -94,7 +101,7 @@ describe CommonwealthVlrEngine::Finder do
 
   describe 'get_prev_image_file' do
 
-    let (:response) { @obj.get_prev_image_file(@image2_pid) }
+    let(:response) { @obj.get_prev_image_file(@image2_pid) }
 
     it 'should return the next ImageFile object' do
       expect(response).not_to be_nil
@@ -105,7 +112,7 @@ describe CommonwealthVlrEngine::Finder do
 
   describe 'get_file_parent_object' do
 
-    let (:response) { @obj.get_file_parent_object(@image2_pid) }
+    let(:response) { @obj.get_file_parent_object(@image2_pid) }
 
     it 'should return the parent object' do
       expect(response).to eq(@item_pid)
@@ -116,7 +123,7 @@ describe CommonwealthVlrEngine::Finder do
   describe 'get_volume_objects' do
 
     let(:pid) { 'bpl-dev:3j334b469' }
-    let (:return_list) { @obj.get_volume_objects(pid) }
+    let(:return_list) { @obj.get_volume_objects(pid) }
 
     it 'should return an array of hashes with the Volume objects and files' do
       expect(return_list.class).to eq(Array)

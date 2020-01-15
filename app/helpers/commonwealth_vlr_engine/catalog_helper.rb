@@ -68,6 +68,10 @@ module CommonwealthVlrEngine
       files_hash[:images].present?
     end
 
+    def has_video_files? files_hash
+      files_hash[:video].present?
+    end
+
     def image_file_pids images_hash
       image_file_pids = []
       images_hash.each do |image_file|
