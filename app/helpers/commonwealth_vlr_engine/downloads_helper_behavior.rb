@@ -2,23 +2,16 @@ module CommonwealthVlrEngine
   module DownloadsHelperBehavior
 
     # create an array of download links
-    # images have to be handled by a separate function since there are multiple sizes
+    # images/video have to be handled separately since there are multiple sizes
     def create_download_links(document, files_hash)
       download_links = []
-      non_img_file_types = [files_hash[:audio], files_hash[:documents], files_hash[:ereader], files_hash[:generic]]
-      if has_downloadable_images?(document, files_hash) && !files_hash[:images].empty?
+      if has_downloadable_images?(document, files_hash)
         download_links.concat(image_download_links(document, files_hash[:images]))
       end
-      non_img_file_types.each do |file_type|
-        file_type.each do |file|
-          object_profile_json = JSON.parse(file['object_profile_ssm'].first)
-          download_links << file_download_link(file['id'],
-                                               download_link_title(document, object_profile_json),
-                                               object_profile_json,
-                                               'productionMaster',
-                                               download_link_options)
-        end
+      if has_downloadable_video?(document, files_hash)
+        download_links.concat(video_download_links(document, files_hash[:video]))
       end
+      download_links.concat(other_download_links(document, files_hash))
       download_links
     end
 
@@ -27,7 +20,7 @@ module CommonwealthVlrEngine
     end
 
     def download_link_options
-      {class: download_link_class, rel: 'nofollow', data: {:ajax_modal => 'trigger'}}
+      { class: download_link_class, rel: 'nofollow', data: { ajax_modal: 'trigger' } }
     end
 
     def download_link_title(document, object_profile, datastream_id=nil)
@@ -46,6 +39,7 @@ module CommonwealthVlrEngine
 
     def has_downloadable_files?(document, files_hash)
       has_downloadable_images?(document, files_hash) ||
+          has_downloadable_video?(document, files_hash) ||
           files_hash[:documents].present? ||
           files_hash[:audio].present? ||
           files_hash[:generic].present? ||
@@ -56,15 +50,19 @@ module CommonwealthVlrEngine
       has_image_files?(files_hash) && license_allows_download?(document)
     end
 
+    def has_downloadable_video?(document, files_hash)
+      has_video_files?(files_hash) && license_allows_download?(document)
+    end
+
     # render the file type names for Internet Archive book item download links
     def ia_download_title(file_extension)
       case file_extension
-        when 'mobi'
-          'Kindle'
-        when 'zip'
-          'Daisy'
-        else
-          file_extension.upcase
+      when 'mobi'
+        'Kindle'
+      when 'zip'
+        'Daisy'
+      else
+        file_extension.upcase
       end
     end
 
@@ -77,7 +75,7 @@ module CommonwealthVlrEngine
       image_datastreams.insert(1, 'accessFull')
     end
 
-    def image_download_links(document, image_files_hash)
+    def image_download_links(document, image_files)
       if document[:identifier_ia_id_ssi]
         [file_download_link(document[:id],
                             t("blacklight.downloads.images.accessFull"),
@@ -85,14 +83,14 @@ module CommonwealthVlrEngine
                             'JPEG2000',
                             download_link_options)]
       else
-        object_profile_json = JSON.parse(image_files_hash.first['object_profile_ssm'].first)
+        object_profile_json = JSON.parse(image_files.first['object_profile_ssm'].first)
         image_links = []
         image_datastreams(object_profile_json).each do |datastream_id|
-          if image_files_hash.length == 1
+          if image_files.length == 1
             object_profile = object_profile_json
-            object_id = image_files_hash.first['id']
+            object_id = image_files.first['id']
           else
-            object_profile = setup_zip_object_profile(image_files_hash, datastream_id)
+            object_profile = setup_zip_object_profile(image_files, datastream_id)
             object_id = document[:id]
           end
           image_links << file_download_link(object_id,
@@ -103,6 +101,34 @@ module CommonwealthVlrEngine
         end
         image_links
       end
+    end
+
+    # for now, we only support accessMaster download (MP4)
+    def video_download_links(document, video_files)
+      file = video_files.first
+      object_profile_json = JSON.parse(file['object_profile_ssm'].first)
+      [file_download_link(file['id'],
+                          download_link_title(document, object_profile_json),
+                          object_profile_json,
+                          'accessMaster',
+                          download_link_options)]
+    end
+
+    def other_download_links(document, files_hash)
+      other_links = []
+      other_file_types = [files_hash[:audio], files_hash[:documents],
+                          files_hash[:ereader], files_hash[:generic]]
+      other_file_types.each do |file_type|
+        file_type.each do |file|
+          object_profile_json = JSON.parse(file['object_profile_ssm'].first)
+          other_links << file_download_link(file['id'],
+                                            download_link_title(document, object_profile_json),
+                                            object_profile_json,
+                                            'productionMaster',
+                                            download_link_options)
+        end
+      end
+      other_links
     end
 
     # parse the license statement and return true if image downloads are allowed
@@ -120,21 +146,23 @@ module CommonwealthVlrEngine
 
     def file_type_string(datastream_id, object_profile_json)
       if object_profile_json
-        if datastream_id == 'accessFull' || datastream_id == 'access800'
-          file_type_string = 'JPEG'
-        else
-          #file_type_string = object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
-          file_type_string = object_profile_json["objLabel"].split('.')[1].upcase
-        end
+        file_type_string = if datastream_id == 'accessFull' || datastream_id == 'access800'
+                             'JPEG'
+                           elsif object_profile_json["datastreams"][datastream_id]["dsMIME"]
+                             object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
+                           else
+                             object_profile_json["objLabel"].split('.')[1].upcase
+                           end
+        file_type_string.gsub!(/TIFF/, 'TIF')
         file_type_string << ', multi-file ZIP' if object_profile_json["zip"]
       else
         file_type_string = case datastream_id
-                             when 'productionMaster'
-                               'TIF'
-                             when 'JPEG2000'
-                               datastream_id
-                             else
-                               'JPEG'
+                           when 'productionMaster'
+                             'TIF'
+                           when 'JPEG2000'
+                             datastream_id
+                           else
+                             'JPEG'
                            end
       end
       file_type_string
@@ -158,30 +186,30 @@ module CommonwealthVlrEngine
     def public_domain?(document)
       pubdom_regex = /[Pp]ublic domain/
       (document[:date_end_dtsi] && document[:date_end_dtsi][0..3].to_i < 1923) ||
-        document[:rights_ssm].to_s =~ pubdom_regex ||
-        document[:license_ssm].to_s =~ pubdom_regex
+          document[:rights_ssm].to_s =~ pubdom_regex ||
+          document[:license_ssm].to_s =~ pubdom_regex
     end
 
     # create a composite object_profile_json object from multiple file objects
     # used to display size of ZIP archive
-    def setup_zip_object_profile(image_files_hash, datastream_id)
+    def setup_zip_object_profile(image_files, datastream_id)
       datastream_id_to_use = datastream_id == 'accessFull' ? 'productionMaster' : datastream_id
       object_profile = {zip: true,
                         objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
                         datastreams: {datastream_id_to_use.to_sym => {}}}
       zip_size = 0
-      image_files_hash.each do |image_file|
+      image_files.each do |image_file|
         img_object_profile_json = JSON.parse(image_file['object_profile_ssm'].first)
         zip_size += img_object_profile_json["datastreams"][datastream_id_to_use]["dsSize"]
       end
       # estimate compression, pretty rough
       zip_size = case datastream_id
-                   when 'productionMaster'
-                     zip_size * 0.798
-                   when 'accessFull'
-                     zip_size * 0.839
-                   else
-                     zip_size * 0.927
+                 when 'productionMaster'
+                   zip_size * 0.798
+                 when 'accessFull'
+                   zip_size * 0.839
+                 else
+                   zip_size * 0.927
                  end
       object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = zip_size
       object_profile.deep_stringify_keys
