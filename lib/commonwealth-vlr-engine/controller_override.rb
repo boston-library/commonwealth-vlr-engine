@@ -95,8 +95,10 @@ module CommonwealthVlrEngine
         # solr fields that will be treated as facets by the blacklight application
         config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse:  false
         config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true, :collapse => false
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse:  false
+        config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
+                               collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
+        config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true, :collapse => false
         config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse:  false
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', label: 'Collection', include_in_request: false # Collection (local)

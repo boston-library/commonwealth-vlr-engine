@@ -245,6 +245,18 @@ module CommonwealthVlrEngine
       end
     end
 
+    # render reuse_allowed_ssi values for facet display
+    def render_reuse(value)
+      case value
+      when 'no restrictions'
+        'No known restrictions'
+      when 'creative commons'
+        'Creative Commons license'
+      else
+        'See item for details'
+      end
+    end
+
     # have to override to display non-typical constraints
     # (e.g. coordinates, mlt, range limit, advanced search)
     # need this until:

@@ -280,6 +280,12 @@ describe CatalogHelper do
 
   end
 
+  describe 'render_reuse' do
+    it 'returns the correct value' do
+      expect(helper.render_reuse('creative commons')).to eq 'Creative Commons license'
+    end
+  end
+
   describe '#render_search_to_page_title' do
     before { @page_title = helper.render_search_to_page_title({mlt_id: item_pid}) }
     it 'should return the correct string for the page title' do
