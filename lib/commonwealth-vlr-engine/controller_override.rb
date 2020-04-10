@@ -222,6 +222,7 @@ module CommonwealthVlrEngine
         blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
         blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
         blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+        blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
         # remove item-centric show tools (for admin)
         blacklight_config.show.document_actions.delete(:add_this)
         blacklight_config.show.document_actions.delete(:folder_items)
