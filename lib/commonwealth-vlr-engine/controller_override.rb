@@ -49,6 +49,11 @@ module CommonwealthVlrEngine
         config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
         config.view.maps.spatial_query_dist = 0.2
+        # TODO: remove below once blacklight-maps has been updated to use HTTPS URLs
+        config.view.maps.tileurl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        config.view.maps.mapattribution = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>
+contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA</a>'
+
 
         # helper that returns thumbnail URLs
         config.index.thumbnail_method = :create_thumb_img_element
