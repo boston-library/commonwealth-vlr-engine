@@ -49,7 +49,9 @@
           <dt><%= t('blacklight.metadata_display.fields.abstract') %>:</dt>
           <dd>
             <% document[:abstract_tsim].each do |abstract| %>
-                <%= abstract %><br />
+              <% abstract.split('<br/><br/>').each do |sub_abstract| %>
+                <%= sub_abstract %><br />
+              <% end %>
             <% end %>
           </dd>
       <% end %>
