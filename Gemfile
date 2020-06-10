@@ -12,7 +12,7 @@ group :test do
   gem 'webdrivers', '~> 3.0'
 end
 # BEGIN ENGINE_CART BLOCK
-# engine_cart: 2.2.1
+# engine_cart: 2.3.0
 # engine_cart stanza: 0.10.0
 
 # the below comes from engine_cart, a gem used to test this Rails engine gem in the context of a Rails app.
@@ -37,10 +37,13 @@ else
   end
 
   case ENV['RAILS_VERSION']
+  when /^5.[12]/, /^6.0/
+    gem 'sass-rails', '~> 5.0'
   when /^4.2/
     gem 'responders', '~> 2.0'
     gem 'sass-rails', '>= 5.0'
     gem 'coffee-rails', '~> 4.1.0'
+    gem 'json', '~> 1.8'
   when /^4.[01]/
     gem 'sass-rails', '< 5.0'
   end
