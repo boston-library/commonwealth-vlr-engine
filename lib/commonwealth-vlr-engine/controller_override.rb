@@ -12,7 +12,7 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightAdvancedSearch::Controller)
 
       # add BlacklightMaps
-      self.send(:include, BlacklightMaps::ControllerOverride)
+      self.send(:include, BlacklightMaps::Controller)
 
       # add BlacklightRangeLimit
       self.send(:include, BlacklightRangeLimit::ControllerOverride)

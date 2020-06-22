@@ -17,30 +17,30 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '~> 2.4'
+  s.required_ruby_version = '~> 2.6'
 
-  s.add_dependency 'rails', '>= 5', '< 6'
-  s.add_dependency 'blacklight', '6.19.2'
-  s.add_dependency 'blacklight_advanced_search', '6.4.1'
-  s.add_dependency 'blacklight-gallery', '0.11.0'
-  s.add_dependency 'blacklight-maps', '0.5.1'
-  s.add_dependency 'blacklight_range_limit', '~> 6.3.3'
-  s.add_dependency 'font-awesome-sass', '4.1.0'
-  s.add_dependency 'bpluser', '~> 0.1.19'
-  s.add_dependency 'typhoeus', '1.3.1'
-  s.add_dependency 'unicode', '~> 0.4.0'
+  s.add_dependency 'rails', '~> 6.0.3'
+  s.add_dependency 'blacklight', '~> 7.8.1'
+  s.add_dependency 'blacklight_advanced_search', '~> 7.0.0'
+  s.add_dependency 'blacklight-gallery', '~> 2.1.0'
+  s.add_dependency 'blacklight-maps', '~> 1.1.0'
+  s.add_dependency 'blacklight_range_limit', '~> 7.8.1'
+  s.add_dependency 'font-awesome-sass', '~> 5.0'
+  s.add_dependency 'bpluser', '~> 0.1.19' # 0.1.20 doesn't exist yet
+  s.add_dependency 'typhoeus', '~> 1.3'
+  s.add_dependency 'unicode', '~> 0.4.4'
   s.add_dependency 'madison', '~> 0.5.0'
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'iiif-presentation', '~> 0.2.0'
-  s.add_dependency 'zipline', '~> 1.0.2'
-  s.add_dependency 'faraday', '0.15.4'
+  s.add_dependency 'zipline', '~> 1.2'
+  s.add_dependency 'faraday', '0.15.4' # has to be < 0.16, see https://github.com/iiif-prezi/osullivan/issues/75
 
   s.add_development_dependency 'pry-rails'
   s.add_development_dependency 'pry-rescue'
   s.add_development_dependency 'pry-stack_explorer'
-  s.add_development_dependency 'solr_wrapper', '2.1.0'
+  s.add_development_dependency 'solr_wrapper', '>= 2.1', '< 3.0'
   s.add_development_dependency 'awesome_print'
-  s.add_development_dependency 'rspec-rails', '3.8'
+  s.add_development_dependency 'rspec-rails', '~> 3.9', '< 4.0'
   s.add_development_dependency 'engine_cart', '~> 2.2'
-  s.add_development_dependency 'capybara', '>= 2', '< 4'
+  s.add_development_dependency 'capybara', '~> 3.0', '< 4'
 end
