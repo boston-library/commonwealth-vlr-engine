@@ -47,6 +47,5 @@ module CommonwealthVlrEngine
     def copy_migrations
       rake 'railties:install:migrations'
     end
-
   end
 end

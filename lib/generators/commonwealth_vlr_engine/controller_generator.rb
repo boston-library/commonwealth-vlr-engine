@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
 
     source_root File.expand_path('../templates', __FILE__)
 
-    argument     :controller_name  , type: :string , default: "catalog"
+    argument :controller_name, type: :string, default: "catalog"
 
     desc """
   This generator makes the following changes to your application:
@@ -24,7 +24,6 @@ module CommonwealthVlrEngine
   # adds some site-wide behavior into the application controller
   include CommonwealthVlrEngine::Controller
   layout 'commonwealth-vlr-engine'
-  skip_after_action :discard_flash_if_xhr
 }
         end
         remove_marker = "layout 'blacklight'"

@@ -35,8 +35,16 @@ module CommonwealthVlrEngine
 
     def add_vlr_initializers
       template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
-      template 'config/initializers/devise.rb'
-      template 'config/initializers/secret_token.rb'
+      # template 'config/initializers/devise.rb'
+      # template 'config/initializers/secret_token.rb'
+    end
+
+    def configure_user
+      generate 'commonwealth_vlr_engine:user'
+    end
+
+    def configure_devise
+      generate 'commonwealth_vlr_engine:devise'
     end
 
     def insert_to_routes
@@ -52,6 +60,5 @@ module CommonwealthVlrEngine
         run 'bundle install'
       end
     end
-
   end
 end

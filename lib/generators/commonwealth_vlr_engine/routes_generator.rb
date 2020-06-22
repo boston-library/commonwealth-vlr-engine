@@ -19,25 +19,22 @@ module CommonwealthVlrEngine
         insert_into_file "config/routes.rb", :after => marker do
           %q{
 
-  root :to => 'pages#home'
+  root to: 'pages#home'
 
   # routes for CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
 
-  # user authentication
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
-
   # bookmarks item actions
   # this has to be in local app for bookmark item actions to work
-  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
+  put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 }
         end
 
-        # remove Blacklight root
+        # comment out Blacklight root
         bl_root_marker = 'root to: "catalog#index"'
-        gsub_file("config/routes.rb", bl_root_marker, "")
+        gsub_file("config/routes.rb", bl_root_marker, "# #{bl_root_marker}")
 
         # change '/catalog' to '/search'
         gsub_file("config/routes.rb", /\/catalog/, "/search")
@@ -45,11 +42,13 @@ module CommonwealthVlrEngine
         # for blacklight_range_limit
         bl_routes_marker = /concerns :searchable.*$/
         inject_into_file 'config/routes.rb', after: bl_routes_marker do
-          "\n    concerns :range_searchable\n"
+          "\n    concerns :range_searchable"
         end
 
+        # update devise
+        gsub_file("config/routes.rb", 'devise_for :users',
+                  "devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions' }")
       end
     end
-
   end
 end

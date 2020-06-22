@@ -242,7 +242,9 @@ Devise.setup do |config|
                   :method => OMNIAUTH_POLARIS_GLOBAL['method']
 
   OMNIAUTH_FACEBOOK_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-facebook.yml'))[Rails.env]
-  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'], OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'], :scope=>OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
+  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
+                  OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
+                  :scope=>OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
