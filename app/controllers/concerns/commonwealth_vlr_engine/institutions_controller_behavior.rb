@@ -4,7 +4,6 @@ module CommonwealthVlrEngine
     ##
     # Give Bookmarks access to the CatalogController configuration
     include Blacklight::Configurable
-    include Blacklight::SearchHelper
 
     included do
       copy_blacklight_config_from(CatalogController)
@@ -19,7 +18,7 @@ module CommonwealthVlrEngine
     def index
       @nav_li_active = 'explore'
       params[:per_page] = params[:per_page].presence || '50'
-      (@response, @document_list) = search_results(params)
+      (@response, @document_list) = search_service.search_results
       params[:view] ||= 'list' # still need this or grid view is invoked
       params[:sort] = 'title_info_primary_ssort asc'
 
@@ -30,13 +29,13 @@ module CommonwealthVlrEngine
 
     def show
       @nav_li_active = 'explore'
-      @show_response, @document = fetch(params[:id])
+      @show_response, @document = search_service.fetch(params[:id])
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
       # get the response for collection objects
       collex_f_params = {blacklight_config.index.display_type_field => 'Collection',
                          'institution_pid_ssi' => params[:id]}
-      @collex_response, @collex_documents = search_results({:f => collex_f_params,
+      @collex_response, @collex_documents = search_service.search_results({:f => collex_f_params,
                                                             :rows => 500,
                                                             :sort => 'title_info_primary_ssort asc'})
 
@@ -44,7 +43,7 @@ module CommonwealthVlrEngine
       params[:f] = {blacklight_config.institution_field => [@institution_title]}
 
       # get the response for the facets representing items in collection
-      (@response, @document_list) = search_results({:f => params[:f]})
+      (@response, @document_list) = search_service.search_results({:f => params[:f]})
 
       respond_to do |format|
         format.html
