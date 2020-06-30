@@ -33,7 +33,7 @@
                                    :id => 'q_basic',
                                    :autofocus => should_autofocus_on_search_box?,
                                    data: { autocomplete_enabled: autocomplete_enabled?,
-                                           autocomplete_path: blacklight.suggest_index_path } %>
+                                           autocomplete_path: search_action_path(action: :suggest) } %>
 
                 <% unless search_fields.empty? %>
                     <label for="search_field" class="sr-only">

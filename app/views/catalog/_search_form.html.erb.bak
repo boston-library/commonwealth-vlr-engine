@@ -21,7 +21,7 @@
                          id: 'q',
                          # autofocus: should_autofocus_on_search_box?,
                          data: { autocomplete_enabled: autocomplete_enabled?,
-                                 autocomplete_path: blacklight.suggest_index_path } %>
+                                 autocomplete_path: search_action_path(action: :suggest) } %>
 
       <span class="input-group-btn">
         <button type="submit" class="btn btn-primary search-btn" id="search">
