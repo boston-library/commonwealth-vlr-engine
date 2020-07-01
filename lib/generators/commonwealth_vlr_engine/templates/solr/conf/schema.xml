@@ -364,7 +364,6 @@ http://wiki.apache.org/solr/SolrAdaptersForLuceneSpatial4
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
-        <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
@@ -381,7 +380,6 @@ http://wiki.apache.org/solr/SolrAdaptersForLuceneSpatial4
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
-        <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.ShingleFilterFactory" maxShingleSize="4" fillerToken="" outputUnigramsIfNoShingles="true"/>
         <filter class="solr.PatternReplaceFilterFactory" pattern="(^ | $)" replacement=""/>
