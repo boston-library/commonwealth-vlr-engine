@@ -1,17 +1,17 @@
 <div id="documents">
   <% display_facet.items.each do |item| -%>
-      <% series_title = facet_display_value(solr_field, item) %>
+      <% series_title = facet_display_value(@series_field, item) %>
       <% series_object = get_series_image_obj(series_title, @collection_title) %>
       <div class="document col-sm-3">
         <div class="thumbnail">
           <% if series_object %>
             <%= link_to(create_thumb_img_element(series_object,
                                                  %w(series_thumbnail)),
-                        path_for_facet(solr_field, item)) %>
+                        path_for_facet(@series_field, item)) %>
           <% end %>
           <div class="caption">
             <%= (link_to(series_title,
-                         path_for_facet(solr_field, item),
+                         path_for_facet(@series_field, item),
                          :class=> 'facet_select')).html_safe %><!-- <br/>
                 <span class="series_facet_count">
                   <%# render_facet_count(item.hits) + ' items' %>

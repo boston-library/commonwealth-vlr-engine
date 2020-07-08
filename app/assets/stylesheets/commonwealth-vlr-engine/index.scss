@@ -206,7 +206,7 @@ h4.suggest {
   &.gallery {
     display: block;
 
-    .document.new_row {
+    .document.new_row { // TODO: still needed? only used in _index_gallery
       clear:left;
     }
 
@@ -538,11 +538,11 @@ div.record-padding {
     /* gallery view */
     &.gallery {
 
-      .document.new_row {
+      .document.new_row { // TODO: still needed? only used in _index_gallery
         clear:none;
       }
 
-      .document.new_row_device {
+      .document.new_row_device { // TODO: still needed? only used in _index_gallery
         clear:left;
       }
 

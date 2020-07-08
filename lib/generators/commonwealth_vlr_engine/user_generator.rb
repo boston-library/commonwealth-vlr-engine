@@ -16,5 +16,12 @@ module CommonwealthVlrEngine
         "\n  self.table_name = 'users'\n"
       end
     end
+
+    def add_trackable_to_devise
+      marker = 'devise :'
+      insert_into_file 'app/models/user.rb', after: marker do
+        'trackable, :'
+      end
+    end
   end
 end

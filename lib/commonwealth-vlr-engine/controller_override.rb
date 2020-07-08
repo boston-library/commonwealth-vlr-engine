@@ -49,11 +49,6 @@ module CommonwealthVlrEngine
         config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
         config.view.maps.spatial_query_dist = 0.2
-        # TODO: remove below once blacklight-maps has been updated to use HTTPS URLs
-        config.view.maps.tileurl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        config.view.maps.mapattribution = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>
-contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA</a>'
-
 
         # helper that returns thumbnail URLs
         config.index.thumbnail_method = :create_thumb_img_element
@@ -64,6 +59,7 @@ contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA<
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
         config.show.display_type_field = 'active_fedora_model_suffix_ssi'
+        config.show.partials = [:show_header, :show_breadcrumb, :show]
 
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
@@ -199,16 +195,12 @@ contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA<
         config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
         config.add_show_tools_partial :custom_email, partial: 'show_sharing_tools'
         config.add_show_tools_partial :cite, partial: 'show_cite_tools'
-
-        # add 'more like this' params in catalog#show
-        #config.default_document_solr_params = mlt_params_for_show
-
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
       # for some reason won't work if not in the 'included' block
       def metadata_view
-        @response, @document = fetch(params[:id])
+        @response, @document = search_service.fetch(params[:id])
         respond_to do |format|
           format.html do
             render layout: false if request.xhr?
@@ -241,13 +233,11 @@ contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA<
     def formats_facet
       @nav_li_active = 'explore'
       @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
-
       @facet = blacklight_config.facet_fields['genre_basic_ssim']
-
-      @response = get_facet_field_response(@facet.key, params, {"f.genre_basic_ssim.facet.limit" => -1})
+      @response = search_service.facet_field_response(@facet.key,
+                                                      { 'f.genre_basic_ssim.facet.limit' => -1 })
       @display_facet = @response.aggregations[@facet.key]
       @pagination = facet_paginator(@facet, @display_facet)
-
       render :facet
     end
 
@@ -255,17 +245,17 @@ contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA<
     # returns the child volumes for Book objects (if they exist)
     # needs to be in this module because CommonwealthVlrEngine::Finder methods aren't accessible in helpers/views
     def has_volumes?(document)
-      case document[blacklight_config.show.display_type_field.to_sym]
-        when 'Book'
-          volumes = get_volume_objects(document.id)
-        else
-          volumes = nil
-      end
+      volumes = if document[blacklight_config.show.display_type_field.to_sym] == 'Book'
+                  get_volume_objects(document.id)
+                else
+                  nil
+                end
       volumes.presence
     end
 
     private
 
+    # TODO: Do we still need this functionality? This method was removed from BL7
     # LOCAL OVERRIDE of Blacklight::SearchHelper
     # needed so that Solr query for prev/next/total in catalog#show view uses correct SearchBuilder class
     # because params added exclusively in SearchBuilder methods don't get saved by current_search_session
@@ -311,12 +301,20 @@ contributors, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA<
     # run a separate search for 'more like this' items
     # so we can explicitly set params to exclude unwanted items
     def mlt_results_for_show
-      if controller_name == 'catalog'
-        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
-        (@mlt_response, @mlt_document_list) = search_results(mlt_id: params[:id], rows: 4)
+      if controller_name == 'catalog' # TODO: possibly redundant, is this ever invoked by another controller?
+        #blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+        mlt_search_service = search_service_class.new(config: blacklight_config,
+                                                      user_params: { mlt_id: params[:id], rows: 4 },
+                                                      search_builder_class: CommonwealthMltSearchBuilder)
+        _mlt_response, @mlt_document_list = mlt_search_service.search_results
         # have to reset to CommonwealthSearchBuilder, or prev/next links won't work
-        blacklight_config.search_builder_class = CommonwealthSearchBuilder
+        #blacklight_config.search_builder_class = CommonwealthSearchBuilder
       end
+    end
+
+    # override so we can inspect for other params, like :mlt_id
+    def has_search_parameters?
+      params[:mlt_id].present? || super
     end
 
     protected

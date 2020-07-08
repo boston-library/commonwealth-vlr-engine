@@ -2,7 +2,7 @@ module CommonwealthVlrEngine
   module InstitutionsControllerBehavior
     extend ActiveSupport::Concern
     ##
-    # Give Bookmarks access to the CatalogController configuration
+    # Give InstitutionsController access to the CatalogController configuration
     include Blacklight::Configurable
 
     included do
@@ -29,31 +29,37 @@ module CommonwealthVlrEngine
 
     def show
       @nav_li_active = 'explore'
-      @show_response, @document = search_service.fetch(params[:id])
+      _show_response, @document = search_service.fetch(params[:id])
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
-      # get the response for collection objects
-      collex_f_params = {blacklight_config.index.display_type_field => 'Collection',
-                         'institution_pid_ssi' => params[:id]}
-      @collex_response, @collex_documents = search_service.search_results({:f => collex_f_params,
-                                                            :rows => 500,
-                                                            :sort => 'title_info_primary_ssort asc'})
+      # get the response for collection objects (TODO: run as before_action ?)
+      collex_params = { f: { blacklight_config.index.display_type_field => 'Collection',
+                             'institution_pid_ssi' => params[:id] },
+                        rows: 500, sort: 'title_info_primary_ssort asc' }
+      collex_search_service = search_service_class.new(config: blacklight_config,
+                                                       user_params: collex_params)
+      _collex_response, @collex_documents = collex_search_service.search_results
 
-      # add params[:f] for proper facet links
+      # add params[:f] for proper facet links,
+      # get the response for the facets representing items in collection (TODO: run as before_action ?)
       params[:f] = {blacklight_config.institution_field => [@institution_title]}
-
-      # get the response for the facets representing items in collection
-      (@response, @document_list) = search_service.search_results({:f => params[:f]})
+      facets_search_service = search_service_class.new(config: blacklight_config,
+                                                       user_params: { f: params[:f] })
+      @response, @document_list = facets_search_service.search_results
 
       respond_to do |format|
         format.html
       end
-
     end
 
     def range_limit
       redirect_to range_limit_catalog_path(params.permit!.except('controller', 'action')) and return
     end
+
+    # TODO: This path helper doesn't work
+    #def range_limit_panel
+    #  redirect_to range_limit_panel_catalog_path(params.permit!.except('controller', 'action')) and return
+    #end
 
     protected
 

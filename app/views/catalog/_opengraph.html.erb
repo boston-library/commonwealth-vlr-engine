@@ -4,9 +4,9 @@
 <meta property="og:title" content="<%= document[blacklight_config.index.title_field.to_sym].presence %>" />
 <% if document[:abstract_tsim] %>
     <meta property="og:description" content="<%= truncate(document[:abstract_tsim].first,
-                                                          :length => 300,
-                                                          :separator => ' ',
-                                                          :omission => '... ') %>" />
+                                                          length: 300,
+                                                          separator: ' ',
+                                                          omission: '... ') %>" />
 <% end %>
 <% if has_image_files?(@object_files) %>
     <meta property="og:image" content="<%= datastream_disseminator_url(@object_files[:images][0]['id'],

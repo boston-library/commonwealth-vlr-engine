@@ -19,9 +19,9 @@ module CommonwealthVlrEngine
 
     # render a page/modal with license terms, download links, etc
     def show
-      @doc_response, @document = fetch(params[:id])
+      @doc_response, @document = search_service.fetch(params[:id])
       if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
-        parent_response, @parent_document = fetch(parent_id(@document))
+        parent_response, @parent_document = search_service.fetch(parent_id(@document))
         @object_profile = JSON.parse(@document['object_profile_ssm'].first)
       else
         @parent_document = @document
@@ -38,7 +38,7 @@ module CommonwealthVlrEngine
 
     # initiates the file download
     def trigger_download
-      response, @solr_document = fetch(params[:id])
+      _response, @solr_document = search_service.fetch(params[:id])
       if !@solr_document.to_h.empty? && params[:datastream_id]
         if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
           @object_id = parent_id(@solr_document)

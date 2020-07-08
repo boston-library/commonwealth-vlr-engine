@@ -22,7 +22,7 @@
   opacity: 0.86;
 }
 */
-#previousNextDocument, .pagination-search-widgets {
+.pagination-search-widgets {
   @include rounded-corners(3px);
   @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05) inset);
   padding: 0 0 0 7px;
@@ -813,7 +813,7 @@ li.download_list_item {
     min-height: 200px;
   }
 
-  #previousNextDocument, .pagination-search-widgets {
+  .pagination-search-widgets {
     font-size:12px;
 
     .page_links {

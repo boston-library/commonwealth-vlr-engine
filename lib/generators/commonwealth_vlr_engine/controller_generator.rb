@@ -23,7 +23,6 @@ module CommonwealthVlrEngine
 
   # adds some site-wide behavior into the application controller
   include CommonwealthVlrEngine::Controller
-  layout 'commonwealth-vlr-engine'
 }
         end
         remove_marker = "layout 'blacklight'"
