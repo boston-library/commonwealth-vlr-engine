@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="<%= t('blacklight.application_desc') %>">
-  <!--[if IE]>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta http-equiv="imagetoolbar" content="no">
-  <![endif]-->
+
+  <!-- Internet Explorer use the highest version available -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title><%= render_page_title %></title>
   <%= opensearch_description_tag application_name, opensearch_catalog_path(:format => 'xml') %>
@@ -29,9 +28,9 @@
   <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-</head>
-<body class="<%= render_body_class %> wdl-viewer">
-    <%= render :partial => 'shared/ajax_modal' %>
-    <%= yield %>
-</body>
+  </head>
+  <body class="<%= render_body_class %> wdl-viewer">
+      <%= yield %>
+      <%= render :partial => 'shared/modal' %>
+  </body>
 </html>

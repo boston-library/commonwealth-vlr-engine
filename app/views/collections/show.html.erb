@@ -50,14 +50,14 @@
                 <% end %>
             </div>
 
-            <% if has_facet_values? %w[related_item_series_ssim] %>
+            <% if has_facet_values?([@series_field]) %>
                 <div id="series_wrapper">
                     <%= render :partial=> 'catalog/facets_series' %>
                 </div>
             <% end %>
 
             <% # map for collections#show view %>
-            <% unless @response.aggregations[map_facet_field].items.empty? %>
+            <% unless map_facet_values.empty? %>
                 <div id="blacklight-collection-map-container">
                   <h4><%= t('blacklight.collections.map.title') %></h4>
                   <%= render :partial => 'catalog/index_mapview',

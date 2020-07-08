@@ -4,7 +4,6 @@ module CommonwealthVlrEngine
     ##
     # Give CollectionsController access to the CatalogController configuration
     include Blacklight::Configurable
-    include Blacklight::SearchHelper
 
     included do
       copy_blacklight_config_from(CatalogController)
@@ -22,7 +21,7 @@ module CommonwealthVlrEngine
 
     def index
       @nav_li_active = 'explore'
-      (@response, @document_list) = search_results(params)
+      (@response, @document_list) = search_service.search_results
       params[:view] = 'list'
       params[:sort] = 'title_info_primary_ssort asc'
 
@@ -33,14 +32,14 @@ module CommonwealthVlrEngine
 
     def show
       @nav_li_active = 'explore'
-      @show_response, @document = fetch(params[:id])
+      _show_response, @document = search_service.fetch(params[:id])
       @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
-      # add params[:f] for proper facet links
-      params[:f] = set_collection_facet_params(@collection_title, @document)
-
       # get the response for the facets representing items in collection
-      (@response, @document_list) = search_results({:f => params[:f]})
+      facets_search_service = search_service_class.new(config: blacklight_config,
+                                                       user_params: { f: set_collection_facet_params(@collection_title,
+                                                                                                     @document) })
+      @response, @document_list = facets_search_service.search_results
 
       # get an image for the collection
       if @document[:exemplary_image_ssi]
@@ -69,15 +68,19 @@ module CommonwealthVlrEngine
     # find a representative image/item for a series
     def get_series_image_obj(series_title,collection_title)
       blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
-      series_doc_list = search_results({f: {'related_item_series_ssim' => series_title,
-                                            blacklight_config.collection_field => collection_title},
-                                        rows: 1})[1]
+      series_params = { f: { @series_field => series_title,
+                             blacklight_config.collection_field => collection_title },
+                       rows: 1 }
+      series_search_service = search_service_class.new(config: blacklight_config,
+                                                       user_params: series_params)
+      _series_response, series_doc_list = series_search_service.search_results
       series_doc_list.first
     end
 
     # show series facet
     def add_series_facet
-      blacklight_config.facet_fields['related_item_series_ssim'].include_in_request = true
+      @series_field = 'related_item_series_ssim'
+      blacklight_config.facet_fields[@series_field].include_in_request = true
     end
 
     # collapse the institution facet, if Institutions supported
@@ -106,13 +109,13 @@ module CommonwealthVlrEngine
     # find the title and pid for the object representing the collection image
     def get_collection_image_info(image_pid, collection_pid)
       col_img_info = {title: '', pid: collection_pid, access_master: false}
-      col_img_file_doc = fetch(image_pid)[1]
+      _col_img_file_resp, col_img_file_doc = search_service.fetch(image_pid)
       if col_img_file_doc
         col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
         col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
         if col_img_field
           col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
-          col_img_obj_doc = fetch(col_img_obj_pid)[1]
+          _col_img_obj_resp, col_img_obj_doc = search_service.fetch(col_img_obj_pid)
           if col_img_obj_doc
             col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]
             col_img_info[:pid] = col_img_obj_pid

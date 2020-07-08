@@ -14,11 +14,15 @@ Rails.application.routes.draw do
 
   # collections
   get 'collections/range_limit', to: 'collections#range_limit'
+  # below seems to work, despite lack of #range_limit_panel action in CollectionsControllerBehavior
+  get 'collections/range_limit_panel', to: 'collections#range_limit_panel'
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
   # institutions
   get 'institutions/range_limit', to: 'institutions#range_limit'
+  # below seems to work, despite lack of #range_limit_panel action in InstitutionsControllerBehavior
+  get 'institutions/range_limit_panel', to: 'institutions#range_limit_panel'
   resources :institutions, :only => [:index, :show]
   get 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
 

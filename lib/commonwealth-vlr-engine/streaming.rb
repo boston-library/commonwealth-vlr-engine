@@ -45,6 +45,5 @@ module CommonwealthVlrEngine
         end
       end
     end
-
   end
 end

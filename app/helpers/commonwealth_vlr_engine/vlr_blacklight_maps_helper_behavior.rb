@@ -47,6 +47,14 @@ module CommonwealthVlrEngine
               search_catalog_path(new_params.permit(:spatial_search_type, :coordinates)))
     end
 
+    # return an array of Blacklight::SolrResponse::Facets::FacetItem items
+    def map_facet_values
+      map_facet_field = blacklight_config.view.maps.facet_mode == 'coordinates' ?
+                            blacklight_config.view.maps.coordinates_facet_field :
+                            blacklight_config.view.maps.geojson_field
+      @response.aggregations[map_facet_field]&.items || []
+    end
+
     # OVERRIDE: use a static file for catalog#map so page loads faster
     # render the map for #index and #map views
     def render_index_mapview

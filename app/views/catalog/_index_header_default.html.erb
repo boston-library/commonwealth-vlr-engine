@@ -1,12 +1,21 @@
 <%# header bar for doc items in index view -%>
-<div class="documentHeader row">
-
-  <%# create checkbox for folder actions (delete, move, etc.) %>
-  <% if controller_name == 'folders' || controller_name == 'bookmarks' %>
-      <%= check_box_tag('selected[]', document[:id], false, class: 'folder_item_checkbox') %>
+<%# override so we can add folder control and custom title rendering %>
+<header class="documentHeader row">
+  <%# main title container for doc partial view
+      How many bootstrap columns need to be reserved
+      for bookmarks control depends on size.
+  -%>
+  <% document_actions = capture do %>
+    <% # bookmark functions for items/docs -%>
+    <%# render_index_doc_actions document, wrapping_class: "index-document-functions col-sm-3 col-lg-2" %>
   <% end %>
 
-  <h5 class="index_title document-title-heading col-md-12">
+  <%# checkbox for folder actions (delete, move, etc.) %>
+  <% if controller_name == 'folders' || controller_name == 'bookmarks' %>
+    <%= check_box_tag('selected[]', document[:id], false, class: 'folder_item_checkbox') %>
+  <% end %>
+
+  <h3 class="index_title document-title-heading <%= document_actions.present? ? "col-sm-9 col-lg-10" : "col-md-12" %>">
     <% if counter = document_counter_with_offset(document_counter) %>
       <span class="document-counter">
         <%= t('blacklight.search.documents.counter', counter: counter) %>
@@ -17,6 +26,6 @@
                                   separator: ' ',
                                   length: index_title_length) + index_relation_base_icon(document),
                          counter: counter %>
-  </h5>
-
-</div>
+  </h3>
+  <%= document_actions %>
+</header>

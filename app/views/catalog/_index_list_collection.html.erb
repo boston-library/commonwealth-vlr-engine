@@ -1,5 +1,4 @@
 <%# collection catalog#index list view %>
-
 <div class="collection_view_all_link">
   <% if document[blacklight_config.institution_field.to_sym] %>
       <%= link_to_all_col_items(document[blacklight_config.index.title_field.to_sym],
@@ -9,25 +8,18 @@
 </div>
 
 <div class="collection_index_container">
-
-      <div class="collection-location">
-        <% if document[:institution_pid_ssi] && document[blacklight_config.institution_field.to_sym] && t('blacklight.home.browse.institutions.enabled') %>
-            <%= link_to(document[blacklight_config.institution_field.to_sym].first,
-                        institution_path(document[:institution_pid_ssi])) %>
-        <% end %>
-      </div>
-
-      <div class="item_index_details">
-        <% if document[:abstract_tsim] %>
-            <%= truncate(sanitize(document[:abstract_tsim].first.gsub(/<\/p><p>/,' '), :tags => []),
-                         :length => 300,
-                         :separator => ' ',
-                         :omission => '... ') do
-              link_to('more',
-                      collection_path(:id => document[:id]),
-                      :class => 'read-more-link')
-            end %>
-        <% end %>
-      </div>
-
+  <div class="collection-location">
+    <% if document[:institution_pid_ssi] && document[blacklight_config.institution_field.to_sym] && t('blacklight.home.browse.institutions.enabled') %>
+        <%= link_to(document[blacklight_config.institution_field.to_sym].first,
+                    institution_path(document[:institution_pid_ssi])) %>
+    <% end %>
+  </div>
+  <div class="item_index_details">
+    <% if document[:abstract_tsim] %>
+        <%= truncate(sanitize(document[:abstract_tsim].first.gsub(/<\/p><p>/,' '), :tags => []),
+                     length: 300, separator: ' ', omission: '... ') do
+          link_to('more', collection_path(id: document[:id]), class: 'read-more-link')
+        end %>
+    <% end %>
+  </div>
 </div>

@@ -80,5 +80,8 @@ module CommonwealthVlrEngine
       end
     end
 
+    def determine_layout
+      'commonwealth-vlr-engine'
+    end
   end
 end

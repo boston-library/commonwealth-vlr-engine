@@ -6,15 +6,13 @@
   <ul id="search_tips_list">
     <li><%= t 'blacklight.search.zero_results.use_fewer_keywords' %></li>
 
-    <%- if params[:q] and params[:search_field] and params[:search_field] != blacklight_config.default_search_field.try(:key) -%>
+    <% if params[:q] and params[:search_field] and params[:search_field] != blacklight_config.default_search_field.try(:key) -%>
         <li><%= t 'blacklight.search.zero_results.search_fields', :search_fields => search_field_label(params) %> --
           <%= link_to t('blacklight.search.zero_results.search_everything',
                         field: blacklight_config.default_search_field.label),
                       url_for(search_state.params_for_search(:search_field=>blacklight_config.default_search_field.key)) %>
         </li>
-    <%- end %>
-
+    <% end %>
     <li>If you're still having trouble finding what you're looking for, <%= link_to 'contact us', feedback_path %> and we'll try and help.</li>
-
   </ul>
 </div>

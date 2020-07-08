@@ -3,7 +3,6 @@ class FoldersController < CatalogController
   ##
   # Give Bookmarks access to the CatalogController configuration
   include Blacklight::Configurable
-  include Blacklight::SearchHelper
   include Blacklight::TokenBasedUser
 
   copy_blacklight_config_from(CatalogController)
@@ -36,7 +35,7 @@ class FoldersController < CatalogController
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.pluck(:document_id)
     params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
-    @response, @document_list = fetch(folder_items_ids)
+    @response, @document_list = search_service.fetch(folder_items_ids)
 
     # have to declare this so view uses catalog/index partials
     # uh, maybe not? default templates won't get invoked if below is set

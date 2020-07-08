@@ -3,7 +3,6 @@ class OcrSearchController < CatalogController
   ##
   # access to the CatalogController configuration
   include Blacklight::Configurable
-  include Blacklight::SearchHelper
   include CommonwealthVlrEngine::CatalogHelper
 
   copy_blacklight_config_from(CatalogController)
@@ -11,7 +10,7 @@ class OcrSearchController < CatalogController
   before_action :modify_config_for_ocr, :only => [:index]
 
   def index
-    @doc_response, @document = fetch(params[:id])
+    @doc_response, @document = search_service.fetch(params[:id])
     if params[:ocr_q]
       if !params[:ocr_q].blank?
         @image_pid_list = image_file_pids(get_image_files(params[:id]))
@@ -22,12 +21,15 @@ class OcrSearchController < CatalogController
         # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
         blacklight_config.default_solr_params[:fl] =
             "id,#{blacklight_config.page_num_field},#{termfreq_query(params[:ocr_q])}"
-        (@response, @document_list) = search_results(ocr_search_params)
+        ocr_search_service = search_service_class.new(config: blacklight_config,
+                                                      user_params: ocr_search_params,
+                                                      search_builder_class: CommonwealthOcrSearchBuilder)
+        @response, @document_list = ocr_search_service.search_results
       else
-        (@response, @document_list) = Blacklight::Solr::Response.new(nil,nil), []
+        @response, @document_list = Blacklight::Solr::Response.new(nil, nil), []
       end
     else
-      (@response, @document_list) = {},[]
+      @response, @document_list = {}, []
     end
 
     respond_to do |format|
@@ -44,7 +46,7 @@ class OcrSearchController < CatalogController
 
   # modify Solr query/response for OCR searches
   def modify_config_for_ocr
-    blacklight_config.search_builder_class = CommonwealthOcrSearchBuilder
+    # blacklight_config.search_builder_class = CommonwealthOcrSearchBuilder
     blacklight_config.sort_fields = {}
     blacklight_config.add_sort_field 'score desc, system_create_dtsi asc', label: 'relevance'
     blacklight_config.add_sort_field 'system_create_dtsi asc', label: 'page #'
@@ -74,5 +76,4 @@ class OcrSearchController < CatalogController
   def start_new_search_session?
     false
   end
-
 end

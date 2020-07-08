@@ -8,15 +8,7 @@
                         :class => 'catalog_startOverLink btn btn-sm btn-default',
                         :id=> 'startOverLink' %>
           </li>
-          <% if current_user %>
-              <li>
-                <%= link_to t('blacklight.saved_searches.save'),
-                            blacklight.save_search_path( session[:history].first ),
-                            :method => :put,
-                            :id=>'saveSearchLink',
-                            :class=>'catalog_saveSearchLink btn btn-sm btn-default' %>
-              </li>
-          <% end %>
+
         </ul>
       </div>
       <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>

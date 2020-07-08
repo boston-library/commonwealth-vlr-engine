@@ -1,4 +1,4 @@
 <% # container for series facet -%>
 <h4><%= t('blacklight.collections.series.title') %></h4>
-<%= render_facet_partials(['related_item_series_ssim'],
+<%= render_facet_partials([@series_field],
                           :partial => 'facet_limit_series') %>

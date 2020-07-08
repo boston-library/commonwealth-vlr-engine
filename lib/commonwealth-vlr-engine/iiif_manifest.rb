@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
     # image_files = an array of ImageFile Solr documents
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
-      manifest.service = search_service(document) if document[:has_searchable_text_bsi]
+      manifest.service = iiif_search_service(document) if document[:has_searchable_text_bsi]
       manifest.label = render_title(document, false)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
       manifest.metadata = manifest_metadata(document)
@@ -83,8 +83,7 @@ module CommonwealthVlrEngine
       base_uri = "#{IIIF_SERVER['url']}#{page_id}"
       params = {service_id: base_uri,
                 resource_id: document[:identifier_uri_ss].gsub(/\/[\w]+\z/, page_id.gsub(/\A[\w-]+:/,'/')) + "/large_image"}
-      image_resource = IIIF::Presentation::ImageResource.create_image_api_image_resource(params)
-      image_resource
+      IIIF::Presentation::ImageResource.create_image_api_image_resource(params)
     end
 
     # return an IIIF Collection resource (for multi-part works)
@@ -194,14 +193,14 @@ module CommonwealthVlrEngine
     # set up the search service object
     # (@context and profile need to be at "0" for Universal Viewer to work)
     # document = SolrDocument
-    def search_service(document)
+    def iiif_search_service(document)
       return unless Rails.application.routes.url_helpers.respond_to?(:solr_document_iiif_search_path)
+
       search_svc = IIIF::Service.new('@id' => "#{document[:identifier_uri_ss]}/iiif_search")
       search_svc['@context'] = 'http://iiif.io/api/search/0/context.json'
       search_svc['profile'] = 'http://iiif.io/api/search/0/search'
       search_svc['label'] = 'Search within this item'
       search_svc
     end
-
   end
 end
