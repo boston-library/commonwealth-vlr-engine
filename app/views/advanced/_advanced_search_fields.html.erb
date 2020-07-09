@@ -1,4 +1,4 @@
-<% search_fields_for_advanced_search.take(3).each_with_index do |(key, field_def), index| %>
+<% search_fields_for_advanced_search.take(3).each_with_index do |(_key, _field_def), index| %>
     <div class="advanced_search_field form-group">
       <%= select_tag('search_index[]',
                      options_for_select(search_fields,
@@ -30,10 +30,3 @@
   <%= submit_tag t('blacklight_advanced_search.form.search_btn'), :class=>'btn btn-primary advanced_submit', :id=>'advanced_search' %>
   <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>'reset btn btn-default' %>
 </div>
-
-<%# search_fields_for_advanced_search.each do |key, field_def| -%>
-    <!-- <div class="advanced_search_field"> -->
-      <%# label_tag key, "#{field_def.label }:" %>
-      <%# text_field_tag key, label_tag_default_for(key), :class => 'input-block-level' %>
-    <!-- </div> -->
-<%# end -%>
