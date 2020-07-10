@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
         #blacklight-gallery stuff
         config.view.gallery.default = true
         config.view.gallery.partials = [:index_header]
-        config.view.gallery.icon_class = 'glyphicon-th-large'
+        # config.view.gallery.icon_class = 'glyphicon-th-large' # TODO: deprecated in BL 7?
         config.view.masonry.partials = [:index_header]
         config.view.slideshow.partials = [:index]
 

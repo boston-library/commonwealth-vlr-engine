@@ -1,5 +1,4 @@
 class CommonwealthSearchBuilder < Blacklight::SearchBuilder
-
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightMaps::MapsSearchBuilderBehavior
@@ -14,5 +13,4 @@ class CommonwealthSearchBuilder < Blacklight::SearchBuilder
   unless I18n.t('blacklight.home.browse.institutions.enabled')
     self.default_processor_chain += [:institution_limit, :exclude_institutions]
   end
-
 end
