@@ -4,7 +4,7 @@ module CommonwealthVlrEngine
 
     # OVERRIDE: convert state abbreviations, deal with complex locations, etc.
     # create a link to a location name facet value
-    def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
+    def link_to_placename_field(field_value, field, displayvalue = nil, catalogpath = nil)
       search_path = catalogpath || 'search_catalog_path'
       new_params = params.permit!
       field_values = field_value.split(', ')
@@ -35,18 +35,6 @@ module CommonwealthVlrEngine
               self.send(search_path,new_params.except(:id, :spatial_search_type, :coordinates)))
     end
 
-    # OVERRIDE: have to call .permit on map-centric params
-    # TODO: remove this once blacklight-maps updated for Rails 5 support
-    # create a link to a spatial search for a set of point coordinates
-    def link_to_point_search point_coordinates
-      new_params = params.except(:controller, :action, :view, :id, :spatial_search_type, :coordinates)
-      new_params[:spatial_search_type] = "point"
-      new_params[:coordinates] = "#{point_coordinates[1]},#{point_coordinates[0]}"
-      new_params[:view] = default_document_index_view_type
-      link_to(t('blacklight.maps.interactions.point_search'),
-              search_catalog_path(new_params.permit(:spatial_search_type, :coordinates)))
-    end
-
     # return an array of Blacklight::SolrResponse::Facets::FacetItem items
     def map_facet_values
       map_facet_field = blacklight_config.view.maps.facet_mode == 'coordinates' ?
@@ -64,27 +52,17 @@ module CommonwealthVlrEngine
       else
         geojson_for_map = serialize_geojson(map_facet_values)
       end
-      render :partial => 'catalog/index_mapview',
-             :locals => {:geojson_features => geojson_for_map}
-    end
-
-    def render_spatial_search_link coordinates
-      if coordinates.length == 4
-        link_to_bbox_search(coordinates)
-      else
-        link_to_point_search(coordinates)
-      end
+      render partial: 'catalog/index_mapview',
+             locals: { geojson_features: geojson_for_map }
     end
 
     # OVERRIDE: allow controller.action name to be passed, allow @controller
     # pass the document or facet values to BlacklightMaps::GeojsonExport
-    def serialize_geojson(documents, action_name=nil, options={})
+    def serialize_geojson(documents, action_name = nil, options = {})
       action = action_name || controller.action_name
       cntrllr = @controller || controller
-      export = BlacklightMaps::GeojsonExport.new(cntrllr, action, documents, options)
+      export = BlacklightMaps::GeojsonExport.new(cntrllr, action.to_sym, documents, options)
       export.to_geojson
     end
-
   end
-
 end
