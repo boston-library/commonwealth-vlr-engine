@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'blacklight_advanced_search', '~> 7.0.0'
   s.add_dependency 'blacklight-gallery', '~> 2.1.0'
   s.add_dependency 'blacklight-maps', '~> 1.1.0'
-  s.add_dependency 'blacklight_range_limit', '~> 7.8.1'
+  s.add_dependency 'blacklight_range_limit', '>= 7.8.2', '< 8.0'
   s.add_dependency 'font-awesome-sass', '~> 5.0'
   s.add_dependency 'bpluser', '~> 0.1.19' # 0.1.20 doesn't exist yet
   s.add_dependency 'typhoeus', '~> 1.3'

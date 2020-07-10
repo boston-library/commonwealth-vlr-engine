@@ -1,9 +1,9 @@
 //
 // Required by Blacklight-Maps
 //= require blacklight-maps
-//= require leaflet.markercluster
+
 // Required by Blacklight-Gallery
-//= require blacklight_gallery.js
+//= require blacklight_gallery
 
 // Blacklight-centric Google Analytics event tracking
 //= require blacklight_google_analytics/blacklight_google_analytics
@@ -13,12 +13,6 @@
 
 // site-wide utilities
 //= require commonwealth-vlr-engine/vlr_utils
-
-// for IE8 responsiveness
-//= require respond/respond.min
-
-// bootstrap-accessibility-plugin
-//= require bootstrap-accessibility-plugin/bootstrap-accessibility
 
 // blacklight_range_limit
 //= require 'blacklight_range_limit'
