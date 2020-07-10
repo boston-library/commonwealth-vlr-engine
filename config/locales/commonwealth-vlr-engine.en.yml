@@ -368,14 +368,25 @@ en:
           submit_limit: 'Apply'
 
     saved_searches:
-          clear:
-                  action_title: 'clear all'
-          delete: 'Delete this search.'
-          intro: 'Saved searches allow you to quickly re-search for items of interest.'
-          no_searches: "You don't have any saved searches at the moment."
+          add:
+            success: 'Successfully saved your search.'
+            failure: 'There was a problem saving your search.'
           remove:
-                  success: 'Search removed.'
+            success: 'Search removed.'
+            failure: 'There was a problem removing your search.'
+          clear:
+            action_title: 'clear all'
+            action_confirm: 'Clear your saved searches?'
+            success: 'Cleared your saved searches.'
+            failure: 'There was a problem clearing your searches.'
           save: 'Save Search'
+          title: 'Saved Searches'
+          page_title: 'Saved Searches - %{application_name}'
+          intro: 'Saved searches allow you to quickly re-search for items of interest.'
+          need_login: 'Please log in to manage and view your saved searches.'
+          no_searches: "You don't have any saved searches at the moment."
+          list_title: 'Your saved searches'
+          delete: 'Delete this search.'
 
     search:
           basic_search:

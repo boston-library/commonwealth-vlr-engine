@@ -16,26 +16,26 @@
 <h2><%= t('blacklight.saved_searches.title') %></h2>
   <%= t('blacklight.saved_searches.intro') %>
 
-<%- if current_or_guest_user.blank? -%>
+<% if current_or_guest_user.blank? %>
 
     <h4><%= t('blacklight.saved_searches.need_login') %></h4>
 
-<%- elsif @searches.blank? -%>
+<% elsif @searches.blank?-%>
 
       <div id="empty_saved_searches" class="well">
         <h4><%= t('blacklight.saved_searches.no_searches') %></h4>
         <p>To save a search, click the "Save Search" link on the search results page.</p>
       </div>
 
-<%- else -%>
+<% else %>
     <h3>
       <%= t('blacklight.saved_searches.list_title') %>
       <small>
         [<%= link_to t('blacklight.saved_searches.clear.action_title'),
-                     blacklight.clear_saved_searches_path,
-                    :class => 'clear_all',
-                    :method => :delete,
-                    :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') } %>]
+                     clear_saved_searches_path,
+                     class: 'clear_all',
+                     method: :delete,
+                     data: { confirm: t('blacklight.saved_searches.clear.action_confirm') } %>]
       </small>
     </h3>
     <table class="table">
@@ -43,18 +43,17 @@
           <tr>
             <td><%= link_to_previous_search(search.query_params) %></td>
             <td><%# button_to content_tag(:i, '', :class => 'icon-remove'),
-                              blacklight.forget_search_path(search.id) %>
-                <%= link_to(content_tag(:span, '',
-                                        :class => 'glyphicon glyphicon-remove'),
-                            blacklight.forget_search_path(search.id),
-                            :class => 'delete_search',
-                            :method => 'post',
-                            :title => t('blacklight.saved_searches.delete'))
-                %>
+                              forget_search_path(search.id) %>
+                <%= link_to(content_tag(:span, 'x',
+                                        class: 'glyphicon glyphicon-remove'),
+                            forget_search_path(search.id),
+                            class: 'delete_search',
+                            method: 'post',
+                            title: t('blacklight.saved_searches.delete')) %>
             </td>
           </tr>
-      <%- end -%>
+      <% end %>
     </table>
 
-<%- end -%>
+<% end %>
 </div>
