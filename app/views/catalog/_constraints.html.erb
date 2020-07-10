@@ -1,0 +1,11 @@
+<%# override so we can add save_search partial %>
+<% if Deprecation.silence(Blacklight::RenderConstraintsHelperBehavior) { query_has_constraints? } %>
+  <div id="appliedParams" class="clearfix constraints-container">
+    <h2 class="sr-only"><%= t('blacklight.search.search_constraints_header') %></h2>
+
+    <%= render 'start_over' %>
+    <%= render 'save_search' %>
+    <span class="constraints-label sr-only"><%= t('blacklight.search.filters.title') %></span>
+    <%= render_constraints(controller.params != params ? params : search_state) %>
+  </div>
+<% end %>
