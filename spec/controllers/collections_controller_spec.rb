@@ -66,13 +66,14 @@ describe CollectionsController do
       attr_accessor :params
     end
 
+    let(:collection_image_pid) { 'bpl-dev:h702q642n' }
+
     before(:each) do
       @mock_controller = CollectionsControllerTestClass.new
       @mock_controller.params = {}
       @mock_controller.request = ActionDispatch::TestRequest.create
       @mock_controller.send(:add_institution_fields)
       @collection_pid = 'bpl-dev:h702q636h'
-      @collection_image_pid = 'bpl-dev:h702q642n'
       @document = {blacklight_config.institution_field.to_sym => 'Boston Public Library'}
     end
 
@@ -106,15 +107,16 @@ describe CollectionsController do
       end
     end
 
-    describe 'get_collection_image_info' do
+    describe 'collection_image_info' do
       it 'should return a hash with the collection image object title and pid' do
-        expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true})
+        expect(@mock_controller.send(:collection_image_info, collection_image_pid, @collection_pid)).to eq
+        ({ image_pid: collection_image_pid, title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true })
       end
     end
 
     describe 'get_series_image_obj' do
       it 'should return the series object' do
-        expect(@mock_controller.send(:get_series_image_obj,'Test Series','Carte de Visite Collection')[:exemplary_image_ssi]).to eq('bpl-dev:h702q641c')
+        expect(@mock_controller.send(:get_series_image_obj, 'Test Series', 'Carte de Visite Collection')[:exemplary_image_ssi]).to eq('bpl-dev:h702q641c')
       end
     end
 

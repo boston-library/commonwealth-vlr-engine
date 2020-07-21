@@ -9,7 +9,6 @@ module CommonwealthVlrEngine
       copy_blacklight_config_from(CatalogController)
 
       before_action :institutions_index_config, :only => [:index]
-      # remove collection facet and collapse others
       before_action :relation_base_blacklight_config, :only => [:show]
 
       helper_method :search_action_url
@@ -29,10 +28,14 @@ module CommonwealthVlrEngine
 
     def show
       @nav_li_active = 'explore'
-      _show_response, @document = search_service.fetch(params[:id])
+
+      # have to define a new search_service here, or we can't inject params[:f] below
+      institution_search_service = search_service_class.new(config: blacklight_config,
+                                                            user_params: params)
+      _show_response, @document = institution_search_service.fetch(params[:id])
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
-      # get the response for collection objects (TODO: run as before_action ?)
+      # get the response for collection objects
       collex_params = { f: { blacklight_config.index.display_type_field => 'Collection',
                              'institution_pid_ssi' => params[:id] },
                         rows: 500, sort: 'title_info_primary_ssort asc' }
@@ -40,9 +43,8 @@ module CommonwealthVlrEngine
                                                        user_params: collex_params)
       _collex_response, @collex_documents = collex_search_service.search_results
 
-      # add params[:f] for proper facet links,
-      # get the response for the facets representing items in collection (TODO: run as before_action ?)
-      params[:f] = {blacklight_config.institution_field => [@institution_title]}
+      # add params[:f] for proper facet links, get response for items in collection
+      params.merge!(f: { blacklight_config.institution_field => [@institution_title] }).permit!
       facets_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: { f: params[:f] })
       @response, @document_list = facets_search_service.search_results
@@ -55,11 +57,6 @@ module CommonwealthVlrEngine
     def range_limit
       redirect_to range_limit_catalog_path(params.permit!.except('controller', 'action')) and return
     end
-
-    # TODO: This path helper doesn't work
-    #def range_limit_panel
-    #  redirect_to range_limit_panel_catalog_path(params.permit!.except('controller', 'action')) and return
-    #end
 
     protected
 
