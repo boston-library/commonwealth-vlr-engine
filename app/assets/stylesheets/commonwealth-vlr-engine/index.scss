@@ -203,12 +203,13 @@ h4.suggest {
   }
 
   /* gallery view */
+  /*
   &.gallery {
     display: block;
 
-    .document.new_row { // TODO: still needed? only used in _index_gallery
-      clear:left;
-    }
+    //.document.new_row { // TODO: still needed? only used in _index_gallery
+    //  clear:left;
+    // }
 
     .document {
       min-height: 200px;
@@ -246,8 +247,10 @@ h4.suggest {
     }
 
   }
+  */
 
   /* masonry view */
+  /*
   .masonry {
 
     &.document {
@@ -275,8 +278,10 @@ h4.suggest {
     }
 
   }
+  */
 
   /* slideshow view */
+  /*
   .grid {
 
     .document {
@@ -314,6 +319,7 @@ h4.suggest {
     }
 
   }
+  */
 
 }
 
@@ -362,6 +368,7 @@ div.record-padding {
     }
 
     /* gallery view */
+    /*
     &.gallery {
 
       .document {
@@ -377,6 +384,7 @@ div.record-padding {
       }
 
     }
+    */
 
   }
 
@@ -440,6 +448,7 @@ div.record-padding {
     }
 
     /* gallery view */
+    /*
     &.gallery {
 
       .document {
@@ -457,8 +466,10 @@ div.record-padding {
       }
 
     }
+    */
 
     /* slideshow view */
+    /*
     .grid {
 
       .document {
@@ -466,6 +477,7 @@ div.record-padding {
       }
 
     }
+    */
 
   }
 
@@ -538,13 +550,13 @@ div.record-padding {
     /* gallery view */
     &.gallery {
 
-      .document.new_row { // TODO: still needed? only used in _index_gallery
-        clear:none;
-      }
+      //.document.new_row { // TODO: still needed? only used in _index_gallery
+      //  clear:none;
+      //}
 
-      .document.new_row_device { // TODO: still needed? only used in _index_gallery
-        clear:left;
-      }
+      //.document.new_row_device { // TODO: still needed? only used in _index_gallery
+      //  clear:left;
+      //}
 
     }
 

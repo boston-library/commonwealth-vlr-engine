@@ -11,16 +11,15 @@ module CommonwealthVlrEngine
     end
 
     # render the image and caption on collections#show page
-    # depends on 2 instance var set by CollectionsControllerBehavior:
-    # @collection_image_pid [String] = the collection image id
+    # depends on instance var set by CollectionsControllerBehavior:
     # @collection_image_info [Hash] = hash of relevant image parent item info
     def render_collection_image(image_tag_class = nil)
-      if @collection_image_pid && @collection_image_info
+      if @collection_image_info
         image_title = @collection_image_info[:title]
-        if @collection_image_pid.match(/oai/) || @collection_image_info[:access_master] == false
-          image_url = datastream_disseminator_url(@collection_image_pid, 'thumbnail300')
+        if @collection_image_info[:image_pid].match(/oai/) || @collection_image_info[:access_master] == false
+          image_url = datastream_disseminator_url(@collection_image_info[:image_pid], 'thumbnail300')
         else
-          image_url = collection_image_url(@collection_image_pid)
+          image_url = collection_image_url(@collection_image_info[:image_pid])
         end
         render 'collection_image',
                {image_element: image_tag(image_url,
