@@ -532,12 +532,11 @@
         <dd>
           <%= link_to('#item_metadata_expand',
                       data: {toggle: 'collapse'},
-                      'aria-expanded' => 'false',
-                      'aria-controls' => '#item_metadata_expand',
+                      aria: { expanded: false, controls: '#item_metadata_expand', label: 'click to expand' },
                       title: 'click to expand',
                       id: 'metadata_expand_link',
                       class: 'metadata_display_expand') do %>
-              <span class="glyphicon glyphicon-chevron-right"></span>
+              <%= icon('fas', 'chevron-down', aria: { hidden: true }) %>
           <% end %>
         </dd>
       </dl>
@@ -548,7 +547,7 @@
         toggleText($('#metadata_expand_heading'),
             '<%= I18n.t('blacklight.metadata_display.expand') %>',
             '<%= I18n.t('blacklight.metadata_display.collapse') %>');
-        $('#metadata_expand_link').find('span').toggleClass('glyphicon-chevron-up');
+        $('#metadata_expand_link').find('i').toggleClass('fa-chevron-up');
       });
     </script>
   <% end %>
@@ -558,5 +557,4 @@
                 metadata_view_catalog_path(@document),
                 {id: 'librarianLink', rel: 'nofollow', data: {ajax_modal: 'trigger'}} %>
   </div>
-
 </div>

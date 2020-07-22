@@ -25,12 +25,6 @@
 <h2><%= t('blacklight.bookmarks.title') %>
   <% unless !current_or_guest_user || @document_list.blank? %>
       <small id="folder_tools">
-        <%# link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
-                    clear_bookmarks_path,
-                    :id => 'remove_all_link',
-                    :class => 'btn btn-default btn-sm',
-                    :method => :delete,
-                    :data => { :confirm => t('blacklight.folder_items.clear.confirm') }) %>
       </small>
   <% end %>
 </h2>

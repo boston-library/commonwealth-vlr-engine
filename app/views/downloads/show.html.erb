@@ -15,7 +15,7 @@
               class: 'trigger_download btn btn-primary ' + params[:datastream_id],
               rel: 'nofollow',
               target: '_blank') do %>
-      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+      <%= icon('fas', 'download', aria: { hidden: true }) %>
       <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
                                                    @object_profile,
                                                    params[:datastream_id]),

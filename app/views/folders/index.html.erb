@@ -18,12 +18,10 @@
 <h2>
   <%= t('blacklight.folders.list_title') %>
   <small id="add_folder">
-    <%= link_to(
-                content_tag(:span, '', :class=>'glyphicon glyphicon-plus') + ' add folder',
+    <%= link_to(icon('fas', 'plus', aria: { hidden: true }) + 'add folder',
                 new_folder_path,
-                :id => 'create_folder_link',
-                :class => 'btn btn-primary btn-sm'
-        ) %>
+                id: 'create_folder_link',
+                class: 'btn btn-primary btn-sm') %>
   </small>
 </h2>
 
@@ -41,7 +39,7 @@
             <%= link_to t('blacklight.bookmarks.title'), bookmarks_path, :class => "folder_title" %>
             <small class="folder_visibility">
               <% if current_user %>
-                  <%= content_tag(:span, '', :class => 'glyphicon glyphicon-lock') %>
+                  <%= icon('fas', 'lock', aria: { hidden: true }) %>
                   <span class="visibility_private">private</span>
               <% end %>
             </small>
