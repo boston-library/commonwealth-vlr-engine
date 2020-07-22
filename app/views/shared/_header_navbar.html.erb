@@ -2,7 +2,7 @@
   <div class="<%= container_classes %>">
     <div class="navbar-header">
       <button id="nav_collapse_button" type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#user-util-collapse">
-          <span class="glyphicon glyphicon-search"></span>
+        <%= blacklight_icon :search, aria_hidden: true %>
           <div id="icon-bar-wrapper">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -13,11 +13,10 @@
 
       <%= link_to application_name,
                   root_path,
-                  :id => 'header_logo_link',
-                  :class => 'navbar-brand' %>
+                  id: 'header_logo_link',
+                  class: 'navbar-brand' %>
 
       <div class="collapse navbar-collapse" id="user-util-collapse">
-
         <%= render :partial=>'shared/user_util_links' %>
 
         <div id="header_main_nav" class="navbar">
@@ -25,10 +24,7 @@
             <%= render :partial=>'shared/nav_links' %>
           </ul>
         </div>
-
       </div>
-
-
     </div>
   </div>
 </div>

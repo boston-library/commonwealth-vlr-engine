@@ -2,38 +2,33 @@
   <%= render :partial => 'shared/folder_tools' %>
 </div>
 
-<%# for users with JS, the email_btn and cite_btn below are replaced by
-    code from shared/folder_tools %>
-<%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'cite_btn', :name => 'commit', :value => t('blacklight.tools.citation')) do %>
-    <%= content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.citation') %>
+<%# for users w/JS, email_btn and cite_btn below are replaced by shared/folder_tools %>
+<%= button_tag(type: 'submit', class: 'btn btn-default', id: 'cite_btn', name: 'commit', value: t('blacklight.tools.citation')) do %>
+    <%= icon('fas', 'list-alt', aria: { hidden: true }) + ' ' + t('blacklight.tools.citation') %>
 <% end %>
-<%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'email_btn', :name => 'commit', :value => t('blacklight.tools.email')) do %>
-    <%= content_tag(:span, '', :class => 'glyphicon glyphicon-envelope') + ' ' + t('blacklight.tools.email') %>
+<%= button_tag(type: 'submit', class: 'btn btn-default', id: 'email_btn', name: 'commit', value: t('blacklight.tools.email')) do %>
+    <%= icon('far', 'envelope', aria: { hidden: true }) + ' ' + t('blacklight.tools.email') %>
 <% end %>
 
 <% if params[:controller] == 'bookmarks' || folder_belongs_to_user %>
-    <%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'remove_btn', :name => 'commit', :value => t('blacklight.tools.remove')) do %>
-        <%= content_tag(:span, '', :class => 'glyphicon glyphicon-remove') + ' ' + t('blacklight.tools.remove') %>
+    <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'remove_btn', name: 'commit', value: t('blacklight.tools.remove')) do %>
+        <%= icon('fas', 'times', aria: { hidden: true }) + ' ' + t('blacklight.tools.remove') %>
     <% end %>
 <% end %>
 
 <% if current_user && !current_user.folders.empty? %>
       <div class="btn-group folder-item-control" id="copy_folder_item_control">
         <span class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <%= content_tag(:span, '', :class => 'glyphicon glyphicon-random') + ' ' + t('blacklight.tools.copy_to') %> <span class="caret"></span>
+          <%= icon('fas', 'random', aria: { hidden: true }) + ' ' + t('blacklight.tools.copy_to') %> <span
+          class="caret"></span>
         </span>
         <ul class="dropdown-menu folder_copy_list">
           <% unless params[:controller] == 'bookmarks' %>
               <li class="folder_copy_option">
-                <%# link_to t('blacklight.bookmarks.title'),
-                            selected_folder_items_actions_path(:id => ""),
-                            :id => 'copyLink',
-                            :folder_id => t('blacklight.bookmarks.title'),
-                            :commit => t('blacklight.tools.copy_to') %>
-                <%= button_tag(:type => 'submit',
-                               :class => 'copy_btn',
-                               :name => 'commit',
-                               :value => t('blacklight.tools.copy_to') + ' ' + t('blacklight.bookmarks.title')) do %>
+                <%= button_tag(type: 'submit',
+                               class: 'copy_btn',
+                               name: 'commit',
+                               value: t('blacklight.tools.copy_to') + ' ' + t('blacklight.bookmarks.title')) do %>
                     <%= t('blacklight.bookmarks.title') %>
                 <% end %>
               </li>
@@ -43,13 +38,10 @@
                 <%# do nothing %>
               <% else %>
                   <li class="folder_copy_option">
-                    <%# link_to folder.title,
-                                folder_item_path(:id => '', :folder_id => folder.id),
-                                :class=>'folder_item_add' %>
-                    <%= button_tag(:type => 'submit',
-                                   :class => 'copy_btn',
-                                   :name => 'commit',
-                                   :value => t('blacklight.tools.copy_to') + ' ' + folder.id.to_s) do %>
+                    <%= button_tag(type: 'submit',
+                                   class: 'copy_btn',
+                                   name: 'commit',
+                                   value: t('blacklight.tools.copy_to') + ' ' + folder.id.to_s) do %>
                         <%= folder.title %>
                     <% end %>
                   </li>

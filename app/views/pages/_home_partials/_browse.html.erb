@@ -3,9 +3,10 @@
   <% if t('blacklight.home.browse.maps.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="map_browse" class="browse_item">
-          <%= link_to(content_tag(:i, '', :class => 'fa fa-globe fa-5x'),
+          <%= link_to(icon('fas', 'map-marker-alt', class: 'fa-5x', aria: { hidden: true }),
                       map_path,
-                      :class => 'browse_icon_link') %>
+                      aria: { label: t('blacklight.maps.title') },
+                      class: 'browse_icon_link') %>
           <h4 class=""><%= link_to t('blacklight.maps.title'), map_path %></h4>
           <p class="browse_item_desc"><%= t('blacklight.home.browse.maps.tagline') %></p>
         </div>
@@ -15,9 +16,10 @@
   <% if t('blacklight.home.browse.collections.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="collections_browse" class="browse_item">
-          <%= link_to(content_tag(:i, '', :class => 'fa fa-folder-open fa-5x'),
+          <%= link_to(icon('fas', 'folder-open', class: 'fa-5x', aria: { hidden: true }),
                       collections_path,
-                      :class => 'browse_icon_link') %>
+                      aria: { label: t('blacklight.collections.index.title') },
+                      class: 'browse_icon_link') %>
           <h4 class="">
             <%= link_to t('blacklight.collections.index.title'), collections_path %>
           </h4>
@@ -29,9 +31,10 @@
   <% if t('blacklight.home.browse.institutions.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="institutions_browse" class="browse_item">
-          <%= link_to(content_tag(:i, '', :class => 'fa fa-institution fa-5x'),
+          <%= link_to(icon('fas', 'university', class: 'fa-5x', aria: { hidden: true }),
                       institutions_path,
-                      :class => 'browse_icon_link') %>
+                      aria: { label: t('blacklight.institutions.title') },
+                      class: 'browse_icon_link') %>
           <h4 class=""><%= link_to t('blacklight.institutions.title'), institutions_path %></h4>
           <p class="browse_item_desc"><%= t('blacklight.home.browse.institutions.tagline') %></p>
         </div>
@@ -41,9 +44,10 @@
   <% if t('blacklight.home.browse.formats.enabled') %>
       <div class="col-sm-<%= @middle_feature_columns %>">
         <div id="formats_browse" class="browse_item">
-          <%= link_to(content_tag(:i, '', :class => 'fa fa-image fa-5x'),
+          <%= link_to(icon('fas', 'image', class: 'fa-5x', aria: { hidden: true }),
                       formats_facet_path,
-                      :class => 'browse_icon_link') %>
+                      aria: { label: t('blacklight.navigation.format') },
+                      class: 'browse_icon_link') %>
           <h4 class="">
             <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
           </h4>

@@ -1,14 +1,14 @@
 <input type="checkbox" name="selectAll" id="selectAllItems" />
 <ul class="folderItemToolsList">
   <li class="cite">
-    <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.citation'),
-                citation_solr_documents_path(:id => ''),
-                {:id => 'citeLink', :name => 'citation', :class => 'lightboxLink btn btn-default'} %>
+    <%= link_to icon('fas', 'list-alt', aria: { hidden: true }) + ' ' + t('blacklight.tools.citation'),
+                citation_solr_documents_path(id: ''),
+                { id: 'citeLink', name: 'citation', class: 'lightboxLink btn btn-default' } %>
   </li>
   <li class="email">
-    <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-envelope') + ' ' + t('blacklight.tools.email'),
-                email_solr_documents_path(:id => ''),
-                :class => 'lightboxLink btn btn-default',
-                :id => 'emailLink' %>
+    <%= link_to icon('far', 'envelope', aria: { hidden: true }) + ' ' + t('blacklight.tools.email'),
+                email_solr_documents_path(id: ''),
+                class: 'lightboxLink btn btn-default',
+                id: 'emailLink' %>
   </li>
 </ul>

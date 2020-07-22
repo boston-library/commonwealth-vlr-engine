@@ -3,22 +3,22 @@
     <%= link_to folder.title, folder, :class => "folder_title" %>
     <small class="folder_visibility">
       <% if folder.visibility == 'public' %>
-          <%= content_tag(:span, '', :class => 'glyphicon glyphicon-eye-open') %>
-          <span class="visibility_public"><%= folder.visibility %></span>
+        <%= icon('fas', 'eye', class: 'folder-icon', aria: { hidden: true }) %>
+        <span class="visibility_public"><%= folder.visibility %></span>
       <% else %>
-          <%= content_tag(:span, '', :class => 'glyphicon glyphicon-lock') %>
-          <span class="visibility_private"><%= folder.visibility %></span>
+        <%= icon('fas', 'lock', class: 'folder-icon', aria: { hidden: true }) %>
+        <span class="visibility_private"><%= folder.visibility %></span>
       <% end %>
     </small>
   </h4>
   <% if current_user %>
       <!--
       <div class="delete_folder">
-      <%# link_to content_tag(:span, '',:class => 'glyphicon glyphicon-remove'),
+      <%# link_to icon('fas', 'trash-alt', aria: { hidden: true }),
                   folder,
-                  :method => :delete,
-                  :data => { :confirm => t('blacklight.folders.delete.confirm') },
-                  :title => "delete this folder" %>
+                  method: :delete,
+                  data: { confirm: t('blacklight.folders.delete.confirm') },
+                  title: "delete this folder" %>
       </div>
       -->
   <% end %>

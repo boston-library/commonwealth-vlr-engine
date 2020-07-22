@@ -44,11 +44,11 @@
             <td><%= link_to_previous_search(search.query_params) %></td>
             <td><%# button_to content_tag(:i, '', :class => 'icon-remove'),
                               forget_search_path(search.id) %>
-                <%= link_to(content_tag(:span, 'x',
-                                        class: 'glyphicon glyphicon-remove'),
+                <%= link_to(icon('fas', 'times', aria: { hidden: true }),
                             forget_search_path(search.id),
                             class: 'delete_search',
                             method: 'post',
+                            aria: { label: t('blacklight.saved_searches.delete') },
                             title: t('blacklight.saved_searches.delete')) %>
             </td>
           </tr>

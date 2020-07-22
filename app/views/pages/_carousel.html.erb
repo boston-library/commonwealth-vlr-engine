@@ -30,11 +30,11 @@
     <% end %>
 
   </div>
-  <a class="left carousel-control" href="#slideshow" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
+  <a class="left carousel-control" href="#slideshow" data-slide="prev" aria-label="previous">
+    <%= icon('fas', 'chevron-left', aria: { hidden: true }) %>
   </a>
-  <a class="right carousel-control" href="#slideshow" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
+  <a class="right carousel-control" href="#slideshow" data-slide="next" aria-label="next">
+    <%= icon('fas', 'chevron-right', aria: { hidden: true }) %>
   </a>
 </div>
 <script type="text/javascript">

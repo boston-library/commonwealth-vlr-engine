@@ -1,7 +1,6 @@
 <% if current_or_guest_user %>
-    <div class="documentFunctions">
+  <div class="documentFunctions">
     <div id="folder_item_toggle">
-
       <% if current_user %>
           <% existing_folders = current_user.folders %>
           <% existing_folder_item = current_user.existing_folder_item_for(document.id) %>
@@ -10,22 +9,18 @@
       <% end %>
 
       <% unless bookmarked? document || existing_folder_item %>
-
         <% if existing_folders.empty? %>
-
           <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
             <button class="btn btn-default" type="submit">
-                <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
+                <%= icon('fas', 'folder-plus', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.folder_items.add.button') %>
             </button>
           <% end %>
-
         <% else %>
-
               <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
 
                 <div class="btn-group folder-item-control">
                     <button class="btn btn-default" type="submit">
-                        <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
+                        <%= icon('fas', 'folder-plus', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.folder_items.add.button') %>
                     </button>
                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
@@ -47,19 +42,11 @@
                         <% end %>
                     </ul>
                 </div>
-
               <% end %>
-
         <% end %>
-
       <% else %>
-
         <%= render :partial => "folders/in_folder" %>
-
       <% end %>
-
     </div>
-    </div>
-
+  </div>
 <% end %>
-
