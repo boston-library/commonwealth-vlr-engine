@@ -1,11 +1,13 @@
 <%= render partial: 'shared/modal_transition' %>
 <div class="modal-header">
-  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
   <h4 id="ocr_search_modal_title" class="modal-title">
     <%= truncate("#{t('blacklight.ocr.search.results.title')}: #{render_title(@document, false)}",
                  length: 55,
                  separator: ' ') %>
   </h4>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div id="ocr_search_modal" class="modal-body">
   <div id="ocr_search_wrapper">

@@ -313,12 +313,12 @@
   #volumes_wrapper {
     margin: 10px 0 0;
 
-    .panel-heading {
+    .card-header {
       font-weight: bold;
       padding: 10px;
     }
 
-    .panel-body {
+    .card-body {
       padding: 10px 5px;
 
       .nav-list {
@@ -399,19 +399,19 @@ a.book_viewer_link, a.search_inside_link {
     padding-left:1em;
   }
 
-  dl.defList {
-    width: 97%;
-    margin-bottom: 0px;
+  dl.document-metadata {
+    //width: 97%;
+    //margin-bottom: 0px;
 
-    dt {
-      padding: 2px 0 0;
-      width: 144px;
-    }
+    //dt {
+    // padding: 2px 0 0;
+    //  width: 144px;
+    //}
 
     dd {
-      padding: 2px 0 0;
-      margin-bottom: 3px;
-      margin-left: 164px;
+      //padding: 2px 0 0;
+      //margin-bottom: 3px;
+      //margin-left: 164px;
 
       .metadata_breadcrumb {
         color: $dark_gray;
@@ -463,12 +463,12 @@ li.download_list_item {
   /* downloads */
   #sidebar-downloads {
 
-    .panel-heading {
+    .card-header {
       padding:10px;
       font-weight: bold;
     }
 
-    .panel-body {
+    .card-body {
       padding:0 10px 10px 10px;
     }
 
@@ -476,12 +476,12 @@ li.download_list_item {
 
   div.show-tools {
 
-    .panel-heading {
+    .card-header {
       padding:10px;
       font-weight: bold;
     }
 
-    .panel-body {
+    .card-body {
       padding:10px;
 
       .addthis_toolbox {
@@ -773,7 +773,8 @@ li.download_list_item {
       padding-left:10px;
     }
 
-    dl.defList {
+    /*
+    dl.document-metadata {
       width: 97%;
       padding-left:10px;
 
@@ -782,6 +783,7 @@ li.download_list_item {
       }
 
     }
+    */
 
   }
 

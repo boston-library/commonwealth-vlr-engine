@@ -1,10 +1,12 @@
 <div class="modal-header">
-  <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
   <h4 id="downloads_modal_title" class="modal-title">
     <%= truncate("#{t('blacklight.downloads.title')}: #{render_title(@parent_document, false)}",
                  length: 55,
                  separator: ' ') %>
   </h4>
+  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div id="downloads_modal" class="modal-body">
   <%= render partial: 'terms_of_use', locals: {document: @parent_document} %>

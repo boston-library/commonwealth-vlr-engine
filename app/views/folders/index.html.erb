@@ -4,12 +4,12 @@
   <div id="breadcrumb">
     <ul class="breadcrumb">
       <% if current_user %>
-          <li>
+          <li class="breadcrumb-item">
             <%= link_to(t('blacklight.users.account_heading'), current_user) %>
             <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
           </li>
       <% end %>
-      <li class="active">
+      <li class="active breadcrumb-item">
         <%= t('blacklight.folders.list_title') %>
       </li>
     </ul>

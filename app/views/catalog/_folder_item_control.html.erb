@@ -10,42 +10,41 @@
 
       <% unless bookmarked? document || existing_folder_item %>
         <% if existing_folders.empty? %>
-          <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
-            <button class="btn btn-default" type="submit">
+          <%= form_tag( bookmark_path( document ), method: :put, remote: true) do %>
+            <button class="btn btn-secondary" type="submit">
                 <%= icon('fas', 'folder-plus', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.folder_items.add.button') %>
             </button>
           <% end %>
         <% else %>
-              <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
+              <%= form_tag( bookmark_path( document ), method: :put, remote: true) do %>
 
                 <div class="btn-group folder-item-control">
-                    <button class="btn btn-default" type="submit">
+                    <button class="btn btn-secondary" type="submit">
                         <%= icon('fas', 'folder-plus', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.folder_items.add.button') %>
                     </button>
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
+                    <button id="folder_add_dropdown" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><%= link_to t('blacklight.bookmarks.title'),
-                                        bookmark_path( document ),
-                                        :method => :put,
-                                        :class=>'folder_item_add',
-                                        :remote => true %>
-                        </li>
+                    <div class="dropdown-menu" aria-labelledby="folder_add_dropdown">
+                        <%= link_to t('blacklight.bookmarks.title'),
+                                    bookmark_path(document),
+                                    method: :put,
+                                    class: 'folder_item_add dropdown-item',
+                                    remote: true %>
+
                         <% existing_folders.each do |folder| %>
-                            <li><%= link_to folder.title,
-                                            folder_item_path(document, :folder_id => folder.id),
-                                            :method => :put,
-                                            :class=>'folder_item_add',
-                                            :remote => true %>
-                            </li>
+                            <%= link_to folder.title,
+                                        folder_item_path(document, folder_id: folder.id),
+                                        method: :put,
+                                        class: 'folder_item_add dropdown-item',
+                                        remote: true %>
+
                         <% end %>
-                    </ul>
+                    </div>
                 </div>
               <% end %>
         <% end %>
       <% else %>
-        <%= render :partial => "folders/in_folder" %>
+        <%= render partial: "folders/in_folder" %>
       <% end %>
     </div>
   </div>

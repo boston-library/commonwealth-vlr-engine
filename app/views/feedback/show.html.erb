@@ -16,43 +16,43 @@
 
   <div class="row">
     <div class="col-sm-6" id="contact_content">
-      <%= form_tag(feedback_path, :id => 'feedback_form', :class => 'form-horizontal') do %>
-        <div class="form-group">
-          <label class="col-sm-4 control-label"><%= t('blacklight.feedback.form.name') %></label>
+      <%= form_tag(feedback_path, id: 'feedback_form') do %>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
           <div class="col-sm-6">
-            <%= text_field_tag :name, params[:name], :class => 'form-control' %>
+            <%= text_field_tag :name, params[:name], class: 'form-control' %>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label"><%= t('blacklight.feedback.form.email') %></label>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.email') %></label>
           <div class="col-sm-6">
-            <%= text_field_tag :email, params[:email], :class => 'form-control' %>
+            <%= text_field_tag :email, params[:email], class: 'form-control' %>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label"><%= t('blacklight.feedback.form.topic.label') %></label>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.topic.label') %></label>
           <div class="col-sm-6">
             <%= select_tag(:topic,
                            options_for_select(feedback_type_options),
                            :id => 'message_type_select',
-                           :class => 'form-control') %>
+                           class: 'form-control') %>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label"><%= t('blacklight.feedback.form.message') %></label>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
           <div class="col-sm-6">
-            <%= text_area_tag :message, params[:message], :size => '24x6', :class =>  'form-control' %>
+            <%= text_area_tag :message, params[:message], :size => '24x6', class:  'form-control' %>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group row">
           <div class="col-sm-offset-4 col-sm-4">
-            <%= submit_tag(t('blacklight.feedback.submit'), :class => 'btn btn-default') %>
+            <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-secondary') %>
           </div>
         </div>
       <% end %>
     </div>
     <div class="col-sm-3" id="contact_help">
-      <div id="contact_help_text" class="alert alert-warning hidden">
+      <div id="contact_help_text" class="alert alert-warning">
         <!-- content rendered dynamically by commonwealth-vlr-engine/feedback_alerts.js -->
       </div>
     </div>

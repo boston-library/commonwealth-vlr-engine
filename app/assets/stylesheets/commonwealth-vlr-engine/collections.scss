@@ -146,18 +146,18 @@ h4.collection-provenance {
   clear: left;
   padding-top: 10px;
 
-  .panel-default {
+  .card {
     border: none;
-    box-shadow: none;
+    // box-shadow: none;
 
-    .panel-heading {
+    .card-header {
       display: none;
     }
 
     #facet-related_item_series_ssim_thumb-list {
       display:block;
 
-      .panel-body {
+      .card-body {
         padding: 0;
       }
 

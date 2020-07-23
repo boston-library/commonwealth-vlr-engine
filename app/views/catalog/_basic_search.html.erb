@@ -5,7 +5,7 @@
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
     <li class="active"><a href="#">Basic</a></li>
-    <li class="hidden-xs"><%= link_to 'Advanced', blacklight_advanced_search_engine.advanced_search_path %></li>
+    <li><%= link_to 'Advanced', blacklight_advanced_search_engine.advanced_search_path %></li>
   </ul>
 
   <div class="tab-content">
@@ -38,7 +38,7 @@
                                                       h(params[:search_field])),
                                    title: t('blacklight.search.basic_search.form.search_indexes'),
                                    id: 'basic_search_indexes',
-                                   class: 'btn btn-default search_index_select') %>
+                                   class: 'btn btn-secondary search_index_select') %>
                 <% end %>
 
                 <button type="submit" class="btn btn-primary search-btn" id="search">
