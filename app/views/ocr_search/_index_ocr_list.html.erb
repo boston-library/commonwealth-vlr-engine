@@ -1,12 +1,16 @@
 <% doc_presenter = index_presenter(document) %>
 <div class="ocr_search_result">
-  <dl class="defList ocr_defList dl-horizontal">
-    <dt><span class="ocr_page_link"><%= render_page_link(document, @image_pid_list, params[:id]) %></span></dt>
-    <dd>
+  <dl class="row ocr_dl">
+    <dt class="col-md-3">
+      <span class="ocr_page_link">
+        <%= render_page_link(document, @image_pid_list, params[:id]) %>
+      </span>
+    </dt>
+    <dd class="col-md-9">
       <% if document[:term_freq] %>
-          <div class="ocr_term_freq">
-            <%= pluralize(compute_term_freq(document[:term_freq].to_i), t('blacklight.ocr.search.results.term_freq.start')) %>
-          </div>
+        <div class="ocr_term_freq">
+          <%= pluralize(compute_term_freq(document[:term_freq].to_i), t('blacklight.ocr.search.results.term_freq.start')) %>
+        </div>
       <% end %>
       <div class="ocr_snippets">
         <%= doc_presenter.field_value(blacklight_config.index_fields[blacklight_config.ocr_search_field],

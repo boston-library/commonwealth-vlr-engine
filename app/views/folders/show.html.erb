@@ -7,22 +7,22 @@
   <div id="breadcrumb">
     <ul class="breadcrumb">
       <% if current_user %>
-          <li>
+          <li class="breadcrumb-item">
             <%= link_to(t('blacklight.users.account_heading'), current_user) %>
             <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
           </li>
       <% end %>
-      <li>
+      <li class="breadcrumb-item">
         <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
         <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
       </li>
       <% unless current_user and current_user.folders.include?(@folder) %>
-          <li>
+          <li class="breadcrumb-item">
             <%= link_to(t('blacklight.folders.public_list.title'), public_folders_path) %>
             <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
           </li>
       <% end %>
-      <li class="active">
+      <li class="active breadcrumb-item">
         <%= @folder.title %>
       </li>
     </ul>
@@ -43,11 +43,11 @@
           </div>
           <%= link_to(icon('fas', 'edit', aria: { hidden: true }) + ' ' + t('blacklight.folders.edit'),
                       edit_folder_path(@folder),
-                      class: 'btn btn-default btn-sm',
+                      class: 'btn btn-secondary btn-sm',
                       title: 'edit this folder') %>
           <%= link_to(icon('fas', 'trash-alt', aria: { hidden: true }) + ' ' + t('blacklight.folders.delete.delete'),
                       @folder,
-                      class: 'btn btn-default btn-sm',
+                      class: 'btn btn-secondary btn-sm',
                       method: :delete,
                       data: { confirm: t('blacklight.folders.delete.confirm') },
                       title: t('blacklight.folders.delete.delete')) %>

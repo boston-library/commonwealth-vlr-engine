@@ -1,27 +1,17 @@
 <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
     <% 0.upto carousel_slides.length-1 do |index| %>
-        <% if index == 0 %>
-            <li class="active"></li>
-        <% else %>
-            <li></li>
-        <% end %>
+      <li data-target="#slideshow" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
     <% end %>
   </ol>
   <div class="carousel-inner">
-
-    <% carousel_slides.each_with_index do |slide,index| %>
-        <% if index == 0 %>
-            <% status = 'item active' %>
-        <% else %>
-            <% status = 'item' %>
-        <% end %>
-        <div class="<%= status %>">
-          <% slide_img = iiif_image_tag(slide.image_pid,
-                                        {:size => slide.size,
-                                         :alt => slide.title,
-                                         :region => slide.region}) %>
-          <%= link_to slide_img, solr_document_path(:id => slide.object_pid) %>
+    <% carousel_slides.each_with_index do |slide, index| %>
+        <div class="carousel-item<%= ' active' if index == 0 %>">
+          <%= link_to iiif_image_tag(slide.image_pid,
+                                     { size: slide.size,
+                                       alt: slide.title,
+                                       region: slide.region }),
+                      solr_document_path(:id => slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
             <p><%= slide.institution %></p>
@@ -30,17 +20,12 @@
     <% end %>
 
   </div>
-  <a class="left carousel-control" href="#slideshow" data-slide="prev" aria-label="previous">
-    <%= icon('fas', 'chevron-left', aria: { hidden: true }) %>
+  <a class="carousel-control-prev" href="#slideshow" data-slide="prev" aria-label="previous">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#slideshow" data-slide="next" aria-label="next">
-    <%= icon('fas', 'chevron-right', aria: { hidden: true }) %>
+  <a class="carousel-control-next" href="#slideshow" data-slide="next" aria-label="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
   </a>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#slideshow').carousel({
-            interval: 5000
-        });
-    });
-</script>

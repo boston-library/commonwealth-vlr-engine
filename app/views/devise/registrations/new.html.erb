@@ -6,43 +6,43 @@
 <%= form_for(resource,
              as: resource_name,
              url: registration_path(resource_name),
-             html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+             html: { role: 'form' }) do |f| %>
     <%= devise_error_messages! %>
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="inputFirstName">First name</label>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="inputFirstName">First name</label>
           <div class="col-sm-4">
             <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
           </div>
         </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="inputLastName">Last name</label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputLastName">Last name</label>
         <div class="col-sm-4">
           <%= f.text_field :last_name, class: 'form-control' %>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="inputEmail">Email</label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputEmail">Email</label>
         <div class="col-sm-4">
           <%= f.text_field :email, class: 'form-control' %>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="inputPassword">Password</label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputPassword">Password</label>
         <div class="col-sm-4">
           <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="inputPassword">Re-enter password</label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputPassword">Re-enter password</label>
         <div class="col-sm-4">
           <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-4">
           <%= f.submit 'Sign up', class: 'btn btn-primary' %>
-          <%= link_to 'Cancel', root_path, class: 'btn btn-default' %>
+          <%= link_to 'Cancel', root_path, class: 'btn btn-secondary' %>
         </div>
       </div>
 

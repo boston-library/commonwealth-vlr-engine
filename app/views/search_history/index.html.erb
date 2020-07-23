@@ -6,12 +6,12 @@
   <div id="breadcrumb">
     <ul class="breadcrumb">
       <% if current_user %>
-          <li>
+          <li class="breadcrumb-item">
             <%= link_to(t('blacklight.users.account_heading'), current_user) %>
             <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
           </li>
       <% end %>
-      <li class="active">
+      <li class="active breadcrumb-item">
         <%=t('blacklight.search_history.title')%>
       </li>
     </ul>
@@ -44,12 +44,12 @@
               <td class="actions">
                 <% if current_or_guest_user && search.saved? %>
                     <%# button_to t('blacklight.search_history.forget'), blacklight.forget_search_path(search.id),
-                                  class: 'btn btn-default' %>
+                                  class: 'btn btn-secondary' %>
                   <%= icon('fas', 'check') %>
                   In your <%= link_to t('blacklight.saved_searches.title'), saved_searches_path %>
                 <% else %>
                     <%= button_to t('blacklight.search_history.save'), save_search_path(search.id),
-                                  :method => :put, :class => 'btn btn-default' %>
+                                  :method => :put, :class => 'btn btn-secondary' %>
                 <% end %>
               </td>
           <% end %>

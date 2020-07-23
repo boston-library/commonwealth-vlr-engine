@@ -3,15 +3,15 @@
 
   <div id="breadcrumb">
     <ul class="breadcrumb">
-      <li>
+      <li class="breadcrumb-item">
         <%= link_to(t('blacklight.users.account_heading'), current_user) %>
         <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
       </li>
-      <li>
+      <li class="breadcrumb-item">
         <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
         <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
       </li>
-      <li class="active">
+      <li class="active breadcrumb-item">
         <%= t('blacklight.folders.add_folder') %>
       </li>
     </ul>

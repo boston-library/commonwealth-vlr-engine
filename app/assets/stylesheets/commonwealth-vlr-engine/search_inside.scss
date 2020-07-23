@@ -75,16 +75,16 @@
       .ocr_search_result {
         margin-bottom: 12px;
 
-        .ocr_defList {
+        .ocr_dl {
 
           dt {
             text-align: left;
-            width: 72px;
+            //width: 72px;
             font-weight: normal;
           }
 
           dd {
-            margin-left: 77px;
+            //margin-left: 77px;
 
             .ocr_term_freq {
               font-size: 12px;

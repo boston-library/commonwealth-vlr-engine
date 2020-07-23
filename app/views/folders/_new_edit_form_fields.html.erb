@@ -1,35 +1,35 @@
-<%= form_for(form_object, :html => {:id => 'edit_folder_form', :class => 'form-horizontal'}) do |f| %>
+<%= form_for(form_object, html: { id: 'edit_folder_form' }) do |f| %>
     <p class="form_intro_text">Add a title and description for your folder. If the visibility is set to "public," other users will be able to view the items in the folder. (Items can only be added or removed by you.)</p>
     <%= render 'shared/error_messages', :object => f.object %>
-    <div class="form-group">
+    <div class="form-group row">
       <%= label_tag(:title,
-                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Title',
-                    :class => 'control-label col-sm-2') %>
+                    content_tag(:span, '*', class: 'required_field_indicator') + ' Title',
+                    class: 'col-form-label col-sm-2') %>
       <div class="col-sm-4">
-        <%= f.text_field :title, :class => 'form-control' %>
+        <%= f.text_field :title, class: 'form-control' %>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
       <%= label_tag(:visibility,
-                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Visibility',
-                    :class => 'control-label col-sm-2') %>
+                    content_tag(:span, '*', class: 'required_field_indicator') + ' Visibility',
+                    class: 'col-form-label col-sm-2') %>
       <div class="col-sm-2">
-        <%= f.select(:visibility, %w(private public), {}, {:class => 'form-control'}) %>
+        <%= f.select(:visibility, %w(private public), {}, { class: 'form-control' }) %>
       </div>
     </div>
-    <div class="form-group">
-      <%= f.label :description, :class => 'control-label col-sm-2' %>
+    <div class="form-group row">
+      <%= f.label :description, class: 'col-form-label col-sm-2' %>
       <div class="col-sm-4">
-        <%= f.text_area :description, :class => 'form-control', :size => '24x4' %>
+        <%= f.text_area :description, class: 'form-control', size: '24x4' %>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
       <div class="col-sm-offset-2 col-sm-4">
-        <%= f.submit submit_button_text, :class => 'btn btn-primary' %>
+        <%= f.submit submit_button_text, class: 'btn btn-primary' %>
         <% if @folder.id %>
-            <%= link_to 'Cancel', folder_path(@folder.id), :class=>'btn btn-default' %>
+            <%= link_to 'Cancel', folder_path(@folder.id), class: 'btn btn-secondary' %>
         <% else %>
-            <%= link_to 'Cancel', folders_path, :class=>'btn btn-default' %>
+            <%= link_to 'Cancel', folders_path, class: 'btn btn-secondary' %>
         <% end %>
       </div>
     </div>

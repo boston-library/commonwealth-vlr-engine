@@ -10,7 +10,7 @@ var scrollTarget = scrollingContainer.scrollTop();
 /* show loading gif while waiting for selected image to load */
 $('#multi_img_show_container').on("click", "a.prev_next", function () {
     // display the loading icon
-    $('#img_show_canvas').html('<%= image_tag('commonwealth-vlr-engine/loading.gif',:id => 'loading', :alt => 'Loading...') %>');
+    $('#img_show_canvas').html('<%= image_tag('commonwealth-vlr-engine/loading.gif', id: 'loading', alt: 'Loading...') %>');
     // scroll the thumbnail
     var selected_img = scrollingContainer.find("[data-viewer='" + $(this).data('viewer') + "']");
     var position = selected_img.position().top;

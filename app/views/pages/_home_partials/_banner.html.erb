@@ -3,9 +3,9 @@
 
   <div id="carousel_wrapper" class="col-sm-6">
     <% if params[:controller] == 'catalog' %>
-        <%= render :partial => 'pages/carousel', :locals => {:carousel_slides => carousel_slides} %>
+        <%= render partial: 'pages/carousel', locals: { carousel_slides: carousel_slides } %>
     <% else %>
-        <%= render :partial => 'pages/carousel', :locals => {:carousel_slides => @carousel_slides} %>
+        <%= render partial: 'pages/carousel', locals: { carousel_slides: @carousel_slides } %>
     <% end %>
   </div>
 
