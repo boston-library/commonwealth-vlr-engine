@@ -2,10 +2,11 @@
 
   <% if current_user %>
 
-      <div id="user-nav-btn" class="btn-group">
-        <%= "#{ link_to icon('fas', 'user', aria: { hidden: true }) + ' ' + current_user.first_name,
-                        current_user, :class =>'btn btn-secondary btn-sm' }".html_safe unless current_user.to_s.blank? %>
-        <button class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div id="user-nav-btn" class="btn-group btn-group-xs">
+        <%= link_to(icon('fas', 'user', aria: { hidden: true }) + ' ' + current_user.first_name,
+                    current_user, class: 'btn btn-outline-secondary btn-sm') if current_user %>
+        <button class="btn btn-xs btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
         </button>
         <ul id="user-util-links-list" class="dropdown-menu">
           <li class="dropdown-item"><%= link_to t('blacklight.header_links.folders'), folders_path %></li>

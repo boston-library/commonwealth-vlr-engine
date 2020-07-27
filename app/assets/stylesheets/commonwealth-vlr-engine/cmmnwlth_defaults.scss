@@ -2,7 +2,7 @@
 /* To override, declare variables in your_app/assets/stylesheets/commonwealth_vlr_engine.css.scss, */
 /* putting any locally-declared variables before @import line, and removing !default */
 
-$logo_image: 'commonwealth-vlr-engine/vlr_logo_img.png' !default;
+$header_logo_image: 'commonwealth-vlr-engine/vlr_logo_img.png' !default;
 $footer_logo_image: 'commonwealth-vlr-engine/vlr_logo_img.png' !default;
 
 $very_dark_gray: #555555 !default;
@@ -33,6 +33,19 @@ $error_border: #eed3d7 !default;
 
 $viewer_bg: #111111 !default;
 $search_highlight: yellow !default;
+
+$font-size-xs: $font-size-base * .8 !default;
+$padding-y-xs: .1rem !default;
+$padding-x-xs: .4rem !default;
+
+$btn-padding-y-xs: $padding-y-xs !default;
+$btn-padding-x-xs: $padding-x-xs !default;
+$btn-font-size-xs: $font-size-xs !default;
+
+$input-padding-y-xs: $padding-y-xs !default;
+$input-padding-x-xs: $padding-x-xs !default;
+$input-font-size-xs: $font-size-xs !default;
+$input-height-xs: add($input-line-height-sm * 1em, add($input-padding-y-xs * 2, $input-height-border, false)) !default;
 
 @mixin rounded-corners($radius) {
   -moz-border-radius: $radius;

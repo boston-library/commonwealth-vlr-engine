@@ -1,12 +1,11 @@
 # -*- encoding : utf-8 -*-
 class FeedbackController < ApplicationController
-
   # http://expressica.com/simple_captcha/
   # include SimpleCaptcha::ControllerHelpers
 
   # show the feedback form
   def show
-    @nav_li_active = 'contact'
+    @nav_li_active = 'about'
     @errors=[]
     if request.post?
       if validate
@@ -35,5 +34,4 @@ class FeedbackController < ApplicationController
     #end
     @errors.empty?
   end
-
 end
