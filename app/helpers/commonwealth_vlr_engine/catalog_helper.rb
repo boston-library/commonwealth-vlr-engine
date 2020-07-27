@@ -323,6 +323,16 @@ module CommonwealthVlrEngine
       title_output.squish
     end
 
+    # output properly formatted alternative title
+    def render_alt_title(document, index)
+      alt_title_output = ''
+      alt_title_output << document['title_info_alternative_tsim'][index]
+      if document['title_info_alternative_subtitle_tsim'][index].present?
+        alt_title_output << " : #{document['title_info_alternative_subtitle_tsim'][index]}"
+      end
+      alt_title_output
+    end
+
     def render_volume_title(document)
       vol_title_info = [document[:title_info_partnum_tsi], document[:title_info_partname_tsi]]
       if vol_title_info[0]

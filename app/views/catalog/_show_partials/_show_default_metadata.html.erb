@@ -30,8 +30,8 @@
             <% end %>:
           </dt>
           <dd>
-            <% document[:title_info_alternative_tsim].each do |alt_title| %>
-                <%= alt_title %><br />
+            <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
+                <%= render_alt_title(document, index) %><br />
             <% end %>
           </dd>
       <% end %>
