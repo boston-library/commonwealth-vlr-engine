@@ -327,7 +327,8 @@ module CommonwealthVlrEngine
     def render_alt_title(document, index)
       alt_title_output = ''
       alt_title_output << document['title_info_alternative_tsim'][index]
-      if document['title_info_alternative_subtitle_tsim'][index].present?
+      if document['title_info_alternative_subtitle_tsim'] &&
+         document['title_info_alternative_subtitle_tsim'][index].present?
         alt_title_output << " : #{document['title_info_alternative_subtitle_tsim'][index]}"
       end
       alt_title_output
