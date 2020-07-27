@@ -3,9 +3,9 @@ module CommonwealthVlrEngine
     extend ActiveSupport::Concern
 
     def home
-      @carousel_slides = CarouselSlide.where(:context=>'root').order(:sequence)
+      @carousel_slides = CarouselSlide.where(context: 'root').order(:sequence)
       section_active_count = 0
-      sections = ['maps', 'collections', 'institutions', 'formats']
+      sections = %w(maps collections institutions formats)
       sections.each do |section|
         if t("blacklight.home.browse.#{section}.enabled")
           section_active_count += 1
@@ -28,6 +28,5 @@ module CommonwealthVlrEngine
     def explore
       @nav_li_active = 'explore'
     end
-
   end
 end

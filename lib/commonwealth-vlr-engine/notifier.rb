@@ -3,7 +3,6 @@ module CommonwealthVlrEngine
     extend ActiveSupport::Concern
 
     def feedback(details)
-
       @message = details[:message]
       @topic = details[:topic]
       @email = details[:email]
@@ -13,7 +12,6 @@ module CommonwealthVlrEngine
       mail(:to => @recipient,
            :from => t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
            :subject => t('blacklight.feedback.text.subject', identifier: Time.now.strftime('%s')))
-
     end
 
     private
@@ -26,8 +24,5 @@ module CommonwealthVlrEngine
       end
       recipient_email
     end
-
-
-
   end
 end

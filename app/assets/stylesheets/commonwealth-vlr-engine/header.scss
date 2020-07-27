@@ -1,0 +1,50 @@
+/* styles for views/shared/header_navbar */
+
+#header-navbar {
+  border-bottom: 1px solid #d4d4d4;
+  height:92px;
+
+  .navbar-logo {
+    @if $header_logo_image {
+      background: transparent $header_logo_image no-repeat top left;
+    }
+
+    @if $header_logo_image {
+      // deprecated
+      background: transparent image_url($header_logo_image) no-repeat top left;
+    }
+
+    height: 74px;
+    width: 200px;
+    flex: 0 0 200px;
+  }
+
+  #user-nav-collapse {
+
+    #user-util-links {
+      height: 42px;
+      text-align: right;
+
+      #header-search {
+
+        input {
+          width: 120px;
+          @include border-right-radius(0);
+        }
+
+        .blacklight-icons {
+
+          svg {
+            width: 17px;
+            height: 17px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

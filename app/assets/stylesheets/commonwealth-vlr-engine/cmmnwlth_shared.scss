@@ -105,3 +105,22 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
   }
 
 }
+
+.btn-xs {
+  @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+.btn-group-xs > .btn { @extend .btn-xs; }
+
+.btn-xs + .dropdown-toggle-split {
+  padding-right: $btn-padding-x-xs * .75;
+  padding-left: $btn-padding-x-xs * .75;
+}
+
+.form-control-xs {
+  height: $input-height-xs;
+  padding: $input-padding-y-xs $input-padding-x-xs;
+  @include font-size($input-font-size-xs);
+  line-height: $input-line-height-sm;
+  @include border-radius($input-border-radius-sm);
+}

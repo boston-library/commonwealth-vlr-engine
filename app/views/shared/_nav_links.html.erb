@@ -1,56 +1,54 @@
 <% nav_links = {
   search: {
-    basic: { nav_link_title: t('blacklight.search.nav.basic'),
-             nav_link_path: search_catalog_path },
-    advanced: { nav_link_title: t('blacklight.search.nav.advanced'),
-                nav_link_path: blacklight_advanced_search_engine.advanced_search_path }
+    basic: { title: t('blacklight.search.nav.basic'),
+             path: search_catalog_path },
+    advanced: { title: t('blacklight.search.nav.advanced'),
+                path: blacklight_advanced_search_engine.advanced_search_path }
   },
   explore: {},
   about: {
-    overview: { nav_link_title: t('blacklight.home.context.about.title'),
-                nav_link_path: about_site_path },
-    news: { nav_link_title: t('blacklight.home.context.news.title'),
-            nav_link_path: t('blacklight.home.context.news.blog_url') },
-    contact: { nav_link_title: t('blacklight.pages.contact.title'),
-               nav_link_path: feedback_path }
+    overview: { title: t('blacklight.home.context.about.title'),
+                path: about_site_path },
+    news: { title: t('blacklight.home.context.news.title'),
+            path: t('blacklight.home.context.news.blog_url') },
+    contact: { title: t('blacklight.pages.contact.title'),
+               path: feedback_path }
   }
 } %>
 
-<%
-  # add the explore options
+<% # add the explore options
   if t('blacklight.home.browse.maps.enabled')
-   nav_links[:explore][:map] = { nav_link_title: t('blacklight.maps.title'),
-                                 nav_link_path: map_path }
+    nav_links[:explore][:map] = { title: t('blacklight.maps.title'), path: map_path }
   end
 
   if t('blacklight.home.browse.collections.enabled')
-   nav_links[:explore][:collections] = { nav_link_title: t('blacklight.collections.nav'),
-                                         nav_link_path: collections_path }
+    nav_links[:explore][:collections] = { title: t('blacklight.collections.nav'),
+                                          path: collections_path }
   end
 
   if t('blacklight.home.browse.institutions.enabled')
-   nav_links[:explore][:institutions] = { nav_link_title: t('blacklight.institutions.nav'),
-                                          nav_link_path: institutions_path }
+    nav_links[:explore][:institutions] = { title: t('blacklight.institutions.nav'),
+                                           path: institutions_path }
   end
 
   if t('blacklight.home.browse.formats.enabled')
-   nav_links[:explore][:formats] = { nav_link_title: t('blacklight.navigation.format'),
-                                     nav_link_path: formats_facet_path }
+    nav_links[:explore][:formats] = { title: t('blacklight.navigation.format'),
+                                      path: formats_facet_path }
   end
 %>
 
-<% nav_links.each_with_index do |(k, v), index| %>
-    <li class="nav-item dropdown<%= ' last_nav' if index == nav_links.length-1 %><%= ' active' if @nav_li_active == k.to_s %>">
-      <a id="<%= k.to_s + '_dropdown' %>" class="nav-link dropdown-toggle" href="/<%= k.to_s %>"
-         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= k.to_s.titleize %>
-      </a>
-      <div class="dropdown-menu<%= ' pull-right' if index == nav_links.length-1 %>" role="menu"
-           aria-labelledby="<%= k.to_s + '_dropdown' %>">
-        <% v.each do |_k, v| %>
-            <%= link_to(v[:nav_link_title], v[:nav_link_path],
-                        class: 'dropdown-item', tabindex: '-1') %>
-        <% end %>
-      </div>
-    </li>
+<% nav_links.each_with_index do |(category, menu_items), index| %>
+  <li class="nav-item dropdown<%= ' last_nav' if index == nav_links.length-1 %><%= ' active' if @nav_li_active == category.to_s %>">
+    <a id="<%= category.to_s + '_dropdown' %>" class="nav-link dropdown-toggle" href="/<%= category.to_s %>"
+       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= category.to_s.titleize %>
+    </a>
+    <div class="dropdown-menu<%= ' dropdown-menu-right' if index == nav_links.length-1 %>" role="menu"
+         aria-labelledby="<%= category.to_s + '_dropdown' %>">
+      <% menu_items.each do |_menu_item, link_hash| %>
+          <%= link_to(link_hash[:title], link_hash[:path],
+                      class: 'dropdown-item', tabindex: '-1') %>
+      <% end %>
+    </div>
+  </li>
 <% end %>

@@ -1,15 +1,17 @@
-<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
-  <%= link_to application_name,
-              root_path,
-              id: 'header_logo_link',
-              class: 'navbar-brand navbar-logo' %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
-    <%= render partial: 'shared/user_util_links' %>
-    <ul class="navbar-nav">
-      <%= render partial: 'shared/nav_links' %>
-    </ul>
+<nav id="header-navbar" class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+  <div class="container">
+    <%= link_to application_name,
+                root_path,
+                id: 'header_logo_link',
+                class: 'navbar-brand navbar-logo' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-md-end" id="user-nav-collapse">
+      <%= render partial: 'shared/user_util_links' %>
+      <ul class="navbar-nav" id="header_main_nav">
+        <%= render partial: 'shared/nav_links' %>
+      </ul>
+    </div>
   </div>
 </nav>
