@@ -2,7 +2,6 @@
 
 #header-navbar {
   border-bottom: 1px solid #d4d4d4;
-  height:92px;
 
   .navbar-logo {
     @if $header_logo_image {
@@ -20,12 +19,50 @@
   }
 
   #user-nav-collapse {
+    flex-wrap: wrap;
 
     #user-util-links {
-      height: 42px;
-      text-align: right;
+      display: flex;
+      font-size: $font-size-xs;
+      width: 100%;
+
+      @media (max-width: breakpoint-max(md)) {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      #util-links-nologin {
+        margin-top: .2rem;
+
+        @media (max-width: breakpoint-max(md)) {
+          width: 100%;
+        }
+      }
+
+      #user-nav-btn {
+        margin-bottom: .85rem;
+
+        #user-util-links-list {
+
+          > li {
+            padding: 0 1rem;
+
+            > a {
+              font-size: $font-size-xs;
+            }
+
+          }
+
+        }
+
+        @media (max-width: breakpoint-max(md)) {
+          margin-right: 10rem;
+          z-index: 1001;
+        }
+      }
 
       #header-search {
+        padding-left: 1.2rem;
 
         input {
           width: 120px;
@@ -41,8 +78,32 @@
 
         }
 
+        @media (max-width: breakpoint-max(md)) {
+          padding-left: 0;
+          margin-bottom: .5rem;
+        }
+
       }
 
+    }
+
+    #header_main_nav {
+
+      li.nav-item {
+
+        a.nav-link {
+          padding-right: 4rem;
+        }
+
+      }
+
+      li.nav-item.last_nav {
+
+        a.nav-link {
+          padding-right: 0.5rem;
+        }
+
+      }
     }
 
   }
