@@ -108,7 +108,7 @@ en:
             email: 'Your Email:'
             message: 'Your Message:'
             topic:
-              label: 'Topic'
+              label: 'Topic:'
               options:
                 default:
                   option: 'please select a topic'

@@ -9,13 +9,12 @@
       margin-left: 0;
       margin-bottom:5px;
 
-      .search_index_select {
-        text-align: left;
-        width: 120px;
-      }
-
       #advanced_operators {
-        padding-left:32px;
+        padding: 10px 0 0 20px;
+
+        label {
+          padding-right: 20px;
+        }
       }
 
     }
@@ -23,67 +22,76 @@
   }
 
   #advanced_search_limits {
-    margin-top: 20px;
-    padding: 5px 19px 0px 15px;
+    margin: 25px 0 20px 0;
     float: left;
     width: 95%;
 
     label.col-form-label {
       font-weight: bold;
+      font-size: $font-size-sm;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     #date_range_limit {
-      padding-bottom: 20px;
+      padding-top: 10px;
 
       .input-group {
         float:left;
-        margin-right: 5px;
 
         label {
-          font-weight: normal;
-          padding-right: 4px;
-          font-size: 12px;
+          font-size: $font-size-sm;
           background: none;
           border: none;
-
         }
 
         input {
-          border-bottom-left-radius: 4px;
-          border-top-left-radius: 4px;
+          border-bottom-left-radius: $border-radius;
+          border-top-left-radius: $border-radius;
+          padding: 0.375rem 0.4rem;
         }
 
       }
 
     }
 
-    .facet_scrollbox_wrapper {
-      background-color: #FFFFFF;
+    #advanced_search_facets {
 
-      .facet_limit_scrollbox {
-        max-height: 130px;
-        min-height: 50px;
-        overflow-y: auto;
-        -webkit-overflow-scrolling:touch;
+      .form-group {
+        margin-bottom: 2rem;
 
-        ul.facet-values {
+        .facet_scrollbox_wrapper {
+          border-top: $card-border-width solid $card-border-color;
+          border-top-right-radius: $border-radius;
+          border-top-left-radius: $border-radius;
 
-          li {
+          .facet_limit_scrollbox {
+            max-height: 130px;
+            min-height: 50px;
+            overflow-y: auto;
 
-            .facet-checkbox {
+            ul.facet-values {
 
-              input[type="checkbox"] {
-                vertical-align: bottom;
-              }
+              li {
 
-            }
+                .facet-checkbox {
 
-            .label-and-count {
-              font-size: 12px;
+                  input[type="checkbox"] {
+                    vertical-align: top;
+                  }
 
-              .facet-label {
-                text-indent: -5px;
-                padding-bottom: 4px;
+                }
+
+                .label-and-count {
+                  font-size: $font-size-sm;
+
+                  .facet-label {
+                    text-indent: -5px;
+                    padding-bottom: 4px;
+                  }
+
+                }
+
               }
 
             }
@@ -99,25 +107,20 @@
   }
 
   #advanced_search_help {
-    @include rounded-corners(8px);
-    border: 1px solid $light_gray;
-    padding-left: 10px;
-    padding-right: 10px;
     margin-left: 20px;
     opacity: .8;
 
     ul.advanced_help {
-      font-size: 12px;
+      font-size: $font-size-xs;
       padding-left: 24px;
 
       li {
-        padding-bottom:10px;
+        padding-bottom: 10px;
       }
 
     }
 
   }
-
 
 }
 

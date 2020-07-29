@@ -8,23 +8,25 @@
         <%= render 'advanced/advanced_search_fields' %>
       </div>
 
-      <div id="advanced_search_limits" class="well">
-        <h4><%= t('blacklight.advanced_search.limit') %></h4>
-        <%= render 'advanced/advanced_search_date' %>
-        <%= render 'advanced/advanced_search_facets' %>
+      <div id="advanced_search_limits" class="card bg-light">
+        <div class="card-body">
+          <h4><%= t('blacklight.advanced_search.limit') %></h4>
+          <%= render 'advanced/advanced_search_date' %>
+          <%= render 'advanced/advanced_search_facets' %>
+        </div>
       </div>
 
       <div class="sort_submit_buttons">
-        <div class="pull-left">
+        <div class="float-left">
           <%# label_tag(:sort, "Sort results by") %>
           <%# select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
           <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
         </div>
-        <div class="pull-right">
-          <%= submit_tag 'Search', :class=>'btn btn-primary advanced_submit' %>
+        <div class="float-right">
+          <%= submit_tag 'Search', class: 'btn btn-primary advanced_submit' %>
           <%= link_to 'Start over',
                       blacklight_advanced_search_engine.advanced_search_path,
-                      class: 'reset btn btn-secondary' %>
+                      class: 'reset btn btn-outline-secondary' %>
         </div>
       </div>
     </div>

@@ -9,9 +9,9 @@ $(document).ready (function () {
         for (var i = 0; i < topic_options_keys.length; i++) {
             if (selected_option == topic_options[topic_options_keys[i]].option) {
                 if (topic_options[topic_options_keys[i]].help_text != '') {
-                    help_text_div.html(topic_options[topic_options_keys[i]].help_text).toggleClass("hidden", false);
+                    help_text_div.html(topic_options[topic_options_keys[i]].help_text).css("display", "block");
                 } else {
-                    help_text_div.toggleClass("hidden", true)
+                    help_text_div.css("display", "none")
                 }
             }
         }

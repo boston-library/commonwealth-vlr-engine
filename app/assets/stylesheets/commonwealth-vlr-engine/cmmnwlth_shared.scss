@@ -1,5 +1,10 @@
 /* shared sitewide styles */
 
+h1 {
+  font-size: $h2-font-size;
+}
+
+// fixed-top navbar for these pages only
 body.blacklight-institutions-index, body.blacklight-collections-index, body.blacklight-catalog-index {
 
   #header-navbar {

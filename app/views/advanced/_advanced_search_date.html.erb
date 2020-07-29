@@ -1,23 +1,21 @@
 <div id="date_range_limit" class="advanced_search_field">
   <div class="form-group row">
-    <label class="col-form-label col-sm-2 ">Year</label>
+    <label class="col-form-label col-md-3 col-lg-2">Year</label>
     <div class="col-sm-8">
-      <div class="input-group col-sm-4">
-        <label id="date_range_start_label" class="input-group-addon" for="date_start">Start</label>
-        <%= text_field_tag 'date_start',
-                           nil,
-                           :id => 'date_range_start',
-                           :class => 'form-control',
-                           :maxlength => 4 %>
-      </div>
-      <div class="input-group col-sm-4">
-        <label id="date_range_end_label" class="input-group-addon" for="date_end">End</label>
-        <%= text_field_tag 'date_end',
-                           nil,
-                           :id => 'date_range_end',
-                           :class => 'form-control',
-                           :maxlength => 4 %>
-      </div>
+      <% %w(start end).each do |v| %>
+        <div class="input-group col-md-8 col-lg-5">
+          <div class="input-group-prepend">
+            <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "date_#{v}" %>">
+              <%= v.capitalize %>
+            </label>
+          </div>
+          <%= text_field_tag "date_#{v}",
+                             nil,
+                             id: "date_range_#{v}",
+                             class: 'form-control',
+                             maxlength: 4 %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
