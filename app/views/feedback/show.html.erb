@@ -1,6 +1,6 @@
 <% @page_title = t('blacklight.feedback.title', :application_name => application_name) %>
 <div class="col-sm-12" id="contact_content">
-  <h2><%= t('blacklight.feedback.title') %></h2>
+  <h1><%= t('blacklight.feedback.title') %></h1>
 
   <p><%= t('blacklight.feedback.blurb') %></p>
 
@@ -18,19 +18,19 @@
     <div class="col-sm-6" id="contact_content">
       <%= form_tag(feedback_path, id: 'feedback_form') do %>
         <div class="form-group row">
-          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
+          <label class="col-sm-4 col-form-label text-right"><%= t('blacklight.feedback.form.name') %></label>
           <div class="col-sm-6">
             <%= text_field_tag :name, params[:name], class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.email') %></label>
+          <label class="col-sm-4 col-form-label text-right"><%= t('blacklight.feedback.form.email') %></label>
           <div class="col-sm-6">
             <%= text_field_tag :email, params[:email], class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.topic.label') %></label>
+          <label class="col-sm-4 col-form-label text-right"><%= t('blacklight.feedback.form.topic.label') %></label>
           <div class="col-sm-6">
             <%= select_tag(:topic,
                            options_for_select(feedback_type_options),
@@ -39,14 +39,14 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
+          <label class="col-sm-4 col-form-label text-right"><%= t('blacklight.feedback.form.message') %></label>
           <div class="col-sm-6">
             <%= text_area_tag :message, params[:message], :size => '24x6', class:  'form-control' %>
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-sm-offset-4 col-sm-4">
-            <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-secondary') %>
+          <div class="offset-sm-4 col-sm-4">
+            <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-primary') %>
           </div>
         </div>
       <% end %>

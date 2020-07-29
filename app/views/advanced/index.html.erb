@@ -7,23 +7,19 @@
 
 <div id="content" class="advanced-search-form col-sm-12">
 
-  <h2><%= t('blacklight.advanced_search.page_title') %></h2>
+  <h1><%= t('blacklight.advanced_search.page_title') %></h1>
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
-    <li>
-      <%= link_to 'Basic', search_catalog_path %>
+    <li class="nav-item">
+      <%= link_to 'Basic', search_catalog_path, class: 'nav-link' %>
     </li>
-    <li class="active"><a href="#">Advanced</a></li>
+    <li  class="nav-item"><a href="#" class="nav-link active">Advanced</a></li>
   </ul>
 
   <div class="tab-content">
-
     <div class="tab-pane active" id="advanced_search_wrapper">
-
-          <%= render 'advanced_search_form' %>
-
+        <%= render 'advanced_search_form' %>
     </div>
-
   </div>
 
 </div>

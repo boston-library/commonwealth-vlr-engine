@@ -1,53 +1,23 @@
 <% @page_title = t('blacklight.advanced_search.title', application_name: application_name) %>
 
 <div id="content" class="col-sm-12 basic-search">
-  <h2><%= t('blacklight.advanced_search.page_title') %></h2>
+  <h1><%= t('blacklight.advanced_search.page_title') %></h1>
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
-    <li class="active"><a href="#">Basic</a></li>
-    <li><%= link_to 'Advanced', blacklight_advanced_search_engine.advanced_search_path %></li>
+    <li class="nav-item"><a href="#" class="nav-link active">Basic</a></li>
+    <li class="nav-item">
+      <%= link_to 'Advanced',
+                  blacklight_advanced_search_engine.advanced_search_path,
+                  class: 'nav-link' %>
+    </li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane active" id="basic_search">
       <div class="row">
-        <div class="col-sm-9">
-          <div id="basic_search_wrapper" class="well">
-            <%= form_tag search_action_url, method: :get, id: 'basic_search_form',
-                         class: 'basic-search-form form-inline',
-                         role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
-                <%= render_hash_as_hidden_fields(search_state.params_for_search().except(:q, :qt, :page, :f, :sort)) %>
-                <label for="q_basic" class="sr-only">
-                  <%= t('blacklight.search.form.search.label') %>
-                </label>
-                <%= text_field_tag :q,
-                                   nil,
-                                   placeholder: t('blacklight.search.basic_search.form.q'),
-                                   class: 'search_q q form-control',
-                                   id: 'q_basic',
-                                   autofocus: should_autofocus_on_search_box?,
-                                   data: { autocomplete_enabled: autocomplete_enabled?,
-                                           autocomplete_path: search_action_path(action: :suggest) } %>
-
-                <% unless search_fields.empty? %>
-                    <label for="search_field" class="sr-only">
-                      <%= t('blacklight.search.basic_search.form.select') %>
-                    </label>
-                    <%= select_tag(:search_field,
-                                   options_for_select(search_fields,
-                                                      h(params[:search_field])),
-                                   title: t('blacklight.search.basic_search.form.search_indexes'),
-                                   id: 'basic_search_indexes',
-                                   class: 'btn btn-secondary search_index_select') %>
-                <% end %>
-
-                <button type="submit" class="btn btn-primary search-btn" id="search">
-                  <span class="submit-search-text">
-                    <%=t('blacklight.search.form.submit')%>
-                  </span>
-                  <%= blacklight_icon :search, aria_hidden: true %>
-                </button>
-            <% end %>
+        <div class="col-sm-6">
+          <div id="basic_search_wrapper">
+            <%= render_search_bar %>
           </div>
         </div>
       </div>
