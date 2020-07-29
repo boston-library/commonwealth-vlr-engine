@@ -27,25 +27,29 @@
       width: 100%;
 
       @media (max-width: breakpoint-max(md)) {
-        margin-top: 1rem;
+
+      }
+
+      @media (max-width: breakpoint-max(sm)) {
         flex-wrap: wrap;
+        margin-top: 20px;
       }
 
       #util-links-nologin {
-        margin-top: .2rem;
+        margin-top: 3px;
 
-        @media (max-width: breakpoint-max(md)) {
+        @media (max-width: breakpoint-max(sm)) {
           width: 100%;
         }
       }
 
       #user-nav-btn {
-        margin-bottom: .85rem;
+        margin-bottom: 14px;
 
         #user-util-links-list {
 
           > li {
-            padding: 0 1rem;
+            padding: 0 15px;
 
             > a {
               font-size: $font-size-xs;
@@ -55,14 +59,14 @@
 
         }
 
-        @media (max-width: breakpoint-max(md)) {
-          margin-right: 10rem;
+        @media (max-width: breakpoint-max(sm)) {
+          margin-right: 160px;
           z-index: 1001;
         }
       }
 
       #header-search {
-        padding-left: 1.2rem;
+        padding-left: 20px;
 
         input {
           width: 120px;
@@ -78,9 +82,8 @@
 
         }
 
-        @media (max-width: breakpoint-max(md)) {
+        @media (max-width: breakpoint-max(sm)) {
           padding-left: 0;
-          margin-bottom: .5rem;
         }
 
       }
@@ -92,7 +95,7 @@
       li.nav-item {
 
         a.nav-link {
-          padding-right: 4rem;
+          padding-right: 65px;
         }
 
       }
@@ -100,7 +103,7 @@
       li.nav-item.last_nav {
 
         a.nav-link {
-          padding-right: 0.5rem;
+          padding-right: 5px;
         }
 
       }
