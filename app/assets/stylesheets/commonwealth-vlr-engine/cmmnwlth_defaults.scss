@@ -17,9 +17,11 @@ $bootstrap_text: #333333 !default;
 $bl_link: #428BCA !default;
 $bl_link_hover: #005580 !default;
 
-$well_bg_color: #F5F5F5 !default;
-$well_border_color: #E3E3E3 !default;
+$well_bg_color: #F5F5F5 !default; // TODO: check if still used
+$well_border_color: #E3E3E3 !default; // TODO: check if still used
 $facets_border: #DDDDDD !default;
+$constraints_bg_color: #E2EDFE !default;
+$facets_active_border: #d6e9c6;
 
 $navbarBorder: #D4D4D4 !default;
 

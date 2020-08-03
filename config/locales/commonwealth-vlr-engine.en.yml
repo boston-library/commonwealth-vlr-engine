@@ -400,13 +400,15 @@ en:
             submit: 'Update'
           constraints:
             az_search: 'Starts with'
+          facets:
+            home: 'Explore the Collections'
+          filters:
+            title: 'Your search:'
           form:
             collection: 'Search this collection...'
             institution: "Search this institution's collections..."
             search:
               label: 'Search for'
-          facets:
-            home: 'Explore the Collections'
           nav:
             basic: 'Basic'
             advanced: 'Advanced'

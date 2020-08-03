@@ -37,8 +37,9 @@ module CommonwealthVlrEngine
         #blacklight-gallery stuff
         config.view.gallery.default = true
         config.view.gallery.partials = [:index_header]
-        config.view.masonry.partials = [:index_header]
-        config.view.slideshow.partials = [:index]
+        # slideshow and masonry get ver little usage, deprecating
+        # config.view.masonry.partials = [:index_header]
+        # config.view.slideshow.partials = [:index]
 
         # blacklight-maps stuff
         config.view.maps.geojson_field = 'subject_geojson_facet_ssim'

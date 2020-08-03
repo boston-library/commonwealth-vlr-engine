@@ -3,7 +3,7 @@ module CommonwealthVlrEngine
     include Blacklight::LayoutHelperBehavior
 
     def main_content_classes
-      'col-sm-9'
+      'col-lg-9'
     end
 
     def show_content_classes
@@ -15,7 +15,7 @@ module CommonwealthVlrEngine
     end
 
     def sidebar_classes
-      'col-sm-3'
+      'page-sidebar col-lg-3'
     end
 
   end
