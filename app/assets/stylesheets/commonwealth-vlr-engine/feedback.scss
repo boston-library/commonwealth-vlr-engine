@@ -1,5 +1,18 @@
 /* styles for feedback form */
 
+#contact_content {
+
+  .col-form-label {
+    text-align: right;
+
+    @media (max-width: breakpoint-max(sm)) {
+      text-align: left;
+    }
+
+  }
+
+}
+
 #contact_help_text {
   display: none;
 

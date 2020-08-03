@@ -20,6 +20,8 @@ module CommonwealthVlrEngine
         label = t('blacklight.search.constraints.az_search')
         value = value.match(/[A-Z]+/)[0]
       end
+      options[:classes] ||= []
+      options[:classes] << 'btn-group-sm'
       super
     end
 
