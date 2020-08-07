@@ -1,16 +1,6 @@
+<%# override so we can add flagged popup and render sidebar elsewhere %>
 <% if @document[blacklight_config.flagged_field.to_sym] %>
-    <%= render :partial => 'catalog/_show_partials/show_flagged_notice' %>
-<% end %>
-
-<% if current_search_session %>
-  <div id="appliedParams" class="clearfix constraints-container">
-    <%= render 'start_over' %>
-    <%= link_back_to_catalog class: 'btn btn-outline-secondary' %>
-  </div>
+    <%= render partial: 'catalog/_show_partials/show_flagged_notice' %>
 <% end %>
 
 <%= render_document_main_content_partial %>
-
-<% content_for(:sidebar) do %>
-  <%= render_document_sidebar_partial @document %>
-<% end %>

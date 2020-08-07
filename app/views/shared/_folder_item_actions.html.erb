@@ -3,22 +3,22 @@
 </div>
 
 <%# for users w/JS, email_btn and cite_btn below are replaced by shared/folder_tools %>
-<%= button_tag(type: 'submit', class: 'btn btn-secondary', id: 'cite_btn', name: 'commit', value: t('blacklight.tools.citation')) do %>
+<%= button_tag(type: 'submit', class: 'btn btn-outline-secondary', id: 'cite_btn', name: 'commit', value: t('blacklight.tools.citation')) do %>
     <%= icon('fas', 'list-alt', aria: { hidden: true }) + ' ' + t('blacklight.tools.citation') %>
 <% end %>
-<%= button_tag(type: 'submit', class: 'btn btn-secondary', id: 'email_btn', name: 'commit', value: t('blacklight.tools.email')) do %>
+<%= button_tag(type: 'submit', class: 'btn btn-outline-secondary', id: 'email_btn', name: 'commit', value: t('blacklight.tools.email')) do %>
     <%= icon('far', 'envelope', aria: { hidden: true }) + ' ' + t('blacklight.tools.email') %>
 <% end %>
 
 <% if params[:controller] == 'bookmarks' || folder_belongs_to_user %>
-    <%= button_tag(type: 'submit', class: 'btn btn-secondary', id: 'remove_btn', name: 'commit', value: t('blacklight.tools.remove')) do %>
+    <%= button_tag(type: 'submit', class: 'btn btn-outline-secondary', id: 'remove_btn', name: 'commit', value: t('blacklight.tools.remove')) do %>
         <%= icon('fas', 'times', aria: { hidden: true }) + ' ' + t('blacklight.tools.remove') %>
     <% end %>
 <% end %>
 
 <% if current_user && !current_user.folders.empty? %>
       <div class="btn-group folder-item-control" id="copy_folder_item_control">
-        <button id="folder_item_copy_dropdown" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button id="folder_item_copy_dropdown" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= icon('fas', 'random', aria: { hidden: true }) + ' ' + t('blacklight.tools.copy_to') %>
         </button>
         <div class="dropdown-menu folder_copy_list" aria-labelledby="folder_item_copy_dropdown">

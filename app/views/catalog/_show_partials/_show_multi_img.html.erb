@@ -1,37 +1,37 @@
 <% current_img = params[:view].presence || image_files.first %>
-<% page_sequence = create_img_sequence(image_files,current_img) %>
+<% page_sequence = create_img_sequence(image_files, current_img) %>
 <div id="multi_img_show_container">
   <div class="row">
     <div class="col-sm-12">
       <% unless page_sequence[:total] == 1 %>
-          <div id="page_sequence_wrapper" class="well">
-            <%= render :partial => 'catalog/_show_partials/show_multi_img_pagination',
-                       :locals => {:page_sequence => page_sequence} %>
+          <div id="page_sequence_wrapper">
+            <%= render partial: 'catalog/_show_partials/show_multi_img_pagination',
+                       locals: { page_sequence: page_sequence } %>
           </div>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div id="multi_img_pane" class="col-sm-9 carousel">
-        <%= render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:document => @document,
-                               :image_pid => current_img,
-                               :page_sequence => page_sequence } %>
+        <%= render partial: 'catalog/_show_partials/show_default_img',
+                   locals: { document: @document,
+                             image_pid: current_img,
+                             page_sequence: page_sequence } %>
     </div>
     <div class="col-sm-3">
-      <div id="thumbnail_list_wrapper" class="well">
+      <div id="thumbnail_list_wrapper">
         <%= content_tag :ul,
-                        :id => 'thumbnail_list',
-                        :class => 'list-unstyled',
-                        :style => ('text-align:left' if image_files.length > 3) do %>
+                        id: 'thumbnail_list',
+                        class: 'list-unstyled',
+                        style: ('text-align:left' if image_files.length > 3) do %>
           <% image_files.each_with_index do |image_file, index| %>
               <li>
                 <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
                             image_viewer_path(@document.id, :view => image_file),
-                            :class => 'prev_next' + (' in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)).to_s,
-                            :title => 'View image ' + (index+1).to_s,
-                            :data => { :viewer => image_file },
-                            :remote => true) %>
+                            class: 'prev_next' + (' in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)).to_s,
+                            title: 'View image ' + (index+1).to_s,
+                            data: { viewer: image_file },
+                            remote: true) %>
               </li>
           <% end %>
         <% end %>

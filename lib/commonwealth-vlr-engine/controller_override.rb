@@ -59,7 +59,7 @@ module CommonwealthVlrEngine
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
         config.show.display_type_field = 'active_fedora_model_suffix_ssi'
-        config.show.partials = [:show_header, :show_breadcrumb, :show]
+        config.show.partials = [:show_breadcrumb, :show_header, :show]
 
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'

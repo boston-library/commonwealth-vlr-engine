@@ -1,32 +1,32 @@
 <% object_title = document[blacklight_config.index.title_field.to_sym] %>
 <%# img_element = iiif_image_tag(image_pid,
-                                {:size => ',800',
-                                 :alt => object_title,
-                                 :class => 'img_show'}) %>
+                                {size: ',800',
+                                 alt: object_title,
+                                 class: 'img_show'}) %>
 <%# we are using access800 derivative as default catalog#show image for the moment %>
 <% img_element = image_tag(datastream_disseminator_url(image_pid, 'access800'),
-                           :alt => object_title,
-                           :class => 'img_show') %>
+                           alt: object_title,
+                           class: 'img_show') %>
 <div id="img_show_container">
   <div id="img_show_canvas">
     <%= link_to '#',
                 id: 'img_show_zoom_cue',
-                :title => t('blacklight.images.zoom'),
-                :rel => 'nofollow' do %>
+                title: t('blacklight.images.zoom'),
+                rel: 'nofollow' do %>
         <% content_tag :i, '', class: 'img_zoom_icon fa fa-search-plus' %>
     <% end %>
-    <%= link_to(img_element, '#', :id => 'img_viewer_link',
-                :class => 'img_viewer_link',
-                :title => t('blacklight.images.zoom'),
-                :rel => 'nofollow') %>
+    <%= link_to(img_element, '#', id: 'img_viewer_link',
+                class: 'img_viewer_link',
+                title: t('blacklight.images.zoom'),
+                rel: 'nofollow') %>
   </div>
 
-  <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
-             :locals => {:object_title => object_title.html_safe,
-                         :image_pid => image_pid} %>
+  <%= render partial: 'catalog/_show_partials/show_default_simple_img_viewer',
+             locals: { object_title: object_title.html_safe,
+                         image_pid: image_pid } %>
 
   <% unless page_sequence[:total] == 1 %>
-      <%= render :partial => 'catalog/_show_partials/show_prev_next_carousel_links',
-                 :locals => {:page_sequence => page_sequence} %>
+      <%= render partial: 'catalog/_show_partials/show_prev_next_carousel_links',
+                 locals: { page_sequence: page_sequence } %>
   <% end %>
 </div>

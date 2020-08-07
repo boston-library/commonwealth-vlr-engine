@@ -1,0 +1,21 @@
+<%# override so we can combine pagination and start over links %>
+<% if @search_context[:prev] || @search_context[:next] || current_search_session %>
+  <div class='pagination-search-widgets card bg-light'>
+    <div class="card-body">
+      <div class="page-links">
+        <%= link_to_previous_document @search_context[:prev] %> |
+
+        <%= item_page_entry_info %> |
+
+        <%= link_to_next_document @search_context[:next] %>
+      </div>
+
+      <% if current_search_session %>
+        <div class="search-widgets">
+          <%= render 'start_over' %>
+          <%= link_back_to_catalog class: 'btn btn-sm btn-outline-dark' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

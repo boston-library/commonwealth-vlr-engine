@@ -1,14 +1,15 @@
 <div id="sidebar" class="<%= show_sidebar_classes %>">
 
   <% # bookmark/folder/sharing functions -%>
-  <%= render :partial => 'show_tools' %>
+  <%= render partial: 'show_tools' %>
 
   <%# render files to download %>
   <% if has_downloadable_files?(@document, @object_files) %>
-    <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:document => @document, :object_files => @object_files} %>
+    <%= render partial: 'catalog/_show_partials/show_downloads',
+               locals: { document: @document, object_files: @object_files} %>
   <% end %>
 
   <%# map view %>
-  <%= render :partial => 'catalog/show_maplet_default' %>
+  <%= render partial: 'catalog/show_maplet_default' %>
 
 </div>
