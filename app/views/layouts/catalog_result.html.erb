@@ -1,12 +1,12 @@
-<%# creating local version so we can call our own base template %>
+<%# override so we can call our own template; render sidebar elsewhere %>
 <% content_for(:content) do %>
   <section class="<%= show_content_classes %>">
     <%= yield %>
   </section>
 
-  <section class="<%= show_sidebar_classes %>">
-    <%= content_for(:sidebar) %>
-  </section>
+  <!-- <section class="<%# show_sidebar_classes %>"> -->
+    <%# content_for(:sidebar) %>
+  <!-- </section> -->
 <% end %>
 
 <%= render template: "layouts/commonwealth-vlr-engine/base" %>

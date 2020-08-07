@@ -9,62 +9,64 @@
     <% case @object_files[:images].length %>
     <% when 1 %>
       <%= javascript_include_tag 'openseadragon' %>
-      <%= render :partial => 'catalog/_show_partials/show_default_img',
-                 :locals => {:document => @document,
-                             :image_pid => @object_files[:images][0]['id'],
-                             :page_sequence => {:total => 1}} %>
+      <%= render partial: 'catalog/_show_partials/show_default_img',
+                 locals: {document: @document,
+                          image_pid: @object_files[:images][0]['id'],
+                          page_sequence: {:total => 1}} %>
     <% when 2..7 %>
       <%= javascript_include_tag 'openseadragon' %>
-      <%= render :partial => 'catalog/_show_partials/show_multi_img',
-                 :locals => {:document => @document,
-                             :image_files => image_file_pids(@object_files[:images])} %>
+      <%= render partial: 'catalog/_show_partials/show_multi_img',
+                 locals: {document: @document,
+                          image_files: image_file_pids(@object_files[:images])} %>
     <% else %>
       <% book_reader = true %>
     <% end %>
 <% end %>
 
 <% if video %>
-  <%= render :partial => 'catalog/_show_partials/show_video_player',
-             :locals => { :document => @document,
-                          :video_pid => @object_files[:video][0]['id'] } %>
+  <%= render partial: 'catalog/_show_partials/show_video_player',
+             locals: { document: @document,
+                       video_pid: @object_files[:video][0]['id'] } %>
 <% end %>
 
 <div class="row">
-
   <%# show thumbnail or icon if object has no images, or volume list %>
   <% if (!has_image_files?(@object_files) || book_reader || volumes) && !video %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
           <% if oai_object %>
-              <%= render :partial => 'catalog/_show_partials/show_oai_item_img', :locals => {:document => @document, :img => img} %>
+              <%= render partial: 'catalog/_show_partials/show_oai_item_img',
+                         locals: { document: @document, img: img } %>
           <% elsif book_reader %>
-              <%= render :partial => 'catalog/_show_partials/show_book_viewer_link', :locals => {:document => @document, :img => img} %>
+              <%= render partial: 'catalog/_show_partials/show_book_viewer_link',
+                         locals: { document: @document, img: img } %>
           <% else %>
               <%= img %>
           <% end %>
         </div>
-        <%= render :partial => 'catalog/_show_partials/show_oai_item_link', :locals => {:document => @document} if oai_object %>
+        <%= render partial: 'catalog/_show_partials/show_oai_item_link',
+                   locals: { document: @document } if oai_object %>
         <% if volumes %>
-            <%= render :partial => 'catalog/_show_partials/show_volumes',
-                       :locals => {:document => @document, :volumes => volumes} %>
+            <%= render partial: 'catalog/_show_partials/show_volumes',
+                       locals: { document: @document, volumes: volumes} %>
         <% end %>
       </div>
   <% end %>
 
-
-
-  <div class="<%= params[:action]%>_details col-sm-8">
-
+  <div id="metadata_mlt_wrapper" class="<%= params[:action]%>_details col-sm-8">
     <% # metadata display -%>
-    <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+    <%= render partial: 'catalog/_show_partials/show_default_metadata',
+               locals: { document: @document } %>
 
     <%# more like this %>
     <% unless @mlt_document_list.empty? %>
         <%= render partial: 'catalog/more_like_this',
                    locals: { document: @document, mlt_document_list: @mlt_document_list } %>
     <% end %>
-
   </div>
 
+  <%# content_for(:sidebar) do %>
+    <%= render_document_sidebar_partial @document %>
+  <%# end %>
 </div>

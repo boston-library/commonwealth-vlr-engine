@@ -64,9 +64,7 @@
   /* generic all-purpose catalog#index stuff */
 
   .index-title-icon { // icons for collections/institutions
-    width: 20px;
-    padding-left: 3px;
-    display: inline;
+
   }
 
   .document {
@@ -82,8 +80,10 @@
     img {
       border: 1px solid $light_gray;
 
-      &.index-title-icon { // icons for collections/institutions
+      &.index-title-icon {
         border: none;
+        padding-left: 3px;
+        display: inline;
       }
 
     }
@@ -121,6 +121,11 @@
             max-height: 300px;
             max-width: 300px;
           }
+
+          &.index-title-icon {
+            width: 20px;
+          }
+
         }
 
       }
@@ -193,6 +198,10 @@
           @media (max-width: breakpoint-max(sm)) {
             max-height: 300px;
             max-width: 300px;
+          }
+
+          &.index-title-icon {
+            width: 20px;
           }
 
         }

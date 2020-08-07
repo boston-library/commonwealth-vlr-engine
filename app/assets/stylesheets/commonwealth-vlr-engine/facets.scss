@@ -98,27 +98,22 @@ body.blacklight-catalog-formats_facet {
   }
 
   /* blacklight_range_limit */
-  .range_limit {
-    margin-bottom: 10px;
-
-    form.range_limit {
-      line-height: 2;
-    }
+  div.range_limit {
 
     input.range_begin, input.range_end {
       height: 25px;
-      padding: 6px;
-      width: 46px;
     }
 
     input.submit {
       height: 25px;
       padding: 2px 6px 6px;
-      margin-left: 3px;
+    }
+
+    .view_larger {
+      font-size: $font-size-xs;
     }
 
     .slider {
-      margin-left: 5px;
 
       &.slider-horizontal {
 
@@ -153,10 +148,6 @@ body.blacklight-catalog-formats_facet {
         border-radius: 5px;
       }
 
-    }
-
-    .distribution {
-      margin-left: -8px;
     }
 
   }
