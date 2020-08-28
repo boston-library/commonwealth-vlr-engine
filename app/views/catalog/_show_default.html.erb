@@ -29,7 +29,7 @@
                        video_pid: @object_files[:video][0]['id'] } %>
 <% end %>
 
-<div class="row">
+<div id="show_info_wrapper" class="row">
   <%# show thumbnail or icon if object has no images, or volume list %>
   <% if (!has_image_files?(@object_files) || book_reader || volumes) && !video %>
       <div id="thumbnail_wrapper" class="col-sm-4">
