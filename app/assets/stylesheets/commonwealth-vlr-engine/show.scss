@@ -12,7 +12,15 @@
 
       .search-widgets {
         float: right;
+
+        @media (max-width: breakpoint-max(sm)) {
+          float: none;
+        }
       }
+    }
+
+    @media (max-width: breakpoint-max(sm)) {
+      text-align: center;
     }
 
   }
@@ -232,189 +240,225 @@
 
   }
 
-  #thumbnail_wrapper {
-    margin-bottom: 1em;
-    order: 2;
+  #show_info_wrapper {
+    display: block;
 
-    #thumb_img_show_container {
-      text-align: center;
-      border-radius: $card-border-radius;
-      background-color: $card-cap-bg;
-      border: $card-border-width solid $card-border-color;
-      padding: 5px;
-
-      .thumb_img_show {
-        border: 1px solid $light_gray;
-        max-width:100%;
-        max-height: 300px;
-      }
-
-    }
-
-    #oai_item_link {
-
-      a {
-        font-weight: bold;
-        color: $very_dark_gray;
-
-        &:hover {
-          color: $bl_link;
-          text-decoration: none;
-        }
-      }
-
-    }
-
-  }
-
-  #metadata_mlt_wrapper {
-    order: 1;
-  }
-
-  /* metadata */
-  #item_metadata {
-    margin-bottom: 20px;
-
-    h3 {
-      font-size: $h4-font-size;
-    }
-
-    dl.document-metadata {
-
-      dt {
-        text-align: right;
-      }
-
-      dd {
-
-        .metadata_breadcrumb {
-          color: $dark_gray;
-          padding: 0 2px;
-        }
-
-        .uri_metadata_link {
-          word-wrap: break-word;
-          word-break: break-word;
-        }
-
-      }
-
-    }
-
-    #metadata_expand_heading {
-      font-weight: normal;
-    }
-
-    #mods_link_wrapper {
+    #thumbnail_wrapper {
       float: right;
+      margin-bottom: 1em;
+      //order: 2;
 
-      a {
-        color:$dark_gray;
-      }
-    }
+      #thumb_img_show_container {
+        text-align: center;
+        border-radius: $card-border-radius;
+        background-color: $card-cap-bg;
+        border: $card-border-width solid $card-border-color;
+        padding: 5px;
 
-  }
-
-  #more_like_this {
-    border-radius: $card-border-radius;
-    background-color: $card-cap-bg;
-    border: $card-border-width solid $card-border-color;
-    padding-top: 10px;
-
-    h4 {
-      font-size: $h5-font-size;
-    }
-
-    #more_like_this_docs {
-
-      .more_like_this_document {
-        height: fit-content;
-
-        img {
-          max-width: 100%;
-          height: auto;
-          display: block;
+        .thumb_img_show {
+          border: 1px solid $light_gray;
+          max-width:100%;
+          max-height: 300px;
         }
 
-        .mlt_title_link {
-          position: absolute;
-          top: 0;
-          font-size: $font-size-xs;
-          bottom: 0;
-          width: 85%;
-          padding: 5px;
-          background: $dark_gray;
-          visibility: hidden;
-          color: #FFFFFF;
-          opacity:0;
-          transition: opacity 0.3s ease;
+      }
+
+      #oai_item_link {
+
+        a {
+          font-weight: bold;
+          color: $very_dark_gray;
 
           &:hover {
+            color: $bl_link;
             text-decoration: none;
           }
-
         }
 
-        &:hover .mlt_title_link {
-          visibility: visible;
-          opacity:.9;
+      }
+
+      #book_actions_links_wrap {
+        bottom: 0;
+        position: absolute;
+        width: 88%;
+
+        a {
+          color: $very_light_gray;
+          background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
+          padding: 0 5px;
+          margin-bottom: 2px;
         }
 
       }
 
     }
 
-    #more_mlt_link_wrapper {
-      float: right;
-      margin-top: 7px;
+    #metadata_mlt_wrapper {
+      float: left;
+      // order: 1;
 
-      a {
-        color:$dark_gray;
-      }
+      /* metadata */
+      #item_metadata {
+        margin-bottom: 20px;
 
-    }
-
-  }
-
-  #sidebar {
-    order: 3;
-
-    div.show-tools {
-      margin-bottom: 20px;
-
-      ul.list-group {
-        padding: .5rem 0;
-
-        .list-group-item {
-          border: none;
-          padding: 0.3rem 1.25rem;
+        h3 {
+          font-size: $h4-font-size;
         }
 
-      }
-    }
+        dl.document-metadata {
 
-    #sidebar-downloads {
+          dt {
+            text-align: right;
 
-      .card-body {
-        padding: .5rem 1.25rem;
-
-        li.download_list_item {
-          width: 100%;
-
-          a {
-            padding: 10px 5px 0 0;
-            word-wrap: break-word;
-            word-break: break-word;
-            display: block;
-            line-height: .5rem;
+            @media (max-width: breakpoint-max(sm)) {
+              text-align: left;
+            }
           }
 
-          .download_info {
-            font-size: $font-size-xs;
+          dd {
+
+            .metadata_breadcrumb {
+              color: $dark_gray;
+              padding: 0 2px;
+            }
+
+            .uri_metadata_link {
+              word-wrap: break-word;
+              word-break: break-word;
+            }
+
+          }
+
+        }
+
+        #metadata_expand_heading {
+          font-weight: normal;
+        }
+
+        #mods_link_wrapper {
+          float: right;
+
+          a {
+            color:$dark_gray;
+          }
+        }
+
+      }
+
+      #more_like_this {
+        border-radius: $card-border-radius;
+        background-color: $card-cap-bg;
+        border: $card-border-width solid $card-border-color;
+        padding: $card-spacer-x $card-spacer-x;
+
+        @media (max-width: breakpoint-max(sm)) {
+          margin-bottom: 20px;
+        }
+
+        h4 {
+          font-size: $h5-font-size;
+        }
+
+        #more_like_this_docs {
+
+          .more_like_this_document {
+            height: fit-content;
+
+            img {
+              max-width: 100%;
+              height: auto;
+              display: block;
+            }
+
+            .mlt_title_link {
+              position: absolute;
+              top: 0;
+              font-size: $font-size-xs;
+              bottom: 0;
+              width: 85%;
+              padding: 5px;
+              background: $dark_gray;
+              visibility: hidden;
+              color: #FFFFFF;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+
+              &:hover {
+                text-decoration: none;
+              }
+
+            }
+
+            &:hover .mlt_title_link {
+              visibility: visible;
+              opacity: .9;
+            }
+
+            @media (max-width: breakpoint-max(sm)) {
+              margin-bottom: 10px;
+            }
+
+          }
+
+        }
+
+        #more_mlt_link_wrapper {
+          text-align: right;
+          margin-top: 7px;
+
+          a {
             color: $dark_gray;
           }
 
         }
+
+      }
+
+    }
+
+    #sidebar {
+      float: left;
+      // order: 3;
+
+      div.show-tools {
+        margin-bottom: 20px;
+
+        ul.list-group {
+          padding: .5rem 0;
+
+          .list-group-item {
+            border: none;
+            padding: 0.3rem 1.25rem;
+          }
+
+        }
+      }
+
+      #sidebar-downloads {
+        margin-bottom: 20px;
+
+        .card-body {
+          padding: .5rem 1.25rem;
+
+          li.download_list_item {
+            width: 100%;
+
+            a {
+              padding: 10px 5px 0 0;
+              word-wrap: break-word;
+              word-break: break-word;
+              display: block;
+              line-height: .5rem;
+            }
+
+            .download_info {
+              font-size: $font-size-xs;
+              color: $dark_gray;
+            }
+
+          }
+        }
+
       }
 
     }
