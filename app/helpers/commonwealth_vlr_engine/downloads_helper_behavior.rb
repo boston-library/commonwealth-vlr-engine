@@ -20,7 +20,7 @@ module CommonwealthVlrEngine
     end
 
     def download_link_options
-      { class: download_link_class, rel: 'nofollow', data: { ajax_modal: 'trigger' } }
+      { class: download_link_class, rel: 'nofollow', data: { blacklight_modal: 'trigger' } }
     end
 
     def download_link_title(document, object_profile, datastream_id=nil)

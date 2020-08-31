@@ -1,7 +1,6 @@
 # helper methods for rendering citations
 
 module CitationHelper
-
   # an array of available citation formats
   # for each style, there should be a corresponding "render_#{style}_citation" method
   def citation_styles
@@ -9,6 +8,8 @@ module CitationHelper
   end
 
   def render_citations(documents, citation_styles)
+    return if documents.blank?
+
     citation_output_for_view = []
     citation_styles.each do |style|
       citation_output_for_view << content_tag(:h4, t("blacklight.citation.#{style}"))
@@ -170,5 +171,4 @@ module CitationHelper
       document[:identifier_uri_ss].presence || solr_document_url(document)
     end
   end
-
 end

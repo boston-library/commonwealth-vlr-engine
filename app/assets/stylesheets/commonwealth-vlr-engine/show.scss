@@ -466,3 +466,14 @@
   }
 
 }
+
+.mods_xml_display pre {
+  padding: 15px;
+  word-break: normal;
+  font-size: $font-size-xs;
+  white-space: pre-wrap;
+}
+
+.citation-content {
+  margin-bottom: 20px;
+}

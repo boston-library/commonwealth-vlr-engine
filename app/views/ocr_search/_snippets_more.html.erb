@@ -9,7 +9,6 @@
 <%= link_to(t('blacklight.ocr.search.results.snippets.more'),
             "#snippet_collapse_#{counter}",
             data: {toggle: 'collapse'},
-            'aria-expanded' => 'false',
-            'aria-controls' => "#snippet_collapse_#{counter}",
+            aria: { expanded: 'false', controls: "#snippet_collapse_#{counter}" },
             class: 'ocr_snippets_expand js-controls')
 %>

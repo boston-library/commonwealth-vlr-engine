@@ -13,7 +13,7 @@
                                  autocomplete_path: search_action_path(action: :suggest) } %>
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary search-btn btn-xs" id="search">
-          <span class="submit-search-text sr-only"><%=t('blacklight.search.form.submit')%></span>
+          <span class="submit-search-text sr-only"><%= t('blacklight.search.form.submit') %></span>
           <%= blacklight_icon :search, aria_hidden: true %>
         </button>
       </div>

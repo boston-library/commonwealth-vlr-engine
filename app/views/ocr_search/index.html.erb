@@ -11,32 +11,33 @@
 </div>
 <div id="ocr_search_modal" class="modal-body">
   <div id="ocr_search_wrapper">
-    <%= render :partial => 'search_form_ocr' %>
+    <%= render partial: 'search_form_ocr' %>
     <% if params[:ocr_q] && @response.empty? %>
         <%= render 'zero_results_ocr' %>
     <% else %>
         <% if params[:ocr_q] %>
-            <div id="ocr_search_details" class="well well-sm">
+            <div id="ocr_search_details">
               <span id="ocr_search_terms">
                 <%= @response.total %> results for: <span id="ocr_search_term"><%= params[:ocr_q] %></span>
               </span>
-              <%= render :partial => 'catalog/sort_widget' %>
-              <%= render :partial => 'catalog/paginate_compact', :object => @response if show_pagination? %>
+              <%= render partial: 'catalog/paginate_compact',
+                         object: @response if show_pagination? %>
+              <%= render partial: 'catalog/sort_widget' %>
             </div>
             <div id="ocr_search_results">
               <%= render collection: @document_list,
                          as: :document,
                          partial: 'index_ocr_list',
-                         locals: {count: @document_list.count} %>
+                         locals: { count: @document_list.count } %>
             </div>
         <% elsif ocr_q_params(current_search_session) %>
             <div id="ocr_search_suggest">
               Enter search terms above, or search for
               "<%= link_to(current_search_session.query_params['q'].gsub(/\A"|"\Z/, ''),
-                           ocr_search_path(:ocr_q => current_search_session.query_params['q']),
-                           :class => '',
-                           :rel => 'nofollow',
-                           :data => {:ajax_modal => 'trigger'}) %>"
+                           ocr_search_path(ocr_q: current_search_session.query_params['q']),
+                           class: '',
+                           rel: 'nofollow',
+                           data: { blacklight_modal: 'preserve' }) %>"
               in the text of this item.
             </div>
         <% end %>
@@ -46,7 +47,7 @@
 
 <div id="ocr_modal_footer" class="modal-footer">
   <div id="ocr_pagination" class="bottom">
-    <%= render :partial => 'catalog/results_pagination' if params[:ocr_q] %>
+    <%= render partial: 'catalog/results_pagination' if params[:ocr_q] %>
   </div>
 </div>
 <%= javascript_include_tag 'commonwealth-vlr-engine/ocr_search_utils' %>
