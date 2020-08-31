@@ -50,11 +50,11 @@ $(function() {
         //BlacklightGoogleAnalytics.pause();
     });
 
-    // "more" facet ajax-modal clicks
+    // "more" facet modal clicks
     BlacklightGoogleAnalytics.track_modal_facet_clicks = function () {
-        $("#ajax-modal").find('a').click(function () {
+        $("#blacklight-modal").find('a').click(function () {
             try {
-                var action = 'facet_' + $('div.modal-header').find('h3').text();
+                var action = 'facet_' + $('.modal-title').text();
                 var label = $(this).text();
                 ga('send', 'event', category, action, label);
             } catch (err) {
@@ -65,7 +65,7 @@ $(function() {
 
     // modal form submission
     BlacklightGoogleAnalytics.track_modal_form = function () {
-        $("#ajax-modal").find('form').submit(function () {
+        $("#blacklight-modal").find('form').submit(function () {
             try{
                 var action = 'submit_' + BlacklightGoogleAnalytics.this_or_parent_id($(this));
                 ga('send', 'event', category, action);

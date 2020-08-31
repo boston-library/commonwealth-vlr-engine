@@ -14,13 +14,18 @@
       .ocr-search-form {
 
         .search_q {
-          border-radius: 4px 0 0 4px;
+          border-top-left-radius: $border-radius;
+          border-bottom-left-radius: $border-radius;
         }
 
-        .submit-search-text {
-          display: none;
+        .blacklight-icons > svg {
+          height: 20px;
         }
 
+      }
+
+      @media (max-width: breakpoint-max(md)) {
+        width: 75%
       }
 
     }
@@ -40,13 +45,18 @@
     }
 
     #ocr_search_details {
-      width: 100%;
-      float: left;
-      padding: 4px 9px;
+      border-radius: $card-border-radius;
+      background-color: $card-cap-bg;
+      border: $card-border-width solid $card-border-color;
+      padding: 5px 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
+      align-items: center;
 
       #ocr_search_terms {
-        float: left;
-        padding-top: 4px;
+        height: fit-content;
 
         #ocr_search_term {
           color: $very_dark_gray;
@@ -55,17 +65,12 @@
       }
 
       #sort-dropdown {
-        float: right;
+        align-self: end;
+        margin-top: 4px;
 
         button {
           padding: 2px 5px;
         }
-      }
-
-      .page_links {
-        float: right;
-        padding: 4px 15px 0 0;
-        border: none;
       }
 
     }
@@ -79,12 +84,10 @@
 
           dt {
             text-align: left;
-            //width: 72px;
             font-weight: normal;
           }
 
           dd {
-            //margin-left: 77px;
 
             .ocr_term_freq {
               font-size: 12px;
@@ -141,32 +144,6 @@
 
 }
 
-#ocr_pagination {
-
-  #pagination_links {
-    margin: 0;
-
-    ul.pagination {
-      margin: 0;
-    }
-
-  }
-
-}
-
-/* Landscape phone to portrait tablet (iPad) */
-@media (max-width: 767px) {
-
-  #ocr_search_modal {
-
-    #ocr_search_wrapper {
-
-      #ocr_search_form_wrapper {
-        width: 75%;
-      }
-
-    }
-
-  }
-
+#ocr_modal_footer {
+  justify-content: center;
 }

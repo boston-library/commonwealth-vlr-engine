@@ -1,12 +1,13 @@
 /* various utilities for ocr search results display in Bootstrap modal and WDL-Viewer contexts */
 
-var top_pagination_selector = '#ocr_search_details .page_links a';
-var bottom_pagination_selector = '#ocr_pagination #pagination_links a';
+var top_pagination_selector = '#ocr_search_details .page-links a';
+var bottom_pagination_selector = '#ocr_pagination a';
 var relevancy_link_selector = '#sort-dropdown a';
-var page_rel_selectors = top_pagination_selector + ", " + bottom_pagination_selector + ", " + relevancy_link_selector;
+var suggest_link_selector = '#ocr_search_suggest a';
+var page_rel_selectors = top_pagination_selector + ", " + bottom_pagination_selector + ", " + relevancy_link_selector + ", " + suggest_link_selector;
 
 /* pagination links should preserve the modal rather than reloading the page */
-$(page_rel_selectors).on("click", Blacklight.ajaxModal.modalAjaxLinkClick);
+$(page_rel_selectors).on("click", Blacklight.modal.modalAjaxLinkClick);
 
 /* show loading status for results, next page, etc. */
 $(page_rel_selectors).on("click", function() {
@@ -19,7 +20,7 @@ $('.ocr-search-form').submit(function() {
 /* if the window is displayed in the WDL-Viewer context, page links should trigger page changes via JS */
 if ($("body.wdl-viewer").length) {
     $(".book_page_link").on("click", function () {
-        $('#ajax-modal').modal('hide');
+        $('#blacklight-modal').modal('hide');
         $viewer.trigger("goto-page-search",
             [1, this.href.match(/\d+$/), this.href.match(/ocr_q=[\S]+\#/)[0].replace('ocr_q=','').slice(0, -1)]);
         return false;

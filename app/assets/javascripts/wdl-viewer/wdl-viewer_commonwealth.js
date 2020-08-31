@@ -198,10 +198,10 @@
                 controller.searchText = this.setSearchText(q);
             }
 
-            var $searchToggle = $('<a id="toggle-search" data-ajax-modal="trigger" class="btn btn-link"><i class="fa fa-search"></i></a>')
+            var $searchToggle = $('<a id="toggle-search" data-blacklight-modal="trigger" class="btn btn-link"><i' +
+                ' class="fa fa-search"></i></a>')
                 .attr("href", this.setSearchToggleHref())
                 .attr("title", "Search this work")
-                //.data("ajax_modal", "trigger") // not working!
                 .prependTo("footer .toolbar .controls");
         }
 
