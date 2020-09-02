@@ -1,80 +1,70 @@
-<div id="content" class="col-sm-12 show-document">
+<% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
+<% content_for(:head) { render_link_rel_alternates } %>
 
-  <% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
-  <% content_for(:head) { render_link_rel_alternates } %>
+<div id="document" class="<%= render_document_class %>">
 
-  <%# this should be in a partial -%>
-  <div id="document" class="<%= render_document_class %>">
+  <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-    <div id="doc_<%= @document.id.to_s.parameterize %>">
+    <h2 class="institution-title">
+      <%= @institution_title %>
+    </h2>
 
-      <h2 class="institution-title">
-        <%= @institution_title %>
-      </h2>
-
-      <div id="institution_geolocation">
-        <% if @document[:subject_hiergeo_geojson_ssm] %>
-            <%= render_hiergo_subject(@document[:subject_hiergeo_geojson_ssm].first,
-                                      t('blacklight.breadcrumb.separator'),
-                                      'metadata_breadcrumb') %>
-        <% end %>
-      </div>
-
-      <div class="document">
-
-<div class="row">
-
-  <div class="col-sm-9">
-
-    <div id="institution_search_tools" class="well well-sm">
-      <%= render :partial => 'search_form_institution',
-                 :locals => {:document => @document} %>
-      <span class="institution_search_separator">or</span>
-      <div id="institution_view_all">
-        <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
-      </div>
-    </div>
-
-    <%= create_thumb_img_element(@document, ['institution_img_show']) %>
-
-    <div id="institution_desc_wrap">
-
-      <%= render_institution_desc(@document[:abstract_tsim]) if @document[:abstract_tsim] %>
-
-      <% if @document[:institution_url_ss] %>
-          <div id="institution_site_link_wrap">
-            <ul>
-              <li>
-                <%= link_to @document[:institution_url_ss], id: 'institution_site_link', target: '_blank' do %>
-                    Visit institution web site <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
+    <div id="institution_geolocation">
+      <% if @document[:subject_hiergeo_geojson_ssm] %>
+          <%= render_hiergo_subject(@document[:subject_hiergeo_geojson_ssm].first,
+                                    t('blacklight.breadcrumb.separator'),
+                                    'metadata_breadcrumb') %>
       <% end %>
-
     </div>
 
-      <% if @collex_documents.length > 0 %>
-        <div id="institution_collections">
-            <h4>Digital Collections: <span id="collections_count">(<%= @collex_documents.length %>)</span></h4>
+    <div class="row">
 
-            <%= render partial: 'catalog/document_collections_gallery',
-                       locals: { documents: @collex_documents } %>
+      <div class="col-lg-9">
+
+        <div id="institution_search_tools">
+          <div id="institution_view_all">
+            <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
+          </div>
+          <span class="institution_search_separator">or</span>
+          <%= render partial: 'search_form_institution',
+                     locals: { document: @document } %>
+        </div>
+
+        <%= create_thumb_img_element(@document, ['institution_img_show']) %>
+
+        <div id="institution_desc_wrap">
+
+          <%= render_institution_desc(@document[:abstract_tsim]) if @document[:abstract_tsim] %>
+
+          <% if @document[:institution_url_ss] %>
+              <div id="institution_site_link_wrap">
+                <ul>
+                  <li>
+                    <%= link_to @document[:institution_url_ss], id: 'institution_site_link', target: '_blank' do %>
+                        Visit institution web site <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+          <% end %>
 
         </div>
-      <% end %>
 
-  </div>
+          <% if @collex_documents.length > 0 %>
+            <div id="institution_collections">
+                <h4>Digital Collections: <span id="collections_count">(<%= @collex_documents.length %>)</span></h4>
+
+                <%= render partial: 'catalog/document_collections_gallery',
+                           locals: { documents: @collex_documents } %>
+            </div>
+          <% end %>
+
+      </div>
 
 
-  <div id="sidebar" class="col-sm-3">
-    <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) || Rails.application.class.parent_name == 'Commonwealth') %>
-    <%= render 'search_sidebar' %>
-  </div>
-
-</div>
-
+      <div id="sidebar" class="col-lg-3">
+        <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) || Rails.application.class.parent_name == 'Commonwealth') %>
+        <%= render 'search_sidebar' %>
       </div>
 
     </div>

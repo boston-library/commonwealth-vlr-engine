@@ -90,13 +90,13 @@
           dd {
 
             .ocr_term_freq {
-              font-size: 12px;
+              font-size: $font-size-xs;
               color: $very_dark_gray;
               display: inline;
             }
 
             .ocr_snippets {
-              font-size: 13px;
+              font-size: $font-size-sm;
               display: inline;
 
               .ocr_snippet {
@@ -116,7 +116,7 @@
               a.ocr_snippets_expand {
                 display: block;
                 color: $dark_gray;
-                font-size: 12px;
+                font-size: $font-size-xs;
                 margin-top: 2px;
 
                 &:hover {

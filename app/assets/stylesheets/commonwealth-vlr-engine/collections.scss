@@ -215,73 +215,6 @@ h4.collection-provenance {
   padding-left:1em;
 }
 
-/* collections gallery */
-
-#documents.collections-gallery {
-
-  .masonry {
-
-    &.document {
-      background-color: inherit;
-      padding: 5px;
-
-      .thumbnail {
-        border: 1px solid $dark_gray;
-        padding: 0;
-        overflow: hidden;
-        border-radius: 7px;
-        height: 221px;
-
-        a {
-
-          img {
-            border: none;
-            height:auto;
-            width:auto;
-            max-height: 221px;
-            position: relative;
-            top: 109px; // would rather use 50% but doesn't work in Chrome
-            transform: translateY(-50%);
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-          }
-
-        }
-
-        .caption {
-          display: block;
-          left: 5px;
-          right: 5px;
-          width: auto;
-          bottom: 5px;
-          border-bottom-left-radius: 7px;
-          border-bottom-right-radius: 7px;
-          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 27%, rgba(0,0,0,0.45) 100%);
-
-          h5 {
-            font-size:16px;
-            margin-bottom: 3px;
-            margin-top: 3px;
-
-            a:hover {
-              text-decoration: none;
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
-
 /* responsive styles */
 
 /* Large desktop */
@@ -324,32 +257,6 @@ h4.collection-provenance {
 
     #blacklight-index-map {
       height: 400px;
-    }
-
-  }
-
-  #documents.collections-gallery {
-
-    .masonry {
-
-      &.document {
-
-        .thumbnail {
-          height: 271px;
-
-          a {
-
-            img {
-              top: 135px;
-              max-height: 271px;
-            }
-
-          }
-
-        }
-
-      }
-
     }
 
   }
@@ -407,32 +314,6 @@ h4.collection-provenance {
 
   }
 
-  #documents.collections-gallery {
-
-    .masonry {
-
-      &.document {
-
-        .thumbnail {
-          height: 166px;
-
-          a {
-
-            img {
-              top: 82px;
-              max-height: 166px;
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
 }
 
 /* Landscape phone to portrait tablet */
@@ -476,60 +357,6 @@ h4.collection-provenance {
 
     div.blacklight-related_item_series_ssim {
       display: block;
-    }
-
-  }
-
-  #documents.collections-gallery {
-
-    .masonry {
-
-      &.document {
-
-        &:before {
-          content: "";
-          display: block;
-          padding-top: 100%;
-        }
-
-        .thumbnail {
-          position: absolute;
-          top: 5px;
-          left: 5px;
-          bottom: 5px;
-          right: 5px;
-          height: auto;
-
-          a {
-
-            img {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%,-50%);
-              -webkit-transform: translate(-50%,-50%);
-              -ms-transform: translate(-50%,-50%);
-              -moz-transform: translate(-50%,-50%);
-              max-height: unset;
-            }
-
-          }
-
-          .caption {
-            left: 0;
-            right: 0;
-            bottom: -2px;
-
-            h5 {
-              font-size:14px;
-            }
-
-          }
-
-        }
-
-      }
-
     }
 
   }
