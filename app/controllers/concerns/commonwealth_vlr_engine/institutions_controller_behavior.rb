@@ -16,8 +16,11 @@ module CommonwealthVlrEngine
 
     def index
       @nav_li_active = 'explore'
+      # have to define a new search_service here, or we can't inject per_page
       params[:per_page] = params[:per_page].presence || '50'
-      (@response, @document_list) = search_service.search_results
+      institutions_search_service = search_service_class.new(config: blacklight_config,
+                                                             user_params: params)
+      (@response, @document_list) = institutions_search_service.search_results
       params[:view] ||= 'list' # still need this or grid view is invoked
       params[:sort] = 'title_info_primary_ssort asc'
 

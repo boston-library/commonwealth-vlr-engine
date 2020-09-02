@@ -4,6 +4,14 @@
 
 div.institutions-list {
 
+  .item_az_links {
+    font-size: $font-size-sm;
+    border-radius: $card-border-radius;
+    background-color: $card-cap-bg;
+    border: $card-border-width solid $card-border-color;
+    padding: 9px;
+  }
+
   #sortAndPerPage {
     margin-bottom:0;
 
@@ -16,6 +24,7 @@ div.institutions-list {
 
   #documents {
     margin-top: 15px;
+    margin-bottom: 25px;
 
     .blacklight-institution {
       margin-bottom: 10px;
@@ -50,22 +59,20 @@ div.institutions-list {
     }
   }
 
-}
 
+
+}
 
 /* institutions show view */
 
 div.blacklight-institution {
 
   h2 {
-    line-height: 25px;
+    margin-bottom: 0;
   }
 
   #institution_geolocation {
-    padding-bottom: .7em;
-    font-size: 16px;
-    position: relative;
-    top: -5px;
+    padding-bottom: 15px;
     color: $dark_gray;
 
     a {
@@ -85,37 +92,73 @@ div.blacklight-institution {
   img.institution_img_show {
     float: left;
     max-width: 25%;
-    margin: 0 1.4em 1em 0;
+    margin: 0 20px 20px 0;
     border: 1px solid $light_gray;
+
+    @media (max-width: breakpoint-min(sm)) {
+      max-width: 35%;
+    }
   }
 
   #institution_search_tools {
-    margin-bottom: 1em;
+    border-radius: $card-border-radius;
+    background-color: $card-cap-bg;
+    border: $card-border-width solid $card-border-color;
+    margin-bottom: 20px;
     width: 72%;
     float: right;
+    padding: 10px;
 
-    #institution_search_form {
-      padding: 0 3px 0 0;
+    #institution_view_all {
       float: left;
+    }
 
-      input {
-        width: 255px;
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-      }
+    .institution_search_separator {
+      float: left;
+      padding: 6px 15px 8px 12px;
+      color: $dark_gray;
 
-      .submit-search-text {
-        display: none;
+      @media (max-width: breakpoint-max(md)) {
+        padding-right: 10px;
+        padding-left: 7px;
       }
 
     }
 
-    .institution_search_separator {
-      display: inline;
-      float: left;
-      padding: 6px 15px 8px 12px;
-      vertical-align: middle;
-      color: $dark_gray;
+    #institution_search_form {
+
+      input {
+        width: 255px;
+        border-bottom-left-radius: $border-radius;
+        border-top-left-radius: $border-radius;
+
+        @media (min-width: breakpoint-min(xl)) {
+          width: 290px;
+        }
+
+        @media (max-width: breakpoint-max(md)) {
+          width: 278px;
+        }
+
+        @media (max-width: breakpoint-min(sm)) {
+          width: 270px;
+        }
+
+      }
+
+      .blacklight-icons > svg {
+        height: 20px;
+      }
+
+    }
+
+    @media (max-width: breakpoint-max(md)) {
+      width: 100%;
+    }
+
+    @media (max-width: breakpoint-min(sm)) {
+      display: flex;
+      flex-flow: column;
     }
 
   }
@@ -131,7 +174,7 @@ div.blacklight-institution {
     }
 
     .institution_desc_inline {
-      display:inline;
+      display: inline;
       margin-bottom: unset;
     }
 
@@ -154,116 +197,106 @@ div.blacklight-institution {
   #institution_collections {
     width: 100%;
     float: left;
-    margin-top: 1em;
+    margin-top: 16px;
 
     #collections_count {
-      font-size: 14px;
+      font-size: $font-size-sm;
       color: $dark_gray;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     #documents.collections-gallery {
-      margin-top: 0;
-    }
 
-  }
+      .masonry {
 
-}
+        &.document {
+          background-color: inherit;
+          padding: 5px;
+          margin: 0;
 
-/* Portrait tablet to landscape and desktop */
+          .thumbnail {
+            border: 1px solid $dark_gray;
+            overflow: hidden;
+            border-radius: $border-radius-lg;
+            height: 221px;
 
-@media (min-width: 768px) and (max-width: 991px) {
+            a {
 
-  div.blacklight-institution {
+              img { // don't remove commented-out below until further testing
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                border: none;
+                // height: auto;
+                // width: auto;
+                max-height: 221px;
+                max-width: 231px;
+                position: relative;
+                top: 109px; // would rather use 50% but doesn't work in Chrome
+                transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
 
-    img.institution_img_show {
-      max-width: 35%;
-    }
+                @media (min-width: breakpoint-min(xl)) {
+                  top: 135px;
+                  max-height: 271px;
+                  max-width: 275px;
+                }
 
-    #institution_search_tools {
-      width:100%;
-    }
+                @media (max-width: breakpoint-max(md)) {
+                  top: 84px;
+                  max-height: 170px;
+                  max-width: 170px;
+                }
 
-  }
+              }
 
-}
+            }
 
-/* Landscape phone to portrait tablet */
+            .caption {
+              display: block;
+              left: 5px;
+              right: 5px;
+              width: auto;
+              bottom: 5px;
+              border-bottom-left-radius: $border-radius-lg;
+              border-bottom-right-radius: $border-radius-lg;
+              background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 27%, rgba(0,0,0,0.45) 100%);
 
-@media (max-width: 767px) {
+              h3 {
+                font-size: $font-size-base;
+                margin-bottom: 3px;
+                margin-top: 3px;
 
-  /* need this or sidebar covers pagination links */
-  body.blacklight-institutions-index #sidebar {
-    float: left;
-  }
+                a:hover {
+                  text-decoration: none;
+                }
 
-  div.blacklight-institution {
+              }
 
-    #institution_search_tools {
-      width:70%;
+            }
 
-      #institution_search_form {
-        padding: 0 3px 7px 0;
-        width: 301px;
+            @media (min-width: breakpoint-min(xl)) {
+              height: 271px;
+            }
 
-        input {
-          width:100%;
-        }
+            @media (max-width: breakpoint-max(md)) {
+              height: 170px;
+            }
 
-      }
+          }
 
-      .institution_search_separator {
-        padding: 6px 10px 15px 7px;
-      }
-
-    }
-
-    #institution_collections {
-      margin: 2em 0;
-    }
-
-    #sidebar {
-      float:left;
-      width: 100%;
-    }
-
-  }
-
-}
-
-/* Landscape phones and down */
-
-@media (max-width: 480px) {
-
-  div.blacklight-institution {
-
-    img.institution_img_show {
-      max-width: 35%;
-    }
-
-    #institution_search_tools {
-      width:100%;
-
-      #institution_search_form {
-        padding: 0 1em .5em 0;
-        width: 100%;
-
-        input {
-          width: 100%;
-          font-size: 11px;
         }
 
       }
 
     }
 
+    @media (max-width: breakpoint-max(md)) {
+      margin-bottom: 30px;
+    }
+
   }
 
 }
-
-
-
-
-
-
-

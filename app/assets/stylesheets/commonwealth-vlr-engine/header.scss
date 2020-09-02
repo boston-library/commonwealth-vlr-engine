@@ -26,10 +26,6 @@
       font-size: $font-size-xs;
       width: 100%;
 
-      @media (max-width: breakpoint-max(md)) {
-
-      }
-
       @media (max-width: breakpoint-max(sm)) {
         flex-wrap: wrap;
         margin-top: 20px;
