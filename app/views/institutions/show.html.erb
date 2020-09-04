@@ -5,9 +5,7 @@
 
   <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-    <h2 class="institution-title">
-      <%= @institution_title %>
-    </h2>
+    <h1 class="institution-title"><%= @institution_title %></h1>
 
     <div id="institution_geolocation">
       <% if @document[:subject_hiergeo_geojson_ssm] %>

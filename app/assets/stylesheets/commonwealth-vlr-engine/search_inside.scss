@@ -45,10 +45,7 @@
     }
 
     #ocr_search_details {
-      border-radius: $card-border-radius;
-      background-color: $card-cap-bg;
-      border: $card-border-width solid $card-border-color;
-      padding: 5px 10px;
+      @include card-esque(5px 10px);
       margin-bottom: 20px;
       display: flex;
       justify-content: space-between;

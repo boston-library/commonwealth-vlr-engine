@@ -4,16 +4,9 @@
 
 div.institutions-list {
 
-  .item_az_links {
-    font-size: $font-size-sm;
-    border-radius: $card-border-radius;
-    background-color: $card-cap-bg;
-    border: $card-border-width solid $card-border-color;
-    padding: 9px;
-  }
-
   #sortAndPerPage {
-    margin-bottom:0;
+    @include card-esque(10px);
+    margin-bottom: 0;
 
     /* don't display sort widget */
     #sort-dropdown {
@@ -59,8 +52,6 @@ div.institutions-list {
     }
   }
 
-
-
 }
 
 /* institutions show view */
@@ -101,13 +92,10 @@ div.blacklight-institution {
   }
 
   #institution_search_tools {
-    border-radius: $card-border-radius;
-    background-color: $card-cap-bg;
-    border: $card-border-width solid $card-border-color;
+    @include card-esque(10px);
     margin-bottom: 20px;
     width: 72%;
     float: right;
-    padding: 10px;
 
     #institution_view_all {
       float: left;

@@ -1,31 +1,33 @@
 <% @page_title = t('blacklight.institutions.index.page_title', :application_name => application_name) %>
 <% content_for(:head) { render_opensearch_response_metadata } %>
 
-<div id="content" class="col-sm-9 institutions-list">
+<h2><%= t('blacklight.institutions.title') %></h2>
 
-  <h2><%= t('blacklight.institutions.title') %></h2>
+<div id="content" class="row institutions-list">
 
-  <%= render 'institutions/intro_text' %>
+  <div id="institutions_results" class="col-lg-9">
+    <%= render 'institutions/intro_text' %>
 
-  <% if should_render_inst_az? %>
+    <% if should_render_inst_az? %>
       <%= render partial: 'catalog/az_links', locals: { az_label: t('blacklight.institutions.index.a-z_label'),
                                                         az_link_path: 'institutions_path',
                                                         az_exclude: ['V','X','Z'] } %>
-  <% end %>
+    <% end %>
 
-  <%= render 'catalog/constraints' %>
+    <%= render 'catalog/constraints' %>
 
-  <%= render 'catalog/sort_and_per_page' %>
+    <%= render 'catalog/sort_and_per_page' %>
 
-  <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
+    <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
 
-  <%= render_institutions_index %>
+    <%= render_institutions_index %>
 
-  <%= render 'catalog/results_pagination' %>
+    <%= render 'catalog/results_pagination' %>
+  </div>
+
+  <%# not using facets at the moment %>
+  <div id="sidebar" class="col-lg-3">
+    <%# render :partial=>'facets' %>
+  </div><!--/well -->
 
 </div>
-
-<%# not using facets at the moment %>
-<div id="sidebar" class="col-sm-3">
-  <%# render :partial=>'facets' %>
-</div><!--/well -->

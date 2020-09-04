@@ -99,8 +99,8 @@ module CommonwealthVlrEngine
     # create an image tag from an IIIF image server
     def iiif_image_tag(image_pid, options)
       image_tag(iiif_image_url(image_pid, options),
-                :alt => options[:alt].presence,
-                :class => options[:class].presence)
+                alt: options[:alt].presence,
+                class: options[:class].presence)
     end
 
     # return the IIIF image url
@@ -118,9 +118,9 @@ module CommonwealthVlrEngine
         height = iiif_info["height"].to_i
         width = iiif_info["width"].to_i
         aspect_ratio = (width.to_f / height.to_f).to_f
-        img_metadata = {height: height, width: width, aspect_ratio: aspect_ratio}
+        img_metadata = { height: height, width: width, aspect_ratio: aspect_ratio }
       else
-        img_metadata = {height: 0, width: 0, aspect_ratio: 0}
+        img_metadata = { height: 0, width: 0, aspect_ratio: 0 }
       end
       img_metadata
     end
@@ -128,7 +128,7 @@ module CommonwealthVlrEngine
     def insert_opengraph_markup
       if controller_name == 'catalog' && action_name == 'show'
         content_for(:head) do
-          render :partial=>'/catalog/opengraph', :locals => {:document => @document}
+          render :partial=>'/catalog/opengraph', :locals => { document: @document }
         end
       end
     end

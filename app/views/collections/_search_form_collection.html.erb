@@ -14,7 +14,7 @@
                            autofocus: false %>
         <div class="input-group-append">
           <button type="submit" class="btn btn-primary search-btn" id="collection-search">
-            <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
+            <span class="submit-search-text sr-only"><%= t('blacklight.search.form.submit') %></span>
             <%= blacklight_icon :search, aria_hidden: true %>
           </button>
         </div>

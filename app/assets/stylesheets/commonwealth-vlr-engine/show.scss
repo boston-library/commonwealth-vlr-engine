@@ -148,12 +148,9 @@
   #multi_img_show_container {
 
     #page_sequence_wrapper {
-      padding: 3px 7px 2px 7px;
       margin-bottom: 15px;
       text-align: left;
-      border-radius: $card-border-radius;
-      background-color: $card-cap-bg;
-      border: $card-border-width solid $card-border-color;
+      @include card-esque(3px 7px 2px 7px);
 
       #page_sequence {
         color: $dark_gray;
@@ -174,10 +171,7 @@
     }
 
     #thumbnail_list_wrapper {
-      padding: 10px;
-      border-radius: $card-border-radius;
-      background-color: $card-cap-bg;
-      border: $card-border-width solid $card-border-color;
+      @include card-esque(10px);
 
       #thumbnail_list {
         max-height: 600px;
@@ -250,10 +244,7 @@
 
       #thumb_img_show_container {
         text-align: center;
-        border-radius: $card-border-radius;
-        background-color: $card-cap-bg;
-        border: $card-border-width solid $card-border-color;
-        padding: 5px;
+        @include card-esque(5px);
 
         .thumb_img_show {
           border: 1px solid $light_gray;
@@ -346,10 +337,7 @@
       }
 
       #more_like_this {
-        border-radius: $card-border-radius;
-        background-color: $card-cap-bg;
-        border: $card-border-width solid $card-border-color;
-        padding: $card-spacer-x $card-spacer-x;
+        @include card-esque($card-spacer-x);
 
         @media (max-width: breakpoint-max(sm)) {
           margin-bottom: 20px;
