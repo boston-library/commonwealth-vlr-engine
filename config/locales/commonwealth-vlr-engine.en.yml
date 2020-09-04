@@ -65,8 +65,9 @@ en:
             all: 'View All Items'
           facets:
             title: 'Browse by:'
+          image_title_prefix: 'Detail from: '
           index:
-            a-z_label: 'Browse by title:'
+            a-z_label: 'Starts with:'
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
           map:
@@ -405,7 +406,7 @@ en:
           filters:
             title: 'Your search:'
           form:
-            collection: 'Search this collection...'
+            collection: 'Search for items from this collection...'
             institution: "Search this institution's collections..."
             search:
               label: 'Search for'

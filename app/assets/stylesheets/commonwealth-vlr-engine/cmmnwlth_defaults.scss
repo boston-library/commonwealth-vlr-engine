@@ -59,3 +59,10 @@ $input-height-xs: add($input-line-height-sm * 1em, add($input-padding-y-xs * 2, 
   -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
   box-shadow: $shadow;
 }
+
+@mixin card-esque($padding) {
+  border-radius: $card-border-radius;
+  background-color: $card-cap-bg;
+  border: $card-border-width solid $card-border-color;
+  padding: $padding;
+}

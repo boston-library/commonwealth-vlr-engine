@@ -1,6 +1,7 @@
 <%= link_to(image_element,
             solr_document_path(@collection_image_info[:pid])) %>
 <div id="collection_img_caption">
+  <%= t('blacklight.collections.image_title_prefix') if hosted %>
   <%= link_to(image_title,
               solr_document_path(@collection_image_info[:pid])) %>
 </div>

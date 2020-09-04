@@ -128,3 +128,36 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
   line-height: $input-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
+
+.item_az_links {
+  font-size: $font-size-sm;
+  @include card-esque(9px);
+  margin-bottom: 10px;
+
+  .az_link, .az_nolink, .az_active {
+    padding-left: 7px;
+
+    @media (min-width: breakpoint-min(xl)) {
+      padding-left: 12px;
+    }
+
+    /*
+    @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+      padding-left: 1px;
+    }
+
+    @media (max-width: breakpoint-max(md)) {
+      padding-left: 2px;
+    }
+    */
+  }
+
+  .az_nolink {
+    color: $dark_gray;
+  }
+
+  .az_active {
+    font-weight: bold;
+  }
+
+}
