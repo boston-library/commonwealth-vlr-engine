@@ -12,7 +12,6 @@ begin
   require 'omniauth-ldap'
   require 'omniauth-facebook'
   require 'omniauth-polaris'
-  # require 'bootstrap-sass'
   require 'font-awesome-sass'
   require 'unicode'
   require 'madison'
