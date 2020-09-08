@@ -10,7 +10,7 @@
                          class: 'search_q q form-control form-control-xs',
                          id: 'q',
                          data: { autocomplete_enabled: autocomplete_enabled?,
-                                 autocomplete_path: search_action_path(action: :suggest) } %>
+                                 autocomplete_path: suggest_index_catalog_path } %>
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary search-btn btn-xs" id="search">
           <span class="submit-search-text sr-only"><%= t('blacklight.search.form.submit') %></span>

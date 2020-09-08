@@ -8,12 +8,8 @@ module CommonwealthVlrEngine
     extend ActiveSupport::Concern
 
     included do
-
       after_action :store_location
-
-      # extra head content
-      helper_method :create_img_sequence
-
+      helper_method :create_img_sequence # extra head content
     end
 
     # redirect after login to previous non-login page
@@ -56,9 +52,7 @@ module CommonwealthVlrEngine
     # gets a bit tricky for collections#facet, since this has multiple contexts (collections#index and collections#show)
     def search_action_path *args
       if args.first.is_a? Hash
-        args.first[:only_path] = true
-        # Rails 4.2 deprecated url helpers accepting string keys for 'controller' or 'action'
-        args[0] = args.first.except(:controller, :action)
+        args.first[:only_path] = true if args.first[:only_path].nil?
       end
 
       if params[:controller] == 'institutions' && params[:action] == 'index'
