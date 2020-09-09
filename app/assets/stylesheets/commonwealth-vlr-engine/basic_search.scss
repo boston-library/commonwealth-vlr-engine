@@ -3,13 +3,10 @@
 #basic_search_wrapper {
   margin-top:40px;
 
-  //.twitter-typeahead {
-  //  width: 45%;
-  //  margin-right: 4px;
-  //}
-
   #search_field {
-    width: 80px;
+    @media (max-width: breakpoint-max(md)) {
+      width: 90px;
+    }
   }
 
   .blacklight-icons > svg {
