@@ -29,6 +29,7 @@ module CommonwealthVlrEngine
   put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
 }
         end
 
@@ -40,9 +41,15 @@ module CommonwealthVlrEngine
         gsub_file("config/routes.rb", /\/catalog/, "/search")
 
         # for blacklight_range_limit
-        bl_routes_marker = /concerns :searchable.*$/
-        inject_into_file 'config/routes.rb', after: bl_routes_marker do
+        searchable_marker = /concerns :searchable.*$/
+        inject_into_file 'config/routes.rb', after: searchable_marker do
           "\n    concerns :range_searchable"
+        end
+
+        # for blacklight_iiif_search
+        exportable_marker = /concerns :exportable.*$/
+        inject_into_file 'config/routes.rb', after: exportable_marker do
+          "\n    concerns :iiif_search"
         end
 
         # update devise

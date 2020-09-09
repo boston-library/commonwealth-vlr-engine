@@ -17,6 +17,9 @@ module CommonwealthVlrEngine
       # add BlacklightRangeLimit
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
+      # add BlacklightIiifSearch
+      self.send(:include, BlacklightIiifSearch::Controller)
+
       # HEADS UP: these filters get inherited by any subclass of CatalogController
       before_action :get_object_files, :only => [:show]
       before_action :mlt_results_for_show, :only => [:show]
@@ -86,6 +89,13 @@ module CommonwealthVlrEngine
         # book stuff
         config.ocr_search_field = 'ocr_tsiv'
         config.page_num_field = 'page_num_label_ssi'
+
+        # configuration for Blacklight IIIF Content Search
+        config.iiif_search = {
+          full_text_field: 'ocr_tsiv',
+          object_relation_field: 'is_image_of_ssim',
+          supported_params: %w[q page]
+        }
 
         config.default_solr_params = {:qt => 'search', :rows => 20}
 
