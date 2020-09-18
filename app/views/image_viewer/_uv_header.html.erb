@@ -1,0 +1,12 @@
+<nav id="uv-header-navbar" class="navbar ">
+  <div id="back_to_item_wrap">
+    <%= link_to(solr_document_path(book_id(@document)),
+                id: 'back_to_item_link') do %>
+      <%= icon('fas', 'angle-double-left', aria: { hidden: true }) %>
+      <%= t('blacklight.book_viewer.item_link') %>
+    <% end %>
+  </div>
+  <h1 id="uv-header-title">
+    <%= truncate(render_title(@document, false), separator: ' ', length: 80) %>
+  </h1>
+</nav>

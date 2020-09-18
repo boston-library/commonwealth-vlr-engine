@@ -16,19 +16,19 @@ Rails.application.routes.draw do
   get 'collections/range_limit', to: 'collections#range_limit'
   # below seems to work, despite lack of #range_limit_panel action in CollectionsControllerBehavior
   get 'collections/range_limit_panel', to: 'collections#range_limit_panel'
-  resources :collections, :only => [:index, :show]
+  resources :collections, only: [:index, :show]
   get 'collections/facet/:id', to: 'collections#facet', as: 'collections_facet'
 
   # institutions
   get 'institutions/range_limit', to: 'institutions#range_limit'
   # below seems to work, despite lack of #range_limit_panel action in InstitutionsControllerBehavior
   get 'institutions/range_limit_panel', to: 'institutions#range_limit_panel'
-  resources :institutions, :only => [:index, :show]
+  resources :institutions, only: [:index, :show]
   get 'institutions/facet/:id', to: 'institutions#facet', as: 'institutions_facet'
 
   # contact form
   # for some reason feedback submit won't work w/o this addition
-  match 'feedback', to: 'feedback#show', :via => [:get, :post]
+  match 'feedback', to: 'feedback#show', via: [:get, :post]
   get 'feedback/complete', to: 'feedback#complete'
 
   # folders
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :folder_items
 
   # user account management (not login/auth)
-  resources :users, :only => [:show, :index]
+  resources :users, only: [:show, :index]
 
   # multi-image viewers
   get 'image_viewer/:id', to: 'image_viewer#show', as: 'image_viewer'
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get 'search/:id/fulltext', to: 'ocr_search#index', as: 'ocr_search'
 
   # downloads
-  resources :downloads, :only => [:show]
+  resources :downloads, only: [:show]
   get 'start_download/:id', to: 'downloads#trigger_download', as: 'trigger_downloads'
 
   # saved searches -- no longer provided by blacklight >= 7

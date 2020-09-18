@@ -1,0 +1,66 @@
+<main id="#uv-wrapper">
+  <div id="uv" class="uv"></div>
+
+  <script type="text/javascript">
+      window.addEventListener('uvLoaded', function(e) {
+          urlDataProvider = new UV.URLDataProvider(true);
+          var formattedLocales;
+          var locales = urlDataProvider.get('locales', '');
+
+          if (locales) {
+              var names = locales.split(',');
+              formattedLocales = [];
+
+              for (var i in names) {
+                  var nameparts = String(names[i]).split(':');
+                  formattedLocales[i] = {name: nameparts[0], label: nameparts[1]};
+              }
+
+          } else {
+              formattedLocales = [
+                  {
+                      name: 'en-GB'
+                  }
+              ]
+          }
+
+          uv = createUV('#uv', {
+              root: '../uv',
+              iiifResourceUri: 'https://search-hydratest.bpl.org/search/bpl-test:1831d231h/manifest', //'<%= iiif_manifest_path(@document.id) %>', // urlDataProvider.get('manifest')
+              configUri: "/uv/uv-config<%= license_allows_download?(@document) ? '' : '-no-download' %>.json", // urlDataProvider.get('config')
+              collectionIndex: Number(urlDataProvider.get('c', 0)),
+              manifestIndex: Number(urlDataProvider.get('m', 0)),
+              sequenceIndex: Number(urlDataProvider.get('s', 0)),
+              canvasIndex: Number(urlDataProvider.get('cv', 0)),
+              rangeId: urlDataProvider.get('rid', 0),
+              rotation: Number(urlDataProvider.get('r', 0)),
+              xywh: urlDataProvider.get('xywh', ''),
+              embedded: true,
+              locales: formattedLocales
+          }, urlDataProvider);
+      }, false);
+
+      $(function() {
+
+          var header = $('#uv-header-navbar');
+          var $UV = $('#uv');
+
+          function resize() {
+              var windowWidth = window.innerWidth;
+              var windowHeight = window.innerHeight;
+              var headerHeight = header.outerHeight(true);
+              var viewerHeight = (windowHeight - headerHeight);
+              $UV.width(windowWidth);
+              $UV.height(viewerHeight);
+          }
+
+          $(window).on('resize' ,function() {
+              resize();
+          });
+
+          resize();
+      });
+  </script>
+</main>
+
+<script type="text/javascript" src="/uv/uv.js"></script>

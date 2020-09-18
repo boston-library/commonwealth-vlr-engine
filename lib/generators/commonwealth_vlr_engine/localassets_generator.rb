@@ -18,5 +18,14 @@ module CommonwealthVlrEngine
 
       copy_file "commonwealth_vlr_engine.scss", "app/assets/stylesheets/commonwealth_vlr_engine.scss"
     end
+
+    # UniversalViewer js has to be copied to local apps' public folder
+    # because uv.js relies on specific dir structure for components/modules/etc
+    # and would be impractical to make it work with Rails asset pipeline
+    # similar pattern as Hyrax (https://github.com/samvera/hyrax/commit/0e02c4adf26e74f2d892f575c93789bc166e53ad)
+    # though we hard-code the assets instead of installing with yarn
+    def uv_assets
+      directory 'public/uv' unless File.exist?('public/uv/uv.js')
+    end
   end
 end
