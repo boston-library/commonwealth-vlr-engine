@@ -9,11 +9,9 @@ $('#thumbnail_list').find('a').each(function() {
 });
 
 // update the image pagination
-$('#page_sequence').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_multi_img_pagination',
-                   :locals => {:page_sequence => @page_sequence}) %>");
+$('#page_sequence').replaceWith("<%= escape_javascript(render partial: 'catalog/_show_partials/show_multi_img_pagination',
+                   locals: { page_sequence: @page_sequence }) %>");
 
 // update the main image
-$('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:image_pid => @page_sequence[:current], :document => @document, :page_sequence => @page_sequence}) %>");
-
-
+$('#img_show_container').replaceWith("<%= escape_javascript(render partial: 'catalog/_show_partials/show_default_img',
+                   locals: { image_pid: @page_sequence[:current], document: @document, page_sequence:  @page_sequence }) %>");

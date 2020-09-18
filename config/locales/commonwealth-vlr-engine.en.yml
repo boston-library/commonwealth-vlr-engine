@@ -16,17 +16,7 @@ en:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
 
     book_viewer:
-          controls:
-            grid: 'Pages List'
-            help: 'Help'
-            next: 'Next Page'
-            previous: 'Previous Page'
-            read: 'Read'
-            rotate:
-              left: 'Rotate Left'
-              right: 'Rotate Right'
-            zoom: 'Zoom'
-          item_link: 'Back to item'
+          item_link: 'Back to item details'
           link_to_reader: 'Read online'
 
 

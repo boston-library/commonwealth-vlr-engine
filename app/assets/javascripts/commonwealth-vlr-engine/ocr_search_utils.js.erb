@@ -17,22 +17,6 @@ $('.ocr-search-form').submit(function() {
   addModalTransition();
 });
 
-/* if the window is displayed in the WDL-Viewer context, page links should trigger page changes via JS */
-if ($("body.wdl-viewer").length) {
-    $(".book_page_link").on("click", function () {
-        $('#blacklight-modal').modal('hide');
-        $viewer.trigger("goto-page-search",
-            [1, this.href.match(/\d+$/), this.href.match(/ocr_q=[\S]+\#/)[0].replace('ocr_q=','').slice(0, -1)]);
-        return false;
-    });
-}
-
-/* so search queries entered by user don't accidentally trigger WDL-Viewer keyboard-based controls */
-$('#ocr_q').on('keydown', function (e) {
-    // Avoid keys bubbling up to our top-level input handler:
-    e.stopPropagation();
-});
-
 /* toggle the ocr snippets collapse link text */
 $('.ocr_snippets_expand').on('click', function() {
   toggleText($(this),

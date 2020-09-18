@@ -47,7 +47,7 @@ module CommonwealthVlrEngine
         marker = '# Precompile additional assets.'
         insert_into_file 'config/initializers/assets.rb', :after => marker do
           %q{
-Rails.application.config.assets.precompile += %w(wdl-viewer/fd-slider.min.css ie_fixes.css *.js)
+Rails.application.config.assets.precompile += %w(*.js)
 }
 
         end

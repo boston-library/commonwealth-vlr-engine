@@ -1,36 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="<%= t('blacklight.application_desc') %>">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<%= t('blacklight.application_desc') %>">
 
-  <!-- Internet Explorer use the highest version available -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Internet Explorer use the highest version available -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title><%= render_page_title %></title>
-  <%= opensearch_description_tag application_name, opensearch_catalog_path(:format => 'xml') %>
-  <%= favicon_link_tag asset_path('favicon.ico') %>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <% insert_google_analytics %>
-  <%= content_for(:head) %>
-
-  <%= javascript_include_tag 'wdl-viewer/modernizr-wdl.min' %>
-  <%# could re-include jquery-deparam if we drop support for IE8? %>
-  <%# javascript_include_tag 'wdl-viewer/jquery-deparam' %>
-  <%= javascript_include_tag 'wdl-viewer/wdl-search' %>
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
+    <title><%= render_page_title %></title>
+    <%= opensearch_description_tag application_name, opensearch_catalog_path(:format => 'xml') %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheet" media="screen" href="/uv/uv.css">
+    <script src="/uv/lib/offline.js"></script>
+    <script src="/uv/helpers.js"></script>
+    <%= csrf_meta_tags %>
+    <% insert_google_analytics %>
+    <% insert_opengraph_markup %>
+    <%= content_for(:head) %>
   </head>
-  <body class="<%= render_body_class %> wdl-viewer">
+  <body class="<%= render_body_class %> universal-viewer">
       <%= yield %>
-      <%= render :partial => 'shared/modal' %>
   </body>
 </html>

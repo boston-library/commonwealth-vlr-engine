@@ -1,0 +1,10 @@
+{
+  "modules": {
+    "footerPanel": {
+      "options": {
+        "downloadEnabled": true,
+        "shareEnabled": false
+      }
+    }
+  }
+}

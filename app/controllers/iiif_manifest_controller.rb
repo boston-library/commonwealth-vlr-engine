@@ -14,7 +14,7 @@ class IiifManifestController < CatalogController
         _response, document = search_service.fetch(params[:id])
         create_iiif_manifest(document, image_files).to_json
       end
-      render :json => @iiif_manifest
+      render json: @iiif_manifest
     elsif get_volume_objects(params[:id]).length > 0
       redirect_to iiif_collection_path(params[:id])
     else
@@ -32,7 +32,7 @@ class IiifManifestController < CatalogController
         iiif_canvas = canvas_from_id(params[:canvas_object_id],
                                      label_for_canvas(canvas_document, image_index),
                                      document)
-        render :json => iiif_canvas.to_json
+        render json: iiif_canvas.to_json
       else
         not_found
       end
@@ -45,7 +45,7 @@ class IiifManifestController < CatalogController
     _response, document = search_service.fetch(params[:id])
     if image_file_pids(get_image_files(params[:id])).include?(params[:annotation_object_id])
       annotation = image_annotation_from_image_id(params[:annotation_object_id], document)
-      render :json => annotation.to_json
+      render json: annotation.to_json
     else
       not_found
     end
@@ -56,7 +56,7 @@ class IiifManifestController < CatalogController
     volumes = get_volume_objects(params[:id])
     if volumes.length > 0
       iiif_collection = collection_for_manifests(document, volumes)
-      render :json => iiif_collection.to_json
+      render json: iiif_collection.to_json
     else
       not_found
     end
