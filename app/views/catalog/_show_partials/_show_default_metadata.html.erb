@@ -230,9 +230,12 @@
           </dd>
       <% end %>
       <%# rights field %>
-      <% if document[:rights_ssm] || document[:license_ssm]  %>
+      <% if document[:rights_ssm] || document[:license_ssm] || document[:rightsstatement_ss]  %>
           <dt><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
           <dd>
+            <% if document[:rightsstatement_ss].present? %>
+                <%= document[:rightsstatement_ss] %><br />
+            <% end %>
             <% if document[:rights_ssm] %>
                 <% document[:rights_ssm].each do |rights| %>
                     <%= rights %><br />
@@ -249,7 +252,7 @@
           </dd>
       <% end %>
       <%# additional rights/use info field %>
-      <% if document[:restrictions_on_access_ssm] %>
+      <% if document[:restrictions_on_access_ssm].present? %>
           <dt><%= t('blacklight.metadata_display.fields.access') %>:</dt>
           <dd>
             <% document[:restrictions_on_access_ssm].each do |restrictions| %>
