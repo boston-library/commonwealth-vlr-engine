@@ -1,7 +1,7 @@
 <%# the browse sections - collections, map, etc. %>
 <div id="content_home_browse" class="row">
   <% if t('blacklight.home.browse.maps.enabled') %>
-      <div class="col-sm-<%= @middle_feature_columns %>">
+      <div class="<%= middle_feature_columns %>">
         <div id="map_browse" class="browse_item text-center">
           <%= link_to(icon('fas', 'map-marker-alt', class: 'fa-5x', aria: { hidden: true }),
                       map_path,
@@ -14,7 +14,7 @@
   <% end %>
 
   <% if t('blacklight.home.browse.collections.enabled') %>
-      <div class="col-sm-<%= @middle_feature_columns %>">
+      <div class="<%= middle_feature_columns %>">
         <div id="collections_browse" class="browse_item text-center">
           <%= link_to(icon('fas', 'folder-open', class: 'fa-5x', aria: { hidden: true }),
                       collections_path,
@@ -29,7 +29,7 @@
   <% end %>
 
   <% if t('blacklight.home.browse.institutions.enabled') %>
-      <div class="col-sm-<%= @middle_feature_columns %>">
+      <div class="<%= middle_feature_columns %>">
         <div id="institutions_browse" class="browse_item text-center">
           <%= link_to(icon('fas', 'university', class: 'fa-5x', aria: { hidden: true }),
                       institutions_path,
@@ -42,7 +42,7 @@
   <% end %>
 
   <% if t('blacklight.home.browse.formats.enabled') %>
-      <div class="col-sm-<%= @middle_feature_columns %>">
+      <div class="<%= middle_feature_columns %>">
         <div id="formats_browse" class="browse_item text-center">
           <%= link_to(icon('fas', 'image', class: 'fa-5x', aria: { hidden: true }),
                       formats_facet_path,
