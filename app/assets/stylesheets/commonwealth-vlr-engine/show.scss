@@ -291,6 +291,7 @@
       /* metadata */
       #item_metadata {
         margin-bottom: 20px;
+        font-size: $font-size-sm;
 
         h3 {
           font-size: $h4-font-size;
@@ -300,9 +301,12 @@
 
           dt {
             text-align: right;
+            padding-right: 0;
+            padding-left: 0;
 
             @media (max-width: breakpoint-max(sm)) {
               text-align: left;
+              padding-left: 15px;
             }
           }
 
@@ -356,6 +360,7 @@
               max-width: 100%;
               height: auto;
               display: block;
+              border: 1px solid $lighter_gray;
             }
 
             .mlt_title_link {

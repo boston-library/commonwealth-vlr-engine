@@ -1,6 +1,5 @@
 # use to render new image in multi image viewer in catalog#show
 class ImageViewerController < CatalogController
-
   include CommonwealthVlrEngine::CatalogHelper
 
   def show
@@ -11,7 +10,7 @@ class ImageViewerController < CatalogController
     respond_to do |format|
       format.js
       format.html { redirect_to solr_document_path(@document.id,
-                                                   :view => params[:view]) }
+                                                   view: params[:view]) }
     end
   end
 

@@ -1,33 +1,42 @@
 /* customized pretty extensively to look more like Bootstrap 2 carousel */
 
 #carousel_wrapper {
+  height: 235px;
 
   .carousel-indicators {
-    bottom: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    right: 10px;
+    justify-content: flex-end;
+    margin-left: 2%;
+    margin-right: 2%;
     top: 10px;
-    left: inherit;
-    width: inherit;
-    height: 20px;
 
     li {
-      background-color: #FFFFFF;
-      opacity:.2;
-      -moz-opacity: 0.20;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+      opacity:.5;
+      -moz-opacity: 0.50;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
       height: 10px;
       width: 10px;
     }
 
     .active {
-      height: 10px;
-      margin: 1px;
-      width: 10px;
-      opacity:.6;
-      -moz-opacity: 0.60;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+      opacity:.8;
+      -moz-opacity: 0.80;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    }
+
+  }
+
+  .carousel-inner {
+
+    .carousel-item {
+      height: 235px;
+
+      @media (min-width: breakpoint-min(xl)) {
+        height: 288px;
+      }
+
+      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+        height: 179px;
+      }
     }
 
   }
@@ -41,56 +50,39 @@
     text-align: left;
 
     h5 {
-      /* font-weight: bold; */
+      font-size: $font-size-base;
       margin-bottom: 0px;
       margin-top: 5px;
+
+      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+        font-size: $font-size-sm;
+      }
+
     }
 
     p {
-      font-size: 12px;
+      font-size: $font-size-sm;
       font-style: italic;
-    }
-  }
+      margin-bottom: 10px;
 
-  .carousel-control-next, .carousel-control-prev {
-    opacity: .2;
-    -moz-opacity: 0.20;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
-  }
-
-}
-
-
-/* responsive styles */
-
-@media (max-width: 767px) {
-
-  #carousel_wrapper .carousel-inner img {
-    width:100%;
-  }
-
-}
-
-@media (max-width: 480px) {
-
-  #carousel_wrapper {
-    /* display: none; */
-
-    .carousel-caption {
-      /* padding: 1px 0 10px 10px; */
-
-      h5 {
-        font-size: 12px;
-      }
-
-      p {
-        font-size: 10px;
+      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+        font-size: $font-size-xs;
       }
 
     }
 
   }
 
+  @media (min-width: breakpoint-min(xl)) {
+    height: 288px;
+  }
+
+  @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+    height: 179px;
+  }
+
+  @media (max-width: breakpoint-max(md)) {
+    margin-bottom: 25px;
+  }
+
 }
-
-

@@ -4,15 +4,25 @@
 
   #hero_search {
     padding: 30px 50px;
+    height: 235px;
+    margin-bottom: 0;
 
     #hero_search_headline {
 
       h1 {
         font-size: $h3-font-size;
 
+        @media (min-width: breakpoint-min(xl)) {
+          font-size: $h2-font-size;
+        }
+
         @media (max-width: breakpoint-max(md)) {
           font-size: $h4-font-size;
         }
+      }
+
+      @media (min-width: breakpoint-min(xl)) {
+        margin-top: 25px;
       }
 
     }
@@ -41,6 +51,23 @@
 
       }
 
+      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+        padding-top: 10px;
+      }
+
+    }
+
+    @media (min-width: breakpoint-min(xl)) {
+      height: 288px;
+    }
+
+    @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+      height: 179px;
+      padding: 15px 20px;
+    }
+
+    @media (max-width: breakpoint-min(md)) {
+      padding: 50px;
     }
 
   }
