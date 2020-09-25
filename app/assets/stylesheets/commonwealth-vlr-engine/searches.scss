@@ -2,39 +2,38 @@
 
 #searches_content, #search_history_content {
 
-  .filterName {
-    padding-right: .2em;
+  h2 {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: $h5-font-size;
+    margin-top: 15px;
+  }
+
+  .constraint {
+    padding-right: 10px;
+
+    .filter-name {
+      padding-right: 5px;
+    }
   }
 
 }
 
 #searches_content {
 
-  h2 {
-    margin-bottom:0px;
-  }
-
   #empty_saved_searches {
+    @include card-esque(10px);
     margin-top:20px;
-  }
-
-  .constraint {
-    padding-right: .5em;
   }
 
 }
 
 #search_history_content {
 
-  h2 {
-    margin-bottom:0px;
-  }
-
-  .search_history .filterName, .search_history .filterSeparator {
-    color: inherit;
-  }
-
   #empty_search_history {
+    @include card-esque(10px);
     margin-top:20px;
   }
 
@@ -47,9 +46,4 @@
     text-align: right;
   }
 
-  form {
-    margin: 0;
-  }
-
 }
-

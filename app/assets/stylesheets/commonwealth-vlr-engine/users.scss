@@ -11,6 +11,10 @@
 .sidebar-right {
   margin-top:30px;
 
+  #cancel_account {
+    @include card-esque(10px);
+  }
+
   ul {
     padding-left: 20px;
   }

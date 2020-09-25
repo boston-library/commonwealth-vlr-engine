@@ -338,6 +338,10 @@
           }
         }
 
+        @media (min-width: breakpoint-min(xl)) {
+          font-size: $font-size-base;
+        }
+
       }
 
       #more_like_this {
@@ -441,7 +445,7 @@
               word-wrap: break-word;
               word-break: break-word;
               display: block;
-              line-height: .5rem;
+              line-height: 1rem;
             }
 
             .download_info {

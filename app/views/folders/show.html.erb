@@ -43,11 +43,11 @@
           </div>
           <%= link_to(icon('fas', 'edit', aria: { hidden: true }) + ' ' + t('blacklight.folders.edit'),
                       edit_folder_path(@folder),
-                      class: 'btn btn-secondary btn-sm',
+                      class: 'btn btn-outline-secondary btn-sm',
                       title: 'edit this folder') %>
           <%= link_to(icon('fas', 'trash-alt', aria: { hidden: true }) + ' ' + t('blacklight.folders.delete.delete'),
                       @folder,
-                      class: 'btn btn-secondary btn-sm',
+                      class: 'btn btn-outline-secondary btn-sm',
                       method: :delete,
                       data: { confirm: t('blacklight.folders.delete.confirm') },
                       title: t('blacklight.folders.delete.delete')) %>

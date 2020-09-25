@@ -1,0 +1,10 @@
+<%# override so we can set id on <nav> for analytics events tracking %>
+<% if show_pagination? and @response.total_pages > 1 %>
+    <div class="row record-padding">
+      <div class="col-md-12">
+        <nav id="pagination_links" class="pagination" role="region" aria-label="<%= t('views.pagination.aria.container_label') %>">
+          <%= paginate @response, :outer_window => 2, :theme => 'blacklight' %>
+        </nav>
+      </div>
+    </div>
+<% end %>

@@ -13,6 +13,7 @@ $(function() {
     };
 
     BlacklightGoogleAnalytics.this_or_parent_id = function(that){
+        console.log('FIRED this_or_parent_id');
         if (that.get(0).id.length > 0){
             var identifier = that.get(0).id;
         } else {
@@ -25,13 +26,17 @@ $(function() {
 
     // generic link tracking
     $('a').click(function () {
+        console.log('STARTING LINK TRACKING');
         try {
             var action = BlacklightGoogleAnalytics.this_or_parent_id($(this));
+            console.log('ACTION = ' + action);
             var label = ($(this).text() || $(this).children('img:first').attr('alt'));
             if (action === 'facets-collapse') { // for facets, make the action the facet heading
                 var action = 'facet_' + $(this).parents("div:first").find("h5:first").text().trim();
             } else if (action === 'documents') { // search results
+                console.log('in documents block');
                 var action = 'result_' + $(this).parents("div:first").attr('class');
+                console.log('ACTION = ' + action);
                 if ($(this).data('counter')) {
                     var label = $(this).data('counter');
                 }
@@ -42,8 +47,9 @@ $(function() {
             } else if (action === 'institution_site_link') { // institutions#show external site URL
                 var label = $('img.institution_img_show').attr('alt');
             }
+            console.log(category + ',' + action + ',' + label);
 
-            ga('send', 'event', category, action, label);
+            // ga('send', 'event', category, action, label);
         } catch (err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
@@ -56,7 +62,8 @@ $(function() {
             try {
                 var action = 'facet_' + $('.modal-title').text();
                 var label = $(this).text();
-                ga('send', 'event', category, action, label);
+                console.log(category + ',' + action + ',' + label);
+                // ga('send', 'event', category, action, label);
             } catch (err) {
                 BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
             }
@@ -68,23 +75,13 @@ $(function() {
         $("#blacklight-modal").find('form').submit(function () {
             try{
                 var action = 'submit_' + BlacklightGoogleAnalytics.this_or_parent_id($(this));
-                ga('send', 'event', category, action);
+                console.log(category + ',' + action + ',' + label);
+                // ga('send', 'event', category, action);
             } catch(err) {
                 BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
             }
         });
     };
-
-    // OAI item clicks
-    $("#oai_img_show_container").find("a").off("click").click(function(){
-        try{
-            var action = 'oai_item_link';
-            var label = $('#item_breadcrumb').find("a.institution_breadcrumb").text();
-            ga('send', 'event', category, action, label);
-        } catch(err) {
-            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
-        }
-    });
 
     // saved searches clicks
     $("#searches_content").find("a").off("click").click(function(){
@@ -94,7 +91,8 @@ $(function() {
             } else {
                 var action = 'link_to_saved_search';
             }
-            ga('send', 'event', category, action);
+            console.log(category + ',' + action);
+            // ga('send', 'event', category, action);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
         }
@@ -104,7 +102,8 @@ $(function() {
     $("#searches_list").find("a").off("click").click(function(){
         try{
             var action = 'link_to_previous_search';
-            ga('send', 'event', category, action);
+            console.log(category + ',' + action);
+            // ga('send', 'event', category, action);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
         }
@@ -115,7 +114,8 @@ $(function() {
         try{
             var action = 'series_' + $(this).parents("div:first").attr('class');
             var label = ($(this).text() || $(this).children('img:first').attr('alt'));
-            ga('send', 'event', category, action, label);
+            console.log(category + ',' + action + ',' + label);
+            // ga('send', 'event', category, action, label);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
@@ -126,7 +126,8 @@ $(function() {
         try{
             var action = 'collections_' + $(this).parents("div:first").attr('class');
             var label = ($(this).text() || $(this).children('img:first').attr('alt'));
-            ga('send', 'event', category, action, label);
+            console.log(category + ',' + action + ',' + label);
+            // ga('send', 'event', category, action, label);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
@@ -145,7 +146,8 @@ $(function() {
             } else if (action === "hero_search_form") { // home page search
                 var label = $("#search_field").val();
             }
-            ga('send', 'event', category, action, label);
+            console.log(category + ',' + action + ',' + label);
+            // ga('send', 'event', category, action, label);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
@@ -156,7 +158,8 @@ $(function() {
         try{
             var action = BlacklightGoogleAnalytics.this_or_parent_id($(this));
             var label = '';
-            ga('send', 'event', category, action, label);
+            console.log(category + ',' + action + ',' + label);
+            // ga('send', 'event', category, action, label);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
@@ -164,10 +167,15 @@ $(function() {
 
     // start download button clicks
     $("#downloads_start_links").find("a").off("click").click(function(){
+        console.log('STARTING DOWNLOAD LINK TRACKING');
       try{
         var action = 'trigger_download';
         var label = $(this).attr('class').split(' ').pop();
-        ga('send', 'event', category, action, label);
+        var pid = $(this).attr('href').split('/').pop().match(/^[a-z-:0-9]*/);
+          console.log(category + ',' + action + ',' + label);
+          console.log('downloads#items' + ',' + pid + ',' + label);
+        // ga('send', 'event', category, action, label);
+        // ga('send', 'event', 'downloads#items', pid, label); // to track items
       } catch(err) {
         BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
       }
