@@ -1,75 +1,77 @@
-<div class="col-sm-9">
-  <h2>Sign in</h2>
+<div class="row">
+  <div class="col-sm-9">
+    <h2>Sign in</h2>
 
-  <div id="signin_wrapper">
+    <div id="signin_wrapper">
 
-    <%= form_for(resource,
-                 as: resource_name,
-                 url: session_path(resource_name),
-                 html: { role: 'form' }) do |f| %>
+      <%= form_for(resource,
+                   as: resource_name,
+                   url: session_path(resource_name),
+                   html: { role: 'form' }) do |f| %>
 
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="user_uid">Email</label>
-            <div class="col-sm-4">
-              <%= f.text_field :uid, class: 'form-control' %>
-            </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="user_uid">Email</label>
+          <div class="col-sm-4">
+            <%= f.text_field :uid, class: 'form-control' %>
           </div>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="user_password">Password</label>
-            <div class="col-sm-4">
-              <%= f.password_field :password, class: 'form-control' %>
-              <span class="form-text">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="user_password">Password</label>
+          <div class="col-sm-4">
+            <%= f.password_field :password, class: 'form-control' %>
+            <span class="form-text">
                 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
                   <%= link_to 'Forgot your password?', new_password_path(resource_name) %>
                 <% end -%>
               </span>
-            </div>
           </div>
-          <% if devise_mapping.rememberable? -%>
-              <div class="form-group row">
-                <div class="form-check col-sm-offset-2 col-sm-6">
-                  <%= f.check_box :remember_me, class: 'form-check-input' %>
-                  <label id="remember_me" class="form-check-label">
-                    Remember me on this computer
-                  </label>
-                </div>
-              </div>
-
-          <% end -%>
+        </div>
+        <% if devise_mapping.rememberable? -%>
           <div class="form-group row">
-            <div class="col-sm-offset-2 col-sm-4">
-              <%# f.submit "Sign in" %>
-              <button type="submit" class="btn btn-primary">
-                <span>Sign in</span>
-              </button>
+            <div class="form-check offset-sm-2 col-sm-6">
+              <%= f.check_box :remember_me, class: 'form-check-input' %>
+              <label id="remember_me" class="form-check-label">
+                Remember me on this computer
+              </label>
             </div>
           </div>
 
-    <% end %>
+        <% end -%>
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-4">
+            <%# f.submit "Sign in" %>
+            <button type="submit" class="btn btn-primary">
+              <span>Sign in</span>
+            </button>
+          </div>
+        </div>
 
-    <div id="alt_signins">
-      <%= link_to(image_tag('commonwealth-vlr-engine/facebookLoginButton.png',
-                            alt: 'Log in with Facebook',
-                            class: 'alt_signin_btn'),
-                  omniauth_authorize_path(resource_name, 'facebook')) %>
-      <%= link_to(image_tag('commonwealth-vlr-engine/bplLoginButton.png',
-                            alt: 'Log in with your BPL library card',
-                            class: 'alt_signin_btn'),
-                  omniauth_authorize_path(resource_name, 'polaris')) %>
-      <%# omniauth_authorize_path(resource_name, provider) %>
+      <% end %>
+
+      <div id="alt_signins">
+        <%= link_to(image_tag('commonwealth-vlr-engine/facebookLoginButton.png',
+                              alt: 'Log in with Facebook',
+                              class: 'alt_signin_btn'),
+                    omniauth_authorize_path(resource_name, 'facebook')) %>
+        <%= link_to(image_tag('commonwealth-vlr-engine/bplLoginButton.png',
+                              alt: 'Log in with your BPL library card',
+                              class: 'alt_signin_btn'),
+                    omniauth_authorize_path(resource_name, 'polaris')) %>
+        <%# omniauth_authorize_path(resource_name, provider) %>
+      </div>
+
+      <%= render 'devise/shared/links' %>
+
     </div>
-
-  <%= render 'devise/shared/links' %>
-
   </div>
-</div>
-<div class="col-sm-3" id="why_log_in">
-  <div class="well">
-    <h4>Why sign in?</h4>
-    <ul>
-      <li>Create customized collections of your favorite items</li>
-      <li>Save important searches</li>
-      <li>Keep track of your search history</li>
-    </ul>
+  <div class="col-sm-3">
+    <div id="why_log_in">
+      <h5>Why sign in?</h5>
+      <ul>
+        <li>Create customized collections of your favorite items</li>
+        <li>Save important searches</li>
+        <li>Keep track of your search history</li>
+      </ul>
+    </div>
   </div>
 </div>

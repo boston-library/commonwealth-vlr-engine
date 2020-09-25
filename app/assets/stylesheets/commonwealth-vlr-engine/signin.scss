@@ -30,6 +30,7 @@
 }
 
 #why_log_in {
+  @include card-esque(10px);
   margin-top: 42px;
 
   ul {

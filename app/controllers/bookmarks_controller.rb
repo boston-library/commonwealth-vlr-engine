@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 class BookmarksController < CatalogController
-
   include Blacklight::Bookmarks
-
-  before_action :set_solr_http_post, only: [:show]
-
-  after_action :unset_solr_http_post, only: [:show]
 
   # LOCAL OVERRIDE to render update.js.erb partial when bookmark created
   def create
@@ -41,18 +36,6 @@ class BookmarksController < CatalogController
   end
 
   def folder_item_actions
-    redirect_to :action => "index"
+    redirect_to action: "index"
   end
-
-  private
-  def set_solr_http_post
-    unless blacklight_config.http_post == :post
-      blacklight_config.http_method = :post
-    end
-  end
-
-  def unset_solr_http_post
-    blacklight_config.http_method = :get
-  end
-
 end

@@ -66,6 +66,7 @@ body.blacklight-folders, body.blacklight-bookmarks {
 }
 
 #public_folders_sidebar {
+  @include card-esque(10px);
   margin-top: 42px;
 
   ul {
@@ -146,9 +147,6 @@ div.folder_show_container {
     display: inline;
 
     ul.folderItemToolsList {
-      /* @include rounded-corners(0 0 4px 4px); */
-      background-color: $well_bg_color;
-      border-color: $well_bg_color;
       margin:0;
       display: inline;
       padding-left: 0;
@@ -190,7 +188,7 @@ div.folder_show_container {
   }
 
   #documents {
-    margin-top: 10px;
+    margin-top: 20px;
 
     /* list view */
     &.documents-list {
@@ -198,14 +196,10 @@ div.folder_show_container {
       .document {
 
         .documentHeader {
+          flex-direction: row-reverse;
 
           .document-title-heading {
-            width: 95%;
-          }
-
-          .folder_item_checkbox {
-            float: right;
-            margin-top: 0;
+            flex: 0 0 95%;
           }
 
         }
@@ -225,39 +219,9 @@ div.folder_show_container {
 
             .documentHeader {
 
-              .folder_item_checkbox {
-                float: left;
-                margin-top: 10px;
-              }
-
               .document-title-heading {
-                width: 90%;
-                padding-left: 5px;
-              }
-
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-    /* masonry view */
-    .masonry {
-
-      &.document {
-
-        .thumbnail {
-
-          .caption {
-
-            .documentHeader {
-
-              .document-title-heading {
-                margin-top: 0;
+                flex: 0 0 92%;
+                padding-left: 10px;
               }
 
             }

@@ -1,4 +1,4 @@
-<% @page_title = t('blacklight.search_history.page_title', :application_name => application_name) %>
+<% @page_title = t('blacklight.search_history.page_title', application_name: application_name) %>
 <div class="col-sm-9" id="search_history_content">
 <%# sidebar_items << capture do %>
     <!-- <p><%# link_back_to_catalog %></p> -->
@@ -21,8 +21,8 @@
 <h2><%=t('blacklight.search_history.title')%></h2>
   <%= t('blacklight.search_history.intro') %>
 <% if @searches.blank? %>
-      <div id="empty_search_history" class="well">
-        <h4><%=t('blacklight.search_history.no_history')%></h4>
+      <div id="empty_search_history">
+        <h3><%=t('blacklight.search_history.no_history')%></h3>
         <p>Search for items by entering keywords in the search bar at the top right.</p>
       </div>
 <% else %>
@@ -31,9 +31,9 @@
       <small>
         [<%= link_to t('blacklight.search_history.clear.action_title'),
                      blacklight.clear_search_history_path,
-                     :id => 'clear_search_history',
-                     :method => :delete,
-                     :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
+                     id: 'clear_search_history',
+                     method: :delete,
+                     data: { confirm: t('blacklight.search_history.clear.action_confirm') } %>]
       </small>
     </h3>
     <table id="searches_list" class="table search_history">
@@ -49,7 +49,7 @@
                   In your <%= link_to t('blacklight.saved_searches.title'), saved_searches_path %>
                 <% else %>
                     <%= button_to t('blacklight.search_history.save'), save_search_path(search.id),
-                                  :method => :put, :class => 'btn btn-secondary' %>
+                                  method: :put, class: 'btn btn-secondary' %>
                 <% end %>
               </td>
           <% end %>

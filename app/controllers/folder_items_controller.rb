@@ -11,7 +11,7 @@ class FolderItemsController < CatalogController
   end
 
   def create
-    @response, @document = fetch(params[:id])
+    @response, @document = search_service.fetch(params[:id])
     if params[:folder_items]
       @folder_items = params[:folder_items]
     else
@@ -39,7 +39,7 @@ class FolderItemsController < CatalogController
   # idempotent, as DELETE is supposed to be.
   # PRETTY SURE THIS METHOD IS NEVER USED!
   def destroy
-    @response, @document = fetch(params[:id])
+    @response, @document = search_service.fetch(params[:id])
     folder_item = current_user.existing_folder_item_for(params[:id])
 
     # success = (!folder_item) || FolderItem.find(folder_item).destroy
