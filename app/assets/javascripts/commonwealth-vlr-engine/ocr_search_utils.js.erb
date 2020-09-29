@@ -1,4 +1,4 @@
-/* various utilities for ocr search results display in Bootstrap modal and WDL-Viewer contexts */
+/* various utilities for ocr search results display in Bootstrap modal */
 
 var top_pagination_selector = '#ocr_search_details .page-links a';
 var bottom_pagination_selector = '#ocr_pagination a';
@@ -22,6 +22,14 @@ $('.ocr_snippets_expand').on('click', function() {
   toggleText($(this),
       '<%= I18n.t('blacklight.ocr.search.results.snippets.more') %>',
       '<%= I18n.t('blacklight.ocr.search.results.snippets.less') %>');
+});
+
+$('a').click(function () {
+    BlacklightGoogleAnalytics.track_link_clicks(this, 'ocr_search#index');
+});
+
+$("form").submit(function() {
+    BlacklightGoogleAnalytics.track_form_submit(this, 'ocr_search#index');
 });
 
 // add the .modal-transition class

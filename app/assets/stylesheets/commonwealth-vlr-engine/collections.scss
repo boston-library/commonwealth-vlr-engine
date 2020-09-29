@@ -7,7 +7,7 @@
   #sortAndPerPage {
     @include card-esque(10px);
 
-    #sort-dropdown, .view-type, #saveSearchLink {
+    #sort-dropdown, .view-type {
       display: none;
     }
 
@@ -247,6 +247,7 @@ h4.collection-provenance {
           border: none;
 
           img {
+            max-width: 100%;
             max-height: 127px;
 
             @media (min-width: breakpoint-min(xl)) {

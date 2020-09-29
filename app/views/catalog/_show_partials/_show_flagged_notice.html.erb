@@ -28,4 +28,8 @@
   // fire the warning modal and make the backdrop very dark
   $('#flagged_warning').modal();
   $(".modal-backdrop").css("opacity",".95");
+
+  $('#flagged_warning button').click(function () {
+      BlacklightGoogleAnalytics.track_link_clicks(this);
+  });
 </script>

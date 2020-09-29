@@ -4,6 +4,16 @@ h1 {
   font-size: $h2-font-size;
 }
 
+a {
+  color: $bl_link;
+  text-decoration: $link-decoration;
+
+  &:hover {
+    color: $bl_link_hover;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
 // fixed-top navbar for these pages only
 body.blacklight-institutions-index, body.blacklight-collections-index, body.blacklight-catalog-index {
 
@@ -141,15 +151,6 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
       padding-left: 12px;
     }
 
-    /*
-    @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
-      padding-left: 1px;
-    }
-
-    @media (max-width: breakpoint-max(md)) {
-      padding-left: 2px;
-    }
-    */
   }
 
   .az_nolink {

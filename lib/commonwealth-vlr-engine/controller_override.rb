@@ -203,7 +203,8 @@ module CommonwealthVlrEngine
         # add our custom tools
         config.add_show_tools_partial :add_this, partial: 'add_this'
         config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
-        config.add_show_tools_partial :email, partial: 'show_sharing_tools'
+        config.add_show_tools_partial :email, partial: 'show_sharing_tools',
+                                      callback: :email_action, validator: :validate_email_params
         config.add_show_tools_partial :citation, partial: 'show_cite_tools'
       end
 
