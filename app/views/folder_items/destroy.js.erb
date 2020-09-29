@@ -1,1 +1,1 @@
-$('#folder_item_toggle').replaceWith("<%= escape_javascript(render(:partial => 'catalog/folder_item_control', :locals => {:document => @document})) %>")
+$('#folder_item_toggle').replaceWith("<%= escape_javascript(render(partial: 'catalog/folder_item_control', locals: { document: @document })) %>")
