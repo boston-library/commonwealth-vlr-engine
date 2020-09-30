@@ -1,3 +1,0 @@
-[submodule "db/migrate"]
-	path = db/migrate
-	url = https://github.com/boston-library/commonwealth-db-migrations.git

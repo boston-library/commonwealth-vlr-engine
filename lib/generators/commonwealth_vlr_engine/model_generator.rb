@@ -36,15 +36,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # get the database migrations from the submodule
-    # https://github.com/boston-library/commonwealth-db-migrations.git
-    def get_migrations_submodule
-      Dir.chdir(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..'))) do
-        `git submodule init`
-        `git submodule update`
-      end
-    end
-
     # Setup the database migrations
     def copy_migrations
       rake 'railties:install:migrations'
