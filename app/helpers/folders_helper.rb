@@ -1,3 +1,0 @@
-module FoldersHelper
-  include CommonwealthVlrEngine::FoldersHelperBehavior
-end

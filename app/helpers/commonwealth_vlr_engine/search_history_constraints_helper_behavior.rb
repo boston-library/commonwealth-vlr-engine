@@ -1,7 +1,7 @@
+# overrides methods from Blacklight::SearchHistoryConstraintsHelperBehavior
+# which is included via Blacklight::CatalogHelperBehavior
 module CommonwealthVlrEngine
-  module SearchHistoryConstraintsHelper
-    include Blacklight::SearchHistoryConstraintsHelperBehavior
-
+  module SearchHistoryConstraintsHelperBehavior
     # include render_search_to_s_mlt() in rendered constraints
     def render_search_to_s(params)
       render_search_to_s_advanced(params) + render_search_to_s_mlt(params) + super
