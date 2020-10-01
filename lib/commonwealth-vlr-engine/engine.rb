@@ -19,7 +19,7 @@ begin
   require 'rsolr' unless defined? RSolr
   require 'iiif/presentation'
 rescue LoadError => e
-  puts "A Gem Dpenedency is Missing....#{e.message}"
+  puts "A Gem Dependency is Missing....#{e.message}"
 end
 
 module CommonwealthVlrEngine
