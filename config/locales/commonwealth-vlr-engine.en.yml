@@ -19,34 +19,6 @@ en:
           item_link: 'Back to item details'
           link_to_reader: 'Read online'
 
-
-    bookmarks:
-          collection:
-            add:
-              button: 'Add to Bookmarks'
-          title: 'Bookmarks'
-          description: 'The default folder for creating a list of items.'
-          no_bookmarks: 'This folder does not currently have any items.'
-          add:
-            button: 'Bookmark'
-            success:
-              one: 'Item added to folder.'
-              other: 'Items added to folder.'
-            failure:  'Item could not be added.'
-          remove:
-            button: 'Remove bookmark'
-            success: 'Item removed from folder.'
-            failure: 'Item could not be removed.'
-            action_confirm: 'Remove this item?'
-          clear:
-            action_title: 'Remove all items'
-            action_confirm: 'Are you sure you want to remove all items?'
-            success: 'All items removed.'
-            failure: 'Items could not be removed. Please try again later.'
-          need_login: 'Please log in to create and manage folders.'
-          list_title: 'Your Bookmarks'
-          delete: 'Remove'
-
     breadcrumb:
           separator: ' > '
 
@@ -139,71 +111,11 @@ en:
             message: 'Message: '
             topic: 'Topic: '
 
-    folders:
-          intro: 'Folders can be used to create, organize, and share your own personal collections of items.'
-          list_title: 'Folders'
-          no_folders: 'You do not currently have any folders.'
-          need_login: 'Please log in to create and view folders.'
-          create:
-            error:
-              no_title: 'Title cannot be blank.'
-              no_save: 'The folder could not be created. Please try again later.'
-          delete:
-            delete: 'Delete folder'
-            success: 'Folder deleted.'
-            confirm: 'Are you sure you want to delete this folder?'
-          edit: 'Edit folder'
-          add_folder: 'Create a New Folder'
-          edit_folder: 'Edit Folder'
-          empty: 'This folder does not currently have any items.'
-          private: 'You do not have access to this folder.'
-          public_list:
-            intro: 'Lists of items created and shared by Digital Commonwealth users.'
-            title: 'Shared Folders'
-          update_items:
-            copy:
-              success: "Items copied to '%{folder_name}' folder."
-              failure: 'Items could not be copied. Make sure the destination folder does not already include the items. If you are still unable to copy the items, please use the Contact link to report the problem.'
-            remove:
-              success: 'Items removed.'
-              failure: 'Items could not be removed. Please try again later.'
-              no_items: 'No items selected!'
-          help:
-            add_items: 'To add items to your folder, click the "Add to Folder" button in the "Tools" section
-                        of the item detail page.'
-
-    folder_items:
-          item_in_folder: 'In Folder'
-          add:
-            button: 'Add to Folder'
-            success: 'Item added to folder.'
-            failure: 'Item could not be added.'
-            submit: 'Add'
-          remove:
-            button: 'Remove from folder'
-            success: 'Item removed from folder.'
-            failure: 'Item could not be removed.'
-          clear:
-            action: 'Remove all items'
-            confirm: 'Are you sure you want to remove all items?'
-            success: 'All items removed.'
-            failure: 'Items could not be removed. Please try again later.'
-
     formats:
           page_title: 'Formats - %{application_name}'
 
     footer:
           address: '123 Main Street, Anywhere, MA 01234'
-
-    header_links:
-          logout: 'Log Out'
-          login: 'Sign Up / Log In'
-          profile: 'Profile'
-          folders: 'Folders'
-          bookmarks: 'Folders'
-          saved_searches: 'Saved Searches'
-          search_history: 'Search History'
-          selected_items: 'Selected Items'
 
     home:
           banner:
@@ -358,27 +270,6 @@ en:
     range_limit:
           submit_limit: 'Apply'
 
-    saved_searches:
-          add:
-            success: 'Successfully saved your search.'
-            failure: 'There was a problem saving your search.'
-          remove:
-            success: 'Search removed.'
-            failure: 'There was a problem removing your search.'
-          clear:
-            action_title: 'clear all'
-            action_confirm: 'Clear your saved searches?'
-            success: 'Cleared your saved searches.'
-            failure: 'There was a problem clearing your searches.'
-          save: 'Save Search'
-          title: 'Saved Searches'
-          page_title: 'Saved Searches - %{application_name}'
-          intro: 'Saved searches allow you to quickly re-search for items of interest.'
-          need_login: 'Please log in to manage and view your saved searches.'
-          no_searches: "You don't have any saved searches at the moment."
-          list_title: 'Your saved searches'
-          delete: 'Delete this search.'
-
     search:
           basic_search:
             form:
@@ -418,19 +309,10 @@ en:
             search_everything: "try again searching All Fields"
             use_fewer_keywords: "Try using fewer keywords in your search, then refine the results using the 'Limit Your Search' options."
 
-    search_history:
-          intro: 'View and save your recent searches.'
-          no_history: 'You have no search history for this session yet.'
-
     tools:
-          copy_to: 'Copy to'
           librarian_view:
             link: 'View MODS XML'
             title: 'View MODS XML metadata'
-          remove: 'Remove'
-
-    users:
-          account_heading: 'My Account'
 
   errors:
     messages:
@@ -441,59 +323,6 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
-
-  devise:
-    failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
-    sessions:
-      signed_in: ''
-      signed_out: ''
-    passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      updated_not_active: 'Your password was changed successfully.'
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      no_token: "You can't access this page without a password reset email. If you did use the link from a password reset email, please make sure you used the full URL provided."
-    confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
-    registrations:
-      edit: 'Edit My Account'
-      password:
-        new: 'New password'
-        new_confirm: 'New password confirmation'
-        old: 'Current password'
-      sign_up: "Sign up."
-      signed_up: 'Welcome! You can now access your bookmarks, folders, and searches using the menu at the top right.'
-      signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
-      signed_up_but_inactive: 'You have signed up successfully. However, we could not sign you in because your account is not yet activated.'
-      signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
-      updated: 'You updated your account successfully.'
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
-    unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
-    omniauth_callbacks:
-      # success: 'Successfully authenticated from %{kind} account.'
-      success: 'You are now signed in.'
-      failure: 'Could not authenticate you from %{kind} because "%{reason}".'
-    mailer:
-      confirmation_instructions:
-        subject: 'SITE_NAME - Confirmation instructions'
-      reset_password_instructions:
-        subject: 'SITE_NAME - Reset password instructions'
-      unlock_instructions:
-        subject: 'SITE_NAME - Unlock Instructions'
 
   views:
       pagination_compact:
