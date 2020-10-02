@@ -9,12 +9,20 @@ module CommonwealthVlrEngine
     argument :document_name, type: :string , default: "solr_document"
     argument :controller_name, type: :string , default: "catalog"
 
+    class_option :bpluser, type: :boolean, default: false, desc: "Add user functionality using Devise and Bpluser"
+
     desc "InstallGenerator Commonwealth VLR Engine"
 
     def verify_blacklight_installed
       return if IO.read('app/controllers/application_controller.rb').include?('include Blacklight::Controller')
+
       say_status('info', 'BLACKLIGHT NOT INSTALLED; GENERATING BLACKLIGHT', :blue)
-      generate 'blacklight:install --devise'
+      generate "blacklight:install#{ ' --devise' if options[:bpluser]}"
+    end
+
+    def bpluser_install
+      # TODO: may need to add bpluser to Gemfile first?
+      generate 'bpluser:install' if options[:bpluser]
     end
 
     def insert_to_assets
@@ -35,16 +43,6 @@ module CommonwealthVlrEngine
 
     def add_vlr_initializers
       template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
-      # template 'config/initializers/devise.rb'
-      # template 'config/initializers/secret_token.rb'
-    end
-
-    def configure_user
-      generate 'commonwealth_vlr_engine:user'
-    end
-
-    def configure_devise
-      generate 'commonwealth_vlr_engine:devise'
     end
 
     def insert_to_routes

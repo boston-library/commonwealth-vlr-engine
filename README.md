@@ -26,6 +26,8 @@ Run the VLR-Engine install:
 ```
 $ bundle install
 $ rails generate commonwealth_vlr_engine:install
+# if you want to include user functionality (bookmarks, folders, saved searches, etc) via Devise and Bpluser use:
+# rails generate commonwealth_vlr_engine:install --bpluser
 $ rake db:migrate
 ```
 You will then need to configure various YAML files to point to existing Solr, Fedora, and IIIF image servers.

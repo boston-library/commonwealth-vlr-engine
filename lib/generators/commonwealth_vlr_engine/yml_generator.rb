@@ -12,15 +12,11 @@ module CommonwealthVlrEngine
       copy_file 'config/contact_emails.yml.sample', 'config/contact_emails.yml' unless File::exists?('config/contact_emails.yml')
       copy_file 'config/fedora.yml.sample', 'config/fedora.yml' unless File::exists?('config/fedora.yml')
       copy_file 'config/iiif_server.yml.sample', 'config/iiif_server.yml' unless File::exists?('config/iiif_server.yml')
-      copy_file 'config/omniauth-facebook.yml.sample', 'config/omniauth-facebook.yml' unless File::exists?('config/omniauth-facebook.yml')
-      copy_file 'config/omniauth-polaris.yml.sample', 'config/omniauth-polaris.yml' unless File::exists?('config/omniauth-polaris.yml')
-      # copy_file 'config/secrets.yml.sample', 'config/secrets.yml' unless File::exists?('config/secrets.yml')
       copy_file 'config/vlr.yml', 'config/vlr.yml' unless File::exists?('config/vlr.yml')
     end
 
     def locale_yml_copy
-      copy_file('config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml', :force => true)
-      # copy_file 'config/locales/devise.en.yml', 'config/locales/devise.en.yml'
+      copy_file('config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml')
     end
   end
 end
