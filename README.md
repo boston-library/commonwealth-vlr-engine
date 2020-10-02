@@ -32,6 +32,8 @@ $ rake db:migrate
 ```
 You will then need to configure various YAML files to point to existing Solr, Fedora, and IIIF image servers.
 
+TK add note about overwrite of local app config/locales/devise.en.yml and blacklight.en.yml
+
 ## Blacklight Version Compatibility
 The table below indicates which versions of Commonwealth-VLR-Engine are compatible with which versions of Blacklight.
 

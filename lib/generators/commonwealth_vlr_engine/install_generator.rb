@@ -21,8 +21,16 @@ module CommonwealthVlrEngine
     end
 
     def bpluser_install
-      # TODO: may need to add bpluser to Gemfile first?
-      generate 'bpluser:install' if options[:bpluser]
+      return unless options[:bpluser]
+
+      # TODO: use Git as source for bpluser
+      gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
+
+      Bundler.with_clean_env do
+        run "bundle install"
+      end
+
+      generate 'bpluser:install'
     end
 
     def insert_to_assets
@@ -51,6 +59,13 @@ module CommonwealthVlrEngine
 
     def insert_to_environments
       generate 'commonwealth_vlr_engine:environment'
+    end
+
+    def mailer_sender
+      return unless options[:bpluser]
+
+      gsub_file('config/initializers/devise.rb', /^[\s#]*config.mailer_sender[^\n]*/,
+                "  config.mailer_sender = CONTACT_EMAILS['site_admin']")
     end
 
     def bundle_install
