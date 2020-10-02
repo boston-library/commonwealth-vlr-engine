@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SavedSearchesController < ApplicationController
-  include CommonwealthVlrEngine::SavedSearches
+  include Bpluser::SavedSearches
 
   helper BlacklightAdvancedSearch::RenderConstraintsOverride
   helper BlacklightMaps::RenderConstraintsOverride
