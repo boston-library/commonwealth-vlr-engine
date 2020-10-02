@@ -21,8 +21,8 @@ module CommonwealthVlrEngine
 
   root to: 'pages#home'
 
-  # routes for CommonwealthVlrEngine
-  mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
+  # routes for CommonwealthVlrEngine (ACTUALLY, WE DON'T NEED THIS?)
+  # mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
 
   # bookmarks item actions
   # this has to be in local app for bookmark item actions to work
