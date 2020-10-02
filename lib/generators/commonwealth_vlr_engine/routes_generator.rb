@@ -51,10 +51,6 @@ module CommonwealthVlrEngine
         inject_into_file 'config/routes.rb', after: exportable_marker do
           "\n    concerns :iiif_search"
         end
-
-        # update devise
-        gsub_file("config/routes.rb", 'devise_for :users',
-                  "devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations', sessions: 'users/sessions' }")
       end
     end
   end

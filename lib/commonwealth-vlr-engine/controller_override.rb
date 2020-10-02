@@ -327,31 +327,5 @@ module CommonwealthVlrEngine
     def has_search_parameters?
       params[:mlt_id].present? || super
     end
-
-    protected
-    ##
-    # When a user logs in, transfer any saved searches or bookmarks to the current_user
-    def transfer_guest_user_actions_to_current_user
-      return unless respond_to? :current_user and respond_to? :guest_user and current_user and guest_user
-
-      #Custom code to transfer over folders
-      guest_user.folders.each do |folder|
-        target_folder = current_user.folders.where(:title=>folder.title)
-        if target_folder.blank?
-          target_folder = current_user.folders.create({title: folder.title, description: folder.description, visibility: folder.visibility})
-          target_folder.save!
-        else
-          target_folder = target_folder.first
-        end
-        folder.folder_items.each do |item_to_add|
-          unless target_folder.has_folder_item(item_to_add.document_id)
-            target_folder.folder_items.create(:document_id => item_to_add.document_id) and target_folder.touch
-            target_folder.save!
-          end
-        end
-      end
-
-      super
-    end
   end
 end
