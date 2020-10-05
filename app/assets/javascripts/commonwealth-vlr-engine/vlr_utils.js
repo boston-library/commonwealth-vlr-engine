@@ -6,4 +6,3 @@ function toggleText (e, text1, text2) {
         return text === text1 ? text2 : text1;
     })
 }
-

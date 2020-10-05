@@ -23,8 +23,7 @@ module CommonwealthVlrEngine
     def bpluser_install
       return unless options[:bpluser]
 
-      # TODO: use Git as source for bpluser
-      gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
+      gem 'bpluser', github: 'boston-library/bpluser'
 
       Bundler.with_clean_env do
         run "bundle install"

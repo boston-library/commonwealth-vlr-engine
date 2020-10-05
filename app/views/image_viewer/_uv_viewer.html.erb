@@ -26,7 +26,7 @@
 
           uv = createUV('#uv', {
               root: '../uv',
-              iiifResourceUri: 'https://search-hydratest.bpl.org/search/bpl-test:1831d231h/manifest', //'<%= iiif_manifest_path(@document.id) %>', // urlDataProvider.get('manifest')
+              iiifResourceUri: '<%= iiif_manifest_path(@document.id) %>', // urlDataProvider.get('manifest')
               configUri: "/uv/uv-config<%= license_allows_download?(@document) ? '' : '-no-download' %>.json", // urlDataProvider.get('config')
               collectionIndex: Number(urlDataProvider.get('c', 0)),
               manifestIndex: Number(urlDataProvider.get('m', 0)),

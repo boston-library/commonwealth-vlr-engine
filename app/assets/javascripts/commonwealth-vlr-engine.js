@@ -8,9 +8,6 @@
 // Blacklight-centric Google Analytics event tracking
 //= require blacklight_google_analytics/blacklight_google_analytics
 
-// disable main header dropdown menus on tablet/mobile
-//= require commonwealth-vlr-engine/disable_dropdown_nav
-
 // site-wide utilities
 //= require commonwealth-vlr-engine/vlr_utils
 
