@@ -67,9 +67,9 @@ module CommonwealthVlrEngine
     end
 
     # find a representative image/item for a series
-    def get_series_image_obj(series_title,collection_title)
+    def get_series_image_obj(series_title, collection_title)
       blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
-      series_params = { f: { @series_field => series_title,
+      series_params = { f: { blacklight_config.series_field => series_title,
                              blacklight_config.collection_field => collection_title },
                        rows: 1 }
       series_search_service = search_service_class.new(config: blacklight_config,
@@ -80,8 +80,7 @@ module CommonwealthVlrEngine
 
     # show series facet
     def add_series_facet
-      @series_field = 'related_item_series_ssim'
-      blacklight_config.facet_fields[@series_field].include_in_request = true
+      blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
     end
 
     # collapse the institution facet, if Institutions supported

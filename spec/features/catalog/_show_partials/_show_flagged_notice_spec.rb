@@ -6,11 +6,11 @@ describe 'flagged item modal', js: true do
     visit solr_document_path(:id => 'bpl-dev:00000007x')
   end
 
-  it 'should display the flagged item modal when the page is loaded' do
+  it 'displays the flagged item modal when the page is loaded' do
     expect(page).to have_selector('#flagged_warning')
   end
 
-  it 'should return to the search page when the "back" button is clicked' do
+  it 'returns to the search page when the "back" button is clicked' do
     click_link('Back to Search')
     expect(page).to have_selector('#basic_search')
   end

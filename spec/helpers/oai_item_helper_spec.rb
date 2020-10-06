@@ -25,13 +25,13 @@ describe OaiItemHelper do
   end
 
   describe '#oai_inst_name' do
-    it 'should return the institution name' do
+    it 'returns the institution name' do
       expect(helper.oai_inst_name(document)).to eq('Boston Public Library')
     end
   end
 
   describe '#oai_link_text' do
-    it 'should return the correct link text' do
+    it 'returns the correct link text' do
       expect(helper.oai_link_text(document)).to include('View the full image')
     end
   end

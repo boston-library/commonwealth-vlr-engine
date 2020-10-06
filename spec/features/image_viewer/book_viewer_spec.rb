@@ -13,7 +13,7 @@ describe 'book_viewer', js: true do
       click_link('toggle-search')
     end
 
-    it 'should render the search inside partial as a Bootstrap modal within the page' do
+    it 'renders the search inside partial as a Bootstrap modal within the page' do
       expect(page).to have_selector('.modal-header')
       expect(page).to have_selector('.blacklight-image_viewer')
     end
@@ -27,7 +27,7 @@ describe 'book_viewer', js: true do
         end
       end
 
-      it 'should display the results in the modal window within the page' do
+      it 'displays the results in the modal window within the page' do
         expect(page).to have_selector('.modal-header')
         expect(page).to have_selector('.blacklight-image_viewer')
       end
@@ -52,7 +52,7 @@ describe 'book_viewer', js: true do
             find('#toggle-search').click
           end
 
-          it 'should display the results for the most recent search' do
+          it 'displays the results for the most recent search' do
             expect(page).to have_selector('#ocr_search_details')
           end
 

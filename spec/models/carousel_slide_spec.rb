@@ -15,7 +15,7 @@ describe CarouselSlide do
     }
   end
 
-  it 'should create a new slide given valid attributes' do
+  it 'creates a new slide given valid attributes' do
     CarouselSlide.create!(@slide_attr)
   end
 
@@ -25,11 +25,11 @@ describe CarouselSlide do
       @slide = CarouselSlide.create!(@slide_attr)
     end
 
-    it 'should have a title attribute' do
+    it 'has a title attribute' do
       expect(@slide).to respond_to(:title)
     end
 
-    it 'should have the right title' do
+    it 'has the right title' do
       expect(@slide.title).to eq('The Slide Title')
     end
 

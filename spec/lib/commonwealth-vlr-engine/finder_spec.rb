@@ -27,23 +27,23 @@ describe CommonwealthVlrEngine::Finder do
 
     let(:return_hash) { @obj.get_files(@item_pid) }
 
-    it 'should create a hash with the file objects' do
+    it 'creates a hash with the file objects' do
       expect(return_hash.empty?).to be_falsey
       expect(return_hash.length).to eq(6)
     end
 
-    it 'should have an :images key with a hash of Bplmodel::ImageFile SolrDocs as the value' do
+    it 'has an :images key with a hash of Bplmodel::ImageFile SolrDocs as the value' do
       expect(return_hash[:images].length).to eq(2)
       expect(return_hash[:images][0].class).to eq(SolrDocument)
       expect(return_hash[:images][0]['active_fedora_model_ssi']).to eq('Bplmodels::ImageFile')
     end
 
-    it 'should have the right ImageFile objects for the item' do
+    it 'has the right ImageFile objects for the item' do
       expect(return_hash[:images].to_s).to include(@image1_pid)
     end
 
     # TODO: specs for each file type, and associated get_* methods
-    it 'should have keys for other file types' do
+    it 'has keys for other file types' do
       %i(documents audio ereader video generic).each do |k|
         expect(return_hash[k]).not_to be_nil
       end
@@ -51,7 +51,7 @@ describe CommonwealthVlrEngine::Finder do
 
     describe 'sort_files' do
 
-      it 'should have the images in the right order' do
+      it 'has the images in the right order' do
         expect(return_hash[:images][0]['id']).to eq(@image1_pid)
         expect(return_hash[:images][1]['id']).to eq(@image2_pid)
       end
@@ -65,13 +65,13 @@ describe CommonwealthVlrEngine::Finder do
     let(:pid) { 'bpl-dev:h702q6403' }
     let(:return_list) { @obj.get_image_files(pid) }
 
-    it 'should create an array with the ImageFile objects' do
+    it 'creates an array with the ImageFile objects' do
       expect(return_list.empty?).to be_falsey
       expect(return_list.length).to eq(2)
       expect(return_list[0]['active_fedora_model_ssi']).to eq('Bplmodels::ImageFile')
     end
 
-    it 'should have the right ImageFile objects for the item, in the right order' do
+    it 'has the right ImageFile objects for the item, in the right order' do
       expect(return_list[0]['id']).to eq(@image1_pid)
     end
 
@@ -81,7 +81,7 @@ describe CommonwealthVlrEngine::Finder do
 
     let(:response) { @obj.get_first_image_file(@item_pid) }
 
-    it 'should return the first ImageFile object' do
+    it 'returns the first ImageFile object' do
       expect(response).not_to be_nil
       expect(response['id']).to eq(@image1_pid)
     end
@@ -92,7 +92,7 @@ describe CommonwealthVlrEngine::Finder do
 
     let(:response) { @obj.get_next_image_file(@image1_pid) }
 
-    it 'should return the next ImageFile object' do
+    it 'returns the next ImageFile object' do
       expect(response).not_to be_nil
       expect(response['id']).to eq(@image2_pid)
     end
@@ -103,7 +103,7 @@ describe CommonwealthVlrEngine::Finder do
 
     let(:response) { @obj.get_prev_image_file(@image2_pid) }
 
-    it 'should return the next ImageFile object' do
+    it 'returns the next ImageFile object' do
       expect(response).not_to be_nil
       expect(response['id']).to eq(@image1_pid)
     end
@@ -114,7 +114,7 @@ describe CommonwealthVlrEngine::Finder do
 
     let(:response) { @obj.get_file_parent_object(@image2_pid) }
 
-    it 'should return the parent object' do
+    it 'returns the parent object' do
       expect(response).to eq(@item_pid)
     end
 
@@ -125,18 +125,18 @@ describe CommonwealthVlrEngine::Finder do
     let(:pid) { 'bpl-dev:3j334b469' }
     let(:return_list) { @obj.get_volume_objects(pid) }
 
-    it 'should return an array of hashes with the Volume objects and files' do
+    it 'returns an array of hashes with the Volume objects and files' do
       expect(return_list.class).to eq(Array)
       expect(return_list.length).to eq(2)
       expect(return_list[0].class).to eq(Hash)
     end
 
-    it 'should return the volume document in the :vol_doc value' do
+    it 'returns the volume document in the :vol_doc value' do
       expect(return_list[0][:vol_doc].id).to eq('bpl-dev:3j334603p')
       expect(return_list[0][:vol_doc]['active_fedora_model_ssi']).to eq('Bplmodels::Volume')
     end
 
-    it 'should return the volume files in the :vol_files value' do
+    it 'returns the volume files in the :vol_files value' do
       expect(return_list[0][:vol_files][:ereader].length).to eq(1)
       expect(return_list[0][:vol_files][:ereader].first.id).to eq('bpl-dev:3j334b41x')
     end

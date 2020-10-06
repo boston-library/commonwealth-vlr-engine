@@ -1,5 +1,7 @@
 <% @page_title = t('blacklight.institutions.index.page_title', :application_name => application_name) %>
-<% content_for(:head) { render_opensearch_response_metadata } %>
+<% content_for(:head) do -%>
+  <%= render 'catalog/opensearch_response_metadata', response: @response %>
+<% end %>
 
 <h2><%= t('blacklight.institutions.title') %></h2>
 

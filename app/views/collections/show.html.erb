@@ -52,7 +52,7 @@
         <div id="collection_facets_wrapper" class="row">
           <div class="col-lg-9">
 
-            <% if has_facet_values?([@series_field]) %>
+            <% if has_facet_values?([blacklight_config.series_field]) %>
               <div id="series_wrapper">
                 <%= render :partial=> 'catalog/facets_series' %>
               </div>

@@ -7,7 +7,7 @@ describe 'multi image viewer' do
     click_link('carousel-nav_next')
   end
 
-  it 'should display the next image when a prev-next link is clicked' do
+  it 'displays the next image when a prev-next link is clicked' do
     expect(find('.img_show')['src']).to match /bpl-dev:h702q642n/
   end
 

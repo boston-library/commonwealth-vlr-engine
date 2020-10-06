@@ -18,12 +18,12 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @manifest = @obj.create_iiif_manifest(document, image_files) }
 
-    it 'should create an instance of IIIF::Presentation::Manifest' do
+    it 'creates an instance of IIIF::Presentation::Manifest' do
       expect(@manifest).not_to be_nil
       expect(@manifest.class).to eq(IIIF::Presentation::Manifest)
     end
 
-    it 'should have metadata, sequences, canvases, images, and resources' do
+    it 'has metadata, sequences, canvases, images, and resources' do
       expect(@manifest.metadata.empty?).not_to be_truthy
       expect(@manifest.sequences.empty?).not_to be_truthy
       expect(@manifest.sequences[0].canvases.empty?).not_to be_truthy
@@ -31,7 +31,7 @@ describe CommonwealthVlrEngine::IiifManifest do
       expect(@manifest.sequences[0].canvases[0].images[0].resource).not_to be_nil
     end
 
-    it 'should have the right id' do
+    it 'has the right id' do
       expect(@manifest['@id']).to eq("#{document[:identifier_uri_ss]}/manifest")
     end
 
@@ -41,17 +41,17 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @canvas = @obj.canvas_from_id(image_files.first.id, 'image1', document) }
 
-    it 'should create an instance of IIIF::Presentation::Canvas' do
+    it 'creates an instance of IIIF::Presentation::Canvas' do
       expect(@canvas).not_to be_nil
       expect(@canvas.class).to eq(IIIF::Presentation::Canvas)
     end
 
-    it 'should have images and resources' do
+    it 'has images and resources' do
       expect(@canvas.images.empty?).not_to be_truthy
       expect(@canvas.images[0].resource).not_to be_nil
     end
 
-    it 'should have the right id' do
+    it 'has the right id' do
       expect(@canvas['@id']).to eq("#{document[:identifier_uri_ss]}/canvas#{image_id_suffix}")
     end
 
@@ -61,16 +61,16 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @annotation = @obj.image_annotation_from_image_id(image_files.first.id, document) }
 
-    it 'should create an instance of IIIF::Presentation::Annotation' do
+    it 'creates an instance of IIIF::Presentation::Annotation' do
       expect(@annotation).not_to be_nil
       expect(@annotation.class).to eq(IIIF::Presentation::Annotation)
     end
 
-    it 'should have a resource' do
+    it 'has a resource' do
       expect(@annotation.resource).not_to be_nil
     end
 
-    it 'should have the right id' do
+    it 'has the right id' do
       expect(@annotation['@id']).to eq("#{document[:identifier_uri_ss]}/annotation#{image_id_suffix}")
     end
 
@@ -80,7 +80,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @image_resource = @obj.image_resource_from_image_id(image_files.first.id, document) }
 
-    it 'should create an instance of IIIF::Presentation::ImageResource' do
+    it 'creates an instance of IIIF::Presentation::ImageResource' do
       expect(@image_resource).not_to be_nil
       expect(@image_resource.class).to eq(IIIF::Presentation::ImageResource)
     end
@@ -90,7 +90,7 @@ describe CommonwealthVlrEngine::IiifManifest do
       expect(@image_resource.width).not_to be_nil
     end
 
-    it 'should have the right id' do
+    it 'has the right id' do
       expect(@image_resource['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/large_image")
     end
 
@@ -103,17 +103,17 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @collection = @obj.collection_for_manifests(series_document, manifest_docs) }
 
-    it 'should create an instance of IIIF::Presentation::Collection' do
+    it 'creates an instance of IIIF::Presentation::Collection' do
       expect(@collection).not_to be_nil
       expect(@collection.class).to eq(IIIF::Presentation::Collection)
     end
 
-    it 'should have contain a list of manifests' do
+    it 'has contain a list of manifests' do
       expect(@collection.manifests.length).to eq(2)
       expect(@collection.manifests.first['@id']).to include('3j334603p')
     end
 
-    it 'should have the right id' do
+    it 'has the right id' do
       expect(@collection['@id']).to eq(series_document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
     end
 
@@ -123,11 +123,11 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @manifest_metadata = @obj.manifest_metadata(document) }
 
-    it 'should create a hash of metadata' do
+    it 'creates a hash of metadata' do
       expect(@manifest_metadata.empty?).to be_falsey
     end
 
-    it 'should have a bunch of metadata about the item' do
+    it 'has a bunch of metadata about the item' do
       expect(@manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.title') }[:value]).to eq(document[IiifManifestTestClass.blacklight_config.index.title_field.to_sym])
       expect(@manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.collection') }[:value]).to eq(document[:related_item_host_ssim].first)
     end
@@ -138,7 +138,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @manifest_attribution = @obj.manifest_attribution(document) }
 
-    it 'should create an attribution string' do
+    it 'creates an attribution string' do
       expect(@manifest_attribution).to include('No known copyright restrictions')
     end
 
@@ -148,7 +148,7 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     before { @label_for_canvas = @obj.label_for_canvas(image_files.first, 0) }
 
-    it 'should return the correct label' do
+    it 'returns the correct label' do
       expect(@label_for_canvas).to eq('Front')
     end
 

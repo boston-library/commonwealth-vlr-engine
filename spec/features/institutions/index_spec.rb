@@ -19,7 +19,7 @@ describe 'Institutions#index view', js: true do
       end
     end
 
-    it 'should have the correct path in the Start Over link' do
+    it 'has the correct path in the Start Over link' do
       within ('#startOverLink') do
         expect(page.html).to include('/institutions')
       end

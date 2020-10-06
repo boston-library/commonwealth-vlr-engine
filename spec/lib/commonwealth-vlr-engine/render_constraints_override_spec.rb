@@ -37,7 +37,7 @@ describe CommonwealthVlrEngine::RenderConstraintsOverride do
     # TODO: can't get the spec below to pass, getting error:
     # NoMethodError: super: no superclass method `render_constraint_element'
 
-    it "should render AZ link constraints properly" #do
+    it "renders AZ link constraints properly" #do
       #expect(@fake_controller.render_constraint_element(nil, "title_info_primary_ssort:B*")).to
         #have_content("Starts with")
     #end
@@ -70,7 +70,7 @@ describe CommonwealthVlrEngine::RenderConstraintsOverride do
       # TODO: can't get these specs to pass, getting error:
       # NoMethodError: undefined method `render_constraint_element'
 
-      it "should render the mlt id" #do
+      it "renders the mlt id" #do
         #expect(@fake_controller.render_mlt_query(@test_params)).to have_content(@fake_controller.params[:mlt_id])
       #end
 

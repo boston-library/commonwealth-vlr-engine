@@ -20,7 +20,7 @@ describe 'feedback form', js: true do
         select I18n.t('blacklight.feedback.form.topic.options.repro.option'), :from => 'message_type_select'
       end
 
-      it 'should display the feedback help text' do
+      it 'displays the feedback help text' do
         expect(page).not_to have_selector("#{contact_help_text_id}.hidden")
         expect(page).to have_selector("#{contact_help_text_id}", visible: true)
       end

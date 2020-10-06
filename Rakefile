@@ -32,9 +32,10 @@ RSpec::Core::RakeTask.new
 desc 'Run test suite'
 task ci: ['engine_cart:generate'] do
   SolrWrapper.wrap do |solr|
-    Dir.glob(File.join(__dir__, 'lib', 'generators', 'commonwealth_vlr_engine', 'templates', 'solr', 'conf', '*.xml')) do |file|
-      puts FileUtils.cp file, solr.config.collection_options[:dir]
-    end
+    # TODO: below not needed because of TestAppGenerator#set_up_solr ?
+    #Dir.glob(File.join(__dir__, 'lib', 'generators', 'commonwealth_vlr_engine', 'templates', 'solr', 'conf', '*.xml')) do |file|
+    #  puts FileUtils.cp file, solr.config.collection_options[:dir]
+    #end
     solr.with_collection do
       within_test_app do
         system 'RAILS_ENV=test rake commonwealth_vlr_engine:test_index:seed'
