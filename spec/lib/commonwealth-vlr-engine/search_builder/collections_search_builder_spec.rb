@@ -9,7 +9,7 @@ describe CommonwealthCollectionsSearchBuilder do
 
   describe 'processor chain' do
 
-    it 'should add the right methods to the processor chain' do
+    it 'adds the right methods to the processor chain' do
       expect(@obj.processor_chain).to include(:collections_filter)
     end
 

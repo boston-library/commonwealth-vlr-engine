@@ -38,7 +38,7 @@ class OcrSearchController < CatalogController
         return render layout: false if request.xhr?
       end
       # Draw the partial for the ocr search results modal window:
-      format.js { render :layout => false }
+      format.js { render layout: false }
     end
   end
 
@@ -46,7 +46,6 @@ class OcrSearchController < CatalogController
 
   # modify Solr query/response for OCR searches
   def modify_config_for_ocr
-    # blacklight_config.search_builder_class = CommonwealthOcrSearchBuilder
     blacklight_config.sort_fields = {}
     blacklight_config.add_sort_field 'score desc, system_create_dtsi asc', label: 'relevance'
     blacklight_config.add_sort_field 'system_create_dtsi asc', label: 'page #'

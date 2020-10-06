@@ -7,7 +7,7 @@ describe 'Collections#index view', js: true do
 
   describe 'facets' do
 
-    it 'should have facet links that route to catalog#index' do
+    it 'has facet links that route to catalog#index' do
       within ('#facets') do
         click_link('Format')
         within ('#facet-genre_basic_ssim') do
@@ -27,7 +27,7 @@ describe 'Collections#index view', js: true do
         end
       end
 
-      it 'should have facet links that route to catalog#index' do
+      it 'has facet links that route to catalog#index' do
         within ('.facet_extended_list') do
           expect(page).to have_selector("a[href*='/search?']")
         end

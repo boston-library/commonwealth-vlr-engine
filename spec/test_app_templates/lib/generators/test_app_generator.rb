@@ -6,24 +6,17 @@ class TestAppGenerator < Rails::Generators::Base
     remove_file "public/index.html"
   end
 
-  def run_blacklight_generator
-    say_status("warning", "GENERATING BL", :yellow)
-
-    Bundler.with_clean_env do
-      run "bundle install"
-    end
-
-    generate 'blacklight:install'
+  def run_vlr_engine_install
+    generate 'commonwealth_vlr_engine:install --force'
   end
 
-  def run_vlr_engine_install
-    generate 'commonwealth_vlr_engine:install'
+  def configure_test_assets
+    insert_into_file 'config/environments/test.rb', after: 'Rails.application.configure do' do
+      "\nconfig.assets.check_precompiled_asset = false"
+    end
   end
 
   def set_up_solr
     generate 'commonwealth_vlr_engine:solr'
   end
-
-  # TODO: configure various YAML files, run db migrations, set institutions = true, etc.
-
 end

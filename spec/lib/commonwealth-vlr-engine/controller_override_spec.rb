@@ -25,7 +25,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
         expect(override_config.show.document_actions[:bookmark]).to be_empty
       end
 
-      it 'should add the desired actions' do
+      it 'adds the desired actions' do
         expect(override_config.show.document_actions[:custom_email]).not_to be_empty
         expect(override_config.show.document_actions[:folder_items]).not_to be_empty
       end

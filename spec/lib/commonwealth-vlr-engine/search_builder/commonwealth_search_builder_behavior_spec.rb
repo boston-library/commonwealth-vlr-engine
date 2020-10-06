@@ -22,7 +22,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'site_filter' do
 
-    it 'should add parameters to filter items with the correct site' do
+    it 'adds parameters to filter items with the correct site' do
       expect(search_builder.site_filter(solr_parameters).to_s).to include('destination_site_ssim')
     end
 
@@ -30,7 +30,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_unwanted_models' do
 
-    it 'should add parameters to exclude unwanted models' do
+    it 'adds parameters to exclude unwanted models' do
       expect(search_builder.exclude_unwanted_models(solr_parameters).to_s).to include('afmodel:Bplmodels_File')
     end
 
@@ -40,7 +40,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
     let(:excluded_unpublished) { search_builder.exclude_unpublished_items(solr_parameters).to_s }
 
-    it 'should add parameters to exclude non-published items' do
+    it 'adds parameters to exclude non-published items' do
       expect(excluded_unpublished).to include('draft')
       expect(excluded_unpublished).to include('needs_review')
       expect(excluded_unpublished).to include('derivatives')
@@ -50,7 +50,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_institutions' do
 
-    it 'should add parameters to exclude institutions' do
+    it 'adds parameters to exclude institutions' do
       expect(search_builder.exclude_institutions(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Institution\"')
     end
 
@@ -58,7 +58,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_collections' do
 
-    it 'should add parameters to exclude collections' do
+    it 'adds parameters to exclude collections' do
       expect(search_builder.exclude_collections(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Collection\"')
     end
 
@@ -66,7 +66,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'flagged_filter' do
 
-    it 'should add parameters to exclude flagged items' do
+    it 'adds parameters to exclude flagged items' do
       expect(search_builder.flagged_filter(solr_parameters).to_s).to include("-#{blacklight_config.flagged_field}:[* TO *]")
     end
 
@@ -74,7 +74,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'institutions_filter' do
 
-    it 'should add parameters to require institutions' do
+    it 'adds parameters to require institutions' do
       expect(search_builder.institutions_filter(solr_parameters).to_s).to include('+active_fedora_model_suffix_ssi:\"Institution\"')
     end
 
@@ -82,7 +82,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'institutions_limit' do
 
-    it 'should add parameters to limit to a single institution' do
+    it 'adds parameters to limit to a single institution' do
       expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_pid_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
     end
 
@@ -96,11 +96,11 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
       builder_with_params.mlt_params(solr_parameters)
     end
 
-    it 'should set the id param to the mlt_id value' do
+    it 'sets the id param to the mlt_id value' do
       expect(solr_parameters['id']).to eq('bpl-dev:12345678')
     end
 
-    it 'should set the mlt query params' do
+    it 'sets the mlt query params' do
       expect(solr_parameters['qt']).to eq('mlt_qparser')
       expect(solr_parameters['qf']).to be_truthy
     end
@@ -109,7 +109,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'collections_filter' do
 
-    it 'should add parameters to require institutions' do
+    it 'adds parameters to require institutions' do
       expect(search_builder.collections_filter(solr_parameters).to_s).to include('+active_fedora_model_suffix_ssi:\"Collection\"')
     end
 
@@ -117,7 +117,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_volumes' do
 
-    it 'should add parameters to exclude volume objects' do
+    it 'adds parameters to exclude volume objects' do
       expect(search_builder.exclude_volumes(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Volume\"')
     end
 
@@ -129,7 +129,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
       search_builder.ocr_search_params(solr_parameters)
     end
 
-    it 'should add parameters for field highlighting' do
+    it 'adds parameters for field highlighting' do
       expect(solr_parameters.to_s).to include('"hl"=>true')
       expect(solr_parameters.to_s).to include('hl.fragsize')
       expect(solr_parameters.to_s).to include("\"hl.fl\"=>\"#{blacklight_config.ocr_search_field}\"")

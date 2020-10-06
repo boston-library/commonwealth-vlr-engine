@@ -17,7 +17,7 @@ describe 'vlr_engine namespace rake tasks' do
       @file_path = "#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}"
     end
 
-    it 'should create the geojson file' do
+    it 'creates the geojson file' do
       run_rake_task
       expect(File.file?(@file_path)).not_to be_nil
       expect(File.stat(@file_path).mtime.to_f).to be > @time

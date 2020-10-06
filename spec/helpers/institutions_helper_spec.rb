@@ -15,14 +15,14 @@ describe InstitutionsHelper do
 
   describe '#link_to_all_inst_items' do
     before { @institution_title = 'Foo Institution'}
-    it 'should create a search link with the correct institution params' do
+    it 'creates a search link with the correct institution params' do
       expect(helper.link_to_all_inst_items('foo')).to include("#{blacklight_config.institution_field}%5D%5B%5D=Foo+Institution")
     end
   end
 
   describe '#render_institution_desc' do
     let(:render_institution_desc_output) { helper.render_institution_desc(institution[:abstract_tsim]) }
-    it 'should create the correct HTML content' do
+    it 'creates the correct HTML content' do
       expect(render_institution_desc_output).to include('institution_desc_static')
       expect(render_institution_desc_output).to include('institution_desc_collapse')
       expect(render_institution_desc_output).to include('institution_desc_expand')
@@ -60,7 +60,7 @@ describe InstitutionsHelper do
   end
 
   describe '#should_render_inst_az?' do
-    it 'should return false' do
+    it 'returns false' do
      expect(helper.should_render_inst_az?).to be_falsey
     end
   end

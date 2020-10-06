@@ -10,6 +10,7 @@ module CommonwealthVlrEngine
     argument :controller_name, type: :string , default: "catalog"
 
     class_option :bpluser, type: :boolean, default: false, desc: "Add user functionality using Devise and Bpluser"
+    class_option :force, type: :boolean, default: false, desc: "Force overwrite when copying files (for CI)"
 
     desc "InstallGenerator Commonwealth VLR Engine"
 
@@ -37,7 +38,7 @@ module CommonwealthVlrEngine
     end
 
     def copy_yml_files
-      generate 'commonwealth_vlr_engine:yml'
+      generate 'commonwealth_vlr_engine:yml', options[:bpluser]
     end
 
     def insert_to_controllers

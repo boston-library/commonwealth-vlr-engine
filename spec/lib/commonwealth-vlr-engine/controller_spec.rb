@@ -16,15 +16,15 @@ describe CommonwealthVlrEngine::Controller do
       @img_seq = @obj.create_img_sequence @image_files, @current_img_pid
     end
 
-    it 'should set the index to the correct value' do
+    it 'sets the index to the correct value' do
       expect(@img_seq[:index]).to eq(2)
     end
 
-    it 'should set the previous image to the correct value' do
+    it 'sets the previous image to the correct value' do
       expect(@img_seq[:prev]).to eq(@image_files[0])
     end
 
-    it 'should set the next image to the correct value' do
+    it 'sets the next image to the correct value' do
       expect(@img_seq[:next]).to eq(nil)
     end
 

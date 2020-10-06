@@ -25,7 +25,7 @@ describe OcrSearchHelper do
   end
 
   describe '#has_searchable_text?' do
-    it 'should return true if the item has searchable text' do
+    it 'returns true if the item has searchable text' do
       expect(helper.has_searchable_text?(book_document)).to be_truthy
     end
   end
@@ -34,7 +34,7 @@ describe OcrSearchHelper do
 
     let(:current_search_session) { double(:query_params => {'q' => 'foo'}) }
 
-    it 'should return the query params if they exist' do
+    it 'returns the query params if they exist' do
       expect(helper.send(:ocr_q_params, current_search_session)).to eq('foo')
     end
 
@@ -50,11 +50,11 @@ describe OcrSearchHelper do
 
       before { @ocr_page_link = helper.render_page_link(page_document, image_pid_list, book_pid) }
 
-      it 'should create a link to the book viewer' do
+      it 'creates a link to the book viewer' do
         expect(@ocr_page_link).to include("href=\"/book_viewer/#{book_pid}?ocr_q=#1/1")
       end
 
-      it 'should have the correct label' do
+      it 'has the correct label' do
         expect(@ocr_page_link).to include(page_document[blacklight_config.page_num_field.to_sym])
       end
 
@@ -68,7 +68,7 @@ describe OcrSearchHelper do
         @ocr_page_link = helper.render_page_link(SolrDocument.new(no_page_num), image_pid_list, book_pid)
       end
 
-      it 'should have the correct label' do
+      it 'has the correct label' do
         expect(@ocr_page_link).to include('Image 1')
       end
 

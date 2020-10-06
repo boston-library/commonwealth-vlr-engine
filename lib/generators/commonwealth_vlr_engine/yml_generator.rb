@@ -4,6 +4,8 @@ module CommonwealthVlrEngine
   class YmlGenerator < Rails::Generators::Base
     source_root File.expand_path('../templates', __FILE__)
 
+    class_option :force, type: :boolean, default: false
+
     desc 'YmlGenerator Commonwealth VLR Engine'
 
     def config_yml_copy
@@ -16,7 +18,7 @@ module CommonwealthVlrEngine
     end
 
     def locale_yml_copy
-      copy_file('config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml')
+      copy_file('config/locales/blacklight.en.yml', 'config/locales/blacklight.en.yml', force: options[:force])
     end
   end
 end
