@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ApplicationHelper do
-
   let(:image_pid) { 'bpl-dev:h702q641c' }
 
   describe '#render_format' do
@@ -33,7 +32,6 @@ describe ApplicationHelper do
   end
 
   describe '#link_to_facet' do
-
     it 'creates a link to catalog#index with the facet params and display value' do
       expect(helper.link_to_facet('foo', 'bar_ssim', 'baz')).to include('search?f%5Bbar_ssim%5D%5B%5D=foo">baz')
     end
@@ -41,7 +39,6 @@ describe ApplicationHelper do
     it 'should use render_format if the field_name is "genre_basic_ssim"' do
       expect(helper.link_to_facet('Albums (Books)', 'genre_basic_ssim')).to include('search?f%5Bgenre_basic_ssim%5D%5B%5D=Albums+%28Books%29">Albums/Scrapbooks')
     end
-
   end
 
   describe '#link_to_facets' do
@@ -75,7 +72,6 @@ describe ApplicationHelper do
   end
 
   describe '#get_image_metadata' do
-
     it 'returns a hash with the height, width, and aspect ratio of the image' do
       expect(helper.get_image_metadata(image_pid)).to eq({height: 2448, width: 1496, aspect_ratio: 0.6111111111111112})
     end
@@ -85,26 +81,6 @@ describe ApplicationHelper do
         expect(helper.get_image_metadata('bpl-dev:xyz1234')).to eq({height: 0, width: 0, aspect_ratio: 0})
       end
     end
-
-  end
-
-  describe 'content_for(:head) helpers' do
-    # TODO: replace these placeholders with real specs
-    describe '#insert_opengraph_markup' do
-      it 'renders the catalog/opengraph partial' do
-        # binding.pry
-        # allow(controller).to receive_messages(:controller_name => "catalog", :action_name => "show")
-        # expect(helper.insert_opengraph_markup)
-        #expect(helper.insert_opengraph_markup).to eq(???)
-      end
-    end
-
-    describe '#insert_google_analytics' do
-      it 'renders the layouts/google_analytics partial' #do
-        #expect(helper.insert_google_analytics).to eq(???})
-      #end
-    end
-
   end
 
   describe '#osd_nav_images' do
@@ -113,5 +89,4 @@ describe ApplicationHelper do
       expect(JSON.parse(helper.osd_nav_images(assets_root))['zoomIn']['REST']).to eq("#{assets_root}/zoomin_rest.png")
     end
   end
-
 end

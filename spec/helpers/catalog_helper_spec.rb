@@ -1,26 +1,21 @@
 require 'rails_helper'
 
 describe CatalogHelper do
-
-  include Blacklight::SearchHelper
-
   class CatalogHelperTestClass < CatalogController
     cattr_accessor :blacklight_config
 
-    include Blacklight::SearchHelper
     include CommonwealthVlrEngine::Finder
 
     def initialize blacklight_config
       self.blacklight_config = blacklight_config
     end
-
   end
 
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:catalog_helper_test_class) { CatalogHelperTestClass.new blacklight_config }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
-  let (:collection_pid) { 'bpl-dev:h702q636h' }
+  let(:collection_pid) { 'bpl-dev:h702q636h' }
   let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
   let(:files_hash) { catalog_helper_test_class.get_files(item_pid) }
 
@@ -29,9 +24,8 @@ describe CatalogHelper do
   end
 
   describe 'Creative Commons license helpers' do
-
     let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
-    let (:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/3.0' }
+    let(:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/3.0' }
 
     describe '#cc_terms_code' do
       it 'returns the right value' do
@@ -51,11 +45,9 @@ describe CatalogHelper do
         expect(helper.render_cc_license(license)).to include('src="//i.creativecommons.org/l/')
       end
     end
-
   end
 
   describe '#collection_gallery_url' do
-
     it 'returns a thumbnail datastream if this is an OAI-harvested item' do
       expect(helper.collection_gallery_url({exemplary_image_ssi: 'oai-dev:123456'},'300')).to include('oai-dev:123456/datastreams/thumbnail300/content')
     end
@@ -67,7 +59,6 @@ describe CatalogHelper do
     it 'returns the icon path if there is no exemplary_image_ssi value' do
       expect(helper.collection_gallery_url({},'300')).to include('dc_collection-icon.png')
     end
-
   end
 
   describe '#collection_icon_path' do
@@ -77,7 +68,6 @@ describe CatalogHelper do
   end
 
   describe 'image file helpers' do
-
     describe '#has_image_files?' do
       it 'returns true' do
         expect(helper.has_image_files?(files_hash)).to be_truthy
@@ -91,7 +81,6 @@ describe CatalogHelper do
         expect(image_file_pids_result.first).to eq(image_pid)
       end
     end
-
   end
 
   describe '#has_video_files?' do
@@ -102,7 +91,6 @@ describe CatalogHelper do
   end
 
   describe '#has_volumes?' do
-
     let (:book_with_volumes_pid) { 'bpl-dev:3j334b469' }
     let(:series_document) { Blacklight.default_index.search({:q => "id:\"#{book_with_volumes_pid}\"", :rows => 1}).documents.first }
     let(:has_volumes_output) { catalog_helper_test_class.has_volumes?(series_document) }
@@ -112,11 +100,9 @@ describe CatalogHelper do
       expect(has_volumes_output[0][:vol_doc].class).to eq(SolrDocument)
       expect(has_volumes_output[0][:vol_files][:ereader]).to_not be_empty
     end
-
   end
 
   describe 'collection link helpers' do
-
     let(:doc_with_two_cols) { Blacklight.default_index.search({:q => 'id:"bpl-dev:g445cd14k"', :rows => 1}).documents.first }
 
     describe '#index_collection_link' do
@@ -132,11 +118,9 @@ describe CatalogHelper do
           expect(helper.index_collection_link({document: doc_with_two_cols}).scan(/<a href="\/collections/).length).to eq(2)
         end
       end
-
     end
 
     describe '#setup_collection_links' do
-
       describe 'for an item with one collection affiliation' do
         it 'returns a single link' do
           expect(helper.setup_collection_links(document).length).to eq(1)
@@ -148,13 +132,10 @@ describe CatalogHelper do
           expect(helper.setup_collection_links(doc_with_two_cols).length).to eq(2)
         end
       end
-
     end
-
   end
 
   describe '#index_relation_base_icon' do
-
     let(:coll_doc) { Blacklight.default_index.search({:q => 'id:"' + collection_pid + '"', :rows => 1}).documents.first }
 
     before do
@@ -166,7 +147,6 @@ describe CatalogHelper do
       expect(helper.index_relation_base_icon(coll_doc)).to include('dc_collection-icon')
       expect(helper.index_relation_base_icon(coll_doc)).to include('.png')
     end
-
   end
 
   describe '#index_slideshow_img_url' do
@@ -178,6 +158,18 @@ describe CatalogHelper do
   describe '#index_title_length' do
     it 'returns the default length if no params[:view] is present' do
       expect(helper.index_title_length).to eq(130)
+    end
+  end
+
+  describe '#insert_opengraph_markup' do
+    before do
+      assign(:document, document)
+      assign(:object_files, files_hash)
+      helper.insert_opengraph_markup
+    end
+
+    it 'renders the catalog/opengraph partial' do
+      expect(helper.content_for(:head)).to include '<meta property="og:title" content="Beauregard" />'
     end
   end
 
@@ -201,7 +193,6 @@ describe CatalogHelper do
   end
 
   describe '#render_hiergo_subject' do
-
     before { @rendered_hiergeo = helper.render_hiergo_subject(document[:subject_hiergeo_geojson_ssm].first, ' | ') }
 
     it 'returns a set of links to geographic subjects' do
@@ -215,7 +206,6 @@ describe CatalogHelper do
     it 'adds the county label to the county value' do
       expect(@rendered_hiergeo).to include(' (county)')
     end
-
   end
 
   describe '#render_item_breadcrumb' do
@@ -225,9 +215,7 @@ describe CatalogHelper do
   end
 
   describe 'title helpers' do
-
     describe '#render_title' do
-
       describe 'full title with subtitle' do
         let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
         it 'renders the title correctly' do
@@ -241,7 +229,6 @@ describe CatalogHelper do
                                      false)).to eq('Foo. vol.2')
         end
       end
-
     end
 
     describe '#render_volume_title' do
@@ -249,7 +236,6 @@ describe CatalogHelper do
         expect(helper.render_volume_title({title_info_partnum_tsi: 'vol.2', title_info_partname_tsi: 'Foo'})).to eq('Vol.2: Foo')
       end
     end
-
   end
 
   describe '#render_mlt_search_link' do
@@ -265,7 +251,6 @@ describe CatalogHelper do
   end
 
   describe '#render_mods_date' do
-
     describe 'date with start, end, and qualifier' do
       it 'returns the correct date value' do
         expect(helper.render_mods_date('1984', '1985', 'approximate')).to eq('[ca. 1984–1985]')
@@ -277,7 +262,6 @@ describe CatalogHelper do
         expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('(c) 1984')
       end
     end
-
   end
 
   describe 'render_reuse' do
@@ -302,7 +286,6 @@ describe CatalogHelper do
   end
 
   describe '#setup_names_roles' do
-
     let(:doc_with_names) { Blacklight.default_index.search({:q => 'id:"bpl-dev:df65v788h"', :rows => 1}).documents.first }
     before { @names, @roles = helper.setup_names_roles(doc_with_names) }
 
@@ -317,7 +300,6 @@ describe CatalogHelper do
       expect(@names[1]).to include('Antonio')
       expect(@roles[1]).to eq('Creator')
     end
-
   end
 
   describe '#should_autofocus_on_search_box?' do
@@ -327,7 +309,6 @@ describe CatalogHelper do
   end
 
   describe 'thumbnail creation helpers' do
-
     describe '#create_thumb_img_element' do
       it 'returns an image tag with the thumbnail image' do
         expect(helper.create_thumb_img_element(document).match(/\A<img[\s\S]+\/>\z/)).to be_truthy
@@ -336,7 +317,6 @@ describe CatalogHelper do
     end
 
     describe '#thumbnail_url' do
-
       let(:document_to_hash) { document.to_h }
 
       it 'returns the datastream path if there is an exemplary_image_ssi value' do
@@ -344,7 +324,6 @@ describe CatalogHelper do
       end
 
       describe 'with no exemplary image' do
-
         before { document_to_hash.delete('exemplary_image_ssi') }
 
         it 'returns the proper icon if there is a type_of_resource_ssim value' do
@@ -352,7 +331,6 @@ describe CatalogHelper do
         end
 
         describe 'with no type_of_resource_ssim value' do
-
           before do
             document_to_hash.delete('type_of_resource_ssim')
             document_to_hash[blacklight_config.index.display_type_field] = 'Collection'
@@ -361,23 +339,16 @@ describe CatalogHelper do
           it 'returns the collection icon' do
             expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_collection-icon.png')
           end
-
         end
-
       end
 
       describe 'flagged item' do
-
         before { document_to_hash[blacklight_config.flagged_field] = true }
 
         it 'returns the icon rather than the exemplary image' do
           expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon.png')
         end
-
       end
-
     end
-
   end
-
 end

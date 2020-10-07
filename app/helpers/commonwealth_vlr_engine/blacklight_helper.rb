@@ -22,6 +22,5 @@ module CommonwealthVlrEngine
 
       content_tag(tag, document_heading(document), itemprop: "name")
     end
-
   end
 end

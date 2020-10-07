@@ -22,12 +22,11 @@ module CommonwealthVlrEngine
         else
           image_url = collection_image_url(@collection_image_info[:image_pid])
         end
-        render 'collection_image',
-               { image_element: image_tag(image_url,
-                                          alt: image_title,
-                                          class: image_tag_class),
-                 image_title: image_title,
-                 hosted: hosted }
+        render partial: 'collection_image',
+               locals: { image_element: image_tag(image_url, alt: image_title,
+                                                  class: image_tag_class),
+                         image_title: image_title,
+                         hosted: hosted }
       else
         image_tag(collection_icon_path,
                   alt: @collection_title,
