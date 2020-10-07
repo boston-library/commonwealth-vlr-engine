@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 describe InstitutionsHelper do
-
-  include Blacklight::SearchHelper
-
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:institution) { Blacklight.default_index.search({:q => "id:\"bpl-dev:abcd12345\"", :rows => 1}).documents.first }
 
@@ -30,7 +27,6 @@ describe InstitutionsHelper do
   end
 
   describe 'render_institutions_index' do
-
     before { (@response, @document_list) = search_results({}) }
 
     describe 'with default document_index_view_type' do
@@ -40,7 +36,6 @@ describe InstitutionsHelper do
     end
 
     describe 'with "maps" document_index_view_type' do
-
       before do
         allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(CatalogController.new))
         allow(helper).to receive_messages(document_index_view_type: :maps)
@@ -48,7 +43,6 @@ describe InstitutionsHelper do
 
       subject { helper.render_institutions_index }
       it { should have_selector 'div#institutions-index-map' }
-
     end
 
     # remove the instance variables so they don't mess up other specs
@@ -56,7 +50,6 @@ describe InstitutionsHelper do
       remove_instance_variable(:@response)
       remove_instance_variable(:@document_list)
     end
-
   end
 
   describe '#should_render_inst_az?' do
@@ -64,5 +57,4 @@ describe InstitutionsHelper do
      expect(helper.should_render_inst_az?).to be_falsey
     end
   end
-
 end

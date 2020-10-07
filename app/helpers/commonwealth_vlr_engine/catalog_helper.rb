@@ -141,6 +141,12 @@ module CommonwealthVlrEngine
       end
     end
 
+    def insert_opengraph_markup
+      content_for(:head) do
+        render partial: '/catalog/opengraph', locals: { document: @document }
+      end
+    end
+
     def institution_icon_path
       'commonwealth-vlr-engine/dc_institution-icon.png'
     end

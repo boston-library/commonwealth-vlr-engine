@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 describe DownloadsHelper do
-
   class DownloadsHelperTestClass < CatalogController
     cattr_accessor :blacklight_config
 
-    include Blacklight::SearchHelper
     include CommonwealthVlrEngine::Finder
 
     def initialize blacklight_config
@@ -20,6 +18,8 @@ describe DownloadsHelper do
   let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
   let(:files_hash) { downloads_helper_test_class.get_files(item_pid) }
   let(:object_profile) { JSON.parse(files_hash[:images].first['object_profile_ssm'].first) }
+  let(:download_links) { helper.create_download_links(document, files_hash) }
+  let(:image_datastreams_output) { helper.image_datastreams(object_profile) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
@@ -29,14 +29,12 @@ describe DownloadsHelper do
     # copy :images to :documents/:video, as don't have any non-image items to test with at the moment
     files_hash[:documents] = [files_hash[:images].first]
     files_hash[:video] = [files_hash[:images].last]
-    @download_links = helper.create_download_links(document, files_hash)
-    @image_datastreams_output = helper.image_datastreams(object_profile)
   end
 
   describe '#create_download_links' do
     it 'returns an array of links' do
-      expect(@download_links.length).to eq(5)
-      expect(@download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
+      expect(download_links.length).to eq(5)
+      expect(download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
   end
 
@@ -79,8 +77,8 @@ describe DownloadsHelper do
 
   describe '#image_datastreams' do
     it 'returns an array of image datastream ids' do
-      expect(@image_datastreams_output.class).to eq(Array)
-      expect(@image_datastreams_output[0]).to eq('productionMaster')
+      expect(image_datastreams_output.class).to eq(Array)
+      expect(image_datastreams_output[0]).to eq('productionMaster')
     end
   end
 
@@ -121,14 +119,14 @@ describe DownloadsHelper do
     let(:file_download_link_output) { helper.file_download_link(image_pid,
                                                                  'foo',
                                                                  object_profile,
-                                                                 @image_datastreams_output[0]) }
+                                                                 image_datastreams_output[0]) }
 
     it 'returns a link' do
       expect(file_download_link_output.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
 
     it 'should link to the downloads controller show action with the correct datastream param' do
-      expect(file_download_link_output).to include(download_path(image_pid, datastream_id: @image_datastreams_output[0]))
+      expect(file_download_link_output).to include(download_path(image_pid, datastream_id: image_datastreams_output[0]))
     end
 
     it 'should include a <span> with the file type and size' do
@@ -140,15 +138,15 @@ describe DownloadsHelper do
 
   describe '#file_type_string' do
     it 'returns the correct file type' do
-      expect(helper.file_type_string(@image_datastreams_output[0], object_profile)).to eq('TIF')
-      expect(helper.file_type_string(@image_datastreams_output[1], nil)).to eq('JPEG')
+      expect(helper.file_type_string(image_datastreams_output[0], object_profile)).to eq('TIF')
+      expect(helper.file_type_string(image_datastreams_output[1], nil)).to eq('JPEG')
     end
   end
 
   describe '#file_size_string' do
     it 'returns the correct file size' do
-      expect(helper.file_size_string(@image_datastreams_output[0], object_profile)).to eq('10.5 MB')
-      expect(helper.file_size_string(@image_datastreams_output[1], nil)).to eq('multi-file ZIP')
+      expect(helper.file_size_string(image_datastreams_output[0], object_profile)).to eq('10.5 MB')
+      expect(helper.file_size_string(image_datastreams_output[1], nil)).to eq('multi-file ZIP')
     end
   end
 
@@ -159,23 +157,23 @@ describe DownloadsHelper do
   end
 
   describe '#setup_zip_object_profile' do
-    let(:zip_object_profile) { helper.setup_zip_object_profile(files_hash[:images], @image_datastreams_output[0]) }
+    let(:zip_object_profile) { helper.setup_zip_object_profile(files_hash[:images], image_datastreams_output[0]) }
 
     it 'returns a hash with the right structure' do
       expect(zip_object_profile['zip']).to be_truthy
-      expect(zip_object_profile['datastreams'][@image_datastreams_output[0]]['dsSize']).to be_truthy
+      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize']).to be_truthy
     end
 
     # should be greater than 10.5 MB
     it 'should estimate the zip size' do
-      expect(zip_object_profile['datastreams'][@image_datastreams_output[0]]['dsSize'] > 11010048).to be_truthy
+      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize'] > 11010048).to be_truthy
     end
   end
 
   describe '#url_for_download' do
     it 'returns the correct link path for a hosted item' do
-      expect(helper.url_for_download(document, @image_datastreams_output[0])).to include(trigger_downloads_path(item_pid,
-                                                                                                                datastream_id: @image_datastreams_output[0]))
+      expect(helper.url_for_download(document, image_datastreams_output[0])).to include(trigger_downloads_path(item_pid,
+                                                                                                                datastream_id: image_datastreams_output[0]))
     end
 
     describe 'item from Internet Archive' do
