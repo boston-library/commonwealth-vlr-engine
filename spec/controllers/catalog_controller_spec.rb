@@ -5,7 +5,6 @@ require 'rails_helper'
 describe CatalogController do
   render_views
 
-
   describe 'search_builder_class' do
     it 'uses CommonwealthSearchBuilder' do
       expect(CatalogController.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)

@@ -1,6 +1,5 @@
 module CommonwealthVlrEngine
   module FeedbackHelperBehavior
-
     # returns an array of values for the message type select dropdown
     def feedback_type_options
       options_for_type_dropdown = []

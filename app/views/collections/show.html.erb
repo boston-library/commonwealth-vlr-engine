@@ -52,9 +52,9 @@
         <div id="collection_facets_wrapper" class="row">
           <div class="col-lg-9">
 
-            <% if has_facet_values?([blacklight_config.series_field]) %>
+            <% if has_facet_values?([blacklight_config.series_field], @response) %>
               <div id="series_wrapper">
-                <%= render :partial=> 'catalog/facets_series' %>
+                <%= render partial: 'catalog/facets_series' %>
               </div>
             <% end %>
 
@@ -72,7 +72,8 @@
             </div>
 
         <div id="sidebar" class="collections-sidebar col-lg-3">
-          <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) || Rails.application.class.parent_name == 'Commonwealth') %>
+          <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
+                                               Rails.application.class.module_parent_name == 'Commonwealth') %>
           <%= javascript_include_tag 'commonwealth-vlr-engine/collection_facets' %>
           <%= render 'search_sidebar' %>
         </div>

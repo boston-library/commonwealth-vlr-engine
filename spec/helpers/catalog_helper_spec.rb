@@ -1,22 +1,12 @@
 require 'rails_helper'
 
 describe CatalogHelper do
-  class CatalogHelperTestClass < CatalogController
-    cattr_accessor :blacklight_config
-
-    include CommonwealthVlrEngine::Finder
-
-    def initialize blacklight_config
-      self.blacklight_config = blacklight_config
-    end
-  end
-
   let(:blacklight_config) { CatalogController.blacklight_config }
-  let(:catalog_helper_test_class) { CatalogHelperTestClass.new blacklight_config }
+  let(:catalog_helper_test_class) { CatalogController.new }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let(:collection_pid) { 'bpl-dev:h702q636h' }
-  let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
+  let(:document) { SolrDocument.find(item_pid) }
   let(:files_hash) { catalog_helper_test_class.get_files(item_pid) }
 
   before(:each) do
@@ -165,6 +155,8 @@ describe CatalogHelper do
     before do
       assign(:document, document)
       assign(:object_files, files_hash)
+      allow(helper).to receive(:controller_name).and_return('catalog')
+      allow(helper).to receive(:action_name).and_return('show')
       helper.insert_opengraph_markup
     end
 

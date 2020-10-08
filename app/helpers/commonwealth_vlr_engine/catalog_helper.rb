@@ -142,6 +142,8 @@ module CommonwealthVlrEngine
     end
 
     def insert_opengraph_markup
+      return unless controller_name == 'catalog' && action_name == 'show'
+
       content_for(:head) do
         render partial: '/catalog/opengraph', locals: { document: @document }
       end
