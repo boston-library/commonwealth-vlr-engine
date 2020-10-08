@@ -61,7 +61,8 @@
 
 
       <div id="sidebar" class="col-lg-3">
-        <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) || Rails.application.class.parent_name == 'Commonwealth') %>
+        <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
+                                             Rails.application.class.module_parent_name == 'Commonwealth') %>
         <%= render 'search_sidebar' %>
       </div>
 

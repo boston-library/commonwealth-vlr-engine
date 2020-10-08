@@ -1,18 +1,8 @@
 require 'rails_helper'
 
 describe DownloadsHelper do
-  class DownloadsHelperTestClass < CatalogController
-    cattr_accessor :blacklight_config
-
-    include CommonwealthVlrEngine::Finder
-
-    def initialize blacklight_config
-      self.blacklight_config = blacklight_config
-    end
-  end
-
   let(:blacklight_config) { CatalogController.blacklight_config }
-  let(:downloads_helper_test_class) { DownloadsHelperTestClass.new blacklight_config }
+  let(:downloads_helper_test_class) { DownloadsController.new }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }

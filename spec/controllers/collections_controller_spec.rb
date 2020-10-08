@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 describe CollectionsController do
-
   render_views
 
   include BlacklightMapsHelper
 
-  def blacklight_config
-    CatalogController.blacklight_config
-  end
+  let(:blacklight_config) { CatalogController.blacklight_config }
+  let(:collection_pid) { 'bpl-dev:h702q636h' }
 
   describe 'GET "index"' do
     it 'should show the collections page' do
@@ -20,9 +18,8 @@ describe CollectionsController do
   end
 
   describe 'GET "show"' do
-
     before(:each) do
-      get :show, params: {id: 'bpl-dev:h702q636h'}
+      get :show, params: { id: collection_pid }
     end
 
     it 'should show the collection page' do
@@ -55,7 +52,6 @@ describe CollectionsController do
       expect(response.body).to have_selector('#blacklight-collection-map-container')
       expect(assigns(:response).aggregations[blacklight_config.view.maps.geojson_field].items).not_to be_empty
     end
-
   end
 
   describe 'GET "range_limit"' do
@@ -66,76 +62,72 @@ describe CollectionsController do
   end
 
   describe 'private methods and before_actions' do
-
-    # for testing private methods
-    class CollectionsControllerTestClass < CollectionsController
-      attr_accessor :params
-    end
-
-    #let(:collection_image_pid) { 'bpl-dev:h702q642n' }
-    #let(:collection_pid) { 'bpl-dev:h702q636h' }
     let(:document) { { blacklight_config.institution_field.to_sym => 'Boston Public Library' } }
+    let(:mock_controller) { CollectionsController.new }
 
     before(:each) do
-      @mock_controller = CollectionsControllerTestClass.new
-      @mock_controller.params = {}
-      @mock_controller.request = ActionDispatch::TestRequest.create
-      @mock_controller.send(:add_institution_fields)
+      mock_controller.params = {}
+      mock_controller.request = ActionDispatch::TestRequest.create
+      mock_controller.send(:add_institution_fields)
     end
 
     describe 'add_series_facet' do
       it 'adds the series facet to the Solr request' do
-        @mock_controller.send(:add_series_facet)
-        expect(@mock_controller.blacklight_config.facet_fields['related_item_series_ssim'].include_in_request).to eq(true)
+        mock_controller.send(:add_series_facet)
+        expect(mock_controller.blacklight_config.facet_fields['related_item_series_ssim'].include_in_request).to eq(true)
       end
     end
 
     describe 'collapse_institution_facet' do
       it 'should collapse the institution facet' do
-        @mock_controller.send(:collapse_institution_facet)
-        expect(@mock_controller.blacklight_config.facet_fields['physical_location_ssim'].collapse).to eq(true)
+        mock_controller.send(:collapse_institution_facet)
+        expect(mock_controller.blacklight_config.facet_fields['physical_location_ssim'].collapse).to eq(true)
       end
     end
 
     describe 'collections_limit' do
       it 'sets the correct search builder class' do
-        @mock_controller.send(:collections_limit)
-        expect(@mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
+        mock_controller.send(:collections_limit)
+        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
       end
     end
 
-    #describe 'collection_image_info' do
-    #  it 'returns a hash with the collection image object title and pid' do
-    #    expect(@mock_controller.send(:collection_image_info, collection_image_pid, collection_pid)).to eq
-    #    ({ image_pid: collection_image_pid, title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true })
-    #  end
-    #end
+    describe 'collection_image_info' do
+      let(:collection_image_pid) { 'bpl-dev:h702q642n'}
+      it 'returns a hash with the collection image object title and pid' do
+        expect(mock_controller.send(:collection_image_info, collection_image_pid, collection_pid)).to eq(
+          { image_pid: collection_image_pid, title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true }
+        )
+      end
+    end
 
     describe 'get_series_image_obj' do
       it 'returns the series object' do
-        expect(@mock_controller.send(:get_series_image_obj, 'Test Series', 'Carte de Visite Collection')[:exemplary_image_ssi]).to eq('bpl-dev:h702q641c')
+        expect(mock_controller.send(:get_series_image_obj, 'Test Series', 'Carte de Visite Collection')[:exemplary_image_ssi]).to eq('bpl-dev:h702q641c')
       end
     end
 
     describe 'set_collection_facet_params' do
       it 'sets the correct facet params' do
-        expect(@mock_controller.send(:set_collection_facet_params,'Carte de Visite Collection', document)[blacklight_config.collection_field][0]).to eq('Carte de Visite Collection')
+        expect(mock_controller.send(:set_collection_facet_params,
+                                    'Carte de Visite Collection',
+                                    document)[blacklight_config.collection_field][0]).to eq('Carte de Visite Collection')
       end
     end
 
     describe 'relation_base_blacklight_config' do
-      before { @mock_controller.send(:relation_base_blacklight_config) }
+      before { mock_controller.send(:relation_base_blacklight_config) }
 
       it 'sets the collection_name_ssim facet :show property to false' do
-        expect(@mock_controller.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy
+        expect(mock_controller.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy
       end
 
       it 'sets the collapse property to true for all displayed facets' do
-        expect(@mock_controller.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
+        expect(mock_controller.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
       end
 
       it 'should remove the citation tool from the show tools' do
-        expect(@mock_controller.blacklight_config.show.document_actions[:cite]).to be_empty
+        expect(mock_controller.blacklight_config.show.document_actions[:cite]).to be_empty
       end
     end
   end

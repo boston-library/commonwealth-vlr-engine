@@ -32,7 +32,7 @@ module CommonwealthVlrEngine
       end
       new_params[:view] = default_document_index_view_type
       link_to(displayvalue.presence || field_value,
-              self.send(search_path,new_params.except(:id, :spatial_search_type, :coordinates)))
+              self.send(search_path, new_params.except(:id, :spatial_search_type, :coordinates)))
     end
 
     # return an array of Blacklight::SolrResponse::Facets::FacetItem items

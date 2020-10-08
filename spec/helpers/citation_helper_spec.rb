@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 describe CitationHelper do
-  #include Blacklight::SearchHelper
-
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:item_pid) { 'bpl-dev:h702q6403' }
-  let(:document) { Blacklight.default_index.search({q: "id:\"#{item_pid}\"", rows: 1}).documents.first }
+  let(:document) { SolrDocument.find(item_pid) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ImageViewerHelper do
   let(:item_pid) { 'bpl-dev:h702q6403' }
-  let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
+  let(:document) { SolrDocument.find(item_pid) }
 
   describe '#book_id' do
     it 'returns the correct document id' do
