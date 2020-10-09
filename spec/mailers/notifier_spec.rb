@@ -1,31 +1,23 @@
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::Notifier do
-
   describe "feedback" do
-
-    before(:each) do
-      @test_params = {
-          :name => "Testy McGee",
-          :email => "testy@example.com",
-          :topic => "image reproduction",
-          :message => "Test message"
-      }
-      @test_feedback_email = Notifier.feedback(@test_params)
+    let(:email_params) do
+      { name: "Testy McGee", email: "testy@example.com", topic: "image reproduction",
+        message: "Test message" }
     end
+    let(:test_feedback_email) { Notifier.feedback(email_params) }
 
     it "creates the email" do
-      expect(@test_feedback_email).not_to be_nil
+      expect(test_feedback_email).not_to be_nil
     end
 
     it "has the right user email in the text" do
-      expect(@test_feedback_email.body.encoded).to include(@test_params[:email])
+      expect(test_feedback_email.body.encoded).to include(email_params[:email])
     end
 
     it "has the right receiver email address" do
-      expect(@test_feedback_email.to[0]).to eq(CONTACT_EMAILS['image_requests'])
+      expect(test_feedback_email.to[0]).to eq(CONTACT_EMAILS['image_requests'])
     end
-
   end
-
 end

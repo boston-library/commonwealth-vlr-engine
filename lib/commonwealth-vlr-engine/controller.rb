@@ -24,6 +24,12 @@ module CommonwealthVlrEngine
       raise ActionController::RoutingError.new('Not Found')
     end
 
+    # override of Blacklight::Controller#render_bookmarks_control?
+    # return false, we use our own
+    def render_bookmarks_control?
+      false
+    end
+
     # override of Blacklight::Controller#search_action_path
     # for proper constraints and facet links in collections and institution views
     # gets a bit tricky for collections#facet, since this has multiple contexts (collections#index and collections#show)
@@ -33,21 +39,22 @@ module CommonwealthVlrEngine
       end
 
       if params[:controller] == 'institutions' && params[:action] == 'index'
-        institutions_url *args
+        institutions_url(*args)
       elsif params[:controller] == 'collections'
         if params[:action] == 'index'
-          collections_url *args
+          collections_url(*args)
         elsif params[:action] == 'facet'
-          if request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
-            search_action_url *args
+          if request.query_parameters['f'] &&
+             request.query_parameters['f'][blacklight_config.collection_field]
+            search_action_url(*args)
           else
-            collections_url *args
+            collections_url(*args)
           end
         else
-          search_action_url *args
+          search_action_url(*args)
         end
       else
-        search_action_url *args
+        search_action_url(*args)
       end
     end
 

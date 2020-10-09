@@ -5,6 +5,8 @@ require 'rails_helper'
 describe CatalogController do
   render_views
 
+  let(:item_pid) { 'bpl-dev:df65v790j' }
+
   describe 'search_builder_class' do
     it 'uses CommonwealthSearchBuilder' do
       expect(CatalogController.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
@@ -12,7 +14,7 @@ describe CatalogController do
   end
 
   describe 'GET "metadata_view"' do
-    before { get :metadata_view, params: { id: 'bpl-dev:h702q6403' } }
+    before { get :metadata_view, params: { id: item_pid } }
 
     it 'responds to the #metadata_view action' do
       expect(response).to be_successful
@@ -39,15 +41,22 @@ describe CatalogController do
 
   describe 'mlt_search' do
     it 'modifies the config to use the correct search builder class' do
-      get :index, params: {mlt_id: 'bpl-dev:df65v790j'}
+      get :index, params: { mlt_id: item_pid }
       expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthMltSearchBuilder)
     end
   end
 
   describe 'get_object_files' do
     it 'retrieves the files for the item' do
-      get :show, params: {id: 'bpl-dev:df65v790j'}
+      get :show, params: { id: item_pid }
       expect(assigns(:object_files)).to_not be_nil
+    end
+  end
+
+  describe 'mlt_results_for_show' do
+    it 'retrieves the mlt results for the item' do
+      get :show, params: { id: item_pid }
+      expect(assigns(:mlt_document_list)).to_not be_falsey
     end
   end
 

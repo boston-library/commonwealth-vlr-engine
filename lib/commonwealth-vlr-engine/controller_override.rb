@@ -21,11 +21,11 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightIiifSearch::Controller)
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
-      before_action :get_object_files, :only => [:show]
-      before_action :mlt_results_for_show, :only => [:show]
-      before_action :set_nav_context, :only => [:index]
-      before_action :mlt_search, :only => [:index]
-      before_action :add_institution_fields, :only => [:index, :facet]
+      before_action :get_object_files, only: [:show]
+      before_action :mlt_results_for_show, only: [:show]
+      before_action :set_nav_context, only: [:index]
+      before_action :mlt_search, only: [:index]
+      before_action :add_institution_fields, only: [:index, :facet]
 
       helper_method :has_volumes?
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
@@ -191,20 +191,9 @@ module CommonwealthVlrEngine
         config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
-        # remove BL default show tools
-        config.show.document_actions.delete(:email)
-        config.show.document_actions.delete(:sms)
-        config.show.document_actions.delete(:bookmark)
-        config.show.document_actions.delete(:citation)
-
-        # index actions to remove
-        config.index.document_actions.delete(:bookmark)
-
         # add our custom tools
         config.add_show_tools_partial :add_this, partial: 'add_this'
-        config.add_show_tools_partial :email, partial: 'show_sharing_tools',
-                                      callback: :email_action, validator: :validate_email_params
-        config.add_show_tools_partial :citation, partial: 'show_cite_tools'
+        config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -215,40 +204,21 @@ module CommonwealthVlrEngine
           format.html do
             render layout: false if request.xhr?
           end
-          format.js { render :layout => false }
+          format.js { render layout: false }
         end
       end
 
-      # modify BL config settings for Collections#show and Institutions#show
-      def relation_base_blacklight_config
-        # don't show collection facet
-        blacklight_config.facet_fields['collection_name_ssim'].show = false
-        blacklight_config.facet_fields['collection_name_ssim'].if = false
-        # collapse remaining facets
-        blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
-        blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
-        blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
-        blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
-        blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
-        # remove item-centric show tools (for admin)
-        blacklight_config.show.document_actions.delete(:add_this)
-        blacklight_config.show.document_actions.delete(:folder_items)
-        blacklight_config.show.document_actions.delete(:custom_email)
-        blacklight_config.show.document_actions.delete(:cite)
+      # displays values and pagination links for Format field
+      def formats_facet
+        @nav_li_active = 'explore'
+        @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
+        @facet = blacklight_config.facet_fields['genre_basic_ssim']
+        @response = search_service.facet_field_response(@facet.key,
+                                                        { 'f.genre_basic_ssim.facet.limit' => -1 })
+        @display_facet = @response.aggregations[@facet.key]
+        @pagination = facet_paginator(@facet, @display_facet)
+        render :facet
       end
-
-    end
-
-    # displays values and pagination links for Format field
-    def formats_facet
-      @nav_li_active = 'explore'
-      @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
-      @facet = blacklight_config.facet_fields['genre_basic_ssim']
-      @response = search_service.facet_field_response(@facet.key,
-                                                      { 'f.genre_basic_ssim.facet.limit' => -1 })
-      @display_facet = @response.aggregations[@facet.key]
-      @pagination = facet_paginator(@facet, @display_facet)
-      render :facet
     end
 
     # TODO: refactor how views access files/volumes/etc.
@@ -264,6 +234,29 @@ module CommonwealthVlrEngine
     end
 
     private
+
+    # modify BL config settings for Collections#show and Institutions#show
+    def relation_base_blacklight_config
+      # don't show collection facet
+      blacklight_config.facet_fields['collection_name_ssim'].show = false
+      blacklight_config.facet_fields['collection_name_ssim'].if = false
+      # collapse remaining facets
+      blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
+      blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
+      blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
+      blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+      blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
+      # remove item-centric show tools (for admin)
+      blacklight_config.show.document_actions.delete(:add_this)
+      blacklight_config.show.document_actions.delete(:folder_items)
+      blacklight_config.show.document_actions.delete(:custom_email)
+      blacklight_config.show.document_actions.delete(:cite)
+    end
+
+    # override Blacklight::Catalog#render_sms_action?
+    def render_sms_action?
+      false
+    end
 
     # TODO: Do we still need this functionality? This method was removed from BL7
     # LOCAL OVERRIDE of Blacklight::SearchHelper
