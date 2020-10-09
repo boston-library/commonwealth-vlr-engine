@@ -22,14 +22,6 @@ describe CommonwealthVlrEngine::RenderConstraintsOverride do
 
     end
 
-    describe "has_search_parameters?" do
-
-      it "should be true if mlt params are present" do
-        expect(@fake_controller.has_search_parameters?).to be true
-      end
-
-    end
-
   end
 
   describe "render_constraint_element" do

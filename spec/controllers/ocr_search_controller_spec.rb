@@ -38,18 +38,13 @@ describe OcrSearchController do
   end
 
   describe 'private methods' do
-    class OcrSearchControllerTestClass < OcrSearchController
-    end
-
-    before(:each) do
-      @mock_controller = OcrSearchControllerTestClass.new
-    end
+    let(:mock_controller) { OcrSearchController.new }
 
     describe 'modify_config_for_ocr' do
-      let(:blacklight_config) { @mock_controller.blacklight_config }
+      let(:blacklight_config) { mock_controller.blacklight_config }
       let(:ocr_field) { blacklight_config.index_fields[blacklight_config.ocr_search_field] }
 
-      before { @mock_controller.send(:modify_config_for_ocr) }
+      before { mock_controller.send(:modify_config_for_ocr) }
 
       it 'sets add_facet_fields_to_solr_request to false' do
         expect(blacklight_config.add_facet_fields_to_solr_request).to eq(false)
@@ -63,7 +58,7 @@ describe OcrSearchController do
 
     describe 'start_new_search_session?' do
       it 'returns false' do
-        expect(@mock_controller.send(:start_new_search_session?)).to eq(false)
+        expect(mock_controller.send(:start_new_search_session?)).to eq(false)
       end
     end
   end

@@ -1,19 +1,11 @@
 require 'rails_helper'
 
 describe CommonwealthMltSearchBuilder do
-
-  class CommonwealthMltSearchBuilderTestClass < CommonwealthMltSearchBuilder
-  end
-
-  before { @obj = CommonwealthMltSearchBuilderTestClass.new(CatalogController.new) }
+  let(:search_builder) { described_class.new(CatalogController.new) }
 
   describe 'processor chain' do
-
     it 'adds the right methods to the processor chain' do
-      expect(@obj.processor_chain).to include(:mlt_params)
+      expect(search_builder.processor_chain).to include(:mlt_params)
     end
-
   end
-
-
 end
