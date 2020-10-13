@@ -7,5 +7,5 @@ class SavedSearchesController < ApplicationController
   helper BlacklightMaps::RenderConstraintsOverride
   helper BlacklightRangeLimit::ViewHelperOverride
   helper RangeLimitHelper
-  helper CommonwealthVlrEngine::RenderConstraintsOverride
+  helper CommonwealthVlrEngine::RenderConstraintsHelperBehavior
 end

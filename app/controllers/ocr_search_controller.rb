@@ -3,11 +3,11 @@ class OcrSearchController < CatalogController
   ##
   # access to the CatalogController configuration
   include Blacklight::Configurable
-  include CommonwealthVlrEngine::CatalogHelper
+  include CommonwealthVlrEngine::CatalogHelperBehavior
 
   copy_blacklight_config_from(CatalogController)
 
-  before_action :modify_config_for_ocr, :only => [:index]
+  before_action :modify_config_for_ocr, only: [:index]
 
   def index
     @doc_response, @document = search_service.fetch(params[:id])

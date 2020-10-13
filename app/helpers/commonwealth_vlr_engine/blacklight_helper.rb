@@ -2,7 +2,7 @@ module CommonwealthVlrEngine
   module BlacklightHelper
     include Blacklight::BlacklightHelperBehavior
 
-    # local override to allow using CommonwealthVlrEngine::CatalogHelper#render_title
+    # local override to allow using CommonwealthVlrEngine::CatalogHelperBehavior#render_title
     # for catalog#show title heading
     def document_heading document=nil
       document ||= @document

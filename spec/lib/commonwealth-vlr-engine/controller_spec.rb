@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::Controller do
-  class ControllerTestClass < ActionController::Base
-    include CommonwealthVlrEngine::Controller
-  end
-
   let(:mock_controller) { CatalogController.new }
 
   describe 'create_img_sequence' do

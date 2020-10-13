@@ -3,10 +3,9 @@ module CommonwealthVlrEngine
     extend ActiveSupport::Concern
 
     included do
-
       self.send(:include, CommonwealthVlrEngine::Finder)
-      self.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
-      self.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride)
+      #self.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
+      #self.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride)
 
       # add BlacklightAdvancedSearch
       self.send(:include, BlacklightAdvancedSearch::Controller)

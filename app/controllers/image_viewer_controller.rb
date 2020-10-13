@@ -1,6 +1,6 @@
 # use to render new image in multi image viewer in catalog#show
 class ImageViewerController < CatalogController
-  include CommonwealthVlrEngine::CatalogHelper
+  include CommonwealthVlrEngine::CatalogHelperBehavior
 
   def show
     _response, @document = search_service.fetch(params[:id])
