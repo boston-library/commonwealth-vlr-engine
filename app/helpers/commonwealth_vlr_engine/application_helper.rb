@@ -48,19 +48,6 @@ module CommonwealthVlrEngine
       "commonwealth-vlr-engine/dc_#{icon}-icon.png"
     end
 
-    # render date range constraints from Advanced Search form
-    # used by CommonwealthVlrEngine::RenderConstraintsOverride
-    # and CommonwealthVlrEngine::SearchHistoryConstraintsHelper
-    def date_range_constraints_to_s(params)
-      if params[:date_start].blank?
-        "before #{params[:date_end]}"
-      elsif params[:date_end].blank?
-        "after #{params[:date_start]}"
-      else
-        "#{params[:date_start]}-#{params[:date_end]}"
-      end
-    end
-
     #from psu scholarsphere
     # TODO: this isn't used anywhere in the app, get rid of it?
     def link_to_field(fieldname, fieldvalue, displayvalue = nil)

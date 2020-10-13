@@ -1,6 +1,6 @@
 # use to render new image in multi image viewer in catalog#show
 class IiifManifestController < CatalogController
-  include CommonwealthVlrEngine::CatalogHelper
+  include CommonwealthVlrEngine::CatalogHelperBehavior
   include CommonwealthVlrEngine::IiifManifest
 
   skip_before_action :verify_authenticity_token, only: [:cache_invalidate]

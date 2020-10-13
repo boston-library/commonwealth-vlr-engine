@@ -10,7 +10,6 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/search_builder/ocr_search_builder'
   require 'commonwealth-vlr-engine/search_builder/mlt_search_builder'
   require 'commonwealth-vlr-engine/controller'
-  require 'commonwealth-vlr-engine/render_constraints_override'
   require 'commonwealth-vlr-engine/finder'
   require 'commonwealth-vlr-engine/notifier'
   require 'commonwealth-vlr-engine/iiif_manifest'

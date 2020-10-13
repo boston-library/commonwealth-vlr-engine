@@ -1,34 +1,15 @@
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::Finder do
-
-  class FinderTestClass
-    cattr_accessor :blacklight_config
-
-    include Blacklight::SearchHelper
-    include CommonwealthVlrEngine::Finder
-
-    def initialize blacklight_config
-      self.blacklight_config = blacklight_config
-    end
-
-  end
-
-  let(:blacklight_config) { Blacklight::Configuration.new }
-
-  before do
-    @obj = FinderTestClass.new blacklight_config
-    @item_pid = 'bpl-dev:h702q6403'
-    @image1_pid = 'bpl-dev:h702q641c'
-    @image2_pid = 'bpl-dev:h702q642n'
-  end
+  let(:mock_controller) { CatalogController.new }
+  let(:item_pid) { 'bpl-dev:h702q6403' }
+  let(:image1_pid) { 'bpl-dev:h702q641c' }
+  let(:image2_pid) { 'bpl-dev:h702q642n' }
 
   describe 'get_files' do
-
-    let(:return_hash) { @obj.get_files(@item_pid) }
+    let(:return_hash) { mock_controller.get_files(item_pid) }
 
     it 'creates a hash with the file objects' do
-      expect(return_hash.empty?).to be_falsey
       expect(return_hash.length).to eq(6)
     end
 
@@ -39,7 +20,7 @@ describe CommonwealthVlrEngine::Finder do
     end
 
     it 'has the right ImageFile objects for the item' do
-      expect(return_hash[:images].to_s).to include(@image1_pid)
+      expect(return_hash[:images].to_s).to include(image1_pid)
     end
 
     # TODO: specs for each file type, and associated get_* methods
@@ -50,80 +31,61 @@ describe CommonwealthVlrEngine::Finder do
     end
 
     describe 'sort_files' do
-
       it 'has the images in the right order' do
-        expect(return_hash[:images][0]['id']).to eq(@image1_pid)
-        expect(return_hash[:images][1]['id']).to eq(@image2_pid)
+        expect(return_hash[:images][0]['id']).to eq(image1_pid)
+        expect(return_hash[:images][1]['id']).to eq(image2_pid)
       end
-
     end
-
   end
 
   describe 'get_image_files' do
-
-    let(:pid) { 'bpl-dev:h702q6403' }
-    let(:return_list) { @obj.get_image_files(pid) }
+    let(:return_list) { mock_controller.get_image_files(item_pid) }
 
     it 'creates an array with the ImageFile objects' do
-      expect(return_list.empty?).to be_falsey
       expect(return_list.length).to eq(2)
       expect(return_list[0]['active_fedora_model_ssi']).to eq('Bplmodels::ImageFile')
     end
 
     it 'has the right ImageFile objects for the item, in the right order' do
-      expect(return_list[0]['id']).to eq(@image1_pid)
+      expect(return_list[0]['id']).to eq(image1_pid)
     end
-
   end
 
   describe 'get_first_image_file' do
-
-    let(:response) { @obj.get_first_image_file(@item_pid) }
+    let(:response) { mock_controller.get_first_image_file(item_pid) }
 
     it 'returns the first ImageFile object' do
-      expect(response).not_to be_nil
-      expect(response['id']).to eq(@image1_pid)
+      expect(response['id']).to eq(image1_pid)
     end
-
   end
 
   describe 'get_next_image_file' do
-
-    let(:response) { @obj.get_next_image_file(@image1_pid) }
+    let(:response) { mock_controller.get_next_image_file(image1_pid) }
 
     it 'returns the next ImageFile object' do
-      expect(response).not_to be_nil
-      expect(response['id']).to eq(@image2_pid)
+      expect(response['id']).to eq(image2_pid)
     end
-
   end
 
   describe 'get_prev_image_file' do
-
-    let(:response) { @obj.get_prev_image_file(@image2_pid) }
+    let(:response) { mock_controller.get_prev_image_file(image2_pid) }
 
     it 'returns the next ImageFile object' do
-      expect(response).not_to be_nil
-      expect(response['id']).to eq(@image1_pid)
+      expect(response['id']).to eq(image1_pid)
     end
-
   end
 
   describe 'get_file_parent_object' do
-
-    let(:response) { @obj.get_file_parent_object(@image2_pid) }
+    let(:response) { mock_controller.get_file_parent_object(image2_pid) }
 
     it 'returns the parent object' do
-      expect(response).to eq(@item_pid)
+      expect(response['id']).to eq(item_pid)
     end
-
   end
 
   describe 'get_volume_objects' do
-
     let(:pid) { 'bpl-dev:3j334b469' }
-    let(:return_list) { @obj.get_volume_objects(pid) }
+    let(:return_list) { mock_controller.get_volume_objects(pid) }
 
     it 'returns an array of hashes with the Volume objects and files' do
       expect(return_list.class).to eq(Array)
@@ -140,8 +102,5 @@ describe CommonwealthVlrEngine::Finder do
       expect(return_list[0][:vol_files][:ereader].length).to eq(1)
       expect(return_list[0][:vol_files][:ereader].first.id).to eq('bpl-dev:3j334b41x')
     end
-
   end
-
-
 end

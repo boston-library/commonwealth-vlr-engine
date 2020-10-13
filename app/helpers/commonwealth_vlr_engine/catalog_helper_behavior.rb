@@ -1,8 +1,5 @@
 module CommonwealthVlrEngine
-  module CatalogHelper
-    include Blacklight::CatalogHelperBehavior
-    include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
-
+  module CatalogHelperBehavior
     # returns the CC license terms code for use in URLs, etc.
     def cc_terms_code(license)
       license.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase

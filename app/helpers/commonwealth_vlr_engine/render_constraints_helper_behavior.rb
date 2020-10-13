@@ -1,6 +1,8 @@
 # override methods from Blacklight::RenderConstraintsHelperBehavior
+# (which is included via Blacklight::CatalogHelperBehavior)
+# plus new methods for rendering MLT, Advanced Search, etc
 module CommonwealthVlrEngine
-  module RenderConstraintsOverride
+  module RenderConstraintsHelperBehavior
     # override so we can inspect for other params, like :mlt_id
     def query_has_constraints?(params_or_search_state = search_state)
       search_state = convert_to_search_state(params_or_search_state)
@@ -63,5 +65,15 @@ module CommonwealthVlrEngine
                                 remove: search_action_path(search_state.params.dup.except!(:mlt_id, :qt)))
     end
 
+    # render date range constraints from Advanced Search form
+    def date_range_constraints_to_s(params)
+      if params[:date_start].blank?
+        "before #{params[:date_end]}"
+      elsif params[:date_end].blank?
+        "after #{params[:date_start]}"
+      else
+        "#{params[:date_start]}-#{params[:date_end]}"
+      end
+    end
   end
 end
