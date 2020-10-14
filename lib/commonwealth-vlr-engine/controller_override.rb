@@ -192,7 +192,6 @@ module CommonwealthVlrEngine
 
         # add our custom tools
         config.add_show_tools_partial :add_this, partial: 'add_this'
-        config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
