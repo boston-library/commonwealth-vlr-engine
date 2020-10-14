@@ -14,7 +14,7 @@ describe CatalogController do
   end
 
   describe 'GET "metadata_view"' do
-    before { get :metadata_view, params: { id: item_pid } }
+    before { get :metadata_view, params: { id: 'bpl-dev:h702q6403' } }
 
     it 'responds to the #metadata_view action' do
       expect(response).to be_successful

@@ -34,14 +34,14 @@
           <div class="col-sm-6">
             <%= select_tag(:topic,
                            options_for_select(feedback_type_options),
-                           :id => 'message_type_select',
+                           id: 'message_type_select',
                            class: 'form-control') %>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
           <div class="col-sm-6">
-            <%= text_area_tag :message, params[:message], :size => '24x6', class:  'form-control' %>
+            <%= text_area_tag :message, params[:message], size: '24x6', class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">

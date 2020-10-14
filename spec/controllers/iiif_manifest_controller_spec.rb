@@ -94,7 +94,7 @@ describe IiifManifestController do
 
     describe 'cache_invalidate' do
       it 'should remove the cached manifest' do
-        post :cache_invalidate, params: {:id => item_pid}
+        post :cache_invalidate, params: {id: item_pid}
         expect(JSON.parse(response.body)['result']).to be_truthy
         expect(Rails.cache.exist?(item_pid, { namespace: 'manifest' })).to be_falsey
       end

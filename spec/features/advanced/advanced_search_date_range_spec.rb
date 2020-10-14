@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'advanced search date range behavior', js: true do
-
   before { visit blacklight_advanced_search_engine.advanced_search_path }
 
   it 'should show the date range fields on the advanced search form' do
@@ -10,7 +9,6 @@ describe 'advanced search date range behavior', js: true do
   end
 
   describe 'submitting data', js: true do
-
     before do
       within '#date_range_limit' do
         fill_in 'date_range_start', with: '1800'
@@ -30,7 +28,5 @@ describe 'advanced search date range behavior', js: true do
     it 'should show the date range in the constraints' do
       expect(page).to have_selector('#appliedParams .date_range')
     end
-
   end
-
 end

@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 describe 'OCR search index view' do
-
   let(:book_pid) { 'bpl-dev:7s75dn48d' }
 
   describe 'loading the search form' do
-
     describe 'with no current_search_session params' do
       it 'displays the search form' do
         visit ocr_search_path(id: book_pid)
@@ -14,7 +12,6 @@ describe 'OCR search index view' do
     end
 
     describe 'with current_search_session params' do
-
       before do
         visit search_catalog_path(q: 'foo')
       end
@@ -23,13 +20,10 @@ describe 'OCR search index view' do
         visit ocr_search_path(id: book_pid)
         expect(page).to have_selector('#ocr_search_suggest')
       end
-
     end
-
   end
 
   describe 'running a search' do
-
     before { visit ocr_search_path(id: book_pid) }
 
     describe 'no matches' do
@@ -43,7 +37,6 @@ describe 'OCR search index view' do
     end
 
     describe 'with matches' do
-
       before do
         within 'form.ocr-search-form' do
           fill_in 'ocr_q', with: 'the'
@@ -71,7 +64,6 @@ describe 'OCR search index view' do
       end
 
       describe 'show hidden snippets' do
-
         before do
           page.find("a[href*='#snippet_collapse_1']").click
         end
@@ -79,11 +71,7 @@ describe 'OCR search index view' do
         it 'displays more snippets' do
           expect(page).to have_selector('#snippet_collapse_1', visible: true)
         end
-
       end
-
     end
-
   end
-
 end

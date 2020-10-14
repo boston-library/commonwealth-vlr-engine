@@ -92,7 +92,7 @@ module CommonwealthVlrEngine
     # render institution name as a link in catalog#index list view
     def index_institution_link options={}
       link_to(options[:value].first,
-              institution_path(:id => options[:document][:institution_pid_ssi]))
+              institution_path(id: options[:document][:institution_pid_ssi]))
     end
 
     # render the collection/institution icon if necessary
@@ -177,7 +177,7 @@ module CommonwealthVlrEngine
                         :class => 'cc_license_icon'),
               cc_url(license),
               :rel => 'license',
-              :id => 'cc_license_link',
+              id: 'cc_license_link',
               :target => '_blank')
     end
 
@@ -361,7 +361,7 @@ module CommonwealthVlrEngine
       coll_links = []
       coll_hash.sort.each do |coll_array|
         coll_links << link_to(coll_array[0],
-                              collection_path(:id => coll_array[1]),
+                              collection_path(id: coll_array[1]),
                               :class => link_class.presence)
       end
       coll_links

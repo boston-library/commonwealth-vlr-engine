@@ -67,7 +67,6 @@ describe CommonwealthVlrEngine::ControllerOverride do
 
       it 'adds the desired actions' do
         expect(subject[:add_this]).not_to be_empty
-        expect(subject[:folder_items]).not_to be_empty
       end
     end
   end

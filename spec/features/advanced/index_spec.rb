@@ -11,7 +11,6 @@ describe 'basic_search' do
       click_button('advanced_search')
     end
     expect(page).to have_selector('.document', count: 1)
-    expect(page).to have_selector('.document-title-heading',
-                                  :text => 'Beauregard')
+    expect(page).to have_selector('.document-title-heading', text: 'Beauregard')
   end
 end

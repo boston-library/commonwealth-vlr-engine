@@ -11,7 +11,7 @@
                                      { size: slide.size,
                                        alt: slide.title,
                                        region: slide.region }),
-                      solr_document_path(:id => slide.object_pid) %>
+                      solr_document_path(id: slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
             <p><%= slide.institution %></p>

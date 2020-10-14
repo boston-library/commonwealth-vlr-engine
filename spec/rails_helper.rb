@@ -3,31 +3,24 @@ require 'spec_helper'
 require 'commonwealth-vlr-engine'
 abort("The Rails environment is running in production mode!") if ::Rails.env.production?
 
+require 'engine_cart'
+EngineCart.load_application!
+
 require 'pry-rails'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'webdrivers'
 
-# Capybara.register_driver :poltergeist do |app|
-#   options = {}
-#   options[:js_errors] = false
-#   options[:timeout] = 120 if RUBY_PLATFORM == "java"
-#   options[:inspector] = true
-#   options[:phantomjs_options] = ['--ignore-ssl-errors=yes']
-#   options[:headers] = {"User-Agent" => "Poltergeist"}
-#   Capybara::Poltergeist::Driver.new(app, options)
-# end
-
-
-# Capybara.default_driver = :poltergeist
-# Capybara.javascript_driver = Capybara.default_driver
-# Capybara.current_driver = Capybara.default_driver
-# Capybara.default_max_wait_time = 5
+Capybara.register_driver :selenium_chrome_headless do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu window-size=1024,768) }
+  )
+  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
+end
 
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.default_max_wait_time = 5
-
 
 RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -56,17 +49,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  #JS Error Output
-  # config.after(:each, type: :feature, js: true) do
-  #   errors = page.driver.browser.manage.logs.get(:browser)
-  #   unless errors.blank?
-  #     aggregate_failures 'javascript errrors' do
-  #       errors.each do |error|
-  #         STDERR.puts "#{error.level.upcase}: javascript warning"
-  #         STDERR.puts error.message
-  #       end
-  #     end
-  #   end
-  # end
 end
