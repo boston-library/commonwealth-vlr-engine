@@ -13,6 +13,16 @@ module CommonwealthVlrEngine
       end
     end
 
+    def extra_body_classes
+      @extra_body_classes ||= ['blacklight-' + controller_name, 'blacklight-' + [controller_name, controller.action_name].join('-')]
+      # if this is the home page
+      if controller_name == 'pages' && action_name =='home'
+        @extra_body_classes.push('blacklight-home')
+      else
+        @extra_body_classes
+      end
+    end
+
     # local override to use custom #document_heading method (above) for catalog#show title heading
     def render_document_heading(*args)
       options = args.extract_options!
