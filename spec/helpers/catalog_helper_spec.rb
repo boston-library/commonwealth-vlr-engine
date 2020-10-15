@@ -209,7 +209,8 @@ describe CatalogHelper do
   describe 'title helpers' do
     describe '#render_title' do
       describe 'full title with subtitle' do
-        let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
+        let(:doc_with_subtitle) { SolrDocument.find("bpl-dev:00000003t") }
+
         it 'renders the title correctly' do
           expect(helper.render_title(doc_with_subtitle)).to include('Massachusetts : based')
         end
@@ -226,6 +227,17 @@ describe CatalogHelper do
     describe '#render_volume_title' do
       it 'returns the correct value' do
         expect(helper.render_volume_title({title_info_partnum_tsi: 'vol.2', title_info_partname_tsi: 'Foo'})).to eq('Vol.2: Foo')
+      end
+    end
+
+    describe '#render_alt_title' do
+      let(:doc_with_alt_title) do
+        { 'title_info_alternative_tsim' => ['Modest'],
+          'title_info_alternative_subtitle_tsim' => ['Expectations'] }
+      end
+
+      it 'renders the alt title' do
+        expect(helper.render_alt_title(doc_with_alt_title, 0)).to eq 'Modest : Expectations'
       end
     end
   end

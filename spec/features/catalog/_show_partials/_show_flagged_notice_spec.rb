@@ -16,6 +16,6 @@ describe 'flagged item modal', js: true do
 
   it 'should hide the flagged item modal when the accept button is clicked' do
     click_button('View Content')
-    expect(page).not_to have_selector('#flagged_warning', visible: true)
+    expect(page).to have_selector('#flagged_warning', visible: false)
   end
 end

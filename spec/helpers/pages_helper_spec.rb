@@ -14,4 +14,16 @@ describe PagesHelper do
       expect(rendered_feed.scan(/<li class="feed_item">/).count).to eq(4)
     end
   end
+
+  describe '#middle_feature_columns' do
+    it 'returns the CSS class' do
+      expect(helper.middle_feature_columns).to eq('col-sm-6 col-md-6 col-lg-3')
+    end
+  end
+
+  describe '#render_about_site_path' do
+    it 'returns the about path' do
+      expect(helper.render_about_site_path).to eq('/about_this_site')
+    end
+  end
 end

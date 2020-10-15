@@ -2,7 +2,6 @@ require 'rss'
 
 module CommonwealthVlrEngine
   module PagesHelperBehavior
-
     def render_blog_feed(source = t('blacklight.home.context.news.rss_link'))
       if source.present?
         feed = Rails.cache.fetch('dc_rss_feed', :expires_in => 60.minutes) do
@@ -47,6 +46,5 @@ module CommonwealthVlrEngine
     def render_about_site_path
       about_site_path
     end
-
   end
 end
