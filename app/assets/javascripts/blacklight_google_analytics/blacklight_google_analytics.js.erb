@@ -25,6 +25,8 @@ $(function() {
         if (category === undefined) {
             category = $('body').attr('class').split(' ')[1].toString().replace(/blacklight-/,'').replace(/-/,'#');
         }
+        // uncomment below for logging in development
+        // console.log(category, action, label);
         ga('send', 'event', category, action, label);
     };
 
