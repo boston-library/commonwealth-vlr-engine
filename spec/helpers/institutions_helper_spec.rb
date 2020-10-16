@@ -36,9 +36,14 @@ describe InstitutionsHelper do
     end
 
     describe 'with default document_index_view_type' do
-      before { allow(helper).to receive_messages(document_index_view_type: :list) }
-      subject { helper.render_institutions_index }
-      it { should have_selector '#documents.documents-list' }
+      before do
+        allow(helper).to receive_messages(document_index_view_type: :list)
+      end
+
+      it 'calls render_document_index_with_view' do
+        expect(helper).to receive(:render_document_index_with_view)
+        helper.render_institutions_index(@document_list, {})
+      end
     end
 
     describe 'with "maps" document_index_view_type' do

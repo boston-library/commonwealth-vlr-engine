@@ -7,10 +7,11 @@ module CommonwealthVlrEngine
     included do
       copy_blacklight_config_from(CatalogController)
 
-      before_action :relation_base_blacklight_config, :only => [:index, :show]
-      before_action :add_series_facet, :only => :show
-      before_action :collections_limit, :only => :index
-      before_action :collapse_institution_facet, :only => :index
+      before_action :relation_base_blacklight_config, only: [:index, :show]
+      before_action :add_series_facet, only: :show
+      before_action :collections_limit, only: :index
+      before_action :collections_limit_for_facets, only: :facet
+      before_action :collapse_institution_facet, only: :index
 
       helper_method :search_action_url
       helper_method :get_series_image_obj
@@ -92,6 +93,18 @@ module CommonwealthVlrEngine
     # find only collection objects
     def collections_limit
       blacklight_config.search_builder_class = CommonwealthCollectionsSearchBuilder
+    end
+
+    # find object data for "more" facet results
+    # collections#facet can be called within BOTH collections#index and collections#show contexts
+    # when collections#index, want to limit to collection objects
+    # when collections#show, should be objects that are child of collection
+    # so we use the check below, since request.query_parameters['f'] is only added in collections#show
+    # via set_collection_facet_params
+    def collections_limit_for_facets
+      unless request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
+        self.collections_limit
+      end
     end
 
     # find the title and pid for the object representing the collection image

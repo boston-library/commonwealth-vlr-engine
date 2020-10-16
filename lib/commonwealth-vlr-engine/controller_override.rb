@@ -23,7 +23,7 @@ module CommonwealthVlrEngine
       before_action :get_object_files, only: [:show]
       before_action :mlt_results_for_show, only: [:show]
       before_action :set_nav_context, only: [:index]
-      before_action :mlt_search, only: [:index]
+      before_action :mlt_search, only: [:index, :show]
       before_action :add_institution_fields, only: [:index, :facet]
 
       helper_method :has_volumes?
@@ -256,26 +256,14 @@ module CommonwealthVlrEngine
       false
     end
 
-    # TODO: Do we still need this functionality? This method was removed from BL7
-    # LOCAL OVERRIDE of Blacklight::SearchHelper
-    # needed so that Solr query for prev/next/total in catalog#show view uses correct SearchBuilder class
-    # because params added exclusively in SearchBuilder methods don't get saved by current_search_session
-    def get_previous_and_next_documents_for_search(index, request_params, extra_controller_params={})
-      search_builder_to_use = request_params[:mlt_id] ? CommonwealthMltSearchBuilder.new(self) : search_builder
-      p = previous_and_next_document_params(index)
-      query = search_builder_to_use.with(request_params).start(p.delete(:start)).rows(p.delete(:rows)).merge(extra_controller_params).merge(p)
-      response = repository.search(query)
-      document_list = response.documents
-
-      # only get the previous doc if there is one
-      prev_doc = document_list.first if index > 0
-      next_doc = document_list.last if (index + 1) < response.total
-      [response, [prev_doc, next_doc]]
-    end
-
-    # if this is 'more like this' search, solr id = params[:mlt_id]
+    # if this is 'more like this' search, use CommonwealthMltSearchBuilder
+    # we need this in both #index and #show, because a search is also run when #show is loaded,
+    # see Blacklight::SearchContext#setup_next_and_previous_documents
     def mlt_search
-      if controller_name == 'catalog' && params[:mlt_id]
+      return unless controller_name == 'catalog'
+
+      if params[:mlt_id] ||
+         (current_search_session && current_search_session.query_params[:mlt_id].present?)
         blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
       end
     end
