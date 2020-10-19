@@ -123,17 +123,6 @@ module CommonwealthVlrEngine
       alt_title_output
     end
 
-    def render_volume_title(document)
-      vol_title_info = [document[:title_info_partnum_tsi], document[:title_info_partname_tsi]]
-      if vol_title_info[0]
-        vol_title_info[1] ? vol_title_info[0].capitalize + ': ' + vol_title_info[1] : vol_title_info[0].capitalize
-      elsif vol_title_info[1]
-        vol_title_info[1].capitalize
-      else
-        render_title(document, false)
-      end
-    end
-
     def render_mods_xml_record(document_id)
       mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
       mods_response = Typhoeus::Request.get(mods_xml_file_path)

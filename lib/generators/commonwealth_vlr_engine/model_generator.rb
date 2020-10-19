@@ -27,7 +27,7 @@ module CommonwealthVlrEngine
     def inject_solr_document_behavior
       unless IO.read("app/models/#{document_model_name}.rb").include?('Blacklight::Gallery::OpenseadragonSolrDocument')
         marker = 'include Blacklight::Solr::Document'
-        insert_into_file "app/models/#{document_model_name}.rb", :after => marker do
+        insert_into_file "app/models/#{document_model_name}.rb", after: marker do
           %q{
 
   include Blacklight::Gallery::OpenseadragonSolrDocument

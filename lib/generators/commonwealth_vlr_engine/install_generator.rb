@@ -38,7 +38,7 @@ module CommonwealthVlrEngine
     end
 
     def copy_yml_files
-      generate 'commonwealth_vlr_engine:yml', options[:bpluser]
+      generate 'commonwealth_vlr_engine:yml', options[:force]
     end
 
     def insert_to_controllers

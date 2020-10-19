@@ -74,12 +74,6 @@ module CommonwealthVlrEngine
       solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Collection\""
     end
 
-    # keep Volume objects out of the search results
-    def exclude_volumes(solr_parameters = {})
-      solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-active_fedora_model_suffix_ssi:"Volume"'
-    end
-
     # set params for ocr field searching
     def ocr_search_params(solr_parameters = {})
       solr_parameters[:facet] = false

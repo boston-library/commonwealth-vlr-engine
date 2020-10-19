@@ -54,12 +54,6 @@ describe CatalogHelper do
       end
     end
 
-    describe '#render_volume_title' do
-      it 'returns the correct value' do
-        expect(helper.render_volume_title({title_info_partnum_tsi: 'vol.2', title_info_partname_tsi: 'Foo'})).to eq('Vol.2: Foo')
-      end
-    end
-
     describe '#render_alt_title' do
       let(:doc_with_alt_title) do
         { 'title_info_alternative_tsim' => ['Modest'],

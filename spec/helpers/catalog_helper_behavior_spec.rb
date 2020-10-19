@@ -36,18 +36,6 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
   end
 
-  describe '#has_volumes?' do
-    let (:book_with_volumes_pid) { 'bpl-dev:3j334b469' }
-    let(:series_document) { SolrDocument.find(book_with_volumes_pid) }
-    let(:has_volumes_output) { catalog_helper_test_class.has_volumes?(series_document) }
-
-    it 'returns an array of hashes with the Volume documents and files' do
-      expect(has_volumes_output.length).to eq(2)
-      expect(has_volumes_output[0][:vol_doc].class).to eq(SolrDocument)
-      expect(has_volumes_output[0][:vol_files][:ereader]).to_not be_empty
-    end
-  end
-
   describe 'collection link helpers' do
     let(:doc_with_two_cols) { SolrDocument.find('bpl-dev:g445cd14k') }
 

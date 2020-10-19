@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
     def show
       @doc_response, @document = search_service.fetch(params[:id])
       if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
-        parent_response, @parent_document = search_service.fetch(parent_id(@document))
+        _parent_response, @parent_document = search_service.fetch(parent_id(@document))
         @object_profile = JSON.parse(@document['object_profile_ssm'].first)
       else
         @parent_document = @document
@@ -31,8 +31,8 @@ module CommonwealthVlrEngine
       respond_to do |format|
         format.html do
           render layout: false if request.xhr?
-        end# for users w/o JS
-        format.js { render :layout => false } # download modal window
+        end # for users w/o JS
+        format.js { render layout: false } # download modal window
       end
     end
 
@@ -181,6 +181,5 @@ module CommonwealthVlrEngine
     ensure
       response.stream.close
     end
-
   end
 end

@@ -16,7 +16,7 @@ module CommonwealthVlrEngine
     def inject_vlr_routes
       unless IO.read("config/routes.rb").include?('CommonwealthVlrEngine::Engine')
         marker = 'Rails.application.routes.draw do'
-        insert_into_file "config/routes.rb", :after => marker do
+        insert_into_file "config/routes.rb", after: marker do
           %q{
 
   root to: 'pages#home'
