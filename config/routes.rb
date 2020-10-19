@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   get 'search/:id/manifest', to: 'iiif_manifest#manifest', as: 'iiif_manifest'
   get 'search/:id/canvas/:canvas_object_id', to: 'iiif_manifest#canvas', as: 'iiif_canvas'
   get 'search/:id/annotation/:annotation_object_id', to: 'iiif_manifest#annotation', as: 'iiif_annotation'
-  get 'search/:id/iiif_collection', to: 'iiif_manifest#collection', as: 'iiif_collection'
   post 'search/:id/manifest/cache_invalidate', to: 'iiif_manifest#cache_invalidate', as: 'iiif_cache_invalidate'
 
   # OCR search results

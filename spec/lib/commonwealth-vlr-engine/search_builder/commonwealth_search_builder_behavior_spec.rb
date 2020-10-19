@@ -91,12 +91,6 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
     end
   end
 
-  describe 'exclude_volumes' do
-    it 'adds parameters to exclude volume objects' do
-      expect(search_builder.exclude_volumes(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Volume\"')
-    end
-  end
-
   describe 'ocr_search_params' do
     before do
       search_builder.ocr_search_params(solr_parameters)

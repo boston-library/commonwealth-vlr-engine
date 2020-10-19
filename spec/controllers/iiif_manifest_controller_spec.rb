@@ -59,22 +59,6 @@ describe IiifManifestController do
     end
   end
 
-  describe 'get collection' do
-    before(:each) do
-      get :collection, params: { id: 'bpl-dev:3j334b469' }
-    end
-
-    it 'renders an IIIF Collection' do
-      expect(response).to be_successful
-      expect(response_body).to have_content('http://iiif.io/api/presentation/2/context.json')
-    end
-
-    it 'should conform to the IIIF manifest spec' do
-      expect(response_body["@type"]).to eq('sc:Collection')
-      expect(response_body["manifests"].first["@id"]).to include('3j334603p')
-    end
-  end
-
   describe 'caching' do
     let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
     let(:cache) { Rails.cache }

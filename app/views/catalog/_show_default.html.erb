@@ -1,7 +1,6 @@
 <%# show the object image(s)/file(s) and metadata %>
-<%# TODO: refactor how views access files/volumes/etc., this is getting REALLY ugly %>
+<%# TODO: refactor how views access files, this is getting REALLY ugly %>
 <% doc_presenter = show_presenter(document) %>
-<% volumes = has_volumes?(@document) %>
 <% book_reader = has_searchable_text?(@document) ? true : false %>
 <% video = has_video_files?(@object_files) %>
 <% oai_object = @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' ? true : false %>
@@ -30,8 +29,8 @@
 <% end %>
 
 <div id="show_info_wrapper" class="row">
-  <%# show thumbnail or icon if object has no images, or volume list %>
-  <% if (!has_image_files?(@object_files) || book_reader || volumes) && !video %>
+  <%# show thumbnail or icon if object has no images, or is a book %>
+  <% if (!has_image_files?(@object_files) || book_reader) && !video %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
@@ -47,10 +46,6 @@
         </div>
         <%= render partial: 'catalog/_show_partials/show_oai_item_link',
                    locals: { document: @document } if oai_object %>
-        <% if volumes %>
-            <%= render partial: 'catalog/_show_partials/show_volumes',
-                       locals: { document: @document, volumes: volumes} %>
-        <% end %>
       </div>
   <% end %>
 

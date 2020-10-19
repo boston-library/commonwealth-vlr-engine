@@ -1,5 +1,4 @@
 class OcrSearchController < CatalogController
-
   ##
   # access to the CatalogController configuration
   include Blacklight::Configurable

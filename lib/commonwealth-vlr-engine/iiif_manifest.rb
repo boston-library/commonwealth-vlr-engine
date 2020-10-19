@@ -105,10 +105,10 @@ module CommonwealthVlrEngine
       end
       collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
       manifest_docs.each do |manifest_doc|
-        manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc[:vol_doc].id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
+        manifest_id = document[:identifier_uri_ss].gsub(/\/[\w]+\z/, manifest_doc.id.gsub(/\A[\w-]+:/,'/')) + "/manifest"
         collection.manifests << {'@id' => manifest_id,
                                  '@type' => 'sc:Manifest',
-                                 'label' => render_title(manifest_doc[:vol_doc], false)}
+                                 'label' => render_title(manifest_doc, false)}
       end
       collection
     end

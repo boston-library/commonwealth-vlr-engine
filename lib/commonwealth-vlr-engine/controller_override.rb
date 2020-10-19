@@ -26,7 +26,6 @@ module CommonwealthVlrEngine
       before_action :mlt_search, only: [:index, :show]
       before_action :add_institution_fields, only: [:index, :facet]
 
-      helper_method :has_volumes?
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
 
@@ -219,18 +218,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # TODO: refactor how views access files/volumes/etc.
-    # returns the child volumes for Book objects (if they exist)
-    # needs to be in this module because CommonwealthVlrEngine::Finder methods aren't accessible in helpers/views
-    def has_volumes?(document)
-      volumes = if document[blacklight_config.show.display_type_field.to_sym] == 'Book'
-                  get_volume_objects(document.id)
-                else
-                  nil
-                end
-      volumes.presence
-    end
-
     private
 
     # modify BL config settings for Collections#show and Institutions#show
@@ -268,7 +255,7 @@ module CommonwealthVlrEngine
       end
     end
 
-    # TODO: refactor how views access files/volumes/etc.
+    # TODO: refactor how views access files
     def get_object_files
       if controller_name == 'catalog' || controller_name == 'image_viewer'
         @object_files = get_files(params[:id])

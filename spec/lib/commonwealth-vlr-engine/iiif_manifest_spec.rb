@@ -83,9 +83,8 @@ describe CommonwealthVlrEngine::IiifManifest do
   end
 
   describe 'collection_for_manifests' do
-    let(:series_document) { Blacklight.default_index.search({:q => "id:\"bpl-dev:3j334b469\"", :rows => 1}).documents.first }
-    let(:manifest_docs) { mock_controller.get_volume_objects(series_document.id) }
-    let(:collection) { mock_controller.collection_for_manifests(series_document, manifest_docs) }
+    let(:manifest_docs) { [SolrDocument.find('bpl-dev:rf55z9490'), SolrDocument.find('bpl-dev:7s75dn48d')] }
+    let(:collection) { mock_controller.collection_for_manifests(document, manifest_docs) }
 
     it 'creates an instance of IIIF::Presentation::Collection' do
       expect(collection).not_to be_nil
@@ -94,11 +93,11 @@ describe CommonwealthVlrEngine::IiifManifest do
 
     it 'has contain a list of manifests' do
       expect(collection.manifests.length).to eq(2)
-      expect(collection.manifests.first['@id']).to include('3j334603p')
+      expect(collection.manifests.first['@id']).to include('rf55z9490')
     end
 
     it 'has the right id' do
-      expect(collection['@id']).to eq(series_document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
+      expect(collection['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
     end
   end
 

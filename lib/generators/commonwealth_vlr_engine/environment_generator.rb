@@ -16,7 +16,7 @@ module CommonwealthVlrEngine
     def inject_application_settings
       unless IO.read('config/application.rb').include?('config.action_mailer.delivery_method')
         marker = 'class Application < Rails::Application'
-        insert_into_file 'config/application.rb', :after => marker do
+        insert_into_file 'config/application.rb', after: marker do
           %q{
 
     # don't log passwords
@@ -45,7 +45,7 @@ module CommonwealthVlrEngine
     def inject_asset_settings
       unless IO.read('config/initializers/assets.rb').match(/^[^#]*config.assets.precompile/)
         marker = '# Precompile additional assets.'
-        insert_into_file 'config/initializers/assets.rb', :after => marker do
+        insert_into_file 'config/initializers/assets.rb', after: marker do
           %q{
 Rails.application.config.assets.precompile += %w(*.js)
 }
