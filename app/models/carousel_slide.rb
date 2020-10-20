@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class CarouselSlide < ApplicationRecord
-  #attr_accessible :context, :image_pid, :institution, :object_pid, :region, :size, :sequence, :title
-  #serialize :region, Array
+  # attr_accessible :context, :image_pid, :institution, :object_pid, :region, :size, :sequence, :title
+  # serialize :region, Array
 end

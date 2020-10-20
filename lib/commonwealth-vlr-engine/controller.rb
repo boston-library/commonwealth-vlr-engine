@@ -1,5 +1,5 @@
-# -*- encoding : utf-8 -*-
-#
+# frozen_string_literal: true
+
 # Filters added to this controller apply to all controllers in the hosting application
 # as this module is mixed-in to the application controller in the hosting app on installation.
 module CommonwealthVlrEngine
@@ -15,7 +15,7 @@ module CommonwealthVlrEngine
       page_sequence[:current] = current_img_pid
       page_sequence[:index] = image_files.index(current_img_pid) + 1
       page_sequence[:total] = image_files.length
-      page_sequence[:prev] = page_sequence[:index]-2 > -1 ? image_files[page_sequence[:index]-2] : nil
+      page_sequence[:prev] = page_sequence[:index] - 2 > -1 ? image_files[page_sequence[:index] - 2] : nil
       page_sequence[:next] = image_files[page_sequence[:index]].presence
       page_sequence
     end

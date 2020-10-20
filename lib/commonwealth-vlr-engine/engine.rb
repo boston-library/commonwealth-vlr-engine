@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   require 'blacklight'
   require 'blacklight/gallery'
@@ -16,9 +18,7 @@ rescue LoadError => e
 end
 
 module CommonwealthVlrEngine
-
   class Engine < Rails::Engine
-
     # for db migrations
     engine_name 'commonwealth_vlr_engine'
 
@@ -32,13 +32,11 @@ module CommonwealthVlrEngine
           load railtie
         end
       end
-      #load "#{config.root}/tasks/dc_public.rake"
     end
 
     # needs to be explicit as of sprockets-rails >=3.*
     initializer 'commonwealth.assets.precompile' do |app|
       app.config.assets.precompile += %w(commonwealth-vlr-engine/*.png commonwealth-vlr-engine/*.gif commonwealth-vlr-engine/openseadragon/*.png)
     end
-
   end
 end

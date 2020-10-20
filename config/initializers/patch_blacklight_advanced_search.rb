@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 # have to override some methods from BlacklightAdvancedSearch
 # to provide search-field drop-down options and date limiter
 # and modify query constraints checking for mlt and geographic searches
-
-require BlacklightAdvancedSearch::Engine.root.join(CommonwealthVlrEngine::Engine.root, 'config','initializers','patch_blacklight_advanced_search')
+require BlacklightAdvancedSearch::Engine.root.join(CommonwealthVlrEngine::Engine.root,
+                                                   'config', 'initializers', 'patch_blacklight_advanced_search')
 
 class BlacklightAdvancedSearch::QueryParser
-
   # LOCAL OVERRIDE of BlacklightAdvancedSearch::ParsingNestingParser#process_query
-  def process_query(params,config)
+  def process_query(params, config)
     queries = []
     queries = keyword_queries.map do |field, query|
       queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
@@ -31,7 +32,7 @@ class BlacklightAdvancedSearch::QueryParser
   # LOCAL ADDITION change params to be what's expected by gem
   def prepare_params(params)
     if params[:search_index]
-      params[:search_index].each_with_index do |field,index|
+      params[:search_index].each_with_index do |field, index|
         if params[field.to_sym] # check if field is set
           unless params[:query][index].empty?
             if params[:op] == 'OR'
@@ -62,11 +63,9 @@ class BlacklightAdvancedSearch::QueryParser
     @params = HashWithIndifferentAccess.new(prepare_params(santitized_params))
     @config = config
   end
-
 end
 
 module BlacklightAdvancedSearch::RenderConstraintsOverride
-
   # LOCAL OVERRIDE for mlt and geo searches
   def query_has_constraints?(localized_params = params)
     if is_advanced_search? localized_params
@@ -75,5 +74,4 @@ module BlacklightAdvancedSearch::RenderConstraintsOverride
       !(localized_params[:q].blank? && localized_params[:f].blank? && localized_params[:f_inclusive].blank? && localized_params[:mlt_id].blank? && localized_params[:coordinates].blank?)
     end
   end
-
 end

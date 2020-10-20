@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module Notifier
     extend ActiveSupport::Concern
@@ -9,9 +11,9 @@ module CommonwealthVlrEngine
       @name = details[:name]
       @recipient = route_email(details[:topic])
 
-      mail(:to => @recipient,
-           :from => t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
-           :subject => t('blacklight.feedback.text.subject', identifier: Time.now.strftime('%s')))
+      mail(to: @recipient,
+           from: t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
+           subject: t('blacklight.feedback.text.subject', identifier: Time.zone.now.strftime('%s')))
     end
 
     private

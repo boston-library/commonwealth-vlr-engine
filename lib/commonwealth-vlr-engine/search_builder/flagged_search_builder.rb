@@ -1,14 +1,12 @@
-class CommonwealthFlaggedSearchBuilder < Blacklight::SearchBuilder
+# frozen_string_literal: true
 
+class CommonwealthFlaggedSearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
-      :site_filter, :exclude_unpublished_items, :flagged_filter
+    :site_filter, :exclude_unpublished_items, :flagged_filter
   ]
 
-  unless I18n.t('blacklight.home.browse.institutions.enabled')
-    self.default_processor_chain += [:institution_limit]
-  end
-
+  self.default_processor_chain += [:institution_limit] unless I18n.t('blacklight.home.browse.institutions.enabled')
 end

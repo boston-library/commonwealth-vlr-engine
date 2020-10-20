@@ -1,6 +1,8 @@
-# need to override some methods from BlacklightMaps
+# frozen_string_literal: true
 
-require Blacklight::Maps::Engine.root.join(CommonwealthVlrEngine::Engine.root, 'config','initializers','patch_blacklight_maps')
+# need to override some methods from BlacklightMaps
+require Blacklight::Maps::Engine.root.join(CommonwealthVlrEngine::Engine.root,
+                                           'config', 'initializers', 'patch_blacklight_maps')
 
 class BlacklightMaps::GeojsonExport
   # LOCAL OVERRIDE - set partial to be rendered via options hash
