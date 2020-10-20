@@ -1,26 +1,18 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module ControllerOverride
     extend ActiveSupport::Concern
 
     included do
-      self.send(:include, CommonwealthVlrEngine::Finder)
-      #self.send(:include, CommonwealthVlrEngine::RenderConstraintsOverride)
-      #self.send(:helper, CommonwealthVlrEngine::RenderConstraintsOverride)
-
-      # add BlacklightAdvancedSearch
-      self.send(:include, BlacklightAdvancedSearch::Controller)
-
-      # add BlacklightMaps
-      self.send(:include, BlacklightMaps::Controller)
-
-      # add BlacklightRangeLimit
-      self.send(:include, BlacklightRangeLimit::ControllerOverride)
-
-      # add BlacklightIiifSearch
-      self.send(:include, BlacklightIiifSearch::Controller)
+      include CommonwealthVlrEngine::Finder
+      include BlacklightAdvancedSearch::Controller
+      include BlacklightMaps::Controller
+      include BlacklightRangeLimit::ControllerOverride
+      include BlacklightIiifSearch::Controller
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
-      before_action :get_object_files, only: [:show]
+      before_action :object_files, only: [:show]
       before_action :mlt_results_for_show, only: [:show]
       before_action :set_nav_context, only: [:index]
       before_action :mlt_search, only: [:index, :show]
@@ -28,14 +20,13 @@ module CommonwealthVlrEngine
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
-
-        #set default per-page
+        # set default per-page
         config.default_per_page = 20
 
         # allow responses >100 rows
         config.max_per_page = 500
 
-        #blacklight-gallery stuff
+        # blacklight-gallery stuff
         config.view.gallery.default = true
         config.view.gallery.partials = [:index_header]
         # slideshow and masonry get ver little usage, deprecating
@@ -67,16 +58,16 @@ module CommonwealthVlrEngine
 
         # advanced search configuration
         config.advanced_search = {
-            qt: 'search',
-            url_key: 'advanced',
-            query_parser: 'edismax',
-            form_solr_parameters: {
-                'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
-                'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
-                'f.collection_name_ssim.facet.limit' => -1,
-                'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
-                'f.collection_name_ssim.facet.sort' => 'index'
-            }
+          qt: 'search',
+          url_key: 'advanced',
+          query_parser: 'edismax',
+          form_solr_parameters: {
+            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
+            'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+            'f.collection_name_ssim.facet.limit' => -1,
+            'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
+            'f.collection_name_ssim.facet.sort' => 'index'
+          }
         }
 
         # fields for pseudo-objects (collection, institution, series)
@@ -92,23 +83,23 @@ module CommonwealthVlrEngine
         config.iiif_search = {
           full_text_field: 'ocr_tsiv',
           object_relation_field: 'is_image_of_ssim',
-          supported_params: %w[q page]
+          supported_params: %w(q page)
         }
 
-        config.default_solr_params = {:qt => 'search', :rows => 20}
+        config.default_solr_params = { qt: 'search', rows: 20 }
 
         # solr field configuration for search results/index views
         config.index.title_field = 'title_info_primary_tsi'
         config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
         # solr fields that will be treated as facets by the blacklight application
-        config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse:  false
+        config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
         config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
-        config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true, :collapse => false
-        config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse:  false
+        config.add_facet_field 'date_facet_yearly_ssim', label: 'Date', range: true, collapse: false
+        config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse: false
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', label: 'Collection', include_in_request: false # Collection (local)
         config.add_facet_field 'genre_specific_ssim', label: 'Genre', include_in_request: false
@@ -136,7 +127,7 @@ module CommonwealthVlrEngine
         end
 
         config.add_search_field('title') do |field|
-          field.solr_parameters = { 
+          field.solr_parameters = {
             'spellcheck.dictionary': 'default',
             qf: '${title_qf}',
             pf: '${title_pf}'
@@ -256,10 +247,8 @@ module CommonwealthVlrEngine
     end
 
     # TODO: refactor how views access files
-    def get_object_files
-      if controller_name == 'catalog' || controller_name == 'image_viewer'
-        @object_files = get_files(params[:id])
-      end
+    def object_files
+      @object_files = get_files(params[:id]) if controller_name == 'catalog' || controller_name == 'image_viewer'
     end
 
     def set_nav_context
@@ -268,24 +257,21 @@ module CommonwealthVlrEngine
 
     # add institutions if configured
     def add_institution_fields
-      if t('blacklight.home.browse.institutions.enabled')
-        blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse:  false
-        blacklight_config.add_index_field 'institution_name_ssim', label: 'Institution', helper_method: :index_institution_link
-      end
+      return unless t('blacklight.home.browse.institutions.enabled')
+
+      blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse: false
+      blacklight_config.add_index_field 'institution_name_ssim', label: 'Institution', helper_method: :index_institution_link
     end
 
     # run a separate search for 'more like this' items
     # so we can explicitly set params to exclude unwanted items
     def mlt_results_for_show
-      if controller_name == 'catalog' # TODO: possibly redundant, is this ever invoked by another controller?
-        #blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
-        mlt_search_service = search_service_class.new(config: blacklight_config,
-                                                      user_params: { mlt_id: params[:id], rows: 4 },
-                                                      search_builder_class: CommonwealthMltSearchBuilder)
-        _mlt_response, @mlt_document_list = mlt_search_service.search_results
-        # have to reset to CommonwealthSearchBuilder, or prev/next links won't work
-        #blacklight_config.search_builder_class = CommonwealthSearchBuilder
-      end
+      return unless controller_name == 'catalog'
+
+      mlt_search_service = search_service_class.new(config: blacklight_config,
+                                                    user_params: { mlt_id: params[:id], rows: 4 },
+                                                    search_builder_class: CommonwealthMltSearchBuilder)
+      _mlt_response, @mlt_document_list = mlt_search_service.search_results
     end
 
     # override so we can inspect for other params, like :mlt_id

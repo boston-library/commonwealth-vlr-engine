@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module CommonwealthSearchBuilderBehavior
-
     # only return items corresponding to the correct site
     def site_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
@@ -52,26 +53,20 @@ module CommonwealthVlrEngine
     # used by InstitutionsController#index
     def institutions_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Institution\""
+      solr_parameters[:fq] << '+active_fedora_model_suffix_ssi:"Institution"'
     end
 
     # for 'more like this' search -- set solr id param to params[:mlt_id]
     def mlt_params(solr_parameters = {})
       solr_parameters[:id] = blacklight_params[:mlt_id]
       solr_parameters[:qt] = 'mlt_qparser'
-      # solr_parameters[:mlt] = true
-      # solr_parameters[:'mlt.fl'] = 'subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim'
-      # solr_parameters[:'mlt.match.include'] = false
-      # solr_parameters[:'mlt.mintf'] = 1
-      # Changed this to get around the solr more like this handler facets being broken issue
-      #See https://gist.github.com/ebenenglish/512b0aacb91df67a3ba94b390533c8c2 for more info
       solr_parameters[:qf] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim'
     end
 
     # used by CollectionsController#index
     def collections_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Collection\""
+      solr_parameters[:fq] << '+active_fedora_model_suffix_ssi:"Collection"'
     end
 
     # set params for ocr field searching
@@ -82,6 +77,5 @@ module CommonwealthVlrEngine
       solr_parameters[:'hl.fragsize'] = 135
       solr_parameters[:'hl.snippets'] = 10
     end
-
   end
 end

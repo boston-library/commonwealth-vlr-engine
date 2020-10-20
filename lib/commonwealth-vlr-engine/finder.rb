@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module Finder
-
     def repository
       Blacklight.default_index
     end
@@ -30,7 +31,6 @@ module CommonwealthVlrEngine
       return_hash
     end
 
-
     def sort_files(file_list)
       return file_list if file_list.length <= 1
 
@@ -41,8 +41,8 @@ module CommonwealthVlrEngine
 
       return_list = []
       file_list.each do |file|
-        preceding_key = file.keys.select { |key| key.include?'preceding'}
-        following_key = file.keys.select { |key| key.include?'following'}
+        preceding_key = file.keys.select { |key| key.include?'preceding' }
+        following_key = file.keys.select { |key| key.include?'following' }
 
         if following_key.blank?
           return_list.insert(0, file)
@@ -50,12 +50,12 @@ module CommonwealthVlrEngine
           next_item_pid = file[preceding_key_final].first
         elsif preceding_key.blank?
           return_list.insert(-1, file)
-          ending_item_pid  = "info:fedora/#{file['id']}"
+          ending_item_pid = "info:fedora/#{file['id']}"
         end
       end
 
       while next_item_pid != ending_item_pid
-        next_item = file_list.select { |array| "info:fedora/#{array['id'].to_s}" == next_item_pid }.first
+        next_item = file_list.find { |array| "info:fedora/#{array['id']}" == next_item_pid }
         return_list.insert(-2, next_item)
         next_item_pid = next_item[preceding_key_final].first.to_s
       end
@@ -64,94 +64,94 @@ module CommonwealthVlrEngine
     end
 
     def get_image_files(pid)
-      solr_response = repository.search({q: "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"", rows: 5000})
+      solr_response = repository.search({ q: "is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"", rows: 5000 })
       sort_files(solr_response.documents)
     end
 
     # TODO: DETERMINE IF ANY OF THE METHODS BELOW ARE USED ANYWHERE (no usage in commonwealth-vlr-engine)
 
     def get_audio_files(pid)
-      solr_response = repository.search({q: "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"", rows: 5000})
+      solr_response = repository.search({ q: "is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')} AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"", rows: 5000 })
       sort_files(solr_response.documents)
     end
 
     def get_document_files(pid)
-      solr_response = repository.search({q: "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"", rows: 5000})
+      solr_response = repository.search({ q: "is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"", rows: 5000 })
       sort_files(solr_response.documents)
     end
 
     def get_ereader_files(pid)
-      solr_response = repository.search({q: "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", rows: 5000})
+      solr_response = repository.search({ q: "is_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"", rows: 5000 })
       sort_files(solr_response.documents)
     end
 
     def get_video_files(pid)
-      solr_response = repository.search({q: "is_video_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_VideoFile\"", rows: 5000})
+      solr_response = repository.search({ q: "is_video_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_VideoFile\"", rows: 5000 })
       sort_files(solr_response.documents)
     end
 
     def get_first_image_file(pid)
-      solr_response = repository.search({q: "-is_following_image_of_ssim:* AND is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
+      solr_response = repository.search({ q: "-is_following_image_of_ssim:* AND is_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"" })
       solr_response.documents&.first
     end
 
     def get_first_audio_file(pid)
-      solr_response = repository.search({q: "-is_following_audio_of_ssim:* AND is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
+      solr_response = repository.search({ q: "-is_following_audio_of_ssim:* AND is_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"" })
       solr_response.documents&.first
     end
 
     def get_first_document_file(pid)
-      solr_response = repository.search({q: "-is_following_document_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
+      solr_response = repository.search({ q: "-is_following_document_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"" })
       solr_response.documents&.first
     end
 
     def get_first_ereader_file(pid)
-      solr_response = repository.search({q: "-is_following_ereader_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\""})
+      solr_response = repository.search({ q: "-is_following_ereader_of_ssim:* AND is_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"" })
       solr_response.documents&.first
     end
 
     def get_next_image_file(pid)
-      solr_response = repository.search({q: "is_following_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
+      solr_response = repository.search({ q: "is_following_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"" })
       solr_response.documents&.first
     end
 
     def get_next_audio_file(pid)
-      solr_response = repository.search({q: "is_following_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
+      solr_response = repository.search({ q: "is_following_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"" })
       solr_response.documents&.first
     end
 
     def get_next_document_file(pid)
-      solr_response = repository.search({q: "is_following_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
+      solr_response = repository.search({ q: "is_following_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"" })
       solr_response.documents&.first
     end
 
     def get_next_ereader_file(pid)
-      solr_response = repository.search({q: "is_following_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\""})
+      solr_response = repository.search({ q: "is_following_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"" })
       solr_response.documents&.first
     end
 
     def get_prev_image_file(pid)
-      solr_response = repository.search({q: "is_preceding_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\""})
+      solr_response = repository.search({ q: "is_preceding_image_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_ImageFile\"" })
       solr_response.documents&.first
     end
 
     def get_prev_audio_file(pid)
-      solr_response = repository.search({q: "is_preceding_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\""})
+      solr_response = repository.search({ q: "is_preceding_audio_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_AudioFile\"" })
       solr_response.documents&.first
     end
 
     def get_prev_document_file(pid)
-      solr_response = repository.search({q: "is_preceding_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\""})
+      solr_response = repository.search({ q: "is_preceding_document_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_DocumentFile\"" })
       solr_response.documents&.first
     end
 
     def get_prev_ereader_file(pid)
-      solr_response = repository.search({q: "is_preceding_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\""})
+      solr_response = repository.search({ q: "is_preceding_ereader_of_ssim:\"info\:fedora/#{pid.gsub(':', '\:')}\" AND has_model_ssim:\"info\:fedora/afmodel:Bplmodels_EreaderFile\"" })
       solr_response.documents&.first
     end
 
     def get_file_parent_object(file_pid)
-      solr_response = repository.search({q: "id:\"#{file_pid}\" AND has_model_ssim:\"info:fedora/afmodel:Bplmodels_File\""})
+      solr_response = repository.search({ q: "id:\"#{file_pid}\" AND has_model_ssim:\"info:fedora/afmodel:Bplmodels_File\"" })
       return nil if solr_response.documents.blank?
 
       doc = solr_response.documents.first

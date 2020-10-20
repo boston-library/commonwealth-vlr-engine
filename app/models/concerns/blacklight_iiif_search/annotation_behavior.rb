@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BlacklightIiifSearch
   module AnnotationBehavior
     # include so we can use #datastream_disseminator_url

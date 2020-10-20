@@ -48,7 +48,7 @@ describe CatalogController do
     end
   end
 
-  describe 'get_object_files' do
+  describe 'object_files' do
     it 'retrieves the files for the item' do
       get :show, params: { id: item_pid }
       expect(assigns(:object_files)).to_not be_nil

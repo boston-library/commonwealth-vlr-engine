@@ -423,6 +423,7 @@ Metrics/BlockLength:
   Max: 90
   Exclude:
     - 'spec/**/*'
+    - 'lib/commonwealth-vlr-engine/controller_override.rb'
 
 Metrics/ClassLength:
   Enabled: true
@@ -515,6 +516,8 @@ Rails/Present:
 
 Rails/Output:
   Enabled: true
+  Exclude:
+    - 'lib/commonwealth-vlr-engine/engine.rb'
 
 Rails/ReflectionClassName:
   Enabled: false
