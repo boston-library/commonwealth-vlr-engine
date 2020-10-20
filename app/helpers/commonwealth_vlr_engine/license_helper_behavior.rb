@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # methods related to rendering license values
 module CommonwealthVlrEngine
   module LicenseHelperBehavior

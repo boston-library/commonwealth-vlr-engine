@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module DownloadsHelperBehavior
-
     # create an array of download links
     # images/video have to be handled separately since there are multiple sizes
     def create_download_links(document, files_hash)
       download_links = []
-      if has_downloadable_images?(document, files_hash)
-        download_links.concat(image_download_links(document, files_hash[:images]))
-      end
-      if has_downloadable_video?(document, files_hash)
-        download_links.concat(video_download_links(document, files_hash[:video]))
-      end
+      download_links.concat(image_download_links(document,
+                                                 files_hash[:images])) if has_downloadable_images?(document, files_hash)
+      download_links.concat(video_download_links(document,
+                                                 files_hash[:video])) if has_downloadable_video?(document, files_hash)
       download_links.concat(other_download_links(document, files_hash))
       download_links
     end
@@ -23,12 +22,12 @@ module CommonwealthVlrEngine
       { class: download_link_class, rel: 'nofollow', data: { blacklight_modal: 'trigger' } }
     end
 
-    def download_link_title(document, object_profile, datastream_id=nil)
-      if !object_profile || (document[:has_model_ssim].include? "info:fedora/afmodel:Bplmodels_ImageFile")
+    def download_link_title(document, object_profile, datastream_id = nil)
+      if !object_profile || (document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_ImageFile')
         link_title = t("blacklight.downloads.images.#{datastream_id}")
       else
-        file_name_ext = object_profile["objLabel"].split('.')
-        if document[:identifier_ia_id_ssi] || (document[:active_fedora_model_ssi] == "Bplmodels::EreaderFile")
+        file_name_ext = object_profile['objLabel'].split('.')
+        if document[:identifier_ia_id_ssi] || (document[:active_fedora_model_ssi] == 'Bplmodels::EreaderFile')
           link_title = ia_download_title(file_name_ext[1])
         else
           link_title = file_name_ext[0]
@@ -70,7 +69,7 @@ module CommonwealthVlrEngine
       image_datastreams = []
       stored_datastreams = %w(productionMaster access800 georectifiedMaster)
       stored_datastreams.each do |datastream_id|
-        image_datastreams << datastream_id unless object_profile_json["datastreams"][datastream_id].blank?
+        image_datastreams << datastream_id if object_profile_json['datastreams'][datastream_id].present?
       end
       image_datastreams.insert(1, 'accessFull')
     end
@@ -78,7 +77,7 @@ module CommonwealthVlrEngine
     def image_download_links(document, image_files)
       if document[:identifier_ia_id_ssi]
         [file_download_link(document[:id],
-                            t("blacklight.downloads.images.accessFull"),
+                            t('blacklight.downloads.images.accessFull'),
                             nil,
                             'JPEG2000',
                             download_link_options)]
@@ -136,7 +135,7 @@ module CommonwealthVlrEngine
       document[:license_ssm].to_s =~ /(Creative Commons|No known restrictions)/
     end
 
-    def file_download_link(object_pid, link_title, object_profile_json, datastream_id, link_options={})
+    def file_download_link(object_pid, link_title, object_profile_json, datastream_id, link_options = {})
       link_to(link_title,
               download_path(object_pid, datastream_id: datastream_id),
               link_options) + content_tag(:span,
@@ -148,13 +147,12 @@ module CommonwealthVlrEngine
       if object_profile_json
         file_type_string = if datastream_id == 'accessFull' || datastream_id == 'access800'
                              'JPEG'
-                           elsif object_profile_json["datastreams"][datastream_id]["dsMIME"]
-                             object_profile_json["datastreams"][datastream_id]["dsMIME"].split('/')[1].upcase
+                           elsif object_profile_json['datastreams'][datastream_id]['dsMIME']
+                             object_profile_json['datastreams'][datastream_id]['dsMIME'].split('/')[1].upcase
                            else
-                             object_profile_json["objLabel"].split('.')[1].upcase
-                           end
-        file_type_string.gsub!(/TIFF/, 'TIF')
-        file_type_string << ', multi-file ZIP' if object_profile_json["zip"]
+                             object_profile_json['objLabel'].split('.')[1].upcase
+                           end.gsub(/TIFF/, 'TIF')
+        file_type_string += ', multi-file ZIP' if object_profile_json['zip']
       else
         file_type_string = case datastream_id
                            when 'productionMaster'
@@ -171,11 +169,10 @@ module CommonwealthVlrEngine
     def file_size_string(datastream_id, object_profile_json)
       if object_profile_json
         if datastream_id == 'accessFull'
-          file_size_string = '~' +
-              number_to_human_size((object_profile_json["datastreams"]["productionMaster"]["dsSize"] * 0.083969078))
+          file_size_string = '~' + number_to_human_size((object_profile_json['datastreams']['productionMaster']['dsSize'] * 0.083969078))
         else
-          file_size_string = number_to_human_size(object_profile_json["datastreams"][datastream_id]["dsSize"])
-          file_size_string.insert(0,'~') if object_profile_json["zip"]
+          file_size_string = number_to_human_size(object_profile_json['datastreams'][datastream_id]['dsSize'])
+          file_size_string.insert(0, '~') if object_profile_json['zip']
         end
       else
         file_size_string = 'multi-file ZIP'
@@ -194,13 +191,13 @@ module CommonwealthVlrEngine
     # used to display size of ZIP archive
     def setup_zip_object_profile(image_files, datastream_id)
       datastream_id_to_use = datastream_id == 'accessFull' ? 'productionMaster' : datastream_id
-      object_profile = {zip: true,
-                        objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
-                        datastreams: {datastream_id_to_use.to_sym => {}}}
+      object_profile = { zip: true,
+                         objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
+                         datastreams: { datastream_id_to_use.to_sym => {} } }
       zip_size = 0
       image_files.each do |image_file|
         img_object_profile_json = JSON.parse(image_file['object_profile_ssm'].first)
-        zip_size += img_object_profile_json["datastreams"][datastream_id_to_use]["dsSize"]
+        zip_size += img_object_profile_json['datastreams'][datastream_id_to_use]['dsSize']
       end
       # estimate compression, pretty rough
       zip_size = case datastream_id
@@ -222,6 +219,5 @@ module CommonwealthVlrEngine
         trigger_downloads_path(document.id, datastream_id: datastream_id)
       end
     end
-
   end
 end

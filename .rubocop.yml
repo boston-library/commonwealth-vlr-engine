@@ -295,6 +295,8 @@ Lint/Void:
 
 Naming/AccessorMethodName:
   Enabled: true
+  Exclude:
+    - 'app/controllers/blacklight_advanced_search/advanced_controller.rb'
 
 ####################### STYLE ###############################
 
@@ -343,6 +345,8 @@ Style/GuardClause:
 
 Style/IfUnlessModifier:
   Enabled: true
+  Exclude:
+    - 'app/helpers/citation_helper.rb'
 
 Style/Lambda:
   Enabled: true
@@ -355,6 +359,8 @@ Style/MutableConstant:
 
 Style/Next:
   Enabled: true
+  Exclude:
+    - 'app/helpers/commonwealth_vlr_engine/vlr_blacklight_maps_helper_behavior.rb'
 
 Style/NumericLiterals:
   Enabled: true
@@ -376,6 +382,9 @@ Style/RedundantFreeze:
 
 Style/RedundantSelf:
   Enabled: true
+  Exclude:
+    - 'app/helpers/commonwealth_vlr_engine/catalog_helper_behavior.rb'
+    - 'app/helpers/commonwealth_vlr_engine/vlr_blacklight_maps_helper_behavior.rb'
 
 Style/RescueStandardError:
   Enabled: true
@@ -422,6 +431,8 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Enabled: true
   Max: 15
+  Exclude:
+    - 'app/helpers/citation_helper.rb'
 
 Metrics/MethodLength:
   Enabled: true

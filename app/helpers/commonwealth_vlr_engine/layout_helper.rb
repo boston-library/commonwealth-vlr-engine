@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module LayoutHelper
     include Blacklight::LayoutHelperBehavior
 
-
     def show_content_classes
-      "col-sm-12 show-document"
+      'col-sm-12 show-document'
     end
 
     def show_sidebar_classes

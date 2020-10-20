@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # use to render new image in multi image viewer in catalog#show
 class ImageViewerController < CatalogController
   include CommonwealthVlrEngine::CatalogHelperBehavior
@@ -9,8 +11,7 @@ class ImageViewerController < CatalogController
     @page_sequence = create_img_sequence(image_file_pids(@object_files[:images]), params[:view])
     respond_to do |format|
       format.js
-      format.html { redirect_to solr_document_path(@document.id,
-                                                   view: params[:view]) }
+      format.html { redirect_to solr_document_path(@document.id, view: params[:view]) }
     end
   end
 
@@ -18,9 +19,7 @@ class ImageViewerController < CatalogController
     _response, @document = search_service.fetch(params[:id])
 
     respond_to do |format|
-      format.html {
-        render layout: 'book_viewer'
-      }
+      format.html { render layout: 'book_viewer' }
     end
   end
 end

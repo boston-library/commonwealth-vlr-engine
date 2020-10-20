@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module OcrSearchHelperBehavior
-
     # return the term frequency as an integer
     # if Solr returns 0, change to 1 (most likely phrase search)
     def compute_term_freq(term_freq)
-      term_freq > 0 ? term_freq : term_freq+1
+      term_freq > 0 ? term_freq : term_freq + 1
     end
 
     # determine of the item has text content that can be searched
@@ -15,23 +16,19 @@ module CommonwealthVlrEngine
     # if current_search_session exists, return query_params['q'], otherwise return nil
     # @current_search_session is defined in Blacklight::SearchContext
     def ocr_q_params(current_search_session)
-      if current_search_session
-        current_search_session.query_params['q']
-      else
-        nil
-      end
+      current_search_session ? current_search_session.query_params['q'] : nil
     end
 
     # print the ocr snippets. if more than one, separate with <br/>
-    def render_ocr_snippets options={}
+    def render_ocr_snippets(options = {})
       snippets = options[:value]
       snippets_content = [content_tag('div',
                                       "... #{snippets.first} ...".html_safe,
                                       class: 'ocr_snippet first_snippet')]
       if snippets.length > 1
         snippets_content << render(partial: 'ocr_search/snippets_more',
-                                   locals: {snippets: snippets.drop(1),
-                                            counter: options[:counter]})
+                                   locals: { snippets: snippets.drop(1),
+                                             counter: options[:counter] })
       end
       snippets_content.join("\n").html_safe
     end

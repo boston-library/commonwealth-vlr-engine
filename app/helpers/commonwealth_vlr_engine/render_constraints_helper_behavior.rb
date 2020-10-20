@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # override methods from Blacklight::RenderConstraintsHelperBehavior
 # (which is included via Blacklight::CatalogHelperBehavior)
 # plus new methods for rendering MLT, Advanced Search, etc
@@ -18,7 +20,7 @@ module CommonwealthVlrEngine
 
     # override to deal with A-Z link result display
     def render_constraint_element(label, value, options = {})
-      if value.match(/ssort:[A-Z]+\*/)
+      if value.match?(/ssort:[A-Z]+\*/)
         label = t('blacklight.search.constraints.az_search')
         value = value.match(/[A-Z]+/)[0]
       end

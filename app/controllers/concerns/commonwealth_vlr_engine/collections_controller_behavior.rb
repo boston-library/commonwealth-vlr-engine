@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module CollectionsControllerBehavior
     extend ActiveSupport::Concern
@@ -87,6 +89,7 @@ module CommonwealthVlrEngine
     # collapse the institution facet, if Institutions supported
     def collapse_institution_facet
       return unless t('blacklight.home.browse.institutions.enabled')
+
       blacklight_config.facet_fields['physical_location_ssim'].collapse = true
     end
 
@@ -102,9 +105,9 @@ module CommonwealthVlrEngine
     # so we use the check below, since request.query_parameters['f'] is only added in collections#show
     # via set_collection_facet_params
     def collections_limit_for_facets
-      unless request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
-        self.collections_limit
-      end
+      return if request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
+
+      collections_limit
     end
 
     # find the title and pid for the object representing the collection image
@@ -118,7 +121,7 @@ module CommonwealthVlrEngine
         col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
         col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
         if col_img_field
-          col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
+          col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//, '')
           _col_img_obj_resp, col_img_obj_doc = search_service.fetch(col_img_obj_pid)
           if col_img_obj_doc
             col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]

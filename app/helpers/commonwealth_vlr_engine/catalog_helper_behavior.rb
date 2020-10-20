@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module CatalogHelperBehavior
     include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
@@ -23,12 +25,12 @@ module CommonwealthVlrEngine
     end
 
     # render collection name as a link in catalog#index list view
-    def index_collection_link options={}
+    def index_collection_link(options = {})
       setup_collection_links(options[:document]).join(' / ').html_safe
     end
 
     # render institution name as a link in catalog#index list view
-    def index_institution_link options={}
+    def index_institution_link(options = {})
       link_to(options[:value].first,
               institution_path(id: options[:document][:institution_pid_ssi]))
     end
@@ -36,12 +38,12 @@ module CommonwealthVlrEngine
     # determine the 'truncate' length based on catalog#index view type
     def index_title_length
       case params[:view]
-        when 'list'
-          170
-        when 'masonry'
-          89
-        else
-          130
+      when 'list'
+        170
+      when 'masonry'
+        89
+      else
+        130
       end
     end
 
@@ -63,19 +65,17 @@ module CommonwealthVlrEngine
     end
 
     def render_item_breadcrumb(document)
-      if document[:collection_pid_ssm]
-        setup_collection_links(document).sort.join(' / ').html_safe
-      end
+      setup_collection_links(document).sort.join(' / ').html_safe if document[:collection_pid_ssm]
     end
 
     # render the 'more like this' search link if doc has subjects
     def render_mlt_search_link(document)
-      if document[:subject_facet_ssim] || document[:subject_geo_city_ssim] || document[:related_item_host_ssim]
-        content_tag :div, id: 'more_mlt_link_wrapper' do
-          link_to t('blacklight.more_like_this.more_mlt_link'),
-                  search_catalog_path(mlt_id: document.id),
-                  id: 'more_mlt_link'
-        end
+      return unless document[:subject_facet_ssim] || document[:subject_geo_city_ssim] || document[:related_item_host_ssim]
+
+      content_tag :div, id: 'more_mlt_link_wrapper' do
+        link_to t('blacklight.more_like_this.more_mlt_link'),
+                search_catalog_path(mlt_id: document.id),
+                id: 'more_mlt_link'
       end
     end
 
@@ -94,8 +94,8 @@ module CommonwealthVlrEngine
         params_for_constraints = params
       end
 
-      html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/,' ')
-      html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/,' / ')
+      html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/, ' ')
+      html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/, ' / ')
       sanitize(html_constraints, tags: [])
 
       ## TODO: remove above and uncomment lines below after all issues have been resolved with
@@ -105,16 +105,17 @@ module CommonwealthVlrEngine
     end
 
     # TODO: uncomment and write spec after issues identified with render_search_to_page_title resolved
-    #def render_search_to_page_title_mlt(params)
-    #  return "".html_safe if params[:mlt_id].blank?
-    #  "#{t('blacklight.search.filters.label', :label => t('blacklight.more_like_this.constraint_label'))} #{h(params[:mlt_id])}"
-    #end
+    # def render_search_to_page_title_mlt(params)
+    #   return "".html_safe if params[:mlt_id].blank?
+    #   "#{t('blacklight.search.filters.label', :label => t('blacklight.more_like_this.constraint_label'))} #{h
+    #  (params[:mlt_id])}"
+    # end
 
     # creates an array of collection links
     # for display on catalog#index list view and catalog#show breadcrumb
-    def setup_collection_links(document, link_class=nil)
+    def setup_collection_links(document, link_class = nil)
       coll_hash = {}
-      0.upto document[:collection_pid_ssm].length-1 do |index|
+      0.upto(document[:collection_pid_ssm].length - 1) do |index|
         coll_hash[document[blacklight_config.collection_field.to_sym][index]] = document[:collection_pid_ssm][index]
       end
       coll_links = []

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # use to render new image in multi image viewer in catalog#show
 class IiifManifestController < CatalogController
   include CommonwealthVlrEngine::CatalogHelperBehavior
@@ -60,7 +62,7 @@ class IiifManifestController < CatalogController
 
   # to allow apps to load manifest JSON received from a remote server
   def set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = "*"
+    headers['Access-Control-Allow-Origin'] = '*'
   end
 
   def cache_namespace

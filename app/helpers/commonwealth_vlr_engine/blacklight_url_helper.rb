@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module BlacklightUrlHelper
     include Blacklight::UrlHelperBehavior
@@ -8,10 +10,10 @@ module CommonwealthVlrEngine
     def show_solr_document_url(doc, options)
       if options[:controller]
         case options[:controller]
-          when 'collections'
-            collection_url doc
-          when 'institutions'
-            institution_url doc
+        when 'collections'
+          collection_url doc
+        when 'institutions'
+          institution_url doc
         end
       else
         solr_document_url doc, options
@@ -31,7 +33,7 @@ module CommonwealthVlrEngine
       if respond_to?(:blacklight_config) && doc.respond_to?(:[])
         display_type = doc[blacklight_config.show.display_type_field].presence
         if display_type == 'Collection' || display_type == 'Institution'
-          {controller: display_type.downcase.pluralize, action: :show, id: doc}
+          { controller: display_type.downcase.pluralize, action: :show, id: doc }
         else
           doc
         end

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module OaiItemHelperBehavior
-
     # return the correct name of the institution to link to for OAI objects
     def oai_inst_name(document)
       if document[blacklight_config.institution_field.to_sym]
@@ -14,15 +15,15 @@ module CommonwealthVlrEngine
     def oai_link_text(document)
       if document[:type_of_resource_ssim]
         types = document[:type_of_resource_ssim].join(' ')
-        if types =~ /text/
+        if types.match?(/text/)
           t('blacklight.oai_objects.link_to_item.generic', institution_name: oai_inst_name(document))
-        elsif types =~ /carto/
+        elsif types.match?(/carto/)
           t('blacklight.oai_objects.link_to_item.map', institution_name: oai_inst_name(document))
-        elsif types =~ /sound/
+        elsif types.match?(/sound/)
           t('blacklight.oai_objects.link_to_item.sound', institution_name: oai_inst_name(document))
-        elsif types =~ /moving/
+        elsif types.match?(/moving/)
           t('blacklight.oai_objects.link_to_item.video', institution_name: oai_inst_name(document))
-        elsif types =~ /still/
+        elsif types.match?(/still/)
           t('blacklight.oai_objects.link_to_item.image', institution_name: oai_inst_name(document))
         else
           t('blacklight.oai_objects.link_to_item.generic', institution_name: oai_inst_name(document))
@@ -31,6 +32,5 @@ module CommonwealthVlrEngine
         t('blacklight.oai_objects.link_to_item.generic', institution_name: oai_inst_name(document))
       end
     end
-
   end
 end

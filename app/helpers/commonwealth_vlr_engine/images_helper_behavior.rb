@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # methods related to rendering images, thumbnails, icons, etc.
 module CommonwealthVlrEngine
   module ImagesHelperBehavior
@@ -10,7 +12,7 @@ module CommonwealthVlrEngine
             document['exemplary_image_iiif_bsi'] == false
           datastream_disseminator_url(exemplary_image_pid, 'thumbnail300')
         else
-          iiif_image_url(exemplary_image_pid, {region: "square", size: "#{size},"})
+          iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
         end
       else
         collection_icon_path
@@ -21,7 +23,7 @@ module CommonwealthVlrEngine
       'commonwealth-vlr-engine/dc_collection-icon.png'
     end
 
-    def create_thumb_img_element(document, img_class=[])
+    def create_thumb_img_element(document, img_class = [])
       image_classes = img_class.class == Array ? img_class.join(' ') : ''
       image_tag(thumbnail_url(document),
                 alt: document[blacklight_config.index.title_field.to_sym],
@@ -30,13 +32,13 @@ module CommonwealthVlrEngine
 
     # render the collection/institution icon if necessary
     def index_relation_base_icon document
-      if document[blacklight_config.view_config(document_index_view_type).display_type_field]
-        display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
-        if controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
-          image_tag("commonwealth-vlr-engine/dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
-        else
-          ''
-        end
+      return unless document[blacklight_config.view_config(document_index_view_type).display_type_field]
+
+      display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
+      if controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
+        image_tag("commonwealth-vlr-engine/dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
+      else
+        ''
       end
     end
 
@@ -46,7 +48,7 @@ module CommonwealthVlrEngine
         if document[blacklight_config.index.display_type_field.to_sym] == 'OAIObject' || document[:exemplary_image_ssi].match(/oai/)
           thumbnail_url(document)
         else
-          iiif_image_url(document[:exemplary_image_ssi], {:size => ',500'})
+          iiif_image_url(document[:exemplary_image_ssi], { size: ',500' })
         end
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)

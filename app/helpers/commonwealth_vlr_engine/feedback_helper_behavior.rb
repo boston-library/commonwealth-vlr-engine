@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module FeedbackHelperBehavior
     # returns an array of values for the message type select dropdown
@@ -8,6 +10,5 @@ module CommonwealthVlrEngine
       end
       options_for_type_dropdown
     end
-
   end
 end

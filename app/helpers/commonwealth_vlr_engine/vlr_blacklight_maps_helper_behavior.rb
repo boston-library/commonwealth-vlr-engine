@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module VlrBlacklightMapsHelperBehavior
     include Blacklight::BlacklightMapsHelperBehavior
@@ -8,9 +10,7 @@ module CommonwealthVlrEngine
       search_path = catalogpath || 'search_catalog_path'
       new_params = params.permit!
       field_values = field_value.split(', ')
-      if field_values.last.match(/[\.\)]/) # Mass.)
-        field_values = [field_values.join(', ')]
-      end
+      field_values = [field_values.join(', ')] if field_values.last.match?(/[\.\)]/) # Mass.)
       if field_values.length > 2
         new_field_values = []
         new_field_values[0] = field_value.split(/[,][ \w]*\z/).first
@@ -19,11 +19,11 @@ module CommonwealthVlrEngine
       end
       if field_values.length == 2 && field_values.last.length == 2
         state_name = Madison.get_name(field_values.last)
-        field_values[field_values.length-1] = state_name if state_name
+        field_values[field_values.length - 1] = state_name if state_name
       end
       field_values.each do |val|
         # new_params = new_params.to_hash
-        place = val.match(/\(county\)/) ? val : val.gsub(/\s\([a-z]*\)\z/,'')
+        place = val.match?(/\(county\)/) ? val : val.gsub(/\s\([a-z]*\)\z/, '')
         unless params[:f] && params[:f][field] && params[:f][field].include?(place)
           # have to initialize SearchState with existing params as Hash, not HashWithIndifferentAccess
           new_params = Blacklight::SearchState.new(new_params.to_hash,
@@ -46,8 +46,8 @@ module CommonwealthVlrEngine
     # OVERRIDE: use a static file for catalog#map so page loads faster
     # render the map for #index and #map views
     def render_index_mapview
-      static_geojson_file_loc = "#{Rails.root.to_s}/#{GEOJSON_STATIC_FILE['filepath']}"
-      if Rails.env.to_s == 'production' && params[:action] == 'map' && File::exists?(static_geojson_file_loc)
+      static_geojson_file_loc = "#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}"
+      if Rails.env.to_s == 'production' && params[:action] == 'map' && File.exist?(static_geojson_file_loc)
         geojson_for_map = File.open(static_geojson_file_loc).first
       else
         geojson_for_map = serialize_geojson(map_facet_values)
