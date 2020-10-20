@@ -1,0 +1,730 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'spec/internal/**/*'
+    - 'spec/fixtures/**/'
+    - 'vendor/**/*'
+  DisplayCopNames: true
+  DisabledByDefault: true
+  TargetRubyVersion: 2.6
+
+####################### BUNDLER/GEMSPEC ###############################
+Bundler/OrderedGems:
+  Enabled: true
+
+Bundler/DuplicatedGem:
+  Enabled: true
+
+Gemspec/OrderedDependencies:
+  Enabled: true
+
+####################### LAYOUT ###############################
+Layout/AlignArray:
+  Enabled: true
+
+Layout/BlockAlignment:
+  Enabled: true
+
+Layout/CaseIndentation:
+  Enabled: true
+
+Layout/CommentIndentation:
+  Enabled: true
+
+Layout/AlignArguments:
+  Enabled: true
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: true
+
+Layout/EmptyComment:
+  Enabled: true
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+Layout/EndAlignment:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  Enabled: true
+
+Layout/IndentFirstHashElement:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/IndentationConsistency:
+  Enabled: true
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/LeadingBlankLines:
+  Enabled: true
+
+Layout/LeadingCommentSpace:
+  Enabled: true
+
+Layout/MultilineArrayBraceLayout:
+  Enabled: true
+
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: true
+
+Layout/SpaceAfterComma:
+  Enabled: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Layout/SpaceBeforeComma:
+  Enabled: true
+
+Layout/SpaceBeforeComment:
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+Layout/SpaceInsideParens:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+####################### LINTING ###############################
+
+Lint/AmbiguousOperator:
+  Enabled: true
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: true
+
+Lint/AssignmentInCondition:
+  Enabled: true
+
+Lint/CircularArgumentReference:
+  Enabled: true
+
+Lint/Debugger:
+  Enabled: true
+
+Lint/DeprecatedClassMethods:
+  Enabled: true
+
+Lint/DuplicateCaseCondition:
+  Enabled: true
+
+Lint/DuplicateMethods:
+  Enabled: true
+
+Lint/DuplicatedKey:
+  Enabled: true
+
+Lint/EachWithObjectArgument:
+  Enabled: true
+
+Lint/ElseLayout:
+  Enabled: true
+
+Lint/EmptyEnsure:
+  Enabled: true
+  AutoCorrect: false
+
+Lint/EmptyExpression:
+  Enabled: true
+
+Lint/EmptyInterpolation:
+  Enabled: true
+
+Lint/EmptyWhen:
+  Enabled: true
+
+Lint/EndInMethod:
+  Enabled: true
+
+Lint/EnsureReturn:
+  Enabled: true
+
+Lint/FlipFlop:
+  Enabled: true
+
+Lint/FloatOutOfRange:
+  Enabled: true
+
+Lint/FormatParameterMismatch:
+  Enabled: true
+
+Lint/HandleExceptions:
+  Enabled: true
+
+Lint/ImplicitStringConcatenation:
+  Enabled: true
+
+Lint/IneffectiveAccessModifier:
+  Enabled: true
+
+Lint/InheritException:
+  Enabled: true
+
+Lint/LiteralAsCondition:
+  Enabled: true
+
+Lint/LiteralInInterpolation:
+  Enabled: true
+
+Lint/Loop:
+  Enabled: true
+
+Lint/MultipleCompare:
+  Enabled: true
+
+Lint/NestedMethodDefinition:
+  Enabled: true
+
+Lint/NextWithoutAccumulator:
+  Enabled: true
+
+Lint/NonLocalExitFromIterator:
+  Enabled: true
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+
+Lint/PercentStringArray:
+  Enabled: true
+
+Lint/PercentSymbolArray:
+  Enabled: true
+
+Lint/RandOne:
+  Enabled: true
+
+Lint/RequireParentheses:
+  Enabled: true
+
+Lint/RescueException:
+  Enabled: true
+
+Lint/SafeNavigationChain:
+  Enabled: true
+
+Lint/ShadowedException:
+  Enabled: true
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint/StringConversionInInterpolation:
+  Enabled: true
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+
+Lint/UnifiedInteger:
+  Enabled: true
+
+Lint/UnneededSplatExpansion:
+  Enabled: true
+
+Lint/UnusedMethodArgument:
+  Enabled: true
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+Lint/UnreachableCode:
+  Enabled: true
+
+Lint/UselessAccessModifier:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: true
+
+Lint/UselessComparison:
+  Enabled: true
+
+Lint/UselessElseWithoutRescue:
+  Enabled: true
+
+Lint/UselessSetterCall:
+  Enabled: true
+
+Lint/Void:
+  Enabled: true
+####################### NAMING ###############################
+
+Naming/AccessorMethodName:
+  Enabled: true
+
+####################### STYLE ###############################
+
+Style/Documentation:
+  Enabled: false
+  Exclude:
+    - 'spec/**/*'
+
+Style/AccessModifierDeclarations:
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ColonMethodCall:
+  Enabled: true
+
+Style/CommentAnnotation:
+  Enabled: true
+
+Style/DefWithParentheses:
+  Enabled: true
+
+Style/EmptyElse:
+  Enabled: true
+
+Style/EvalWithLocation:
+  Enabled: true
+
+Style/ExpandPathArguments:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/GuardClause:
+  Enabled: true
+
+# Style/HashSyntax:
+
+Style/IfUnlessModifier:
+  Enabled: true
+
+Style/Lambda:
+  Enabled: true
+
+Style/MixinUsage:
+  Enabled: true
+
+Style/MutableConstant:
+  Enabled: true
+
+Style/Next:
+  Enabled: true
+
+Style/NumericLiterals:
+  Enabled: true
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+  PreferredDelimiters:
+    default: ()
+    '%i': ()
+    '%I': ()
+    '%w': ()
+    '%W': ()
+
+Style/Proc:
+  Enabled: true
+
+Style/RedundantFreeze:
+  Enabled: true
+
+Style/RedundantSelf:
+  Enabled: true
+
+Style/RescueStandardError:
+  Enabled: true
+
+Style/SignalException:
+  Enabled: true
+
+Style/SpecialGlobalVars:
+  Enabled: true
+
+Style/StderrPuts:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/UnneededInterpolation:
+  Enabled: true
+
+####################### METRICS ###############################
+
+# REVIEW: Tweak these values at some point low priority
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 100
+
+Metrics/BlockLength:
+  Enabled: true
+  Max: 90
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Enabled: true
+  Max: 250
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 15
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 100
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 500
+
+####################### SECURITY ###############################
+
+# Taken From bixby config
+Security/Eval:
+  Enabled: true
+
+Security/JSONLoad:
+  Enabled: true
+  # Autocorrect here will change to a method that may cause crashes depending
+  # on the value of the argument.
+  AutoCorrect: false
+
+Security/MarshalLoad:
+  Enabled: true
+
+Security/YAMLLoad:
+  Enabled: true
+
+####################### RAILS ###############################
+
+Rails/ActionFilter:
+  Enabled: true
+
+Rails/CreateTableWithTimestamps:
+  Enabled: true
+
+Rails/ActiveSupportAliases:
+  Enabled: true
+
+Rails/BelongsTo:
+  Enabled: true
+
+Rails/Blank:
+  Enabled: true
+
+Rails/Date:
+  Enabled: true
+
+Rails/Delegate:
+  Enabled: true
+
+Rails/DelegateAllowBlank:
+  Enabled: true
+
+Rails/DynamicFindBy:
+  Enabled: true
+
+Rails/EnumHash:
+  Enabled: true
+
+Rails/EnumUniqueness:
+  Enabled: true
+
+Rails/EnvironmentComparison:
+  Enabled: true
+
+Rails/Exit:
+  Enabled: true
+
+Rails/InverseOf:
+  Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: true
+
+Rails/Presence:
+  Enabled: true
+
+Rails/Present:
+  Enabled: true
+
+Rails/Output:
+  Enabled: true
+
+Rails/ReflectionClassName:
+  Enabled: false
+
+Rails/SafeNavigation:
+  Enabled: true
+
+Rails/ScopeArgs:
+  Enabled: true
+
+Rails/TimeZone:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Enabled: true
+
+Rails/Validation:
+  Enabled: true
+
+####################### PERFORMANCE ###############################
+
+# Taken From Bixby
+
+Performance/Casecmp:
+  Enabled: true
+
+Performance/CaseWhenSplat:
+  Enabled: true
+
+Performance/Count:
+  # This cop has known compatibility issues with `ActiveRecord` and other
+  # frameworks. ActiveRecord's `count` ignores the block that is passed to it.
+  # For more information, see the documentation in the cop itself.
+  # If you understand the known risk, you can disable `SafeMode`.
+  SafeAutoCorrect: true
+  Enabled: true
+
+Performance/Detect:
+  # This cop has known compatibility issues with `ActiveRecord` and other
+  # frameworks. `ActiveRecord` does not implement a `detect` method and `find`
+  # has its own meaning. Correcting `ActiveRecord` methods with this cop
+  # should be considered unsafe.
+  SafeAutoCorrect: true
+  Enabled: true
+
+Performance/DoubleStartEndWith:
+  Enabled: true
+
+Performance/EndWith:
+  # This will change to a new method call which isn't guaranteed to be on the
+  # object. Switching these methods has to be done with knowledge of the types
+  # of the variables which rubocop doesn't have.
+  AutoCorrect: false
+  Enabled: true
+
+Performance/FixedSize:
+  Enabled: true
+
+Performance/FlatMap:
+  Enabled: true
+  EnabledForFlattenWithoutParams: false
+  # If enabled, this cop will warn about usages of
+  # `flatten` being called without any parameters.
+  # This can be dangerous since `flat_map` will only flatten 1 level, and
+  # `flatten` without any parameters can flatten multiple levels.
+
+Performance/InefficientHashSearch:
+  Enabled: true
+
+Performance/RangeInclude:
+  Enabled: true
+
+Performance/RedundantBlockCall:
+  Enabled: true
+
+Performance/RedundantMatch:
+  Enabled: true
+
+Performance/RedundantMerge:
+  Enabled: true
+
+Performance/RegexpMatch:
+  Enabled: true
+
+Performance/ReverseEach:
+  Enabled: true
+
+Performance/Size:
+  Enabled: true
+
+Performance/StartWith:
+  Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true
+
+Performance/TimesMap:
+  Enabled: true
+
+Performance/UnfreezeString:
+  Enabled: true
+
+####################### RSPEC ###############################
+RSpec/AlignLeftLetBrace:
+  Enabled: false
+
+RSpec/AlignRightLetBrace:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: true
+
+RSpec/BeforeAfterAll:
+  Enabled: false
+
+RSpec/Be:
+  Enabled: true
+
+RSpec/BeEql:
+  Enabled: true
+
+RSpec/ContextMethod:
+  Enabled: true
+
+RSpec/DescribedClass:
+  Enabled: true
+
+RSpec/EmptyLineAfterExample:
+  Enabled: true
+
+RSpec/EmptyLineAfterExampleGroup:
+  Enabled: true
+
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+RSpec/EmptyLineAfterHook:
+  Enabled: true
+
+RSpec/EmptyLineAfterSubject:
+  Enabled: true
+
+RSpec/ExpectChange:
+  Enabled: true
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/ExpectOutput:
+  Enabled: true
+
+RSpec/HookArgument:
+  Enabled: true
+  EnforcedStyle: each
+
+RSpec/HooksBeforeExamples:
+  Enabled: true
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/InvalidPredicateMatcher:
+  Enabled: true
+
+RSpec/ItBehavesLike:
+  Enabled: true
+
+RSpec/IteratedExpectation:
+  Enabled: true
+
+RSpec/LeadingSubject:
+  Enabled: true
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: true
+
+RSpec/LetBeforeExamples:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: true
+
+RSpec/MessageExpectation:
+  Enabled: false
+
+RSpec/MissingExampleGroupArgument:
+  Enabled: true
+
+RSpec/MultipleDescribes:
+  Enabled: true
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 5
+
+RSpec/OverwritingSetup:
+  Enabled: true
+
+RSpec/PredicateMatcher:
+  Enabled: false
+
+RSpec/RepeatedDescription:
+  Enabled: true
+
+RSpec/RepeatedExample:
+  Enabled: true
+
+RSpec/ReturnFromStub:
+  Enabled: true
+
+RSpec/ScatteredLet:
+  Enabled: false
+
+RSpec/ScatteredSetup:
+  Enabled: true
+
+RSpec/SharedContext:
+  Enabled: true
+
+RSpec/SharedExamples:
+  Enabled: true
+
+RSpec/VoidExpect:
+  Enabled: true

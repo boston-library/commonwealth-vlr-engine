@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Institutions#index map view', js: true do
-  before { visit institutions_path(view: 'maps') }
+  before(:each) { visit institutions_path(view: 'maps') }
 
   it 'should show map marker' do
     within('#institutions-index-map') do
@@ -10,7 +12,7 @@ describe 'Institutions#index map view', js: true do
   end
 
   describe 'click marker cluster' do
-    before { find('div.leaflet-marker-icon').click }
+    before(:each) { find('div.leaflet-marker-icon').click }
 
     it 'should show the search_form_institution content' do
       within('div.leaflet-popup-content') do
@@ -19,7 +21,7 @@ describe 'Institutions#index map view', js: true do
     end
 
     describe 'constraints links' do
-      before { find('div.leaflet-popup-content a').click }
+      before(:each) { find('div.leaflet-popup-content a').click }
 
       it 'has .constraints > a.remove that links to institutions#index' do
         within('#appliedParams') do

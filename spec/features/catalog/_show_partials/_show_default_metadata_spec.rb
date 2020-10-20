@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'show book viewer link', js: true do
@@ -10,7 +12,7 @@ describe 'show book viewer link', js: true do
   end
 
   describe 'expanded metadata' do
-    before do
+    before(:each) do
       page.find('#metadata_expand_heading').click
     end
 

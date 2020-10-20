@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
@@ -13,7 +15,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
   end
   let(:test_request) { ActionDispatch::TestRequest.new({}) }
 
-  before { allow(controller).to receive(:request).and_return(test_request) }
+  before(:each) { allow(controller).to receive(:request).and_return(test_request) }
 
   describe '#annotation_id' do
     it 'returns a properly formatted URL' do
@@ -28,7 +30,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
     let(:coordinates) do
       JSON.parse("{\"width\":2421,\"height\":4080,\"words\":{\"#{query_term}\":[[1056,3500,1126,3452]]}}")
     end
-    before { allow(iiif_search_annotation).to receive(:fetch_and_parse_coords).and_return(coordinates) }
+    before(:each) { allow(iiif_search_annotation).to receive(:fetch_and_parse_coords).and_return(coordinates) }
 
     describe '#canvas_uri_for_annotation' do
       it 'returns a properly formatted URL' do
@@ -40,7 +42,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
 
     describe '#coordinates' do
       it 'gets the expected value from #coordinates' do
-        expect(iiif_search_annotation.coordinates).to include("#xywh=1056,3452,70,48")
+        expect(iiif_search_annotation.coordinates).to include('#xywh=1056,3452,70,48')
       end
     end
   end

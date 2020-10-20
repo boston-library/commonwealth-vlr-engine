@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # tests for controller actions and configuration added to CatalogController
@@ -9,12 +11,12 @@ describe CatalogController do
 
   describe 'search_builder_class' do
     it 'uses CommonwealthSearchBuilder' do
-      expect(CatalogController.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
+      expect(described_class.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
     end
   end
 
   describe 'GET "metadata_view"' do
-    before { get :metadata_view, params: { id: 'bpl-dev:h702q6403' } }
+    before(:each) { get :metadata_view, params: { id: 'bpl-dev:h702q6403' } }
 
     it 'responds to the #metadata_view action' do
       expect(response).to be_successful
@@ -27,7 +29,7 @@ describe CatalogController do
   end
 
   describe 'GET "formats_facet"' do
-    before { get :formats_facet }
+    before(:each) { get :formats_facet }
 
     it 'responds to the #formats_facet action' do
       expect(response).to be_successful

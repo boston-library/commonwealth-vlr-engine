@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'OCR search index view' do
@@ -12,7 +14,7 @@ describe 'OCR search index view' do
     end
 
     describe 'with current_search_session params' do
-      before do
+      before(:each) do
         visit search_catalog_path(q: 'foo')
       end
 
@@ -24,7 +26,7 @@ describe 'OCR search index view' do
   end
 
   describe 'running a search' do
-    before { visit ocr_search_path(id: book_pid) }
+    before(:each) { visit ocr_search_path(id: book_pid) }
 
     describe 'no matches' do
       it 'renders the no matches partial' do
@@ -37,7 +39,7 @@ describe 'OCR search index view' do
     end
 
     describe 'with matches' do
-      before do
+      before(:each) do
         within 'form.ocr-search-form' do
           fill_in 'ocr_q', with: 'the'
           click_button('search')
@@ -64,7 +66,7 @@ describe 'OCR search index view' do
       end
 
       describe 'show hidden snippets' do
-        before do
+        before(:each) do
           page.find("a[href*='#snippet_collapse_1']").click
         end
 

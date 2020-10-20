@@ -13,7 +13,7 @@ describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
   let(:response) { search_service.search_results[0] }
   let(:docs) { response.aggregations[maps_config.geojson_field].items }
 
-  before do
+  before(:each) do
     mock_controller.request = ActionDispatch::TestRequest.create
     mock_controller.action_name = 'index'
     allow(helper).to receive_messages(controller: mock_controller)
@@ -39,12 +39,12 @@ describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
 
     it 'adds the correct route when a catalogpath arg is passed' do
       expect(helper.link_to_placename_field(query_term, maps_config.placename_field,
-                                            nil, 'institutions_path')).to include("institutions?")
+                                            nil, 'institutions_path')).to include('institutions?')
     end
   end
 
   describe '#map_facet_values' do
-    before { assign(:response, response) }
+    before(:each) { assign(:response, response) }
 
     let(:map_facets) { helper.map_facet_values }
 
@@ -56,7 +56,7 @@ describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
   end
 
   describe '#render_index_mapview' do
-    before { assign(:response, response) }
+    before(:each) { assign(:response, response) }
 
     it 'renders the "catalog/index_mapview" partial' do
       expect(helper.render_index_mapview).to include("$('#blacklight-index-map').blacklight_leaflet_map")

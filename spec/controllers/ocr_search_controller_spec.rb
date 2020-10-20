@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe OcrSearchController do
@@ -14,7 +16,7 @@ describe OcrSearchController do
 
     describe 'with ocr_q search params' do
       describe 'with blank ocr_q search params' do
-        before { get :index, params: { id: 'bpl-dev:7s75dn48d', ocr_q: '' }}
+        before(:each) { get :index, params: { id: 'bpl-dev:7s75dn48d', ocr_q: '' } }
 
         it 'renders the page' do
           expect(response).to be_successful
@@ -23,7 +25,7 @@ describe OcrSearchController do
       end
 
       describe 'with valid ocr_q search params' do
-        before { get :index, params: { id: 'bpl-dev:7s75dn48d', ocr_q: 'instruction' }}
+        before(:each) { get :index, params: { id: 'bpl-dev:7s75dn48d', ocr_q: 'instruction' } }
 
         it 'renders the page' do
           expect(response).to be_successful
@@ -38,13 +40,13 @@ describe OcrSearchController do
   end
 
   describe 'private methods' do
-    let(:mock_controller) { OcrSearchController.new }
+    let(:mock_controller) { described_class.new }
 
     describe 'modify_config_for_ocr' do
       let(:blacklight_config) { mock_controller.blacklight_config }
       let(:ocr_field) { blacklight_config.index_fields[blacklight_config.ocr_search_field] }
 
-      before { mock_controller.send(:modify_config_for_ocr) }
+      before(:each) { mock_controller.send(:modify_config_for_ocr) }
 
       it 'sets add_facet_fields_to_solr_request to false' do
         expect(blacklight_config.add_facet_fields_to_solr_request).to eq(false)

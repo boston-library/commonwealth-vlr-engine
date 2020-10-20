@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe PagesController do
   render_views
 
   describe "GET 'home'" do
-    before { get :home }
+    before(:each) { get :home }
 
     it 'responds to the #home action' do
       expect(response).to be_successful

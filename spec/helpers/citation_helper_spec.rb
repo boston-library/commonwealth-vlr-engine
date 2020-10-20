@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CitationHelper do
@@ -48,16 +50,12 @@ describe CitationHelper do
   end
 
   describe '#names_for_citation' do
-
-    let(:multiname_document) {
-      Blacklight.default_index.search({:q => "id:\"bpl-dev:df65v788h\"", :rows => 1}).documents.first
-    }
+    let(:multiname_document) { SolrDocument.find('bpl-dev:df65v788h') }
 
     it 'returns a properly formatted list of names' do
       expect(helper.names_for_citation(multiname_document, 'apa')).to include('Zeno, N., & Zeno, A.')
       expect(helper.names_for_citation(multiname_document, 'mla')).to include('Zeno, Niccolò, and Antonio Zeno')
     end
-
   end
 
   describe '#publishing_data_for_citation' do
@@ -91,5 +89,4 @@ describe CitationHelper do
       expect(helper.url_for_citation(document)).to include(document[:identifier_uri_ss])
     end
   end
-
 end

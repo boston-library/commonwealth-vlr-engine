@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CollectionsController do
@@ -63,7 +65,7 @@ describe CollectionsController do
 
   describe 'private methods and before_actions' do
     let(:document) { { blacklight_config.institution_field.to_sym => 'Boston Public Library' } }
-    let(:mock_controller) { CollectionsController.new }
+    let(:mock_controller) { described_class.new }
 
     before(:each) do
       mock_controller.params = {}
@@ -102,7 +104,7 @@ describe CollectionsController do
     end
 
     describe 'collection_image_info' do
-      let(:collection_image_pid) { 'bpl-dev:h702q642n'}
+      let(:collection_image_pid) { 'bpl-dev:h702q642n' }
       it 'returns a hash with the collection image object title and pid' do
         expect(mock_controller.send(:collection_image_info, collection_image_pid, collection_pid)).to eq(
           { image_pid: collection_image_pid, title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true }
@@ -125,7 +127,7 @@ describe CollectionsController do
     end
 
     describe 'relation_base_blacklight_config' do
-      before { mock_controller.send(:relation_base_blacklight_config) }
+      before(:each) { mock_controller.send(:relation_base_blacklight_config) }
 
       it 'sets the collection_name_ssim facet :show property to false' do
         expect(mock_controller.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy

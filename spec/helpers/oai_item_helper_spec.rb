@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe OaiItemHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
-  let(:document) { SolrDocument.find("bpl-dev:h702q6403") }
+  let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)

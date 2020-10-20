@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rake tasks for Commonwealth-public-interface
 namespace :vlr_engine do
   desc 'generate the static geojson file for catalog#map view'
@@ -15,7 +17,7 @@ namespace :vlr_engine do
 
     geojson_features = serialize_geojson(map_facet_values, 'index')
     if geojson_features
-      File.open("#{Rails.root.to_s}/#{GEOJSON_STATIC_FILE['filepath']}", 'w') do |f|
+      File.open("#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}", 'w') do |f|
         f.write(geojson_features)
       end
       puts 'The GeoJSON file has successfully been created'
