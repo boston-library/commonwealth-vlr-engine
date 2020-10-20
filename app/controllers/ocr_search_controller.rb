@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OcrSearchController < CatalogController
   ##
   # access to the CatalogController configuration
@@ -11,10 +13,10 @@ class OcrSearchController < CatalogController
   def index
     @doc_response, @document = search_service.fetch(params[:id])
     if params[:ocr_q]
-      if !params[:ocr_q].blank?
+      if params[:ocr_q].present?
         @image_pid_list = image_file_pids(get_image_files(params[:id]))
-        ocr_search_params = {q: params[:ocr_q],
-                             f: {'is_image_of_ssim' => "info:fedora/#{params[:id]}"}}
+        ocr_search_params = { q: params[:ocr_q],
+                              f: { 'is_image_of_ssim' => "info:fedora/#{params[:id]}" } }
         ocr_search_params[:page] = params[:page] if params[:page]
         ocr_search_params[:sort] = params[:sort] if params[:sort]
         # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
@@ -57,10 +59,10 @@ class OcrSearchController < CatalogController
 
   # create the Solr function query to return term frequency
   def termfreq_query(ocr_search_terms)
-    search_terms = if ocr_search_terms =~ (/\A"[\s\S]*"\z/) # phrase search
-                       [ocr_search_terms.gsub(/"/,'')]
-                     else
-                       ocr_search_terms.gsub(/"/,'').split(' ')
+    search_terms = if ocr_search_terms.match?(/\A"[\s\S]*"\z/) # phrase search
+                     [ocr_search_terms.delete('"')]
+                   else
+                     ocr_search_terms.delete('"').split(' ')
                    end
     if search_terms.length == 1
       "term_freq:termfreq(#{blacklight_config.ocr_search_field},\"#{search_terms.first}\")"

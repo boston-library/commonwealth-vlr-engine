@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module FacetsHelper
     include Blacklight::FacetsHelperBehavior
@@ -10,13 +11,12 @@ module CommonwealthVlrEngine
       return if controller.controller_name == 'collections' &&
           (controller.action_name == 'index' || controller.action_name == 'facet') &&
           item.value == 'Collections'
-      if facet_in_params?(facet_field, item.value )
+
+      if facet_in_params?(facet_field, item.value)
         render_selected_facet_value(facet_field, item)
       else
         render_facet_value(facet_field, item)
       end
     end
-
   end
-
 end

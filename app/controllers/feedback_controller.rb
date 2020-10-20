@@ -1,4 +1,5 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 class FeedbackController < ApplicationController
   # http://expressica.com/simple_captcha/
   # include SimpleCaptcha::ControllerHelpers
@@ -6,13 +7,11 @@ class FeedbackController < ApplicationController
   # show the feedback form
   def show
     @nav_li_active = 'about'
-    @errors=[]
-    if request.post?
-      if validate
-        Notifier.feedback(params).deliver_now
-        redirect_to feedback_complete_path
-      end
-    end
+    @errors = []
+    return unless request.post? && validate
+
+    Notifier.feedback(params).deliver_now
+    redirect_to feedback_complete_path
   end
 
   protected
@@ -20,18 +19,10 @@ class FeedbackController < ApplicationController
   # validates the incoming params
   # returns either an empty array or an array with error messages
   def validate
-    unless params[:name] =~ /\w+/
-      @errors << t('blacklight.feedback.valid_name')
-    end
-    unless params[:email] =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      @errors << t('blacklight.feedback.valid_email')
-    end
-    unless params[:message] =~ /\w+/
-      @errors << t('blacklight.feedback.need_message')
-    end
-    #unless simple_captcha_valid?
-    #  @errors << 'Captcha did not match'
-    #end
+    @errors << t('blacklight.feedback.valid_name') unless params[:name]&.match?(/\w+/)
+    @errors << t('blacklight.feedback.valid_email') unless params[:email]&.match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    @errors << t('blacklight.feedback.need_message') unless params[:message]&.match?(/\w+/)
+    # @errors << 'Captcha did not match' unless simple_captcha_valid?
     @errors.empty?
   end
 end

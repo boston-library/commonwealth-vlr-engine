@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonwealthVlrEngine
   module InstitutionsHelperBehavior
     # link to view all items from an institution
@@ -12,21 +14,20 @@ module CommonwealthVlrEngine
     def render_institution_desc(abstract)
       desc_content = []
       # double quotes in #delete arg below are correct, DO NOT CHANGE
-      abstract.map! { |v| v.delete("\n").delete("\r").gsub(/<br[ \/]*>/,'<br/>').split('<br/><br/>') }.flatten!
+      abstract.map! { |v| v.delete("\n").delete("\r").gsub(/<br[ \/]*>/, '<br/>').split('<br/><br/>') }.flatten!
       desc_content << content_tag(:div,
                                   abstract[0..1].join('<br/><br/>').html_safe,
                                   id: 'institution_desc_static',
                                   class: 'institution_desc institution_desc_inline')
       if abstract.length > 2
         desc_content << content_tag(:div,
-                                    "#{abstract[2..abstract.length-1].join('<br/><br/>')}".html_safe,
+                                    abstract[2..(abstract.length - 1)].join('<br/><br/>').html_safe,
                                     id: 'institution_desc_collapse',
                                     class: 'collapse institution_desc')
         desc_content << link_to(t('blacklight.institutions.description.more'),
                                 '#institution_desc_collapse',
-                                data: {toggle: 'collapse'},
-                                'aria-expanded' => 'false',
-                                'aria-controls' => '#institution_desc_collapse',
+                                data: { toggle: 'collapse' },
+                                aria: { expanded: 'false', controls: '#institution_desc_collapse' },
                                 class: 'institution_desc_expand js-controls')
       end
       desc_content.join('').html_safe
