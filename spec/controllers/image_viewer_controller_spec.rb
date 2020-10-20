@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ImageViewerController do
@@ -14,7 +16,7 @@ describe ImageViewerController do
       get :show, xhr: true, params: { id: item_pid, view: second_image_pid }
       expect(response).to be_successful
       # not great, but OK for now
-      expect(response.body).to match /#{second_image_pid}/
+      expect(response.body).to match(/#{second_image_pid}/)
     end
   end
 

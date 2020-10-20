@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
@@ -14,7 +16,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
   end
   let(:search_builder) { search_builder_class.new(context) }
 
-  before { allow(context).to receive(:blacklight_config).and_return(blacklight_config) }
+  before(:each) { allow(context).to receive(:blacklight_config).and_return(blacklight_config) }
 
   describe 'site_filter' do
     it 'adds parameters to filter items with the correct site' do
@@ -69,9 +71,9 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
   end
 
   describe 'mlt_params' do
-    let(:builder_with_params) { search_builder.with({mlt_id: 'bpl-dev:12345678'}) }
+    let(:builder_with_params) { search_builder.with({ mlt_id: 'bpl-dev:12345678' }) }
 
-    before do
+    before(:each) do
       builder_with_params.mlt_params(solr_parameters)
     end
 
@@ -92,7 +94,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
   end
 
   describe 'ocr_search_params' do
-    before do
+    before(:each) do
       search_builder.ocr_search_params(solr_parameters)
     end
 

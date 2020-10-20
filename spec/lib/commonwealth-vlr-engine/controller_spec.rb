@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::Controller do
@@ -41,32 +43,32 @@ describe CommonwealthVlrEngine::Controller do
       mock_controller.request = ActionDispatch::TestRequest.create
     end
 
-    describe "institutions#index" do
-      before do
+    describe 'institutions#index' do
+      before(:each) do
         mock_controller.params[:action] = 'index'
         mock_controller.params[:controller] = 'institutions'
       end
 
-      it "returns institutions_url" do
+      it 'returns institutions_url' do
         expect(mock_controller.search_action_path).to include('/institutions')
       end
     end
 
-    describe "collections" do
-      before { mock_controller.params[:controller] = 'collections' }
+    describe 'collections' do
+      before(:each) { mock_controller.params[:controller] = 'collections' }
 
-      describe "#index" do
-        before { mock_controller.params[:action] = 'index' }
+      describe '#index' do
+        before(:each) { mock_controller.params[:action] = 'index' }
 
-        it "returns collections_url" do
+        it 'returns collections_url' do
           expect(mock_controller.search_action_path).to include('/collections')
         end
       end
 
-      describe "#facet" do
-        before { mock_controller.params[:action] = 'facet' }
+      describe '#facet' do
+        before(:each) { mock_controller.params[:action] = 'facet' }
 
-        it "returns collections_url" do
+        it 'returns collections_url' do
           expect(mock_controller.search_action_path).to include('/collections')
         end
       end

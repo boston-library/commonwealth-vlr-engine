@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'awesome_print'
 require 'pry-rescue'
 require 'engine_cart'
@@ -6,12 +8,12 @@ require 'coveralls'
 Coveralls.wear!('rails')
 EngineCart.load_application!
 
-if ENV["COVERAGE"] or ENV["CI"]
+if ENV['COVERAGE'] or ENV['CI']
   require 'simplecov'
 
   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   SimpleCov.start do
-    add_filter "/spec/"
+    add_filter '/spec/'
   end
 end
 

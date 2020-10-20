@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::IiifManifest do
   let(:mock_controller) { IiifManifestController.new }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
   let(:image_files) { mock_controller.get_files(document.id)[:images] }
-  let(:image_id_suffix) { image_files.first.id.gsub(/\A[\w-]+:/,'/') }
+  let(:image_id_suffix) { image_files.first.id.gsub(/\A[\w-]+:/, '/') }
 
   describe 'create_iiif_manifest' do
     let(:manifest) { mock_controller.create_iiif_manifest(document, image_files) }
@@ -15,10 +17,10 @@ describe CommonwealthVlrEngine::IiifManifest do
     end
 
     it 'has metadata, sequences, canvases, images, and resources' do
-      expect(manifest.metadata.empty?).not_to be_truthy
-      expect(manifest.sequences.empty?).not_to be_truthy
-      expect(manifest.sequences[0].canvases.empty?).not_to be_truthy
-      expect(manifest.sequences[0].canvases[0].images.empty?).not_to be_truthy
+      expect(manifest.metadata).not_to be_empty
+      expect(manifest.sequences).not_to be_empty
+      expect(manifest.sequences[0].canvases).not_to be_empty
+      expect(manifest.sequences[0].canvases[0].images).not_to be_empty
       expect(manifest.sequences[0].canvases[0].images[0].resource).not_to be_nil
     end
 
@@ -31,12 +33,11 @@ describe CommonwealthVlrEngine::IiifManifest do
     let(:canvas) { mock_controller.canvas_from_id(image_files.first.id, 'image1', document) }
 
     it 'creates an instance of IIIF::Presentation::Canvas' do
-      expect(canvas).not_to be_nil
       expect(canvas.class).to eq(IIIF::Presentation::Canvas)
     end
 
     it 'has images and resources' do
-      expect(canvas.images.empty?).not_to be_truthy
+      expect(canvas.images).not_to be_empty
       expect(canvas.images[0].resource).not_to be_nil
     end
 
@@ -78,7 +79,7 @@ describe CommonwealthVlrEngine::IiifManifest do
     end
 
     it 'has the right id' do
-      expect(image_resource['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + "/large_image")
+      expect(image_resource['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/, image_id_suffix) + '/large_image')
     end
   end
 
@@ -97,7 +98,7 @@ describe CommonwealthVlrEngine::IiifManifest do
     end
 
     it 'has the right id' do
-      expect(collection['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/,"/collection\\0"))
+      expect(collection['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/, '/collection\\0'))
     end
   end
 
@@ -105,7 +106,7 @@ describe CommonwealthVlrEngine::IiifManifest do
     let(:manifest_metadata) { mock_controller.manifest_metadata(document) }
 
     it 'creates a hash of metadata' do
-      expect(manifest_metadata.empty?).to be_falsey
+      expect(manifest_metadata).not_to be_empty
     end
 
     it 'has a bunch of metadata about the item' do
@@ -127,7 +128,6 @@ describe CommonwealthVlrEngine::IiifManifest do
   end
 
   describe 'label_for_canvas' do
-
     let(:label_for_canvas) { mock_controller.label_for_canvas(image_files.first, 0) }
 
     it 'returns the correct label' do

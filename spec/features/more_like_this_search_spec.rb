@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'more like this search' do
@@ -11,7 +13,7 @@ describe 'more like this search' do
   end
 
   describe 'after clicking more_mlt_link' do
-    before do
+    before(:each) do
       visit solr_document_path(id: mlt_item_pid)
       click_link('more_mlt_link')
     end
@@ -27,7 +29,7 @@ describe 'more like this search' do
 
   # for some reason specs below don't pass without js: true
   describe 'show view from mlt search', js: true do
-    before do
+    before(:each) do
       visit search_catalog_path(mlt_id: mlt_item_pid)
       page.find('#documents :first-child .thumbnail .caption a').click
     end

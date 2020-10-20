@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::ControllerOverride do
-  let (:mock_controller) { CatalogController.new }
-  let (:test_config) { mock_controller.blacklight_config }
+  let(:mock_controller) { CatalogController.new }
+  let(:test_config) { mock_controller.blacklight_config }
 
   describe 'customized blacklight configuration' do
     describe 'facet_fields' do
@@ -45,13 +47,13 @@ describe CommonwealthVlrEngine::ControllerOverride do
         expect(subject['score desc, title_info_primary_ssort asc']).not_to be_falsey
       end
     end
-    
+
     describe 'thumbnail_method' do
       it 'sets the thumbnail_method' do
         expect(test_config.index.thumbnail_method).to eq(:create_thumb_img_element)
       end
     end
-    
+
     describe 'commonwealth config fields' do
       it 'sets the fields for pseudo classes' do
         expect(test_config.collection_field).to eq('collection_name_ssim')
@@ -77,10 +79,10 @@ describe CommonwealthVlrEngine::ControllerOverride do
     end
   end
 
-  describe "has_search_parameters?" do
-    before { mock_controller.params = { mlt_id: 'bpl-dev:h702q6403' } }
+  describe 'has_search_parameters?' do
+    before(:each) { mock_controller.params = { mlt_id: 'bpl-dev:h702q6403' } }
 
-    it "returns true if mlt params are present" do
+    it 'returns true if mlt params are present' do
       expect(mock_controller.has_search_parameters?).to be_truthy
     end
   end

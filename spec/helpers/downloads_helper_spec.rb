@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe DownloadsHelper do
@@ -5,7 +7,7 @@ describe DownloadsHelper do
   let(:downloads_helper_test_class) { DownloadsController.new }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
-  let(:document) { Blacklight.default_index.search({:q => "id:\"#{item_pid}\"", :rows => 1}).documents.first }
+  let(:document) { SolrDocument.find(item_pid) }
   let(:files_hash) { downloads_helper_test_class.get_files(item_pid) }
   let(:object_profile) { JSON.parse(files_hash[:images].first['object_profile_ssm'].first) }
   let(:download_links) { helper.create_download_links(document, files_hash) }
@@ -13,9 +15,6 @@ describe DownloadsHelper do
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
-  end
-
-  before do
     # copy :images to :documents/:video, as don't have any non-image items to test with at the moment
     files_hash[:documents] = [files_hash[:images].first]
     files_hash[:video] = [files_hash[:images].last]
@@ -106,10 +105,9 @@ describe DownloadsHelper do
   end
 
   describe '#file_download_link' do
-    let(:file_download_link_output) { helper.file_download_link(image_pid,
-                                                                 'foo',
-                                                                 object_profile,
-                                                                 image_datastreams_output[0]) }
+    let(:file_download_link_output) do
+      helper.file_download_link(image_pid, 'foo', object_profile, image_datastreams_output[0])
+    end
 
     it 'returns a link' do
       expect(file_download_link_output.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
@@ -156,20 +154,19 @@ describe DownloadsHelper do
 
     # should be greater than 10.5 MB
     it 'should estimate the zip size' do
-      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize'] > 11010048).to be_truthy
+      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize'] > 11_010_048).to be_truthy
     end
   end
 
   describe '#url_for_download' do
     it 'returns the correct link path for a hosted item' do
       expect(helper.url_for_download(document, image_datastreams_output[0])).to include(trigger_downloads_path(item_pid,
-                                                                                                                datastream_id: image_datastreams_output[0]))
+                                                                                                               datastream_id: image_datastreams_output[0]))
     end
 
     describe 'item from Internet Archive' do
-
       let(:document_to_hash) { document.to_h }
-      before { document_to_hash['identifier_ia_id_ssi'] = 'foo' }
+      before(:each) { document_to_hash['identifier_ia_id_ssi'] = 'foo' }
 
       it 'returns the correct link path for an Internet Archive item' do
         expect(helper.url_for_download(SolrDocument.new(document_to_hash), 'JPEG2000')).to include('archive.org')

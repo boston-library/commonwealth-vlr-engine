@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ApplicationHelper do
@@ -11,7 +13,7 @@ describe ApplicationHelper do
   end
 
   describe '#render_format_index' do
-    let(:opts) { {value: ['Maps']} }
+    let(:opts) { { value: ['Maps'] } }
     it 'returns the right value' do
       expect(helper.render_format_index(opts)).to eq('Maps/Atlases')
     end
@@ -60,18 +62,18 @@ describe ApplicationHelper do
 
   describe '#iiif_image_url' do
     it 'returns a IIIF URI' do
-      expect(helper.iiif_image_url(image_pid, {size: 'pct:50', region: '0,0,100,100'})).to include("#{IIIF_SERVER['url']}#{image_pid}/0,0,100,100/pct:50/0/default.jpg")
+      expect(helper.iiif_image_url(image_pid, { size: 'pct:50', region: '0,0,100,100' })).to include("#{IIIF_SERVER['url']}#{image_pid}/0,0,100,100/pct:50/0/default.jpg")
     end
   end
 
   describe '#get_image_metadata' do
     it 'returns a hash with the height, width, and aspect ratio of the image' do
-      expect(helper.get_image_metadata(image_pid)).to eq({height: 2448, width: 1496, aspect_ratio: 0.6111111111111112})
+      expect(helper.get_image_metadata(image_pid)).to eq({ height: 2448, width: 1496, aspect_ratio: 0.6111111111111112 })
     end
 
     describe 'when IIIF server is unresponsive' do
       it 'returns a hash with the height and width of the image set to 0' do
-        expect(helper.get_image_metadata('bpl-dev:xyz1234')).to eq({height: 0, width: 0, aspect_ratio: 0})
+        expect(helper.get_image_metadata('bpl-dev:xyz1234')).to eq({ height: 0, width: 0, aspect_ratio: 0 })
       end
     end
   end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Collections#show view', js: true do
-  before { visit collection_path(id: 'bpl-dev:000000000') }
+  before(:each) { visit collection_path(id: 'bpl-dev:000000000') }
 
   describe 'facets' do
     it 'has facet links that route to catalog#index' do
@@ -14,9 +16,9 @@ describe 'Collections#show view', js: true do
     end
 
     describe 'click on "more" facet link' do
-      before do
+      before(:each) do
         within('.blacklight-subject_facet_ssim') do
-          click_button("Topic")
+          click_button('Topic')
           within('.more_facets') do
             click_link
           end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'openseadragon image viewer modal', js: true do
-  before do
+  before(:each) do
     visit solr_document_path(id: 'bpl-dev:h702q6403')
   end
 

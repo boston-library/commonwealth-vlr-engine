@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::CatalogHelperBehavior do
@@ -21,7 +23,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
 
     describe '#image_file_pids' do
-      let (:image_file_pids_result) { helper.image_file_pids(files_hash[:images]) }
+      let(:image_file_pids_result) { helper.image_file_pids(files_hash[:images]) }
       it 'returns an array of ImageFile pids' do
         expect(image_file_pids_result.length).to eq(2)
         expect(image_file_pids_result.first).to eq(image_pid)
@@ -30,7 +32,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
     describe '#has_video_files?' do
       it 'returns true' do
-        files_hash[:video] = [SolrDocument.new] # TODO create a video file fixture in sample solr docs
+        files_hash[:video] = [SolrDocument.new] # TODO: create a video file fixture in sample solr docs
         expect(helper.has_video_files?(files_hash)).to be_truthy
       end
     end
@@ -40,16 +42,15 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     let(:doc_with_two_cols) { SolrDocument.find('bpl-dev:g445cd14k') }
 
     describe '#index_collection_link' do
-
       describe 'for an item with one collection affiliation' do
         it 'renders the collection link' do
-          expect(helper.index_collection_link({document: document})).to include('<a href="/collections/' + collection_pid)
+          expect(helper.index_collection_link({ document: document })).to include('<a href="/collections/' + collection_pid)
         end
       end
 
       describe 'for an item with two collection affiliations' do
         it 'renders two collection links' do
-          expect(helper.index_collection_link({document: doc_with_two_cols}).scan(/<a href="\/collections/).length).to eq(2)
+          expect(helper.index_collection_link({ document: doc_with_two_cols }).scan(/<a href="\/collections/).length).to eq(2)
         end
       end
     end
@@ -76,7 +77,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
   end
 
   describe '#insert_opengraph_markup' do
-    before do
+    before(:each) do
       assign(:document, document)
       assign(:object_files, files_hash)
       allow(helper).to receive(:controller_name).and_return('catalog')

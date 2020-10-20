@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails/generators'
 
 class TestAppGenerator < Rails::Generators::Base
-
   def remove_index
-    remove_file "public/index.html"
+    remove_file 'public/index.html'
   end
 
   def run_vlr_engine_install

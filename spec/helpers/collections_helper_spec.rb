@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CollectionsHelper do
@@ -19,7 +21,7 @@ describe CollectionsHelper do
   end
 
   describe '#render_collection_image' do
-    before do
+    before(:each) do
       assign(:collection_image_info,
              { pid: 'bpl-dev:h702q6403', image_pid: image_pid, title: 'foo', access_master: true })
     end

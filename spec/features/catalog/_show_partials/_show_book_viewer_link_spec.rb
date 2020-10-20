@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'show book viewer link', js: true do
@@ -15,7 +17,7 @@ describe 'show book viewer link', js: true do
     end
 
     describe 'search inside modal' do
-      before { click_link(I18n.t('blacklight.ocr.search.link')) }
+      before(:each) { click_link(I18n.t('blacklight.ocr.search.link')) }
 
       it 'renders the search inside partial as a Bootstrap modal within the page' do
         expect(page).to have_selector('.modal-header')
@@ -23,7 +25,7 @@ describe 'show book viewer link', js: true do
       end
 
       describe 'preserve the modal view' do
-        before do
+        before(:each) do
           within 'form.ocr-search-form' do
             fill_in 'ocr_q', with: 'instruction'
             click_button('search')

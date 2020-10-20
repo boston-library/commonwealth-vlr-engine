@@ -1,13 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CatalogHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
-  #let(:catalog_helper_test_class) { CatalogController.new }
   let(:item_pid) { 'bpl-dev:h702q6403' }
-  #let(:image_pid) { 'bpl-dev:h702q641c' }
-  #let(:collection_pid) { 'bpl-dev:h702q636h' }
   let(:document) { SolrDocument.find(item_pid) }
-  #let(:files_hash) { catalog_helper_test_class.get_files(item_pid) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
@@ -39,7 +37,7 @@ describe CatalogHelper do
   describe 'title helpers' do
     describe '#render_title' do
       describe 'full title with subtitle' do
-        let(:doc_with_subtitle) { SolrDocument.find("bpl-dev:00000003t") }
+        let(:doc_with_subtitle) { SolrDocument.find('bpl-dev:00000003t') }
 
         it 'renders the title correctly' do
           expect(helper.render_title(doc_with_subtitle)).to include('Massachusetts : based')
@@ -48,7 +46,7 @@ describe CatalogHelper do
 
       describe 'main title' do
         it 'renders the title correctly' do
-          expect(helper.render_title({title_info_primary_tsi: 'Foo', title_info_partnum_tsi: 'vol.2'},
+          expect(helper.render_title({ title_info_primary_tsi: 'Foo', title_info_partnum_tsi: 'vol.2' },
                                      false)).to eq('Foo. vol.2')
         end
       end

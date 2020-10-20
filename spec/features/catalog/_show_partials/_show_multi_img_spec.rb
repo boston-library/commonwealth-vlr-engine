@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'multi image viewer' do
@@ -7,7 +9,7 @@ describe 'multi image viewer' do
   end
 
   it 'displays the next image when a prev-next link is clicked' do
-    expect(find('.img_show')['src']).to match /bpl-dev:h702q642n/
+    expect(find('.img_show')['src']).to match(/bpl-dev:h702q642n/)
   end
 
   it 'should update the thumbnail in the #thumbnail_list' do
