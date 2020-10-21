@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # various app-specific config settings
 # use file name "a_load_commonwealth_vlr_configs" so Rails loads this file before other initializers
 

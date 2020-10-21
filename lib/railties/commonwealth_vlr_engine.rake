@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :commonwealth_vlr_engine do
   namespace :test_index do
     desc 'Put sample data into test app solr'

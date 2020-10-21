@@ -9,6 +9,8 @@ AllCops:
     - 'spec/internal/**/*'
     - 'spec/fixtures/**/'
     - 'vendor/**/*'
+    - 'lib/generators/commonwealth_vlr_engine/templates/*'
+    - 'Gemfile'
   DisplayCopNames: true
   DisabledByDefault: true
   TargetRubyVersion: 2.6
