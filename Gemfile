@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/boston-library/#{repo}.git" }
@@ -14,8 +16,8 @@ end
 
 group :test do
   gem 'coveralls', require: false
-  gem 'rails-controller-testing'
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'webdrivers', '~> 3.0'
 end
 # BEGIN ENGINE_CART BLOCK

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommonwealthSearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
@@ -6,8 +8,8 @@ class CommonwealthSearchBuilder < Blacklight::SearchBuilder
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
-      :site_filter, :exclude_unwanted_models, :exclude_unpublished_items,
-      :add_advanced_parse_q_to_solr, :add_advanced_search_to_solr
+    :site_filter, :exclude_unwanted_models, :exclude_unpublished_items,
+    :add_advanced_parse_q_to_solr, :add_advanced_search_to_solr
   ]
 
   unless I18n.t('blacklight.home.browse.institutions.enabled')

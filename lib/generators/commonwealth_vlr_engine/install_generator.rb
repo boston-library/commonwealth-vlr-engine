@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails/generators'
 
 module CommonwealthVlrEngine
   class InstallGenerator < Rails::Generators::Base
+    source_root File.expand_path('templates', __dir__)
 
-    source_root File.expand_path('../templates', __FILE__)
+    argument :search_builder_name, type: :string, default: 'search_builder'
+    argument :document_name, type: :string, default: 'solr_document'
+    argument :controller_name, type: :string, default: 'catalog'
 
-    argument :search_builder_name, type: :string , default: "search_builder"
-    argument :document_name, type: :string , default: "solr_document"
-    argument :controller_name, type: :string , default: "catalog"
+    class_option :bpluser, type: :boolean, default: false, desc: 'Add user functionality using Devise and Bpluser'
+    class_option :force, type: :boolean, default: false, desc: 'Force overwrite when copying files (for CI)'
 
-    class_option :bpluser, type: :boolean, default: false, desc: "Add user functionality using Devise and Bpluser"
-    class_option :force, type: :boolean, default: false, desc: "Force overwrite when copying files (for CI)"
-
-    desc "InstallGenerator Commonwealth VLR Engine"
+    desc 'InstallGenerator Commonwealth VLR Engine'
 
     def verify_blacklight_installed
       return if IO.read('app/controllers/application_controller.rb').include?('include Blacklight::Controller')
@@ -27,7 +28,7 @@ module CommonwealthVlrEngine
       gem 'bpluser', github: 'boston-library/bpluser'
 
       Bundler.with_clean_env do
-        run "bundle install"
+        run 'bundle install'
       end
 
       generate 'bpluser:install'

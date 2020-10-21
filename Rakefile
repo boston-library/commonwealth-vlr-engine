@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 begin
   require 'bundler/setup'
@@ -29,13 +31,21 @@ require 'solr_wrapper'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 
-desc 'Run test suite'
-task ci: ['engine_cart:generate'] do
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.requires << 'rubocop-rails'
+  task.requires << 'rubocop-rspec'
+  task.requires << 'rubocop-performance'
+  task.fail_on_error = true
+  # WARNING: Make sure the bottom 3 lines are always commented out before committing
+  # task.options << '--safe-auto-correct'
+  # task.options << '--disable-uncorrectable'
+  # task.options << '-d'
+end
+
+desc 'Lint, set up test app, spin up Solr, and run test suite'
+task ci: [:rubocop, 'engine_cart:generate'] do
   SolrWrapper.wrap do |solr|
-    # TODO: below not needed because of TestAppGenerator#set_up_solr ?
-    #Dir.glob(File.join(__dir__, 'lib', 'generators', 'commonwealth_vlr_engine', 'templates', 'solr', 'conf', '*.xml')) do |file|
-    #  puts FileUtils.cp file, solr.config.collection_options[:dir]
-    #end
     solr.with_collection do
       within_test_app do
         system 'RAILS_ENV=test rake commonwealth_vlr_engine:test_index:seed'
