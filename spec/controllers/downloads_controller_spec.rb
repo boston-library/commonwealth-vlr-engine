@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe DownloadsController do
+describe DownloadsController, :vcr do
   render_views
 
   let(:item_id) { 'bpl-dev:h702q6403' }

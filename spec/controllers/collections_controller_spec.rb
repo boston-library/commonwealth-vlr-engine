@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CollectionsController do
+describe CollectionsController, :vcr do
   render_views
 
   include BlacklightMapsHelper

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, :vcr do
   let(:image_pid) { 'bpl-dev:h702q641c' }
 
   describe '#render_format' do

@@ -17,8 +17,11 @@ end
 group :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
+  gem 'puffing-billy'
   gem 'rails-controller-testing'
+  gem 'vcr', '~> 6.0'
   gem 'webdrivers', '~> 3.0'
+  gem 'webmock', '~> 3.8'
 end
 # BEGIN ENGINE_CART BLOCK
 # engine_cart: 2.3.0

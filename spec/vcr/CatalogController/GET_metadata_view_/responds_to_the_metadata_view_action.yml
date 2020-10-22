@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://fedoradev.bpl.org/fedora/objects/bpl-dev:h702q6403/datastreams/descMetadata/content
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Accept-Ranges:
+      - bytes
+      Content-Disposition:
+      - inline; filename="descMetadata.xml"
+      Date:
+      - Wed, 21 Oct 2020 15:59:33 GMT
+      Etag:
+      - 77eef7a5066a77e2e366cec043a284d9
+      Last-Modified:
+      - Tue, 10 Mar 2015 14:08:54 GMT
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '5165'
+    body:
+      encoding: UTF-8
+      string: |-
+        <mods:mods xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3" version="3.5" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-5.xsd">
+          <mods:titleInfo usage="primary" displayLabel="primary_display">
+            <mods:title>Beauregard</mods:title>
+          </mods:titleInfo>
+          <mods:typeOfResource>still image</mods:typeOfResource>
+          <mods:genre authority="gmgpc" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials" valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm007721" displayLabel="general">Photographs</mods:genre>
+          <mods:genre authority="gmgpc" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials" valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm001729" displayLabel="specific">Cartes de visite</mods:genre>
+          <mods:genre authority="gmgpc" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials" valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm008085" displayLabel="specific">Portraits</mods:genre>
+          <mods:originInfo eventType="publication">
+            <mods:publisher>Published by E &amp; H. T. Anthony</mods:publisher>
+            <mods:place>
+              <mods:placeTerm type="text">501 Broadway, New York</mods:placeTerm>
+            </mods:place>
+            <mods:dateCreated point="start" encoding="w3cdtf" qualifier="approximate" keyDate="yes">1859</mods:dateCreated>
+            <mods:dateCreated point="end" encoding="w3cdtf" qualifier="approximate">1870</mods:dateCreated>
+          </mods:originInfo>
+          <mods:language>
+            <mods:languageTerm type="text" authority="iso639-2b" authorityURI="http://id.loc.gov/vocabulary/iso639-2" valueURI="http://id.loc.gov/vocabulary/iso639-2/eng">English</mods:languageTerm>
+          </mods:language>
+          <mods:physicalDescription>
+            <mods:digitalOrigin>reformatted digital</mods:digitalOrigin>
+            <mods:extent>1 photograph : print on card mount ; mount 11 x 7 cm (carte de visite format)</mods:extent>
+            <mods:internetMediaType>image/tiff</mods:internetMediaType>
+            <mods:internetMediaType>image/jpeg</mods:internetMediaType>
+            <mods:internetMediaType>image/jp2</mods:internetMediaType>
+          </mods:physicalDescription>
+          <mods:note>Title from item or from accompanying material.</mods:note>
+          <mods:note type="date">Date supplied by cataloger.</mods:note>
+          <mods:subject valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm006560" authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+            <mods:topic>Military officers</mods:topic>
+          </mods:subject>
+          <mods:subject>
+            <mods:name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n85081799" type="personal">
+              <mods:namePart>Beauregard, G. T. (Gustave Toutant)</mods:namePart>
+              <mods:namePart type="date">1818-1893</mods:namePart>
+            </mods:name>
+          </mods:subject>
+          <mods:accessCondition type="use and reproduction" displayLabel="rights">No known copyright restrictions.</mods:accessCondition>
+          <mods:accessCondition type="use and reproduction" displayLabel="license">No known restrictions on use.</mods:accessCondition>
+          <mods:relatedItem type="host">
+            <mods:titleInfo>
+              <mods:title>Carte de Visite Collection</mods:title>
+            </mods:titleInfo>
+          </mods:relatedItem>
+          <mods:location>
+            <mods:physicalLocation>Boston Public Library</mods:physicalLocation>
+            <mods:holdingSimple>
+              <mods:copyInformation>
+                <mods:subLocation>Print Department</mods:subLocation>
+              </mods:copyInformation>
+            </mods:holdingSimple>
+          </mods:location>
+          <mods:identifier type="local-accession">13_05_000029</mods:identifier>
+          <mods:recordInfo>
+            <mods:recordContentSource>Boston Public Library</mods:recordContentSource>
+            <mods:recordOrigin>human prepared</mods:recordOrigin>
+            <mods:languageOfCataloging>
+              <mods:languageTerm authority="iso639-2b" authorityURI="http://id.loc.gov/vocabulary/iso639-2" type="text" valueURI="http://id.loc.gov/vocabulary/iso639-2/eng">English</mods:languageTerm>
+            </mods:languageOfCataloging>
+            <mods:descriptionStandard authority="marcdescription">dcrmg</mods:descriptionStandard>
+          </mods:recordInfo>
+          <mods:location>
+            <mods:url access="preview">http://ark-hydradev.bpl.org/ark:/50959/h702q6403/thumbnail</mods:url>
+            <mods:url usage="primary" access="object in context">http://ark-hydradev.bpl.org/ark:/50959/h702q6403</mods:url>
+          </mods:location>
+          <mods:identifier type="uri">http://ark-hydradev.bpl.org/ark:/50959/h702q6403</mods:identifier>
+        <mods:relatedItem type="series"><mods:titleInfo><mods:title>Test Series</mods:title></mods:titleInfo></mods:relatedItem><mods:subject authority="tgn" valueURI="http://vocab.getty.edu/tgn/7017665" authorityURI="http://vocab.getty.edu/tgn/"><mods:hierarchicalGeographic><mods:state>Washington</mods:state><mods:county>Walla Walla</mods:county><mods:country>United States</mods:country><mods:continent>North and Central America</mods:continent><mods:city>Walla Walla</mods:city></mods:hierarchicalGeographic><mods:cartographics><mods:coordinates>46.05,-118.3333</mods:coordinates></mods:cartographics></mods:subject></mods:mods>
+  recorded_at: Wed, 21 Oct 2020 15:59:33 GMT
+recorded_with: VCR 6.0.0

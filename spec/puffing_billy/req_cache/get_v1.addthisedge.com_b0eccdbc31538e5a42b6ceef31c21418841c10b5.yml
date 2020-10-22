@@ -1,0 +1,15 @@
+---
+:scope:
+:url: https://v1.addthisedge.com/live/boost/xa-505226a67a68dc99/_ate.track.config_resp
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript;charset=utf-8
+  Content-Disposition: attachment; filename=1.txt
+  Vary: Accept-Encoding
+  Cache-Control: public, max-age=58, s-maxage=86400
+  Date: Thu, 22 Oct 2020 15:07:58 GMT
+  Content-Length: '27'
+  Connection: close
+:content: _ate.track.config_resp({});

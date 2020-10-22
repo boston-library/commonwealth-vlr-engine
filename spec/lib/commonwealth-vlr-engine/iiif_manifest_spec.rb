@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::IiifManifest do
+describe CommonwealthVlrEngine::IiifManifest, :vcr do
   let(:mock_controller) { IiifManifestController.new }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
   let(:image_files) { mock_controller.get_files(document.id)[:images] }

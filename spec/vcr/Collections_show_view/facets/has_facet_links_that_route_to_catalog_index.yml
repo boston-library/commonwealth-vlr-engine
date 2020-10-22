@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://iiifdev.bpl.org/iiif/2/bpl-dev:df65v791t/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 21 Oct 2020 20:29:36 GMT
+      Server:
+      - Restlet-Framework/2.3.11
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload;
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/plain;charset=utf-8
+      Vary:
+      - Accept-Charset,Accept-Encoding,Accept-Language,Origin,Accept
+      X-Powered-By:
+      - Cantaloupe/4.0.4-SNAPSHOT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "404 Not Found\n\nHTTP 404\n\n\njava.nio.file.NoSuchFileException: HTTP
+        404\n\tat edu.illinois.library.cantaloupe.source.HttpSource.checkAccess(HttpSource.java:244)\n\tat
+        edu.illinois.library.cantaloupe.resource.iiif.v2.InformationResource.doGet(InformationResource.java:98)\n\tat
+        jdk.internal.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)\n\tat
+        java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat
+        java.base/java.lang.reflect.Method.invoke(Method.java:567)\n\tat org.restlet.resource.ServerResource.doHandle(ServerResource.java:511)\n\tat
+        org.restlet.resource.ServerResource.get(ServerResource.java:723)\n\tat org.restlet.resource.ServerResource.doHandle(ServerResource.java:603)\n\tat
+        org.restlet.resource.ServerResource.doNegotiatedHandle(ServerResource.java:662)\n\tat
+        org.restlet.resource.ServerResource.doConditionalHandle(ServerResource.java:348)\n\tat
+        org.restlet.resource.ServerResource.handle(ServerResource.java:1020)\n\tat
+        org.restlet.resource.Finder.handle(Finder.java:236)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Router.doHandle(Router.java:422)\n\tat
+        org.restlet.routing.Router.handle(Router.java:641)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.engine.application.StatusFilter.doHandle(StatusFilter.java:140)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202)\n\tat
+        org.restlet.engine.application.ApplicationHelper.handle(ApplicationHelper.java:77)\n\tat
+        org.restlet.Application.handle(Application.java:385)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Router.doHandle(Router.java:422)\n\tat
+        org.restlet.routing.Router.handle(Router.java:641)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.routing.Router.doHandle(Router.java:422)\n\tat
+        org.restlet.routing.Router.handle(Router.java:641)\n\tat org.restlet.routing.Filter.doHandle(Filter.java:150)\n\tat
+        org.restlet.routing.Filter.handle(Filter.java:197)\n\tat org.restlet.engine.CompositeHelper.handle(CompositeHelper.java:202)\n\tat
+        org.restlet.Component.handle(Component.java:408)\n\tat org.restlet.Server.handle(Server.java:507)\n\tat
+        org.restlet.engine.connector.ServerHelper.handle(ServerHelper.java:63)\n\tat
+        org.restlet.engine.adapter.HttpServerHelper.handle(HttpServerHelper.java:143)\n\tat
+        org.restlet.ext.servlet.ServerServlet.service(ServerServlet.java:1117)\n\tat
+        javax.servlet.http.HttpServlet.service(HttpServlet.java:790)\n\tat org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:857)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)\n\tat
+        org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)\n\tat
+        org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)\n\tat
+        org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)\n\tat
+        org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)\n\tat
+        org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)\n\tat
+        org.eclipse.jetty.server.Server.handle(Server.java:503)\n\tat org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)\n\tat
+        org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)\n\tat
+        org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)\n\tat
+        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)\n\tat org.eclipse.jetty.io.ssl.SslConnection$1.run(SslConnection.java:144)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)\n\tat
+        java.base/java.lang.Thread.run(Thread.java:835)\n\n"
+  recorded_at: Wed, 21 Oct 2020 20:29:36 GMT
+recorded_with: VCR 6.0.0

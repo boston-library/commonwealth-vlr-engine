@@ -13,15 +13,69 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'webdrivers'
+require 'vcr'
+require 'billy/capybara/rspec'
 
-Capybara.register_driver :selenium_chrome_headless do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w(headless disable-gpu window-size=1024,768) }
-  )
-  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
+VCR.configure do |c|
+  # NOTE: uncomment this when creating or updating existing specs are wrapped in VCR.use_cassete
+  # This will update the yaml files for the specs.
+  # c.default_cassette_options = { record: :new_episodes }
+  c.cassette_library_dir = 'spec/vcr'
+  c.configure_rspec_metadata!
+  c.hook_into :webmock
+  c.ignore_localhost = true
+  # ignore Solr, Capybara middleware, etc
+  c.ignore_request do |request|
+    # see https://github.com/oesmith/puffing-billy#working-with-vcr-and-webmock
+    request.uri =~ /chromedriver/ || request.headers.include?('Referer')
+  end
 end
 
-Capybara.javascript_driver = :selenium_chrome_headless
+Billy.configure do |c|
+  c.cache = true
+  c.cache_request_headers = false
+  # for AddThis social/sharing widget: app/views/catalog/_add_this.html.erb
+  c.ignore_params = %w(
+    https://s7.addthis.com/js/300/addthis_widget.js
+    https://m.addthis.com/live/red_lojson/300lo.json
+    https://s7.addthis.com/static/sh.f48a1a04fe8dbf021b4cda1d.html
+    https://v1.addthisedge.com/live/boost/xa-505226a67a68dc99/_ate.track.config_resp
+    https://z.moatads.com/addthismoatframe568911941483/moatframe.js
+    https://m.addthis.com/live/red_lojson/100eng.json
+  )
+  c.path_blacklist = []
+  c.merge_cached_responses_whitelist = []
+  c.persist_cache = true
+  c.non_successful_cache_disabled = true
+  c.non_successful_error_level = :error
+  c.non_whitelisted_requests_disabled = false
+  c.cache_path = 'spec/puffing_billy/req_cache/'
+  c.certs_path = 'spec/puffing_billy/req_certs/'
+end
+
+# based on Billy::Browsers::Capybara#register_selenium_driver
+# modified here to add window-size option
+# (or some specs fail because smaller window hides responsive elements)
+Capybara.register_driver :selenium_chrome_headless_billy do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.headless!
+  options.add_argument('--enable-features=NetworkService,NetworkServiceInProcess')
+  options.add_argument('--ignore-certificate-errors')
+  options.add_argument("--proxy-server=#{Billy.proxy.host}:#{Billy.proxy.port}")
+  options.add_argument('--disable-gpu') if Gem.win_platform?
+  options.add_argument('--no-sandbox') if ENV['CI']
+  options.add_argument('--window-size=1024,768)')
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    options: options,
+    clear_local_storage: true,
+    clear_session_storage: true
+  )
+end
+
+Capybara.javascript_driver = :selenium_chrome_headless_billy
 Capybara.default_max_wait_time = 5
 
 RSpec.configure do |config|
