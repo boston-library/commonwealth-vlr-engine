@@ -28,10 +28,7 @@ module CommonwealthVlrEngine
 
       marker = 'include Blacklight::Solr::Document'
       insert_into_file "app/models/#{document_model_name}.rb", after: marker do
-        %q(
-
-include Blacklight::Gallery::OpenseadragonSolrDocument
-)
+        "\n  include Blacklight::Gallery::OpenseadragonSolrDocument"
       end
     end
 

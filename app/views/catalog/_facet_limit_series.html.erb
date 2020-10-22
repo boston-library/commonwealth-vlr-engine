@@ -12,10 +12,7 @@
           <div class="caption">
             <%= (link_to(series_title,
                          path_for_facet(blacklight_config.series_field, item),
-                         class: 'facet_select')).html_safe %><!-- <br/>
-                <span class="series_facet_count">
-                  <%# render_facet_count(item.hits) + ' items' %>
-                </span> -->
+                         class: 'facet_select')).html_safe %>
           </div>
         </div>
       </div>

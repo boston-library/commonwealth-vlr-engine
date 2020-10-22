@@ -38,8 +38,6 @@ describe 'more like this search' do
       expect(page).to have_selector('.page-links .previous')
     end
 
-    # TODO: this spec fails because Blacklight isn't applying mlt_id param
-    # when loading Search and re-running to get search count/prev/next
     it 'should show the correct item count' do
       expect(page).to have_selector('.page-links strong:last-of-type', text: '5')
     end

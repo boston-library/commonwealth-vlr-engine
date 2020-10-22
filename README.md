@@ -1,6 +1,6 @@
 # CommonwealthVlrEngine
 
-[![Coverage Status](https://coveralls.io/repos/boston-library/commonwealth-vlr-engine/badge.svg?branch=master&service=github)](https://coveralls.io/github/boston-library/commonwealth-vlr-engine?branch=master)
+[![Build Status](https://travis-ci.org/boston-library/commonwealth-vlr-engine.svg?branch=master)](https://travis-ci.org/boston-library/commonwealth-vlr-engine) [![Coverage Status](https://coveralls.io/repos/boston-library/commonwealth-vlr-engine/badge.svg?branch=master&service=github)](https://coveralls.io/github/boston-library/commonwealth-vlr-engine?branch=master)
 
 A virtual local repository is an application that provides digital object discovery and display functionality without the overhead of actual asset management, pulling content via APIs from a larger repository managed elsewhere. The subset of content to be displayed can be based on any valid repository search or facet query parameters for descriptive, administrative, or technical metadata.
 
@@ -20,25 +20,27 @@ $ cd app_name
 ```
 Add Commonwealth-VLR-Engine to your Gemfile:
 ```ruby
-gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', git: 'https://github.com/boston-library/commonwealth-vlr-engine'
 ```
 Run the VLR-Engine install:
 ```
 $ bundle install
 $ rails generate commonwealth_vlr_engine:install
-# if you want to include user functionality (bookmarks, folders, saved searches, etc) via Devise and Bpluser use:
-# rails generate commonwealth_vlr_engine:install --bpluser
+# Note: if you want to include user functionality (bookmarks, folders, saved searches, etc) via Devise and Bpluser use:
+# $ rails generate commonwealth_vlr_engine:install --bpluser
 $ rake db:migrate
 ```
 You will then need to configure various YAML files to point to existing Solr, Fedora, and IIIF image servers.
 
-TK add note about overwrite of local app config/locales/devise.en.yml and blacklight.en.yml
+The installer will ask to overwrite your app's local `config/locales/blacklight.en.yml` (and `config/locales/devise.en.yml` if you run the install with `--bpluser`).
+If you choose not to overwrite these files during the installation, you can refer to `lib/generators/commonwealth_vlr_engine/templates/config` for an example of what values are expected in your app.
 
 ## Blacklight Version Compatibility
 The table below indicates which versions of Commonwealth-VLR-Engine are compatible with which versions of Blacklight.
 
 VLR-Engine version | works with Blacklight version
 ----------------------- | ---------------------
+0.1.0 | >= 7.12.1 to < 8.*
 0.0.7 | >= 6.3.0 to < 7.*
 0.0.2 | >= 6.1.0 to < 6.3
 0.0.1 | >= 5.14.0 to < 6.*
@@ -51,25 +53,18 @@ After cloning the repository, and running `bundle install`, run `bundle exec rak
 3. Start Solr and index the sample Solr docs from `spec/fixtures`
 4. Run all specs
 
-NOTE: Many of the specs will fail initially. Check the YAML files in `.internal_test_app/conig` (especially `fedora.yml` and `iiif_server.yml`) and make sure they're pointing to the correct URLs.
-
 ### Useful Development commands
 
 Generate the test application at `.internal_test_app`:
 ```
 $ rake engine_cart:generate
 ```
-NOTE: after running this you need to delete these two lines lin the `.internal_test_app`  `Gemfile`s :test group
-```
-   gem 'selenium-webdriver'
-   gem 'chromedriver-helper'
-```
-Re-run `bundle install` in the root of `.internal_test_app`
+
 Destroy the test application at `.internal_test_app`:
 ```
 $ rake engine_cart:clean
 ```
-Start Solr (run in new terminal from project home):
+Start Solr (run in new terminal from `.internal_test_app` home):
 ```
 $ solr_wrapper
 ```
@@ -86,7 +81,7 @@ Index sample Solr docs (run from `internal_test_app`):
 # Solr must be running
 $ RAILS_ENV=test bundle exec rake commonwealth_vlr_engine:test_index:seed
 ```
-Run specs (Solr and BPL Dev IIIF image server must be running):
+Run specs (Solr must be running):
 ```
 # run all tests
 $ bundle exec rake spec

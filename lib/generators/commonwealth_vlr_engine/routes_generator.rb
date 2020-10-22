@@ -18,14 +18,14 @@ module CommonwealthVlrEngine
       insert_into_file 'config/routes.rb', after: marker do
         %q(
 
-root to: 'pages#home'
+  root to: 'pages#home'
 
-# bookmarks item actions
-# this has to be in local app for bookmark item actions to work
-put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
+  # bookmarks item actions
+  # this has to be in local app for bookmark item actions to work
+  put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
-concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
-concern :iiif_search, BlacklightIiifSearch::Routes.new
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
 )
       end
 
