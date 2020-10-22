@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Collections#show view', js: true do
+describe 'Collections#show view', :vcr, js: true do
   before(:each) { visit collection_path(id: 'bpl-dev:000000000') }
 
   describe 'facets' do

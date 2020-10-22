@@ -1,0 +1,25 @@
+---
+:scope:
+:url: https://m.addthis.com/live/red_lojson/300lo.json?si=5f91a04dec1213c4&bkl=0&bl=1&pdt=157&sid=5f91a04dec1213c4&pub=xa-505226a67a68dc99&rev=v8.28.7-wp&ln=en&pc=men&cb=0&ab=-&dp=127.0.0.1%3A57902&fp=search%2Fbpl-dev%3A7s75dn48d&fr=&of=0&pd=0&irt=0&vcl=0&md=0&ct=1&tct=0&abt=0&cdn=0&pi=1&rb=0&gen=100&chr=UTF-8&colc=1603379277960&jsl=1&uvs=5f91a04decdef338000&skipb=1&callback=addthis.cbs.jsonp__044622564463479010
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript;charset=utf-8
+  Content-Length: '102'
+  P3P: policyref="/w3c/p3p.xml", CP="NON ADM OUR DEV IND COM STA"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Content-Disposition: attachment; filename=1.txt
+  Date: Thu, 22 Oct 2020 15:07:58 GMT
+  Connection: close
+  Set-Cookie:
+  - ouid=5f91a04e000100c0debdb3a4e0a43092ba34e59921edb569b729;Expires=Tue, 16-Nov-2021
+    15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+  - di2=aUy|e#&0x#&*g#%Os#%Or#%Km#%Kf#%IX#%IQ#%HV#%F|#%FS#%FR#%FQ#%E~#%/p#%/o#%/n#%$~#$Mr#$M`#$Ll#$L^#$LZ#$Gr#$CT#$7r#$1~#$0|#$+U#$)|#$){#$(w#$(T#$(S#$(R#$(Q#$$c#$$b#$!}##NW##Mz##Md##LU##Iz##Ix##Gr##Ed##Eb##EZ##Bq##Bp##@q##>W##>U##'V###l#!0}#!/p#!$s#!!xPNePNdPNcPNbPDtPC]PC[P<nP8UP7sP7rP7qP7mP7lP7kP2SO1iO1hO1gO(rO(qO(pO(cO(bO'vO'uN+gN+QN'yN#xMLcM?gM?fM>VM>UM>TM>SM>RM>QM7oM7nM7mM7lM7]M7XM-{M-rM-qM+}M+zM*fM'fM'bM&oM&nM&mM&^M&]M&[LFTLEsLErLEqLEpLDkL.wJEXJ&ZJ&YJ&XJ&WJ&VJ&UJ#|J#{J#sJ#rIIYIIXIHcIHbIH[IFcIFbICiI?VI?UI6rI5fI5TI5SI3|I3{I3yI3rI2bI1oI/}I/|I/jI+l$+S83}7>Z7:m77h77g7.k7.b7-~7-}7*o7*k7)|7)m7'h7'g7#t6L]6L[6Kh6Kg6Hu6Hq6Hp6Ho6Hn6Hm6FW6FV6C{6@t6@s5)z5)y5)`5)_5)^5(n5(b5'~4JX4?Z4=a4=^0%w0%v0%q)1i)1b#08X#08W#*/}#*/{#*/R#*.~#*&]#*&Z#)N}#)N{#)Gc#)Ga#)-i#)-g#)-e#)*V#)*T#))~#))|#(8k#(5i#(5Q#(4~#(/]#'FX#'E{#'8f#'&U#'&T#&He#&GQ#&@r#&@q#&@p#&<];Expires=Tue,
+    16-Nov-2021 15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+  - um=j.'2020102215075868500286047433';Expires=Tue, 16-Nov-2021 15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+  - uid=5f91a04e320ffdcf;Expires=Tue, 16-Nov-2021 15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+  - na_id=2020102215075868500286047433;Expires=Tue, 16-Nov-2021 15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+  - vc=2;Expires=Tue, 16-Nov-2021 15:07:58 GMT;Max-Age=33696000;Domain=.addthis.com;Path=/;SameSite=None;Secure
+:content: addthis.cbs.jsonp__044622564463479010({"loc":"MDIxMTZOQVVTTUEyMjIzMTA4OTUwNjAwMDBDSA==","pixels":[]});

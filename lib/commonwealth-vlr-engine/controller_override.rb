@@ -181,7 +181,7 @@ module CommonwealthVlrEngine
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
         # add our custom tools
-        config.add_show_tools_partial :add_this, partial: 'add_this'
+        config.add_show_tools_partial :add_this, partial: 'add_this', if: :render_add_this?
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -227,6 +227,11 @@ module CommonwealthVlrEngine
       blacklight_config.show.document_actions.delete(:folder_items)
       blacklight_config.show.document_actions.delete(:custom_email)
       blacklight_config.show.document_actions.delete(:cite)
+    end
+
+    # display the AddThis social/sharing widget in catalog#show
+    def render_add_this?
+      true
     end
 
     # override Blacklight::Catalog#render_sms_action?

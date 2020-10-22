@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://iiifdev.bpl.org/iiif/2/bpl-dev:h702q641c/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Oct 2020 16:03:47 GMT
+      Server:
+      - Restlet-Framework/2.3.11
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload;
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Cache-Control:
+      - max-age=2592000, public, no-transform, max-age=5184000
+      Vary:
+      - Accept-Charset,Accept-Encoding,Accept-Language,Origin,Accept
+      X-Powered-By:
+      - Cantaloupe/4.0.4-SNAPSHOT
+      Expires:
+      - Sun, 20 Dec 2020 16:03:47 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://iiifdev.bpl.org/iiif/2/bpl-dev:h702q641c","protocol":"http://iiif.io/api/image","width":1496,"height":2448,"sizes":[{"width":94,"height":153},{"width":187,"height":306},{"width":374,"height":612},{"width":748,"height":1224},{"width":1496,"height":2448}],"tiles":[{"width":748,"height":1224,"scaleFactors":[1,2,4,8,16]}],"profile":["http://iiif.io/api/image/2/level2.json",{"formats":["jpg","tif","gif","png"],"maxArea":500000000,"qualities":["bitonal","default","gray","color"],"supports":["regionByPx","sizeByW","sizeByWhListed","cors","regionSquare","sizeByDistortedWh","sizeAboveFull","canonicalLinkHeader","sizeByConfinedWh","sizeByPct","jsonldMediaType","regionByPct","rotationArbitrary","sizeByH","baseUriRedirect","rotationBy90s","profileLinkHeader","sizeByForcedWh","sizeByWh","mirroring"]}]}'
+  recorded_at: Wed, 21 Oct 2020 16:03:47 GMT
+- request:
+    method: get
+    uri: https://iiifdev.bpl.org/iiif/2/bpl-dev:h702q642n/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Oct 2020 16:03:47 GMT
+      Server:
+      - Restlet-Framework/2.3.11
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload;
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Cache-Control:
+      - max-age=2592000, public, no-transform, max-age=5184000
+      Vary:
+      - Accept-Charset,Accept-Encoding,Accept-Language,Origin,Accept
+      X-Powered-By:
+      - Cantaloupe/4.0.4-SNAPSHOT
+      Expires:
+      - Sun, 20 Dec 2020 16:03:47 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://iiifdev.bpl.org/iiif/2/bpl-dev:h702q642n","protocol":"http://iiif.io/api/image","width":1508,"height":2440,"sizes":[{"width":94,"height":153},{"width":189,"height":305},{"width":377,"height":610},{"width":754,"height":1220},{"width":1508,"height":2440}],"tiles":[{"width":754,"height":1220,"scaleFactors":[1,2,4,8,16]}],"profile":["http://iiif.io/api/image/2/level2.json",{"formats":["jpg","tif","gif","png"],"maxArea":500000000,"qualities":["bitonal","default","gray","color"],"supports":["regionByPx","sizeByW","sizeByWhListed","cors","regionSquare","sizeByDistortedWh","sizeAboveFull","canonicalLinkHeader","sizeByConfinedWh","sizeByPct","jsonldMediaType","regionByPct","rotationArbitrary","sizeByH","baseUriRedirect","rotationBy90s","profileLinkHeader","sizeByForcedWh","sizeByWh","mirroring"]}]}'
+  recorded_at: Wed, 21 Oct 2020 16:03:47 GMT
+recorded_with: VCR 6.0.0

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CollectionsHelper do
+describe CollectionsHelper, :vcr do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:image_pid) { 'bpl-dev:h702q641c' }
 

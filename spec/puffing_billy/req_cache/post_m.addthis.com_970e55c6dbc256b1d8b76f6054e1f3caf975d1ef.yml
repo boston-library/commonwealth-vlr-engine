@@ -1,0 +1,14 @@
+---
+:scope:
+:url: https://m.addthis.com/live/red_lojson/100eng.json?sh=0&ph=1191&ivh=600&dt=0&pdt=157&ict=&pct=0&perf=widget%7C157%7C779%2Clojson%7C1022%7C770%2Csh%7C1029%7C826&rndr=render_toolbox%7C1895&cmenu=null&ppd=0&ppl=0&fbe=&xmv=0&xms=0&xmlc=0&jsfw=jquery&jsfwv=jquery-3.5.1&al=men&scr=0&scv=0&apiu=0&ba=3&sid=5f91a04dec1213c4&rev=v8.28.7-wp&pub=xa-505226a67a68dc99&dp=127.0.0.1%3A57902&fp=search%2Fbpl-dev%3A7s75dn48d&pfm=0&icns=facebook%2Ctwitter%2Cpinterest_share%2Caddthis
+:body: ''
+:status: 204
+:method: post
+:headers:
+  Access-Control-Allow-Credentials: 'true'
+  Access-Control-Allow-Origin: "*"
+  Cache-Control: max-age=0, no-cache, no-store, no-transform
+  Pragma: no-cache
+  Date: Thu, 22 Oct 2020 15:08:00 GMT
+  Connection: close
+:content: ''

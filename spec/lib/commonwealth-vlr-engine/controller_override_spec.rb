@@ -73,8 +73,14 @@ describe CommonwealthVlrEngine::ControllerOverride do
     end
   end
 
+  describe '#render_add_this?' do
+    it 'returns the correct boolean value' do
+      expect(mock_controller.send(:render_add_this?)).to be_truthy
+    end
+  end
+
   describe 'render_sms_action?' do
-    it 'returns false' do
+    it 'returns the correct boolean value' do
       expect(mock_controller.send(:render_sms_action?)).to be_falsey
     end
   end

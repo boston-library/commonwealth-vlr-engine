@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # tests for controller actions and configuration added to CatalogController
 # via CommonwealthVlrEngine::ControllerOverride
-describe CatalogController do
+describe CatalogController, :vcr do
   render_views
 
   let(:item_pid) { 'bpl-dev:df65v790j' }

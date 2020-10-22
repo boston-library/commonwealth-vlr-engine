@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CatalogHelper do
+describe CommonwealthVlrEngine::MetadataHelperBehavior, :vcr do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:document) { SolrDocument.find(item_pid) }

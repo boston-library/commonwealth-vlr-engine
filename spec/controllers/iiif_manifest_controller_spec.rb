@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe IiifManifestController do
+describe IiifManifestController, :vcr do
   render_views
 
   let(:item_ark) { 'h702q6403' }
