@@ -1,0 +1,21 @@
+language: ruby
+sudo: false
+dist: bionic
+
+addons:
+  chrome: stable
+
+before_install:
+  - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+
+global_env:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - ENGINE_CART_RAILS_OPTIONS='--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test'
+
+matrix:
+  include:
+    - rvm: 2.6.6
+      env: "RAILS_VERSION=6.0.3.4"
+    - rvm: 2.5.8
+      env: "RAILS_VERSION=6.0.3.2"
+  fast_finish: true
