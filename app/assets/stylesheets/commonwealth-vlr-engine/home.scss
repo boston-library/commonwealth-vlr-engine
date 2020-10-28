@@ -37,6 +37,19 @@
       .search-q {
         border-top-left-radius: $border-radius !important;
         border-bottom-left-radius: $border-radius !important;
+        width: 230px;
+
+        @media (min-width: breakpoint-min(xl)) {
+          width: 100%;
+        }
+
+        @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+          width: 226px;
+        }
+
+        @media (max-width: breakpoint-min(md)) {
+          width: 100%;
+        }
       }
 
       .blacklight-icons > svg {
@@ -84,6 +97,11 @@
       img.browse_img {
         width:120px;
         border: 1px solid $light_gray;
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        font-size: $h5-font-size;
       }
 
       .browse_item_desc {

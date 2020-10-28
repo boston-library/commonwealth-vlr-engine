@@ -33,6 +33,7 @@
 
   #start_over_wrapper {
     float: right;
+    margin-left: 5px;
 
     @media (max-width: breakpoint-max(sm)) {
       display: none;

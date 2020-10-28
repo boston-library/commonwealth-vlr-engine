@@ -1,28 +1,25 @@
 <%# override so we can add ids and JS for event tracking %>
-<div class="facet-pagination top row justify-content-between">
-  <%= render :partial=>'facet_pagination' %>
-</div>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with(:prefix) do %>
+    <div class="facet-pagination top row justify-content-between">
+      <%= render partial: 'facet_pagination' %>
+    </div>
+  <% end %>
 
-<div class="modal-header">
-  <h1 id="facet_modal_title" class="modal-title"><%= facet_field_label(@facet.key) %></h1>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+  <% component.with(:title, facet_field_label(@facet.key)) %>
 
-<div class="modal-body">
   <%= render partial: 'facet_index_navigation' if @facet.index_range && @display_facet.index? %>
 
   <div id="<%= "facet-#{@facet.field}" %>" class="facet-extended-list">
     <%= render_facet_limit(@display_facet, layout: false) %>
   </div>
-</div>
 
-<div class="modal-footer">
-  <div class="facet-pagination bottom row justify-content-between">
-    <%= render :partial=>'facet_pagination' %>
-  </div>
-</div>
+  <% component.with(:footer) do %>
+    <div class="facet-pagination bottom row justify-content-between">
+      <%= render partial: 'facet_pagination' %>
+    </div>
+  <% end %>
+<% end %>
 
 <script type="text/javascript">
     $('a').click(function () {
