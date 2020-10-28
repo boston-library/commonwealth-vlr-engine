@@ -44,13 +44,9 @@
 
         #user-util-links-list {
 
-          > li {
-            padding: 0 15px;
-
-            > a {
-              font-size: $font-size-xs;
-            }
-
+          a {
+            padding: 3px 15px;
+            font-size: $font-size-xs;
           }
 
         }
@@ -72,8 +68,8 @@
         .blacklight-icons {
 
           svg {
-            width: 17px;
-            height: 17px;
+            width: 16px;
+            height: 16px;
           }
 
         }
@@ -103,6 +99,12 @@
         }
 
       }
+
+      .dropdown-menu {
+        z-index: 1002; /* to cover home page search bar */
+        margin-top: 0;
+      }
+
     }
 
   }

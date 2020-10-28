@@ -169,22 +169,21 @@ module CommonwealthVlrEngine
     def file_size_string(datastream_id, object_profile_json)
       if object_profile_json
         if datastream_id == 'accessFull'
-          file_size_string = '~' + number_to_human_size((object_profile_json['datastreams']['productionMaster']['dsSize'] * 0.083969078))
+          number_to_human_size((object_profile_json['datastreams']['productionMaster']['dsSize'] * 0.083969078))
         else
-          file_size_string = number_to_human_size(object_profile_json['datastreams'][datastream_id]['dsSize'])
-          file_size_string.insert(0, '~') if object_profile_json['zip']
+          number_to_human_size(object_profile_json['datastreams'][datastream_id]['dsSize'])
         end
       else
-        file_size_string = 'multi-file ZIP'
+        'multi-file ZIP'
       end
-      file_size_string
     end
 
     def public_domain?(document)
       pubdom_regex = /[Pp]ublic domain/
       (document[:date_end_dtsi] && document[:date_end_dtsi][0..3].to_i < 1923) ||
           document[:rights_ssm].to_s =~ pubdom_regex ||
-          document[:license_ssm].to_s =~ pubdom_regex
+          document[:license_ssm].to_s =~ pubdom_regex ||
+          document[:rightsstatement_ss] == 'No Copyright - United States'
     end
 
     # create a composite object_profile_json object from multiple file objects

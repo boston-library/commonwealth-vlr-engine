@@ -38,7 +38,7 @@ module BlacklightIiifSearch
 
     def fetch_and_parse_coords
       coords_url = datastream_disseminator_url(document[:id], 'djvuCoords')
-      Rails.cache.fetch("#{document[:id]}_djvuCoords", :expires_in => 1.day) do
+      Rails.cache.fetch("#{document[:id]}_djvuCoords", expires_in: 1.day) do
         begin
           JSON.parse(Typhoeus::Request.get(coords_url).body)
         rescue JSON::ParserError
