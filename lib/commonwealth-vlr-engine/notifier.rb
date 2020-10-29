@@ -20,11 +20,10 @@ module CommonwealthVlrEngine
 
     def route_email(topic)
       if topic == t('blacklight.feedback.form.topic.options.repro.option')
-        recipient_email = CONTACT_EMAILS['image_requests']
+        CONTACT_EMAILS['image_requests']
       else
-        recipient_email = CONTACT_EMAILS['site_admin']
+        CONTACT_EMAILS['site_admin']
       end
-      recipient_email
     end
   end
 end
