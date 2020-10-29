@@ -64,8 +64,8 @@ module CommonwealthVlrEngine
               class: link_class)
     end
 
-    def render_item_breadcrumb(document)
-      setup_collection_links(document).sort.join(' / ').html_safe if document[:collection_pid_ssm]
+    def render_item_breadcrumb(document, link_class = nil)
+      setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_pid_ssm]
     end
 
     # render the 'more like this' search link if doc has subjects
