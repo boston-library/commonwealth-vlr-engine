@@ -18,8 +18,7 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/streaming'
 
   def self.config
-    @config ||= YAML.safe_load(File.open(config_path))[env]
-    .with_indifferent_access
+    @config ||= YAML.safe_load(ERB.new(File.read(config_path)).result, aliases: true)[env].with_indifferent_access
   end
 
   def self.root

@@ -1,0 +1,12 @@
+# GA web property id
+default: &default
+  web_property_id: <%= ENV.fetch('GA_PROPERTY_ID', '') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

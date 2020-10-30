@@ -25,22 +25,6 @@ pickle-email-*.html
 
 # Specific configuration files #
 ################################
-blacklight.yml
-hydra-ldap.yml
-database.yml
-fedora.yml
-solr.yml
-omniauth-facebook.yml
-omniauth-polaris.yml
-role_map_cucumber.yml
-role_map_development.yml
-role_map_production.yml
-role_map_test.yml
-google_analytics.yml
-contact_emails.yml
-iiif_server.yml
-secrets.yml
-blacklight.yml
 # remove coveralls.yml once CI server set up
 .coveralls.yml
 .ruby-version
