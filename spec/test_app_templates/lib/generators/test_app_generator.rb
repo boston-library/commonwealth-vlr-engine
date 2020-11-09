@@ -21,12 +21,6 @@ IIIF_URL=https://iiifdev.bpl.org/iiif/2/
     generate 'commonwealth_vlr_engine:install --force'
   end
 
-  def configure_test_assets
-    insert_into_file 'config/environments/test.rb', after: 'Rails.application.configure do' do
-      "\nconfig.assets.check_precompiled_asset = false"
-    end
-  end
-
   def set_up_solr
     generate 'commonwealth_vlr_engine:solr'
   end

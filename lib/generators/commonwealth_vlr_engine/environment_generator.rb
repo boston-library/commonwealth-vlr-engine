@@ -39,17 +39,5 @@ module CommonwealthVlrEngine
 )
       end
     end
-
-    # add settings to assets.rb
-    def inject_asset_settings
-      return if IO.read('config/initializers/assets.rb').match?(/^[^#]*config.assets.precompile/)
-
-      marker = '# Precompile additional assets.'
-      insert_into_file 'config/initializers/assets.rb', after: marker do
-        %q{
-Rails.application.config.assets.precompile += %w(*.js)
-}
-      end
-    end
   end
 end
