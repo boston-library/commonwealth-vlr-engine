@@ -20,7 +20,7 @@ module CommonwealthVlrEngine
     end
 
     def collection_icon_path
-      'commonwealth-vlr-engine/dc_collection-icon.png'
+      asset_path('commonwealth-vlr-engine/dc_collection-icon.png')
     end
 
     def create_thumb_img_element(document, img_class = [])
@@ -62,7 +62,7 @@ module CommonwealthVlrEngine
     end
 
     def institution_icon_path
-      'commonwealth-vlr-engine/dc_institution-icon.png'
+      asset_path('commonwealth-vlr-engine/dc_institution-icon.png')
     end
 
     # override Blacklight::CatalogHelperBehavior: don't want to pull thumbnail url from Solr

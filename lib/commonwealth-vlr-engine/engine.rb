@@ -34,9 +34,24 @@ module CommonwealthVlrEngine
       end
     end
 
-    # needs to be explicit as of sprockets-rails >=3.*
+    # as of sprockets >= 4 have to explicitly declare each file
     initializer 'commonwealth.assets.precompile' do |app|
-      app.config.assets.precompile += %w(commonwealth-vlr-engine/*.png commonwealth-vlr-engine/*.gif commonwealth-vlr-engine/openseadragon/*.png)
+      vlr_asset_base_path = File.join(CommonwealthVlrEngine.root, 'app', 'assets')
+      vlr_assets = [
+        Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', '*.{gif,png}')),
+        Dir.glob(File.join(vlr_asset_base_path, 'javascripts', 'commonwealth-vlr-engine', '*'))
+      ]
+      vlr_assets.each do |assets|
+        assets.each do |asset|
+          asset_filename = asset.split('/').last.gsub(/\.erb/, '')
+          app.config.assets.precompile << "commonwealth-vlr-engine/#{asset_filename}"
+        end
+      end
+      osd_images = Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', 'openseadragon', '*.png'))
+      osd_images.each do |osd_img|
+        app.config.assets.precompile << "commonwealth-vlr-engine/openseadragon/#{osd_img.split('/').last}"
+      end
+      app.config.assets.precompile << 'openseadragon.js'
     end
   end
 end

@@ -23,13 +23,13 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
     end
 
     it 'returns the icon path if there is no exemplary_image_ssi value' do
-      expect(helper.collection_gallery_url({}, '300')).to include('dc_collection-icon.png')
+      expect(helper.collection_gallery_url({}, '300')).to include('dc_collection-icon')
     end
   end
 
   describe '#collection_icon_path' do
     it 'returns the right value' do
-      expect(helper.collection_icon_path).to include('dc_collection-icon.png')
+      expect(helper.collection_icon_path).to include('dc_collection-icon')
     end
   end
 
@@ -55,7 +55,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
 
   describe '#institution_icon_path' do
     it 'returns the right value' do
-      expect(helper.institution_icon_path).to include('dc_institution-icon.png')
+      expect(helper.institution_icon_path).to include('dc_institution-icon')
     end
   end
 
@@ -78,7 +78,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
         before(:each) { document_to_hash.delete('exemplary_image_ssi') }
 
         it 'returns the proper icon if there is a type_of_resource_ssim value' do
-          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon.png')
+          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon')
         end
 
         describe 'with no type_of_resource_ssim value' do
@@ -88,7 +88,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
           end
 
           it 'returns the collection icon' do
-            expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_collection-icon.png')
+            expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_collection-icon')
           end
         end
       end
@@ -97,7 +97,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
         before(:each) { document_to_hash[blacklight_config.flagged_field] = true }
 
         it 'returns the icon rather than the exemplary image' do
-          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon.png')
+          expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon')
         end
       end
     end
