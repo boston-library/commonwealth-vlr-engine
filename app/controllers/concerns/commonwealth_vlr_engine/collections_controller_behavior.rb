@@ -21,9 +21,10 @@ module CommonwealthVlrEngine
 
     def index
       @nav_li_active = 'explore'
-      (@response, @document_list) = search_service.search_results
-      params[:view] = 'list'
-      params[:sort] = 'title_info_primary_ssort asc'
+      params.merge!(view: 'list', sort: 'title_info_primary_ssort asc, date_start_dtsi asc')
+      collection_search_service = search_service_class.new(config: blacklight_config,
+                                                           user_params: params)
+      @response, @document_list = collection_search_service.search_results
 
       respond_to do |format|
         format.html
@@ -74,7 +75,7 @@ module CommonwealthVlrEngine
       blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
       series_params = { f: { blacklight_config.series_field => series_title,
                              blacklight_config.collection_field => collection_title },
-                       rows: 1 }
+                        rows: 1 }
       series_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: series_params)
       _series_response, series_doc_list = series_search_service.search_results

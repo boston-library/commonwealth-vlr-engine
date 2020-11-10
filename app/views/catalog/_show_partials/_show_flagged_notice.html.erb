@@ -1,5 +1,5 @@
 <div class="modal fade" id="flagged_warning" tabindex="-1" role="dialog" aria-labelledby="flaggedWarning">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">EXPLICIT CONTENT WARNING</h3>
@@ -7,10 +7,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p><strong>This item contains content that could be offensive to some viewers or inappropriate for minors.</strong></p>
-        <p>&nbsp;</p>
-        <p>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</p>
+      <div id="flagged_warning_text" class="modal-body">
+        <div><strong>This item contains content that could be offensive to some viewers or inappropriate for minors.</strong></div>
+        <div>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">View Content</button>
