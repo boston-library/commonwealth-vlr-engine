@@ -113,6 +113,8 @@ module CommonwealthVlrEngine
         # have to use '-2' to get all values
         # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
         config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
+        # have to add this or OcrSearchController#index doesn't work (search builder removes the :f param)
+        config.add_facet_field 'is_image_of_ssim', include_in_request: false
 
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
@@ -224,9 +226,9 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
       # remove item-centric show tools (for admin)
       blacklight_config.show.document_actions.delete(:add_this)
-      blacklight_config.show.document_actions.delete(:folder_items)
-      blacklight_config.show.document_actions.delete(:custom_email)
-      blacklight_config.show.document_actions.delete(:cite)
+      blacklight_config.show.document_actions.delete(:bookmark)
+      blacklight_config.show.document_actions.delete(:email)
+      blacklight_config.show.document_actions.delete(:citation)
     end
 
     # display the AddThis social/sharing widget in catalog#show

@@ -2,8 +2,10 @@
 
 body.blacklight-catalog-formats_facet {
 
-  .facet_pagination.top {
-    padding: 15px 15px 0;
+  .facet-pagination.top {
+    float: right;
+    padding: 8px 0 0 0;
+    margin-right: 16px;
   }
 
   .prev_next_links {

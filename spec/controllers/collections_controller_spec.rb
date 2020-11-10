@@ -138,7 +138,7 @@ describe CollectionsController, :vcr do
       end
 
       it 'should remove the citation tool from the show tools' do
-        expect(mock_controller.blacklight_config.show.document_actions[:cite]).to be_empty
+        expect(mock_controller.blacklight_config.show.document_actions[:citation][:partial]).to be_falsey
       end
     end
   end

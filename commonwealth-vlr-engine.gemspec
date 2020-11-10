@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '~> 2.6'
 
-  s.add_dependency 'blacklight', '~> 7.12.1'
+  s.add_dependency 'blacklight', '~> 7.13.2'
   s.add_dependency 'blacklight-gallery', '~> 2.1.0'
   s.add_dependency 'blacklight-maps', '~> 1.1.0'
   s.add_dependency 'blacklight_advanced_search', '~> 7.0.0'
