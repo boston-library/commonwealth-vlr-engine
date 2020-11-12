@@ -30,7 +30,8 @@ $ rails generate commonwealth_vlr_engine:install
 # $ rails generate commonwealth_vlr_engine:install --bpluser
 $ rake db:migrate
 ```
-You will then need to configure various YAML files to point to existing Solr, Fedora, and IIIF image servers.
+You will then need to configure various ENV vars to point to existing Solr, Fedora, and IIIF image servers.
+(See `.env.example` generated into your app's home directory.)
 
 The installer will ask to overwrite your app's local `config/locales/blacklight.en.yml` (and `config/locales/devise.en.yml` if you run the install with `--bpluser`).
 If you choose not to overwrite these files during the installation, you can refer to `lib/generators/commonwealth_vlr_engine/templates/config` for an example of what values are expected in your app.
