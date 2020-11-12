@@ -140,7 +140,7 @@ h4.collection-provenance {
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;
 
-      @media (max-width: breakpoint-min(md)) {
+      @media (max-width: breakpoint-max(sm)) {
         width: 270px;
       }
     }
