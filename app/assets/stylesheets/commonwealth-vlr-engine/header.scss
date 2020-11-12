@@ -16,6 +16,10 @@
     height: 74px;
     width: 200px;
     flex: 0 0 200px;
+
+    @media (max-width: breakpoint-max(sm)) {
+      margin-bottom: 5px;
+    }
   }
 
   #user-nav-collapse {

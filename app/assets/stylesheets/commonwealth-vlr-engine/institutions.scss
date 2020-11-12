@@ -146,10 +146,11 @@ div.blacklight-institution {
 
     @media (max-width: breakpoint-max(md)) {
       width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     @media (max-width: breakpoint-min(sm)) {
-      display: flex;
       flex-flow: column;
     }
 

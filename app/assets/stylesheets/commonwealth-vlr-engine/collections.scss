@@ -2,38 +2,46 @@
 
 /* collections#index */
 
-#collections_results {
+.collections-list {
 
-  #sortAndPerPage {
-    @include card-esque(10px);
+  #collections_results {
 
-    #sort-dropdown, .view-type {
+    #sortAndPerPage {
+      @include card-esque(10px);
+
+      #sort-dropdown, .view-type {
+        display: none;
+      }
+
+    }
+
+    #saveSearchLink {
       display: none;
     }
 
-  }
+    #documents.documents-list {
+      margin-bottom: 30px;
 
-  #saveSearchLink {
-    display: none;
-  }
+      .document {
 
-  #documents.documents-list {
-    margin-bottom: 30px;
+        .document-thumbnail {
+          min-width: 130px;
 
-    .document {
+          img {
+            max-height: 130px;
+            max-width: 130px;
+          }
 
-      .document-thumbnail {
-        min-width: 130px;
-
-        img {
-          max-height: 130px;
-          max-width: 130px;
         }
 
       }
 
     }
 
+  }
+
+  @media (max-width: breakpoint-max(md)) {
+    flex-direction: column-reverse;
   }
 
 }
@@ -132,7 +140,7 @@ h4.collection-provenance {
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;
 
-      @media (max-width: breakpoint-max(md)) {
+      @media (max-width: breakpoint-min(md)) {
         width: 270px;
       }
     }

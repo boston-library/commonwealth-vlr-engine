@@ -113,8 +113,10 @@ module CommonwealthVlrEngine
         # have to use '-2' to get all values
         # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
         config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
-        # have to add this or OcrSearchController#index doesn't work (search builder removes the :f param)
+        # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_image_of_ssim', include_in_request: false
+        config.add_facet_field 'institution_pid_ssi', include_in_request: false
+        config.add_facet_field 'active_fedora_model_suffix_ssi', include_in_request: false
 
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
