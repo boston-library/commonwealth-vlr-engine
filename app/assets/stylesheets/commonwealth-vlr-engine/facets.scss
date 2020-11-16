@@ -6,6 +6,10 @@ body.blacklight-catalog-formats_facet {
     float: right;
     padding: 8px 0 0 0;
     margin-right: 16px;
+
+    @media (max-width: breakpoint-max(xs)) {
+      display: none;
+    }
   }
 
   .prev_next_links {
