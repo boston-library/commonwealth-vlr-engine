@@ -9,12 +9,33 @@
       margin-left: 0;
       margin-bottom:5px;
 
+      .search_index_select {
+        @media (max-width: breakpoint-max(xs)) {
+          margin-bottom: 3px;
+          width: 50%;
+        }
+      }
+
+      .advanced-search-input-wrapper {
+        @media (max-width: breakpoint-max(xs)) {
+          padding-left: 0;
+        }
+      }
+
       #advanced_operators {
         padding: 10px 0 0 20px;
 
         label {
           padding-right: 20px;
         }
+
+        @media (max-width: breakpoint-max(md)) {
+          padding-bottom: 20px;
+        }
+      }
+
+      @media (max-width: breakpoint-max(xs)) {
+        margin-bottom: 25px;
       }
 
     }

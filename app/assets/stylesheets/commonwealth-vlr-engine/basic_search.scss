@@ -18,4 +18,10 @@
     height: 20px;
   }
 
+  .submit-search-text {
+    @media (max-width: breakpoint-max(xs)) {
+      display: none;
+    }
+  }
+
 }
