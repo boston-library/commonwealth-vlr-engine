@@ -3,21 +3,21 @@
       <%= select_tag('search_index[]',
                      options_for_select(search_fields,
                                         search_fields[index]),
-                     :title => t('blacklight.search.basic_search.form.search_indexes'),
-                     :class=> 'btn btn-outline-secondary search_index_select col-md-3 col-lg-2 col-form-label') %>
+                     title: t('blacklight.search.basic_search.form.search_indexes'),
+                     class: 'btn btn-outline-secondary search_index_select col-sm-3 col-md-3 col-lg-3 col-xl-2 col-form-label') %>
       <%= label_tag('input' + (index+1).to_s,
                     t('blacklight.search.basic_search.form.q') + ' (' + (index+1).to_s + ')',
-                    :class => 'sr-only') %>
-      <div class="col-sm-6">
+                    class: 'sr-only') %>
+      <div class="col-sm-8 col-md-8 col-lg-6 advanced-search-input-wrapper">
         <%= text_field_tag 'query[]',
                            nil,
-                           :class => 'advanced_input_text form-control',
-                           :autofocus => index == 0 ? true : false %>
+                           class: 'advanced_input_text form-control',
+                           autofocus: index == 0 ? true : false %>
       </div>
     </div>
 <% end %>
 <div class="advanced_search_field">
-  <div id="advanced_operators" class="form-check form-check-inline offset-sm-2 col-sm-6 float-left">
+  <div id="advanced_operators" class="form-check form-check-inline offset-sm-3 offset-md-3 offset-lg-2 col-sm-8 col-md-10 col-lg-6 float-left">
     <%= radio_button_tag(:op, 'AND', true, class: 'form-check-input') %>
     <label class="form-check-label">find all terms</label>
     <%= radio_button_tag(:op, 'OR', false, class: 'form-check-input') %>
