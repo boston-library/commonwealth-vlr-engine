@@ -4,10 +4,11 @@
   height: 235px;
 
   .carousel-indicators {
-    justify-content: flex-end;
     margin-left: 2%;
     margin-right: 2%;
     top: 10px;
+    left: unset;
+    height: 20px;
 
     li {
       opacity:.5;
@@ -30,6 +31,38 @@
     .carousel-item {
       height: 235px;
 
+      .carousel-caption {
+        padding: 0 0 0 10px;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
+        text-align: left;
+
+        h5 {
+          font-size: $font-size-base;
+          margin-bottom: 0px;
+          margin-top: 5px;
+
+          @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+            font-size: $font-size-sm;
+          }
+
+        }
+
+        p {
+          font-size: $font-size-sm;
+          font-style: italic;
+          margin-bottom: 10px;
+
+          @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
+            font-size: $font-size-xs;
+          }
+
+        }
+
+      }
+
       @media (min-width: breakpoint-min(xl)) {
         height: 288px;
       }
@@ -41,36 +74,8 @@
 
   }
 
-  .carousel-caption {
-    padding: 0 0 0 10px;
-    bottom: -5px;
-    left: 0;
-    right: 0;
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
-    text-align: left;
-
-    h5 {
-      font-size: $font-size-base;
-      margin-bottom: 0px;
-      margin-top: 5px;
-
-      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
-        font-size: $font-size-sm;
-      }
-
-    }
-
-    p {
-      font-size: $font-size-sm;
-      font-style: italic;
-      margin-bottom: 10px;
-
-      @media (min-width: breakpoint-min(md)) and (max-width: breakpoint-max(md)) {
-        font-size: $font-size-xs;
-      }
-
-    }
-
+  .carousel-control-prev, .carousel-control-next {
+    width: 10%;
   }
 
   @media (min-width: breakpoint-min(xl)) {
