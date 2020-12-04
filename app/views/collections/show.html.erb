@@ -50,34 +50,36 @@
         </div>
 
         <div id="collection_facets_wrapper" class="row">
-          <div class="col-lg-9">
+          <% if has_facet_values?([blacklight_config.series_field], @response) || map_facet_values.present?  %>
+            <div class="col-lg-9">
 
-            <% if has_facet_values?([blacklight_config.series_field], @response) %>
-              <div id="series_wrapper">
-                <%= render partial: 'catalog/facets_series' %>
-              </div>
-            <% end %>
+              <% if has_facet_values?([blacklight_config.series_field], @response) %>
+                <div id="series_wrapper">
+                  <%= render partial: 'catalog/facets_series' %>
+                </div>
+              <% end %>
 
-            <% # map for collections#show view %>
-            <% unless map_facet_values.empty? %>
-              <div id="blacklight-collection-map-container">
-                <h4><%= t('blacklight.collections.map.title') %></h4>
-                <%= render partial: 'catalog/index_mapview',
-                           locals: { geojson_features: serialize_geojson(map_facet_values,
-                                                                         'index') } %>
-              </div>
-              </div> <!-- TODO: figure out why this extra </div> is needed! -->
-            <% end %>
+              <% # map for collections#show view %>
+              <% unless map_facet_values.empty? %>
+                <div id="blacklight-collection-map-container">
+                  <h4><%= t('blacklight.collections.map.title') %></h4>
+                  <%= render partial: 'catalog/index_mapview',
+                             locals: { geojson_features: serialize_geojson(map_facet_values,
+                                                                           'index') } %>
+                </div>
+                </div> <!-- TODO: figure out why this extra </div> is needed! -->
+              <% end %>
 
             </div>
+          <% end %>
 
-        <div id="sidebar" class="collections-sidebar col-lg-3">
-          <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
-                                               Rails.application.class.module_parent_name == 'Commonwealth') %>
-          <%= javascript_include_tag 'commonwealth-vlr-engine/collection_facets' %>
-          <%= render 'search_sidebar' %>
+          <div id="sidebar" class="collections-sidebar col-lg-3">
+            <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
+                                                 Rails.application.class.module_parent_name == 'Commonwealth') %>
+            <%= javascript_include_tag 'commonwealth-vlr-engine/collection_facets' %>
+            <%= render 'search_sidebar' %>
+          </div>
         </div>
-      </div>
 
       </div>
 
