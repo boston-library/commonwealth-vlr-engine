@@ -15,6 +15,11 @@ module CommonwealthVlrEngine
       end
     end
 
+    # override so we can set custom presenter for JSON API responses
+    def document_presenter_class(document)
+      formats.first == :json ? CommonwealthVlrEngine::JsonIndexPresenter : super
+    end
+
     def extra_body_classes
       @extra_body_classes ||= ['blacklight-' + controller_name, 'blacklight-' + [controller_name, controller.action_name].join('-')]
       # if this is the home page

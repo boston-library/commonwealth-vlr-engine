@@ -20,14 +20,14 @@ describe 'a-z links' do
     end
   end
 
-  it 'should show the a-z links' do
+  it 'shows the a-z links' do
     visit collections_path
     within('.item_az_links') do
       expect(page).to have_selector('.az_link')
     end
   end
 
-  it 'should show correct results after clicking a letter link' do
+  it 'shows correct results after clicking a letter link' do
     visit collections_path
     within('.item_az_links') do
       click_link('C')
