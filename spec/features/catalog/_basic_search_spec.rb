@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'basic_search' do
-  it 'should show correct results after running a fielded search' do
+  it 'shows correct results after running a fielded search' do
     visit search_catalog_path
     within '#basic_search_form' do
       select('Title', from: 'search_field')

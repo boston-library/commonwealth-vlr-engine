@@ -45,7 +45,7 @@
           </dd>
         <% end %>
         <%# abstract/description field %>
-        <% if document[:abstract_tsim] %>
+        <% if document[:abstract_tsim].present? %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.abstract') %>:</dt>
           <dd class="col-md-9">
             <% document[:abstract_tsim].each do |abstract| %>
