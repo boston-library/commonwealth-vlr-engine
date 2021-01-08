@@ -36,7 +36,7 @@ describe CollectionsHelper, :vcr do
   describe '#collection_image_url' do
     it 'returns the correct url' do
       col_img_url = helper.collection_image_url(image_pid)
-      expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/0,952,1496,544/1100,/0/default.jpg")
+      expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
     end
   end
 

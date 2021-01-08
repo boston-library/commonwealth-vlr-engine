@@ -36,21 +36,22 @@ module CommonwealthVlrEngine
     end
 
     # the IIIF URL for the image to be displayed on collections#show
-    # preferred dimensions: 1100 width, 400 height
-    # if the image is too wide or narrow, return a square
-    def collection_image_url(image_pid, target_width = 1100, target_height = 400)
+    # preferred dimensions: 1100 width, 450 height
+    def collection_image_url(image_pid, target_width = 1100, target_height = 450)
       image_info = get_image_metadata(image_pid)
-      aspect = image_info[:aspect_ratio]
-      if aspect > 1.67 || aspect < 0.33
-        region = 'square'
+      if image_info[:aspect_ratio] > 2.2
+        top = 0
+        height = image_info[:height]
+        output_aspect = target_width.to_f / target_height.to_f
+        width = (height * output_aspect).round
       else
-        scale_height = (target_width / aspect).round
-        width_percent = (target_width.to_f / image_info[:width].to_f).round(3)
-        excess_scaled = (scale_height - target_height) / 2
-        excess_orig = (excess_scaled / width_percent).round
-        orig_slice_height = (target_height / width_percent).round
-        region = "0,#{excess_orig},#{image_info[:width]},#{orig_slice_height}"
+        width = (image_info[:width].to_f * 0.90).round # 90% so we don't get borders
+        reduction_percent = (target_width.to_f / width.to_f).round(3)
+        height = (target_height / reduction_percent).round
+        top = (image_info[:height] - height) / 2
       end
+      left = (image_info[:width] - width) / 2
+      region = "#{left},#{top},#{width},#{height}"
       iiif_image_url(image_pid, { region: region, size: "#{target_width}," })
     end
 

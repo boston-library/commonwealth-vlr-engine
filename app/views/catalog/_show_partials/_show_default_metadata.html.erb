@@ -252,7 +252,7 @@
           </dd>
       <% end %>
       <%# additional rights/use info field %>
-      <% if document[:restrictions_on_access_ssm].present? %>
+      <% if document[:restrictions_on_access_ssm]&.first.present? %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.access') %>:</dt>
           <dd class="col-md-9">
             <% document[:restrictions_on_access_ssm].each do |restrictions| %>
