@@ -93,7 +93,7 @@ module CommonwealthVlrEngine
         config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
         # solr fields that will be treated as facets by the blacklight application
-        config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false
         config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse: false
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
         config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
