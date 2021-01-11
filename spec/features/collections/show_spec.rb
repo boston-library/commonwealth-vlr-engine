@@ -18,7 +18,7 @@ describe 'Collections#show view', :vcr, js: true do
     describe 'click on "more" facet link' do
       before(:each) do
         within('.blacklight-subject_facet_ssim') do
-          click_button('Topic')
+          click_button('Subject')
           within('.more_facets') do
             click_link
           end
