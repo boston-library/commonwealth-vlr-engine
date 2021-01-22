@@ -39,10 +39,10 @@ module CommonwealthVlrEngine
     # preferred dimensions: 1100 width, 450 height
     def collection_image_url(image_pid, target_width = 1100, target_height = 450)
       image_info = get_image_metadata(image_pid)
-      if image_info[:aspect_ratio] > 2.2
+      output_aspect = target_width.to_f / target_height.to_f
+      if image_info[:aspect_ratio] > output_aspect
         top = 0
         height = image_info[:height]
-        output_aspect = target_width.to_f / target_height.to_f
         width = (height * output_aspect).round
       else
         width = (image_info[:width].to_f * 0.90).round # 90% so we don't get borders
