@@ -44,7 +44,7 @@ module CommonwealthVlrEngine
 
     # return the URL of an image to display in the catalog#index slideshow view
     def index_slideshow_img_url(document)
-      if document[:exemplary_image_ssi] && !document[blacklight_config.flagged_field.to_sym]
+      if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
         if document[blacklight_config.index.display_type_field.to_sym] == 'OAIObject' || document[:exemplary_image_ssi].match(/oai/)
           thumbnail_url(document)
         else
@@ -67,7 +67,7 @@ module CommonwealthVlrEngine
 
     # override Blacklight::CatalogHelperBehavior: don't want to pull thumbnail url from Solr
     def thumbnail_url(document)
-      if document[:exemplary_image_ssi] && !document[blacklight_config.flagged_field.to_sym]
+      if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
         datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300')
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)

@@ -1,6 +1,11 @@
-<%# override so we can add flagged popup and render sidebar elsewhere %>
-<% if @document[blacklight_config.flagged_field.to_sym] %>
-    <%= render partial: 'catalog/_show_partials/show_flagged_notice' %>
+<%# override so we can add flagged behavior and render sidebar elsewhere %>
+<% if show_explicit_warning?(@document) %>
+    <%= render partial: 'catalog/_show_partials/show_flagged_modal' %>
+<% end %>
+
+<% if show_content_warning?(@document) %>
+  <%= render partial: 'catalog/_show_partials/show_flagged_warning',
+             locals: { document: @document } %>
 <% end %>
 
 <%= render_document_main_content_partial %>

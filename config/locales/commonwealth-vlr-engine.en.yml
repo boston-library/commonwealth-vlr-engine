@@ -111,6 +111,9 @@ en:
             message: 'Message: '
             topic: 'Topic: '
 
+    flagged:
+          warning: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'
+
     formats:
           page_title: 'Formats - %{application_name}'
 
