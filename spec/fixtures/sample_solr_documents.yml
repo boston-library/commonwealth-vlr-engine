@@ -590,6 +590,8 @@
   - bpl
   harvesting_status_bsi:
   - true
+  flagged_content_ssi:
+  - offensive
   timestamp:
   - '2015-07-31T15:11:28.837Z'
 - system_create_dtsi:
@@ -803,7 +805,7 @@
   exemplary_image_ssi:
   - bpl-dev:000000086
   flagged_content_ssi:
-  - true
+  - explicit
   destination_site_ssim:
   - commonwealth
   - bpl

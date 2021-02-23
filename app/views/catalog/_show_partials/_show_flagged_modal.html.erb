@@ -8,8 +8,7 @@
         </button>
       </div>
       <div id="flagged_warning_text" class="modal-body">
-        <div><strong>This item contains content that could be offensive to some viewers or inappropriate for minors.</strong></div>
-        <div>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</div>
+        <%= render partial: 'catalog/_show_partials/show_flagged_modal_text' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">View Content</button>

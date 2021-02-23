@@ -7,6 +7,7 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::ImagesHelperBehavior
     include CommonwealthVlrEngine::LicenseHelperBehavior
     include CommonwealthVlrEngine::MetadataHelperBehavior
+    include CommonwealthVlrEngine::FlaggedHelperBehavior
 
     def has_image_files? files_hash
       files_hash[:images].present?
