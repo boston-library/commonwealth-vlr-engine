@@ -94,7 +94,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
       end
 
       describe 'flagged item' do
-        before(:each) { document_to_hash[blacklight_config.flagged_field] = true }
+        before(:each) { document_to_hash[blacklight_config.flagged_field] = 'explicit' }
 
         it 'returns the icon rather than the exemplary image' do
           expect(helper.thumbnail_url(SolrDocument.new(document_to_hash))).to include('dc_image-icon')
