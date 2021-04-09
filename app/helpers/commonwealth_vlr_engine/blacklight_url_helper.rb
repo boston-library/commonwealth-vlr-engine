@@ -22,7 +22,7 @@ module CommonwealthVlrEngine
 
     # we don't track viewing of institutions or collections
     def session_tracking_path(document, params = {})
-      return if controller_name == 'institutions' || controller_name == 'collections'
+      return if controller_name == 'institutions' || controller_name == 'collections' || controller_name == 'primary_source_sets'
 
       super
     end
