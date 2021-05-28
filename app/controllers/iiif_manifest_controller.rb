@@ -24,7 +24,7 @@ class IiifManifestController < CatalogController
 
   def canvas
     _canvas_response, canvas_document = search_service.fetch(params[:canvas_object_id])
-    if canvas_document[:is_file_of_ssim]
+    if canvas_document[:is_file_set_of_ssim]
       _response, document = search_service.fetch(params[:id])
       image_files = image_file_pids(get_image_files(params[:id]))
       if image_files

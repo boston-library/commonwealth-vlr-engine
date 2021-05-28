@@ -3,7 +3,7 @@
 # various app-specific config settings
 # use file name "a_load_commonwealth_vlr_configs" so Rails loads this file before other initializers
 
-FEDORA_URL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'fedora.yml'))).result, aliases: true)[Rails.env]
+ASSET_STORE = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'asset_store.yml'))).result, aliases: true)[Rails.env]
 
 GOOGLE_ANALYTICS = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'google_analytics.yml'))).result, aliases: true)[Rails.env]
 

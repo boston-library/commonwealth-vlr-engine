@@ -23,7 +23,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
 
     describe '#image_file_pids' do
-      let(:image_file_pids_result) { helper.image_file_pids(files_hash[:images]) }
+      let(:image_file_pids_result) { helper.image_file_pids(files_hash[:image]) }
       it 'returns an array of ImageFile pids' do
         expect(image_file_pids_result.length).to eq(2)
         expect(image_file_pids_result.first).to eq(image_pid)

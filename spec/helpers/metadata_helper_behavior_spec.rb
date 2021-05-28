@@ -22,7 +22,7 @@ describe CommonwealthVlrEngine::MetadataHelperBehavior, :vcr do
     subject { helper.render_hiergo_subject(document[:subject_hiergeo_geojson_ssm].first, ' | ') }
 
     it 'returns a set of links to geographic subjects' do
-      expect(subject.scan(/href=\"\/search\?f%5Bsubject_geographic_ssim/).length).to eq(3)
+      expect(subject.scan(/href=\"\/search\?f%5Bsubject_geographic_sim/).length).to eq(3)
     end
 
     it 'should join the links using the separator' do
@@ -55,7 +55,7 @@ describe CommonwealthVlrEngine::MetadataHelperBehavior, :vcr do
     describe '#render_alt_title' do
       let(:doc_with_alt_title) do
         { 'title_info_alternative_tsim' => ['Modest'],
-          'title_info_alternative_subtitle_tsim' => ['Expectations'] }
+          'title_info_other_subtitle_tsim' => ['Expectations'] }
       end
 
       it 'renders the alt title' do
@@ -64,34 +64,37 @@ describe CommonwealthVlrEngine::MetadataHelperBehavior, :vcr do
     end
   end
 
-  describe '#render_mods_dates' do
-    it 'returns an array of date values' do
-      expect(helper.render_mods_dates(document).first).not_to be_nil
-    end
-  end
+  # render_mods_dates and #render_mods_date are deprecated in DC3
+  #
+  # describe '#render_mods_dates' do
+  #   it 'returns an array of date values' do
+  #     expect(helper.render_mods_dates(document).first).not_to be_nil
+  #   end
+  # end
+  #
+  # describe '#render_mods_date' do
+  #   describe 'date with start, end, and qualifier' do
+  #     it 'returns the correct date value' do
+  #       expect(helper.render_mods_date('1984', '1985', 'approximate')).to eq('[ca. 1984–1985]')
+  #     end
+  #   end
+  #
+  #   describe 'copyright date' do
+  #     it 'returns the correct date value' do
+  #       expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('(c) 1984')
+  #     end
+  #   end
+  # end
 
-  describe '#render_mods_date' do
-    describe 'date with start, end, and qualifier' do
-      it 'returns the correct date value' do
-        expect(helper.render_mods_date('1984', '1985', 'approximate')).to eq('[ca. 1984–1985]')
-      end
-    end
-
-    describe 'copyright date' do
-      it 'returns the correct date value' do
-        expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('(c) 1984')
-      end
-    end
-  end
-
-  describe '#render_mods_xml_record' do
-    let(:mods_xml_doc) { helper.render_mods_xml_record(item_pid) }
-
-    it 'returns the XML document for the MODS record' do
-      expect(mods_xml_doc.class).to eq(REXML::Document)
-      expect(mods_xml_doc.to_s).to include('<mods:title>Beauregard</mods:title>')
-    end
-  end
+  # TODO: re-enable once Curator supports MODS serialization endpoint
+  # describe '#render_mods_xml_record' do
+  #   let(:mods_xml_doc) { helper.render_mods_xml_record(item_pid) }
+  #
+  #   it 'returns the XML document for the MODS record' do
+  #     expect(mods_xml_doc.class).to eq(REXML::Document)
+  #     expect(mods_xml_doc.to_s).to include('<mods:title>Beauregard</mods:title>')
+  #   end
+  # end
 
   describe '#setup_names_roles' do
     let(:doc_with_names) { SolrDocument.find('bpl-dev:df65v788h') }

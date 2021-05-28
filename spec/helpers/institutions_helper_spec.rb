@@ -20,7 +20,7 @@ describe InstitutionsHelper do
   end
 
   describe '#render_institution_desc' do
-    let(:render_institution_desc_output) { helper.render_institution_desc(institution[:abstract_tsim]) }
+    let(:render_institution_desc_output) { helper.render_institution_desc(institution[:abstract_tsi]) }
 
     it 'creates the correct HTML content' do
       expect(render_institution_desc_output).to include('institution_desc_static')

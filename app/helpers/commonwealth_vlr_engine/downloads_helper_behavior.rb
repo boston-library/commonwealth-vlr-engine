@@ -7,7 +7,7 @@ module CommonwealthVlrEngine
     def create_download_links(document, files_hash)
       download_links = []
       download_links.concat(image_download_links(document,
-                                                 files_hash[:images])) if has_downloadable_images?(document, files_hash)
+                                                 files_hash[:image])) if has_downloadable_images?(document, files_hash)
       download_links.concat(video_download_links(document,
                                                  files_hash[:video])) if has_downloadable_video?(document, files_hash)
       download_links.concat(other_download_links(document, files_hash))
@@ -22,12 +22,13 @@ module CommonwealthVlrEngine
       { class: download_link_class, rel: 'nofollow', data: { blacklight_modal: 'trigger' } }
     end
 
-    def download_link_title(document, object_profile, datastream_id = nil)
-      if !object_profile || (document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_ImageFile')
-        link_title = t("blacklight.downloads.images.#{datastream_id}")
+    def download_link_title(document, attachments, filestream_id = nil)
+      if !attachments || (document[:curator_model_suffix_ssi] == 'Image')
+        link_title = t("blacklight.downloads.images.#{filestream_id}")
       else
-        file_name_ext = object_profile['objLabel'].split('.')
-        if document[:identifier_ia_id_ssi] || (document[:active_fedora_model_ssi] == 'Bplmodels::EreaderFile')
+        primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } || attachments.keys.find { |k| !k.match?(/foxml/) }
+        file_name_ext = attachments[primary_file_key]['filename'].split('.')
+        if document[:identifier_ia_id_ssi] || (document[:curator_model_suffix_ssi] == 'Ereader')
           link_title = ia_download_title(file_name_ext[1])
         else
           link_title = file_name_ext[0]
@@ -37,12 +38,13 @@ module CommonwealthVlrEngine
     end
 
     def has_downloadable_files?(document, files_hash)
-      has_downloadable_images?(document, files_hash) ||
-          has_downloadable_video?(document, files_hash) ||
-          files_hash[:documents].present? ||
-          files_hash[:audio].present? ||
-          files_hash[:generic].present? ||
-          files_hash[:ereader].present?
+      document[blacklight_config.hosting_status_field.to_sym] == 'hosted' &&
+      (has_downloadable_images?(document, files_hash) ||
+       has_downloadable_video?(document, files_hash) ||
+       files_hash[:document].present? ||
+       files_hash[:audio].present? ||
+       # files_hash[:generic].present? ||
+       files_hash[:ereader].present?)
     end
 
     def has_downloadable_images?(document, files_hash)
@@ -65,100 +67,118 @@ module CommonwealthVlrEngine
       end
     end
 
-    def image_datastreams(object_profile_json)
-      image_datastreams = []
-      stored_datastreams = %w(productionMaster access800 georectifiedMaster)
-      stored_datastreams.each do |datastream_id|
-        image_datastreams << datastream_id if object_profile_json['datastreams'][datastream_id].present?
+    def image_filestreams(attachments_json)
+      image_filestreams = []
+      stored_filestreams = %w(image_primary image_access_800 image_georectified_primary)
+      stored_filestreams.each do |filestream_id|
+        image_filestreams << filestream_id if attachments_json[filestream_id].present?
       end
-      image_datastreams.insert(1, 'accessFull')
+      image_filestreams.insert(1, 'access_full')
     end
 
     def image_download_links(document, image_files)
       if document[:identifier_ia_id_ssi]
         [file_download_link(document[:id],
-                            t('blacklight.downloads.images.accessFull'),
+                            t('blacklight.downloads.images.access_full'),
                             nil,
                             'JPEG2000',
                             download_link_options)]
       else
-        object_profile_json = JSON.parse(image_files.first['object_profile_ssm'].first)
+        attachments_json = JSON.parse(image_files.first['attachments_ss'])
         image_links = []
-        image_datastreams(object_profile_json).each do |datastream_id|
+        image_filestreams(attachments_json).each do |filestream_id|
           if image_files.length == 1
-            object_profile = object_profile_json
+            attachments = attachments_json
             object_id = image_files.first['id']
           else
-            object_profile = setup_zip_object_profile(image_files, datastream_id)
+            attachments = setup_zip_attachments(image_files, filestream_id)
             object_id = document[:id]
           end
           image_links << file_download_link(object_id,
-                                            t("blacklight.downloads.images.#{datastream_id}"),
-                                            object_profile,
-                                            datastream_id,
+                                            t("blacklight.downloads.images.#{filestream_id}"),
+                                            attachments,
+                                            filestream_id,
                                             download_link_options)
         end
         image_links
       end
     end
 
-    # for now, we only support accessMaster download (MP4)
+    # for now, we only support video_access_mp4 download
     def video_download_links(document, video_files)
       file = video_files.first
-      object_profile_json = JSON.parse(file['object_profile_ssm'].first)
+      attachments_json = JSON.parse(file['attachments_ss'])
       [file_download_link(file['id'],
-                          download_link_title(document, object_profile_json),
-                          object_profile_json,
-                          'accessMaster',
+                          download_link_title(document, attachments_json),
+                          attachments_json,
+                          'video_access_mp4',
                           download_link_options)]
     end
 
+    # everything except image and video
     def other_download_links(document, files_hash)
       other_links = []
-      other_file_types = [files_hash[:audio], files_hash[:documents],
-                          files_hash[:ereader], files_hash[:generic]]
+      other_file_types = [files_hash[:audio], files_hash[:document], files_hash[:ereader]]
       other_file_types.each do |file_type|
         file_type.each do |file|
-          object_profile_json = JSON.parse(file['object_profile_ssm'].first)
-          other_links << file_download_link(file['id'],
-                                            download_link_title(document, object_profile_json),
-                                            object_profile_json,
-                                            'productionMaster',
-                                            download_link_options)
+          attachments_json = JSON.parse(file['attachments_ss'])
+          other_downloadable_attachments(attachments_json).each do |att_type|
+            next if attachments_json[att_type].blank?
+
+            other_links << file_download_link(file['id'],
+                                              download_link_title(document, attachments_json),
+                                              attachments_json,
+                                              att_type,
+                                              download_link_options)
+          end
         end
       end
       other_links
     end
 
-    # parse the license statement and return true if image downloads are allowed
-    def license_allows_download?(document)
-      document[:license_ssm].to_s =~ /(Creative Commons|No known restrictions)/
+    # @return [Array] list non-image/video downloadable attachments
+    def other_downloadable_attachments(attachments_json)
+      downloadable_attachments = %w(audio_access document_access ebook_access_epub ebook_access_mobi
+                                    ebook_access_daisy text_plain)
+      all_attachments = attachments_json.keys
+
+      # don't allow download of *_primary or text_plain if there is an *_access file
+      downloadable_attachments << 'audio_primary' unless all_attachments.include?('audio_access')
+      downloadable_attachments << 'document_primary' unless all_attachments.include?('document_access')
+      downloadable_attachments.delete('text_plain') if all_attachments.include?('document_access')
+
+      downloadable_attachments
     end
 
-    def file_download_link(object_pid, link_title, object_profile_json, datastream_id, link_options = {})
+    # parse the license statement and return true if image downloads are allowed
+    def license_allows_download?(document)
+      document[:license_ss] =~ /(Creative Commons|No known restrictions)/
+    end
+
+    def file_download_link(object_pid, link_title, attachments_json, filestream_id, link_options = {})
       link_to(link_title,
-              download_path(object_pid, datastream_id: datastream_id),
+              download_path(object_pid, filestream_id: filestream_id),
               link_options) + content_tag(:span,
-                                          "(#{file_type_string(datastream_id, object_profile_json)}, #{file_size_string(datastream_id, object_profile_json)})",
+                                          "(#{file_type_string(filestream_id, attachments_json)}, #{file_size_string(filestream_id, attachments_json)})",
                                           class: 'download_info')
     end
 
-    def file_type_string(datastream_id, object_profile_json)
-      if object_profile_json
-        file_type_string = if datastream_id == 'accessFull' || datastream_id == 'access800'
+    def file_type_string(filestream_id, attachments_json)
+      if attachments_json
+        file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
                              'JPEG'
-                           elsif object_profile_json['datastreams'][datastream_id]['dsMIME']
-                             object_profile_json['datastreams'][datastream_id]['dsMIME'].split('/')[1].upcase
+                           elsif attachments_json[filestream_id]['content_type']
+                             attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
-                             object_profile_json['objLabel'].split('.')[1].upcase
+                             attachments_json['filename'].split('.')[1].upcase
                            end.gsub(/TIFF/, 'TIF')
-        file_type_string += ', multi-file ZIP' if object_profile_json['zip']
+        file_type_string += ', multi-file ZIP' if attachments_json['zip']
       else
-        file_type_string = case datastream_id
-                           when 'productionMaster'
+        file_type_string = case filestream_id
+                           when 'image_primary'
                              'TIF'
                            when 'JPEG2000'
-                             datastream_id
+                             filestream_id
                            else
                              'JPEG'
                            end
@@ -166,12 +186,13 @@ module CommonwealthVlrEngine
       file_type_string
     end
 
-    def file_size_string(datastream_id, object_profile_json)
-      if object_profile_json
-        if datastream_id == 'accessFull'
-          number_to_human_size((object_profile_json['datastreams']['productionMaster']['dsSize'] * 0.083969078))
+    def file_size_string(filestream_id, attachments_json)
+      if attachments_json
+        if filestream_id == 'access_full'
+          # estimate size of full JPEG based on image_primary TIF size
+          number_to_human_size((attachments_json['image_primary']['byte_size'] * 0.083969078))
         else
-          number_to_human_size(object_profile_json['datastreams'][datastream_id]['dsSize'])
+          number_to_human_size(attachments_json[filestream_id]['byte_size'])
         end
       else
         'multi-file ZIP'
@@ -181,41 +202,41 @@ module CommonwealthVlrEngine
     def public_domain?(document)
       pubdom_regex = /[Pp]ublic domain/
       (document[:date_end_dtsi] && document[:date_end_dtsi][0..3].to_i < 1923) ||
-          document[:rights_ssm].to_s =~ pubdom_regex ||
-          document[:license_ssm].to_s =~ pubdom_regex ||
+          document[:rights_ss] =~ pubdom_regex ||
+          document[:license_ss] =~ pubdom_regex ||
           document[:rightsstatement_ss] == 'No Copyright - United States'
     end
 
-    # create a composite object_profile_json object from multiple file objects
+    # create a composite attachments_json object from multiple file objects
     # used to display size of ZIP archive
-    def setup_zip_object_profile(image_files, datastream_id)
-      datastream_id_to_use = datastream_id == 'accessFull' ? 'productionMaster' : datastream_id
-      object_profile = { zip: true,
-                         objLabel: datastream_id == 'productionMaster' ? '.TIF' : '.JPEG',
-                         datastreams: { datastream_id_to_use.to_sym => {} } }
+    def setup_zip_attachments(image_files, filestream_id)
+      filestream_id_to_use = filestream_id == 'access_full' ? 'image_primary' : filestream_id
+      attachments = { zip: true,
+                      filename: filestream_id == 'image_primary' ? '.TIF' : '.JPEG',
+                      filestream_id_to_use.to_sym => {} }
       zip_size = 0
       image_files.each do |image_file|
-        img_object_profile_json = JSON.parse(image_file['object_profile_ssm'].first)
-        zip_size += img_object_profile_json['datastreams'][datastream_id_to_use]['dsSize']
+        img_attachments_json = JSON.parse(image_file['attachments_ss'])
+        zip_size += img_attachments_json[filestream_id_to_use]['byte_size']
       end
       # estimate compression, pretty rough
-      zip_size = case datastream_id
-                 when 'productionMaster'
+      zip_size = case filestream_id
+                 when 'image_primary'
                    zip_size * 0.798
-                 when 'accessFull'
+                 when 'access_full'
                    zip_size * 0.839
                  else
                    zip_size * 0.927
                  end
-      object_profile[:datastreams][datastream_id_to_use.to_sym][:dsSize] = zip_size
-      object_profile.deep_stringify_keys
+      attachments[filestream_id_to_use.to_sym][:byte_size] = zip_size
+      attachments.deep_stringify_keys
     end
 
-    def url_for_download(document, datastream_id)
-      if document[:identifier_ia_id_ssi] && datastream_id == 'JPEG2000'
+    def url_for_download(document, filestream_id)
+      if document[:identifier_ia_id_ssi] && filestream_id == 'JPEG2000'
         "https://archive.org/download/#{document[:identifier_ia_id_ssi]}/#{document[:identifier_ia_id_ssi]}_jp2.zip"
       else
-        trigger_downloads_path(document.id, datastream_id: datastream_id)
+        trigger_downloads_path(document.id, filestream_id: filestream_id)
       end
     end
   end

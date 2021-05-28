@@ -11,7 +11,7 @@ module CommonwealthVlrEngine
     # returns a link to a CC license
     def cc_url(license)
       terms_code = cc_terms_code(license)
-      "http://creativecommons.org/licenses/#{terms_code}/4.0"
+      "http://creativecommons.org/licenses/#{terms_code}/4.0/"
     end
 
     # insert an icon and link to CC licenses

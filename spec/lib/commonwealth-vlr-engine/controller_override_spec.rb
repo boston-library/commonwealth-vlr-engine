@@ -26,7 +26,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
         expect(subject['name_facet_ssim']).not_to be_falsey
         expect(subject['genre_basic_ssim'].class).to eq(Blacklight::Configuration::IndexField)
         expect(subject['collection_name_ssim'].label).to eq('Collection')
-        expect(subject['date_start_tsim'].helper_method).to eq(:index_date_value)
+        expect(subject['date_tsim'].helper_method).to eq(:index_date_value)
       end
     end
 
@@ -57,8 +57,8 @@ describe CommonwealthVlrEngine::ControllerOverride do
     describe 'commonwealth config fields' do
       it 'sets the fields for pseudo classes' do
         expect(test_config.collection_field).to eq('collection_name_ssim')
-        expect(test_config.institution_field).to eq('institution_name_ssim')
-        expect(test_config.series_field).to eq('related_item_series_ssim')
+        expect(test_config.institution_field).to eq('institution_name_ssi')
+        expect(test_config.series_field).to eq('related_item_series_ssi')
         expect(test_config.ocr_search_field).to eq('ocr_tsiv')
         expect(test_config.page_num_field).to eq('page_num_label_ssi')
       end

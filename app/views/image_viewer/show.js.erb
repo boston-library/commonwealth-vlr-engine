@@ -14,4 +14,4 @@ $('#page_sequence').replaceWith("<%= escape_javascript(render partial: 'catalog/
 
 // update the main image
 $('#img_show_container').replaceWith("<%= escape_javascript(render partial: 'catalog/_show_partials/show_default_img',
-                   locals: { image_pid: @page_sequence[:current], document: @document, page_sequence:  @page_sequence }) %>");
+                   locals: { image_key: @page_sequence[:current_key], document: @document, page_sequence: @page_sequence }) %>");

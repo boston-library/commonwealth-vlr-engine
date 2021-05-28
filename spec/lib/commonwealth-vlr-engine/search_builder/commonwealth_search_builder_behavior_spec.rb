@@ -26,7 +26,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_unwanted_models' do
     it 'adds parameters to exclude unwanted models' do
-      expect(search_builder.exclude_unwanted_models(solr_parameters).to_s).to include('afmodel:Bplmodels_File')
+      expect(search_builder.exclude_unwanted_models(solr_parameters)).to be_a_kind_of Array
     end
   end
 
@@ -42,13 +42,13 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'exclude_institutions' do
     it 'adds parameters to exclude institutions' do
-      expect(search_builder.exclude_institutions(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Institution\"')
+      expect(search_builder.exclude_institutions(solr_parameters).to_s).to include('-curator_model_suffix_ssi:\"Institution\"')
     end
   end
 
   describe 'exclude_collections' do
     it 'adds parameters to exclude collections' do
-      expect(search_builder.exclude_collections(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Collection\"')
+      expect(search_builder.exclude_collections(solr_parameters).to_s).to include('-curator_model_suffix_ssi:\"Collection\"')
     end
   end
 
@@ -60,13 +60,13 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'institutions_filter' do
     it 'adds parameters to require institutions' do
-      expect(search_builder.institutions_filter(solr_parameters).to_s).to include('+active_fedora_model_suffix_ssi:\"Institution\"')
+      expect(search_builder.institutions_filter(solr_parameters).to_s).to include('+curator_model_suffix_ssi:\"Institution\"')
     end
   end
 
   describe 'institutions_limit' do
     it 'adds parameters to limit to a single institution' do
-      expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_pid_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
+      expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
     end
   end
 
@@ -89,7 +89,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   describe 'collections_filter' do
     it 'adds parameters to require institutions' do
-      expect(search_builder.collections_filter(solr_parameters).to_s).to include('+active_fedora_model_suffix_ssi:\"Collection\"')
+      expect(search_builder.collections_filter(solr_parameters).to_s).to include('+curator_model_suffix_ssi:\"Collection\"')
     end
   end
 

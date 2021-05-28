@@ -22,7 +22,7 @@ RSpec.describe BlacklightIiifSearch::SearchBehavior do
     subject { iiif_search.object_relation_solr_params }
 
     it 'returns a hash with the correct content' do
-      expect(subject.keys).to include('is_image_of_ssim')
+      expect(subject.keys).to include('is_file_set_of_ssim')
       expect(subject.values).to include("info:fedora/#{parent_id}")
     end
   end

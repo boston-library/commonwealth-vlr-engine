@@ -51,7 +51,8 @@ module CommonwealthVlrEngine
       # get an image for the collection
       if @document[:exemplary_image_ssi]
         @collection_image_info = collection_image_info(@document[:exemplary_image_ssi],
-                                                       @document[:id])
+                                                       @document[:exemplary_image_key_base_ss],
+                                                       @document[:id], @document[blacklight_config.hosting_status_field.to_sym])
       end
 
       respond_to do |format|
@@ -115,14 +116,15 @@ module CommonwealthVlrEngine
     # @param image_pid [String]
     # @param collection_pid [String]
     # @return [Hash]
-    def collection_image_info(image_pid, collection_pid)
-      col_img_info = { image_pid: image_pid, title: '', pid: collection_pid, access_master: false }
+    def collection_image_info(image_pid, image_key, collection_pid, hosting_status)
+      col_img_info = { image_pid: image_pid, image_key: image_key, title: '',
+                       pid: collection_pid, access_master: false, hosting_status: hosting_status }
       _col_img_file_resp, col_img_file_doc = search_service.fetch(image_pid)
       if col_img_file_doc
-        col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
-        col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
+        col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
+        col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
         if col_img_field
-          col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//, '')
+          col_img_obj_pid = col_img_field.first
           _col_img_obj_resp, col_img_obj_doc = search_service.fetch(col_img_obj_pid)
           if col_img_obj_doc
             col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]

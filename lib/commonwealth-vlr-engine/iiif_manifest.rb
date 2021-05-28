@@ -12,18 +12,16 @@ module CommonwealthVlrEngine
     # image_files = an array of ImageFile Solr documents
     def create_iiif_manifest(document, image_files)
       manifest = IIIF::Presentation::Manifest.new('@id' => "#{document[:identifier_uri_ss]}/manifest")
-      manifest.service = iiif_search_service(document) if document[:has_searchable_text_bsi]
+      manifest.service = iiif_search_service(document) if document[:has_searchable_pages_bsi]
       manifest.label = render_title(document, false)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
       manifest.metadata = manifest_metadata(document)
-      manifest.description = document[:abstract_tsim].first if document[:abstract_tsim]
+      manifest.description = document[:abstract_tsi] if document[:abstract_tsi]
 
       manifest.attribution = manifest_attribution(document).presence
 
-      if document[:license_ssm]
-        document[:license_ssm].each do |license|
-          manifest.license = cc_url(license) if license.match?(/\(CC\s/)
-        end
+      if document[:license_ss]
+        manifest.license = cc_url(document[:license_ss]) if document[:license_ss].match?(/\(CC\s/)
       end
 
       manifest.see_also = document[:identifier_uri_ss] if document[:identifier_uri_ss]
@@ -96,10 +94,8 @@ module CommonwealthVlrEngine
       collection.attribution = manifest_attribution(document).presence
       collection.metadata = manifest_metadata(document)
       collection.description = 'This document describes an IIIF Collection, which points to a series of IIIF Manifests comprising the individual items in this multi-volume work'
-      if document[:license_ssm]
-        document[:license_ssm].each do |license|
-          collection.license = cc_url(license) if license.match?(/\(CC\s/)
-        end
+      if document[:license_ss]
+        collection.license = cc_url(license) if license.match?(/\(CC\s/)
       end
       collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
       manifest_docs.each do |manifest_doc|
@@ -116,22 +112,23 @@ module CommonwealthVlrEngine
     def manifest_metadata(document)
       manifest_metadata = []
       manifest_metadata << { label: t('blacklight.metadata_display.fields.title'), value: render_title(document) }
-      manifest_metadata << { label: t('blacklight.metadata_display.fields.date'), value: render_mods_dates(document).first } if document[:date_start_tsim]
+      manifest_metadata << { label: t('blacklight.metadata_display.fields.date'),
+                             value: document[:date_tsim].first } if document[:date_tsim]
 
-      if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
+      if document[:name_tsim]
         names = setup_names_roles(document).first
         manifest_metadata << { label: t('blacklight.metadata_display.fields.creator'), value: names.length == 1 ? names.first : names }
       end
 
-      if document[:publisher_tsim]
-        pubplace = document[:pubplace_tsim] ? document[:pubplace_tsim].first + ' : ' : ''
-        manifest_metadata << { label: t('blacklight.metadata_display.fields.publisher'), value: pubplace + document[:publisher_tsim].first }
+      if document[:publisher_tsi]
+        pubplace = document[:pubplace_tsi] ? document[:pubplace_tsi] + ' : ' : ''
+        manifest_metadata << { label: t('blacklight.metadata_display.fields.publisher'), value: pubplace + document[:publisher_tsi] }
       end
 
       some_fields = {
         type_of_resource_ssim: t('blacklight.metadata_display.fields.type_of_resource'),
         genre_basic_ssim: t('blacklight.metadata_display.fields.genre_basic'),
-        abstract_tsim: t('blacklight.metadata_display.fields.abstract'),
+        abstract_tsi: t('blacklight.metadata_display.fields.abstract'),
         lang_term_ssim: t('blacklight.metadata_display.fields.language'),
         subject_facet_ssim: t('blacklight.metadata_display.fields.subject_topic'),
         physical_location_ssim: t('blacklight.metadata_display.fields.location'),
@@ -150,9 +147,10 @@ module CommonwealthVlrEngine
         manifest_metadata << { label: t('blacklight.metadata_display.fields.id_local_other'), value: identifiers.length == 1 ? identifiers.first : identifiers }
       end
 
-      if document[:rights_ssm]
-        rights = document[:rights_ssm] + document[:license_ssm].presence.to_a
-        manifest_metadata << { label: t('blacklight.metadata_display.fields.rights'), value: rights }
+      if document[:rights_ss]
+        rights = [document[:rights_ss]]
+        rights << document[:license_ss]
+        manifest_metadata << { label: t('blacklight.metadata_display.fields.rights'), value: rights.compact }
       end
 
       manifest_metadata
@@ -161,8 +159,8 @@ module CommonwealthVlrEngine
     # returns the appropriate attribution statement
     def manifest_attribution(document)
       attribution_array = []
-      [:rights_ssm, :license_ssm, :restrictions_on_access_ssm].each do |field|
-        attribution_array = attribution_array + document[field].presence.to_a
+      [:rights_ss, :license_ss, :restrictions_on_access_ss].each do |field|
+        attribution_array << document[field] if document[field]
       end
       attribution_array.blank? ? nil : attribution_array.join(' ')
     end

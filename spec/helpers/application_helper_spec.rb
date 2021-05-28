@@ -48,9 +48,9 @@ describe ApplicationHelper, :vcr do
     end
   end
 
-  describe '#datastream_disseminator_url' do
-    it 'creates a path to the Fedora datastream' do
-      expect(helper.datastream_disseminator_url(image_pid, 'accessMaster')).to eq("#{FEDORA_URL['url']}/objects/#{image_pid}/datastreams/accessMaster/content")
+  describe '#filestream_disseminator_url' do
+    it 'creates a path to the filestream' do
+      expect(helper.filestream_disseminator_url(image_key, 'image_service')).to eq("#{ASSET_STORE['url']}/images/#{image_pid}/image_service.jp2")
     end
   end
 

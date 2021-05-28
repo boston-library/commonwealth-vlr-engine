@@ -12,7 +12,7 @@ RSpec.describe CommonwealthVlrEngine::JsonIndexPresenter, api: true do
 
   describe '#display_type' do
     before :each do
-      blacklight_config.index.display_type_field = :active_fedora_model_suffix_ssi
+      blacklight_config.index.display_type_field = :curator_model_suffix_ssi
     end
 
     it 'returns the value as an array' do

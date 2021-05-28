@@ -66,8 +66,8 @@ describe CitationHelper do
 
   describe '#date_for_citation' do
     it 'returns a properly formatted date' do
-      expect(helper.date_for_citation(document[:date_start_tsim].first, 'apa')).to include('(1859).')
-      expect(helper.date_for_citation(document[:date_start_tsim].first, 'mla')).to include('1859.')
+      expect(helper.date_for_citation(document[:date_tsim].first, 'apa')).to include('(1859).')
+      expect(helper.date_for_citation(document[:date_tsim].first, 'mla')).to include('1859.')
     end
   end
 

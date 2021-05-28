@@ -9,20 +9,16 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::MetadataHelperBehavior
     include CommonwealthVlrEngine::FlaggedHelperBehavior
 
-    def has_image_files? files_hash
-      files_hash[:images].present?
+    def has_image_files?(files_hash)
+      files_hash[:image].present?
     end
 
-    def has_video_files? files_hash
+    def has_video_files?(files_hash)
       files_hash[:video].present?
     end
 
-    def image_file_pids images_hash
-      image_file_pids = []
-      images_hash.each do |image_file|
-        image_file_pids << image_file['id']
-      end
-      image_file_pids
+    def image_file_pids(images)
+      images.map { |i| i[:id] }
     end
 
     # render collection name as a link in catalog#index list view
@@ -33,7 +29,7 @@ module CommonwealthVlrEngine
     # render institution name as a link in catalog#index list view
     def index_institution_link(options = {})
       link_to(options[:value].first,
-              institution_path(id: options[:document][:institution_pid_ssi]))
+              institution_path(id: options[:document][:institution_ark_id_ssi]))
     end
 
     # determine the 'truncate' length based on catalog#index view type
@@ -66,12 +62,12 @@ module CommonwealthVlrEngine
     end
 
     def render_item_breadcrumb(document, link_class = nil)
-      setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_pid_ssm]
+      setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
     end
 
     # render the 'more like this' search link if doc has subjects
     def render_mlt_search_link(document)
-      return unless document[:subject_facet_ssim] || document[:subject_geo_city_ssim] || document[:related_item_host_ssim]
+      return unless document[:subject_facet_ssim] || document[:subject_geo_city_sim] || document[:related_item_host_ssim]
 
       content_tag :div, id: 'more_mlt_link_wrapper' do
         link_to t('blacklight.more_like_this.more_mlt_link'),
@@ -116,8 +112,8 @@ module CommonwealthVlrEngine
     # for display on catalog#index list view and catalog#show breadcrumb
     def setup_collection_links(document, link_class = nil)
       coll_hash = {}
-      0.upto(document[:collection_pid_ssm].length - 1) do |index|
-        coll_hash[document[blacklight_config.collection_field.to_sym][index]] = document[:collection_pid_ssm][index]
+      0.upto(document[:collection_ark_id_ssim].length - 1) do |index|
+        coll_hash[document[blacklight_config.collection_field.to_sym][index]] = document[:collection_ark_id_ssim][index]
       end
       coll_links = []
       coll_hash.sort.each do |coll_array|
