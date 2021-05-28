@@ -84,6 +84,7 @@ module CommonwealthVlrEngine
         config.iiif_search = {
           full_text_field: 'ocr_tsiv',
           object_relation_field: 'is_file_set_of_ssim',
+          page_model_field: 'curator_model_suffix_ssi',
           supported_params: %w(q page)
         }
 
