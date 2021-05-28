@@ -45,18 +45,16 @@
           </dd>
         <% end %>
         <%# abstract/description field %>
-        <% if document[:abstract_tsim].present? %>
+        <% if document[:abstract_tsi].present? %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.abstract') %>:</dt>
           <dd class="col-md-9">
-            <% document[:abstract_tsim].each do |abstract| %>
-              <% abstract.split('<br/><br/>').each do |sub_abstract| %>
-                <%= sub_abstract %><br />
-              <% end %>
+            <% document[:abstract_tsi].split('<br/><br/>').each do |sub_abstract| %>
+              <%= sub_abstract %><br />
             <% end %>
           </dd>
         <% end %>
         <%# creator field - assumes equal # of roles and creator names %>
-        <% if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim] %>
+        <% if document[:name_tsim] %>
           <% names, roles = setup_names_roles(document) %>
           <% names.each_with_index do |name, index| %>
             <dt class="col-md-3"><%= roles[index] %>:</dt>
@@ -73,10 +71,10 @@
           </dd>
         <% end %>
         <%# date field  %>
-        <% if document[:date_start_tsim] %>
+        <% if document[:date_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.date') %>:</dt>
           <dd class="col-md-9">
-            <% render_mods_dates(document).each do |date| %>
+            <% document[:date_tsim].each do |date| %>
               <%= date %><br/>
             <% end %>
           </dd>
@@ -105,11 +103,11 @@
           <dd class="col-md-9">
             <%= link_to_facet(document[:physical_location_ssim].first,
                               'physical_location_ssim') %>
-            <% if document[:sub_location_tsim] %>
-              <br/><%= document[:sub_location_tsim].first %>
+            <% if document[:sub_location_tsi] %>
+              <br/><%= document[:sub_location_tsi] %>
             <% end %>
-            <% if document[:shelf_locator_tsim] %>
-              <br/><%= document[:shelf_locator_tsim].first %> (<%= t('blacklight.metadata_display.fields.shelf_locator').downcase %>)
+            <% if document[:shelf_locator_tsi] %>
+              <br/><%= document[:shelf_locator_tsi] %> (<%= t('blacklight.metadata_display.fields.shelf_locator').downcase %>)
             <% end %>
           </dd>
         <% end %>
@@ -123,77 +121,43 @@
           </dd>
         <% end %>
         <%# related item series field (series) %>
-        <% if document[:related_item_series_ssim] %>
+        <% if document[:related_item_series_ssi] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.series') %>:</dt>
           <dd class="col-md-9">
-            <% document[:related_item_series_ssim].each_with_index do |related_series,index| %>
-              <%= link_to_facets([related_series, document[:related_item_host_ssim].first],
-                                 %w[related_item_series_ssim related_item_host_ssim]) %>
-              <% if document[:related_item_subseries_ssim] && document[:related_item_subseries_ssim][index] %>
-                <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
-                <%= link_to_facets(
-                        [document[:related_item_subseries_ssim][index],
-                         related_series],
-                        %w[related_item_subseries_ssim related_item_series_ssim]) %>
-              <% end %>
-              <% if document[:related_item_subsubseries_ssim] && document[:related_item_subsubseries_ssim][index] %>
-                <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
-                <%= link_to_facets(
-                        [document[:related_item_subsubseries_ssim][index],
-                         document[:related_item_subseries_ssim][index],
-                         related_series],
-                        %w[related_item_subsubseries_ssim
-                                 related_item_subseries_ssim
-                                 related_item_series_ssim]) %>
-              <% end %>
-              <br />
+            <%= link_to_facets([document[:related_item_series_ssi], document[:related_item_host_ssim].first],
+                               %w[related_item_series_ssi related_item_host_ssim]) %>
+            <% if document[:related_item_subseries_ssi] %>
+              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+              <%= link_to_facets([document[:related_item_subseries_ssi],
+                                  document[:related_item_series_ssi]],
+                                 %w[related_item_subseries_ssi related_item_series_ssi]) %>
+            <% end %>
+            <% if document[:related_item_subsubseries_ssi] %>
+              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+              <%= link_to_facets([document[:related_item_subsubseries_ssi],
+                                  document[:related_item_subseries_ssi],
+                                  document[:related_item_series_ssi]],
+                                 %w[related_item_subsubseries_ssi
+                                    related_item_subseries_ssi
+                                    related_item_series_ssi]) %>
             <% end %>
           </dd>
         <% end %>
         <%# topic field %>
-        <% if document[:subject_topic_tsim] || document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] || document[:subject_name_conference_tsim] || document[:subject_temporal_facet_ssim] || document[:subject_title_tsim] %>
+        <% if document[:subject_topic_tsim] || document[:subject_name_tsim] || document[:subject_title_tsim] || document[:subject_temporal_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
           <dd class="col-md-9">
-            <% if document[:subject_topic_tsim] %>
-              <% document[:subject_topic_tsim].each do |topic| %>
-                <%= link_to_facet(topic, 'subject_facet_ssim') %><br />
-              <% end %>
-            <% end %>
-            <% if document[:subject_name_corporate_tsim] %>
-              <% document[:subject_name_corporate_tsim].each do |corp_name| %>
-                <%= link_to_facet(corp_name, 'subject_facet_ssim') %><br />
-              <% end %>
-            <% end %>
-            <% if document[:subject_name_personal_tsim] %>
-              <% document[:subject_name_personal_tsim].each do |pers_name| %>
-                <%= link_to_facet(pers_name, 'subject_facet_ssim') %><br />
-              <% end %>
-            <% end %>
-            <% if document[:subject_name_conference_tsim] %>
-              <% document[:subject_name_conference_tsim].each do |conf_name| %>
-                <%= link_to_facet(conf_name, 'subject_facet_ssim') %><br />
-              <% end %>
-            <% end %>
-            <% if document[:subject_title_tsim] %>
-              <% document[:subject_title_tsim].each do |subj_title| %>
-                <%= link_to_facet(subj_title, 'subject_facet_ssim') %><br />
-              <% end %>
-            <% end %>
-            <% if document[:subject_temporal_facet_ssim] %>
-              <% document[:subject_temporal_facet_ssim].each do |temporal_subj| %>
-                <% if temporal_subj =~ /-[0-9]{2}$/ %>
-                  <%= link_to_facet(temporal_subj,
-                                    'subject_facet_ssim',
-                                    render_mods_date(temporal_subj)) %>
-                <% else %>
-                  <%= link_to_facet(temporal_subj, 'subject_facet_ssim') %><br />
+            <% %i[subject_topic_tsim subject_name_tsim subject_title_tsim subject_temporal_tsim].each do |skey| %>
+              <% if document[skey] %>
+                <% document[skey].each do |s| %>
+                  <%= link_to_facet(s, 'subject_facet_ssim') %><br />
                 <% end %>
               <% end %>
             <% end %>
           </dd>
         <% end %>
         <%# geo subject field %>
-        <% if document[:subject_hiergeo_geojson_ssm] || document[:subject_geo_nonhier_ssim] %>
+        <% if document[:subject_hiergeo_geojson_ssm] || document[:subject_geo_other_ssm] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
           <dd class="col-md-9">
             <% if document[:subject_hiergeo_geojson_ssm] %>
@@ -203,9 +167,9 @@
                                           'metadata_breadcrumb') %><br />
               <% end %>
             <% end %>
-            <% if document[:subject_geo_nonhier_ssim] %>
-              <% document[:subject_geo_nonhier_ssim].each do |nonhier_geo| %>
-                <%= link_to_facet(nonhier_geo, 'subject_geographic_ssim') %><br />
+            <% if document[:subject_geo_other_ssm] %>
+              <% document[:subject_geo_other_ssm].each do |geo_other| %>
+                <%= link_to_facet(geo_other, 'subject_geographic_sim') %><br />
               <% end %>
             <% end %>
           </dd>
@@ -219,7 +183,7 @@
         <% end %>
         <%# URI field %>
         <% if document[:identifier_uri_ss] %>
-          <% oai_object = true if document[:active_fedora_model_suffix_ssi] == 'OAIObject' %>
+          <% oai_object = true if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' %>
           <dt class="col-md-3"><%= oai_object ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
           <dd class="col-md-9">
             <%= link_to(document[:identifier_uri_ss],
@@ -230,34 +194,28 @@
           </dd>
       <% end %>
       <%# rights field %>
-      <% if document[:rights_ssm] || document[:license_ssm] || document[:rightsstatement_ss]  %>
+      <% if document[:rights_ss] || document[:license_ss] || document[:rightsstatement_ss]  %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
           <dd class="col-md-9">
             <% if document[:rightsstatement_ss].present? %>
               <%= document[:rightsstatement_ss] %><br />
             <% end %>
-            <% if document[:rights_ssm] %>
-              <% document[:rights_ssm].each do |rights| %>
-                <%= rights %><br />
-              <% end %>
+            <% if document[:rights_ss] %>
+              <%= document[:rights_ss] %><br />
             <% end %>
-            <% if document[:license_ssm] %>
-              <% document[:license_ssm].each do |license| %>
-                <%= license %><br />
-                <% if license.match(/\(CC\s/) %>
-                  <%= render_cc_license(license) %><br />
-                <% end %>
+            <% if document[:license_ss] %>
+              <%= document[:license_ss] %><br />
+              <% if document[:license_ss].match(/\(CC\s/) %>
+                <%= render_cc_license(document[:license_ss]) %><br />
               <% end %>
             <% end %>
           </dd>
       <% end %>
       <%# additional rights/use info field %>
-      <% if document[:restrictions_on_access_ssm]&.first.present? %>
+      <% if document[:restrictions_on_access_ss].present? %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.access') %>:</dt>
           <dd class="col-md-9">
-            <% document[:restrictions_on_access_ssm].each do |restrictions| %>
-              <%= restrictions %><br />
-            <% end %>
+            <%= document[:restrictions_on_access_ss] %><br />
           </dd>
         <% end %>
       </dl>
@@ -266,99 +224,44 @@
     <div id="item_metadata_expand" class="collapse">
       <dl class="row document-metadata">
         <%# publisher field %>
-        <% if document[:publisher_tsim] %>
+        <% if document[:publisher_tsi] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.publisher') %>:</dt>
           <dd class="col-md-9">
-            <% 0.upto document[:publisher_tsim].length-1 do |index| %>
-              <% if document[:pubplace_tsim] %>
-                <%= document[:pubplace_tsim][index] + ' : ' if document[:pubplace_tsim][index] %>
-              <% end %>
-              <%= document[:publisher_tsim][index] %><br />
+            <% if document[:pubplace_tsi] %>
+              <%= "#{document[:pubplace_tsi]} : " %>
             <% end %>
+            <%= document[:publisher_tsi] %><br />
           </dd>
         <% end %>
         <%# place of pub. field (if no publisher) %>
-        <% if document[:pubplace_tsim] && !document[:publisher_tsim] %>
+        <% if document[:pubplace_tsi] && document[:publisher_tsi].blank? %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.pubplace') %>:</dt>
           <dd class="col-md-9">
-            <% document[:pubplace_tsim].each do |pubplace| %>
-              <%= pubplace %><br />
-            <% end %>
+            <%= document[:pubplace_tsi] %><br />
           </dd>
         <% end %>
         <%# edition field %>
-        <% if document[:edition_tsim] %>
+        <% if document[:edition_name_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.edition') %>:</dt>
           <dd class="col-md-9">
-            <% document[:edition_tsim].each do |edition| %>
+            <% document[:edition_name_tsim].each do |edition| %>
               <%= edition %><br />
             <% end %>
           </dd>
         <% end %>
-        <%# note @type="performers" field %>
-        <% if document[:note_performers_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_performers') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_performers_tsim].each do |performers| %>
-              <%= performers %><br />
-            <% end %>
-          </dd>
+        <%# specific note fields %>
+        <% %w(performers venue ownership acquisition citation date reference physical
+              exhibitions arrangement language funding biographical publications credits).each do |nt| %>
+          <% if document["note_#{nt}_tsim".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.note_#{nt}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["note_#{nt}_tsim".to_sym].each do |n| %>
+                <%= n %><br />
+              <% end %>
+            </dd>
+          <% end %>
         <% end %>
-        <%# note @type="venue" field %>
-        <% if document[:note_venue_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_venue') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_venue_tsim].each do |venue| %>
-              <%= venue %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note @type="ownership" field %>
-        <% if document[:note_ownership_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_ownership') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_ownership_tsim].each do |ownership_note| %>
-              <%= ownership_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note @type="acquisition" field %>
-        <% if document[:note_acquisition_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_acquisition') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_acquisition_tsim].each do |acquisition_note| %>
-              <%= acquisition_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note @type="preferred citation" field %>
-        <% if document[:note_citation_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_citation') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_citation_tsim].each do |citation_note| %>
-              <%= citation_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note @type="date" field %>
-        <% if document[:note_date_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_date') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_date_tsim].each do |date_note| %>
-              <%= date_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note @type="citation/refernce" field %>
-        <% if document[:note_reference_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_reference') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_reference_tsim].each do |reference_note| %>
-              <%= reference_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# note field %>
+        <%# generic note field %>
         <% if document[:note_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note') %>:</dt>
           <dd class="col-md-9">
@@ -367,28 +270,19 @@
             <% end %>
           </dd>
         <% end %>
-        <%# physical description note field %>
-        <% if document[:note_physical_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note_physical') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_physical_tsim].each do |physical_note| %>
-              <%= physical_note %><br />
-            <% end %>
-          </dd>
-        <% end %>
         <%# geo scale field %>
-        <% if document[:subject_scale_tsim] %>
+        <% if document[:scale_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.scale') %>:</dt>
           <dd class="col-md-9">
-            <% document[:subject_scale_tsim].each do |scale| %>
+            <% document[:scale_tsim].each do |scale| %>
               <%= scale %><br />
             <% end %>
         <% end %>
         <%# geo projection field %>
-        <% if document[:subject_projection_tsim] %>
+        <% if document[:projection_tsi] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.projection') %>:</dt>
           <dd class="col-md-9">
-            <% document[:subject_projection_tsim].each do |projection| %>
+            <% document[:projection_tsi].each do |projection| %>
               <%= projection %><br />
             <% end %>
         <% end %>
@@ -496,14 +390,6 @@
             <% end %>
           </dd>
         <% end %>
-        <% if document[:classification_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.classification') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:classification_tsim].each do |classification| %>
-              <%= classification %><br />
-            <% end %>
-          </dd>
-        <% end %>
         <%# related item isReferencedBy field %>
         <% if document[:related_item_isreferencedby_ssm] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
@@ -553,7 +439,8 @@
     <% end %>
 
     <div id="mods_link_wrapper">
-      <%= link_to t('blacklight.tools.librarian_view.link'),
+      <%# TODO: re-enable once Curator supports MODS serialization endpoint %>
+      <%# link_to t('blacklight.tools.librarian_view.link'),
                   metadata_view_catalog_path(@document),
                   { id: 'librarianLink', rel: 'nofollow', data: { blacklight_modal: 'trigger' } } %>
     </div>

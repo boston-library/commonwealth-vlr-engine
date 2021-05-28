@@ -32,8 +32,8 @@ module CitationHelper
     citation_output += names_for_citation(document, 'mla').presence.to_s
     citation_output += title_for_citation(document, 'mla')
     citation_output += publishing_data_for_citation(document).presence.to_s
-    citation_output += if document[:date_start_tsim]
-                         date_for_citation(document[:date_start_tsim].first, 'mla')
+    citation_output += if document[:date_tsim]
+                         date_for_citation(document[:date_tsim].first, 'mla')
                        else
                          'n.d. '
                        end
@@ -47,8 +47,8 @@ module CitationHelper
     names = names_for_citation(document, 'apa')
     citation_output += names if names
     title_date_info = []
-    title_date_info << if document[:date_start_tsim]
-                         date_for_citation(document[:date_start_tsim].first, 'apa')
+    title_date_info << if document[:date_tsim]
+                         date_for_citation(document[:date_tsim].first, 'apa')
                        else
                          '(n.d.). '
                        end
@@ -68,7 +68,7 @@ module CitationHelper
     citation_output += title_for_citation(document, 'chicago')
     citation_output += "#{genre_for_citation(document[:genre_basic_ssim].first)}. " if document[:genre_basic_ssim]
     citation_output += publishing_data_for_citation(document).presence.to_s
-    citation_output += "#{render_mods_date(document[:date_start_tsim].first)}. " if document[:date_start_tsim]
+    citation_output += "#{document[:date_tsim].first}. " if document[:date_tsim]
     citation_output += "<em>#{t('blacklight.application_name')}</em>, "
     citation_output += "#{url_for_citation(document)} "
     citation_output += "(accessed #{Time.zone.today.strftime('%B %d, %Y')})."
@@ -76,31 +76,30 @@ module CitationHelper
   end
 
   # create a list of creator names
+  # TODO: need a way to distinguish corporate names from personal
   def names_for_citation(document, citation_style)
     name_and = citation_style == 'apa' ? '&' : 'and'
-    return unless document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim]
+    return if document[:name_tsim].blank?
 
     names = []
-    if document[:name_personal_tsim] || document[:name_generic_tsim]
-      non_corp_names = document[:name_personal_tsim].presence.to_a.concat(document[:name_generic_tsim].presence.to_a)
-      non_corp_names.map! { |pers_name| pers_name.gsub(/, [[d\.][ca\.][b\.] ]*\d.*/, '') }
-      # for APA, names should be "Lastname, F." format
-      if citation_style == 'apa'
-        non_corp_names = non_corp_names.map do |pers_name|
-          if pers_name.match?(/\A[\w\-']*, [A-Z]/)
-            "#{pers_name.match(/\A[\w\-']*, [A-Z]/)}."
-          else
-            pers_name
-          end
-        end
-      end
-      # for MLA and Chicago, last personal name in list should be "Firstname Lastname" format
-      if (citation_style == 'mla' || citation_style == 'chicago') && !document[:name_corporate_tsim] && non_corp_names.length > 1
-        non_corp_names[-1] = non_corp_names.last.split(', ').reverse.join(' ')
-      end
-      names.concat(non_corp_names)
+    all_names = document[:name_tsim]
+    all_names.map! { |n| n.gsub(/, [[d\.][ca\.][b\.] ]*\d.*/, '') }
+    # for APA, names should be "Lastname, F." format
+    if citation_style == 'apa'
+      all_names = all_names.map do |n|
+                    if n.match?(/\A[\w\-']*, [A-Z]/)
+                      "#{n.match(/\A[\w\-']*, [A-Z]/)}."
+                    else
+                      n
+                    end
+                  end
     end
-    names.concat(document[:name_corporate_tsim]) if document[:name_corporate_tsim]
+    # for MLA and Chicago, last personal name in list should be "Firstname Lastname" format
+    if (citation_style == 'mla' || citation_style == 'chicago') && all_names.length > 1
+      all_names[-1] = all_names.last.split(', ').reverse.join(' ')
+    end
+    names.concat(all_names)
+
     # if multiple creators, put ', ' between each, but ', and/& ' before last one
     name_output = ''
     if names.length > 1
@@ -119,14 +118,14 @@ module CitationHelper
 
   # return the publication info
   def publishing_data_for_citation(document)
-    return unless document[:pubplace_tsim] || document[:publisher_tsim]
+    return unless document[:pubplace_tsi] || document[:publisher_tsi]
 
     publishing_output = ''
-    publishing_output += document[:pubplace_tsim].first if document[:pubplace_tsim]
-    publishing_output += ': ' if document[:pubplace_tsim] && document[:publisher_tsim]
-    publishing_output += document[:publisher_tsim].first if document[:publisher_tsim]
+    publishing_output += document[:pubplace_tsi] if document[:pubplace_tsi]
+    publishing_output += ': ' if document[:pubplace_tsi] && document[:publisher_tsi]
+    publishing_output += document[:publisher_tsi] if document[:publisher_tsi]
     publishing_output.gsub!(/[\[\]]/, '')
-    "#{publishing_output}#{document[:date_start_tsim] ? ',' : '.'} "
+    "#{publishing_output}#{document[:date_tsim] ? ',' : '.'} "
   end
 
   # return date with formatting

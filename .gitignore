@@ -72,7 +72,6 @@ ehthumbs.db
 /public/data/*
 /public/assets/*
 /jetty/*
-/fedora_conf/*
 /projectFilesBackup/*
 
 # test app #

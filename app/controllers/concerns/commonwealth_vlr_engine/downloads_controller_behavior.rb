@@ -22,9 +22,9 @@ module CommonwealthVlrEngine
     # render a page/modal with license terms, download links, etc
     def show
       @doc_response, @document = search_service.fetch(params[:id])
-      if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
+      if @document[:curator_model_ssi].include? 'Filestream'
         _parent_response, @parent_document = search_service.fetch(parent_id(@document))
-        @object_profile = JSON.parse(@document['object_profile_ssm'].first)
+        @object_profile = JSON.parse(@document['attachments_ss'])
       else
         @parent_document = @document
         @object_profile = nil
@@ -41,12 +41,13 @@ module CommonwealthVlrEngine
     # initiates the file download
     def trigger_download
       _response, @solr_document = search_service.fetch(params[:id])
-      return unless !@solr_document.to_h.empty? && params[:datastream_id]
+      return unless !@solr_document.to_h.empty? && params[:filestream_id]
 
-      if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
+      if @solr_document[:curator_model_ssi].include? 'Filestream'
         @object_id = parent_id(@solr_document)
+        @attachments = JSON.parse(@solr_document[:attachments_ss])
         send_content
-      elsif @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_ObjectBase'
+      elsif @solr_document[:curator_model_ssi] == 'Curator::DigitalObject'
         @file_list = get_image_files(params[:id])
         if !@file_list.empty?
           @object_id = params[:id]
@@ -85,6 +86,7 @@ module CommonwealthVlrEngine
       @file_list.each_with_index do |file, index|
         params[:id] = file[:id] # so file_url returns correct value
         @solr_document = file
+        @attachments = JSON.parse(@solr_document[:attachments_ss])
         files_array << [file_url, "#{(index + 1)}_#{file_name_with_extension}"]
       end
       file_mappings = files_array.lazy.map { |url, path| [open(url), path] }
@@ -102,26 +104,27 @@ module CommonwealthVlrEngine
       { disposition: 'attachment', type: mime_type, filename: file_name_with_extension }
     end
 
-    # returns a Fedora datastream url or IIIF url
+    # returns a filestream url or IIIF url
     def file_url
-      if params[:datastream_id] == 'accessFull'
+      if params[:filestream_id] == 'access_full'
         iiif_image_url(params[:id], {})
       else
-        datastream_disseminator_url(params[:id], params[:datastream_id])
+        filestream_disseminator_url(@attachments[params[:filestream_id]]['key'],
+                                    params[:filestream_id], true)
       end
     end
 
     def file_extension
-      if params[:datastream_id].match?(/Master/)
-        JSON.parse(@solr_document[:object_profile_ssm].first)['objLabel'].split('.')[1]
-      else
+      if params[:filestream_id] == 'access_full'
         'jpg'
+      else
+        @attachments[params[:filestream_id]]['filename'].split('.').last
       end
     end
 
     # @return [String] the filename
     def file_name
-      "#{@object_id.tr(':', '_')}_#{params[:datastream_id]}"
+      "#{@object_id.tr(':', '_')}_#{params[:filestream_id]}"
     end
 
     # @return [String] the filename with extension
@@ -130,17 +133,21 @@ module CommonwealthVlrEngine
     end
 
     def file_size
-      return false if params[:datastream_id] == 'accessFull'
+      return false if params[:filestream_id] == 'access_full'
 
-      JSON.parse(@solr_document[:object_profile_ssm].first)['datastreams'][params[:datastream_id]]['dsSize']
+      @attachments[params[:filestream_id]]['byte_size']
     end
 
     def mime_type
-      if params[:datastream_id].match?(/Master/)
-        @solr_document[:mime_type_tesim].first
+      if params[:filestream_id].match?(/primary/)
+        @attachments[primary_file_key]['content_type']
       else
         'image/jpeg'
       end
+    end
+
+    def primary_file_key
+      @attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) }
     end
 
     def prepare_file_headers
@@ -174,7 +181,7 @@ module CommonwealthVlrEngine
     private
 
     def parent_id(document)
-      document[:is_file_of_ssim].first.gsub(/info:fedora\//, '')
+      document[:is_file_set_of_ssim].first
     end
 
     def stream_body(iostream)

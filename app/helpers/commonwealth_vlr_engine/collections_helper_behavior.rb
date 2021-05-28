@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
     # link to view all items in a collection
     def link_to_all_col_items(col_title, institution_name = nil, link_class)
       facet_params = { blacklight_config.collection_field => [col_title] }
-      facet_params[blacklight_config.institution_field] = institution_name if institution_name
+      facet_params[blacklight_config.institution_field] = [institution_name] if institution_name
       link_to(t('blacklight.collections.browse.all'),
               search_catalog_path(f: facet_params),
               class: link_class)
@@ -17,21 +17,17 @@ module CommonwealthVlrEngine
     def render_collection_image(image_tag_class = nil)
       if @collection_image_info
         image_title = @collection_image_info[:title]
-        hosted = @collection_image_info[:image_pid].match?(/oai/) ? false : true
+        hosted = @collection_image_info[:hosting_status] == 'hosted' ? true : false
         if !hosted || @collection_image_info[:access_master] == false
-          image_url = datastream_disseminator_url(@collection_image_info[:image_pid], 'thumbnail300')
+          image_url = filestream_disseminator_url(@collection_image_info[:image_key], 'image_thumbnail_300')
         else
           image_url = collection_image_url(@collection_image_info[:image_pid])
         end
         render partial: 'collection_image',
-               locals: { image_element: image_tag(image_url, alt: image_title,
-                                                  class: image_tag_class),
-                         image_title: image_title,
-                         hosted: hosted }
+               locals: { image_element: image_tag(image_url, alt: image_title, class: image_tag_class),
+                         image_title: image_title, hosted: hosted }
       else
-        image_tag(collection_icon_path,
-                  alt: @collection_title,
-                  class: image_tag_class)
+        image_tag(collection_icon_path, alt: @collection_title, class: image_tag_class)
       end
     end
 
@@ -56,7 +52,7 @@ module CommonwealthVlrEngine
     end
 
     def hosted_collection_class(document)
-      document[:id].match?(/oai/) ? 'harvested-collection' : 'hosted-collection'
+      document[blacklight_config.hosting_status_field.to_sym] == 'harvested' ? 'harvested-collection' : 'hosted-collection'
     end
 
     # whether the A-Z link menu should be displayed in collections#index

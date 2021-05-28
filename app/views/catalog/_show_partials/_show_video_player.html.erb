@@ -1,6 +1,6 @@
 <div id="img_show_container">
   <div id="img_show_canvas">
-    <%= video_tag(datastream_disseminator_url(video_pid, 'accessMaster'),
+    <%= video_tag(filestream_disseminator_url(video_key, 'video_access_mp4'),
                   class: 'img_show',
                   controls: true,
                   poster: thumbnail_url(document)) %>

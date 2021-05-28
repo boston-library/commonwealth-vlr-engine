@@ -7,9 +7,9 @@
 
     <% if t('blacklight.home.browse.institutions.enabled') %>
         <h4 class="collection-provenance">
-          <% if @document[:institution_pid_ssi] %>
-              <%= link_to(@document[blacklight_config.institution_field.to_sym][0],
-                          institutions_path + '/' + @document[:institution_pid_ssi],
+          <% if @document[:institution_ark_id_ssi] %>
+              <%= link_to(@document[blacklight_config.institution_field.to_sym],
+                          institutions_path + '/' + @document[:institution_ark_id_ssi],
                           id: 'institution_link') %>
           <% elsif @document[:physical_location_ssim] %>
               <%= @document[:physical_location_ssim][0] %>
@@ -40,11 +40,7 @@
             </div>
 
             <div id="collection_desc">
-              <% if @document[:abstract_tsim] %>
-                <% @document[:abstract_tsim].each do |abstract| %>
-                  <%= abstract.html_safe %>
-                <% end %>
-              <% end %>
+              <%= @document[:abstract_tsi].html_safe if @document[:abstract_tsi].present? %>
             </div>
           </div>
         </div>

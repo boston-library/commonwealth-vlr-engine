@@ -9,33 +9,31 @@ module CommonwealthVlrEngine
     end
 
     # keep file assets from appearing in search results
+    # we don't really need this because Filestream::* objects don't have destination_site_ssim
+    # values, so they are already excluded by CommonwealthSearchBuilderBehavior#site_filter
+    # but keeping this in case we need it in the future
     def exclude_unwanted_models(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-has_model_ssim:"info:fedora/afmodel:Bplmodels_File"'
-      solr_parameters[:fq] << '-has_model_ssim:"info:fedora/fedora-system:ContentModel-3.0"'
     end
 
     # keep draft/review and in-process items from appearing in search results
     def exclude_unpublished_items(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-workflow_state_ssi:"draft"'
-      solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
+      solr_parameters[:fq] << '-publishing_state_ssi:"draft"'
+      solr_parameters[:fq] << '-publishing_state_ssi:"needs_review"'
       solr_parameters[:fq] << '-processing_state_ssi:"derivatives"'
-      # can't implement below until all records have this field
-      # solr_parameters[:fq] << '+workflow_state_ssi:"published"'
-      # solr_parameters[:fq] << '+processing_state_ssi:"complete"'
     end
 
     # keep Institution objects out of the search results
     def exclude_institutions(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-active_fedora_model_suffix_ssi:"Institution"'
+      solr_parameters[:fq] << '-curator_model_suffix_ssi:"Institution"'
     end
 
     # keep Collection objects out of the search results
     def exclude_collections(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-active_fedora_model_suffix_ssi:"Collection"'
+      solr_parameters[:fq] << '-curator_model_suffix_ssi:"Collection"'
     end
 
     # don't return flagged items (for series images on collections#show)
@@ -47,26 +45,26 @@ module CommonwealthVlrEngine
     # limit results to a single institution
     def institution_limit(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
+      solr_parameters[:fq] << '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
     end
 
     # used by InstitutionsController#index
     def institutions_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '+active_fedora_model_suffix_ssi:"Institution"'
+      solr_parameters[:fq] << '+curator_model_suffix_ssi:"Institution"'
     end
 
     # for 'more like this' search -- set solr id param to params[:mlt_id]
     def mlt_params(solr_parameters = {})
       solr_parameters[:id] = blacklight_params[:mlt_id]
       solr_parameters[:qt] = 'mlt_qparser'
-      solr_parameters[:qf] = 'subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim'
+      solr_parameters[:qf] = 'subject_facet_ssim^10 subject_geo_city_sim^5 related_item_host_ssim'
     end
 
     # used by CollectionsController#index
     def collections_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '+active_fedora_model_suffix_ssi:"Collection"'
+      solr_parameters[:fq] << '+curator_model_suffix_ssi:"Collection"'
     end
 
     # set params for ocr field searching

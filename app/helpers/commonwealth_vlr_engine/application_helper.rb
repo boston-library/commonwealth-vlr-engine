@@ -70,9 +70,45 @@ module CommonwealthVlrEngine
       link_to(field_value + ' County', search_catalog_path(f: { field => [field_value + ' (county)'] }))
     end
 
-    # returns the direct URL to a datastream in Fedora
-    def datastream_disseminator_url pid, datastream_id
-      "#{FEDORA_URL['url']}/objects/#{pid}/datastreams/#{datastream_id}/content"
+    # returns the direct URL to a filestream blob in storage
+    # @param key [String] storage key base, e.g. "images/commonwealth:123456789"
+    # @param filestream_id [String] attachment type
+    # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
+    def filestream_disseminator_url(key, filestream_id, full_key = false)
+      return primary_filestream_url(key, filestream_id) if filestream_id.match?(/primary/)
+
+      return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
+
+      file_ext = case filestream_id
+                 when 'image_thumbnail_300', 'image_access_800'
+                   'jpg'
+                 when 'image_service'
+                   'jp2'
+                 when 'text_coordinates_access'
+                   'json'
+                 when 'video_access_mp4'
+                   'mp4'
+                 when 'video_access_webm'
+                   'webm'
+                 when 'audio_access'
+                   'mp3'
+                 when 'document_access'
+                   'pdf'
+                 when 'ebook_access_epub'
+                   'epub'
+                 when 'ebook_access_mobi'
+                   'mobi'
+                 when 'ebook_access_daisy'
+                   'zip'
+                 when 'text_plain'
+                   'txt'
+                 end
+      "#{ASSET_STORE['url']}/derivatives/#{key}/#{filestream_id}.#{file_ext}"
+    end
+
+    def primary_filestream_url(key, filestream_id)
+      # TODO: get signed url from Curator for blob in 'primary' container
+      'http://localhost:3000/foo'
     end
 
     # create an image tag from an IIIF image server

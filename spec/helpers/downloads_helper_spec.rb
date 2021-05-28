@@ -9,7 +9,7 @@ describe DownloadsHelper do
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let(:document) { SolrDocument.find(item_pid) }
   let(:files_hash) { downloads_helper_test_class.get_files(item_pid) }
-  let(:object_profile) { JSON.parse(files_hash[:images].first['object_profile_ssm'].first) }
+  let(:object_profile) { JSON.parse(files_hash[:images].first['attachments_ss']) }
   let(:download_links) { helper.create_download_links(document, files_hash) }
   let(:image_datastreams_output) { helper.image_datastreams(object_profile) }
 
@@ -114,7 +114,7 @@ describe DownloadsHelper do
     end
 
     it 'should link to the downloads controller show action with the correct datastream param' do
-      expect(file_download_link_output).to include(download_path(image_pid, datastream_id: image_datastreams_output[0]))
+      expect(file_download_link_output).to include(download_path(image_pid, filestream_id: image_datastreams_output[0]))
     end
 
     it 'should include a <span> with the file type and size' do
@@ -161,7 +161,7 @@ describe DownloadsHelper do
   describe '#url_for_download' do
     it 'returns the correct link path for a hosted item' do
       expect(helper.url_for_download(document, image_datastreams_output[0])).to include(trigger_downloads_path(item_pid,
-                                                                                                               datastream_id: image_datastreams_output[0]))
+                                                                                                               filestream_id: image_datastreams_output[0]))
     end
 
     describe 'item from Internet Archive' do

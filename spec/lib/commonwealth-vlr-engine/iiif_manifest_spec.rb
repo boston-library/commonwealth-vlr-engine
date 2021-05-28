@@ -5,7 +5,7 @@ require 'rails_helper'
 describe CommonwealthVlrEngine::IiifManifest, :vcr do
   let(:mock_controller) { IiifManifestController.new }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
-  let(:image_files) { mock_controller.get_files(document.id)[:images] }
+  let(:image_files) { mock_controller.get_image_files(document.id) }
   let(:image_id_suffix) { image_files.first.id.gsub(/\A[\w-]+:/, '/') }
 
   describe 'create_iiif_manifest' do

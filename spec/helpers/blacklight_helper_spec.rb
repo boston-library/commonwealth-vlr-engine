@@ -29,7 +29,7 @@ describe CommonwealthVlrEngine::BlacklightHelper do
 
       it 'returns the properly formatted heading' do
         expect(heading).to include document['title_info_primary_tsi']
-        expect(heading).to include document['subtitle_tsim'].first
+        expect(heading).to include document['title_info_primary_subtitle_tsi']
         expect(heading).to include document['title_info_partnum_tsi']
       end
     end
@@ -38,7 +38,7 @@ describe CommonwealthVlrEngine::BlacklightHelper do
       let(:heading) { helper.render_document_heading(document) }
 
       it 'returns the properly formatted heading' do
-        expect(heading).to include document['subtitle_tsim'].first
+        expect(heading).to include document['title_info_primary_subtitle_tsi']
       end
     end
   end

@@ -3,21 +3,21 @@
 <% doc_presenter = show_presenter(document) %>
 <% book_reader = has_searchable_text?(@document) ? true : false %>
 <% video = has_video_files?(@object_files) %>
-<% oai_object = @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' ? true : false %>
+<% oai_object = @document[blacklight_config.hosting_status_field.to_sym] == 'harvested' ? true : false %>
 
 <% if !book_reader && has_image_files?(@object_files) %>
-    <% case @object_files[:images].length %>
+    <% case @object_files[:image].length %>
     <% when 1 %>
       <%= javascript_include_tag 'openseadragon' %>
       <%= render partial: 'catalog/_show_partials/show_default_img',
                  locals: {document: @document,
-                          image_pid: @object_files[:images][0]['id'],
+                          image_key: @object_files[:image].first['storage_key_base_ss'],
                           page_sequence: {:total => 1}} %>
     <% when 2..7 %>
       <%= javascript_include_tag 'openseadragon' %>
       <%= render partial: 'catalog/_show_partials/show_multi_img',
                  locals: {document: @document,
-                          image_files: image_file_pids(@object_files[:images])} %>
+                          image_files: @object_files[:image]} %>
     <% else %>
       <% book_reader = true %>
     <% end %>
@@ -26,7 +26,7 @@
 <% if video %>
   <%= render partial: 'catalog/_show_partials/show_video_player',
              locals: { document: @document,
-                       video_pid: @object_files[:video][0]['id'] } %>
+                       video_key: @object_files[:video][0]['storage_key_base_ss'] } %>
 <% end %>
 
 <div id="show_info_wrapper" class="row">

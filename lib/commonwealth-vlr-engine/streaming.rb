@@ -42,7 +42,7 @@ module CommonwealthVlrEngine
               @uri = URI(response['location'])
               each(no_of_requests_limit, &block)
             else
-              raise "Couldn't get data from Fedora (#{uri}). Response: #{response.code}"
+              raise "Couldn't get data from storage (#{uri}). Response: #{response.code}"
             end
           end
         end

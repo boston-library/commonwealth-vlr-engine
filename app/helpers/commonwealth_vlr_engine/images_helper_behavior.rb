@@ -8,9 +8,8 @@ module CommonwealthVlrEngine
     def collection_gallery_url(document, size)
       exemplary_image_pid = document[:exemplary_image_ssi]
       if exemplary_image_pid
-        if exemplary_image_pid.match(/oai/) ||
-            document['exemplary_image_iiif_bsi'] == false
-          datastream_disseminator_url(exemplary_image_pid, 'thumbnail300')
+        if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' || document['exemplary_image_iiif_bsi'] == false
+          filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
         else
           iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
         end
@@ -67,8 +66,14 @@ module CommonwealthVlrEngine
 
     # override Blacklight::CatalogHelperBehavior: don't want to pull thumbnail url from Solr
     def thumbnail_url(document)
+      thumbnail_att_name = 'image_thumbnail_300'
       if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
-        datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300')
+        if document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
+          attachment_json = JSON.parse(document[:attachments_ss])
+          filestream_disseminator_url(attachment_json[thumbnail_att_name]['key'], thumbnail_att_name, true)
+        else
+          filestream_disseminator_url(document[:exemplary_image_key_base_ss], thumbnail_att_name)
+        end
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'

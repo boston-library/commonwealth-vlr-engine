@@ -8,7 +8,8 @@ module BlacklightIiifSearch
     # key:   solr field for image/file to object relationship
     # value: identifier to match
     def object_relation_solr_params
-      { iiif_config[:object_relation_field] => "info:fedora/#{id}" }
+      { iiif_config[:object_relation_field] => id,
+        blacklight_config.index.display_type_field => 'Image' }
     end
   end
 end

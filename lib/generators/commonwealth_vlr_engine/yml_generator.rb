@@ -11,7 +11,7 @@ module CommonwealthVlrEngine
     desc 'YmlGenerator Commonwealth VLR Engine'
 
     def config_yml_copy
-      %w(contact_emails fedora geojson_static_file google_analytics iiif_server vlr).each do |yml|
+      %w(asset_store contact_emails geojson_static_file google_analytics iiif_server vlr).each do |yml|
         source_dest = "config/#{yml}.yml"
         copy_file source_dest, source_dest unless File.exist?(source_dest)
       end

@@ -23,7 +23,7 @@
             id: "img_viewer_osd",
             prefixUrl: '',
             navImages: $.parseJSON('<%= osd_nav_images('commonwealth-vlr-engine/openseadragon').html_safe %>'),
-            tileSources: ['<%= IIIF_SERVER['url'] + image_pid + '/info.json' %>'],
+            tileSources: ['<%= IIIF_SERVER['url'] + image_key.split('/').last + '/info.json' %>'],
             autoHideControls: false,
             immediateRender: navigator.userAgent.match(/mobile/i),
             showNavigator: true,
