@@ -38,7 +38,6 @@ module CommonwealthVlrEngine
     # @image_pid_list = an ordered Array of image pids for the book object
     # @book_id = pid of book object
     def render_page_link(document, image_pid_list, book_id)
-      puts "REN PAG LINK CALLED WITH doc id: #{document.id}, image_pid_list: #{image_pid_list}, book_id: #{book_id}"
       index_of_doc = image_pid_list.index(document.id)
       page_num = document[blacklight_config.page_num_field.to_sym]
       # TODO: UV doesn't seem to allow passing query string, as in "h=#{url_encode(params[:ocr_q])}"

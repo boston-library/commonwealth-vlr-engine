@@ -42,8 +42,8 @@ module CommonwealthVlrEngine
         if k == 'continent'
           output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 1
         elsif k == 'country' && hiergeo_hash[k] == 'United States'
-          # display 'United States' only if no other values
-          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 1
+          # display 'United States' only if no other values besides continent
+          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 2
         elsif k == 'county'
           output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_sim')
         elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'

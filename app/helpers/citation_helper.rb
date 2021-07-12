@@ -87,12 +87,12 @@ module CitationHelper
     # for APA, names should be "Lastname, F." format
     if citation_style == 'apa'
       all_names = all_names.map do |n|
-                    if n.match?(/\A[\w\-']*, [A-Z]/)
-                      "#{n.match(/\A[\w\-']*, [A-Z]/)}."
-                    else
-                      n
-                    end
-                  end
+        if n.match?(/\A[\w\-']*, [A-Z]/)
+          "#{n.match(/\A[\w\-']*, [A-Z]/)}."
+        else
+          n
+        end
+      end
     end
     # for MLA and Chicago, last personal name in list should be "Firstname Lastname" format
     if (citation_style == 'mla' || citation_style == 'chicago') && all_names.length > 1
