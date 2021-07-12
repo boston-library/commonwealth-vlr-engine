@@ -395,7 +395,9 @@
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
           <dd class="col-md-9">
             <% document[:related_item_isreferencedby_ssm].each do |reference| %>
-              <%= link_to(reference, reference, target: '_blank') %><br />
+              <% ref_hash = JSON.parse(reference) %>
+              <%= link_to(ref_hash['label'] || ref_hash['url'],
+                          ref_hash['url'], target: '_blank') %><br />
             <% end %>
           </dd>
         <% end %>

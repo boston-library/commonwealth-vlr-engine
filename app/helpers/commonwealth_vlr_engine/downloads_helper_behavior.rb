@@ -29,7 +29,7 @@ module CommonwealthVlrEngine
         primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } || attachments.keys.find { |k| !k.match?(/foxml/) }
         file_name_ext = attachments[primary_file_key]['filename'].split('.')
         if document[:identifier_ia_id_ssi] || (document[:curator_model_suffix_ssi] == 'Ereader')
-          link_title = ia_download_title(file_name_ext[1])
+          link_title = ia_download_title(filestream_id, file_name_ext[1])
         else
           link_title = file_name_ext[0]
         end
@@ -56,11 +56,11 @@ module CommonwealthVlrEngine
     end
 
     # render the file type names for Internet Archive book item download links
-    def ia_download_title(file_extension)
-      case file_extension
-      when 'mobi'
+    def ia_download_title(attachment_type, file_extension)
+      case attachment_type
+      when 'ebook_access_mobi'
         'Kindle'
-      when 'zip'
+      when 'ebook_access_daisy'
         'Daisy'
       else
         file_extension.upcase
@@ -107,12 +107,18 @@ module CommonwealthVlrEngine
     # for now, we only support video_access_mp4 download
     def video_download_links(document, video_files)
       file = video_files.first
+      video_links = []
       attachments_json = JSON.parse(file['attachments_ss'])
-      [file_download_link(file['id'],
-                          download_link_title(document, attachments_json),
-                          attachments_json,
-                          'video_access_mp4',
-                          download_link_options)]
+      %w(video_access_mp4 video_access_webm).each do |v_id|
+        next unless attachments_json[v_id]
+
+        video_links << file_download_link(file['id'],
+                                          download_link_title(document, attachments_json),
+                                          attachments_json,
+                                          v_id,
+                                          download_link_options)
+      end
+      video_links
     end
 
     # everything except image and video
@@ -126,7 +132,7 @@ module CommonwealthVlrEngine
             next if attachments_json[att_type].blank?
 
             other_links << file_download_link(file['id'],
-                                              download_link_title(document, attachments_json),
+                                              download_link_title(document, attachments_json, att_type),
                                               attachments_json,
                                               att_type,
                                               download_link_options)
@@ -164,15 +170,14 @@ module CommonwealthVlrEngine
     end
 
     def file_type_string(filestream_id, attachments_json)
-      if attachments_json
+      if attachments_json && attachments_json[filestream_id]
         file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
                              'JPEG'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
-                             attachments_json['filename'].split('.')[1].upcase
+                             attachments_json[filestream_id]['filename'].split('.')[1].upcase
                            end.gsub(/TIFF/, 'TIF')
-        file_type_string += ', multi-file ZIP' if attachments_json['zip']
       else
         file_type_string = case filestream_id
                            when 'image_primary'
@@ -191,8 +196,10 @@ module CommonwealthVlrEngine
         if filestream_id == 'access_full'
           # estimate size of full JPEG based on image_primary TIF size
           number_to_human_size((attachments_json['image_primary']['byte_size'] * 0.083969078))
-        else
+        elsif attachments_json[filestream_id]
           number_to_human_size(attachments_json[filestream_id]['byte_size'])
+        else
+          'file size unavailable'
         end
       else
         'multi-file ZIP'

@@ -72,14 +72,14 @@ module CommonwealthVlrEngine
 
     # returns the direct URL to a filestream blob in storage
     # @param key [String] storage key base, e.g. "images/commonwealth:123456789"
-    # @param filestream_id [String] attachment type
+    # @param attachment_id [String] attachment type
     # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
-    def filestream_disseminator_url(key, filestream_id, full_key = false)
-      return primary_filestream_url(key, filestream_id) if filestream_id.match?(/primary/)
+    def filestream_disseminator_url(key, attachment_id, full_key = false)
+      return primary_filestream_url(key, attachment_id, full_key) if attachment_id.match?(/primary/)
 
       return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
 
-      file_ext = case filestream_id
+      file_ext = case attachment_id
                  when 'image_thumbnail_300', 'image_access_800'
                    'jpg'
                  when 'image_service'
@@ -103,12 +103,23 @@ module CommonwealthVlrEngine
                  when 'text_plain'
                    'txt'
                  end
-      "#{ASSET_STORE['url']}/derivatives/#{key}/#{filestream_id}.#{file_ext}"
+      "#{ASSET_STORE['url']}/derivatives/#{key}/#{attachment_id}.#{file_ext}"
     end
 
-    def primary_filestream_url(key, filestream_id)
-      # TODO: get signed url from Curator for blob in 'primary' container
-      'http://localhost:3000/foo'
+    # returns the signed URL to a filestream blob in 'primary' container (private)
+    # @param key [String] storage key base, e.g. "images/commonwealth:123456789"
+    # @param attachment_id [String] attachment type
+    # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
+    def primary_filestream_url(key, attachment_id, full_key = false)
+      key = key.gsub(/\/[\w\.]*\z/, '') if full_key
+      api_url = "#{CURATOR['url']}/filestreams/#{key}?show_primary_url=true"
+      curator_response = Typhoeus::Request.get(api_url)
+      if curator_response.response_code == 200 && curator_response.body.present?
+        filestream_data = JSON.parse(curator_response.body)
+        filestream_data.fetch('file_set')&.fetch("#{attachment_id}_url", '')
+      else
+        ''
+      end
     end
 
     # create an image tag from an IIIF image server

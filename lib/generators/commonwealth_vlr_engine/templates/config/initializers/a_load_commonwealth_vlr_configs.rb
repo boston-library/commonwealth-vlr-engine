@@ -12,3 +12,5 @@ CONTACT_EMAILS = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'con
 IIIF_SERVER = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'iiif_server.yml'))).result, aliases: true)[Rails.env]
 
 GEOJSON_STATIC_FILE = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'geojson_static_file.yml'))).result, aliases: true)[Rails.env]
+
+CURATOR = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'curator.yml'))).result, aliases: true)[Rails.env]
