@@ -170,14 +170,17 @@ module CommonwealthVlrEngine
     end
 
     def file_type_string(filestream_id, attachments_json)
+      puts "FILE TYPZE called with #{filestream_id}, #{attachments_json}"
       if attachments_json && attachments_json[filestream_id]
         file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
                              'JPEG'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
-                             attachments_json[filestream_id]['filename'].split('.')[1].upcase
+                             filename = attachments_json[filestream_id]['filename'] || attachments_json['filename']
+                             filename.split('.')[1].upcase
                            end.gsub(/TIFF/, 'TIF')
+        file_type_string += ', multi-file ZIP' if attachments_json['zip']
       else
         file_type_string = case filestream_id
                            when 'image_primary'
