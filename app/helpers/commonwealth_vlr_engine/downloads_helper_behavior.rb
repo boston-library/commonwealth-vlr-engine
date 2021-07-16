@@ -170,7 +170,6 @@ module CommonwealthVlrEngine
     end
 
     def file_type_string(filestream_id, attachments_json)
-      puts "FILE TYPZE called with #{filestream_id}, #{attachments_json}"
       if attachments_json && attachments_json[filestream_id]
         file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
                              'JPEG'
