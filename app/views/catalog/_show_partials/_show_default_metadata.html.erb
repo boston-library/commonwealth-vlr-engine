@@ -144,10 +144,10 @@
           </dd>
         <% end %>
         <%# topic field %>
-        <% if document[:subject_topic_tsim] || document[:subject_name_tsim] || document[:subject_title_tsim] || document[:subject_temporal_tsim] %>
+        <% if document[:subject_topic_tsim] || document[:subject_name_tsim] || document[:subject_title_tsim] || document[:subject_temporal_tsim] || document[:subject_date_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
           <dd class="col-md-9">
-            <% %i[subject_topic_tsim subject_name_tsim subject_title_tsim subject_temporal_tsim].each do |skey| %>
+            <% %i[subject_topic_tsim subject_name_tsim subject_title_tsim subject_temporal_tsim subject_date_tsim].each do |skey| %>
               <% if document[skey] %>
                 <% document[skey].each do |s| %>
                   <%= link_to_facet(s, 'subject_facet_ssim') %><br />
