@@ -8,20 +8,26 @@ describe DownloadsHelper do
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let(:document) { SolrDocument.find(item_pid) }
-  let(:files_hash) { downloads_helper_test_class.get_files(item_pid) }
-  let(:object_profile) { JSON.parse(files_hash[:images].first['attachments_ss']) }
+  let(:video_pid) { 'bpl-dev:cj82k895q' }
+  let(:document_pid) { 'bpl-dev:ff365636z' }
+  let(:files_hash) do
+    fh = downloads_helper_test_class.get_files(item_pid)
+    # add a video and document file so we can test download links
+    fh[:video] = [SolrDocument.find(video_pid)]
+    fh[:document] = [SolrDocument.find(document_pid)]
+    fh
+  end
+  let(:object_profile) { JSON.parse(files_hash[:image].first['attachments_ss']) }
   let(:download_links) { helper.create_download_links(document, files_hash) }
-  let(:image_datastreams_output) { helper.image_datastreams(object_profile) }
+  let(:image_filestreams_output) { helper.image_filestreams(object_profile) }
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
-    # copy :images to :documents/:video, as don't have any non-image items to test with at the moment
-    files_hash[:documents] = [files_hash[:images].first]
-    files_hash[:video] = [files_hash[:images].last]
   end
 
   describe '#create_download_links' do
     it 'returns an array of links' do
+      puts "DOWNLOAD LINKS = #{download_links}"
       expect(download_links.length).to eq(5)
       expect(download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
@@ -59,20 +65,20 @@ describe DownloadsHelper do
 
   describe '#ia_download_title' do
     it 'returns the correct download title' do
-      expect(helper.ia_download_title('mobi')).to eq('Kindle')
-      expect(helper.ia_download_title('zip')).to eq('Daisy')
+      expect(helper.ia_download_title('ebook_access_mobi', 'mobi')).to eq('Kindle')
+      expect(helper.ia_download_title('ebook_access_daisy', 'zip')).to eq('Daisy')
     end
   end
 
-  describe '#image_datastreams' do
+  describe '#image_filestreams' do
     it 'returns an array of image datastream ids' do
-      expect(image_datastreams_output.class).to eq(Array)
-      expect(image_datastreams_output[0]).to eq('productionMaster')
+      expect(image_filestreams_output.class).to eq(Array)
+      expect(image_filestreams_output[0]).to eq('image_primary')
     end
   end
 
   describe '#image_download_links' do
-    let(:image_download_links) { helper.image_download_links(document, files_hash[:images]) }
+    let(:image_download_links) { helper.image_download_links(document, files_hash[:image]) }
 
     it 'returns an array of links' do
       expect(image_download_links.length).to eq(3)
@@ -106,7 +112,7 @@ describe DownloadsHelper do
 
   describe '#file_download_link' do
     let(:file_download_link_output) do
-      helper.file_download_link(image_pid, 'foo', object_profile, image_datastreams_output[0])
+      helper.file_download_link(image_pid, 'foo', object_profile, image_filestreams_output[0])
     end
 
     it 'returns a link' do
@@ -114,27 +120,27 @@ describe DownloadsHelper do
     end
 
     it 'should link to the downloads controller show action with the correct datastream param' do
-      expect(file_download_link_output).to include(download_path(image_pid, filestream_id: image_datastreams_output[0]))
+      expect(file_download_link_output).to include(download_path(image_pid, filestream_id: image_filestreams_output[0]))
     end
 
     it 'should include a <span> with the file type and size' do
       expect(file_download_link_output).to include('<span')
       expect(file_download_link_output).to include('TIF')
-      expect(file_download_link_output).to include('10.5 MB')
+      expect(file_download_link_output).to include('230 MB')
     end
   end
 
   describe '#file_type_string' do
     it 'returns the correct file type' do
-      expect(helper.file_type_string(image_datastreams_output[0], object_profile)).to eq('TIF')
-      expect(helper.file_type_string(image_datastreams_output[1], nil)).to eq('JPEG')
+      expect(helper.file_type_string(image_filestreams_output[0], object_profile)).to eq('TIF')
+      expect(helper.file_type_string(image_filestreams_output[1], nil)).to eq('JPEG')
     end
   end
 
   describe '#file_size_string' do
     it 'returns the correct file size' do
-      expect(helper.file_size_string(image_datastreams_output[0], object_profile)).to eq('10.5 MB')
-      expect(helper.file_size_string(image_datastreams_output[1], nil)).to eq('multi-file ZIP')
+      expect(helper.file_size_string(image_filestreams_output[0], object_profile)).to eq('230 MB')
+      expect(helper.file_size_string(image_filestreams_output[1], nil)).to eq('multi-file ZIP')
     end
   end
 
@@ -145,23 +151,23 @@ describe DownloadsHelper do
   end
 
   describe '#setup_zip_object_profile' do
-    let(:zip_object_profile) { helper.setup_zip_object_profile(files_hash[:images], image_datastreams_output[0]) }
+    let(:zip_object_profile) { helper.setup_zip_attachments(files_hash[:image], image_filestreams_output[0]) }
 
     it 'returns a hash with the right structure' do
       expect(zip_object_profile['zip']).to be_truthy
-      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize']).to be_truthy
+      expect(zip_object_profile[image_filestreams_output[0]]['byte_size']).to be_truthy
     end
 
     # should be greater than 10.5 MB
     it 'should estimate the zip size' do
-      expect(zip_object_profile['datastreams'][image_datastreams_output[0]]['dsSize'] > 11_010_048).to be_truthy
+      expect(zip_object_profile[image_filestreams_output[0]]['byte_size'] > 11_010_048).to be_truthy
     end
   end
 
   describe '#url_for_download' do
     it 'returns the correct link path for a hosted item' do
-      expect(helper.url_for_download(document, image_datastreams_output[0])).to include(trigger_downloads_path(item_pid,
-                                                                                                               filestream_id: image_datastreams_output[0]))
+      expect(helper.url_for_download(document, image_filestreams_output[0])).to include(trigger_downloads_path(item_pid,
+                                                                                                               filestream_id: image_filestreams_output[0]))
     end
 
     describe 'item from Internet Archive' do

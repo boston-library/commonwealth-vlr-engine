@@ -32,7 +32,8 @@ describe CollectionsController, :vcr do
 
     it 'should set @collection_image_info' do
       expect(assigns(:collection_image_info)).to eq(
-        { image_pid: 'bpl-dev:h702q642n', title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true }
+        { image_pid: 'bpl-dev:h702q642n', title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true,
+          hosting_status: 'hosted', image_key: 'images/bpl-dev:h702q642n' }
       )
     end
 
@@ -106,8 +107,10 @@ describe CollectionsController, :vcr do
     describe 'collection_image_info' do
       let(:collection_image_pid) { 'bpl-dev:h702q642n' }
       it 'returns a hash with the collection image object title and pid' do
-        expect(mock_controller.send(:collection_image_info, collection_image_pid, collection_pid)).to eq(
-          { image_pid: collection_image_pid, title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true }
+        expect(mock_controller.send(:collection_image_info, collection_image_pid, "images/#{collection_image_pid}",
+                                    collection_pid, 'hosted')).to eq(
+          { image_pid: collection_image_pid, title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true,
+            hosting_status: 'hosted', image_key: 'images/bpl-dev:h702q642n' }
         )
       end
     end

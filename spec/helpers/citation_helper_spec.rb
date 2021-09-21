@@ -39,7 +39,7 @@ describe CitationHelper do
 
   describe '#render_apa_citation' do
     it 'returns a formatted citation' do
-      expect(helper.render_apa_citation(document)).to include('(1859)')
+      expect(helper.render_apa_citation(document)).to include('(ca. 1859–1870)')
     end
   end
 
@@ -66,8 +66,8 @@ describe CitationHelper do
 
   describe '#date_for_citation' do
     it 'returns a properly formatted date' do
-      expect(helper.date_for_citation(document[:date_tsim].first, 'apa')).to include('(1859).')
-      expect(helper.date_for_citation(document[:date_tsim].first, 'mla')).to include('1859.')
+      expect(helper.date_for_citation(document[:date_tsim].first, 'apa')).to include('(ca. 1859–1870).')
+      expect(helper.date_for_citation(document[:date_tsim].first, 'mla')).to include('1859–1870.')
     end
   end
 

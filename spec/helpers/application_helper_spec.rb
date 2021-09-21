@@ -21,7 +21,7 @@ describe ApplicationHelper, :vcr do
 
   describe '#render_object_icon_path' do
     it 'returns the right value' do
-      expect(helper.render_object_icon_path('sound recording')).to eq('commonwealth-vlr-engine/dc_audio-icon.png')
+      expect(helper.render_object_icon_path('Audio')).to eq('commonwealth-vlr-engine/dc_audio-icon.png')
       expect(helper.render_object_icon_path('dfsdsdg')).to eq('commonwealth-vlr-engine/dc_text-icon.png')
     end
   end
@@ -50,7 +50,9 @@ describe ApplicationHelper, :vcr do
 
   describe '#filestream_disseminator_url' do
     it 'creates a path to the filestream' do
-      expect(helper.filestream_disseminator_url(image_key, 'image_service')).to eq("#{ASSET_STORE['url']}/images/#{image_pid}/image_service.jp2")
+      expect(helper.filestream_disseminator_url("images/#{image_pid}", 'image_service')).to eq(
+        "#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_service.jp2"
+      )
     end
   end
 

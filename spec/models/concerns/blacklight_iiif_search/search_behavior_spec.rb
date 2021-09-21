@@ -23,7 +23,7 @@ RSpec.describe BlacklightIiifSearch::SearchBehavior do
 
     it 'returns a hash with the correct content' do
       expect(subject.keys).to include('is_file_set_of_ssim')
-      expect(subject.values).to include("info:fedora/#{parent_id}")
+      expect(subject.values).to include(parent_id)
     end
   end
 end

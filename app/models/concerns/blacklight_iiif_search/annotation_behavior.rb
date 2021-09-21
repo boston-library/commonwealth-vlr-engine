@@ -26,7 +26,7 @@ module BlacklightIiifSearch
         return default unless matches
 
         term_coords_array = matches.values.flatten(1)[hl_index]
-        return default unless djvu_coords_array
+        return default unless term_coords_array
 
         width = term_coords_array[2] - term_coords_array[0]
         height = term_coords_array[1] - term_coords_array[3]
