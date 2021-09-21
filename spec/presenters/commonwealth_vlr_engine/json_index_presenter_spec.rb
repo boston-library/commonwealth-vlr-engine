@@ -16,7 +16,7 @@ RSpec.describe CommonwealthVlrEngine::JsonIndexPresenter, api: true do
     end
 
     it 'returns the value as an array' do
-      expect(presenter.display_type).to eq ['PhotographicPrint']
+      expect(presenter.display_type).to eq ['DigitalObject']
     end
   end
 

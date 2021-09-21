@@ -6,7 +6,7 @@ describe DownloadsController, :vcr do
   render_views
 
   let(:item_id) { 'bpl-dev:h702q6403' }
-  let(:filestream_id) { 'access800' }
+  let(:filestream_id) { 'image_access_800' }
   let(:first_image_pid) { 'bpl-dev:h702q641c' }
 
   describe "GET 'show'" do

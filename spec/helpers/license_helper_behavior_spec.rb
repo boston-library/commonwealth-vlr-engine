@@ -5,7 +5,7 @@ require 'rails_helper'
 describe CommonwealthVlrEngine::LicenseHelperBehavior do
   describe 'Creative Commons license helpers' do
     let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
-    let(:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/4.0' }
+    let(:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/4.0/' }
 
     describe '#cc_terms_code' do
       it 'returns the right value' do

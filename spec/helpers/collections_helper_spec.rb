@@ -16,7 +16,7 @@ describe CollectionsHelper, :vcr do
     end
     it 'creates a search link with the correct collection and institution params' do
       expect(coll_items_link).to include("#{blacklight_config.collection_field}%5D%5B%5D=Foo+Collection")
-      expect(coll_items_link).to include("#{blacklight_config.institution_field}%5D=Bar+Institution")
+      expect(coll_items_link).to include("#{blacklight_config.institution_field}%5D%5B%5D=Bar+Institution")
     end
   end
 

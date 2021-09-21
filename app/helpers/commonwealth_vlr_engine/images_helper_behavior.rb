@@ -4,7 +4,9 @@
 module CommonwealthVlrEngine
   module ImagesHelperBehavior
     # return the image url for the collection gallery view document
-    # size = pixel length of square IIIF-created image
+    # @param document [SolrDocument] = Curator::Collection Solr document
+    # @param size [String] = pixel length of square IIIF-created image
+    # @return [String]
     def collection_gallery_url(document, size)
       exemplary_image_pid = document[:exemplary_image_ssi]
       if exemplary_image_pid

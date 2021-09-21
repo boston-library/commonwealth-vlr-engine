@@ -7,7 +7,7 @@ describe CommonwealthVlrEngine::Controller do
 
   describe 'create_img_sequence' do
     let(:current_img_pid) { 'bpl-dev:h702q642n' }
-    let(:image_files) { ['bpl-dev:h702q641c', current_img_pid] }
+    let(:image_files) { [SolrDocument.find('bpl-dev:h702q641c'), SolrDocument.find(current_img_pid)] }
     let(:image_sequence) { mock_controller.create_img_sequence(image_files, current_img_pid) }
 
     it 'sets the index to the correct value' do
@@ -15,7 +15,7 @@ describe CommonwealthVlrEngine::Controller do
     end
 
     it 'sets the previous image to the correct value' do
-      expect(image_sequence[:prev]).to eq(image_files[0])
+      expect(image_sequence[:prev]).to eq(image_files.first[:id])
     end
 
     it 'sets the next image to the correct value' do

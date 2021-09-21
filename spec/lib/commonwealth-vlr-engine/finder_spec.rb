@@ -12,7 +12,7 @@ describe CommonwealthVlrEngine::Finder do
     let(:return_hash) { mock_controller.get_files(item_pid) }
 
     it 'creates a hash with the file objects' do
-      expect(return_hash.length).to eq(6)
+      expect(return_hash.length).to eq(5)
     end
 
     it 'has an :images key with a hash of Curator::Filestreams::Image SolrDocs as the value' do
@@ -32,7 +32,7 @@ describe CommonwealthVlrEngine::Finder do
 
     # TODO: specs for each file type (need sample docs for all file types)
     it 'has keys for other file types' do
-      %i(document audio ereader video generic).each do |k|
+      %i(document audio ereader video).each do |k|
         expect(return_hash[k]).not_to be_nil
       end
     end

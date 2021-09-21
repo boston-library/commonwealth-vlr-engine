@@ -15,7 +15,9 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
 
   describe '#collection_gallery_url' do
     it 'returns a thumbnail datastream if this is an OAI-harvested item' do
-      expect(helper.collection_gallery_url({ exemplary_image_ssi: 'oai-dev:123456' }, '300')).to include('oai-dev:123456/datastreams/thumbnail300/content')
+      expect(helper.collection_gallery_url({ exemplary_image_ssi: 'oai-dev:123456', hosting_status_ssi: 'harvested',
+                                             exemplary_image_key_base_ss: 'metadata/oai-dev:123456' },
+                                           '300')).to include('oai-dev:123456/image_thumbnail_300.jpg')
     end
 
     it 'returns a IIIF URL if this is a repository item' do
@@ -63,7 +65,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
     describe '#create_thumb_img_element' do
       it 'returns an image tag with the thumbnail image' do
         expect(helper.create_thumb_img_element(document).match(/\A<img[\s\S]+\/>\z/)).to be_truthy
-        expect(helper.create_thumb_img_element(document)).to include("src=\"#{FEDORA_URL['url']}/objects/#{image_pid}/datastreams/thumbnail300/content")
+        expect(helper.create_thumb_img_element(document)).to include("src=\"#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
       end
     end
 
@@ -71,7 +73,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
       let(:document_to_hash) { document.to_h }
 
       it 'returns the datastream path if there is an exemplary_image_ssi value' do
-        expect(helper.thumbnail_url(document)).to eq("#{FEDORA_URL['url']}/objects/#{image_pid}/datastreams/thumbnail300/content")
+        expect(helper.thumbnail_url(document)).to eq("#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
       end
 
       describe 'with no exemplary image' do

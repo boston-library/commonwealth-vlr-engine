@@ -95,7 +95,7 @@ module CommonwealthVlrEngine
       collection.metadata = manifest_metadata(document)
       collection.description = 'This document describes an IIIF Collection, which points to a series of IIIF Manifests comprising the individual items in this multi-volume work'
       if document[:license_ss]
-        collection.license = cc_url(license) if license.match?(/\(CC\s/)
+        collection.license = cc_url(document[:license_ss]) if document[:license_ss].match?(/\(CC\s/)
       end
       collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
       manifest_docs.each do |manifest_doc|
