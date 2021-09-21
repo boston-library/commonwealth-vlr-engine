@@ -11,10 +11,10 @@ class TestAppGenerator < Rails::Generators::Base
     env_vars = %q(VLR_SITE_ID=commonwealth
 VLR_INSTITUTION_PID=bpl-dev:abcd12345
 GEOJSON_PATH=lib/assets/static_geojson_catalog-map.json
-IIIF_URL=
-AZURE_STORAGE_ACCOUNT_NAME=devstoreaccount1
-AZURE_STORAGE_ACCOUNT_ENDPOINT=http://127.0.0.1:8888/$AZURE_STORAGE_ACCOUNT_NAME
-CURATOR_API_URL=
+IIIF_URL=https://iiif-dc3dev.bpl.org/iiif/2/
+AZURE_STORAGE_ACCOUNT_NAME=bpltestaccount
+AZURE_STORAGE_ACCOUNT_ENDPOINT=https://$AZURE_STORAGE_ACCOUNT_NAME.blob.core.windows.net
+CURATOR_API_URL=https://curator-dc3dev.bpl.org/api
     )
     File.open('.env', 'w') { |f| f.write(env_vars) }
   end
