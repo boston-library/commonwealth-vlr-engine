@@ -98,7 +98,7 @@ describe CommonwealthVlrEngine::IiifManifest, :vcr do
     end
 
     it 'has the right id' do
-      expect(collection['@id']).to eq(document[:identifier_uri_ss].gsub(/\/[\w]+\z/, '/collection\\0'))
+      expect(collection['@id']).to eq("#{document[:identifier_uri_ss]}/iiif_collection")
     end
   end
 

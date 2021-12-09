@@ -88,7 +88,7 @@ module CommonwealthVlrEngine
     # document = SolrDocument of series object
     # manifest_docs = Array of SolrDocument of volume-level objects
     def collection_for_manifests(document, manifest_docs)
-      collection = IIIF::Presentation::Collection.new('@id' => document[:identifier_uri_ss].gsub(/\/[\w]+\z/, '/collection\\0'))
+      collection = IIIF::Presentation::Collection.new('@id' => "#{document[:identifier_uri_ss]}/iiif_collection")
       collection.label = 'Multi-part work description'
       collection.viewing_hint = 'multi-part'
       collection.attribution = manifest_attribution(document).presence
