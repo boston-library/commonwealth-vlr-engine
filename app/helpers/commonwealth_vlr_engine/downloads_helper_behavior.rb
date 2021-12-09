@@ -176,6 +176,8 @@ module CommonwealthVlrEngine
                              'JPEG'
                            elsif filestream_id == 'audio_access'
                              'MP3'
+                           elsif filestream_id == 'audio_primary'
+                             'WAV'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
