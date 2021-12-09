@@ -26,7 +26,9 @@ module CommonwealthVlrEngine
       if !attachments || (document[:curator_model_suffix_ssi] == 'Image')
         link_title = t("blacklight.downloads.images.#{filestream_id}")
       else
-        primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } || attachments.keys.find { |k| !k.match?(/foxml/) }
+        primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } ||
+                           attachments.keys.find { |k| k.match?(filestream_id) } ||
+                           attachments.keys.find { |k| !k.match?(/foxml/) }
         file_name_ext = attachments[primary_file_key]['filename'].split('.')
         if document[:identifier_ia_id_ssi] || (document[:curator_model_suffix_ssi] == 'Ereader')
           link_title = ia_download_title(filestream_id, file_name_ext[1])
@@ -43,7 +45,6 @@ module CommonwealthVlrEngine
        has_downloadable_video?(document, files_hash) ||
        files_hash[:document].present? ||
        files_hash[:audio].present? ||
-       # files_hash[:generic].present? ||
        files_hash[:ereader].present?)
     end
 
@@ -173,6 +174,8 @@ module CommonwealthVlrEngine
       if attachments_json && attachments_json[filestream_id]
         file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
                              'JPEG'
+                           elsif filestream_id == 'audio_access'
+                             'MP3'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
