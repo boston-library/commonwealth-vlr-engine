@@ -201,8 +201,9 @@ module CommonwealthVlrEngine
     def file_size_string(filestream_id, attachments_json)
       if attachments_json
         if filestream_id == 'access_full'
-          # estimate size of full JPEG based on image_primary TIF size
-          number_to_human_size((attachments_json['image_primary']['byte_size'] * 0.083969078))
+          # estimate size of full JPEG based on image_primary or image_service size
+          estimate_filestream = attachments_json['image_primary'] || attachments_json['image_service']
+          number_to_human_size((estimate_filestream['byte_size'] * 0.083969078))
         elsif attachments_json[filestream_id]
           number_to_human_size(attachments_json[filestream_id]['byte_size'])
         else
@@ -224,7 +225,7 @@ module CommonwealthVlrEngine
     # create a composite attachments_json object from multiple file objects
     # used to display size of ZIP archive
     def setup_zip_attachments(image_files, filestream_id)
-      filestream_id_to_use = filestream_id == 'access_full' ? 'image_primary' : filestream_id
+      filestream_id_to_use = filestream_id == 'access_full' ? 'image_service' : filestream_id
       attachments = { zip: true,
                       filename: filestream_id == 'image_primary' ? '.TIF' : '.JPEG',
                       filestream_id_to_use.to_sym => {} }
