@@ -178,6 +178,8 @@ module CommonwealthVlrEngine
                              'MP3'
                            elsif filestream_id == 'audio_primary'
                              'WAV'
+                           elsif filestream_id == 'text_plain'
+                             'TXT'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
