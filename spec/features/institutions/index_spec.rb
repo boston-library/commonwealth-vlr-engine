@@ -31,7 +31,7 @@ describe 'Institutions#index view' do
     end
 
     it 'has the correct path in the Start Over link' do
-      within('#start_over_wrapper') do
+      within('#appliedParams') do
         expect(page).to have_selector("a[href*='/institutions']")
       end
     end
