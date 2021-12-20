@@ -23,6 +23,7 @@ describe ApplicationHelper, :vcr do
     it 'returns the right value' do
       expect(helper.render_object_icon_path('Audio')).to eq('commonwealth-vlr-engine/dc_audio-icon.png')
       expect(helper.render_object_icon_path('dfsdsdg')).to eq('commonwealth-vlr-engine/dc_text-icon.png')
+      expect(helper.render_object_icon_path(nil)).to eq('commonwealth-vlr-engine/dc_text-icon.png')
     end
   end
 
