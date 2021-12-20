@@ -277,14 +277,14 @@
             <% document[:scale_tsim].each do |scale| %>
               <%= scale %><br />
             <% end %>
+          </dd>
         <% end %>
         <%# geo projection field %>
         <% if document[:projection_tsi] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.projection') %>:</dt>
           <dd class="col-md-9">
-            <% document[:projection_tsi].each do |projection| %>
-              <%= projection %><br />
-            <% end %>
+            <%= document[:projection_tsi] %>
+          </dd>
         <% end %>
         <%# lang field %>
         <% if document[:lang_term_ssim] %>
