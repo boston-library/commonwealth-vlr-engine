@@ -35,6 +35,19 @@ module CommonwealthVlrEngine
       end
     end
 
+    def date_qualifier(date_type)
+      case date_type
+      when 'dateCreated'
+        'created'
+      when 'dateIssued'
+        'issued'
+      when 'copyrightDate'
+        'copyright'
+      else
+        ''
+      end
+    end
+
     # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
     def render_hiergo_subject(geojson_feature, separator, separator_class = nil)
       output_array = []

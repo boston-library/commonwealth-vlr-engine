@@ -18,6 +18,12 @@ describe CommonwealthVlrEngine::MetadataHelperBehavior, :vcr do
     end
   end
 
+  describe '#date_qualifier' do
+    it 'returns date qualifier values' do
+      expect(helper.date_qualifier('copyrightDate')).to eq('copyright')
+    end
+  end
+
   describe '#render_hiergo_subject' do
     subject { helper.render_hiergo_subject(document[:subject_hiergeo_geojson_ssm].first, ' | ') }
 
