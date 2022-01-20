@@ -10,8 +10,10 @@ module CommonwealthVlrEngine
       return true if !keys_to_eval.grep(/note/).empty? || !keys_to_eval.grep(/identifier/).empty?
 
       # other fields, roughly in order of how often they appear in metadata records
-      other_expand_fields = %w(lang_term_ssim pubplace_tsi local_accession_id_tsim publisher_tsi scale_tsim
-                               edition_name_tsim table_of_contents_tsi related_item_isreferencedby_ssm)
+      other_expand_fields = %w(lang_term_ssim pubplace_tsi publisher_tsi scale_tsim projection_tsi
+                               edition_name_tsi table_of_contents_tsi table_of_contents_url_ss
+                               related_item_constituent_tsim related_item_other_format_tsim
+                               related_item_references_ssm related_item_review_ssm related_item_isreferencedby_ssm)
       other_expand_fields.each do |field_key|
         return true if keys_to_eval.include? field_key
       end

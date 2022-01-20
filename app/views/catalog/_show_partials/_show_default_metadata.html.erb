@@ -127,17 +127,28 @@
             <%= link_to_facets([document[:related_item_series_ssi], document[:related_item_host_ssim].first],
                                %w[related_item_series_ssi related_item_host_ssim]) %>
             <% if document[:related_item_subseries_ssi] %>
-              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
               <%= link_to_facets([document[:related_item_subseries_ssi],
                                   document[:related_item_series_ssi]],
                                  %w[related_item_subseries_ssi related_item_series_ssi]) %>
             <% end %>
             <% if document[:related_item_subsubseries_ssi] %>
-              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
               <%= link_to_facets([document[:related_item_subsubseries_ssi],
                                   document[:related_item_subseries_ssi],
                                   document[:related_item_series_ssi]],
                                  %w[related_item_subsubseries_ssi
+                                    related_item_subseries_ssi
+                                    related_item_series_ssi]) %>
+            <% end %>
+            <% if document[:related_item_subsubsubseries_ssi] %>
+              <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
+              <%= link_to_facets([document[:related_item_subsubsubseries_ssi],
+                                  document[:related_item_subsubseries_ssi],
+                                  document[:related_item_subseries_ssi],
+                                  document[:related_item_series_ssi]],
+                                 %w[related_item_subsubsubseries_ssi
+                                    related_item_subsubseries_ssi
                                     related_item_subseries_ssi
                                     related_item_series_ssi]) %>
             <% end %>
@@ -240,24 +251,12 @@
             <%= document[:pubplace_tsi] %><br />
           </dd>
         <% end %>
-        <%# edition field %>
-        <% if document[:edition_name_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.edition') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:edition_name_tsim].each do |edition| %>
-              <%= edition %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# specific note fields %>
-        <% %w(performers venue ownership acquisition citation date reference physical
-              exhibitions arrangement language funding biographical publications credits).each do |nt| %>
-          <% if document["note_#{nt}_tsim".to_sym] %>
-            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.note_#{nt}") %>:</dt>
+        <%# publication data fields %>
+        <% %w(edition_name edition_number volume issue_number).each do |pd_field_base| %>
+          <% if document["#{pd_field_base}_tsi".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.#{pd_field_base}") %>:</dt>
             <dd class="col-md-9">
-              <% document["note_#{nt}_tsim".to_sym].each do |n| %>
-                <%= n %><br />
-              <% end %>
+              <%= document["#{pd_field_base}_tsi".to_sym] %>
             </dd>
           <% end %>
         <% end %>
@@ -269,6 +268,18 @@
               <%= note %><br/>
             <% end %>
           </dd>
+        <% end %>
+        <%# specific note fields %>
+        <% %w(performers venue ownership acquisition citation date reference physical bibliography
+              exhibitions arrangement language funding biographical publications credits).each do |nt| %>
+          <% if document["note_#{nt}_tsim".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.note_#{nt}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["note_#{nt}_tsim".to_sym].each do |n| %>
+                <%= n %><br />
+              <% end %>
+            </dd>
+          <% end %>
         <% end %>
         <%# geo scale field %>
         <% if document[:scale_tsim] %>
@@ -291,6 +302,7 @@
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.language') %>:</dt>
           <dd class="col-md-9">
             <% document[:lang_term_ssim].each do |lang| %>
+              <%= link_to_facet(lang, 'lang_term_ssim') %>
               <%= lang %><br/>
             <% end %>
           </dd>
@@ -304,92 +316,48 @@
             <% end %>
           </dd>
         <% end %>
-        <%# relatedItem @type='constituent' field %>
-        <% if document[:related_item_constituent_ssim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.constituent') %>:</dt>
+        <%# TOC URL field %>
+        <% if document[:table_of_contents_url_ss] %>
+          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.toc_url') %>:</dt>
           <dd class="col-md-9">
-            <% document[:related_item_constituent_ssim].each do |constituent| %>
-              <% constituent.split('--').each do |constituent_entry| %>
-                <%= constituent_entry.strip %><br />
-              <% end %>
-            <% end %>
+            <%= link_to(document[:table_of_contents_url_ss],
+                        document[:table_of_contents_url_ss],
+                        target: '_blank') %>
           </dd>
         <% end %>
-        <%# local-accession id field %>
-        <% if document[:identifier_local_accession_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_local_acc') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:identifier_local_accession_tsim].each do |accession| %>
-              <%= accession %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# local-other id field %>
-        <% if document[:identifier_local_other_tsim] || document[:identifier_local_other_invalid_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_local_other') %>:</dt>
-          <dd class="col-md-9">
-            <% if document[:identifier_local_other_tsim] %>
-              <% document[:identifier_local_other_tsim].each do |local_other| %>
-                <%= local_other %><br />
+        <%# local-accession, local-other, local-call local-barcode id fields %>
+        <% %w[accession other call barcode].each do |id_base| %>
+          <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
+          <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
+          <% if document[fn] || document[fn_invalid] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
+            <dd class="col-md-9">
+              <% if document[fn] %>
+                <% document[fn].each do |id_value| %>
+                  <%= id_value %><br />
+                <% end %>
               <% end %>
-            <% end %>
-            <% if document[:identifier_local_other_invalid_tsim] %>
-              <% document[:identifier_local_other_invalid_tsim].each do |local_other_invalid| %>
-                <%= local_other_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+              <% if document[fn_invalid] %>
+                <% document[fn_invalid].each do |id_value_invalid| %>
+                  <%= id_value_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+                <% end %>
               <% end %>
-            <% end %>
-          </dd>
+            </dd>
+          <% end %>
         <% end %>
-        <%# local-call id field %>
-        <% if document[:identifier_local_call_tsim] || document[:identifier_local_call_invalid_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_local_call') %>:</dt>
-          <dd class="col-md-9">
-            <% if document[:identifier_local_call_tsim] %>
-              <% document[:identifier_local_call_tsim].each do |local_call| %>
-                <%= local_call %><br />
+        <%# other identifier fields %>
+        <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher
+              sici videorecording].each do |id_base| %>
+          <% if document["identifier_#{id_base}_ssim".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_#{id_base}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["identifier_#{id_base}_ssim".to_sym].each do |id_value| %>
+                <%= id_value %><br />
               <% end %>
-            <% end %>
-            <% if document[:identifier_local_call_invalid_tsim] %>
-              <% document[:identifier_local_call_invalid_tsim].each do |local_call_invalid| %>
-                <%= local_call_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
-              <% end %>
-            <% end %>
-          </dd>
+            </dd>
+          <% end %>
         <% end %>
-        <%# local-barcode id field %>
-        <% if document[:identifier_local_barcode_tsim] || document[:identifier_local_barcode_invalid_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_local_barcode') %>:</dt>
-          <dd class="col-md-9">
-            <% if document[:identifier_local_barcode_tsim] %>
-              <% document[:identifier_local_barcode_tsim].each do |barcode| %>
-                <%= barcode %><br />
-              <% end %>
-            <% end %>
-            <% if document[:identifier_local_barcode_invalid_tsim] %>
-              <% document[:identifier_local_barcode_invalid_tsim].each do |barcode_invalid| %>
-                <%= barcode_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
-              <% end %>
-            <% end %>
-          </dd>
-        <% end %>
-        <%# isbn id field %>
-        <% if document[:identifier_isbn_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_isbn') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:identifier_isbn_tsim].each do |isbn| %>
-              <%= isbn %><br />
-            <% end %>
-          </dd>
-        <% end %>
-        <%# lccn id field %>
-        <% if document[:identifier_lccn_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.id_lccn') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:identifier_lccn_tsim].each do |lccn| %>
-              <%= lccn %><br />
-            <% end %>
-          </dd>
-        <% end %>
+
         <%# related item isReferencedBy field %>
         <% if document[:related_item_isreferencedby_ssm] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
@@ -400,6 +368,37 @@
                           ref_hash['url'], target: '_blank') %><br />
             <% end %>
           </dd>
+        <% end %>
+        <%# relatedItem @type='constituent' field %>
+        <% if document[:related_item_constituent_tsim] %>
+          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.constituent') %>:</dt>
+          <dd class="col-md-9">
+            <% document[:related_item_constituent_tsim].each do |constituent| %>
+              <% constituent.split('--').each do |constituent_entry| %>
+                <%= constituent_entry.strip %><br />
+              <% end %>
+            <% end %>
+          </dd>
+        <% end %>
+        <%# relatedItem @type='otherFormat' field %>
+        <% if document[:related_item_other_format_tsim] %>
+          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.other_format') %>:</dt>
+          <dd class="col-md-9">
+            <% document[:related_item_other_format_tsim].each do |other| %>
+              <%= other %><br />
+            <% end %>
+          </dd>
+        <% end %>
+        <%# relatedItem @type='references' and @type='reviewOf' fields %>
+        <% %w[references review].each do |ri_base| %>
+          <% if document["related_item_#{ri_base}_ssm".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.#{ri_base}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["related_item_#{ri_base}_ssm".to_sym].each do |ri_value| %>
+                <%= link_to(ri_value, ri_value, target: '_blank') %><br />
+              <% end %>
+            </dd>
+          <% end %>
         <% end %>
       </dl>
     </div>
