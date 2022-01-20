@@ -74,8 +74,12 @@
         <% if document[:date_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.date') %>:</dt>
           <dd class="col-md-9">
-            <% document[:date_tsim].each do |date| %>
-              <%= date %><br/>
+            <% document[:date_tsim].each_with_index do |date, index| %>
+              <%= date %>
+              <% if document[:date_tsim].length > 1 %>
+                <%= " (#{date_qualifier(document[:date_type_ssm][index])})" %>
+              <% end %>
+              <br/>
             <% end %>
           </dd>
         <% end %>
