@@ -22,18 +22,27 @@
         <% end %>
         <%# alternative title field %>
         <% if document[:title_info_alternative_tsim] %>
-          <dt class="col-md-3">
-            <% if document[:title_info_alternative_label_ssm] %>
-              <%= document[:title_info_alternative_label_ssm].first %>
-            <% else %>
-              <%= t('blacklight.metadata_display.fields.title_alt') %>
-            <% end %>:
-          </dt>
-          <dd class="col-md-9">
+          <% if document[:title_info_alternative_label_ssm] %>
             <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
-              <%= render_alt_title(document, index) %><br />
+              <dt class="col-md-3">
+                <% if document[:title_info_alternative_label_ssm][index].present? %>
+                  <%= document[:title_info_alternative_label_ssm][index].gsub(/\s*:\s*\Z/, '') %>
+                <% else %>
+                  <%= t('blacklight.metadata_display.fields.title_alt') %>
+                <% end %>:
+              </dt>
+              <dd class="col-md-9">
+                <%= render_alt_title(document, index) %>
+              </dd>
             <% end %>
-          </dd>
+          <% else %>
+            <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.title_alt') %>:</dt>
+            <dd class="col-md-9">
+              <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
+                <%= render_alt_title(document, index) %><br />
+              <% end %>
+            </dd>
+          <% end %>
         <% end %>
         <%# uniform title field %>
         <% if document[:title_info_uniform_ssim] %>
