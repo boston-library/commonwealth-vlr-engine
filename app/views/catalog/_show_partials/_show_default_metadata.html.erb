@@ -315,8 +315,7 @@
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.language') %>:</dt>
           <dd class="col-md-9">
             <% document[:lang_term_ssim].each do |lang| %>
-              <%= link_to_facet(lang, 'lang_term_ssim') %>
-              <%= lang %><br/>
+              <%= link_to_facet(lang, 'lang_term_ssim') %><br/>
             <% end %>
           </dd>
         <% end %>
