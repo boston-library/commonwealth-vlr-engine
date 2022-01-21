@@ -273,27 +273,6 @@
             </dd>
           <% end %>
         <% end %>
-        <%# generic note field %>
-        <% if document[:note_tsim] %>
-          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note') %>:</dt>
-          <dd class="col-md-9">
-            <% document[:note_tsim].each do |note| %>
-              <%= note %><br/>
-            <% end %>
-          </dd>
-        <% end %>
-        <%# specific note fields %>
-        <% %w(performers venue ownership acquisition citation date reference physical bibliography
-              exhibitions arrangement language funding biographical publications credits).each do |nt| %>
-          <% if document["note_#{nt}_tsim".to_sym] %>
-            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.note_#{nt}") %>:</dt>
-            <dd class="col-md-9">
-              <% document["note_#{nt}_tsim".to_sym].each do |n| %>
-                <%= n %><br />
-              <% end %>
-            </dd>
-          <% end %>
-        <% end %>
         <%# geo scale field %>
         <% if document[:scale_tsim] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.scale') %>:</dt>
@@ -337,39 +316,6 @@
                         target: '_blank') %>
           </dd>
         <% end %>
-        <%# local-accession, local-other, local-call local-barcode id fields %>
-        <% %w[accession other call barcode].each do |id_base| %>
-          <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
-          <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
-          <% if document[fn] || document[fn_invalid] %>
-            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
-            <dd class="col-md-9">
-              <% if document[fn] %>
-                <% document[fn].each do |id_value| %>
-                  <%= id_value %><br />
-                <% end %>
-              <% end %>
-              <% if document[fn_invalid] %>
-                <% document[fn_invalid].each do |id_value_invalid| %>
-                  <%= id_value_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
-                <% end %>
-              <% end %>
-            </dd>
-          <% end %>
-        <% end %>
-        <%# other identifier fields %>
-        <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher
-              sici videorecording].each do |id_base| %>
-          <% if document["identifier_#{id_base}_ssim".to_sym] %>
-            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_#{id_base}") %>:</dt>
-            <dd class="col-md-9">
-              <% document["identifier_#{id_base}_ssim".to_sym].each do |id_value| %>
-                <%= id_value %><br />
-              <% end %>
-            </dd>
-          <% end %>
-        <% end %>
-
         <%# related item isReferencedBy field %>
         <% if document[:related_item_isreferencedby_ssm] %>
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
@@ -408,6 +354,59 @@
             <dd class="col-md-9">
               <% document["related_item_#{ri_base}_ssm".to_sym].each do |ri_value| %>
                 <%= link_to(ri_value, ri_value, target: '_blank') %><br />
+              <% end %>
+            </dd>
+          <% end %>
+        <% end %>
+        <%# generic note field %>
+        <% if document[:note_tsim] %>
+          <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.note') %>:</dt>
+          <dd class="col-md-9">
+            <% document[:note_tsim].each do |note| %>
+              <%= note %><br/>
+            <% end %>
+          </dd>
+        <% end %>
+        <%# specific note fields %>
+        <% %w(citation performers venue ownership acquisition date reference physical bibliography
+              exhibitions arrangement language funding biographical publications credits).each do |nt| %>
+          <% if document["note_#{nt}_tsim".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.note_#{nt}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["note_#{nt}_tsim".to_sym].each do |n| %>
+                <%= n %><br />
+              <% end %>
+            </dd>
+          <% end %>
+        <% end %>
+        <%# local-accession, local-other, local-call local-barcode id fields %>
+        <% %w[accession other call barcode].each do |id_base| %>
+          <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
+          <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
+          <% if document[fn] || document[fn_invalid] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
+            <dd class="col-md-9">
+              <% if document[fn] %>
+                <% document[fn].each do |id_value| %>
+                  <%= id_value %><br />
+                <% end %>
+              <% end %>
+              <% if document[fn_invalid] %>
+                <% document[fn_invalid].each do |id_value_invalid| %>
+                  <%= id_value_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+                <% end %>
+              <% end %>
+            </dd>
+          <% end %>
+        <% end %>
+        <%# other identifier fields %>
+        <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher
+              sici videorecording].each do |id_base| %>
+          <% if document["identifier_#{id_base}_ssim".to_sym] %>
+            <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_#{id_base}") %>:</dt>
+            <dd class="col-md-9">
+              <% document["identifier_#{id_base}_ssim".to_sym].each do |id_value| %>
+                <%= id_value %><br />
               <% end %>
             </dd>
           <% end %>
