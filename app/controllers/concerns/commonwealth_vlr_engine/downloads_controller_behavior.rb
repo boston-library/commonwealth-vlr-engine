@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # heavily based on Hydra::Controller::DownloadBehavior
 module CommonwealthVlrEngine
   module DownloadsControllerBehavior
@@ -19,39 +21,42 @@ module CommonwealthVlrEngine
 
     # render a page/modal with license terms, download links, etc
     def show
-      @doc_response, @document = fetch(params[:id])
-      if @document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
-        parent_response, @parent_document = fetch(parent_id(@document))
-        @object_profile = JSON.parse(@document['object_profile_ssm'].first)
+      @doc_response, @document = search_service.fetch(params[:id])
+      if @document[:curator_model_ssi].include? 'Filestream'
+        _parent_response, @parent_document = search_service.fetch(parent_id(@document))
+        @object_profile = JSON.parse(@document['attachments_ss'])
       else
         @parent_document = @document
         @object_profile = nil
       end
 
       respond_to do |format|
-        format.html # for users w/o JS
-        format.js { render :layout => false } # download modal window
+        format.html do
+          render layout: false if request.xhr?
+        end # for users w/o JS
+        format.js { render layout: false } # download modal window
       end
     end
 
     # initiates the file download
     def trigger_download
-      response, @solr_document = fetch(params[:id])
-      if !@solr_document.to_h.empty? && params[:datastream_id]
-        if @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_File'
-          @object_id = parent_id(@solr_document)
-          send_content
-        elsif @solr_document[:has_model_ssim].include? 'info:fedora/afmodel:Bplmodels_ObjectBase'
-          @file_list = get_image_files(params[:id])
-          if !@file_list.empty?
-            @object_id = params[:id]
-            send_zipped_content
-          else
-            not_found
-          end
+      _response, @solr_document = search_service.fetch(params[:id])
+      return unless !@solr_document.to_h.empty? && params[:filestream_id]
+
+      if @solr_document[:curator_model_ssi].include? 'Filestream'
+        @object_id = parent_id(@solr_document)
+        @attachments = JSON.parse(@solr_document[:attachments_ss])
+        send_content
+      elsif @solr_document[:curator_model_ssi] == 'Curator::DigitalObject'
+        @file_list = get_image_files(params[:id])
+        if !@file_list.empty?
+          @object_id = params[:id]
+          send_zipped_content
         else
           not_found
         end
+      else
+        not_found
       end
     end
 
@@ -78,10 +83,11 @@ module CommonwealthVlrEngine
     # send multiple files as a zip archive
     def send_zipped_content
       files_array = []
-      @file_list.each_with_index do |file,index|
-        params[:id] = file[:id] # hack this so file_url returns correct value
+      @file_list.each_with_index do |file, index|
+        params[:id] = file[:id] # so file_url returns correct value
         @solr_document = file
-        files_array << [file_url, "#{(index+1).to_s}_#{file_name_with_extension}"]
+        @attachments = JSON.parse(@solr_document[:attachments_ss])
+        files_array << [file_url, "#{(index + 1)}_#{file_name_with_extension}"]
       end
       file_mappings = files_array.lazy.map { |url, path| [open(url), path] }
       zipline(file_mappings, "#{file_name}.zip")
@@ -98,26 +104,27 @@ module CommonwealthVlrEngine
       { disposition: 'attachment', type: mime_type, filename: file_name_with_extension }
     end
 
-    # returns a Fedora datastream url or IIIF url
+    # returns a filestream url or IIIF url
     def file_url
-      if params[:datastream_id] == 'accessFull'
+      if params[:filestream_id] == 'access_full'
         iiif_image_url(params[:id], {})
       else
-        datastream_disseminator_url(params[:id], params[:datastream_id])
+        filestream_disseminator_url(@attachments[params[:filestream_id]]['key'],
+                                    params[:filestream_id], true)
       end
     end
 
     def file_extension
-      if params[:datastream_id] =~ /Master/
-        JSON.parse(@solr_document[:object_profile_ssm].first)["objLabel"].split('.')[1]
-      else
+      if params[:filestream_id] == 'access_full'
         'jpg'
+      else
+        @attachments[params[:filestream_id]]['filename'].split('.').last
       end
     end
 
     # @return [String] the filename
     def file_name
-      "#{@object_id.gsub(/:/,'_')}_#{params[:datastream_id]}"
+      "#{@object_id.tr(':', '_')}_#{params[:filestream_id]}"
     end
 
     # @return [String] the filename with extension
@@ -126,16 +133,21 @@ module CommonwealthVlrEngine
     end
 
     def file_size
-      return false if params[:datastream_id] == 'accessFull'
-      JSON.parse(@solr_document[:object_profile_ssm].first)["datastreams"][params[:datastream_id]]["dsSize"]
+      return false if params[:filestream_id] == 'access_full'
+
+      @attachments[params[:filestream_id]]['byte_size']
     end
 
     def mime_type
-      if params[:datastream_id] =~ /Master/
-        @solr_document[:mime_type_tesim].first
+      if params[:filestream_id].match?(/primary/)
+        @attachments[primary_file_key]['content_type']
       else
         'image/jpeg'
       end
+    end
+
+    def primary_file_key
+      @attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) }
     end
 
     def prepare_file_headers
@@ -143,7 +155,7 @@ module CommonwealthVlrEngine
       response.headers['Content-Type'] = mime_type
       response.headers['Content-Length'] ||= file_size.to_s if file_size
       # Prevent Rack::ETag from calculating a digest over body
-      response.headers['Last-Modified'] = Time.new(@solr_document[:system_modified_dtsi]).utc.strftime("%a, %d %b %Y %T GMT")
+      response.headers['Last-Modified'] = Time.new(@solr_document[:system_modified_dtsi]).utc.strftime('%a, %d %b %Y %T GMT')
       self.content_type = mime_type
     end
 
@@ -160,7 +172,7 @@ module CommonwealthVlrEngine
       to = file_size.to_i - 1 unless to
       length = to - from + 1
       response.headers['Content-Range'] = "bytes #{from}-#{to}/#{file_size}"
-      response.headers['Content-Length'] = "#{length}"
+      response.headers['Content-Length'] = length.to_s
       self.status = 206
       prepare_file_headers
       stream_body file_stream(file_url, request.headers['HTTP_RANGE'])
@@ -169,7 +181,7 @@ module CommonwealthVlrEngine
     private
 
     def parent_id(document)
-      document[:is_file_of_ssim].first.gsub(/info:fedora\//,'')
+      document[:is_file_set_of_ssim].first
     end
 
     def stream_body(iostream)
@@ -179,6 +191,5 @@ module CommonwealthVlrEngine
     ensure
       response.stream.close
     end
-
   end
 end

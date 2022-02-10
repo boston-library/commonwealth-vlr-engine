@@ -1,7 +1,7 @@
 <div class="modal-header">
   <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
   <h4 id="downloads_modal_title" class="modal-title">
-    <%= truncate("#{t('blacklight.downloads.title')}: #{render_main_title(@parent_document)}",
+    <%= truncate("#{t('blacklight.downloads.title')}: #{render_title(@parent_document)}",
                  length: 55,
                  separator: ' ') %>
   </h4>
@@ -11,17 +11,17 @@
 </div>
 
 <div id="downloads_start_links" class="modal-footer">
-  <%= link_to(url_for_download(@document, params[:datastream_id]),
-              class: 'trigger_download btn btn-primary ' + params[:datastream_id],
+  <%= link_to(url_for_download(@document, params[:filestream_id]),
+              class: 'trigger_download btn btn-primary ' + params[:filestream_id],
               rel: 'nofollow',
               target: '_blank') do %>
       <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
       <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
                                                    @object_profile,
-                                                   params[:datastream_id]),
+                                                   params[:filestream_id]),
                                length: 40,
-                               omission: '...')} (#{file_type_string(params[:datastream_id],
-                                                                     @object_profile)}, #{file_size_string(params[:datastream_id],
+                               omission: '...')} (#{file_type_string(params[:filestream_id],
+                                                                     @object_profile)}, #{file_size_string(params[:filestream_id],
                                                                                                            @object_profile)})" %>
   <% end %>
   <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>

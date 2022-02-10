@@ -35,7 +35,7 @@ module CommonwealthVlrEngine
 
       # get the response for collection objects
       collex_f_params = {blacklight_config.index.display_type_field => 'Collection',
-                         'institution_pid_ssi' => params[:id]}
+                         'institution_ark_id_ssi' => params[:id]}
       @collex_response, @collex_documents = search_results({:f => collex_f_params,
                                                             :rows => 200,
                                                             :sort => 'title_info_primary_ssort asc'})

@@ -116,13 +116,13 @@ function generateDziUrl(group, index) {
 // use thumbnail300 datastream for thumbnails
 function generateThumbUrl(group, index) {
     var pid = image_files[index-1];
-    return '<%= datastream_disseminator_url('xyz', 'thumbnail300') %>'.replace("xyz", pid)
+    return '<%= filestream_disseminator_url('xyz', 'image_thumbnail_300') %>'.replace("xyz", 'images/' + pid)
 }
 
 // return JSON coords datastream URL
 function generateWordCoordsUrl(group, index) {
     var pid = image_files[index-1];
-    return '<%= datastream_disseminator_url('xyz', 'djvuCoords') %>'.replace("xyz", pid)
+    return '<%= filestream_disseminator_url('xyz', 'text_coordinates_access') %>'.replace("xyz", 'images/' + pid)
 }
 
 var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);

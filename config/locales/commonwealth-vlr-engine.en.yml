@@ -65,6 +65,7 @@ en:
             all: 'View All Items'
           facets:
             title: 'Browse by:'
+          image_title_prefix: 'Detail from: '
           index:
             a-z_label: 'Browse by title:'
             page_title: 'Collections - %{application_name}'
@@ -82,11 +83,11 @@ en:
           link_info: '(links open in new window)'
           title: 'Downloads'
           images:
-            access800: 'Medium (800px)'
-            accessFull: 'Original (full resolution)'
-            georectifiedMaster: 'GeoTIFF (georeferenced)'
-            JPEG2000: 'Original (full resolution)'
-            productionMaster: 'Master (full resolution, uncompressed)'
+            image_access_800: 'Medium (800px)'
+            access_full: 'Large (full resolution)'
+            image_georectified_primary: 'GeoTIFF (georeferenced)'
+            JPEG2000: 'Large (full resolution)'
+            image_primary: 'Primary (full resolution, uncompressed)'
           indemnification: 'Notice: This digital file may be subject to copyright law of the United States (Title 17, U.S. Code) governing the making of reproductions of copyrighted material. The person using this content may be liable for any infringement.'
 
     email:
@@ -108,7 +109,7 @@ en:
             email: 'Your Email:'
             message: 'Your Message:'
             topic:
-              label: 'Topic'
+              label: 'Topic:'
               options:
                 default:
                   option: 'please select a topic'
@@ -147,6 +148,9 @@ en:
             email: 'Email: '
             message: 'Message: '
             topic: 'Topic: '
+
+    flagged:
+      warning: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'
 
     folders:
           intro: 'Folders can be used to create, organize, and share your own personal collections of items.'
@@ -252,7 +256,7 @@ en:
             less: 'less...'
             more: 'more...'
           facets:
-            title: 'Browse by:'
+            title: 'Starts with:'
           index:
             page_title: 'Institutions - %{application_name}'
             a-z_label: 'Browse by name:'
@@ -276,13 +280,24 @@ en:
             creator: 'Creator'
             date: 'Date'
             edition: 'Edition'
+            edition_name: 'Edition'
+            edition_number: 'Edition no.'
             extent: 'Extent'
             location: 'Location'
             genre_basic: 'Format'
             genre_specific: 'Genre'
             id_isbn: 'ISBN'
             id_lccn: 'LCCN'
-            id_local_acc: 'Accession #'
+            id_issn: 'ISSN'
+            id_ismn: 'ISMN'
+            id_isrc: 'ISRC'
+            id_issue_number: 'Issue number'
+            id_matrix_number: 'Matrix number'
+            id_music_plate: 'Music plate'
+            id_music_publisher: 'Music publisher'
+            id_sici: 'SICI'
+            id_videorecording: 'Videorecording'
+            id_local_accession: 'Accession #'
             id_local_barcode: 'Barcode'
             id_local_call: 'Call #'
             id_local_other: 'Identifier'
@@ -290,20 +305,33 @@ en:
             id_uri_ark: 'Permalink'
             id_uri_oai: 'Link to Item'
             institution: 'Institution'
+            issue_number: 'Issue no.'
             language: 'Language'
             note: 'Notes'
             note_acquisition: 'Notes (acquisition)'
+            note_arrangement: 'Notes (arrangement)'
+            note_bibliography: 'Notes (bibliography)'
+            note_biographical: 'Notes (historical)'
             note_citation: 'Preferred Citation'
+            note_credits: 'Notes (credits)'
             note_date: 'Notes (date)'
+            note_exhibitions: 'Notes (exhibitions)'
+            note_funding: 'Notes (funding)'
+            note_language: 'Notes (language)'
             note_ownership: 'Notes (ownership)'
             note_performers: 'Performers'
             note_physical: 'Notes (object)'
+            note_publications: 'Notes (publications)'
             note_reference: 'Notes (citation)'
             note_resp: 'Name on Item'
+            note_venue: 'Notes (venue)'
+            other_format: 'Other format'
             projection: 'Projection'
             publisher: 'Publisher'
             pubplace: 'Place of origin'
             referenced_by: 'Referenced by'
+            references: 'References'
+            review: 'Review of'
             rights: 'Terms of Use'
             scale: 'Scale'
             series: 'Series'
@@ -311,11 +339,13 @@ en:
             subject_geo: 'Places'
             subject_topic: 'Subjects'
             toc: 'Table of Contents'
+            toc_url: 'Table of Contents'
             title: 'Title'
             title_alt: 'Title (alt.)'
             title_uniform: 'Title (uniform)'
             title_translated: 'Title (translated)'
             type_of_resource: 'Type of Resource'
+            volume: 'Volume'
 
 
     more_like_this:
@@ -390,6 +420,7 @@ en:
             az_search: 'Starts with'
           form:
             collection: 'Search this collection...'
+            institution: "Search this institution..."
             search:
               label: 'Search for'
           facets:

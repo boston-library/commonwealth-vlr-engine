@@ -12,9 +12,9 @@
 
       <% if t('blacklight.home.browse.institutions.enabled') %>
           <h4 class="collection-provenance">
-            <% if @document[:institution_pid_ssi] %>
+            <% if @document[:institution_ark_id_ssi] %>
                 <%= link_to(@document[blacklight_config.institution_field.to_sym][0],
-                            institutions_path + '/' + @document[:institution_pid_ssi],
+                            institutions_path + '/' + @document[:institution_ark_id_ssi],
                             :id => 'institution_link') %>
             <% elsif @document[:physical_location_ssim] %>
                 <%= @document[:physical_location_ssim][0] %>
@@ -31,7 +31,7 @@
               <% if @collection_image_pid && @collection_image_info %>
                   <% image_title = @collection_image_info[:title] %>
                   <% if @collection_image_pid.match(/oai/) || @collection_image_info[:access_master] == false %>
-                       <% img_element = image_tag(datastream_disseminator_url(@collection_image_pid,'thumbnail300'),
+                       <% img_element = image_tag(filestream_disseminator_url(@collection_image_key, 'image_thumbnail_300'),
                                                   :alt => image_title,
                                                   :class => 'collection_img_show') %>
                   <% else %>
@@ -65,14 +65,12 @@
             </div>
 
             <div id="collection_desc">
-                <% if @document[:abstract_tsim] %>
-                      <% @document[:abstract_tsim].each do |abstract| %>
-                          <%= abstract.html_safe %>
-                      <% end %>
+                <% if @document[:abstract_tsi] %>
+                      <%= @document[:abstract_tsi] %>
                 <% end %>
             </div>
 
-            <% if has_facet_values? %w[related_item_series_ssim] %>
+            <% if has_facet_values? %w[related_item_series_ssi] %>
                 <div id="series_wrapper">
                     <%= render :partial=> 'catalog/facets_series' %>
                 </div>

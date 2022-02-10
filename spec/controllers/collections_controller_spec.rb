@@ -41,7 +41,7 @@ describe CollectionsController do
     end
 
     it 'should show the series list' do
-      expect(response.body).to have_selector('#facet-related_item_series_ssim')
+      expect(response.body).to have_selector('#facet-related_item_series_ssi')
       expect(assigns(:document_list)).not_to be_nil
     end
 
@@ -79,7 +79,7 @@ describe CollectionsController do
     describe 'add_series_facet' do
       it 'should add the series facet to the Solr request' do
         @mock_controller.send(:add_series_facet)
-        expect(@mock_controller.blacklight_config.facet_fields['related_item_series_ssim'].include_in_request).to eq(true)
+        expect(@mock_controller.blacklight_config.facet_fields['related_item_series_ssi'].include_in_request).to eq(true)
       end
     end
 

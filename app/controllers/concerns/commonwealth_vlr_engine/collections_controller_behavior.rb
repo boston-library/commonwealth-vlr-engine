@@ -45,6 +45,7 @@ module CommonwealthVlrEngine
       # get an image for the collection
       if @document[:exemplary_image_ssi]
         @collection_image_pid = @document[:exemplary_image_ssi]
+        @collection_image_key = @document[:exemplary_image_key_base_ss]
         @collection_image_info = get_collection_image_info(@collection_image_pid,
                                                            @document[:id])
       end
@@ -69,7 +70,7 @@ module CommonwealthVlrEngine
     # find a representative image/item for a series
     def get_series_image_obj(series_title,collection_title)
       blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
-      series_doc_list = search_results({f: {'related_item_series_ssim' => series_title,
+      series_doc_list = search_results({f: {'related_item_series_ssi' => series_title,
                                             blacklight_config.collection_field => collection_title},
                                         rows: 1})[1]
       series_doc_list.first
@@ -77,7 +78,7 @@ module CommonwealthVlrEngine
 
     # show series facet
     def add_series_facet
-      blacklight_config.facet_fields['related_item_series_ssim'].include_in_request = true
+      blacklight_config.facet_fields['related_item_series_ssi'].include_in_request = true
     end
 
     # collapse the institution facet, if Institutions supported
@@ -108,10 +109,10 @@ module CommonwealthVlrEngine
       col_img_info = {title: '', pid: collection_pid, access_master: false}
       col_img_file_doc = fetch(image_pid)[1]
       if col_img_file_doc
-        col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
-        col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
+        col_img_info[:access_master] = true if col_img_file_doc[:is_file_set_of_ssim]
+        col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
         if col_img_field
-          col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
+          col_img_obj_pid = col_img_field.first
           col_img_obj_doc = fetch(col_img_obj_pid)[1]
           if col_img_obj_doc
             col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]

@@ -18,7 +18,7 @@ module CommonwealthVlrEngine
       self.send(:include, BlacklightRangeLimit::ControllerOverride)
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
-      before_filter :get_object_files, :only => [:show]
+      before_filter :object_files, :only => [:show]
       before_filter :mlt_results_for_show, :only => [:show]
       before_filter :set_nav_context, :only => [:index]
       before_filter :mlt_search, :only => [:index]
@@ -45,7 +45,7 @@ module CommonwealthVlrEngine
         # blacklight-maps stuff
         config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
         config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-        config.view.maps.placename_field = 'subject_geographic_ssim'
+        config.view.maps.placename_field = 'subject_geographic_sim'
         config.view.maps.maxzoom = 14
         config.view.maps.show_initial_zoom = 12
         config.view.maps.facet_mode = 'geojson'
@@ -58,7 +58,7 @@ module CommonwealthVlrEngine
 
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
-        config.show.display_type_field = 'active_fedora_model_suffix_ssi'
+        config.show.display_type_field = 'curator_model_suffix_ssi'
 
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
@@ -78,8 +78,9 @@ module CommonwealthVlrEngine
 
         # collection name field
         config.collection_field = 'collection_name_ssim'
-        # institution name field
-        config.institution_field = 'institution_name_ssim'
+        config.institution_field = 'institution_name_ssi'
+        config.series_field = 'related_item_series_ssi'
+        config.hosting_status_field = 'hosting_status_ssi'
 
         # book stuff
         config.ocr_search_field = 'ocr_tsiv'
@@ -89,23 +90,26 @@ module CommonwealthVlrEngine
 
         # solr field configuration for search results/index views
         config.index.title_field = 'title_info_primary_tsi'
-        config.index.display_type_field = 'active_fedora_model_suffix_ssi'
+        config.index.display_type_field = 'curator_model_suffix_ssi'
 
         # solr fields that will be treated as facets by the blacklight application
         config.add_facet_field 'subject_facet_ssim', label: 'Topic', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'subject_geographic_ssim', label: 'Place', limit: 8, sort: 'count', collapse:  false
-        config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true, :collapse => false
+        config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse:  false
+        config.add_facet_field 'date_facet_yearly_itim', :label => 'Date', :range => true, :collapse => false
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse:  false
+        config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
+                               collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
         config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse:  false
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', label: 'Collection', include_in_request: false # Collection (local)
         config.add_facet_field 'genre_specific_ssim', label: 'Genre', include_in_request: false
-        config.add_facet_field 'related_item_series_ssim', label: 'Series', limit: 300, sort: 'index', include_in_request: false
-        config.add_facet_field 'related_item_subseries_ssim', label: 'Subseries', include_in_request: false
-        config.add_facet_field 'related_item_subsubseries_ssim', label: 'Sub-subseries', include_in_request: false
-        config.add_facet_field 'institution_name_ssim', label: 'Institution', include_in_request: false
+        config.add_facet_field 'related_item_series_ssi', label: 'Series', limit: 300, sort: 'index', include_in_request: false
+        config.add_facet_field 'related_item_subseries_ssi', label: 'Subseries', include_in_request: false
+        config.add_facet_field 'related_item_subsubseries_ssi', label: 'Sub-subseries', include_in_request: false
+        config.add_facet_field 'institution_name_ssi', label: 'Institution', include_in_request: false
         config.add_facet_field 'name_facet_ssim', label: 'Name', include_in_request: false
         config.add_facet_field 'title_info_uniform_ssim', label: 'Title (uniform)', include_in_request: false
+        config.add_facet_field 'lang_term_ssim', label: 'Language', include_in_request: false
         # facet for blacklight-maps catalog#index map view
         # have to use '-2' to get all values
         # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
@@ -114,7 +118,7 @@ module CommonwealthVlrEngine
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
-        config.add_index_field 'date_start_tsim', label: 'Date', helper_method: :index_date_value
+        config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
 
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|
@@ -123,35 +127,50 @@ module CommonwealthVlrEngine
         end
 
         config.add_search_field('title') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$title_qf',
-              pf: '$title_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${title_qf}',
+            pf: '${title_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$title_qf',
+            pf: '$title_pf'
           }
         end
 
         config.add_search_field('subject') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.qt = 'search'
-          field.solr_local_parameters = {
-              qf: '$subject_qf',
-              pf: '$subject_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${subject_qf}',
+            pf: '${subject_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$subject_qf',
+            pf: '$subject_pf'
           }
         end
 
         config.add_search_field('place') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$place_qf',
-              pf: '$place_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${place_qf}',
+            pf: '${place_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$place_qf',
+            pf: '$place_pf'
           }
         end
 
         config.add_search_field('creator') do |field|
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-          field.solr_local_parameters = {
-              qf: '$author_qf',
-              pf: '$author_pf'
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${author_qf}',
+            pf: '${author_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$author_qf',
+            pf: '$author_pf'
           }
         end
 
@@ -199,9 +218,10 @@ module CommonwealthVlrEngine
         blacklight_config.facet_fields['collection_name_ssim'].if = false
         # collapse remaining facets
         blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
-        blacklight_config.facet_fields['subject_geographic_ssim'].collapse = true
-        blacklight_config.facet_fields['date_facet_yearly_ssim'].collapse = true
+        blacklight_config.facet_fields['subject_geographic_sim'].collapse = true
+        blacklight_config.facet_fields['date_facet_yearly_itim'].collapse = true
         blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+        blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
         # remove item-centric show tools (for admin)
         blacklight_config.show.document_actions.delete(:add_this)
         blacklight_config.show.document_actions.delete(:folder_items)
@@ -264,7 +284,7 @@ module CommonwealthVlrEngine
     end
 
     # TODO: refactor how views access files/volumes/etc.
-    def get_object_files
+    def object_files
       if controller_name == 'catalog' || controller_name == 'image_viewer'
         @object_files = get_files(params[:id])
       end
@@ -278,7 +298,7 @@ module CommonwealthVlrEngine
     def add_institution_fields
       if t('blacklight.home.browse.institutions.enabled')
         blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse:  false
-        blacklight_config.add_index_field 'institution_name_ssim', label: 'Institution', helper_method: :index_institution_link
+        blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link
       end
     end
 

@@ -37,14 +37,21 @@ module CommonwealthVlrEngine
       session[:previous_url] || root_path
     end
 
+    # @param image_files [Array] array of SolrDocument from @object_files[:image]
+    # @param current_img_pid [String]
+    # @return [Hash]
     def create_img_sequence(image_files, current_img_pid)
-      page_sequence = {}
-      page_sequence[:current] = current_img_pid
-      page_sequence[:index] = image_files.index(current_img_pid) + 1
-      page_sequence[:total] = image_files.length
-      page_sequence[:prev] = page_sequence[:index]-2 > -1 ? image_files[page_sequence[:index]-2] : nil
-      page_sequence[:next] = image_files[page_sequence[:index]].presence
-      page_sequence
+      current_img_file = image_files.find { |i| i[:id] == current_img_pid }
+      img_pids = image_files.map { |i| i[:id] }
+      current_index = img_pids.index(current_img_pid) + 1
+      {
+        current: current_img_pid,
+        current_key: current_img_file[:storage_key_base_ss],
+        index: img_pids.index(current_img_pid) + 1,
+        total: image_files.length,
+        prev: current_index - 2 > -1 ? img_pids[current_index - 2] : nil,
+        next: img_pids[current_index].presence
+      }
     end
 
     def not_found

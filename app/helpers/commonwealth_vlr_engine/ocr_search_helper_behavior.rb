@@ -9,17 +9,13 @@ module CommonwealthVlrEngine
 
     # determine of the item has text content that can be searched
     def has_searchable_text?(document)
-      document['has_searchable_text_bsi']
+      document['has_searchable_pages_bsi']
     end
 
     # if current_search_session exists, return query_params['q'], otherwise return nil
     # @current_search_session is defined in Blacklight::SearchContext
     def ocr_q_params(current_search_session)
-      if current_search_session
-        current_search_session.query_params['q']
-      else
-        nil
-      end
+      current_search_session ? current_search_session.query_params['q'] : nil
     end
 
     # print the ocr snippets. if more than one, separate with <br/>

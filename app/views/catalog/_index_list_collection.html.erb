@@ -11,15 +11,15 @@
 <div class="collection_index_container">
 
       <div class="collection-location">
-        <% if document[:institution_pid_ssi] && document[blacklight_config.institution_field.to_sym] && t('blacklight.home.browse.institutions.enabled') %>
+        <% if document[:institution_ark_id_ssi] && document[blacklight_config.institution_field.to_sym] && t('blacklight.home.browse.institutions.enabled') %>
             <%= link_to(document[blacklight_config.institution_field.to_sym].first,
-                        institution_path(document[:institution_pid_ssi])) %>
+                        institution_path(document[:institution_ark_id_ssi])) %>
         <% end %>
       </div>
 
       <div class="item_index_details">
-        <% if document[:abstract_tsim] %>
-            <%= truncate(sanitize(document[:abstract_tsim].first.gsub(/<\/p><p>/,' '), :tags => []),
+        <% if document[:abstract_tsi] %>
+            <%= truncate(sanitize(document[:abstract_tsi].gsub(/<\/p><p>/,' '), :tags => []),
                          :length => 300,
                          :separator => ' ',
                          :omission => '... ') do

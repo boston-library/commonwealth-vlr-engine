@@ -9,7 +9,7 @@ module CommonwealthVlrEngine
     end
 
     # render the institution description, truncating w/'more' link if more than 2 paragraphs
-    # abstract = document[:abstract_tsim] field
+    # abstract = document[:abstract_tsi] field
     def render_institution_desc(abstract)
       desc_content = []
       # double quotes in #delete arg below are correct, DO NOT CHANGE

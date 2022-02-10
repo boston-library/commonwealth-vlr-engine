@@ -1,23 +1,19 @@
 <strong>Please review the terms of use for this item:</strong>
 <ul class="downloads_terms">
-  <% if document[:rights_ssm] %>
-      <% document[:rights_ssm].each do |rights| %>
-          <li><%= rights %></li>
-      <% end %>
+  <% if document[:rights_ss] %>
+    <li><%= document[:rights_ss] %></li>
   <% end %>
-  <% if document[:license_ssm] %>
-      <% document[:license_ssm].each do |license| %>
-          <li>
-            <%= license %>
-            <% if license.match(/\(CC\s/) %>
-                <br/>
-                  <%= link_to t('blacklight.downloads.cc'),
-                              cc_url(license),
-                              target: '_blank' %>
-                  <%= render_cc_license(license) %>
-            <% end %>
-          </li>
+  <% if document[:license_ss] %>
+    <li>
+      <%= document[:license_ss] %>
+      <% if document[:license_ss].match(/\(CC\s/) %>
+        <br/>
+        <%= link_to t('blacklight.downloads.cc'),
+                    cc_url(document[:license_ss]),
+                    target: '_blank' %>
+        <%= render_cc_license(document[:license_ss]) %>
       <% end %>
+    </li>
   <% end %>
   <% unless public_domain?(document) %>
     <li>

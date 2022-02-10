@@ -1,5 +1,5 @@
-<% current_img = params[:view].presence || image_files.first %>
-<% page_sequence = create_img_sequence(image_files,current_img) %>
+<% current_img = image_files.find { |i| i[:id] == (params[:view].presence || image_files.first[:id]) } %>
+<% page_sequence = @page_sequence || create_img_sequence(image_files, current_img[:id]) %>
 <div id="multi_img_show_container">
   <div class="row">
     <div class="col-sm-12">
@@ -15,7 +15,7 @@
     <div id="multi_img_pane" class="col-sm-9 carousel">
         <%= render :partial => 'catalog/_show_partials/show_default_img',
                    :locals => {:document => @document,
-                               :image_pid => current_img,
+                               :image_key => current_img[:storage_key_base_ss],
                                :page_sequence => page_sequence } %>
     </div>
     <div class="col-sm-3">
@@ -26,11 +26,13 @@
                         :style => ('text-align:left' if image_files.length > 3) do %>
           <% image_files.each_with_index do |image_file, index| %>
               <li>
-                <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
+                <%= link_to(image_tag(filestream_disseminator_url(image_file[:storage_key_base_ss],
+                                                                  'image_thumbnail_300'),
+                                      :alt => 'image ' + (index+1).to_s),
                             image_viewer_path(@document.id, :view => image_file),
-                            :class => 'prev_next' + (' in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)).to_s,
+                            :class => 'prev_next' + (' in_viewer' if params[:view] == image_file[:id] || (params[:view].nil? && index == 0)).to_s,
                             :title => 'View image ' + (index+1).to_s,
-                            :data => { :viewer => image_file },
+                            :data => { :viewer => image_file[:id]  },
                             :remote => true) %>
               </li>
           <% end %>

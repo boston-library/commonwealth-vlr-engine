@@ -218,10 +218,10 @@ describe CatalogHelper do
 
   describe 'title helpers' do
 
-    describe '#render_full_title' do
+    describe '#render_title' do
       let(:doc_with_subtitle) { Blacklight.default_index.search({:q => 'id:"bpl-dev:00000003t"', :rows => 1}).documents.first }
       it 'should render the title correctly' do
-        expect(helper.render_full_title(doc_with_subtitle)).to include('Massachusetts : based')
+        expect(helper.render_title(doc_with_subtitle)).to include('Massachusetts : based')
       end
     end
 
@@ -245,40 +245,10 @@ describe CatalogHelper do
     end
   end
 
-  describe '#render_mods_dates' do
-    it 'should return an array of date values' do
-      expect(helper.render_mods_dates(document).first).not_to be_nil
-    end
-  end
-
-  describe '#render_mods_date' do
-
-    describe 'date with start, end, and qualifier' do
-      it 'should return the correct date value' do
-        expect(helper.render_mods_date('1984', '1985', 'approximate')).to eq('[ca. 1984–1985]')
-      end
-    end
-
-    describe 'copyright date' do
-      it 'should return the correct date value' do
-        expect(helper.render_mods_date('1984', nil, nil, 'copyrightDate')).to eq('(c) 1984')
-      end
-    end
-
-  end
-
   describe '#render_search_to_page_title' do
     before { @page_title = helper.render_search_to_page_title({mlt_id: item_pid}) }
     it 'should return the correct string for the page title' do
       expect(@page_title).to include(I18n.t('blacklight.more_like_this.constraint_label'))
-    end
-  end
-
-  describe '#render_mods_xml_record' do
-    before { @mods_xml_doc = helper.render_mods_xml_record(item_pid) }
-    it 'should return the XML document for the MODS record' do
-      expect(@mods_xml_doc.class).to eq(REXML::Document)
-      expect(@mods_xml_doc.to_s).to include('<mods:title>Beauregard</mods:title>')
     end
   end
 

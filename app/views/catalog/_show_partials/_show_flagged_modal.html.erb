@@ -6,9 +6,7 @@
         <h3 class="modal-title">EXPLICIT CONTENT WARNING</h3>
       </div>
       <div class="modal-body">
-        <p><strong>This item contains content that could be offensive to some viewers or inappropriate for minors.</strong></p>
-        <p>&nbsp;</p>
-        <p>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</p>
+        <%= render partial: 'catalog/_show_partials/show_flagged_modal_text' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">View Content</button>

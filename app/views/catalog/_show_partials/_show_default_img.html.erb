@@ -4,7 +4,7 @@
                                  :alt => object_title,
                                  :class => 'img_show'}) %>
 <%# we are using access800 derivative as default catalog#show image for the moment %>
-<% img_element = image_tag(datastream_disseminator_url(image_pid, 'access800'),
+<% img_element = image_tag(filestream_disseminator_url(image_key, 'image_access_800'),
                            :alt => object_title,
                            :class => 'img_show') %>
 <div id="img_show_container">
@@ -23,7 +23,7 @@
 
   <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
              :locals => {:object_title => object_title.html_safe,
-                         :image_pid => image_pid} %>
+                         :image_key => image_key} %>
 
   <% unless page_sequence[:total] == 1 %>
       <%= render :partial => 'catalog/_show_partials/show_prev_next_carousel_links',

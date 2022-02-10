@@ -13,7 +13,7 @@
       </span>
     <% end %>
     <%= link_to_document document,
-                         truncate((render_full_title(document) || document[:id]),
+                         truncate((render_title(document) || document[:id]),
                                   separator: ' ',
                                   length: index_title_length) + index_relation_base_icon(document),
                          counter: counter %>

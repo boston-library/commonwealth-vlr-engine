@@ -75,7 +75,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
   describe 'institutions_limit' do
 
     it 'should add parameters to limit to a single institution' do
-      expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_pid_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
+      expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
     end
 
   end

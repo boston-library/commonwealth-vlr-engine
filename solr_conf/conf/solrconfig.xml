@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- COPIED FROM https://github.com/boston-library/solr-core-conf/master/solrconfig.xml  -->
+<!-- NOTE: in cases where changes needed to make this work in dev/test environment,
+     those are indicated with ***DEV/TEST MOD*** -->
 <config>
   <!-- NOTE: various comments and unused configuration possibilities have been purged
 from this file. Please refer to http://wiki.apache.org/solr/SolrConfigXml,
@@ -7,13 +9,15 @@ as well as the default solrconfig file included with Solr -->
 
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
 
-  <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
+  <luceneMatchVersion>6.1.0</luceneMatchVersion>
+
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
-  <!-- solr lib dirs -->
-  <lib dir="../lib/contrib/analysis-extras/lib" />
-  <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
+  <!-- extra solr lib dirs -->
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
   <dataDir>${solr.data.dir:}</dataDir>
 
@@ -38,21 +42,19 @@ http://wiki.apache.org/solr/LocalParams
 -->
       <str name="qf">
         id
-        all_text_timv
         active_fedora_model_ssim
-        object_type_si
-        title_info_primary_tsi^100
-        title_info_primary_trans_tsim^80
-        title_info_alternative_tsim^80
-        title_info_translated_tsim^80
-        title_info_uniform_tsim^80
-        subtitle_tsim^80
+        title_info_primary_tsi^1000
+        title_info_primary_trans_tsim^500
+        title_info_alternative_tsim^500
+        title_info_translated_tsim^500
+        title_info_uniform_tsim^100
+        subtitle_tsim^100
         name_personal_tsim^20
         name_personal_role_tsim
         name_corporate_tsim^20
         name_corporate_role_tsim
         name_generic_tsim^20
-        abstract_tsim^30
+        abstract_tsi^30
         genre_basic_tsim
         genre_specific_tsim
         publisher_tsim^20
@@ -73,75 +75,119 @@ http://wiki.apache.org/solr/LocalParams
         physical_location_tsim^20
         sub_location_tsim
         shelf_locator_tsim
-        subject_topic_tsim^50
-        subject_name_corporate_tsim^50
-        subject_name_personal_tsim^50
-        subject_geographic_tsim^50
+        subject_topic_tsim^100
+        subject_name_corporate_tsim^100
+        subject_name_personal_tsim^100
+        subject_geographic_tsim^100
         subject_scale_tsim
+        subject_projection_tsim
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim^50
+        subject_title_tsim^100
         related_item_host_tsim^10
         related_item_series_tsim^10
         related_item_subseries_tsim^10
         related_item_subsubseries_tsim^10
         identifier_local_other_tsim
         identifier_local_other_invalid_tsim
-        local_accession_id_tsim
+        identifier_local_accession_tsim
         identifier_local_call_tsim
+        identifier_local_call_invalid_tsim
         identifier_local_barcode_tsim
+        identifier_local_barcode_invalid_tsim
+        identifier_isbn_tsim
+        identifier_lccn_tsim
+        identifier_ia_id_ssi
         classification_tsim
         extent_tsi
         institution_name_tsim^10
         institution_pid_ssi
+        filenames_ssim
         ocr_tiv^0.5
         ocr_tsiv^0.5
       </str>
       <str name="pf">
-        all_text_timv^10
+        title_info_primary_tsi^5000
+        title_info_primary_trans_tsim^1000
+        title_info_alternative_tsim^1000
+        title_info_translated_tsim^1000
+        title_info_uniform_tsim^500
+        subtitle_tsim^800
+        name_personal_tsim^200
+        name_corporate_tsim^200
+        name_generic_tsim^200
+        subject_topic_tsim^1000
+        subject_name_corporate_tsim^1000
+        subject_name_personal_tsim^1000
+        subject_geographic_tsim^1000
+        subject_title_tsim^1000
+        related_item_host_tsim^100
+        related_item_series_tsim^100
+        related_item_subseries_tsim^100
+        related_item_subsubseries_tsim^100
       </str>
 
       <str name="author_qf">
         name_personal_tsim^20
         name_corporate_tsim^20
         name_generic_tsim^20
-        note_resp_tsim^20
+        note_resp_tsim
       </str>
       <str name="author_pf">
+        name_personal_tsim^200
+        name_corporate_tsim^200
+        name_generic_tsim^200
+        note_resp_tsim
       </str>
       <str name="title_qf">
-        title_info_primary_tsi^100
-        title_info_primary_trans_tsim^80
-        title_info_alternative_tsim^80
-        title_info_translated_tsim^80
-        title_info_uniform_tsim^80
+        title_info_primary_tsi^500
+        title_info_primary_trans_tsim^100
+        title_info_alternative_tsim^100
+        title_info_translated_tsim^100
+        title_info_uniform_tsim^50
         subtitle_tsim^80
       </str>
       <str name="title_pf">
+        title_info_primary_tsi^5000
+        title_info_primary_trans_tsim^1000
+        title_info_alternative_tsim^1000
+        title_info_translated_tsim^1000
+        title_info_uniform_tsim^500
+        subtitle_tsim^800
       </str>
       <str name="subject_qf">
-        subject_topic_tsim^50
-        subject_name_corporate_tsim^50
-        subject_name_personal_tsim^50
-        subject_geographic_tsim^50
+        subject_topic_tsim^100
+        subject_name_corporate_tsim^100
+        subject_name_personal_tsim^100
+        subject_geographic_tsim^100
         subject_temporal_start_tsim
         subject_temporal_end_tsim
-        subject_title_tsim^50
+        subject_title_tsim^100
       </str>
       <str name="subject_pf">
+        subject_topic_tsim^1000
+        subject_name_corporate_tsim^1000
+        subject_name_personal_tsim^1000
+        subject_geographic_tsim^1000
+        subject_title_tsim^1000
       </str>
       <str name="place_qf">
-        subject_geographic_tsim^50
-        subject_topic_tsim^20
-        title_info_primary_tsi^10
+        subject_geographic_tsim^500
+        subject_topic_tsim^50
+        title_info_primary_tsi^20
         subtitle_tsim^5
-        abstract_tsim^5
-        table_of_contents_tsi^5
-        note_tsim^5
+        abstract_tsi
+        table_of_contents_tsi
         institution_name_tsim^10
         physical_location_tsim^10
       </str>
       <str name="place_pf">
+        subject_geographic_tsim^2000
+        subject_topic_tsim^500
+        title_info_primary_tsi^200
+        subtitle_tsim^50
+        institution_name_tsim^100
+        physical_location_tsim^100
       </str>
 
       <str name="fl">
@@ -152,8 +198,6 @@ http://wiki.apache.org/solr/LocalParams
       <str name="facet">true</str>
       <str name="facet.mincount">1</str>
       <str name="facet.limit">10</str>
-      <str name="facet.field">active_fedora_model_ssi</str>
-      <str name="facet.field">object_type_si</str>
 
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">default</str>
@@ -209,12 +253,12 @@ http://wiki.apache.org/solr/LocalParams
       <str name="mlt.count">4</str>
       <str name="mlt.mintf">1</str>
       <str name="mlt.qf">subject_facet_ssim^10 subject_geo_city_ssim^5 related_item_host_ssim^3</str> -->
-      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
   </requestHandler>
 
   <!-- totally experimental, for "more like this" link in catalog#show -->
-  <requestHandler name="mlt" class="solr.MoreLikeThisHandler">
+  <requestHandler name="mlt_qparser" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="fl">
         *,
@@ -227,43 +271,37 @@ http://wiki.apache.org/solr/LocalParams
       <str name="mlt.mintf">1</str>
       <str name="mlt.fl">subject_facet_ssim,subject_geo_city_ssim,related_item_host_ssim</str>
       <str name="mlt.qf">subject_facet_ssim^5</str> -->
-      <str name="q">{!raw f=id v=$id}</str>
+      <str name="q">{!mlt mintf=1 mindf=1 qf=$qf v=$id}</str>
     </lst>
   </requestHandler>
 
-  <!-- HAVE TO COMMENT OUT THE SUGGESTER< OR WE GET:
-  RSolr::Error::Http - 500 Internal Server Error
-      #   Error:     {msg=SolrCore 'blacklight-core' is not available due to init failure: Error loading class
-      'solr.SuggestComponent'}
-  -->
-
   <!-- suggest searchComponent for autocomplete -->
-  <!-- <searchComponent name="suggest" class="solr.SuggestComponent">
+  <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
-      <str name="lookupImpl">FuzzyLookupFactory</str> -->
-      <!-- need to investigate how this affects performance, will build manually for now -->
-      <!-- <str name="buildOnCommit">true</str> -->
-      <!-- <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
-      <float name="threshold">.00004</float> --> <!-- may need to tweak for production -->
-      <!-- <str name="field">spell</str>
-      <str name="suggestAnalyzerFieldType">string</str> -->
-      <!-- weightField only used with DocumentDictionaryFactory -->
-      <!-- <str name="weightField">title_info_primary_tsi</str> -->
-    <!-- </lst>
-  </searchComponent> -->
+      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <bool name="exactMatchFirst">true</bool>
+      <str name="dictionaryImpl">HighFrequencyDictionaryFactory</str>
+      <!-- <float name="threshold">.00004</float> --> <!-- may need to tweak for production -->
+      <str name="field">suggest</str>
+      <str name="suggestAnalyzerFieldType">textSuggest</str>
+      <str name="buildOnStartup">false</str>
+      <str name="buildOnCommit">false</str>
+      <str name="buildOnOptimize">false</str>
+    </lst>
+  </searchComponent>
 
   <!-- suggest requestHandler for autocomplete -->
-  <!-- <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
       <str name="suggest">true</str>
-      <str name="suggest.count">10</str>
+      <str name="suggest.count">5</str>
       <str name="suggest.dictionary">mySuggester</str>
     </lst>
     <arr name="components">
       <str>suggest</str>
     </arr>
-  </requestHandler> -->
+  </requestHandler>
 
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <str name="queryAnalyzerFieldType">textSpell</str>
@@ -289,7 +327,13 @@ http://wiki.apache.org/solr/LocalParams
 
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
   <requestHandler name="/update" class="solr.UpdateRequestHandler" />
+
+  <!-- admin requestHandler def below causes Solr 7 to throw error on startup -->
+  <!-- org.apache.solr.handler.admin.AdminHandlers appears to be deprecated -->
+  <!-- doesn't seem to be used in Blacklight 6 or Hyrax, so leave it commented out -->
+  <!--
   <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
+  -->
 
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
     <lst name="invariants">

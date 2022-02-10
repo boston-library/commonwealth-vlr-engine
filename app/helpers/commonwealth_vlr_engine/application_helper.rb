@@ -4,28 +4,28 @@ module CommonwealthVlrEngine
     # show the display-friendly value for the Format facet
     def render_format(value)
       case value
-        when 'Albums'
-          'Albums/Scrapbooks'
-        when 'Drawings'
-          'Drawings/Illustrations'
-        when 'Maps'
-          'Maps/Atlases'
-        when 'Motion pictures'
-          'Film/Video'
-        when 'Music'
-          'Music (recordings)'
-        when 'Objects'
-          'Objects/Artifacts'
-        when 'Musical notation'
-          'Sheet music'
-        when 'Sound recordings'
-          'Audio recordings (nonmusical)'
-        when 'Cards'
-          'Postcards/Cards'
-        when 'Correspondence'
-          'Letters/Correspondence'
-        else
-          value
+      when 'Albums (Books)'
+        'Albums/Scrapbooks'
+      when 'Drawings'
+        'Drawings/Illustrations'
+      when 'Maps'
+        'Maps/Atlases'
+      when 'Motion pictures'
+        'Film/Video'
+      when 'Music'
+        'Music (recordings)'
+      when 'Objects'
+        'Objects/Artifacts'
+      when 'Musical notation'
+        'Sheet music'
+      when 'Sound recordings'
+        'Audio recordings (nonmusical)'
+      when 'Cards'
+        'Postcards/Cards'
+      when 'Correspondence'
+        'Letters/Correspondence'
+      else
+        value
       end
     end
 
@@ -34,17 +34,17 @@ module CommonwealthVlrEngine
     end
 
     # return the path to the icon for objects with no thumbnail
-    def render_object_icon_path(format)
-      case format
-        when 'still image'
-          icon = 'image'
-        when 'sound recording', 'sound recording-nonmusical', 'sound recording-musical'
-          icon = 'audio'
-        when 'moving image'
-          icon = 'moving-image'
-        else
-          icon = 'text'
-      end
+    def render_object_icon_path(format = nil)
+      icon = case format&.downcase
+             when 'still image'
+               'image'
+             when 'audio'
+               'audio'
+             when 'moving image'
+               'moving-image'
+             else
+               'text'
+             end
       "commonwealth-vlr-engine/dc_#{icon}-icon.png"
     end
 
@@ -59,15 +59,6 @@ module CommonwealthVlrEngine
       else
         "#{params[:date_start]}-#{params[:date_end]}"
       end
-    end
-
-    #from psu scholarsphere
-    # TODO: this isn't used anywhere in the app, get rid of it?
-    def link_to_field(fieldname, fieldvalue, displayvalue = nil)
-      p = {:search_field => fieldname, :q => '"'+fieldvalue+'"'}
-      link_url = search_catalog_path(p)
-      display = displayvalue.blank? ? fieldvalue: displayvalue
-      link_to(display, link_url)
     end
 
     def link_to_facet(field_value, field, displayvalue = nil)
@@ -91,13 +82,60 @@ module CommonwealthVlrEngine
       link_to(field_value + ' County', search_catalog_path(:f => {field => [field_value + ' (county)']}))
     end
 
-    # returns the direct URL to a datastream in Fedora
-    def datastream_disseminator_url pid, datastream_id
-      "#{FEDORA_URL['url']}/objects/#{pid}/datastreams/#{datastream_id}/content"
+    # returns the direct URL to a filestream blob in storage
+    # @param key [String] storage key base, e.g. "images/commonwealth:123456789"
+    # @param attachment_id [String] attachment type
+    # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
+    def filestream_disseminator_url(key, attachment_id, full_key = false)
+      return primary_filestream_url(key, attachment_id, full_key) if attachment_id.match?(/primary/)
+
+      return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
+
+      file_ext = case attachment_id
+                 when 'image_thumbnail_300', 'image_access_800'
+                   'jpg'
+                 when 'image_service'
+                   'jp2'
+                 when 'text_coordinates_access'
+                   'json'
+                 when 'video_access_mp4'
+                   'mp4'
+                 when 'video_access_webm'
+                   'webm'
+                 when 'audio_access'
+                   'mp3'
+                 when 'document_access'
+                   'pdf'
+                 when 'ebook_access_epub'
+                   'epub'
+                 when 'ebook_access_mobi'
+                   'mobi'
+                 when 'ebook_access_daisy'
+                   'zip'
+                 when 'text_plain'
+                   'txt'
+                 end
+      "#{ASSET_STORE['url']}/derivatives/#{key}/#{attachment_id}.#{file_ext}"
+    end
+
+    # returns the signed URL to a filestream blob in 'primary' container (private)
+    # @param key [String] storage key base, e.g. "images/commonwealth:123456789"
+    # @param attachment_id [String] attachment type
+    # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
+    def primary_filestream_url(key, attachment_id, full_key = false)
+      key = key.gsub(/\/[\w\.]*\z/, '') if full_key
+      api_url = "#{CURATOR['url']}/filestreams/#{key}?show_primary_url=true"
+      curator_response = Typhoeus::Request.get(api_url)
+      if curator_response.response_code == 200 && curator_response.body.present?
+        filestream_data = JSON.parse(curator_response.body)
+        filestream_data.fetch('file_set')&.fetch("#{attachment_id}_url", '')
+      else
+        ''
+      end
     end
 
     # create an image tag from an IIIF image server
-    def iiif_image_tag(image_pid,options)
+    def iiif_image_tag(image_pid, options)
       image_tag iiif_image_url(image_pid, options), :alt => options[:alt].presence, :class => options[:class].presence
     end
 
@@ -131,9 +169,12 @@ module CommonwealthVlrEngine
       iiif_response = Typhoeus::Request.get(IIIF_SERVER['url'] + image_pid + '/info.json')
       if iiif_response.response_code == 200 && !iiif_response.response_body.empty?
         iiif_info = JSON.parse(iiif_response.body)
-        img_metadata = {height: iiif_info["height"].to_i, width: iiif_info["width"].to_i}
+        height = iiif_info['height'].to_i
+        width = iiif_info['width'].to_i
+        aspect_ratio = (width.to_f / height.to_f).to_f
+        img_metadata = { height: height, width: width, aspect_ratio: aspect_ratio }
       else
-        img_metadata = {height: 0, width: 0}
+        img_metadata = { height: 0, width: 0, aspect_ratio: 0 }
       end
       img_metadata
     end

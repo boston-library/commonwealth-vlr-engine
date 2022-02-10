@@ -30,6 +30,20 @@ module CommonwealthVlrEngine
       content_tag(:p, 'No news at the moment, please check back later...')
     end
 
+    def middle_feature_columns
+      section_active_count = 0
+      sections = %w(maps collections institutions formats)
+      sections.each do |section|
+        section_active_count += 1 if t("blacklight.home.browse.#{section}.enabled")
+      end
+
+      if section_active_count == 4
+        'col-sm-6 col-md-6 col-lg-3'
+      else
+        "col-sm-#{12 / section_active_count}"
+      end
+    end
+
     def render_about_site_path
       about_site_path
     end
