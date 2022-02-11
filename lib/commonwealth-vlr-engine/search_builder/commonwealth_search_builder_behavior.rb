@@ -1,6 +1,5 @@
 module CommonwealthVlrEngine
   module CommonwealthSearchBuilderBehavior
-
     # only return items corresponding to the correct site
     def site_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
@@ -21,9 +20,6 @@ module CommonwealthVlrEngine
       solr_parameters[:fq] << '-publishing_state_ssi:"draft"'
       solr_parameters[:fq] << '-publishing_state_ssi:"needs_review"'
       solr_parameters[:fq] << '-processing_state_ssi:"derivatives"'
-      # can't implement below until all records have this field
-      # solr_parameters[:fq] << '+workflow_state_ssi:"published"'
-      # solr_parameters[:fq] << '+processing_state_ssi:"complete"'
     end
 
     # keep Institution objects out of the search results
@@ -53,7 +49,7 @@ module CommonwealthVlrEngine
     # used by InstitutionsController#index
     def institutions_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << "+curator_model_suffix_ssi:\"Institution\""
+      solr_parameters[:fq] << '+curator_model_suffix_ssi:"Institution"'
     end
 
     # for 'more like this' search -- set solr id param to params[:mlt_id]
@@ -66,13 +62,7 @@ module CommonwealthVlrEngine
     # used by CollectionsController#index
     def collections_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << "+curator_model_suffix_ssi:\"Collection\""
-    end
-
-    # keep Volume objects out of the search results
-    def exclude_volumes(solr_parameters = {})
-      solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '-curator_model_suffix_ssi:"Volume"'
+      solr_parameters[:fq] << '+curator_model_suffix_ssi:"Collection"'
     end
 
     # set params for ocr field searching
@@ -83,7 +73,5 @@ module CommonwealthVlrEngine
       solr_parameters[:'hl.fragsize'] = 135
       solr_parameters[:'hl.snippets'] = 10
     end
-
   end
 end
-

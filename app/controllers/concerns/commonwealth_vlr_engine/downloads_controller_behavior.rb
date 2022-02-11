@@ -21,9 +21,9 @@ module CommonwealthVlrEngine
 
     # render a page/modal with license terms, download links, etc
     def show
-      @doc_response, @document = search_service.fetch(params[:id])
+      @doc_response, @document = fetch(params[:id])
       if @document[:curator_model_ssi].include? 'Filestream'
-        _parent_response, @parent_document = search_service.fetch(parent_id(@document))
+        _parent_response, @parent_document = fetch(parent_id(@document))
         @object_profile = JSON.parse(@document['attachments_ss'])
       else
         @parent_document = @document
@@ -40,7 +40,7 @@ module CommonwealthVlrEngine
 
     # initiates the file download
     def trigger_download
-      _response, @solr_document = search_service.fetch(params[:id])
+      _response, @solr_document = fetch(params[:id])
       return unless !@solr_document.to_h.empty? && params[:filestream_id]
 
       if @solr_document[:curator_model_ssi].include? 'Filestream'

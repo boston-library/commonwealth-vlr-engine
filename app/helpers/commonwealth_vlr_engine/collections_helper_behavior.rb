@@ -4,7 +4,7 @@ module CommonwealthVlrEngine
     # link to view all items in a collection
     def link_to_all_col_items(col_title, institution_name=nil, link_class)
       facet_params = {blacklight_config.collection_field => [col_title]}
-      facet_params[blacklight_config.institution_field] = institution_name if institution_name
+      facet_params[blacklight_config.institution_field] = [institution_name] if institution_name
       link_to(t('blacklight.collections.browse.all'),
               search_catalog_path(:f => facet_params),
               :class => link_class)

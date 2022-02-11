@@ -108,13 +108,14 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
 
   end
 
-  describe 'exclude_volumes' do
-
-    it 'should add parameters to exclude volume objects' do
-      expect(search_builder.exclude_volumes(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Volume\"')
-    end
-
-  end
+  # Volume is deprecated in DC3
+  # describe 'exclude_volumes' do
+  #
+  #   it 'should add parameters to exclude volume objects' do
+  #     expect(search_builder.exclude_volumes(solr_parameters).to_s).to include('-active_fedora_model_suffix_ssi:\"Volume\"')
+  #   end
+  #
+  # end
 
   describe 'ocr_search_params' do
 

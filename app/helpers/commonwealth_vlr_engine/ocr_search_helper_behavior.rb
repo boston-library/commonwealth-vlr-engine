@@ -39,7 +39,7 @@ module CommonwealthVlrEngine
     def render_page_link(document, image_pid_list, book_id)
       index_of_doc = image_pid_list.index(document.id)
       page_num = document[blacklight_config.page_num_field.to_sym]
-      link_to page_num ? "Page #{page_num}" : "Image #{index_of_doc+1}",
+      link_to page_num ? "Page #{page_num}" : "Image #{index_of_doc + 1}",
               "#{book_viewer_path(book_id)}?ocr_q=#{url_encode(params[:ocr_q])}#1/#{index_of_doc+1}",
               class: 'book_page_link',
               rel: 'nofollow'

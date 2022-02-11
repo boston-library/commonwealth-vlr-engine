@@ -126,7 +126,7 @@ module CommonwealthVlrEngine
     # set the correct facet params for facets from the collection
     def set_collection_facet_params(collection_title, document)
       facet_params = {blacklight_config.collection_field => [collection_title]}
-      facet_params[blacklight_config.institution_field] = document[blacklight_config.institution_field.to_sym] if t('blacklight.home.browse.institutions.enabled')
+      facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if t('blacklight.home.browse.institutions.enabled')
       facet_params
     end
   end

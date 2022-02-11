@@ -12,7 +12,7 @@
 
       <div class="collection-location">
         <% if document[:institution_ark_id_ssi] && document[blacklight_config.institution_field.to_sym] && t('blacklight.home.browse.institutions.enabled') %>
-            <%= link_to(document[blacklight_config.institution_field.to_sym].first,
+            <%= link_to(document[blacklight_config.institution_field.to_sym],
                         institution_path(document[:institution_ark_id_ssi])) %>
         <% end %>
       </div>

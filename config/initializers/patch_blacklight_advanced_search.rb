@@ -7,7 +7,7 @@ require BlacklightAdvancedSearch::Engine.root.join(CommonwealthVlrEngine::Engine
 class BlacklightAdvancedSearch::QueryParser
 
   # LOCAL OVERRIDE of BlacklightAdvancedSearch::ParsingNestingParser#process_query
-  def process_query(params,config)
+  def process_query(params, config)
     queries = []
     queries = keyword_queries.map do |field, query|
       queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
@@ -31,7 +31,7 @@ class BlacklightAdvancedSearch::QueryParser
   # LOCAL ADDITION change params to be what's expected by gem
   def prepare_params(params)
     if params[:search_index]
-      params[:search_index].each_with_index do |field,index|
+      params[:search_index].each_with_index do |field, index|
         if params[field.to_sym] # check if field is set
           unless params[:query][index].empty?
             if params[:op] == 'OR'
@@ -53,8 +53,13 @@ class BlacklightAdvancedSearch::QueryParser
   end
 
   # LOCAL OVERRIDE of BlacklightAdvancedSearch::QueryParser#initialize
-  def initialize(params,config)
-    @params = HashWithIndifferentAccess.new(prepare_params(params))
+  def initialize(params, config)
+    if params.respond_to?(:permit!)
+      santitized_params = params.permit!
+    else
+      santitized_params = params
+    end
+    @params = HashWithIndifferentAccess.new(prepare_params(santitized_params))
     @config = config
   end
 
@@ -69,6 +74,36 @@ module BlacklightAdvancedSearch::RenderConstraintsOverride
     else
       !(localized_params[:q].blank? && localized_params[:f].blank? && localized_params[:f_inclusive].blank? && localized_params[:mlt_id].blank? && localized_params[:coordinates].blank?)
     end
+  end
+
+end
+
+module BlacklightAdvancedSearch::AdvancedSearchBuilder
+
+  # use 6.4.1 method def
+  def facets_for_advanced_search_form(solr_p)
+    # ensure empty query is all records, to fetch available facets on entire corpus
+    solr_p["q"]            = '{!lucene}*:*'
+    # explicitly use lucene defType since we are passing a lucene query above (and appears to be required for solr 7)
+    solr_p["defType"]      = 'lucene'
+    # We only care about facets, we don't need any rows.
+    solr_p["rows"]         = "0"
+
+    # Anything set in config as a literal
+    if blacklight_config.advanced_search[:form_solr_parameters]
+      solr_p.merge!(blacklight_config.advanced_search[:form_solr_parameters])
+    end
+  end
+
+end
+
+module BlacklightAdvancedSearch::ParsingNestingParser
+
+  # use 6.4.1 method def
+  def local_param_hash(key, config)
+    field_def = config.search_fields[key]
+
+    (field_def[:solr_adv_parameters] || field_def[:solr_parameters] || {}).merge(field_def[:solr_local_parameters] || {})
   end
 
 end

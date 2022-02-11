@@ -15,8 +15,9 @@ class OcrSearchController < CatalogController
     if params[:ocr_q]
       if !params[:ocr_q].blank?
         @image_pid_list = image_file_pids(get_image_files(params[:id]))
-        ocr_search_params = {q: params[:ocr_q],
-                             f: {'is_file_set_of_ssim' => params[:id]}}
+        ocr_search_params = { q: params[:ocr_q],
+                              f: { 'is_file_set_of_ssim' => params[:id],
+                                   blacklight_config.index.display_type_field => 'Image' } }
         ocr_search_params[:page] = params[:page] if params[:page]
         ocr_search_params[:sort] = params[:sort] if params[:sort]
         # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow

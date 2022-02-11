@@ -16,7 +16,7 @@
       <%= javascript_include_tag 'openseadragon' %>
       <%= render :partial => 'catalog/_show_partials/show_multi_img',
                  :locals => {:document => @document,
-                             :image_files => image_file_pids(@object_files[:image])} %>
+                             :image_files => @object_files[:image]} %>
     <% else %>
       <% book_reader = true %>
     <% end %>

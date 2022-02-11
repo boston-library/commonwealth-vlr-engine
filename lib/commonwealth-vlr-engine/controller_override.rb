@@ -71,8 +71,9 @@ module CommonwealthVlrEngine
             form_solr_parameters: {
                 'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
                 'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+                'f.genre_basic_ssim.facet.sort' => 'index',
                 'f.collection_name_ssim.facet.limit' => -1,
-                'facet.sort' => 'index' # sort by byte order of values
+                'f.collection_name_ssim.facet.sort' => 'index'
             }
         }
 
@@ -123,7 +124,19 @@ module CommonwealthVlrEngine
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|
           field.label = 'All Fields'
-          field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+          field.solr_parameters = { 'spellcheck.dictionary': 'default' }
+        end
+
+        config.add_search_field('creator') do |field|
+          field.solr_parameters = {
+            'spellcheck.dictionary': 'default',
+            qf: '${author_qf}',
+            pf: '${author_pf}'
+          }
+          field.solr_adv_parameters = {
+            qf: '$author_qf',
+            pf: '$author_pf',
+          }
         end
 
         config.add_search_field('title') do |field|
@@ -134,7 +147,7 @@ module CommonwealthVlrEngine
           }
           field.solr_adv_parameters = {
             qf: '$title_qf',
-            pf: '$title_pf'
+            pf: '$title_pf',
           }
         end
 
@@ -146,7 +159,7 @@ module CommonwealthVlrEngine
           }
           field.solr_adv_parameters = {
             qf: '$subject_qf',
-            pf: '$subject_pf'
+            pf: '$subject_pf',
           }
         end
 
@@ -158,21 +171,11 @@ module CommonwealthVlrEngine
           }
           field.solr_adv_parameters = {
             qf: '$place_qf',
-            pf: '$place_pf'
+            pf: '$place_pf',
           }
         end
 
-        config.add_search_field('creator') do |field|
-          field.solr_parameters = {
-            'spellcheck.dictionary': 'default',
-            qf: '${author_qf}',
-            pf: '${author_pf}'
-          }
-          field.solr_adv_parameters = {
-            qf: '$author_qf',
-            pf: '$author_pf'
-          }
-        end
+
 
         # "sort results by" select (pulldown)
         config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
