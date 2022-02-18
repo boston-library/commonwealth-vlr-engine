@@ -86,7 +86,7 @@ module CommonwealthVlrEngine
 
     # render the date in the catalog#index list view
     def index_date_value(options = {})
-      options[:document][:date_tsim]&.first
+      options[:document][:date_tsim].first if options[:document][:date_tsim]
     end
 
     # render institution name as a link in catalog#index list view

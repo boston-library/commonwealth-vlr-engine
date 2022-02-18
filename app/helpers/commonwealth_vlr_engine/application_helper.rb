@@ -35,7 +35,7 @@ module CommonwealthVlrEngine
 
     # return the path to the icon for objects with no thumbnail
     def render_object_icon_path(format = nil)
-      icon = case format&.downcase
+      icon = case format.to_s.downcase
              when 'still image'
                'image'
              when 'audio'
@@ -128,7 +128,11 @@ module CommonwealthVlrEngine
       curator_response = Typhoeus::Request.get(api_url)
       if curator_response.response_code == 200 && curator_response.body.present?
         filestream_data = JSON.parse(curator_response.body)
-        filestream_data.fetch('file_set')&.fetch("#{attachment_id}_url", '')
+        if filestream_data.fetch('file_set').present?
+          filestream_data.fetch('file_set').fetch("#{attachment_id}_url", '')
+        else
+          ''
+        end
       else
         ''
       end
