@@ -10,15 +10,15 @@ module CommonwealthVlrEngine
     def oai_link_text(document)
       if document[:type_of_resource_ssim]
         types = document[:type_of_resource_ssim].join(' ')
-        if types.match?(/text/)
+        if types =~ /text/
           t('blacklight.oai_objects.link_to_item.generic', institution_name: oai_inst_name(document))
-        elsif types.match?(/carto/)
+        elsif types =~ /carto/
           t('blacklight.oai_objects.link_to_item.map', institution_name: oai_inst_name(document))
-        elsif types.match?(/sound/)
+        elsif types =~ /sound/
           t('blacklight.oai_objects.link_to_item.sound', institution_name: oai_inst_name(document))
-        elsif types.match?(/moving/)
+        elsif types =~ /moving/
           t('blacklight.oai_objects.link_to_item.video', institution_name: oai_inst_name(document))
-        elsif types.match?(/still/)
+        elsif types =~ /still/
           t('blacklight.oai_objects.link_to_item.image', institution_name: oai_inst_name(document))
         else
           t('blacklight.oai_objects.link_to_item.generic', institution_name: oai_inst_name(document))

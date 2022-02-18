@@ -139,7 +139,7 @@ module CommonwealthVlrEngine
     end
 
     def mime_type
-      if params[:filestream_id].match?(/primary/)
+      if params[:filestream_id] =~ /primary/
         @attachments[primary_file_key]['content_type']
       else
         'image/jpeg'
@@ -147,7 +147,7 @@ module CommonwealthVlrEngine
     end
 
     def primary_file_key
-      @attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) }
+      @attachments.keys.find { |k| k =~ /\A[^_]*_primary/ }
     end
 
     def prepare_file_headers

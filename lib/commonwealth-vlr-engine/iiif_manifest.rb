@@ -20,7 +20,7 @@ module CommonwealthVlrEngine
       manifest.attribution = manifest_attribution(document).presence
 
       if document[:license_ss]
-        manifest.license = cc_url(document[:license_ss]) if document[:license_ss].match?(/\(CC\s/)
+        manifest.license = cc_url(document[:license_ss]) if document[:license_ss] =~ /\(CC\s/
       end
 
       manifest.see_also = document[:identifier_uri_ss] if document[:identifier_uri_ss]
@@ -94,7 +94,7 @@ module CommonwealthVlrEngine
       collection.metadata = manifest_metadata(document)
       collection.description = 'This document describes an IIIF Collection, which points to a series of IIIF Manifests comprising the individual items in this multi-volume work'
       if document[:license_ss]
-        collection.license = cc_url(document[:license_ss]) if document[:license_ss].match?(/\(CC\s/)
+        collection.license = cc_url(document[:license_ss]) if document[:license_ss] =~ /\(CC\s/
       end
       collection.thumbnail = "#{document[:identifier_uri_ss]}/thumbnail" if document[:exemplary_image_ssi]
       manifest_docs.each do |manifest_doc|

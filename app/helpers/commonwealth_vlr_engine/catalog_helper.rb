@@ -217,7 +217,7 @@ module CommonwealthVlrEngine
         title_output = document.id
       end
       regex = /[^\.]\.\.[^\.]/ # double periods, but not ellipsis
-      title_output.gsub!(/\.\./, '.') if title_output.match?(regex)
+      title_output.gsub!(/\.\./, '.') if title_output =~ regex
       title_output.squish
     end
 
@@ -348,7 +348,7 @@ module CommonwealthVlrEngine
         end
       end
       roles.each_with_index do |role, index|
-        next unless role.match?(/[\|]{2}/)
+        next unless role =~ /[\|]{2}/
 
         multi_roles = role.split('||')
         multi_role_name = names[index]

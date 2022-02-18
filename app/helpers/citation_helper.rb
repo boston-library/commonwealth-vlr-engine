@@ -87,7 +87,7 @@ module CitationHelper
     # for APA, names should be "Lastname, F." format
     if citation_style == 'apa'
       all_names = all_names.map do |n|
-        if n.match?(/\A[\w\-']*, [A-Z]/)
+        if n =~ /\A[\w\-']*, [A-Z]/
           "#{n.match(/\A[\w\-']*, [A-Z]/)}."
         else
           n

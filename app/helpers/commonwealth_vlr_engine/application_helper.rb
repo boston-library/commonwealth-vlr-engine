@@ -87,7 +87,7 @@ module CommonwealthVlrEngine
     # @param attachment_id [String] attachment type
     # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
     def filestream_disseminator_url(key, attachment_id, full_key = false)
-      return primary_filestream_url(key, attachment_id, full_key) if attachment_id.match?(/primary/)
+      return primary_filestream_url(key, attachment_id, full_key) if attachment_id =~ /primary/
 
       return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
 
