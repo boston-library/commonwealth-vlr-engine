@@ -125,10 +125,11 @@ module CommonwealthVlrEngine
     def primary_filestream_url(key, attachment_id, full_key = false)
       key = key.gsub(/\/[\w\.]*\z/, '') if full_key
       api_url = "#{CURATOR['url']}/filestreams/#{key}?show_primary_url=true"
-      curator_response = Typhoeus::Request.get(api_url)
+      # in LMEC portal app, request fails without ssl_verifypeer: false
+      curator_response = Typhoeus::Request.get(api_url, ssl_verifypeer: false)
       if curator_response.response_code == 200 && curator_response.body.present?
         filestream_data = JSON.parse(curator_response.body)
-        if filestream_data.fetch('file_set').present?
+        if filestream_data.fetch('file_set', nil).present?
           filestream_data.fetch('file_set').fetch("#{attachment_id}_url", '')
         else
           ''
@@ -170,7 +171,8 @@ module CommonwealthVlrEngine
 
     # returns a hash with width/height from IIIF info.json response
     def get_image_metadata(image_pid)
-      iiif_response = Typhoeus::Request.get(IIIF_SERVER['url'] + image_pid + '/info.json')
+      # in LMEC portal app, request fails without ssl_verifypeer: false
+      iiif_response = Typhoeus::Request.get("#{IIIF_SERVER['url']}#{image_pid}/info.json", ssl_verifypeer: false)
       if iiif_response.response_code == 200 && !iiif_response.response_body.empty?
         iiif_info = JSON.parse(iiif_response.body)
         height = iiif_info['height'].to_i
