@@ -4,8 +4,10 @@
 module CitationHelper
   # an array of available citation formats
   # for each style, there should be a corresponding "render_#{style}_citation" method
+  # LMEC only wants chicago
   def citation_styles
-    %w(mla apa chicago)
+    # %w(mla apa chicago)
+    %w(chicago)
   end
 
   def render_citations(documents, citation_styles)
@@ -160,11 +162,13 @@ module CitationHelper
 
   # return the URL for the current page
   # prefer ARK when available
+  # LMEC doesn't want ARK, since it points to digitalcommonwealth.org
   def url_for_citation(document)
-    if document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject'
-      solr_document_url(document)
-    else
-      document[:identifier_uri_ss].presence || solr_document_url(document)
-    end
+    # if document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject'
+    #   solr_document_url(document)
+    # else
+    #   document[:identifier_uri_ss].presence || solr_document_url(document)
+    # end
+    solr_document_url(document)
   end
 end

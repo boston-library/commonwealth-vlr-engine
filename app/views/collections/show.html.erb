@@ -65,8 +65,8 @@
             </div>
 
             <div id="collection_desc">
-                <% if @document[:abstract_tsi] %>
-                      <%= @document[:abstract_tsi] %>
+                <% if @document[:abstract_tsi].present? %>
+                      <%= @document[:abstract_tsi].html_safe %>
                 <% end %>
             </div>
 
