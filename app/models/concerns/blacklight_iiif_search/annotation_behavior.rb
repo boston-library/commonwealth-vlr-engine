@@ -17,7 +17,8 @@ module BlacklightIiifSearch
     # corresponding to coordinates of query term on image
     # local implementation expected
     def coordinates
-      default = '#xywh=0,0,0,0'
+      # 1,1,1,1 works better than 0,0,0,0, latter leads to weird behavior in Universal Viewer
+      default = '#xywh=1,1,1,1'
       return default if query.blank?
 
       coords_json = fetch_and_parse_coords
