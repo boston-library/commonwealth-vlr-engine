@@ -42,7 +42,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
 
     describe '#coordinates' do
       it 'gets the expected value from #coordinates' do
-        expect(iiif_search_annotation.coordinates).to include('#xywh=1056,3452,70,48')
+        expect(iiif_search_annotation.coordinates).to include('#xywh=1056,3500,70,48')
       end
     end
   end
