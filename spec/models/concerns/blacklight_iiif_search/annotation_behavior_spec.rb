@@ -28,7 +28,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
   describe 'canvas_uri methods' do
     # stub #fetch_and_parse_coords, we don't have any djvuCoords datastreams in Fedora dev
     let(:coordinates) do
-      JSON.parse("{\"width\":2421,\"height\":4080,\"words\":{\"#{query_term}\":[[1056,3500,1126,3452]]}}")
+      JSON.parse("{\"width\":2421,\"height\":4080,\"words\":{\"#{query_term}\":[[1056,3452,1126,3500]]}}")
     end
     before(:each) { allow(iiif_search_annotation).to receive(:fetch_and_parse_coords).and_return(coordinates) }
 
@@ -42,7 +42,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
 
     describe '#coordinates' do
       it 'gets the expected value from #coordinates' do
-        expect(iiif_search_annotation.coordinates).to include('#xywh=1056,3452,70,48')
+        expect(iiif_search_annotation.coordinates).to include('#xywh=1056,3500,70,48')
       end
     end
   end

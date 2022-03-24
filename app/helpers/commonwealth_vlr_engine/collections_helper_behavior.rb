@@ -48,7 +48,8 @@ module CommonwealthVlrEngine
       end
       left = (image_info[:width] - width) / 2
       region = "#{left},#{top},#{width},#{height}"
-      iiif_image_url(image_pid, { region: region, size: "#{target_width}," })
+      size_width = image_info[:width] < target_width ? image_info[:width] : target_width
+      iiif_image_url(image_pid, { region: region, size: "#{size_width}," })
     end
 
     def hosted_collection_class(document)

@@ -3,6 +3,7 @@
     <%= video_tag(filestream_disseminator_url(video_key, 'video_access_mp4'),
                   class: 'img_show',
                   controls: true,
-                  poster: thumbnail_url(document)) %>
+                  poster: thumbnail_url(document),
+                  controlsList: 'nodownload') %>
   </div>
 </div>
