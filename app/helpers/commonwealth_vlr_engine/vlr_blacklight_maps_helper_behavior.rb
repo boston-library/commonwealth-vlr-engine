@@ -23,7 +23,7 @@ module CommonwealthVlrEngine
       end
       field_values.each do |val|
         # new_params = new_params.to_hash
-        place = val.match?(/\(county\)/) ? val : val.gsub(/\s\([a-z]*\)\z/, '')
+        place = val.match?(/\(county\)/) ? val : val.gsub(/\s\([a-z\s]*\)\z/, '')
         unless params[:f] && params[:f][field] && params[:f][field].include?(place)
           # have to initialize SearchState with existing params as Hash, not HashWithIndifferentAccess
           new_params = Blacklight::SearchState.new(new_params.to_hash,
