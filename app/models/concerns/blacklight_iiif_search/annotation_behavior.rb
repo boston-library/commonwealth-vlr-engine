@@ -31,7 +31,7 @@ module BlacklightIiifSearch
 
         width = term_coords_array[2] - term_coords_array[0]
         height = term_coords_array[3] - term_coords_array[1]
-        "#xywh=#{term_coords_array[0]},#{term_coords_array[3]},#{width},#{height}"
+        "#xywh=#{term_coords_array[0]},#{term_coords_array[1]},#{width},#{height}"
       else
         default
       end
