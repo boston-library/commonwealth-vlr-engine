@@ -87,7 +87,7 @@ module CommonwealthVlrEngine
     # @param attachment_id [String] attachment type
     # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
     def filestream_disseminator_url(key, attachment_id, full_key = false)
-      return primary_filestream_url(key, attachment_id, full_key) if attachment_id =~ /primary/
+      return primary_filestream_url(key, attachment_id, full_key) if (attachment_id =~ /primary/ && attachment_id !~ /georectified/)
 
       return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
 
@@ -114,6 +114,8 @@ module CommonwealthVlrEngine
                    'zip'
                  when 'text_plain'
                    'txt'
+                 when 'image_georectified_primary'
+                   'tif'
                  end
       "#{ASSET_STORE['url']}/derivatives/#{key}/#{attachment_id}.#{file_ext}"
     end
