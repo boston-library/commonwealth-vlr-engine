@@ -436,6 +436,7 @@ Metrics/CyclomaticComplexity:
   Max: 15
   Exclude:
     - 'app/helpers/citation_helper.rb'
+    - 'app/helpers/commonwealth_vlr_engine/application_helper.rb'
 
 Metrics/MethodLength:
   Enabled: true
