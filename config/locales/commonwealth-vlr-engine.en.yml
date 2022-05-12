@@ -46,7 +46,7 @@ en:
           title: 'Downloads'
           images:
             image_access_800: 'Medium'
-            access_full: 'Large (full resolution)'
+            image_access_full: 'Large (full resolution)'
             image_georectified_primary: 'GeoTIFF (georeferenced)'
             JPEG2000: 'Large (full resolution)'
             image_primary: 'Primary (full resolution, uncompressed)'

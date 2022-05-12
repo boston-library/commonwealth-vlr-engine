@@ -106,7 +106,7 @@ module CommonwealthVlrEngine
 
     # returns a filestream url or IIIF url
     def file_url
-      if params[:filestream_id] == 'access_full'
+      if params[:filestream_id] == 'image_access_full'
         iiif_image_url(params[:id], {})
       else
         filestream_disseminator_url(@attachments[params[:filestream_id]]['key'],
@@ -115,39 +115,25 @@ module CommonwealthVlrEngine
     end
 
     def file_extension
-      if params[:filestream_id] == 'access_full'
-        'jpg'
-      else
-        @attachments[params[:filestream_id]]['filename'].split('.').last
-      end
+      @attachments.dig(params[:filestream_id], 'filename')&.split('.')&.last || 'jpg'
     end
 
-    # @return [String] the filename
     def file_name
       "#{@object_id.tr(':', '_')}_#{params[:filestream_id]}"
     end
 
-    # @return [String] the filename with extension
     def file_name_with_extension
       "#{file_name}.#{file_extension}"
     end
 
     def file_size
-      return false if params[:filestream_id] == 'access_full'
+      return false if params[:filestream_id] == 'image_access_full'
 
       @attachments[params[:filestream_id]]['byte_size']
     end
 
     def mime_type
-      if params[:filestream_id].match?(/primary/)
-        @attachments[primary_file_key]['content_type']
-      else
-        'image/jpeg'
-      end
-    end
-
-    def primary_file_key
-      @attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) }
+      @attachments.dig(params[:filestream_id], 'content_type') || 'image/jpeg'
     end
 
     def prepare_file_headers
