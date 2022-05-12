@@ -74,13 +74,13 @@ module CommonwealthVlrEngine
       stored_filestreams.each do |filestream_id|
         image_filestreams << filestream_id if attachments_json[filestream_id].present?
       end
-      image_filestreams.insert(1, 'access_full')
+      image_filestreams.insert(1, 'image_access_full')
     end
 
     def image_download_links(document, image_files)
       if document[:identifier_ia_id_ssi]
         [file_download_link(document[:id],
-                            t('blacklight.downloads.images.access_full'),
+                            t('blacklight.downloads.images.image_access_full'),
                             nil,
                             'JPEG2000',
                             download_link_options)]
@@ -172,7 +172,7 @@ module CommonwealthVlrEngine
 
     def file_type_string(filestream_id, attachments_json)
       if attachments_json && attachments_json[filestream_id]
-        file_type_string = if filestream_id == 'access_full' || filestream_id == 'image_access_800'
+        file_type_string = if filestream_id == 'image_access_full' || filestream_id == 'image_access_800'
                              'JPEG'
                            elsif filestream_id == 'audio_access'
                              'MP3'
@@ -202,7 +202,7 @@ module CommonwealthVlrEngine
 
     def file_size_string(filestream_id, attachments_json)
       if attachments_json
-        if filestream_id == 'access_full'
+        if filestream_id == 'image_access_full'
           # estimate size of full JPEG based on image_primary or image_service size
           estimate_filestream = attachments_json['image_primary'] || attachments_json['image_service']
           number_to_human_size((estimate_filestream['byte_size'] * 0.083969078))
@@ -227,7 +227,7 @@ module CommonwealthVlrEngine
     # create a composite attachments_json object from multiple file objects
     # used to display size of ZIP archive
     def setup_zip_attachments(image_files, filestream_id)
-      filestream_id_to_use = filestream_id == 'access_full' ? 'image_service' : filestream_id
+      filestream_id_to_use = filestream_id == 'image_access_full' ? 'image_service' : filestream_id
       attachments = { zip: true,
                       filename: filestream_id == 'image_primary' ? '.TIF' : '.JPEG',
                       filestream_id_to_use.to_sym => {} }
@@ -240,7 +240,7 @@ module CommonwealthVlrEngine
       zip_size = case filestream_id
                  when 'image_primary'
                    zip_size * 0.798
-                 when 'access_full'
+                 when 'image_access_full'
                    zip_size * 0.839
                  else
                    zip_size * 0.927
