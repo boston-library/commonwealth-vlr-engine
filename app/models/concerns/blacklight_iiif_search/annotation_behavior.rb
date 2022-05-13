@@ -23,10 +23,17 @@ module BlacklightIiifSearch
 
       coords_json = fetch_and_parse_coords
       if coords_json && coords_json['words']
-        matches = coords_json['words'].select { |k, _v| k.downcase =~ /#{query.downcase}/ }
+        matches = coords_json['words'].select { |k, _v| k.casecmp?(query) }
         return default unless matches
 
-        term_coords_array = matches.values.flatten(1)[hl_index]
+        # when multi-word query, hl_index may not exist for term, so use the highest index available
+        term_coords_array = nil
+        hl_index.downto(0) do |h_i|
+          next if term_coords_array
+
+          term_coords_array = matches.values.flatten(1)[h_i]
+        end
+
         return default unless term_coords_array
 
         width = term_coords_array[2] - term_coords_array[0]
