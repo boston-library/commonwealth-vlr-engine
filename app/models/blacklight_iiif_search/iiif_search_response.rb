@@ -28,10 +28,10 @@ module BlacklightIiifSearch
     def annotation_list
       list_id = controller.request.original_url
       anno_list = IIIF::Presentation::AnnotationList.new('@id' => list_id)
-      anno_list['@context'] = %w[
+      anno_list['@context'] = %w(
         http://iiif.io/api/presentation/2/context.json
         http://iiif.io/api/search/1/context.json
-      ]
+      )
       anno_list['resources'] = resources
       anno_list['hits'] = @hits
       anno_list['within'] = within
@@ -48,7 +48,7 @@ module BlacklightIiifSearch
       @total = 0
       solr_response['highlighting'].each do |id, hl_hash|
         hit = { '@type': 'search:Hit', 'annotations': [] }
-        document = solr_response.documents.select { |v| v[:id] == id }.first
+        document = solr_response.documents.find { |v| v[:id] == id }
         if hl_hash.empty?
           @total += 1
           annotation = IiifSearchAnnotation.new(document,
@@ -63,7 +63,7 @@ module BlacklightIiifSearch
               # iterate over highlighted segments,
               # using highlighted text as "query" passed to IiifSearchAnnotation.new
               # assume that <em></em> is the highlight tag
-              hl.scan(/<em>[\S]*<\/em>/)&.map { |v| v.gsub(/<[\/]?em>/, '') }.each do |hl_string|
+              hl.scan(/<em>[\S]*<\/em>/)&.map { |v| v.gsub(/<[\/]?em>/, '') }&.each do |hl_string|
                 @total += 1
                 annotation = IiifSearchAnnotation.new(document,
                                                       hl_string,
@@ -106,7 +106,7 @@ module BlacklightIiifSearch
     # @return [ActionController::Parameters]
     def clean_params
       remove = ignored.map(&:to_sym)
-      controller.iiif_search_params.except(*%i[page solr_document_id] + remove)
+      controller.iiif_search_params.except(*%i(page solr_document_id) + remove)
     end
   end
 end
