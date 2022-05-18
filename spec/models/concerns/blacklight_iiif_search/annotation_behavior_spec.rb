@@ -11,7 +11,7 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
   let(:iiif_search_annotation) do
     BlacklightIiifSearch::IiifSearchAnnotation.new(page_doc, query_term,
                                                    0, nil, controller,
-                                                   parent_doc)
+                                                   parent_doc, 0)
   end
   let(:test_request) { ActionDispatch::TestRequest.new({}) }
 
