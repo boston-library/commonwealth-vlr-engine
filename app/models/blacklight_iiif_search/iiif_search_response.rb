@@ -54,23 +54,26 @@ module BlacklightIiifSearch
           annotation = IiifSearchAnnotation.new(document,
                                                 solr_response.params['q'],
                                                 0, nil, controller,
-                                                @parent_document)
+                                                @parent_document, 0)
           @resources << annotation.as_hash
           hit[:annotations] << annotation.annotation_id
         else
           hl_hash.each_value do |hl_array|
-            hl_array.each_with_index do |hl, hl_index|
-              # iterate over highlighted segments,
+            term_counts = {}
+            hl_index = 0
+            hl_array.each do |hl|
+              # iterate over highlighted segments (assume that <em></em> is the highlight tag)
               # using highlighted text as "query" passed to IiifSearchAnnotation.new
-              # assume that <em></em> is the highlight tag
-              hl.scan(/<em>[\S]*<\/em>/)&.map { |v| v.gsub(/<[\/]?em>/, '') }&.each do |hl_string|
+              highlights = hl.scan(/<em>[\S]*<\/em>/)&.map { |v| v.gsub(/<[\/]?em>/, '') }
+              highlights.each do |hl_term|
                 @total += 1
-                annotation = IiifSearchAnnotation.new(document,
-                                                      hl_string,
-                                                      hl_index, hl, controller,
-                                                      @parent_document)
+                term_counts[hl_term] ||= 1
+                annotation = IiifSearchAnnotation.new(document, hl_term, hl_index, hl, controller,
+                                                      @parent_document, term_counts[hl_term] - 1)
                 @resources << annotation.as_hash
                 hit[:annotations] << annotation.annotation_id
+                hl_index += 1
+                term_counts[hl_term] += 1
               end
             end
           end
