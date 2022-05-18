@@ -34,17 +34,16 @@ module CommonwealthVlrEngine
     end
 
     # link to the book viewer, using page number or image index
-    # @document = SolrDocument (page object)
-    # @image_pid_list = an ordered Array of image pids for the book object
-    # @book_id = pid of book object
+    # @param document [SolrDocument] page object
+    # @param image_pid_list [Array] ordered Array of image pids for the book object
+    # @param book_id [String] ARK id of book object
     def render_page_link(document, image_pid_list, book_id)
       index_of_doc = image_pid_list.index(document.id)
       page_num = document[blacklight_config.page_num_field.to_sym]
-      # TODO: UV doesn't seem to allow passing query string, as in "h=#{url_encode(params[:ocr_q])}"
+      viewer_path = "#{book_viewer_path(book_id)}#?&cv=#{index_of_doc}"
+      viewer_path += "&h=#{url_encode(params[:ocr_q])}" if params[:ocr_q].present?
       link_to page_num ? "Page #{page_num}" : "Image #{index_of_doc + 1}",
-              "#{book_viewer_path(book_id)}#?&cv=#{index_of_doc}",
-              class: 'book_page_link',
-              rel: 'nofollow'
+              viewer_path, class: 'book_page_link', rel: 'nofollow'
     end
   end
 end
