@@ -1,4 +1,4 @@
-<div id="item_metadata" class="card bg-light">
+  <div id="item_metadata" class="card bg-light">
   <div class="card-body">
     <h3>Item Information</h3>
 
@@ -451,10 +451,11 @@
     <% end %>
 
     <div id="mods_link_wrapper">
-      <%# TODO: re-enable once Curator supports MODS serialization endpoint %>
-      <%# link_to t('blacklight.tools.librarian_view.link'),
-                  metadata_view_catalog_path(@document),
-                  { id: 'librarianLink', rel: 'nofollow', data: { blacklight_modal: 'trigger' } } %>
+      <% if document[:mods_xml_ss] %>
+        <%= link_to t('blacklight.tools.librarian_view.link'),
+                    metadata_view_catalog_path(@document),
+                    { id: 'librarianLink', rel: 'nofollow', data: { blacklight_modal: 'trigger' } } %>
+      <% end %>
     </div>
   </div>
 </div>

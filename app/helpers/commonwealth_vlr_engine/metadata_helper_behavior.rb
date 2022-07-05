@@ -140,11 +140,12 @@ module CommonwealthVlrEngine
       alt_title_output
     end
 
-    # TODO: refactor once Curator supports MODS serialization endpoint
-    def render_mods_xml_record(document_id)
-      # mods_xml_file_path = filestream_disseminator_url(document_id, 'descMetadata')
-      # mods_response = Typhoeus::Request.get(mods_xml_file_path)
-      # REXML::Document.new(mods_response.body)
+    # return MODS XML (serialized in Solr as gzipped Base64 encoded String)
+    def render_mods_xml_record(document)
+      return '' unless document['mods_xml_ss']
+
+      mods_data = Zlib::Inflate.inflate(Base64.decode64(document['mods_xml_ss']))
+      REXML::Document.new(mods_data)
     end
 
     # create a list of names and roles to be displayed
