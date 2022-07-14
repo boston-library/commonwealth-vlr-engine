@@ -1,6 +1,6 @@
 # CommonwealthVlrEngine
 
-# Test jenkins
+# Test whether jenkins build the pull-request for commonwealth_vlr_engine 
 
 [![Build Status](https://travis-ci.com/boston-library/commonwealth-vlr-engine.svg?branch=master)](https://travis-ci.com/boston-library/commonwealth-vlr-engine) [![Coverage Status](https://coveralls.io/repos/boston-library/commonwealth-vlr-engine/badge.svg?branch=master&service=github)](https://coveralls.io/github/boston-library/commonwealth-vlr-engine?branch=master)
 
