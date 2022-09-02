@@ -3,6 +3,7 @@
 <% doc_presenter = show_presenter(document) %>
 <% book_reader = has_searchable_text?(@document) ? true : false %>
 <% video = has_video_files?(@object_files) %>
+<% audio = has_playable_audio?(@object_files) %>
 <% oai_object = @document[blacklight_config.hosting_status_field.to_sym] == 'harvested' ? true : false %>
 
 <% if !book_reader && has_image_files?(@object_files) %>
@@ -29,9 +30,15 @@
                        video_key: @object_files[:video][0]['storage_key_base_ss'] } %>
 <% end %>
 
+<% if audio %>
+  <%= render partial: 'catalog/_show_partials/show_audio_player',
+             locals: { document: @document,
+                       audio_files: @object_files } %>
+<% end %>
+
 <div id="show_info_wrapper" class="row">
   <%# show thumbnail or icon if object has no images, or is a book %>
-  <% if (!has_image_files?(@object_files) || book_reader) && !video %>
+  <% if (!has_image_files?(@object_files) || book_reader) && !video && !audio %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
