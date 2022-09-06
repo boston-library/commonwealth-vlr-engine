@@ -1,18 +1,25 @@
 <div id="img_show_container">
   <div id="img_show_canvas" class="audio_player_wrapper">
-    <%= audio_tag(filestream_disseminator_url(audio_files.first[:storage_key_base_ss], 'audio_access'),
-                  class: 'img_show',
+    <h5 id="audio_title">
+      <%= audio_files.first['filename_base_ssi'] %>
+    </h5>
+    <%= audio_tag(filestream_disseminator_url(audio_files.first['storage_key_base_ss'], 'audio_access'),
+                  class: 'audio_show',
                   id: 'audio_player',
-                  controls: true) %>
+                  controls: true,
+                  controlsList: 'nodownload') %>
     <% if audio_files.length > 1 %>
-      <ul id="audio_playlist">
+      <ol id="audio_playlist">
         <% audio_files.each_with_index do |audio_file, index| %>
-          <% next unless audio_file[:attachments_ss][:audio_access].present? %>
+          <% next unless audio_file['attachments_ss']['audio_access'].present? %>
 
           <%= content_tag(:li,
-                          link_to(audio_file[:filename_base_ssi],
-                                  filestream_disseminator_url(audio_file[:storage_key_base_ss], 'audio_access')),
+                          link_to(audio_file['filename_base_ssi'],
+                                  filestream_disseminator_url(audio_file['storage_key_base_ss'], 'audio_access')),
                           class: 'playlist_item' + (index == 0 ? ' active' : '')) %>
-      </ul>
+        <% end %>
+      </ol>
+    <% end %>
   </div>
 </div>
+<%= javascript_include_tag 'commonwealth-vlr-engine/audio_player_playlist' %>

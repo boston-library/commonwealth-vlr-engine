@@ -33,7 +33,7 @@
 <% if audio %>
   <%= render partial: 'catalog/_show_partials/show_audio_player',
              locals: { document: @document,
-                       audio_files: @object_files } %>
+                       audio_files: @object_files[:audio] } %>
 <% end %>
 
 <div id="show_info_wrapper" class="row">
