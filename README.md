@@ -4,11 +4,7 @@
 
 A virtual local repository is an application that provides digital object discovery and display functionality without the overhead of actual asset management, pulling content via APIs from a larger repository managed elsewhere. The subset of content to be displayed can be based on any valid repository search or facet query parameters for descriptive, administrative, or technical metadata.
 
-Commonwealth-VLR-Engine is a Rails engine for creating a [Blacklight](https://github.com/projectblacklight/blacklight) app that provides access to content from Solr/Fedora, packaging a number of feature-rich enhancements and modifications, including [Blacklight Gallery](https://github.com/projectblacklight/blacklight-gallery), [Blacklight Advanced Search](https://github.com/projectblacklight/blacklight_advanced_search), [Blacklight Maps](https://github.com/projectblacklight/blacklight-maps), and [OpenSeadragon](https://github.com/IIIF/openseadragon-rails). Via a simple install process, adopters can quickly deploy a customizable 'turn-key' application that presents objects from the Digital Commonwealth repository (managed by the Boston Public Library) using their own branding.
-
-More documentation coming soon. This project is currently in high development and in a very beta state.
-
-For now, check out some [slides on this concept](https://goo.gl/GysxNK) presented at [Open Repositories 2015](https://www.conftool.com/or2015/index.php?page=browseSessions&form_session=49).
+Commonwealth-VLR-Engine is a Rails engine for creating a [Blacklight](https://github.com/projectblacklight/blacklight) app that provides access to content from Solr, packaging a number of feature-rich enhancements and modifications, including [Blacklight Gallery](https://github.com/projectblacklight/blacklight-gallery), [Blacklight Advanced Search](https://github.com/projectblacklight/blacklight_advanced_search), [Blacklight Maps](https://github.com/projectblacklight/blacklight-maps), and [OpenSeadragon](https://github.com/IIIF/openseadragon-rails). Via a simple install process, adopters can quickly deploy a customizable 'turn-key' application that presents objects from the Digital Commonwealth repository (managed by the Boston Public Library) using their own branding.
 
 To view this engine in action, check out [Digital Commonwealth](https://digitalcommonwealth.org).
 
