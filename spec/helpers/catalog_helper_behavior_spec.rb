@@ -31,9 +31,16 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
 
     describe '#has_video_files?' do
+      let(:files_hash) { catalog_helper_test_class.get_files('bpl-dev:cj82k894f') }
       it 'returns true' do
-        files_hash[:video] = [SolrDocument.new] # TODO: create a video file fixture in sample solr docs
         expect(helper.has_video_files?(files_hash)).to be_truthy
+      end
+    end
+
+    describe '#has_playable_audio?' do
+      let(:files_hash) { catalog_helper_test_class.get_files('bpl-dev:5d86p086p') }
+      it 'returns true' do
+        expect(helper.has_playable_audio?(files_hash)).to be_truthy
       end
     end
   end

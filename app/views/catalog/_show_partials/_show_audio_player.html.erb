@@ -1,7 +1,7 @@
-<div id="img_show_container">
-  <div id="img_show_canvas" class="audio_player_wrapper">
+<div id="audio_show_container">
+  <div id="audio_show_canvas">
     <h5 id="audio_title">
-      <%= audio_files.first['filename_base_ssi'] %>
+      <%= (audio_files.length > 1 ? '1. ' : '') + audio_files.first['filename_base_ssi'] %>
     </h5>
     <%= audio_tag(filestream_disseminator_url(audio_files.first['storage_key_base_ss'], 'audio_access'),
                   class: 'audio_show',
@@ -11,10 +11,8 @@
     <% if audio_files.length > 1 %>
       <ol id="audio_playlist">
         <% audio_files.each_with_index do |audio_file, index| %>
-          <% next unless audio_file['attachments_ss']['audio_access'].present? %>
-
           <%= content_tag(:li,
-                          link_to(audio_file['filename_base_ssi'],
+                          link_to("#{index + 1}. #{audio_file['filename_base_ssi']}",
                                   filestream_disseminator_url(audio_file['storage_key_base_ss'], 'audio_access')),
                           class: 'playlist_item' + (index == 0 ? ' active' : '')) %>
         <% end %>

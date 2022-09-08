@@ -2,6 +2,7 @@
   <div id="img_show_canvas">
     <%= video_tag(filestream_disseminator_url(video_key, 'video_access_mp4'),
                   class: 'img_show',
+                  id: 'video_player',
                   controls: true,
                   poster: thumbnail_url(document),
                   controlsList: 'nodownload') %>

@@ -3,14 +3,14 @@
 # various app-specific config settings
 # use file name "a_load_commonwealth_vlr_configs" so Rails loads this file before other initializers
 
-ASSET_STORE = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'asset_store.yml'))).result, aliases: true)[Rails.env]
+ASSET_STORE = Rails.application.config_for('asset_store')
 
-GOOGLE_ANALYTICS = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'google_analytics.yml'))).result, aliases: true)[Rails.env]
+GOOGLE_ANALYTICS = Rails.application.config_for('google_analytics')
 
-CONTACT_EMAILS = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'contact_emails.yml'))).result, aliases: true)[Rails.env]
+CONTACT_EMAILS = Rails.application.config_for('contact_emails')
 
-IIIF_SERVER = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'iiif_server.yml'))).result, aliases: true)[Rails.env]
+IIIF_SERVER = Rails.application.config_for('iiif_server')
 
-GEOJSON_STATIC_FILE = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'geojson_static_file.yml'))).result, aliases: true)[Rails.env]
+GEOJSON_STATIC_FILE = Rails.application.config_for('geojson_static_file')
 
-CURATOR = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'curator.yml'))).result, aliases: true)[Rails.env]
+CURATOR = Rails.application.config_for('curator')

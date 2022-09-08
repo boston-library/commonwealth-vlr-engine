@@ -18,9 +18,8 @@ module CommonwealthVlrEngine
     end
 
     def has_playable_audio?(files_hash)
-      return false unless files_hash[:audio].present?
+      return false if files_hash[:audio].blank?
 
-      puts "AUDIO HASH: #{files_hash[:audio]}"
       files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
     end
 
