@@ -2244,8 +2244,151 @@
     - "The Oath of ffreemen : I A : B : &c : beinge beinge by the Allmightyes most wise despositio"
   timestamp:
     - '2021-08-17T16:26:07.960Z'
+- system_create_dtsi:
+    - '2022-03-01T16:19:55Z'
+  system_modified_dtsi:
+    - '2022-08-01T19:04:09Z'
+  curator_model_ssi:
+    - Curator::Collection
+  id:
+    - bpl-dev:w0892b63n
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  curator_model_suffix_ssi:
+    - Collection
+  title_info_primary_tsi:
+    - WHDH Collection
+  title_info_primary_ssort:
+    - WHDH Collection
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - Tousled artisan single-origin coffee Williamsburg. Sriracha keffiyeh readymade.
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  genre_basic_ssim:
+    - Collections
+    - Motion pictures
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2022-09-01T20:38:10.637Z'
+- system_create_dtsi:
+    - '2022-08-01T19:04:12Z'
+  system_modified_dtsi:
+    - '2022-08-01T19:26:51Z'
+  curator_model_ssi:
+    - Curator::DigitalObject
+  id:
+    - bpl-dev:cj82k894f
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  date_start_dtsi:
+    - '1971-09-17T00:00:00Z'
+  date_tsim:
+    - September 17, 1971
+  date_edtf_ssm:
+    - '1971-09-17'
+  date_type_ssm:
+    - dateCreated
+  date_facet_yearly_itim:
+    - 1971
+  genre_basic_tim:
+    - Motion pictures
+  genre_specific_tim:
+    - Television news programs
+  genre_basic_ssim:
+    - Motion pictures
+  genre_specific_ssim:
+    - Television news programs
+  identifier_local_other_tsim:
+    - 39999074219344_18
+  collection_name_ssim:
+    - WHDH Collection
+  collection_name_tim:
+    - WHDH Collection
+  collection_ark_id_ssim:
+    - bpl-dev:w0892b63n
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  admin_set_name_ssi:
+    - WHDH Collection
+  admin_set_ark_id_ssi:
+    - bpl-dev:w0892b63n
+  identifier_uri_ss:
+    - http://ark-hydradev.bpl.org/ark:/50959/cj82k894f
+  lang_term_ssim:
+    - English
+  related_item_host_tim:
+    - WHDH Collection
+  related_item_host_ssim:
+    - WHDH Collection
+  type_of_resource_ssim:
+    - Moving image
+  extent_tsi:
+    - '1 film reel (6 sec.) : silent, color ; 16 mm'
+  digital_origin_ssi:
+    - reformatted digital
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  shelf_locator_tsi:
+    - 'Can number: 16'
+  curator_model_suffix_ssi:
+    - DigitalObject
+  rights_ss:
+    - Rights status not evaluated.
+  license_ss:
+    - This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).
+  reuse_allowed_ssi:
+    - creative commons
+  title_info_primary_tsi:
+    - Brookline Police
+  title_info_primary_ssort:
+    - Brookline Police
+  publishing_state_ssi:
+    - published
+  processing_state_ssi:
+    - complete
+  exemplary_image_ssi:
+    - bpl-dev:cj82k895q
+  exemplary_image_key_base_ss:
+    - videos/bpl-dev:cj82k895q
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2015-07-24T14:11:28.285Z'
 - id:
-  - bpl-dev:cj82k895q
+    - bpl-dev:cj82k895q
   system_create_dtsi:
     - '2020-01-13T18:21:23Z'
   system_modified_dtsi:
@@ -2268,3 +2411,162 @@
     - 0
   timestamp:
     - '2021-08-17T16:56:45.430Z'
+- system_create_dtsi:
+    - '2022-03-01T16:19:55Z'
+  system_modified_dtsi:
+    - '2022-08-01T19:04:09Z'
+  curator_model_ssi:
+    - Curator::Collection
+  id:
+    - bpl-dev:jm214p80w
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  curator_model_suffix_ssi:
+    - Collection
+  title_info_primary_tsi:
+    - Audio Collection
+  title_info_primary_ssort:
+    - Audio Collection
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - Tousled artisan single-origin coffee Williamsburg. Sriracha keffiyeh readymade.
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  genre_basic_ssim:
+    - Collections
+    - Sound recordings
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2022-09-01T20:38:10.637Z'
+- system_create_dtsi:
+    - '2022-08-01T19:04:12Z'
+  system_modified_dtsi:
+    - '2022-08-01T19:26:51Z'
+  curator_model_ssi:
+    - Curator::DigitalObject
+  id:
+    - bpl-dev:5d86p086p
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  date_start_dtsi:
+    - '1947-05-01T00:00:00Z'
+  date_tsim:
+    - May 1, 1947
+  date_edtf_ssm:
+    - '1947-05-01'
+  date_type_ssm:
+    - dateCreated
+  date_facet_yearly_itim:
+    - 1947
+  genre_basic_tim:
+    - Sound recordings
+  genre_basic_ssim:
+    - Sound recordings
+  identifier_local_other_tsim:
+    - TI-AV_90139.001
+  collection_name_ssim:
+    - WHDH Collection
+  collection_name_tim:
+    - Audio Collection
+  collection_ark_id_ssim:
+    - bpl-dev:jm214p80w
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  admin_set_name_ssi:
+    - Audio Collection
+  admin_set_ark_id_ssi:
+    - bpl-dev:jm214p80w
+  identifier_uri_ss:
+    - http://ark-hydradev.bpl.org/ark:/50959/5d86p086p
+  lang_term_ssim:
+    - English
+  related_item_host_tim:
+    - Audio Collection
+  related_item_host_ssim:
+    - Audio Collection
+  type_of_resource_ssim:
+    - Audio
+  extent_tsi:
+    - 'Audograph dictation disc (7 recordings)'
+  digital_origin_ssi:
+    - reformatted digital
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  sub_location_tsi:
+    - 'Wyner Archives'
+  curator_model_suffix_ssi:
+    - DigitalObject
+  rights_ss:
+    - Rights status not evaluated.
+  license_ss:
+    - This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).
+  reuse_allowed_ssi:
+    - creative commons
+  title_info_primary_tsi:
+    - Dictated draft of Joshua Loth Liebman Friday evening Sabbath sermon
+  title_info_primary_ssort:
+    - Dictated draft of Joshua Loth Liebman Friday evening Sabbath sermon
+  publishing_state_ssi:
+    - published
+  processing_state_ssi:
+    - complete
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2022-09-08T16:14:34.548Z'
+- id:
+    - bpl-dev:tq57nr776
+  system_create_dtsi:
+    - '2022-08-15T18:11:06Z'
+  system_modified_dtsi:
+    - '2022-08-15T18:11:59Z'
+  curator_model_ssi:
+    - Curator::Filestreams::Audio
+  curator_model_suffix_ssi:
+    - Audio
+  processing_state_ssi:
+    - complete
+  attachments_ss:
+    - "{\"audio_access\":{\"filename\":\"audio_access.mp3\",\"byte_size\":1725083,\"content_type\":\"audio/mpeg\",\"checksum\":\"TUoYhIi1OJOUITTILUU2dQ==\",\"key\":\"audios/bpl-dev:tq57nr776/audio_access.mp3\",\"service_name\":\"derivatives\"},\"audio_primary\":{\"filename\":\"TI-AV_90108-003.wav\",\"byte_size\":41370898,\"content_type\":\"audio/x-wav\",\"checksum\":\"KFW+X8epG0hmh0uCDRbA+w==\",\"key\":\"audios/bpl-dev:tq57nr776/audio_primary.wav\",\"service_name\":\"primary\"},\"characterization\":{\"filename\":\"characterization.xml\",\"byte_size\":5328,\"content_type\":\"application/xml\",\"checksum\":\"l0Ml7GzqA/pP3Ej5N0EjpQ==\",\"key\":\"audios/bpl-dev:tq57nr776/characterization.xml\",\"service_name\":\"derivatives\"}}"
+  storage_key_base_ss:
+    - audios/bpl-dev:tq57nr776
+  is_file_set_of_ssim:
+    - bpl-dev:5d86p086p
+  filename_base_ssi:
+    - TI-AV_90108-003
+  position_isi:
+    - 0
+  timestamp:
+    - '2022-09-02T13:30:11.676Z'

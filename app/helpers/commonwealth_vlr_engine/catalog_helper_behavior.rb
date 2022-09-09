@@ -17,6 +17,12 @@ module CommonwealthVlrEngine
       files_hash[:video].present?
     end
 
+    def has_playable_audio?(files_hash)
+      return false if files_hash[:audio].blank?
+
+      files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+    end
+
     def image_file_pids(images)
       images.map { |i| i[:id] }
     end

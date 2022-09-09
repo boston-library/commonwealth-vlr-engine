@@ -36,6 +36,9 @@ module CommonwealthVlrEngine
         'Access-Control-Allow-Headers' =>'Origin, X-Requested-With, Content-Type, Accept, Authorization'
       }
     )
+
+    # fix for YAML loading, see discussion: https://github.com/rails/rails/pull/45584
+    config.active_record.yaml_column_permitted_classes = [Symbol, Hash, Array, ActiveSupport::HashWithIndifferentAccess]
 )
       end
     end
