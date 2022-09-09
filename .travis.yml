@@ -15,5 +15,5 @@ global_env:
 matrix:
   include:
     - rvm: 2.6.6
-      env: "RAILS_VERSION=6.0.3.4"
+      env: "RAILS_VERSION=6.0.5.1"
   fast_finish: true
