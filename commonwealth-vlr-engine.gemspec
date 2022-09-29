@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'iiif-presentation', '~> 0.2.0'
   s.add_dependency 'madison', '~> 0.5.0'
   s.add_dependency 'rails', '~> 6.0.5'
+  s.add_dependency 'recaptcha', '~> 5.12'
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'typhoeus', '~> 1.3'
   s.add_dependency 'unicode', '~> 0.4.4'

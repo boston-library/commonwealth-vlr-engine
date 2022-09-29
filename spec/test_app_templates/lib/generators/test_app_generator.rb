@@ -15,6 +15,8 @@ IIIF_URL=https://iiif-dc3dev.bpl.org/iiif/2/
 AZURE_STORAGE_ACCOUNT_NAME=bpltestaccount
 AZURE_STORAGE_ACCOUNT_ENDPOINT=https://$AZURE_STORAGE_ACCOUNT_NAME.blob.core.windows.net
 CURATOR_API_URL=https://curator-dc3dev.bpl.org/api
+RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     )
     File.open('.env', 'w') { |f| f.write(env_vars) }
   end
