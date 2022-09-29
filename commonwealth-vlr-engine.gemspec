@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '~> 2.6'
+  s.required_ruby_version = '~> 2.7'
 
   s.add_dependency 'blacklight', '~> 7.13.2'
   s.add_dependency 'blacklight-gallery', '~> 2.1.0'
