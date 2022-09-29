@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '~> 2.7'
+  s.required_ruby_version = '>= 2.7, < 3'
 
   s.add_dependency 'blacklight', '~> 7.13.2'
   s.add_dependency 'blacklight-gallery', '~> 2.1.0'
@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass', '~> 5.0'
   s.add_dependency 'iiif-presentation', '~> 0.2.0'
   s.add_dependency 'madison', '~> 0.5.0'
-  s.add_dependency 'rails', '~> 6.0.5'
+  s.add_dependency 'rails', '~> 6.0.6'
   s.add_dependency 'recaptcha', '~> 5.12'
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'typhoeus', '~> 1.3'
