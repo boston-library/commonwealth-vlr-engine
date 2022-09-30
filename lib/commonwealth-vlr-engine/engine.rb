@@ -13,6 +13,7 @@ begin
   require 'madison'
   require 'rsolr' unless defined? RSolr
   require 'iiif/presentation'
+  require 'recaptcha'
 rescue LoadError => e
   puts "A Gem Dependency is Missing....#{e.message}"
 end

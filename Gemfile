@@ -55,7 +55,7 @@ else
     gem 'responders', '~> 2.0'
     gem 'sass-rails', '>= 5.0'
     gem 'coffee-rails', '~> 4.1.0'
-    gem 'json', '~> 1.8'
+    gem 'json', '>= 2.3.0'
   when /^4.[01]/
     gem 'sass-rails', '< 5.0'
   end

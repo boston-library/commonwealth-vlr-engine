@@ -99,6 +99,7 @@ en:
           valid_name: 'Please enter your name.'
           valid_email: 'Please enter a valid email address.'
           need_message: 'Please enter a message.'
+          recaptcha: 'Please click the "I am not a robot" verification.'
           submit: 'Send'
           errors:
             title: 'The message could not be sent:'

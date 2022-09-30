@@ -13,10 +13,12 @@
 </div>
 
 <div id="downloads_start_links" class="modal-footer">
-  <%= link_to(url_for_download(@document, params[:filestream_id]),
-              class: 'trigger_download btn btn-primary ' + params[:filestream_id],
-              rel: 'nofollow',
-              target: '_blank') do %>
+  <%= form_tag url_for_download(@document, params[:filestream_id]), method: :get, id: 'trigger_download_form' do %>
+    <input type="hidden" name="filestream_id" value="<%= params[:filestream_id] %>" />
+    <%= recaptcha_tags(id: 'download_recaptcha', callback: 'enableDownloadButton',
+                       expired_callback: 'refreshRecaptcha') %>
+    <%= button_tag type: 'submit', class: 'trigger_download btn btn-primary ' + params[:filestream_id],
+                   rel: 'nofollow', formtarget: '_blank', id: 'trigger_download_submit' do %>
       <%= icon('fas', 'download', aria: { hidden: true }) %>
       <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
                                                    @object_profile,
@@ -25,7 +27,9 @@
                                omission: '...')} (#{file_type_string(params[:filestream_id],
                                                                      @object_profile)}, #{file_size_string(params[:filestream_id],
                                                                                                            @object_profile)})" %>
+    <% end %>
   <% end %>
+
   <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
 </div>
 <%= javascript_include_tag 'commonwealth-vlr-engine/download_utils' %>

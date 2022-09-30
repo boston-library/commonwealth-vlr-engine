@@ -40,6 +40,8 @@ module CommonwealthVlrEngine
 
     # initiates the file download
     def trigger_download
+      not_found unless verify_recaptcha
+
       _response, @solr_document = search_service.fetch(params[:id])
       return unless !@solr_document.to_h.empty? && params[:filestream_id]
 

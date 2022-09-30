@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class FeedbackController < ApplicationController
-  # http://expressica.com/simple_captcha/
-  # include SimpleCaptcha::ControllerHelpers
-
   # show the feedback form
   def show
     @nav_li_active = 'about'
@@ -22,7 +19,7 @@ class FeedbackController < ApplicationController
     @errors << t('blacklight.feedback.valid_name') unless params[:name]&.match?(/\w+/)
     @errors << t('blacklight.feedback.valid_email') unless params[:email]&.match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
     @errors << t('blacklight.feedback.need_message') unless params[:message]&.match?(/\w+/)
-    # @errors << 'Captcha did not match' unless simple_captcha_valid?
+    @errors << t('blacklight.feedback.recaptcha') unless verify_recaptcha
     @errors.empty?
   end
 end

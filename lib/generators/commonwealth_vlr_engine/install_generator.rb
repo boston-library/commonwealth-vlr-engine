@@ -52,6 +52,7 @@ module CommonwealthVlrEngine
 
     def add_vlr_initializers
       template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
+      template 'config/initializers/recaptcha.rb'
     end
 
     def insert_to_routes
