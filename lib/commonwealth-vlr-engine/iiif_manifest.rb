@@ -15,6 +15,7 @@ module CommonwealthVlrEngine
       manifest.service = iiif_search_service(document) if document[:has_searchable_pages_bsi]
       manifest.label = render_title(document, false)
       manifest.viewing_hint = image_files.length > 1 ? 'paged' : 'individuals'
+      manifest.viewing_direction = 'right-to-left' if document[:text_direction_ssi] == 'rtl'
       manifest.metadata = manifest_metadata(document)
       manifest.description = document[:abstract_tsi] if document[:abstract_tsi]
 
