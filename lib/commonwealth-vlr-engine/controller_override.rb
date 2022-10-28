@@ -133,6 +133,15 @@ module CommonwealthVlrEngine
           field.solr_parameters = { 'spellcheck.dictionary': 'default' }
         end
 
+        config.add_search_field('all_fields_ft') do |field|
+          field.label = 'All Fields (with full text)'
+          field.solr_parameters = {
+              'spellcheck.dictionary': 'default',
+              qf: '${fulltext_qf}',
+              pf: '${fulltext_pf}'
+          }
+        end
+
         config.add_search_field('title') do |field|
           field.solr_parameters = {
             'spellcheck.dictionary': 'default',
@@ -182,7 +191,7 @@ module CommonwealthVlrEngine
         end
 
         # "sort results by" select (pulldown)
-        config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
+        config.add_sort_field 'score desc, date_start_dtsi asc, title_info_primary_ssort asc', label: 'relevance'
         config.add_sort_field 'title_info_primary_ssort asc, date_start_dtsi asc', label: 'title'
         config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'

@@ -31,4 +31,7 @@
       </button>
     </span>
   </div>
+  <div>
+    <span><%= t('blacklight.search.form.include_fulltext') %></span> <%= check_box_tag(:search_field, 'all_fields_ft') %>
+  </div>
 <% end %>

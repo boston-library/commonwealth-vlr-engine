@@ -317,6 +317,7 @@ en:
             title: 'Your search:'
           form:
             collection: 'Search for items from this collection...'
+            include_fulltext: 'Include full-text results:'
             institution: "Search this institution's collections..."
             search:
               label: 'Search for'
