@@ -129,18 +129,13 @@ module CommonwealthVlrEngine
 
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|
-          field.label = 'All Fields'
+          field.label = 'All Fields (no full text)'
           field.solr_parameters = { 'spellcheck.dictionary': 'default' }
         end
 
-        config.add_search_field('all_fields_ft') do |field|
-          field.label = 'All Fields (with full text)'
-          field.solr_parameters = {
-              'spellcheck.dictionary': 'default',
-              qf: '${fulltext_qf}',
-              pf: '${fulltext_pf}'
-          }
-        end
+        config.add_search_field 'all_fields_ft', label: 'All Fields (with full text)', include_in_simple_select: false,
+                                solr_parameters: { 'spellcheck.dictionary': 'default',
+                                                   qf: '${fulltext_qf}', pf: '${fulltext_pf}' }
 
         config.add_search_field('title') do |field|
           field.solr_parameters = {
