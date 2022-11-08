@@ -317,7 +317,9 @@ en:
             title: 'Your search:'
           form:
             collection: 'Search for items from this collection...'
-            include_fulltext: 'Include full-text results:'
+            fulltext:
+              label: 'Include full-text results:'
+              help: 'Click this box if you want your search to include the transcribed text of books, newspapers, manuscripts, and other documents.<br><br>This option only works with the "All Fields" search.'
             institution: "Search this institution's collections..."
             search:
               label: 'Search for'
