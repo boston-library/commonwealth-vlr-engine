@@ -6,19 +6,23 @@ $(function () {
 })
 
 $('#search_field').change(function () {
-    selectedOption = $(this).val();
-    checkbox = $('#fulltext_checkbox');
+    let selectedOption = $(this).val();
+    let checkbox = $('#fulltext_checkbox');
+    let infoIcon = $('#fulltext_info');
+    let infoIconContent = infoIcon.data('content');
     if (selectedOption !== "all_fields") {
-        was_checked = checkbox.prop('checked');
+        let was_checked = checkbox.prop('checked');
         if (was_checked == true) {
-            $('#fulltext_info').popover('show');
+            infoIcon.attr('data-content', 'The full-text option only works with the "All Fields" search.');
+            infoIcon.popover('show');
         }
         $('#fulltext_checkbox_label').css("color", "lightgray");
         checkbox.prop({'checked': false, 'disabled': true});
         if (was_checked == true) {
             setTimeout(() => {
-                $('#fulltext_info').popover('hide');
+                infoIcon.popover('hide');
             }, 2000)
+            infoIcon.attr('data-content', infoIconContent);
         }
     } else {
         $('#fulltext_checkbox_label').css("color", "unset");
