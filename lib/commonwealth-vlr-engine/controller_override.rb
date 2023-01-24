@@ -56,6 +56,9 @@ module CommonwealthVlrEngine
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
 
+        # index for full-text searches
+        config.full_text_index = 'all_fields_ft'
+
         # advanced search configuration
         config.advanced_search = {
           qt: 'search',
@@ -133,9 +136,18 @@ module CommonwealthVlrEngine
           field.solr_parameters = { 'spellcheck.dictionary': 'default' }
         end
 
-        config.add_search_field 'all_fields_ft', label: 'All Fields (with full text)', include_in_simple_select: false,
-                                solr_parameters: { 'spellcheck.dictionary': 'default',
-                                                   qf: '${fulltext_qf}', pf: '${fulltext_pf}' }
+        config.add_search_field 'all_fields_ft', label: 'All Fields (with full text)',
+                                include_in_simple_select: false do |field|
+          field.solr_parameters = {
+              'spellcheck.dictionary': 'default',
+              qf: '${fulltext_qf}',
+              pf: '${fulltext_pf}'
+          }
+          field.solr_adv_parameters = {
+              qf: '$fulltext_qf',
+              pf: '$fulltext_pf',
+          }
+        end
 
         config.add_search_field('title') do |field|
           field.solr_parameters = {
