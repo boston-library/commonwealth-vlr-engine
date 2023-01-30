@@ -12,6 +12,8 @@ module CommonwealthVlrEngine
       if exemplary_image_pid
         if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' || document['exemplary_image_iiif_bsi'] == false
           filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
+        elsif document[:destination_site_ssim].include?('newspapers')
+          iiif_image_url(exemplary_image_pid, { region: 'pct:4,3,90,67', size: "#{size},#{size}" })
         else
           iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
         end
