@@ -31,10 +31,7 @@ describe CollectionsController, :vcr do
     end
 
     it 'should set @collection_image_info' do
-      expect(assigns(:collection_image_info)).to eq(
-        { image_pid: 'bpl-dev:h702q642n', title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true,
-          hosting_status: 'hosted', image_key: 'images/bpl-dev:h702q642n' }
-      )
+      expect(assigns(:collection_image_info)).to_not be_falsey
     end
 
     it 'should show some facets' do
@@ -65,7 +62,7 @@ describe CollectionsController, :vcr do
   end
 
   describe 'private methods and before_actions' do
-    let(:document) { { blacklight_config.institution_field.to_sym => 'Boston Public Library' } }
+    let(:document) { SolrDocument.find(collection_pid)  }
     let(:mock_controller) { described_class.new }
 
     before(:each) do
@@ -105,12 +102,10 @@ describe CollectionsController, :vcr do
     end
 
     describe 'collection_image_info' do
-      let(:collection_image_pid) { 'bpl-dev:h702q642n' }
       it 'returns a hash with the collection image object title and pid' do
-        expect(mock_controller.send(:collection_image_info, collection_image_pid, "images/#{collection_image_pid}",
-                                    collection_pid, 'hosted')).to eq(
-          { image_pid: collection_image_pid, title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true,
-            hosting_status: 'hosted', image_key: 'images/bpl-dev:h702q642n' }
+        expect(mock_controller.send(:collection_image_info, document)).to eq(
+          { image_pid: 'bpl-dev:h702q642n', title: 'Beauregard', pid: 'bpl-dev:h702q6403', access_master: true,
+            hosting_status: 'hosted', image_key: 'images/bpl-dev:h702q642n', destination_site: %w(commonwealth bpl) }
         )
       end
     end

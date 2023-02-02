@@ -3,12 +3,14 @@
 module CommonwealthVlrEngine
   module CollectionsHelperBehavior
     # link to view all items in a collection
-    def link_to_all_col_items(col_title, institution_name = nil, link_class)
-      facet_params = { blacklight_config.collection_field => [col_title] }
-      facet_params[blacklight_config.institution_field] = [institution_name] if institution_name
-      link_to(t('blacklight.collections.browse.all'),
-              search_catalog_path(f: facet_params),
-              class: link_class)
+    # @param document [SolrDocument] collection
+    # @param class [String] CSS classes to add to the link
+    def link_to_all_col_items(document, link_class: '')
+      facet_params = { blacklight_config.collection_field => [document[blacklight_config.index.title_field.to_sym]] }
+      facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if t('blacklight.home.browse.institutions.enabled')
+      search_params = { f: facet_params }
+      search_params[:sort] = 'date_start_dtsi asc, title_info_primary_ssort asc' if document['destination_site_ssim'].include?('newspapers')
+      link_to(t('blacklight.collections.browse.all'), search_catalog_path(search_params), class: link_class)
     end
 
     # render the image and caption on collections#show page

@@ -32,7 +32,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
 
     describe 'search_fields' do
       it 'has the expected search fields' do
-        %w(title subject place creator).each do |field_name|
+        %w(all_fields all_fields_ft title subject place creator).each do |field_name|
           expect(test_config.search_fields[field_name]).not_to be_falsey
           expect(test_config.search_fields[field_name].class).to eq(Blacklight::Configuration::SearchField)
         end

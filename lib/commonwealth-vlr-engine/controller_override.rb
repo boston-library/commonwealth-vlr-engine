@@ -198,7 +198,7 @@ module CommonwealthVlrEngine
         end
 
         # "sort results by" select (pulldown)
-        config.add_sort_field 'score desc, date_start_dtsi asc, title_info_primary_ssort asc', label: 'relevance'
+        config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
         config.add_sort_field 'title_info_primary_ssort asc, date_start_dtsi asc', label: 'title'
         config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
