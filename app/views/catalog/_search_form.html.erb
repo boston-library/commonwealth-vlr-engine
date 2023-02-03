@@ -7,7 +7,8 @@
   <div class="input-group">
     <% if search_fields.length > 1 %>
       <%= select_tag(:search_field,
-                     options_for_select(search_fields, h(params[:search_field])),
+                     options_for_select(search_fields,
+                                        h(params[:search_field])),
                      title: t('blacklight.search.form.search_field.title'),
                      id: "search_field",
                      class: "custom-select search-field") %>
@@ -30,5 +31,14 @@
         <%= blacklight_icon :search, aria_hidden: true %>
       </button>
     </span>
+  </div>
+  <div id="fulltext_checkbox_wrapper">
+    <span id="fulltext_checkbox_label"><%= t('blacklight.search.form.fulltext.label') %></span>
+    <%= check_box_tag(:search_field, blacklight_config.full_text_index, false, id: 'fulltext_checkbox') %>
+    <%= content_tag('a', id: 'fulltext_info', tabindex: 100,
+                    data: { toggle: 'popover', placement: 'right', trigger: 'focus', html: true,
+                            content: t('blacklight.search.form.fulltext.help') }) do %>
+      <%= icon('fas', 'question-circle', class: 'fa fa-sm', aria: { hidden: true }) %>
+    <% end %>
   </div>
 <% end %>

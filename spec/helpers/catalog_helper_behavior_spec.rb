@@ -13,6 +13,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
   before(:each) do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
+    allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(catalog_helper_test_class))
   end
 
   describe 'file helpers' do
@@ -118,6 +119,12 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
   describe '#render_search_to_page_title' do
     it 'returns the correct string for the page title' do
       expect(helper.render_search_to_page_title({ mlt_id: item_pid })).to include(I18n.t('blacklight.more_like_this.constraint_label'))
+    end
+  end
+
+  describe '#search_fields' do
+    it 'removes the unwanted text from the search field labels' do
+      expect(helper.search_fields.to_s).to_not include blacklight_config.search_fields['all_fields'].label
     end
   end
 end

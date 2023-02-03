@@ -129,5 +129,14 @@ module CommonwealthVlrEngine
       end
       coll_links
     end
+
+    # override from Blacklight::ConfigurationHelperBehavior
+    # remove extraneous text from search field labels
+    # but leave them as-is on Advanced Search
+    def search_fields
+      return super if controller_name == 'advanced'
+
+      super.map { |f| [f[0].gsub(/\s\([\w\s]*\)/, ''), f[1]] }
+    end
   end
 end

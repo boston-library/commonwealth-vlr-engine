@@ -20,7 +20,7 @@ module CommonwealthVlrEngine
       @nav_li_active = 'explore'
       params.merge!(view: params[:view].presence || 'list',
                     per_page: params[:per_page].presence || '50',
-                    sort: 'title_info_primary_ssort asc, date_start_dtsi asc')
+                    sort: blacklight_config.title_sort)
       institutions_search_service = search_service_class.new(config: blacklight_config,
                                                              user_params: params)
       (@response, @document_list) = institutions_search_service.search_results
@@ -42,7 +42,7 @@ module CommonwealthVlrEngine
       # get the response for collection objects
       collex_params = { f: { blacklight_config.index.display_type_field => 'Collection',
                              'institution_ark_id_ssi' => params[:id] },
-                        rows: 500, sort: 'title_info_primary_ssort asc, date_start_dtsi asc' }
+                        rows: 500, sort: blacklight_config.title_sort }
       collex_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: collex_params)
       _collex_response, @collex_documents = collex_search_service.search_results

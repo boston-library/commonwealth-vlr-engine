@@ -3,12 +3,14 @@
 module CommonwealthVlrEngine
   module CollectionsHelperBehavior
     # link to view all items in a collection
-    def link_to_all_col_items(col_title, institution_name = nil, link_class)
-      facet_params = { blacklight_config.collection_field => [col_title] }
-      facet_params[blacklight_config.institution_field] = [institution_name] if institution_name
-      link_to(t('blacklight.collections.browse.all'),
-              search_catalog_path(f: facet_params),
-              class: link_class)
+    # @param document [SolrDocument] collection
+    # @param class [String] CSS classes to add to the link
+    def link_to_all_col_items(document, link_class: '')
+      facet_params = { blacklight_config.collection_field => [document[blacklight_config.index.title_field.to_sym]] }
+      facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if t('blacklight.home.browse.institutions.enabled')
+      search_params = { f: facet_params }
+      search_params[:sort] = blacklight_config.date_asc_sort if document['destination_site_ssim'].to_s.include?('newspapers')
+      link_to(t('blacklight.collections.browse.all'), search_catalog_path(search_params), class: link_class)
     end
 
     # render the image and caption on collections#show page
@@ -21,7 +23,8 @@ module CommonwealthVlrEngine
         if !hosted || @collection_image_info[:access_master] == false
           image_url = filestream_disseminator_url(@collection_image_info[:image_key], 'image_thumbnail_300')
         else
-          image_url = collection_image_url(@collection_image_info[:image_pid])
+          image_url = collection_image_url(@collection_image_info[:image_pid],
+                                           @collection_image_info[:destination_site])
         end
         render partial: 'collection_image',
                locals: { image_element: image_tag(image_url, alt: image_title, class: image_tag_class),
@@ -31,9 +34,14 @@ module CommonwealthVlrEngine
       end
     end
 
-    # the IIIF URL for the image to be displayed on collections#show
+    # IIIF URL for the image to be displayed on collections#show
     # preferred dimensions: 1100 width, 450 height
-    def collection_image_url(image_pid, target_width = 1100, target_height = 450)
+    # @param image_pid [String] Filestreams::Image ARK id
+    # @param destination_site [Array]
+    # @param target_width [Integer]
+    # @param target_height [Integer]
+    # @return [String]
+    def collection_image_url(image_pid, destination_site = %w(commonwealth), target_width = 1100, target_height = 450)
       image_info = get_image_metadata(image_pid)
       output_aspect = target_width.to_f / target_height.to_f
       if image_info[:aspect_ratio] > output_aspect
@@ -44,7 +52,8 @@ module CommonwealthVlrEngine
         width = (image_info[:width].to_f * 0.90).round # 90% so we don't get borders
         reduction_percent = (target_width.to_f / width.to_f).round(3)
         height = (target_height / reduction_percent).round
-        top = (image_info[:height] - height) / 2
+        # use the top section if this is a newspaper page, otherwise use the middle
+        top = destination_site.include?('newspapers') ? 200 : (image_info[:height] - height) / 2
       end
       left = (image_info[:width] - width) / 2
       region = "#{left},#{top},#{width},#{height}"

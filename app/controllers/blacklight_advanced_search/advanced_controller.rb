@@ -3,6 +3,8 @@
 # Need to sub-class CatalogController so we get all other plugins behavior
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
+  before_action :ft_field_display, only: :index
+
   def index
     @nav_li_active = 'search'
     @response = get_advanced_search_facets unless request.method == :post
@@ -24,5 +26,11 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
     end
 
     response
+  end
+
+  # include the full text index in the search field select options
+  def ft_field_display
+    blacklight_config.search_fields[blacklight_config.full_text_index].include_in_simple_select = true
+    blacklight_config.search_fields[blacklight_config.full_text_index].if = true
   end
 end

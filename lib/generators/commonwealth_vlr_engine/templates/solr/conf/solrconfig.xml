@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- COPIED FROM https://github.com/boston-library/solr-core-conf/master/solrconfig.xml  -->
+<!-- COPIED FROM https://github.com/boston-library/solr-core-conf/fulltext-qf/solrconfig.xml  -->
 <!-- NOTE: in cases where changes needed to make this work in dev/test environment,
      those are indicated with ***DEV/TEST MOD*** -->
 <config>
   <!-- NOTE: various comments and unused configuration possibilities have been purged
 from this file. Please refer to http://wiki.apache.org/solr/SolrConfigXml,
 as well as the default solrconfig file included with Solr -->
-  
+
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
-  
+
   <luceneMatchVersion>6.1.0</luceneMatchVersion>
 
   <schemaFactory class="ClassicIndexSchemaFactory"/>
@@ -18,195 +18,293 @@ as well as the default solrconfig file included with Solr -->
   <!-- extra solr lib dirs -->
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
-  
+
   <dataDir>${solr.data.dir:}</dataDir>
 
   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
 will be overridden by parameters in the request
 -->
-     <lst name="defaults">
-       <str name="defType">edismax</str>
-       <str name="echoParams">explicit</str>
-       <str name="q.alt">*:*</str>
-       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
-       <int name="qs">1</int>
-       <int name="ps">2</int>
-       <float name="tie">0.01</float>
-       <!-- this qf and pf are used by default, if not otherwise specified by
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <str name="q.alt">*:*</str>
+      <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+      <int name="qs">1</int>
+      <int name="ps">2</int>
+      <float name="tie">0.01</float>
+      <!-- this qf and pf are used by default, if not otherwise specified by
 client. The default blacklight_config will use these for the
 "keywords" search. See the author_qf/author_pf, title_qf, etc
 below, which the default blacklight_config will specify for
 those searches. You may also be interested in:
 http://wiki.apache.org/solr/LocalParams
 -->
-        <str name="qf">
-          id
-          active_fedora_model_ssim
-          title_info_primary_tsi^1000
-          title_info_primary_trans_tsim^500
-          title_info_alternative_tsim^500
-          title_info_translated_tsim^500
-          title_info_uniform_tsim^100
-          subtitle_tsim^100
-          name_personal_tsim^20
-          name_personal_role_tsim
-          name_corporate_tsim^20
-          name_corporate_role_tsim
-          name_generic_tsim^20
-          abstract_tsim^30
-          genre_basic_tsim
-          genre_specific_tsim
-          publisher_tsim^20
-          edition_tsim
-          issuance_tsim
-          date_start_tsim
-          date_end_tsim
-          table_of_contents_tsi^30
-          note_tsim^10
-          note_resp_tsim^20
-          note_date_tsim
-          note_performers_tsim^10
-          note_acquisition_tsim^10
-          note_ownership_tsim^10
-          note_citation_tsim^10
-          note_reference_tsim^10
-          collection_name_tsim^10
-          physical_location_tsim^20
-          sub_location_tsim
-          shelf_locator_tsim
-          subject_topic_tsim^100
-          subject_name_corporate_tsim^100
-          subject_name_personal_tsim^100
-          subject_geographic_tsim^100
-          subject_scale_tsim
-          subject_projection_tsim
-          subject_temporal_start_tsim
-          subject_temporal_end_tsim
-          subject_title_tsim^100
-          related_item_host_tsim^10
-          related_item_series_tsim^10
-          related_item_subseries_tsim^10
-          related_item_subsubseries_tsim^10
-          identifier_local_other_tsim
-          identifier_local_other_invalid_tsim
-          identifier_local_accession_tsim
-          identifier_local_call_tsim
-          identifier_local_call_invalid_tsim
-          identifier_local_barcode_tsim
-          identifier_local_barcode_invalid_tsim
-          identifier_isbn_tsim
-          identifier_lccn_tsim
-          identifier_ia_id_ssi
-          classification_tsim
-          extent_tsi
-          institution_name_tsim^10
-          institution_pid_ssi
-          filenames_ssim
-          ocr_tiv^0.5
-          ocr_tsiv^0.5
-        </str>
-        <str name="pf">
-          title_info_primary_tsi^5000
-          title_info_primary_trans_tsim^1000
-          title_info_alternative_tsim^1000
-          title_info_translated_tsim^1000
-          title_info_uniform_tsim^500
-          subtitle_tsim^800
-          name_personal_tsim^200
-          name_corporate_tsim^200
-          name_generic_tsim^200
-          subject_topic_tsim^1000
-          subject_name_corporate_tsim^1000
-          subject_name_personal_tsim^1000
-          subject_geographic_tsim^1000
-          subject_title_tsim^1000
-          related_item_host_tsim^100
-          related_item_series_tsim^100
-          related_item_subseries_tsim^100
-          related_item_subsubseries_tsim^100
-        </str>
+      <str name="qf">
+        id
+        title_info_primary_tsi^1000
+        title_info_primary_trans_tsim^500
+        title_info_primary_subtitle_tsi^500
+        title_info_alternative_tsim^500
+        title_info_translated_tsim^500
+        title_info_uniform_tsim^100
+        title_info_other_subtitle_tsim^100
+        name_tsim^20
+        name_role_tsim
+        abstract_tsi^30
+        genre_basic_tim
+        genre_specific_tim
+        publisher_tsi^20
+        pubplace_tsi
+        edition_name_tsim
+        issuance_tsi
+        date_tsim
+        table_of_contents_tsi^30
+        note_tsim^10
+        note_resp_tsim^20
+        note_date_tsim
+        note_performers_tsim^10
+        note_acquisition_tsim^10
+        note_ownership_tsim^10
+        note_citation_tsim^10
+        note_reference_tsim^10
+        note_exhibitions_tsim^10
+        note_arrangement_tsim^10
+        note_language_tsim^10
+        note_funding_tsim^10
+        note_biographical_tsim^10
+        note_publications_tsim^10
+        note_credits_tsim^10
+        note_physical_tsim^10
+        collection_name_tim^10
+        physical_location_tim^20
+        sub_location_tsi
+        shelf_locator_tsi
+        subject_topic_tsim^100
+        subject_name_tsim^100
+        subject_geographic_tim^100
+        subject_temporal_tsim^50
+        scale_tsim
+        projection_tsi
+        subject_date_tsim
+        subject_title_tsim^100
+        related_item_host_tim^10
+        related_item_series_ti^10
+        related_item_subseries_ti^10
+        related_item_subsubseries_ti^10
+        identifier_local_other_tsim
+        identifier_local_other_invalid_tsim
+        identifier_local_accession_tsim
+        identifier_local_call_tsim
+        identifier_local_call_invalid_tsim
+        identifier_local_barcode_tsim
+        identifier_local_barcode_invalid_tsim
+        identifier_isbn_tsim
+        identifier_lccn_tsim
+        identifier_ia_id_ssi
+        extent_tsi
+        institution_name_ti^10
+        institution_ark_id_ssi
+        filenames_ssim
+        lang_term_ssim
+      </str>
+      <str name="pf">
+        title_info_primary_tsi^5000
+        title_info_primary_trans_tsim^1000
+        title_info_alternative_tsim^1000
+        title_info_translated_tsim^1000
+        title_info_uniform_tsim^500
+        subtitle_tsim^800
+        name_tsim^200
+        subject_topic_tsim^1000
+        subject_name_tsim^1000
+        subject_geographic_tim^1000
+        subject_title_tsim^1000
+        related_item_*^100
+      </str>
 
-       <str name="author_qf">
-          name_personal_tsim^20
-          name_corporate_tsim^20
-          name_generic_tsim^20
-          note_resp_tsim
-       </str>
-       <str name="author_pf">
-         name_personal_tsim^200
-         name_corporate_tsim^200
-         name_generic_tsim^200
-         note_resp_tsim
-       </str>
-       <str name="title_qf">
-          title_info_primary_tsi^500
-          title_info_primary_trans_tsim^100
-          title_info_alternative_tsim^100
-          title_info_translated_tsim^100
-          title_info_uniform_tsim^50
-          subtitle_tsim^80
-       </str>
-       <str name="title_pf">
-         title_info_primary_tsi^5000
-         title_info_primary_trans_tsim^1000
-         title_info_alternative_tsim^1000
-         title_info_translated_tsim^1000
-         title_info_uniform_tsim^500
-         subtitle_tsim^800
-       </str>
-       <str name="subject_qf">
-          subject_topic_tsim^100
-          subject_name_corporate_tsim^100
-          subject_name_personal_tsim^100
-          subject_geographic_tsim^100
-          subject_temporal_start_tsim
-          subject_temporal_end_tsim
-          subject_title_tsim^100
-       </str>
-       <str name="subject_pf">
-         subject_topic_tsim^1000
-         subject_name_corporate_tsim^1000
-         subject_name_personal_tsim^1000
-         subject_geographic_tsim^1000
-         subject_title_tsim^1000
-       </str>
-       <str name="place_qf">
-          subject_geographic_tsim^500
-          subject_topic_tsim^50
-          title_info_primary_tsi^20
-          subtitle_tsim^5
-          abstract_tsim
-          table_of_contents_tsi
-          institution_name_tsim^10
-          physical_location_tsim^10
-       </str>
-       <str name="place_pf">
-         subject_geographic_tsim^2000
-         subject_topic_tsim^500
-         title_info_primary_tsi^200
-         subtitle_tsim^50
-         institution_name_tsim^100
-         physical_location_tsim^100
-       </str>
-       
-       <str name="fl">
-         *,
-         score
-       </str>
+      <!-- same as the default qf, but with OCR text fields -->
+      <str name="fulltext_qf">
+        id
+        title_info_primary_tsi^1000
+        title_info_primary_trans_tsim^500
+        title_info_primary_subtitle_tsi^500
+        title_info_alternative_tsim^500
+        title_info_translated_tsim^500
+        title_info_uniform_tsim^100
+        title_info_other_subtitle_tsim^100
+        name_tsim^20
+        name_role_tsim
+        abstract_tsi^30
+        genre_basic_tim
+        genre_specific_tim
+        publisher_tsi^20
+        pubplace_tsi
+        edition_name_tsim
+        issuance_tsi
+        date_tsim
+        table_of_contents_tsi^30
+        note_tsim^10
+        note_resp_tsim^20
+        note_date_tsim
+        note_performers_tsim^10
+        note_acquisition_tsim^10
+        note_ownership_tsim^10
+        note_citation_tsim^10
+        note_reference_tsim^10
+        note_exhibitions_tsim^10
+        note_arrangement_tsim^10
+        note_language_tsim^10
+        note_funding_tsim^10
+        note_biographical_tsim^10
+        note_publications_tsim^10
+        note_credits_tsim^10
+        note_physical_tsim^10
+        collection_name_tim^10
+        physical_location_tim^20
+        sub_location_tsi
+        shelf_locator_tsi
+        subject_topic_tsim^100
+        subject_name_tsim^100
+        subject_geographic_tim^100
+        subject_temporal_tsim^50
+        scale_tsim
+        projection_tsi
+        subject_date_tsim
+        subject_title_tsim^100
+        related_item_host_tim^10
+        related_item_series_ti^10
+        related_item_subseries_ti^10
+        related_item_subsubseries_ti^10
+        identifier_local_other_tsim
+        identifier_local_other_invalid_tsim
+        identifier_local_accession_tsim
+        identifier_local_call_tsim
+        identifier_local_call_invalid_tsim
+        identifier_local_barcode_tsim
+        identifier_local_barcode_invalid_tsim
+        identifier_isbn_tsim
+        identifier_lccn_tsim
+        identifier_ia_id_ssi
+        extent_tsi
+        institution_name_ti^10
+        institution_ark_id_ssi
+        filenames_ssim
+        lang_term_ssim
+        ocr_tiv
+        ocr_tsiv
+      </str>
+      <!-- same as default pf, but with OCR text fields -->
+      <str name="fulltext_pf">
+        title_info_primary_tsi^5000
+        title_info_primary_trans_tsim^1000
+        title_info_alternative_tsim^1000
+        title_info_translated_tsim^1000
+        title_info_uniform_tsim^500
+        subtitle_tsim^800
+        name_tsim^200
+        subject_topic_tsim^1000
+        subject_name_tsim^1000
+        subject_geographic_tim^1000
+        subject_title_tsim^1000
+        related_item_*^100
+        ocr_tiv
+        ocr_tsiv
+      </str>
 
-       <str name="facet">true</str>
-       <str name="facet.mincount">1</str>
-       <str name="facet.limit">10</str>
-       
-       <str name="spellcheck">true</str>
-       <str name="spellcheck.dictionary">default</str>
-       <str name="spellcheck.onlyMorePopular">true</str>
-       <str name="spellcheck.extendedResults">false</str>
-       <str name="spellcheck.collate">false</str>
-       <str name="spellcheck.count">5</str>
+      <str name="author_qf">
+        name_tsim^20
+        note_resp_tsim
+      </str>
+      <str name="author_pf">
+        name_tsim^200
+        note_resp_tsim
+      </str>
 
-     </lst>
+      <str name="title_qf">
+        title_info_primary_tsi^500
+        title_info_primary_subtitle_tsi^80
+        title_info_primary_trans_tsim^100
+        title_info_alternative_tsim^100
+        title_info_translated_tsim^100
+        title_info_uniform_tsim^50
+        title_info_other_subtitle_tsim^80
+      </str>
+      <str name="title_pf">
+        title_info_primary_tsi^5000
+        title_info_primary_trans_tsim^1000
+        title_info_alternative_tsim^1000
+        title_info_translated_tsim^1000
+        title_info_uniform_tsim^500
+        title_info_primary_subtitle_tsi^800
+        title_info_other_subtitle_tsim^800
+      </str>
+
+      <str name="subject_qf">
+        subject_topic_tsim^100
+        subject_name_tsim^100
+        subject_geographic_tim^100
+        subject_date_tsim
+        subject_temporal_tsim^50
+        subject_title_tsim^100
+      </str>
+      <str name="subject_pf">
+        subject_topic_tsim^1000
+        subject_name_tsim^1000
+        subject_geographic_tim^1000
+        subject_title_tsim^1000
+        subject_date_tsim
+        subject_temporal_tsim^500
+      </str>
+
+      <str name="place_qf">
+        subject_geographic_tim^500
+        subject_topic_tsim^50
+        title_info_primary_tsi^20
+        title_info_primary_subtitle_tsi^5
+        title_info_other_subtitle_tsim^5
+        abstract_tsi
+        table_of_contents_tsi
+        institution_name_ti^10
+        physical_location_tim^10
+        pubplace_tsi
+      </str>
+      <str name="place_pf">
+        subject_geographic_tim^2000
+        subject_topic_tsim^500
+        title_info_primary_tsi^200
+        title_info_primary_subtitle_tsi^50
+        title_info_other_subtitle_tsim^50
+        institution_name_ti^100
+        physical_location_tim^100
+      </str>
+
+      <str name="fulltext_only_qf">
+        ocr_tiv
+        ocr_tsiv
+      </str>
+      <str name="fulltext_only_pf">
+        ocr_tiv
+        ocr_tsiv
+      </str>
+
+      <str name="fl">
+        *,
+        score
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+
+      <str name="spellcheck">true</str>
+      <str name="spellcheck.dictionary">default</str>
+      <str name="spellcheck.onlyMorePopular">true</str>
+      <str name="spellcheck.extendedResults">false</str>
+      <str name="spellcheck.collate">false</str>
+      <str name="spellcheck.count">5</str>
+
+    </lst>
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
@@ -234,12 +332,12 @@ http://wiki.apache.org/solr/LocalParams
       </str>
     </lst>
   </requestHandler>
-  
+
   <requestHandler name="standard" class="solr.SearchHandler">
-     <lst name="defaults">
-       <str name="echoParams">explicit</str>
-       <str name="defType">lucene</str>
-     </lst>
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <str name="defType">lucene</str>
+    </lst>
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
@@ -256,7 +354,7 @@ http://wiki.apache.org/solr/LocalParams
       <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
   </requestHandler>
-  
+
   <!-- totally experimental, for "more like this" link in catalog#show -->
   <requestHandler name="mlt_qparser" class="solr.SearchHandler">
     <lst name="defaults">
@@ -318,13 +416,20 @@ http://wiki.apache.org/solr/LocalParams
       <!-- <str name="buildOnOptimize">true</str> -->
     </lst>
   </searchComponent>
-  
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
-  
+
+  <!-- <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /> -->
+  <requestHandler name="/replication" class="solr.ReplicationHandler">
+    <lst>
+      <str name="replicateAfter">commit</str>
+      <str name="replicateAfter">startup</str>
+      <str name="confFiles">schema.xml,stopwords.txt</str>
+    </lst>
+  </requestHandler>
+
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
-  
+
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
   <requestHandler name="/update" class="solr.UpdateRequestHandler" />
 
@@ -334,7 +439,7 @@ http://wiki.apache.org/solr/LocalParams
   <!--
   <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
   -->
-  
+
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
     <lst name="invariants">
       <str name="q">solrpingquery</str>
@@ -343,25 +448,39 @@ http://wiki.apache.org/solr/LocalParams
       <str name="echoParams">all</str>
     </lst>
   </requestHandler>
-  
+
   <!-- config for the admin interface -->
   <admin>
     <defaultQuery>search</defaultQuery>
   </admin>
-  
+
   <updateHandler class="solr.DirectUpdateHandler2">
-  
+
     <updateLog>
       <str name="dir">${solr.ulog.dir:}</str>
     </updateLog>
 
-    <autoCommit> 
+    <autoCommit>
       <maxTime>86400000</maxTime>
-      <maxDocs>2000</maxDocs> 
+      <maxDocs>2000</maxDocs>
       <openSearcher>true</openSearcher>
     </autoCommit>
 
   </updateHandler>
-  
-</config>
 
+  <!-- to support dynamic sitemaps -->
+  <updateProcessor class="solr.processor.SignatureUpdateProcessorFactory" name="add_hash_id">
+    <bool name="enabled">true</bool>
+    <str name="signatureField">hashed_id_si</str>
+    <bool name="overwriteDupes">false</bool>
+    <str name="fields">id</str>
+    <str name="signatureClass">solr.processor.Lookup3Signature</str>
+  </updateProcessor>
+
+  <updateRequestProcessorChain name="cloud" processor="add_hash_id" default="true">
+    <processor class="solr.LogUpdateProcessorFactory"/>
+    <processor class="solr.DistributedUpdateProcessorFactory"/>
+    <processor class="solr.RunUpdateProcessorFactory"/>
+  </updateRequestProcessorChain>
+
+</config>

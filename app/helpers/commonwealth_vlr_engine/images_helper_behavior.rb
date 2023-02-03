@@ -3,6 +3,8 @@
 # methods related to rendering images, thumbnails, icons, etc.
 module CommonwealthVlrEngine
   module ImagesHelperBehavior
+    NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
+
     # return the image url for the collection gallery view document
     # @param document [SolrDocument] = Curator::Collection Solr document
     # @param size [String] = pixel length of square IIIF-created image
@@ -12,6 +14,8 @@ module CommonwealthVlrEngine
       if exemplary_image_pid
         if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' || document['exemplary_image_iiif_bsi'] == false
           filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
+        elsif document[:destination_site_ssim].to_s.include?('newspapers')
+          iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
         else
           iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
         end

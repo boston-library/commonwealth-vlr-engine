@@ -4,6 +4,8 @@
   margin-top:40px;
 
   #search_field {
+    width: 107px;
+
     @media (max-width: breakpoint-max(md)) {
       width: 100px;
     }
@@ -21,6 +23,14 @@
   .submit-search-text {
     @media (max-width: breakpoint-max(xs)) {
       display: none;
+    }
+  }
+
+  #fulltext_checkbox_wrapper {
+    margin-top: 8px;
+
+    #fulltext_info {
+      cursor: pointer;
     }
   }
 

@@ -29,9 +29,7 @@
             <div id="collection_search_tools">
               <div id="collection_view_all">
                 <% if @document[blacklight_config.institution_field.to_sym] %>
-                  <%= link_to_all_col_items(@collection_title,
-                                            t('blacklight.home.browse.institutions.enabled') ? @document[blacklight_config.institution_field.to_sym] : nil,
-                                            'btn btn-info view-all-col') %>
+                  <%= link_to_all_col_items(@document, link_class: 'btn btn-info view-all-col') %>
                 <% end %>
               </div>
               <span class="collection_search_separator">or</span>

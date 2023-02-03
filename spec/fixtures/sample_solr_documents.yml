@@ -1954,7 +1954,7 @@
   id:
   - bpl-dev:3j334b41x
   attachments_ss:
-  - "TK"
+  - "{\"characterization\":{\"filename\":\"characterization.xml\",\"byte_size\":2954,\"content_type\":\"text/xml\",\"checksum\":\"89lqSyU5E6WfKSNlslEBqQ==\",\"key\":\"ereaders/commonwealth:xd07hp373/characterization.xml\",\"service_name\":\"derivatives\"},\"ebook_access_daisy\":{\"filename\":\"womansbookdealin01unse_daisy.zip\",\"byte_size\":552344,\"content_type\":\"application/zip\",\"checksum\":\"MmnaKz45lbAmEqCto4Fphw==\",\"key\":\"ereaders/commonwealth:xd07hp373/ebook_access_daisy.zip\",\"service_name\":\"derivatives\"},\"ebook_access_epub\":{\"filename\":\"womansbookdealin01unse.epub\",\"byte_size\":3100582,\"content_type\":\"application/epub+zip\",\"checksum\":\"3AMaqYlKp3p+VzAzgi1eaQ==\",\"key\":\"ereaders/commonwealth:xd07hp373/ebook_access_epub.epub\",\"service_name\":\"derivatives\"},\"ebook_access_mobi\":{\"filename\":\"womansbookdealin01unse.mobi\",\"byte_size\":3360792,\"content_type\":\"application/x-mobipocket-ebook\",\"checksum\":\"awNdI7cfuMv99YkQG45UNg==\",\"key\":\"ereaders/commonwealth:xd07hp373/ebook_access_mobi.mobi\",\"service_name\":\"derivatives\"},\"metadata_foxml\":{\"filename\":\"metadata_foxml.xml\",\"byte_size\":8858,\"content_type\":\"application/xml\",\"checksum\":\"R916/fVRFWbY8C6+DVmCIw==\",\"key\":\"ereaders/commonwealth:xd07hp373/metadata_foxml.xml\",\"service_name\":\"primary\"}}"
   read_access_group_ssim:
   - public
   edit_access_group_ssim:

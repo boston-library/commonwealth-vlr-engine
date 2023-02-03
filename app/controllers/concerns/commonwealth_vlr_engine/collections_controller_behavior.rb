@@ -49,11 +49,7 @@ module CommonwealthVlrEngine
       @response, @document_list = facets_search_service.search_results
 
       # get an image for the collection
-      if @document[:exemplary_image_ssi]
-        @collection_image_info = collection_image_info(@document[:exemplary_image_ssi],
-                                                       @document[:exemplary_image_key_base_ss],
-                                                       @document[:id], @document[blacklight_config.hosting_status_field.to_sym])
-      end
+      @collection_image_info = collection_image_info(@document) if @document[:exemplary_image_ssi]
 
       respond_to do |format|
         format.html
@@ -113,13 +109,14 @@ module CommonwealthVlrEngine
     end
 
     # find the title and pid for the object representing the collection image
-    # @param image_pid [String]
-    # @param collection_pid [String]
+    # @param document [SolrDocument]
     # @return [Hash]
-    def collection_image_info(image_pid, image_key, collection_pid, hosting_status)
-      col_img_info = { image_pid: image_pid, image_key: image_key, title: '',
-                       pid: collection_pid, access_master: false, hosting_status: hosting_status }
-      _col_img_file_resp, col_img_file_doc = search_service.fetch(image_pid)
+    def collection_image_info(document)
+      col_img_info = { image_pid: document[:exemplary_image_ssi], image_key: document[:exemplary_image_key_base_ss],
+                       title: '', pid: document[:id], access_master: false,
+                       hosting_status: document[blacklight_config.hosting_status_field.to_sym],
+                       destination_site: document[:destination_site_ssim] }
+      _col_img_file_resp, col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
       if col_img_file_doc
         col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
         col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
