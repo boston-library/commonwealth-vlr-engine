@@ -62,7 +62,7 @@ describe CollectionsController, :vcr do
   end
 
   describe 'private methods and before_actions' do
-    let(:document) { SolrDocument.find(collection_pid)  }
+    let(:document) { SolrDocument.find(collection_pid) }
     let(:mock_controller) { described_class.new }
 
     before(:each) do

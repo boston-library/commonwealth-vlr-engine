@@ -42,10 +42,10 @@ module CommonwealthVlrEngine
         config.view.maps.facet_mode = 'geojson'
         config.view.maps.spatial_query_dist = 0.2
 
-        # helper that returns thumbnail URLs
+        # solr field configuration for search results/index views
+        config.index.title_field = 'title_info_primary_tsi'
+        config.index.display_type_field = 'curator_model_suffix_ssi'
         config.index.thumbnail_method = :create_thumb_img_element
-
-        # configuration for search results/index views
         config.index.partials = [:thumbnail, :index_header, :index]
 
         # solr field configuration for document/show views
@@ -56,8 +56,11 @@ module CommonwealthVlrEngine
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
 
-        # index for full-text searches
-        config.full_text_index = 'all_fields_ft'
+        # sort params used in helpers
+        date_asc_sort = 'date_start_dtsi asc, title_info_primary_ssort asc'
+        title_sort = 'title_info_primary_ssort asc, date_start_dtsi asc'
+        config.date_asc_sort = date_asc_sort
+        config.title_sort = title_sort
 
         # advanced search configuration
         config.advanced_search = {
@@ -77,11 +80,14 @@ module CommonwealthVlrEngine
         config.collection_field = 'collection_name_ssim'
         config.institution_field = 'institution_name_ssi'
         config.series_field = 'related_item_series_ssi'
+
+        # field for hosted/harvested object differentiation
         config.hosting_status_field = 'hosting_status_ssi'
 
-        # book stuff
+        # full-text stuff
         config.ocr_search_field = 'ocr_tsiv'
         config.page_num_field = 'page_num_label_ssi'
+        config.full_text_index = 'all_fields_ft'
 
         # configuration for Blacklight IIIF Content Search
         config.iiif_search = {
@@ -92,10 +98,6 @@ module CommonwealthVlrEngine
         }
 
         config.default_solr_params = { qt: 'search', rows: 20 }
-
-        # solr field configuration for search results/index views
-        config.index.title_field = 'title_info_primary_tsi'
-        config.index.display_type_field = 'curator_model_suffix_ssi'
 
         # solr fields that will be treated as facets by the blacklight application
         config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false
@@ -139,13 +141,13 @@ module CommonwealthVlrEngine
         config.add_search_field 'all_fields_ft', label: 'All Fields (with full text)',
                                 include_in_simple_select: false do |field|
           field.solr_parameters = {
-              'spellcheck.dictionary': 'default',
-              qf: '${fulltext_qf}',
-              pf: '${fulltext_pf}'
+            'spellcheck.dictionary': 'default',
+            qf: '${fulltext_qf}',
+            pf: '${fulltext_pf}'
           }
           field.solr_adv_parameters = {
-              qf: '$fulltext_qf',
-              pf: '$fulltext_pf',
+            qf: '$fulltext_qf',
+            pf: '$fulltext_pf',
           }
         end
 
@@ -199,8 +201,8 @@ module CommonwealthVlrEngine
 
         # "sort results by" select (pulldown)
         config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
-        config.add_sort_field 'title_info_primary_ssort asc, date_start_dtsi asc', label: 'title'
-        config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', label: 'date (asc)'
+        config.add_sort_field title_sort, label: 'title'
+        config.add_sort_field date_asc_sort, label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
         # add our custom tools

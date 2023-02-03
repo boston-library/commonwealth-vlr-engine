@@ -59,8 +59,17 @@ describe CommonwealthVlrEngine::ControllerOverride do
         expect(test_config.collection_field).to eq('collection_name_ssim')
         expect(test_config.institution_field).to eq('institution_name_ssi')
         expect(test_config.series_field).to eq('related_item_series_ssi')
+      end
+
+      it 'sets the fields for full-text conifgs' do
         expect(test_config.ocr_search_field).to eq('ocr_tsiv')
         expect(test_config.page_num_field).to eq('page_num_label_ssi')
+        expect(test_config.full_text_index).to eq('all_fields_ft')
+      end
+
+      it 'sets the fields for sorting' do
+        expect(test_config.date_asc_sort).to be_truthy
+        expect(test_config.title_sort).to be_truthy
       end
     end
 

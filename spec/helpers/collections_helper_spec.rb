@@ -11,8 +11,12 @@ describe CollectionsHelper, :vcr do
   end
 
   describe '#link_to_all_col_items' do
+    let(:document) do
+      { blacklight_config.index.title_field.to_sym => 'Foo Collection',
+        blacklight_config.institution_field.to_sym => 'Bar Institution' }
+    end
     let(:coll_items_link) do
-      helper.link_to_all_col_items('Foo Collection', 'Bar Institution', 'baz')
+      helper.link_to_all_col_items(document, link_class: 'baz')
     end
     it 'creates a search link with the correct collection and institution params' do
       expect(coll_items_link).to include("#{blacklight_config.collection_field}%5D%5B%5D=Foo+Collection")
