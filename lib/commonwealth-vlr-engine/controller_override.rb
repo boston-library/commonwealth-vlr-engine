@@ -18,6 +18,9 @@ module CommonwealthVlrEngine
       before_action :mlt_search, only: [:index, :show]
       before_action :add_institution_fields, only: [:index, :facet]
 
+      DATE_ASC_SORT = 'date_start_dtsi asc, title_info_primary_ssort asc'
+      TITLE_SORT = 'title_info_primary_ssort asc, date_start_dtsi asc'
+
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
         # set default per-page
@@ -57,10 +60,8 @@ module CommonwealthVlrEngine
         config.flagged_field = 'flagged_content_ssi'
 
         # sort params used in helpers
-        date_asc_sort = 'date_start_dtsi asc, title_info_primary_ssort asc'
-        title_sort = 'title_info_primary_ssort asc, date_start_dtsi asc'
-        config.date_asc_sort = date_asc_sort
-        config.title_sort = title_sort
+        config.date_asc_sort = DATE_ASC_SORT
+        config.title_sort = TITLE_SORT
 
         # advanced search configuration
         config.advanced_search = {
@@ -201,8 +202,8 @@ module CommonwealthVlrEngine
 
         # "sort results by" select (pulldown)
         config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
-        config.add_sort_field title_sort, label: 'title'
-        config.add_sort_field date_asc_sort, label: 'date (asc)'
+        config.add_sort_field TITLE_SORT, label: 'title'
+        config.add_sort_field DATE_ASC_SORT, label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
         # add our custom tools
