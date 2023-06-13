@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <%= content_tag :html, class: 'no-js', **html_tag_attributes do %>
   <head>
+    <%= insert_google_analytics %>
+    <%= insert_gtm(:head) %>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,10 +20,10 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-    <% insert_google_analytics %>
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %>">
+  <%= insert_gtm(:body) %>
   <div id="skip-link">
     <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
     <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>

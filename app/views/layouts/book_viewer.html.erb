@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%= insert_google_analytics %>
+    <%= insert_gtm(:head) %>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,10 +20,10 @@
     <script src="/uv/lib/offline.js"></script>
     <script src="/uv/helpers.js"></script>
     <%= csrf_meta_tags %>
-    <% insert_google_analytics %>
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %> universal-viewer">
-      <%= yield %>
+    <%= insert_gtm(:body) %>
+    <%= yield %>
   </body>
 </html>
