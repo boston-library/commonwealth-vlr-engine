@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'typhoeus', '~> 1.3'
   s.add_dependency 'unicode', '~> 0.4.4'
+  s.add_dependency 'view_component', '>= 2.82.0', '< 3.0'
   s.add_dependency 'zipline', '~> 1.3.1'
 
   s.add_development_dependency 'awesome_print'
