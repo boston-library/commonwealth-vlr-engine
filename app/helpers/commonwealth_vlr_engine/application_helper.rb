@@ -154,11 +154,19 @@ module CommonwealthVlrEngine
     end
 
     def insert_google_analytics
-      return unless Rails.env.to_s == 'production'
+      return unless  %w[production staging].include?(Rails.env.to_s)
 
-      content_for(:head) do
-        render partial: '/layouts/google_analytics'
-      end
+      render partial: '/layouts/google_analytics'
+    end
+
+    # Google Tag Manager code for <head>
+    # @param destination [Symbol] :head or :body
+    def insert_gtm(destination)
+      return unless  %w[production staging].include?(Rails.env.to_s)
+
+      return unless  %i[head body].include?(destination)
+
+      render partial: "/layouts/gtm_#{destination}"
     end
 
     # returns a hash with the location of the OpenSeadragon custom images
