@@ -154,7 +154,7 @@ module CommonwealthVlrEngine
     end
 
     def insert_google_analytics
-      return unless  %w[production staging].include?(Rails.env.to_s)
+      return unless %w(production staging).include?(Rails.env.to_s)
 
       render partial: '/layouts/google_analytics'
     end
@@ -162,9 +162,7 @@ module CommonwealthVlrEngine
     # Google Tag Manager code for <head>
     # @param destination [Symbol] :head or :body
     def insert_gtm(destination)
-      return unless  %w[production staging].include?(Rails.env.to_s)
-
-      return unless  %i[head body].include?(destination)
+      return unless %w(production staging).include?(Rails.env.to_s) && %i(head body).include?(destination)
 
       render partial: "/layouts/gtm_#{destination}"
     end
