@@ -1,6 +1,6 @@
 <%# use blacklight_modal: 'preserve' once https://github.com/projectblacklight/blacklight/issues/2331 resolved %>
 <div id="ocr_search_form_wrapper">
-  <%= form_tag ocr_search_path, method: :get, class: 'ocr-search-form',
+  <%= form_tag ocr_search_path, method: :get, class: 'ocr-search-form', id: 'ocr-search-form',
                data: { blacklight_modal: 'trigger' } do %>
     <%= render_hash_as_hidden_fields(search_state.params_for_search(id: params[:id]).except('q', 'ocr_q',
                                                                                             'search_field', 'qt', 'page')) %>
