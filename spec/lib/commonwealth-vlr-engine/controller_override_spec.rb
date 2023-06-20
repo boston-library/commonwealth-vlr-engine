@@ -77,14 +77,14 @@ describe CommonwealthVlrEngine::ControllerOverride do
       subject { test_config.show.document_actions }
 
       it 'adds the desired actions' do
-        expect(subject[:add_this]).not_to be_empty
+        expect(subject[:sharing]).not_to be_empty
       end
     end
   end
 
-  describe '#render_add_this?' do
+  describe '#render_sharing?' do
     it 'returns the correct boolean value' do
-      expect(mock_controller.send(:render_add_this?)).to be_truthy
+      expect(mock_controller.send(:render_sharing?)).to be_truthy
     end
   end
 

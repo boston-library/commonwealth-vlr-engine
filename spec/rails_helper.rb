@@ -34,15 +34,6 @@ end
 Billy.configure do |c|
   c.cache = true
   c.cache_request_headers = false
-  # for AddThis social/sharing widget: app/views/catalog/_add_this.html.erb
-  c.ignore_params = %w(
-    https://s7.addthis.com/js/300/addthis_widget.js
-    https://m.addthis.com/live/red_lojson/300lo.json
-    https://s7.addthis.com/static/sh.f48a1a04fe8dbf021b4cda1d.html
-    https://v1.addthisedge.com/live/boost/xa-505226a67a68dc99/_ate.track.config_resp
-    https://z.moatads.com/addthismoatframe568911941483/moatframe.js
-    https://m.addthis.com/live/red_lojson/100eng.json
-  )
   c.path_blacklist = []
   c.merge_cached_responses_whitelist = []
   c.persist_cache = true

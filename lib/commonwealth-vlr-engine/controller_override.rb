@@ -207,7 +207,7 @@ module CommonwealthVlrEngine
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
         # add our custom tools
-        config.add_show_tools_partial :add_this, partial: 'add_this', if: :render_add_this?
+        config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -249,14 +249,14 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
       blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
       # remove item-centric show tools (for admin)
-      blacklight_config.show.document_actions.delete(:add_this)
+      blacklight_config.show.document_actions.delete(:sharing)
       blacklight_config.show.document_actions.delete(:bookmark)
       blacklight_config.show.document_actions.delete(:email)
       blacklight_config.show.document_actions.delete(:citation)
     end
 
-    # display the AddThis social/sharing widget in catalog#show
-    def render_add_this?
+    # display the social/sharing widget in catalog#show
+    def render_sharing?
       true
     end
 
