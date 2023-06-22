@@ -1,4 +1,4 @@
-<%= form_tag search_action_url, method: :get, class: 'header-search-form form-inline',
+<%= form_tag search_action_url, method: :get, class: 'form-inline', id: 'header-search-form',
              'aria-label' => t('blacklight.search.form.submit') do %>
     <%= render_hash_as_hidden_fields(search_state.params_for_search(search_field: default_search_field[:key]).except('q', 'qt', 'page', 'utf8', 'f', 'sort', 'mlt_id', 'coordinates', 'spatial_search_type', 'view', 'range', 'date_start', 'date_end')) %>
 

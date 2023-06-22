@@ -1,6 +1,5 @@
-<div id="collection_search_form">
-  <%= form_tag search_action_url, method: :get,
-               class: 'search-query-form form-inline collection-search',
+<div id="collection_search_form_wrapper">
+  <%= form_tag search_action_url, method: :get, id: 'collection-search-form', class: 'search-query-form form-inline',
                role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
     <%= render_hash_as_hidden_fields(search_state.params_for_search.except('q', 'search_field', 'qt', 'page')) %>
     <%= hidden_field_tag :search_field, blacklight_config.full_text_index %>
