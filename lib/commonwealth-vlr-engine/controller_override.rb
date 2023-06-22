@@ -193,7 +193,7 @@ module CommonwealthVlrEngine
         config.index.document_actions.delete(:bookmark)
 
         # add our custom tools
-        config.add_show_tools_partial :add_this, partial: 'add_this'
+        config.add_show_tools_partial :sharing, partial: 'sharing'
         config.add_show_tools_partial :folder_items, partial: 'folder_item_control'
         config.add_show_tools_partial :custom_email, partial: 'show_sharing_tools'
         config.add_show_tools_partial :cite, partial: 'show_cite_tools'
@@ -226,7 +226,7 @@ module CommonwealthVlrEngine
         blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
         blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
         # remove item-centric show tools (for admin)
-        blacklight_config.show.document_actions.delete(:add_this)
+        blacklight_config.show.document_actions.delete(:sharing)
         blacklight_config.show.document_actions.delete(:folder_items)
         blacklight_config.show.document_actions.delete(:custom_email)
         blacklight_config.show.document_actions.delete(:cite)
