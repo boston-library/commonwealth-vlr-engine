@@ -18,19 +18,18 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 2.7', '< 3'
+  s.required_ruby_version = '>= 3.0.6', '< 3.1'
 
-  s.add_dependency 'blacklight', '~> 7.13.2'
+  s.add_dependency 'blacklight', '~> 7.19.0'
   s.add_dependency 'blacklight-gallery', '~> 2.1.0'
   s.add_dependency 'blacklight-maps', '~> 1.1.0'
   s.add_dependency 'blacklight_advanced_search', '~> 7.0.0'
   s.add_dependency 'blacklight_iiif_search', '~> 2.0'
   s.add_dependency 'blacklight_range_limit', '>= 7.8.2', '< 8.0'
-  s.add_dependency 'faraday', '0.15.4' # has to be < 0.16, see https://github.com/iiif-prezi/osullivan/issues/75
   s.add_dependency 'font-awesome-sass', '~> 5.0'
-  s.add_dependency 'iiif-presentation', '~> 0.2.0'
+  s.add_dependency 'iiif-presentation', '~> 1.1'
   s.add_dependency 'madison', '~> 0.5.0'
-  s.add_dependency 'rails', '~> 6.0.6'
+  s.add_dependency 'rails', '~> 6.1.7.4'
   s.add_dependency 'recaptcha', '~> 5.12'
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'typhoeus', '~> 1.3'

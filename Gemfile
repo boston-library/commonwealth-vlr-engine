@@ -19,8 +19,9 @@ group :test do
   gem 'database_cleaner'
   gem 'puffing-billy'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver', '~> 4.10'
   gem 'vcr', '~> 6.0'
-  gem 'webdrivers', '~> 3.0'
+  # gem 'webdrivers', '~> 3.0'
   gem 'webmock', '~> 3.8'
 end
 
