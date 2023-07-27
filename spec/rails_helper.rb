@@ -12,7 +12,7 @@ require 'pry-rails'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'webdrivers'
+require 'selenium-webdriver'
 require 'vcr'
 require 'billy/capybara/rspec'
 

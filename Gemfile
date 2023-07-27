@@ -8,9 +8,10 @@ git_source(:github) { |repo| "https://github.com/boston-library/#{repo}.git" }
 gemspec
 
 group :development, :test do
-  gem 'rubocop', '~> 0.75.1', require: false
-  gem 'rubocop-performance', '~> 1.5', require: false
-  gem 'rubocop-rails', '~> 2.4.2', require: false
+  gem 'rubocop', '~> 1.36', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-performance', '~> 1.15', require: false
+  gem 'rubocop-rails', '~> 2.16', require: false
   gem 'rubocop-rspec', require: false
 end
 
@@ -19,9 +20,9 @@ group :test do
   gem 'database_cleaner'
   gem 'puffing-billy'
   gem 'rails-controller-testing'
+  gem 'rss'
   gem 'selenium-webdriver', '~> 4.10'
   gem 'vcr', '~> 6.0'
-  # gem 'webdrivers', '~> 3.0'
   gem 'webmock', '~> 3.8'
 end
 

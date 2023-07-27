@@ -17,7 +17,7 @@ describe 'show book viewer link', js: true do
     end
 
     it 'should show the #item_metadata_expand content when the link is clicked' do
-      expect(page).to have_selector('#item_metadata_expand.collapse.show', visible: true)
+      expect(page).to have_selector('#item_metadata_expand.collapse.show', visible: :visible)
     end
   end
 end
