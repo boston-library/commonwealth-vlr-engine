@@ -42,7 +42,7 @@ module CommonwealthVlrEngine
 
     # override and return nil, since these links just return empty XML documents
     # TODO: figure out how to include JSON as an @rel='alternate' link, like in catalog#index
-    def render_link_rel_alternates(_document, _options)
+    def render_link_rel_alternates(_document = @document, _options = {})
       nil
     end
   end
