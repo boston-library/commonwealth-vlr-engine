@@ -683,9 +683,6 @@ RSpec/HooksBeforeExamples:
 RSpec/InstanceVariable:
   Enabled: false
 
-RSpec/InvalidPredicateMatcher:
-  Enabled: true
-
 RSpec/ItBehavesLike:
   Enabled: true
 

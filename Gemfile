@@ -12,7 +12,7 @@ group :development, :test do
   gem 'rubocop-capybara', require: false
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails', '~> 2.16', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec', '~> 2.16', require: false
 end
 
 group :test do
