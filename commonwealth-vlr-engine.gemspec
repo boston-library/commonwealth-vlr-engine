@@ -45,5 +45,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry-rescue'
   s.add_development_dependency 'pry-stack_explorer'
   s.add_development_dependency 'rspec-rails', '~> 6.0.3'
-  s.add_development_dependency 'solr_wrapper', '~> 3.1'
+  s.add_development_dependency 'solr_wrapper', '~> 4.0'
 end

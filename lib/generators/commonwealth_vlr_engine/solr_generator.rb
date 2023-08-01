@@ -17,7 +17,9 @@ module CommonwealthVlrEngine
       vlr_solr_wrapper = YAML.safe_load(File.open(File.join(File.join(CommonwealthVlrEngine.root, '.solr_wrapper.yml'))))
       marker = '# port: 8983'
       insert_into_file '.solr_wrapper.yml', after: marker do
-        "\nversion: #{vlr_solr_wrapper['version']}"
+        %Q[
+version: #{vlr_solr_wrapper['version']}
+instance_dir: tmp/solr]
       end
     end
   end

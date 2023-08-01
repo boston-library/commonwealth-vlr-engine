@@ -49,7 +49,7 @@ end
 # (or some specs fail because smaller window hides responsive elements)
 Capybara.register_driver :selenium_chrome_headless_billy do |app|
   options = Selenium::WebDriver::Chrome::Options.new
-  options.headless!
+  options.add_argument('--headless=new')
   options.add_argument('--enable-features=NetworkService,NetworkServiceInProcess')
   options.add_argument('--ignore-certificate-errors')
   options.add_argument("--proxy-server=#{Billy.proxy.host}:#{Billy.proxy.port}")
