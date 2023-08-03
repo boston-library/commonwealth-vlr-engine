@@ -55,7 +55,7 @@ Capybara.register_driver :selenium_chrome_headless_billy do |app|
   options.add_argument("--proxy-server=#{Billy.proxy.host}:#{Billy.proxy.port}")
   options.add_argument('--disable-gpu') if Gem.win_platform?
   options.add_argument('--no-sandbox') if ENV['CI']
-  options.add_argument('--window-size=1024,768)')
+  options.add_argument('--window-size=1024,768')
 
   Capybara::Selenium::Driver.new(
     app,
