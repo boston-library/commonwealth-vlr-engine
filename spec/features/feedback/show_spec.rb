@@ -11,7 +11,7 @@ describe 'feedback form', js: true do
     let(:contact_help_text_id) { '#contact_help_text' }
 
     it 'does not display the feedback help text' do
-      expect(page).to have_selector(contact_help_text_id, visible: false)
+      expect(page).to have_selector(contact_help_text_id, visible: :hidden)
     end
 
     describe 'selecting type option with help text' do
@@ -20,7 +20,7 @@ describe 'feedback form', js: true do
       end
 
       it 'displays the feedback help text' do
-        expect(page).to have_selector(contact_help_text_id, visible: true)
+        expect(page).to have_selector(contact_help_text_id, visible: :visible)
       end
 
       describe 'selecting type option without help text' do
@@ -29,7 +29,7 @@ describe 'feedback form', js: true do
         end
 
         it 'does not display the feedback help text' do
-          expect(page).to have_selector(contact_help_text_id, visible: false)
+          expect(page).to have_selector(contact_help_text_id, visible: :hidden)
         end
       end
     end

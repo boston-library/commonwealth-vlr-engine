@@ -39,10 +39,4 @@ function play_track(link, player){
     $('#audio_title').text(link.text());
     player.load();
     player.play();
-    // try{
-    //     var ark_id = $(this).attr('href').split('/').pop().match(/^[a-z-:0-9]*/);
-    //     BlacklightGoogleAnalytics.track_event('catalog#show', 'play_audio', ark_id + ': ' + link.text());
-    // } catch(err) {
-    //     BlacklightGoogleAnalytics.console_log_error(err, ['catalog#show', 'play_audio', ark_id + ': ' + link.text()]);
-    // }
 }

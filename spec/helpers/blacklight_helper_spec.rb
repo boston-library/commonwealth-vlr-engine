@@ -55,4 +55,10 @@ describe CommonwealthVlrEngine::BlacklightHelper do
       expect(classes).to include 'blacklight-pages'
     end
   end
+
+  describe '#render_link_rel_alternates' do
+    it 'returns nil' do
+      expect(helper.render_link_rel_alternates(document)).to be_nil
+    end
+  end
 end

@@ -47,7 +47,7 @@ describe IiifManifestController, :vcr do
 
   describe 'get annotation' do
     before(:each) do
-      get :annotation, params: { id:  item_pid, annotation_object_id: image_pid }
+      get :annotation, params: { id: item_pid, annotation_object_id: image_pid }
     end
 
     it 'renders an IIIF annotation' do

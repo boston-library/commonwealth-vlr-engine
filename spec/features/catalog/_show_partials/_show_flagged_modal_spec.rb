@@ -8,7 +8,7 @@ describe 'flagged item modal', js: true do
   end
 
   it 'displays the flagged item modal when the page is loaded' do
-    expect(page).to have_selector('#flagged_warning', visible: true)
+    expect(page).to have_selector('#flagged_warning', visible: :visible)
   end
 
   it 'returns to the search page when the "back" button is clicked' do
@@ -18,6 +18,6 @@ describe 'flagged item modal', js: true do
 
   it 'should hide the flagged item modal when the accept button is clicked' do
     click_button('View Content')
-    expect(page).to have_selector('#flagged_warning', visible: false)
+    expect(page).to have_selector('#flagged_warning', visible: :hidden)
   end
 end

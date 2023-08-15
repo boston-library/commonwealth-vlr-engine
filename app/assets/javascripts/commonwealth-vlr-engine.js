@@ -5,9 +5,6 @@
 // Required by Blacklight-Gallery
 //= require blacklight_gallery
 
-// Blacklight-centric Google Analytics event tracking
-//= require blacklight_google_analytics/blacklight_google_analytics
-
 // site-wide utilities
 //= require commonwealth-vlr-engine/vlr_utils
 

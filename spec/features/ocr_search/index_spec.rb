@@ -61,6 +61,7 @@ describe 'OCR search index view' do
         expect(page).to have_selector('.ocr_snippets_expand', count: 2)
       end
 
+      # have to use `visible: false` here for some reason, fails when using :hidden
       it 'has hidden snippets' do
         expect(page).to have_selector('#snippet_collapse_1', visible: false)
       end
@@ -71,7 +72,7 @@ describe 'OCR search index view' do
         end
 
         it 'displays more snippets' do
-          expect(page).to have_selector('#snippet_collapse_1', visible: true)
+          expect(page).to have_selector('#snippet_collapse_1', visible: :visible)
         end
       end
     end
