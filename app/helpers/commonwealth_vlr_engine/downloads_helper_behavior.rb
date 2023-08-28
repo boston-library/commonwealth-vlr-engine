@@ -26,6 +26,8 @@ module CommonwealthVlrEngine
       if !attachments || (document[:curator_model_suffix_ssi] == 'Image')
         link_title = t("blacklight.downloads.images.#{filestream_id}")
       else
+        puts "FILESTREAM_ID = #{filestream_id}"
+        puts "ATTACHMENTS.KEYS = #{attachments.keys}"
         primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } ||
                            attachments.keys.find { |k| k.match?(filestream_id) } ||
                            attachments.keys.find { |k| !k.match?(/foxml/) }
@@ -114,7 +116,7 @@ module CommonwealthVlrEngine
         next unless attachments_json[v_id]
 
         video_links << file_download_link(file['id'],
-                                          download_link_title(document, attachments_json),
+                                          download_link_title(document, attachments_json, v_id),
                                           attachments_json,
                                           v_id,
                                           download_link_options)
