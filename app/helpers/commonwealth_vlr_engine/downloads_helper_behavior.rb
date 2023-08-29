@@ -114,7 +114,7 @@ module CommonwealthVlrEngine
         next unless attachments_json[v_id]
 
         video_links << file_download_link(file['id'],
-                                          download_link_title(document, attachments_json),
+                                          download_link_title(document, attachments_json, v_id),
                                           attachments_json,
                                           v_id,
                                           download_link_options)
