@@ -208,6 +208,7 @@ module CommonwealthVlrEngine
 
         # add our custom tools
         config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
+        config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -250,6 +251,7 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
       # remove item-centric show tools (for admin)
       blacklight_config.show.document_actions.delete(:sharing)
+      blacklight_config.show.document_actions.delete(:iiif_manifest)
       blacklight_config.show.document_actions.delete(:bookmark)
       blacklight_config.show.document_actions.delete(:email)
       blacklight_config.show.document_actions.delete(:citation)
@@ -258,6 +260,11 @@ module CommonwealthVlrEngine
     # display the social/sharing widget in catalog#show
     def render_sharing?
       true
+    end
+
+    # show the IIIF manifest link in tools
+    def render_manifest_link?
+      @document.present? && @document[:identifier_iiif_manifest_ss].present?
     end
 
     # override Blacklight::Catalog#render_sms_action?

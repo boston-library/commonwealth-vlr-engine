@@ -342,6 +342,9 @@ en:
             use_fewer_keywords: "Try using fewer keywords in your search, then refine the results using the 'Limit Your Search' options."
 
     tools:
+          iiif_manifest:
+            link: 'IIIF Manifest'
+            info: 'Learn more about IIIF'
           librarian_view:
             link: 'View MODS XML'
             title: 'View MODS XML metadata'

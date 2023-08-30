@@ -475,6 +475,23 @@
           .list-group-item {
             border: none;
             padding: 0.3rem 1.25rem;
+
+            &.iiif_manifest {
+
+              #iiif-logo {
+                height: 16px;
+                width: 16px;
+                vertical-align: text-top;
+              }
+
+              #iiif_manifest_info_icon {
+                position: absolute;
+                top: 10px;
+                padding-left: 5px;
+                color: $dark_gray;
+              }
+
+            }
           }
 
         }
