@@ -88,6 +88,21 @@ describe CommonwealthVlrEngine::ControllerOverride do
     end
   end
 
+  describe '#render_manifest_link?' do
+    before(:each) do
+      mock_controller.instance_variable_set(:@document, SolrDocument.find('bpl-dev:h702q6403'))
+    end
+
+    # remove the instance variables so they don't mess up other specs
+    after(:each) do
+      mock_controller.remove_instance_variable(:@document)
+    end
+
+    it 'returns the correct boolean value' do
+      expect(mock_controller.send(:render_manifest_link?)).to be_truthy
+    end
+  end
+
   describe 'render_sms_action?' do
     it 'returns the correct boolean value' do
       expect(mock_controller.send(:render_sms_action?)).to be_falsey

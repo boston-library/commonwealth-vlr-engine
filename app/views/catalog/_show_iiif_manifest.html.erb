@@ -1,0 +1,10 @@
+<%= link_to image_tag('commonwealth-vlr-engine/iiif-logo',
+                      alt: t('blacklight.tools.iiif_manifest.link'),
+                      id: 'iiif-logo') + ' ' + t('blacklight.tools.iiif_manifest.link'),
+            @document[:identifier_iiif_manifest_ss],
+            { id: 'iiif_manifest_link', rel: 'nofollow', target: '_blank' } %>
+
+<%= link_to icon('fas', 'question-circle', class: 'fa fa-xs', id: 'iiif_manifest_info_icon', aria: { hidden: true },
+                 alt: t('blacklight.tools.iiif_manifest.info'), title: t('blacklight.tools.iiif_manifest.info')),
+            'https://iiif.io/get-started/how-iiif-works/',
+            { rel: 'nofollow', target: '_blank' } %>

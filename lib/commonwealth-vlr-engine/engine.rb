@@ -39,7 +39,7 @@ module CommonwealthVlrEngine
     initializer 'commonwealth.assets.precompile' do |app|
       vlr_asset_base_path = File.join(CommonwealthVlrEngine.root, 'app', 'assets')
       vlr_assets = [
-        Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', '*.{gif,png}')),
+        Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', '*.{gif,png,svg}')),
         Dir.glob(File.join(vlr_asset_base_path, 'javascripts', 'commonwealth-vlr-engine', '*'))
       ]
       vlr_assets.each do |assets|

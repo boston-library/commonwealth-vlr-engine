@@ -45,7 +45,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:000000000
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/df65v790j
+  - http://ark-dc3dev.bpl.org/ark:/50959/df65v790j
+  identifier_iiif_manifest_ss:
+  - http://ark-dc3dev.bpl.org/ark:/50959/df65v790j/manifest
   publisher_tsi:
   - Old Colony Trust Co.
   pubplace_tsi:
@@ -247,7 +249,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:h702q636h
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/h702q6403
+  - http://ark-dc3dev.bpl.org/ark:/50959/h702q6403
+  identifier_iiif_manifest_ss:
+  - http://ark-dc3dev.bpl.org/ark:/50959/h702q6403/manifest
   publisher_tsi:
   - Published by E & H. T. Anthony
   pubplace_tsi:
@@ -465,7 +469,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:g445cd121
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/g445cd14k
+  - http://ark-dc3dev.bpl.org/ark:/50959/g445cd14k
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/g445cd14k/manifest
   related_item_host_tim:
   - Print Department Collection
   related_item_host_ssim:
@@ -601,7 +607,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:000000000
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/00000007x
+  - http://ark-dc3dev.bpl.org/ark:/50959/00000007x
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/00000007x/manifest
   publisher_tsi:
   - C.S. Hammond & Co.
   pubplace_tsi:
@@ -1047,7 +1055,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:000000000
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/00000003t
+  - http://ark-dc3dev.bpl.org/ark:/50959/00000003t
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/00000003t/manifest
   publisher_tsi:
   - Smith & Bumstead
   pubplace_tsi:
@@ -1200,7 +1210,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:000000000
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/qf85nb285
+  - http://ark-dc3dev.bpl.org/ark:/50959/qf85nb285
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/qf85nb285/manifest
   issuance_tsi:
   - monographic
   lang_term_ssim:
@@ -1336,7 +1348,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:000000000
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/df65v788h
+  - http://ark-dc3dev.bpl.org/ark:/50959/df65v788h
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/df65v788h/manifest
   publisher_tsi:
   - [George E. Emery]
   pubplace_tsi:
@@ -1555,7 +1569,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:xs55mc046
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/7s75dn48d
+  - http://ark-dc3dev.bpl.org/ark:/50959/7s75dn48d
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/7s75dn48d/manifest
   publisher_tsi:
   - Govt. Print. Off.
   pubplace_tsi:
@@ -1705,7 +1721,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:xs55mc046
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/3j334603p
+  - http://ark-dc3dev.bpl.org/ark:/50959/3j334603p
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/3j334603p/manifest
   related_item_host_tim:
   - Boston Public Library Collection
   related_item_host_ssim:
@@ -1824,7 +1842,9 @@
   admin_set_ark_id_ssi:
   - bpl-dev:xs55mc046
   identifier_uri_ss:
-  - http://ark-hydradev.bpl.org/ark:/50959/rf55z9490
+  - http://ark-dc3dev.bpl.org/ark:/50959/rf55z9490
+  identifier_iiif_manifest_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/rf55z9490/manifest
   related_item_host_tim:
   - Boston Public Library Collection
   related_item_host_ssim:
@@ -2339,7 +2359,7 @@
   admin_set_ark_id_ssi:
     - bpl-dev:w0892b63n
   identifier_uri_ss:
-    - http://ark-hydradev.bpl.org/ark:/50959/cj82k894f
+    - http://ark-dc3dev.bpl.org/ark:/50959/cj82k894f
   lang_term_ssim:
     - English
   related_item_host_tim:
@@ -2502,7 +2522,7 @@
   admin_set_ark_id_ssi:
     - bpl-dev:jm214p80w
   identifier_uri_ss:
-    - http://ark-hydradev.bpl.org/ark:/50959/5d86p086p
+    - http://ark-dc3dev.bpl.org/ark:/50959/5d86p086p
   lang_term_ssim:
     - English
   related_item_host_tim:
