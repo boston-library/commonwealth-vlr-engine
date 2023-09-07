@@ -5,16 +5,17 @@ require 'rails_helper'
 describe DownloadsHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:downloads_helper_test_class) { DownloadsController.new }
-  let(:item_pid) { 'bpl-dev:h702q6403' }
-  let(:image_pid) { 'bpl-dev:h702q641c' }
-  let(:document) { SolrDocument.find(item_pid) }
-  let(:video_pid) { 'bpl-dev:cj82k895q' }
-  let(:document_pid) { 'bpl-dev:ff365636z' }
+  let(:item_ark_id) { 'bpl-dev:h702q6403' }
+  let(:image_ark_id) { 'bpl-dev:h702q641c' }
+  let(:image_document) { SolrDocument.find(image_ark_id) }
+  let(:document) { SolrDocument.find(item_ark_id) }
+  let(:video_ark_id) { 'bpl-dev:cj82k895q' }
+  let(:document_ark_id) { 'bpl-dev:ff365636z' }
   let(:files_hash) do
-    fh = downloads_helper_test_class.get_files(item_pid)
+    fh = downloads_helper_test_class.get_files(item_ark_id)
     # add a video and document file so we can test download links
-    fh[:video] = [SolrDocument.find(video_pid)]
-    fh[:document] = [SolrDocument.find(document_pid)]
+    fh[:video] = [SolrDocument.find(video_ark_id)]
+    fh[:document] = [SolrDocument.find(document_ark_id)]
     fh
   end
   let(:object_profile) { JSON.parse(files_hash[:image].first['attachments_ss']) }
@@ -112,7 +113,7 @@ describe DownloadsHelper do
 
   describe '#file_download_link' do
     let(:file_download_link_output) do
-      helper.file_download_link(image_pid, 'foo', object_profile, image_filestreams_output[0])
+      helper.file_download_link(image_ark_id, 'foo', object_profile, image_filestreams_output[0])
     end
 
     it 'returns a link' do
@@ -120,7 +121,7 @@ describe DownloadsHelper do
     end
 
     it 'should link to the downloads controller show action with the correct datastream param' do
-      expect(file_download_link_output).to include(download_path(image_pid, filestream_id: image_filestreams_output[0]))
+      expect(file_download_link_output).to include(download_path(image_ark_id, filestream_id: image_filestreams_output[0]))
     end
 
     it 'should include a <span> with the file type and size' do
@@ -165,9 +166,16 @@ describe DownloadsHelper do
   end
 
   describe '#url_for_download' do
-    it 'returns the correct link path for a hosted item' do
-      expect(helper.url_for_download(document, image_filestreams_output[0])).to include(trigger_downloads_path(item_pid,
-                                                                                                               filestream_id: image_filestreams_output[0]))
+    it 'returns the correct link path for a single-file item' do
+      expect(helper.url_for_download(image_document, image_filestreams_output[0])).to include(
+        trigger_downloads_path(image_ark_id, filestream_id: image_filestreams_output[0])
+      )
+    end
+
+    it 'returns the correct link path for a multi-file item' do
+      expect(helper.url_for_download(document, image_filestreams_output[0])).to include(
+        trigger_zip_downloads_path(item_ark_id, filestream_id: image_filestreams_output[0])
+      )
     end
 
     describe 'item from Internet Archive' do

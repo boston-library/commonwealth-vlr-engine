@@ -52,4 +52,5 @@ Rails.application.routes.draw do
   # downloads
   resources :downloads, only: [:show]
   get 'start_download/:id', to: 'downloads#trigger_download', as: 'trigger_downloads'
+  get 'start_zip_download/:id', to: 'zip_downloads#trigger_download', as: 'trigger_zip_downloads'
 end

@@ -230,7 +230,7 @@
   genre_specific_ssim:
   - Cartes de visite
   - Portraits
-  local_accession_id_tsim:
+  identifier_local_accession_tsim:
   - 13_05_000029
   collection_name_ssim:
   - Carte de Visite Collection
@@ -447,7 +447,7 @@
   - Portrait photographs
   identifier_local_other_invalid_tsim:
   - Cab.G.3.25
-  local_accession_id_tsim:
+  identifier_local_accession_tsim:
   - 07_05_000003
   collection_name_ssim:
   - Cased Photographs

@@ -23,14 +23,14 @@ module CommonwealthVlrEngine
     end
 
     def download_link_title(document, attachments, filestream_id = nil)
-      if !attachments || (document[:curator_model_suffix_ssi] == 'Image')
+      if !attachments || (document[blacklight_config.index.display_type_field] == 'Image')
         link_title = t("blacklight.downloads.images.#{filestream_id}")
       else
         primary_file_key = attachments.keys.find { |k| k.match?(/\A[^_]*_primary/) } ||
                            attachments.keys.find { |k| k.match?(filestream_id) } ||
                            attachments.keys.find { |k| !k.match?(/foxml/) }
         file_name_ext = attachments[primary_file_key]['filename'].split('.')
-        if document[:identifier_ia_id_ssi] || (document[:curator_model_suffix_ssi] == 'Ereader')
+        if document[:identifier_ia_id_ssi] || (document[blacklight_config.index.display_type_field] == 'Ereader')
           link_title = ia_download_title(filestream_id, file_name_ext[1])
         else
           link_title = file_name_ext[0]
@@ -186,7 +186,6 @@ module CommonwealthVlrEngine
                              filename = attachments_json[filestream_id]['filename'] || attachments_json['filename']
                              filename.split('.')[1].upcase
                            end.gsub(/TIFF/, 'TIF')
-        file_type_string += ', multi-file ZIP' if attachments_json['zip']
       else
         file_type_string = case filestream_id
                            when 'image_primary'
@@ -197,6 +196,7 @@ module CommonwealthVlrEngine
                              'JPEG'
                            end
       end
+      file_type_string += ', multi-file ZIP' if attachments_json&.dig('zip').present?
       file_type_string
     end
 
@@ -252,6 +252,8 @@ module CommonwealthVlrEngine
     def url_for_download(document, filestream_id)
       if document[:identifier_ia_id_ssi] && filestream_id == 'JPEG2000'
         "https://archive.org/download/#{document[:identifier_ia_id_ssi]}/#{document[:identifier_ia_id_ssi]}_jp2.zip"
+      elsif document[blacklight_config.index.display_type_field] == 'DigitalObject'
+        trigger_zip_downloads_path(document.id, filestream_id: filestream_id)
       else
         trigger_downloads_path(document.id, filestream_id: filestream_id)
       end

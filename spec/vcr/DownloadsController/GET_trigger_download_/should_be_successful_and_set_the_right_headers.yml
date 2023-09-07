@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bpltestaccount.blob.core.windows.net/derivatives/images/bpl-dev:h702q641c/image_access_800.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - bpltestaccount.blob.core.windows.net
+  response:
+    status:
+      code: 404
+      message: The specified blob does not exist.
+    headers:
+      Content-Length:
+      - '215'
+      Content-Type:
+      - application/xml
+      Server:
+      - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+      X-Ms-Request-Id:
+      - eacfed53-801e-003d-2ea0-e123e6000000
+      X-Ms-Version:
+      - '2014-02-14'
+      Date:
+      - Thu, 07 Sep 2023 15:30:31 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48RXJyb3I+PENvZGU+QmxvYk5vdEZvdW5kPC9Db2RlPjxNZXNzYWdlPlRoZSBzcGVjaWZpZWQgYmxvYiBkb2VzIG5vdCBleGlzdC4KUmVxdWVzdElkOmVhY2ZlZDUzLTgwMWUtMDAzZC0yZWEwLWUxMjNlNjAwMDAwMApUaW1lOjIwMjMtMDktMDdUMTU6MzA6MzIuMjA4OTUzNVo8L01lc3NhZ2U+PC9FcnJvcj4=
+  recorded_at: Thu, 07 Sep 2023 15:30:32 GMT
+recorded_with: VCR 6.2.0
