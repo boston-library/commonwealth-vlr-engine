@@ -30,26 +30,13 @@ describe DownloadsController, :vcr do
   end
 
   describe "GET 'trigger_download'" do
-    let(:file_name) { item_id.tr(':', '_') }
+    let(:file_name) { "13_05_000029a_#{filestream_id}.jpg" }
 
-    describe 'file object (single item download)' do
-      it 'should be successful and set the right headers' do
-        get :trigger_download, params: { id: first_image_pid, filestream_id: filestream_id }
-        expect(response).to be_successful
-        expect(response.headers['Content-Type']).to eq('image/jpeg')
-        expect(response.headers['Content-Disposition']).to include(
-          "attachment; filename=\"#{file_name}_#{filestream_id}.jpg\""
-        )
-      end
-    end
-
-    describe 'top-level object (ZIP download)' do
-      it 'should be successful and set the right instance variables' do
-        get :trigger_download, params: { id: item_id, filestream_id: filestream_id }
-        expect(response).to be_successful
-        expect(response.headers['Content-Type']).to eq('application/zip')
-        expect(response.headers['Content-Disposition']).to eq("attachment; filename=\"#{file_name}_#{filestream_id}.zip\"")
-      end
+    it 'should be successful and set the right headers' do
+      get :trigger_download, params: { id: first_image_pid, filestream_id: filestream_id }
+      expect(response).to be_successful
+      expect(response.headers['Content-Type']).to eq('image/jpeg')
+      expect(response.headers['Content-Disposition']).to include("attachment; filename=\"#{file_name}\"")
     end
   end
 end

@@ -14,6 +14,7 @@ begin
   require 'rsolr' unless defined? RSolr
   require 'iiif/presentation'
   require 'recaptcha'
+  require 'zipline'
 rescue LoadError => e
   puts "A Gem Dependency is Missing....#{e.message}"
 end
