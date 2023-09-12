@@ -1,61 +1,41 @@
 <main id="#uv-wrapper">
   <div id="uv" class="uv"></div>
 
-  <script type="text/javascript">
-      window.addEventListener('uvLoaded', function(e) {
-          urlDataProvider = new UV.URLDataProvider(true);
-          var formattedLocales;
-          var locales = urlDataProvider.get('locales', '');
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          var urlAdapter = new UV.IIIFURLAdapter(true);
 
-          if (locales) {
-              var names = locales.split(',');
-              formattedLocales = [];
+          const data = urlAdapter.getInitialData({
+              manifest: '<%= iiif_manifest_path(@document.id) %>',
+              embedded: true,
+              highlight: urlAdapter.get('h',''),
+          });
 
-              for (var i in names) {
-                  var nameparts = String(names[i]).split(':');
-                  formattedLocales[i] = {name: nameparts[0], label: nameparts[1]};
-              }
+          uv = UV.init("uv", data);
 
-          } else {
-              formattedLocales = [
-                  {
-                      name: 'en-GB'
-                  }
-              ]
+          urlAdapter.bindTo(uv);
+
+          const configUrl = urlAdapter.get('config');
+          if (configUrl) {
+              uv.on("configure", function({ config, cb }) {
+                  cb(
+                      new Promise(function (resolve) {
+                          fetch(configUrl).then(function (response) {
+                              resolve(response.json());
+                          });
+                      })
+                  );
+              })
           }
 
-          uv = createUV('#uv', {
-              root: '../uv',
-              iiifResourceUri: '<%= iiif_manifest_path(@document.id) %>', // urlDataProvider.get('manifest')
-              configUri: "/uv/uv-config<%= license_allows_download?(@document) ? '' : '-no-download' %>.json", // urlDataProvider.get('config')
-              collectionIndex: Number(urlDataProvider.get('c', 0)),
-              manifestIndex: Number(urlDataProvider.get('m', 0)),
-              sequenceIndex: Number(urlDataProvider.get('s', 0)),
-              canvasIndex: Number(urlDataProvider.get('cv', 0)),
-              rangeId: urlDataProvider.get('rid', 0),
-              rotation: Number(urlDataProvider.get('r', 0)),
-              xywh: urlDataProvider.get('xywh', ''),
-              highlight: urlDataProvider.get('h', ''),
-              embedded: true,
-              locales: formattedLocales
-          }, urlDataProvider);
-      }, false);
-
-      $(function() {
-
-          var header = $('#uv-header-navbar');
-          var $UV = $('#uv');
+          var $UV = document.getElementById("uv");
 
           function resize() {
-              var windowWidth = window.innerWidth;
-              var windowHeight = window.innerHeight;
-              var headerHeight = header.outerHeight(true);
-              var viewerHeight = (windowHeight - headerHeight);
-              $UV.width(windowWidth);
-              $UV.height(viewerHeight);
+              $UV.setAttribute("style", "width:" + window.innerWidth + "px");
+              $UV.setAttribute("style", "height:" + window.innerHeight + "px");
           }
 
-          $(window).on('resize' ,function() {
+          addEventListener("resize", function() {
               resize();
           });
 
@@ -63,5 +43,3 @@
       });
   </script>
 </main>
-
-<script type="text/javascript" src="/uv/uv.js"></script>
