@@ -1,51 +1,37 @@
 <%# show the object image(s)/file(s) and metadata %>
-<%# TODO: refactor how views access files, this is getting REALLY ugly %>
-<% doc_presenter = show_presenter(document) %>
-<% book_reader = has_searchable_text?(@document) ? true : false %>
-<% video = has_video_files?(@object_files) %>
-<% audio = has_playable_audio?(@object_files) %>
-<% oai_object = @document[blacklight_config.hosting_status_field.to_sym] == 'harvested' ? true : false %>
 
-<% if !book_reader && has_image_files?(@object_files) %>
-    <% case @object_files[:image].length %>
-    <% when 1 %>
-      <%= javascript_include_tag 'openseadragon' %>
-      <%= render partial: 'catalog/_show_partials/show_default_img',
-                 locals: {document: @document,
-                          image_key: @object_files[:image].first['storage_key_base_ss'],
-                          page_sequence: {:total => 1}} %>
-    <% when 2..7 %>
-      <%= javascript_include_tag 'openseadragon' %>
-      <%= render partial: 'catalog/_show_partials/show_multi_img',
-                 locals: {document: @document,
-                          image_files: @object_files[:image]} %>
-    <% else %>
-      <% book_reader = true %>
-    <% end %>
+<% if render_image_viewer?(@document, @object_files) %>
+  <%= render_image_viewer(@document, @object_files) %>
 <% end %>
 
-<% if video %>
+<% if has_video_files?(@object_files) %>
   <%= render partial: 'catalog/_show_partials/show_video_player',
              locals: { document: @document,
                        video_key: @object_files[:video][0]['storage_key_base_ss'] } %>
 <% end %>
 
-<% if audio %>
+<% if has_playable_audio?(@object_files) %>
   <%= render partial: 'catalog/_show_partials/show_audio_player',
              locals: { document: @document,
                        audio_files: @object_files[:audio] } %>
 <% end %>
 
+<% if render_pdf_viewer?(@object_files) %>
+  <%= render partial: 'catalog/_show_partials/show_pdf_viewer',
+             locals: { document: @document,
+                       document_files: @object_files[:document] } %>
+<% end %>
+
 <div id="show_info_wrapper" class="row">
   <%# show thumbnail or icon if object has no images, or is a book %>
-  <% if (!has_image_files?(@object_files) || book_reader) && !video && !audio %>
+  <% if render_thumbnail_wrapper?(@document, @object_files) %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
-          <% if oai_object %>
+          <% if harvested_object?(@document) %>
               <%= render partial: 'catalog/_show_partials/show_oai_item_img',
                          locals: { document: @document, img: img } %>
-          <% elsif book_reader %>
+          <% elsif book_reader?(@document, @object_files) %>
               <%= render partial: 'catalog/_show_partials/show_book_viewer_link',
                          locals: { document: @document, img: img } %>
           <% else %>
@@ -53,7 +39,7 @@
           <% end %>
         </div>
         <%= render partial: 'catalog/_show_partials/show_oai_item_link',
-                   locals: { document: @document } if oai_object %>
+                   locals: { document: @document } if harvested_object?(@document) %>
       </div>
   <% end %>
 

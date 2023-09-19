@@ -283,6 +283,22 @@
     }
   }
 
+  #pdf_show_container {
+    text-align: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+
+    #pdf_show_canvas {
+      max-width: 100%;
+
+      #pdf_viewer {
+        width: 90%;
+        height: 800px;
+        border: $card-border-width solid $dark_gray;
+      }
+    }
+  }
+
   #show_info_wrapper {
     display: block;
 
