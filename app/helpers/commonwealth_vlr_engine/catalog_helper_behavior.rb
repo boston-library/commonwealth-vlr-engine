@@ -30,6 +30,8 @@ module CommonwealthVlrEngine
     end
 
     def book_reader?(document, files_hash)
+      return false if files_hash[:image].blank?
+
       has_searchable_text?(document) || files_hash[:image].length > 7
     end
 
@@ -92,18 +94,18 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_image_viewer?(document, files_hash)
-       has_image_files?(files_hash) && files_hash[:image].length <= 7 && !has_searchable_text?(document)
+      has_image_files?(files_hash) && files_hash[:image].length <= 7 && !has_searchable_text?(document)
     end
 
-    def render_image_viewer(document, file_hash)
-      if file_hash[:image].length == 1
+    def render_image_viewer(document, files_hash)
+      if files_hash[:image].length == 1
         render partial: 'catalog/_show_partials/show_default_img',
                locals: { document: document,
-                         image_key: file_hash[:image].first['storage_key_base_ss'],
+                         image_key: files_hash[:image].first['storage_key_base_ss'],
                          page_sequence: { total: 1 } }
-      elsif file_hash[:image].length <= 7
+      elsif files_hash[:image].length <= 7
         render partial: 'catalog/_show_partials/show_multi_img',
-               locals: { document: document, image_files: file_hash[:image] }
+               locals: { document: document, image_files: files_hash[:image] }
       end
     end
 
@@ -121,7 +123,7 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_thumbnail_wrapper?(document, files_hash)
-      #(!has_image_files?(files_hash) || book_reader?(document, files_hash)) && !has_video_files?(files_hash) && !has_playable_audio?(files_hash)
+      # (!has_image_files?(files_hash) || book_reader?(document, files_hash)) && !has_video_files?(files_hash) && !has_playable_audio?(files_hash)
       book_reader?(document, files_hash) || harvested_object?(document)
     end
 

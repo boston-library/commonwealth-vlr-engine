@@ -11,9 +11,7 @@ module CommonwealthVlrEngine
 
       solr_response.documents.each do |solr_doc|
         file_types.each do |file_type|
-          if solr_doc['curator_model_suffix_ssi'] == file_type.to_s.capitalize
-            return_hash[file_type] << solr_doc
-          end
+          return_hash[file_type] << solr_doc if solr_doc['curator_model_suffix_ssi'] == file_type.to_s.capitalize
         end
       end
 
