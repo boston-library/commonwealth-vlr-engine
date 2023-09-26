@@ -295,6 +295,10 @@
         width: 90%;
         height: 800px;
         border: $card-border-width solid $dark_gray;
+
+        @media (max-width: breakpoint-max(sm)) {
+          height: 550px;
+        }
       }
     }
   }
