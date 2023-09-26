@@ -123,7 +123,6 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_thumbnail_wrapper?(document, files_hash)
-      # (!has_image_files?(files_hash) || book_reader?(document, files_hash)) && !has_video_files?(files_hash) && !has_playable_audio?(files_hash)
       book_reader?(document, files_hash) || harvested_object?(document)
     end
 
