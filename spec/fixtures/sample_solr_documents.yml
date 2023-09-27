@@ -2590,3 +2590,357 @@
     - 0
   timestamp:
     - '2022-09-02T13:30:11.676Z'
+- system_create_dtsi:
+    - '2023-09-25T14:43:36Z'
+  system_modified_dtsi:
+    - '2023-09-25T14:44:57Z'
+  curator_model_ssi:
+    - Curator::DigitalObject
+  id:
+    - bpl-dev:z029pg62r
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  date_start_dtsi:
+    - '1905-02-09T00:00:00Z'
+  date_end_dtsi:
+    - '1905-02-09T23:59:59.999Z'
+  date_tsim:
+    - February 9, 1905
+  date_edtf_ssm:
+    - '1905-02-09'
+  date_type_ssm:
+    - dateIssued
+  date_facet_yearly_itim:
+    - 1905
+  genre_basic_tim:
+    - Newspapers
+  genre_basic_ssim:
+    - Newspapers
+  identifier_local_other_tsim:
+    - '1905-02-09'
+  collection_name_ssim:
+    - Newspaper PDF Collection
+  collection_name_tim:
+    - Newspaper PDF Collection
+  collection_ark_id_ssim:
+    - bpl-dev:7h14b143n
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  admin_set_name_ssi:
+    - Newspaper PDF Collection
+  admin_set_ark_id_ssi:
+    - bpl-dev:7h14b143n
+  identifier_uri_ss:
+    - http://ark-dc3dev.bpl.org/ark:/50959/z029pg62r
+  lang_term_ssim:
+    - English
+  related_item_host_tim:
+    - Raivaaja (Finnish-American) Newspaper Archive, 1905-2009
+  related_item_host_ssim:
+    - Raivaaja (Finnish-American) Newspaper Archive, 1905-2009
+  type_of_resource_ssim:
+    - Text
+  extent_tsi:
+    - '4 pages'
+  digital_origin_ssi:
+    - reformatted digital
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  curator_model_suffix_ssi:
+    - DigitalObject
+  rights_ss:
+    - No copyright restrictions.
+  license_ss:
+    - This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).
+  reuse_allowed_ssi:
+    - creative commons
+  title_info_primary_tsi:
+    - Raivaaja
+  title_info_partnum_tsi:
+    - 'February 9, 1905'
+  title_info_primary_trans_tsim:
+    - Pioneer
+  title_info_primary_ssort:
+    - Raivaaja
+  publishing_state_ssi:
+    - published
+  processing_state_ssi:
+    - complete
+  exemplary_image_ssi:
+    - bpl-dev:x346dg14p
+  exemplary_image_key_base_ss:
+    - documents/bpl-dev:x346dg14p
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2015-07-24T14:11:28.285Z'
+- id:
+    - bpl-dev:x346dg14p
+  system_create_dtsi:
+    - '2020-01-13T18:21:23Z'
+  system_modified_dtsi:
+    - '2021-08-17T16:56:45Z'
+  curator_model_ssi:
+    - Curator::Filestreams::Document
+  curator_model_suffix_ssi:
+    - Document
+  processing_state_ssi:
+    - complete
+  attachments_ss:
+    - "{\"characterization\":{\"filename\":\"characterization.xml\",\"byte_size\":4716,\"content_type\":\"application/xml\",\"checksum\":\"llMf6+lULuj87PE5wR/pMQ==\",\"key\":\"documents/bpl-dev:x346dg14p/characterization.xml\",\"service_name\":\"derivatives\"},\"document_access\":{\"filename\":\"1905-02-09.pdf\",\"byte_size\":24155716,\"content_type\":\"application/pdf\",\"checksum\":\"B4MwrygFZAe6MmslOysApg==\",\"key\":\"documents/bpl-dev:x346dg14p/document_access.pdf\",\"service_name\":\"derivatives\"},\"image_thumbnail_300\":{\"filename\":\"image_thumbnail_300.jpg\",\"byte_size\":24927,\"content_type\":\"image/jpeg\",\"checksum\":\"iBKQg3Dn3Q5NdnZCYIM7Pw==\",\"key\":\"documents/bpl-dev:x346dg14p/image_thumbnail_300.jpg\",\"service_name\":\"derivatives\"}}"
+  storage_key_base_ss:
+    - documents/bpl-dev:x346dg14p
+  is_file_set_of_ssim:
+    - bpl-dev:z029pg62r
+  is_exemplary_image_of_ssim:
+    - bpl-dev:z029pg62r
+  filename_base_ssi:
+    - '1905-02-09'
+  position_isi:
+    - 0
+  timestamp:
+    - '2021-09-25T16:56:45.430Z'
+- system_create_dtsi:
+    - '2023-09-25T16:19:55Z'
+  system_modified_dtsi:
+    - '2023-09-25T19:04:09Z'
+  curator_model_ssi:
+    - Curator::Collection
+  id:
+    - bpl-dev:7h14b143n
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  curator_model_suffix_ssi:
+    - Collection
+  title_info_primary_tsi:
+    - Newspaper PDF Collection
+  title_info_primary_ssort:
+    - Newspaper PDF Collection
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - Sample collection of PDF newspaper issues.
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  genre_basic_ssim:
+    - Collections
+    - Newspapers
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2022-09-25T20:38:10.637Z'
+- system_create_dtsi:
+    - '2023-09-08T18:08:18Z'
+  system_modified_dtsi:
+    - '2023-09-08T18:08:18Z'
+  curator_model_ssi:
+    - Curator::Institution
+  curator_model_suffix_ssi:
+    - Institution
+  id:
+    - bpl-dev:xp68km70c
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:xp68km70c]
+  title_info_primary_tsi:
+    - Sample Harvested Institution
+  title_info_primary_ssort:
+    - Sample Harvested Institution
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - "Sample harvested institution."
+  institution_url_ss:
+    - http://www.harvested-example.org/
+  institution_ark_id_ssi:
+    - bpl-dev:xp68km70c
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  timestamp:
+    - '2023-09-08T18:08:28.587Z'
+- system_create_dtsi:
+    - '2023-09-25T16:19:55Z'
+  system_modified_dtsi:
+    - '2023-09-25T19:04:09Z'
+  curator_model_ssi:
+    - Curator::Collection
+  id:
+    - oai-dev:5x21tt128
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:xp68km70c]
+  curator_model_suffix_ssi:
+    - Collection
+  title_info_primary_tsi:
+    - Harvested Collection
+  title_info_primary_ssort:
+    - Harvested Collection
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - Sample collection of harvested records.
+  physical_location_ssim:
+    - Awesome Public Library
+  physical_location_tim:
+    - Awesome Public Library
+  institution_name_ssi:
+    - Sample Harvested Institution
+  institution_name_ti:
+    - Sample Harvested Institution
+  genre_basic_ssim:
+    - Collections
+    - Documents
+  institution_ark_id_ssi:
+    - bpl-dev:xp68km70c
+  destination_site_ssim:
+    - commonwealth
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - harvested
+  timestamp:
+    - '2022-09-25T20:38:10.637Z'
+- system_create_dtsi:
+    - '2023-09-25T14:43:36Z'
+  system_modified_dtsi:
+    - '2023-09-25T14:44:57Z'
+  curator_model_ssi:
+    - Curator::DigitalObject
+  id:
+    - oai-dev:qv33s812k
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  genre_basic_tim:
+    - Documents
+  genre_basic_ssim:
+    - Documents
+  identifier_local_other_tsim:
+    - 'AC21-7.5.028'
+  collection_name_ssim:
+    - Harvested Collection
+  collection_name_tim:
+    - Harvested Collection
+  collection_ark_id_ssim:
+    - oai-dev:5x21tt128
+  institution_name_ssi:
+    - Awesome Public Library
+  institution_name_ti:
+    - Awesome Public Library
+  institution_ark_id_ssi:
+    - bpl-dev:xp68km70c
+  admin_set_name_ssi:
+    - Harvested Collection
+  admin_set_ark_id_ssi:
+    - oai-dev:5x21tt128
+  identifier_uri_ss:
+    - https://hdl.handle.net/1912/66764
+  identifier_uri_preview_ss:
+    - https://darchive.mblwhoilibrary.org/server/api/core/bitstreams/838a1040-4681-4ec8-bbf1-46ab4d1f0ef8/content
+  lang_term_ssim:
+    - English
+  related_item_host_tim:
+    - Titanic Discovery Digital Collection
+  related_item_host_ssim:
+    - Titanic Discovery Digital Collection
+  type_of_resource_ssim:
+    - Text
+  physical_location_ssim:
+    - Awesome Public Library
+  physical_location_tim:
+    - Awesome Public Library
+  curator_model_suffix_ssi:
+    - DigitalObject
+  rights_ss:
+    - Rights status not evaluated.
+  license_ss:
+    - Contact host institution for more information.
+  title_info_primary_tsi:
+    - Raivaaja
+  title_info_partnum_tsi:
+    - 'February 9, 1905'
+  title_info_primary_trans_tsim:
+    - 'Correspondence: Handwritten note.'
+  title_info_primary_ssort:
+    - 'Correspondence: Handwritten note.'
+  abstract_tsi:
+    - "One page handwritten note with peoples and companies' names."
+  publishing_state_ssi:
+    - published
+  processing_state_ssi:
+    - complete
+  exemplary_image_ssi:
+    - oai-dev:cf95jp21j
+  exemplary_image_key_base_ss:
+    - metadata/oai-dev:cf95jp21j
+  destination_site_ssim:
+    - commonwealth
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - harvested
+  timestamp:
+    - '2015-07-24T14:11:28.285Z'
+- id:
+    - oai-dev:cf95jp21j
+  system_create_dtsi:
+    - '2023-09-21T20:17:32Z'
+  system_modified_dtsi:
+    - '2023-09-21T20:17:32Z'
+  curator_model_ssi:
+    - Curator::Filestreams::Metadata
+  curator_model_suffix_ssi:
+    - Metadata
+  processing_state_ssi:
+    - complete
+  attachments_ss:
+    - "{\"image_thumbnail_300\":{\"filename\":\"image_thumbnail_300.jpg\",\"byte_size\":53392,\"content_type\":\"image/jpeg\",\"checksum\":\"iR/rmOamyScYrFB7Up2jWA==\",\"key\":\"metadata/oai-dev:cf95jp21j/image_thumbnail_300.jpg\",\"service_name\":\"derivatives\"},\"metadata_oai\":{\"filename\":\"metadata_oai.xml\",\"byte_size\":1419,\"content_type\":\"application/xml\",\"checksum\":\"ZFhflnBxUxOTJt4jFRNc+Q==\",\"key\":\"metadata/oai-dev:cf95jp21j/metadata_oai.xml\",\"service_name\":\"primary\"}}"
+  storage_key_base_ss:
+    - metadata/oai-dev:cf95jp21j
+  is_file_set_of_ssim:
+    - oai-dev:qv33s812k
+  is_exemplary_image_of_ssim:
+    - oai-dev:qv33s812k
+  filename_base_ssi:
+    - 'oai-dev:qv33s812k_metadata'
+  position_isi:
+    - 0
+  timestamp:
+    - '2023-09-21T20:18:01.149Z'

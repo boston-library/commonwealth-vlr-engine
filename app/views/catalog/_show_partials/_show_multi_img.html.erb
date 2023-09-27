@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'openseadragon' %>
 <% current_img = image_files.find { |i| i[:id] == (params[:view].presence || image_files.first[:id]) } %>
 <% page_sequence = @page_sequence || create_img_sequence(image_files, current_img[:id]) %>
 <div id="multi_img_show_container">

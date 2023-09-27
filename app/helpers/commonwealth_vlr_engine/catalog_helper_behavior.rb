@@ -9,6 +9,8 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::MetadataHelperBehavior
     include CommonwealthVlrEngine::FlaggedHelperBehavior
 
+    IMAGE_VIEWER_LIMIT = 7
+
     def has_image_files?(files_hash)
       files_hash[:image].present?
     end
@@ -21,6 +23,18 @@ module CommonwealthVlrEngine
       return false if files_hash[:audio].blank?
 
       files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+    end
+
+    def has_pdf_files?(files_hash)
+      return false if files_hash[:document].blank?
+
+      files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
+    end
+
+    def book_reader?(document, files_hash)
+      return false if files_hash[:image].blank?
+
+      has_searchable_text?(document) || files_hash[:image].length > IMAGE_VIEWER_LIMIT
     end
 
     def image_file_pids(images)
@@ -62,13 +76,57 @@ module CommonwealthVlrEngine
     def link_to_az_value(letter, field, search_path, link_class = nil)
       new_params = params.permit!.except(:controller, :action, :q, :page)
       new_params[:q] = "#{field}:#{letter}*"
-      link_to(letter,
-              self.send(search_path, new_params),
-              class: link_class)
+      link_to(letter, self.send(search_path, new_params), class: link_class)
+    end
+
+    # @param document [SolrDocument]
+    # @return [Boolean]
+    def harvested_object?(document)
+      document[blacklight_config.hosting_status_field.to_sym] == 'harvested'
+    end
+
+    # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
+    # @return [Boolean]
+    def pdf_url_for_viewer(document_files)
+      pdf_file = document_files.find { |a| a['attachments_ss']['document_access'].present? }
+      filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
+    end
+
+    # @param document [SolrDocument]
+    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
+    # @return [Boolean]
+    def render_image_viewer?(document, files_hash)
+      has_image_files?(files_hash) && files_hash[:image].length <= IMAGE_VIEWER_LIMIT && !has_searchable_text?(document)
+    end
+
+    def render_image_viewer(document, files_hash)
+      case files_hash[:image].count
+      when 1
+        render partial: 'catalog/_show_partials/show_default_img',
+               locals: { document: document,
+                         image_key: files_hash[:image].first['storage_key_base_ss'],
+                         page_sequence: { total: 1 } }
+      when 2..IMAGE_VIEWER_LIMIT
+        render partial: 'catalog/_show_partials/show_multi_img',
+               locals: { document: document, image_files: files_hash[:image] }
+      end
     end
 
     def render_item_breadcrumb(document, link_class = nil)
       setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
+    end
+
+    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
+    # @return [Boolean]
+    def render_pdf_viewer?(files_hash)
+      !has_image_files?(files_hash) && has_pdf_files?(files_hash) && !has_playable_audio?(files_hash)
+    end
+
+    # @param document [SolrDocument]
+    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
+    # @return [Boolean]
+    def render_thumbnail_wrapper?(document, files_hash)
+      book_reader?(document, files_hash) || harvested_object?(document)
     end
 
     # render the 'more like this' search link if doc has subjects
