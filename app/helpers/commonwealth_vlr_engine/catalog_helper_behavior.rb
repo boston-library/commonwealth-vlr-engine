@@ -9,6 +9,8 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::MetadataHelperBehavior
     include CommonwealthVlrEngine::FlaggedHelperBehavior
 
+    IMAGE_VIEWER_LIMIT = 7
+
     def has_image_files?(files_hash)
       files_hash[:image].present?
     end
@@ -32,7 +34,7 @@ module CommonwealthVlrEngine
     def book_reader?(document, files_hash)
       return false if files_hash[:image].blank?
 
-      has_searchable_text?(document) || files_hash[:image].length > 7
+      has_searchable_text?(document) || files_hash[:image].length > IMAGE_VIEWER_LIMIT
     end
 
     def image_file_pids(images)
@@ -94,16 +96,17 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_image_viewer?(document, files_hash)
-      has_image_files?(files_hash) && files_hash[:image].length <= 7 && !has_searchable_text?(document)
+      has_image_files?(files_hash) && files_hash[:image].length <= IMAGE_VIEWER_LIMIT && !has_searchable_text?(document)
     end
 
     def render_image_viewer(document, files_hash)
-      if files_hash[:image].length == 1
+      case files_hash[:image].count
+      when 1
         render partial: 'catalog/_show_partials/show_default_img',
                locals: { document: document,
                          image_key: files_hash[:image].first['storage_key_base_ss'],
                          page_sequence: { total: 1 } }
-      elsif files_hash[:image].length <= 7
+      when 2..IMAGE_VIEWER_LIMIT
         render partial: 'catalog/_show_partials/show_multi_img',
                locals: { document: document, image_files: files_hash[:image] }
       end
