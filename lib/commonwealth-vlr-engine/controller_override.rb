@@ -69,11 +69,13 @@ module CommonwealthVlrEngine
           url_key: 'advanced',
           query_parser: 'edismax',
           form_solr_parameters: {
-            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim'],
+            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
             'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
             'f.collection_name_ssim.facet.limit' => -1,
+            'f.reuse_allowed_ssi.facet.limit' => -1,
             'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
-            'f.collection_name_ssim.facet.sort' => 'index'
+            'f.collection_name_ssim.facet.sort' => 'index',
+            'f.reuse_allowed_ssi.facet.sort' => 'index'
           }
         }
 
