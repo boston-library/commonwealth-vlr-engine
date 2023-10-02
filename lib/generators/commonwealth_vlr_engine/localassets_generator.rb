@@ -27,7 +27,7 @@ module CommonwealthVlrEngine
     # similar pattern as Hyrax (https://github.com/samvera/hyrax/commit/0e02c4adf26e74f2d892f575c93789bc166e53ad)
     # though we hard-code the assets instead of installing with yarn
     def uv_assets
-      directory 'public/uv' unless File.exist?('public/uv/uv.js')
+      directory 'public/uv-v4' unless File.exist?('public/uv-v4/umd/UV.js')
     end
   end
 end

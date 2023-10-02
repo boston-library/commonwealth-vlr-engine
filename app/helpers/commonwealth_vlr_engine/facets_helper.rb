@@ -12,7 +12,7 @@ module CommonwealthVlrEngine
           (controller.action_name == 'index' || controller.action_name == 'facet') &&
           item.value == 'Collections'
 
-      if facet_in_params?(facet_field, item.value)
+      if facet_in_params?(facet_field, facet_value_for_facet_item(item))
         render_selected_facet_value(facet_field, item)
       else
         render_facet_value(facet_field, item)
