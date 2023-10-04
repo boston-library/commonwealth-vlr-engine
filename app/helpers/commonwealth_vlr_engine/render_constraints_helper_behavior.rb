@@ -19,7 +19,11 @@ module CommonwealthVlrEngine
     end
 
     # override to deal with A-Z link result display
+    # and prevent errors caused by trying to render f_inclusive Array params from advanced search,
+    #   when there is a mix of f_inclusive and f params
     def render_constraint_element(label, value, options = {})
+      return if value.is_a? Array
+
       if value.match?(/ssort:[A-Z]+\*/)
         label = t('blacklight.search.constraints.az_search')
         value = value.match(/[A-Z]+/)[0]
