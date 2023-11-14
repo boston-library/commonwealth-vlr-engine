@@ -1,6 +1,13 @@
 /* styles for book viewer */
 
+html {
+  height: 100%;
+}
+
 .universal-viewer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden; // or else we get scrollbars
 
   #uv-header-navbar {
@@ -23,7 +30,13 @@
     }
   }
 
+  #uv-wrapper {
+    flex: 1;
+    overflow: hidden;
+  }
+
   #uv {
+    height: 100%;
 
     .centerPanel {
 

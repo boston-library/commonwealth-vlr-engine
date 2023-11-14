@@ -1,4 +1,4 @@
-<main id="#uv-wrapper">
+<main id="uv-wrapper">
   <div id="uv" class="uv"></div>
 
   <script>
@@ -27,19 +27,6 @@
                   );
               })
           }
-
-          var $UV = document.getElementById("uv");
-
-          function resize() {
-              $UV.setAttribute("style", "width:" + window.innerWidth + "px");
-              $UV.setAttribute("style", "height:" + window.innerHeight + "px");
-          }
-
-          addEventListener("resize", function() {
-              resize();
-          });
-
-          resize();
       });
   </script>
 </main>
