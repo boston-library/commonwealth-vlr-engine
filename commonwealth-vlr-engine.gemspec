@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'blacklight_iiif_search', '~> 2.0'
   s.add_dependency 'blacklight-maps', '~> 1.1.0'
   s.add_dependency 'blacklight_range_limit', '>= 7.8.2', '< 8.0'
-  s.add_dependency 'font-awesome-sass', '~> 5.0'
+  s.add_dependency 'font-awesome-sass', '~> 6.5.1'
   s.add_dependency 'iiif-presentation', '~> 1.1'
   s.add_dependency 'madison', '~> 0.5.0'
   s.add_dependency 'rails', '~> 6.1.7.4'
