@@ -1,2 +1,54 @@
 <%# placeholder for social sharing links (replaces deprecated AddThis widget) %>
 <!-- social sharing links TK -->
+
+<%
+    url = request.original_url
+    socials = [
+        {
+            name: 'Facebook',
+            icon: 'facebook-square',
+            url: "https://www.facebook.com/sharer/sharer.php?u=#{url}"
+        },
+        {
+            name: 'Pinterest',
+            icon: 'pinterest-square',
+            url: "https://pinterest.com/pin/create/link/?url=#{url}"
+        },
+        {
+            name: 'X',
+            icon: 'twitter-square',
+            url: "https://twitter.com/intent/tweet?text=#{url}"
+        },
+        {
+            name: 'Reddit',
+            icon: 'reddit-square',
+            url: "https://www.reddit.com/submit?url=#{url}"
+        },
+        {
+            name: 'Tumblr',
+            icon: 'tumblr-square',
+            url: "https://www.tumblr.com/share/link?url=#{url}"
+        }
+    ]
+%>
+
+<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+    <%= icon('fas', 'share-alt', aria: { hidden: true }) %>
+    <span>Share</span>
+</button>
+
+<div class="dropdown-menu">
+    <% socials.each do |social| %>
+        <a class="dropdown-item" href="<%= social[:url] %>" target="_blank">
+            <%= icon('fab', social[:icon], aria: { hidden: true }) %>
+            <span><%= social[:name] %></span>
+        </a>
+    <% end %>
+
+    <div class="dropdown-divider"></div>
+
+    <button class="dropdown-item" onclick="navigator.clipboard.writeText(location.href)">
+        <%= icon('fas', 'link', aria: { hidden: true }) %>
+        <span>Copy link</span>
+    </button>
+</div>
