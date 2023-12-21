@@ -7,8 +7,8 @@
 </button>
 
 <div class="dropdown-menu">
-	<% social_sharing_links.each do |social| %>
-		<%= link_to social[:url], class: 'dropdown-item', target: '_blank', rel: 'nofollow' do %>
+	<% social_sharing_links(@document).each do |social| %>
+		<%= link_to social[:url], class: 'dropdown-item show-tools-sharing-link', style: '--color:' + social[:color], target: '_blank', rel: 'nofollow' do %>
 			<%= icon('fab', social[:icon], class: 'show-tools-sharing-icon', aria: { hidden: true }) %>
 			<span><%= social[:name] %></span>
 		<% end %>

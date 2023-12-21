@@ -516,6 +516,10 @@
 
         }
 
+        .show-tools-sharing-link:not(:active) .show-tools-sharing-icon {
+          color: var(--color);
+        }
+
         .show-tools-sharing-icon {
           margin-right: 6px;
         }
