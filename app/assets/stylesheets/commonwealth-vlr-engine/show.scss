@@ -516,8 +516,19 @@
 
         }
 
-        .show-tools-sharing-link:not(:active) .show-tools-sharing-icon {
-          color: var(--color);
+        .show-tools-sharing-link:not(:active) {
+          .fa-facebook-square {
+            color: #1877f2;
+          }
+          .fa-pinterest-square {
+            color: #e60023;
+          }
+          .fa-reddit-square {
+            color: #ff4500;
+          }
+          .fa-tumblr-square {
+            color: #35465c;
+          }
         }
 
         .show-tools-sharing-icon {
