@@ -516,6 +516,10 @@
 
         }
 
+        .dropdown-menu {
+          z-index: 99999;
+        }
+
         .show-tools-sharing-link:not(:active) {
           .fa-facebook-square {
             color: #1877f2;
