@@ -15,7 +15,7 @@
 
 	<div class="dropdown-divider"></div>
 
-	<button class="dropdown-item" onclick="navigator.clipboard.writeText(location.href)">
+	<button class="dropdown-item" onclick="navigator.clipboard.writeText('<%= @document['identifier_uri_ss'] %>')">
 		<%= icon('fas', 'link', aria: { hidden: true }) %>
 		<span>Copy link</span>
 	</button>
