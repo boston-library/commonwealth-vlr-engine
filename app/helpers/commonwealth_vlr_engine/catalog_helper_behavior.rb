@@ -8,6 +8,7 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::LicenseHelperBehavior
     include CommonwealthVlrEngine::MetadataHelperBehavior
     include CommonwealthVlrEngine::FlaggedHelperBehavior
+    include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
     IMAGE_VIEWER_LIMIT = 7
 

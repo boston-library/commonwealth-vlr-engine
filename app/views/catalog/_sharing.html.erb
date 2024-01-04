@@ -1,2 +1,22 @@
-<%# placeholder for social sharing links (replaces deprecated AddThis widget) %>
-<!-- social sharing links TK -->
+<%# social sharing links %>
+
+<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+	<%= icon('fas', 'share-alt', aria: { hidden: true }) %>
+	<span>Share</span>
+</button>
+
+<div class="dropdown-menu">
+	<% social_sharing_links(@document).each do |social| %>
+		<%= link_to social[:url], class: 'dropdown-item show-tools-sharing-link', target: '_blank', rel: 'nofollow' do %>
+			<%= icon('fab', social[:icon], class: 'show-tools-sharing-icon', aria: { hidden: true }) %>
+			<span><%= social[:name] %></span>
+		<% end %>
+	<% end %>
+
+	<div class="dropdown-divider"></div>
+
+	<button class="dropdown-item" onclick="navigator.clipboard.writeText('<%= @document['identifier_uri_ss'] %>')">
+		<%= icon('fas', 'link', aria: { hidden: true }) %>
+		<span>Copy link</span>
+	</button>
+</div>
