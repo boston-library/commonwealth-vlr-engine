@@ -1,6 +1,7 @@
 <%= t('blacklight.feedback.text.name') + @name %>
 <%= t('blacklight.feedback.text.email') + @email %>
 <%= t('blacklight.feedback.text.topic') + @topic %>
+<%= "#{t('blacklight.feedback.text.ark_id') + @ark_id}" if @ark_id %>
 
 <%= t('blacklight.feedback.text.message') %>
 <%= @message %>
