@@ -11,20 +11,29 @@ class FeedbackController < ApplicationController
     redirect_to feedback_complete_path
   end
 
+  # item-level feedback form, displayed as modal popup on catalog#show
+  # based on Blacklight::ActionBuilder#build
   def item
     @ark_id = params[:ark_id]
     @errors = []
 
-    return unless request.post? && validate
-
-    Notifier.feedback(params).deliver_now
-
-    # respond_to do |format|
-    #   format.html do
-    #     render layout: false if request.xhr?
-    #   end # for users w/o JS
-    #   format.js { render layout: false }
-    # end
+    if request.post? && validate
+      Notifier.feedback(params).deliver_now
+      flash[:success] = t('blacklight.feedback.complete.title')
+      respond_to do |format|
+        format.html do
+          return render "item_success" if request.xhr?
+          redirect_to solr_document_path(params[:ark_id])
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          return render layout: false if request.xhr?
+          # Otherwise draw the full page
+        end
+      end
+    end
   end
 
   protected

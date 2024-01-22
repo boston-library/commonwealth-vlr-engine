@@ -3,18 +3,18 @@
              id: 'item_feedback_form',
              class: "modal_form",
              method: :post do %>
-<div class="modal-header">
-  <h4 id="downloads_modal_title" class="modal-title">
-    Questions or Comments?
-  </h4>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div id="downloads_modal" class="modal-body">
-  <%= render '/shared/flash_msg' %>
-  <div class="row">
-    <div class="col-sm-8">
+  <div class="modal-body">
+    <% unless @errors.empty? %>
+      <div id="error_explanation" class="alert alert-error">
+        <ul class="errors">
+          <% @errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-8">
         <%= hidden_field_tag 'ark_id', @ark_id %>
         <div class="form-group row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
@@ -45,14 +45,14 @@
         </div>
         <div class="form-group row">
           <div class="offset-md-3 col-md-4">
-            <%= recaptcha_tags(id: 'feedback_recaptcha') %>
+            <%= recaptcha_tags(id: 'item_feedback_recaptcha') %>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="" class="modal-footer">
-  <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-primary') %>
-</div>
+  <div id="" class="modal-footer">
+    <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-primary') %>
+  </div>
 <% end %>
