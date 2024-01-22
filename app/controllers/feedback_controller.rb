@@ -11,6 +11,22 @@ class FeedbackController < ApplicationController
     redirect_to feedback_complete_path
   end
 
+  def item
+    @ark_id = params[:ark_id]
+    @errors = []
+
+    return unless request.post? && validate
+
+    Notifier.feedback(params).deliver_now
+
+    # respond_to do |format|
+    #   format.html do
+    #     render layout: false if request.xhr?
+    #   end # for users w/o JS
+    #   format.js { render layout: false }
+    # end
+  end
+
   protected
 
   # validates the incoming params
