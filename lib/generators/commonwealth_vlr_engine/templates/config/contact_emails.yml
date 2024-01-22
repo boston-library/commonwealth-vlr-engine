@@ -3,6 +3,7 @@
 default: &default
   site_admin: <%= ENV.fetch('EMAIL_SITE_ADMIN', 'site_admin@example.org') %>
   image_requests: <%= ENV.fetch('EMAIL_IMAGE_REQUEST', 'image_request@example.org') %>
+  research_question: <%= ENV.fetch('EMAIL_RESEARCH_QUESTION', 'research_question@example.org') %>
 
 development:
   <<: *default

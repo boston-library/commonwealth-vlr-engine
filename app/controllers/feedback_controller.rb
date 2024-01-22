@@ -14,7 +14,7 @@ class FeedbackController < ApplicationController
   # item-level feedback form, displayed as modal popup on catalog#show
   # based on Blacklight::ActionBuilder#build
   def item
-    @ark_id = params[:ark_id]
+    @document = SolrDocument.find(params[:ark_id])
     @errors = []
 
     if request.post? && validate

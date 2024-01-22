@@ -9,7 +9,6 @@ module CommonwealthVlrEngine
       @topic = details[:topic]
       @email = details[:email]
       @name = details[:name]
-      @ark_id = details[:ark_id]
       @recipient = route_email(details[:topic])
 
       mail(to: @recipient,
@@ -23,6 +22,8 @@ module CommonwealthVlrEngine
       if topic == t('blacklight.feedback.form.topic.options.repro.option') ||
          topic == t('blacklight.feedback.item.topic.options.repro.option')
         CONTACT_EMAILS['image_requests']
+      elsif topic == t('blacklight.feedback.form.topic.options.research.option')
+        CONTACT_EMAILS['research_question']
       else
         CONTACT_EMAILS['site_admin']
       end
