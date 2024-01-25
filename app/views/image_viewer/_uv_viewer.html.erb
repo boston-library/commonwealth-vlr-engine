@@ -3,7 +3,7 @@
 
   <script>
       document.addEventListener("DOMContentLoaded", function() {
-          var urlAdapter = new UV.IIIFURLAdapter(true);
+          var urlAdapter = new UV.IIIFURLAdapter();
 
           const data = urlAdapter.getInitialData({
               manifest: '<%= iiif_manifest_path(@document.id) %>',
@@ -12,21 +12,7 @@
           });
 
           uv = UV.init("uv", data);
-
           urlAdapter.bindTo(uv);
-
-          const configUrl = urlAdapter.get('config');
-          if (configUrl) {
-              uv.on("configure", function({ config, cb }) {
-                  cb(
-                      new Promise(function (resolve) {
-                          fetch(configUrl).then(function (response) {
-                              resolve(response.json());
-                          });
-                      })
-                  );
-              })
-          }
       });
   </script>
 </main>
