@@ -13,6 +13,14 @@ describe FeedbackController do
     end
   end
 
+  describe 'GET item' do
+    it 'renders the item contact form' do
+      get :item, params: { ark_id: 'bpl-dev:df65v790j' }
+      expect(response).to be_successful
+      expect(response.body).to have_selector("form[id='item_feedback_form']")
+    end
+  end
+
   describe 'POST show' do
     describe 'failure' do
       it 'displays an error message for blank submission' do

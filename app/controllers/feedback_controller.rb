@@ -22,7 +22,8 @@ class FeedbackController < ApplicationController
       flash[:success] = t('blacklight.feedback.complete.title')
       respond_to do |format|
         format.html do
-          return render "item_success" if request.xhr?
+          return render 'item_success' if request.xhr?
+
           redirect_to solr_document_path(params[:ark_id])
         end
       end

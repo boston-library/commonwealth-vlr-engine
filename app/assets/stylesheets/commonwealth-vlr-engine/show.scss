@@ -496,6 +496,14 @@
             border: none;
             padding: 0.3rem 1.25rem;
 
+            &:is(.sharing, .folder_items) {
+              order: 1;
+            }
+
+            &:is(:not(.sharing, .folder_items)) {
+              order: 2;
+            }
+
             &.iiif_manifest {
 
               #iiif-logo {

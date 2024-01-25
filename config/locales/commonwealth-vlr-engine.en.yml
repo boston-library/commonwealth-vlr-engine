@@ -68,6 +68,7 @@ en:
     feedback:
           item:
             title: 'Question or Comment About This Item'
+            short_title: 'Questions/Comments'
             topic:
               label: 'Topic:'
               options:
