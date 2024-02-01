@@ -77,7 +77,7 @@ en:
                 repro:
                   option: 'request permission to reproduce this item'
                 research:
-                  option: 'question, comment, or correction about this item'
+                  option: 'question, comment, or correction'
                 error:
                   option: 'broken link or technical error'
                 other:

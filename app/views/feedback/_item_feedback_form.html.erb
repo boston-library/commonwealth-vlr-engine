@@ -15,22 +15,22 @@
     <% end %>
     <div class="row">
       <div class="col-sm-8">
-        <%= hidden_field_tag 'ark_id', @ark_id %>
+        <%= hidden_field_tag 'ark_id', @document[:id] %>
         <div class="form-group row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
-          <div class="col-md-8 col-lg-6">
+          <div class="col-md-9">
             <%= text_field_tag :name, params[:name], class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.email') %></label>
-          <div class="col-md-8 col-lg-6">
+          <div class="col-md-9">
             <%= text_field_tag :email, params[:email], class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.topic.label') %></label>
-          <div class="col-md-8 col-lg-6">
+          <div class="col-md-9">
             <%= select_tag(:topic,
                            options_for_select(t('blacklight.feedback.item.topic.options').values.map { |v| v[:option] }),
                            id: 'message_type_select',
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
-          <div class="col-md-8">
+          <div class="col-md-9">
             <%= text_area_tag :message, params[:message], size: '24x6', class: 'form-control' %>
           </div>
         </div>
