@@ -66,6 +66,22 @@ en:
             message: 'Comments: %{message}'
 
     feedback:
+          item:
+            title: 'Question or Comment About This Item'
+            short_title: 'Questions/Comments'
+            topic:
+              label: 'Topic:'
+              options:
+                default:
+                  option: 'please select a topic'
+                repro:
+                  option: 'request permission to reproduce this item'
+                research:
+                  option: 'question, comment, or correction'
+                error:
+                  option: 'broken link or technical error'
+                other:
+                  option: 'other'
           form:
             name: 'Your Name:'
             email: 'Your Email:'
@@ -111,6 +127,7 @@ en:
             email: 'Email: '
             message: 'Message: '
             topic: 'Topic: '
+            ark_id: 'ARK ID: '
 
     flagged:
           warning: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'

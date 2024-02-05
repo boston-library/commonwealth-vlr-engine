@@ -19,8 +19,11 @@ module CommonwealthVlrEngine
     private
 
     def route_email(topic)
-      if topic == t('blacklight.feedback.form.topic.options.repro.option')
+      if topic == t('blacklight.feedback.form.topic.options.repro.option') ||
+         topic == t('blacklight.feedback.item.topic.options.repro.option')
         CONTACT_EMAILS['image_requests']
+      elsif topic == t('blacklight.feedback.form.topic.options.research.option')
+        CONTACT_EMAILS['research_question']
       else
         CONTACT_EMAILS['site_admin']
       end

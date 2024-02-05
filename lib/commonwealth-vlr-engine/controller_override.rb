@@ -210,6 +210,7 @@ module CommonwealthVlrEngine
 
         # add our custom tools
         config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
+        config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
         config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
       end
 
@@ -267,6 +268,11 @@ module CommonwealthVlrEngine
     # show the IIIF manifest link in tools
     def render_manifest_link?
       @document.present? && @document[:identifier_iiif_manifest_ss].present?
+    end
+
+    # show the item feedback link in tools
+    def render_item_feedback?
+      true
     end
 
     # override Blacklight::Catalog#render_sms_action?

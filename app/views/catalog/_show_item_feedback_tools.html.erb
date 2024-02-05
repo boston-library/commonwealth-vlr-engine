@@ -1,0 +1,3 @@
+<%= link_to icon('far', 'comment', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.feedback.item.short_title'),
+            item_feedback_path(ark_id: @document[:id]),
+            { id: 'itemFeedbackLink', rel: 'nofollow', data: { blacklight_modal: 'trigger' } } %>
