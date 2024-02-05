@@ -16,7 +16,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'coveralls', require: false
+  gem 'coveralls_reborn', '~> 0.25.0', require: false
   gem 'database_cleaner'
   gem 'puffing-billy'
   gem 'rails-controller-testing'
