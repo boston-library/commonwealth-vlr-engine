@@ -56,5 +56,4 @@ Rails.application.routes.draw do
 
   # question form
   match 'item_feedback', to: 'feedback#item', via: [:get, :post]
-  # get 'feedback/complete', to: 'feedback#complete'
 end

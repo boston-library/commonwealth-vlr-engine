@@ -11,7 +11,7 @@ describe 'item feedback modal', js: true do
     expect(page).to have_selector('#itemFeedbackLink')
   end
 
-  it 'opens up the modal when I click the button' do
+  it 'renders the modal popup when the button is clicked' do
     click_link('itemFeedbackLink')
     expect(page).to have_selector('#item_feedback_form')
   end

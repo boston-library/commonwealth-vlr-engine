@@ -24,7 +24,7 @@ class FeedbackController < ApplicationController
         format.html do
           return render 'item_success' if request.xhr?
 
-          redirect_to solr_document_path(params[:ark_id])
+          redirect_to solr_document_path(@document)
         end
       end
     else
