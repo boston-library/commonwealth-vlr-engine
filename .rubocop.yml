@@ -14,7 +14,7 @@ AllCops:
     - 'Gemfile'
   DisplayCopNames: true
   DisabledByDefault: true
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.1
 
 ####################### BUNDLER/GEMSPEC ###############################
 Bundler/OrderedGems:

@@ -16,12 +16,13 @@ group :development, :test do
 end
 
 group :test do
-  gem 'coveralls', require: false
+  gem 'coveralls_reborn', require: false
   gem 'database_cleaner'
   gem 'puffing-billy'
   gem 'rails-controller-testing'
   gem 'rss'
   gem 'selenium-webdriver', '~> 4.10'
+  gem 'simplecov', '~> 0.22'
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
 end
