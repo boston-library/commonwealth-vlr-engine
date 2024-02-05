@@ -88,7 +88,7 @@ module CommonwealthVlrEngine
       response.headers['Content-Type'] = mime_type
       response.headers['Content-Length'] = file_size.to_s if file_size
       # Prevent Rack::ETag from calculating a digest over body
-      response.headers['Last-Modified'] = Time.new(@solr_document[:system_modified_dtsi]).utc.strftime('%a, %d %b %Y %T GMT')
+      response.headers['Last-Modified'] = Time.parse(@solr_document[:system_modified_dtsi]).utc.strftime('%a, %d %b %Y %T GMT')
       response.headers['X-Accel-Buffering'] = 'no'
       self.content_type = mime_type
     end
