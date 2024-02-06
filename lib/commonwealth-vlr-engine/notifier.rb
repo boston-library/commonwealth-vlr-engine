@@ -10,6 +10,7 @@ module CommonwealthVlrEngine
       @email = details[:email]
       @name = details[:name]
       @recipient = route_email(details[:topic])
+      @document = SolrDocument.find(details[:ark_id]) if details[:ark_id].present?
 
       mail(to: @recipient,
            from: t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',

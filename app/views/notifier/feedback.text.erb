@@ -2,8 +2,8 @@
 <%= t('blacklight.feedback.text.email') + @email %>
 <%= t('blacklight.feedback.text.topic') + @topic %>
 <% if @document %>
-  <%= t('blacklight.feedback.text.ark_id') + @document[:id] %>
-  <%= t('blacklight.email.text.url') + @document[:identifier_uri_ss] %>
+<%= t('blacklight.feedback.text.ark_id') + @document[:id] %>
+<%= t('blacklight.email.text.url') + @document[:identifier_uri_ss] %>
 <% end %>
 
 <%= t('blacklight.feedback.text.message') %>
