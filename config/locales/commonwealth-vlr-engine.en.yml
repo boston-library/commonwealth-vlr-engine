@@ -54,7 +54,7 @@ en:
 
     email:
           form:
-            title: 'Email'
+            title: 'Email a Link to This Item'
             message: 'Comments:'
           reply_to: 'somebody@example.org'
           record_mailer:
