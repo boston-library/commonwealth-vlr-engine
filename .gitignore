@@ -66,6 +66,7 @@ ehthumbs.db
 .idea # Rubymine config files
 /.idea/*
 /lib/assets/dc_static_geojson_catalog-map.json
+.tool-versions
 
 # Directories to ignore #
 #########################
