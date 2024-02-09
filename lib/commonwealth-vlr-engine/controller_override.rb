@@ -257,6 +257,7 @@ module CommonwealthVlrEngine
       blacklight_config.show.document_actions.delete(:sharing)
       blacklight_config.show.document_actions.delete(:iiif_manifest)
       blacklight_config.show.document_actions.delete(:bookmark)
+      blacklight_config.show.document_actions.delete(:item_feedback)
       blacklight_config.show.document_actions.delete(:citation)
     end
 
