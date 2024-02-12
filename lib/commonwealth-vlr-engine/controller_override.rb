@@ -209,7 +209,6 @@ module CommonwealthVlrEngine
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
 
         # add our custom tools
-        config.show.document_actions.delete(:email)
         config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
         config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
         config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
@@ -258,6 +257,7 @@ module CommonwealthVlrEngine
       blacklight_config.show.document_actions.delete(:iiif_manifest)
       blacklight_config.show.document_actions.delete(:bookmark)
       blacklight_config.show.document_actions.delete(:item_feedback)
+      blacklight_config.show.document_actions.delete(:email)
       blacklight_config.show.document_actions.delete(:citation)
     end
 

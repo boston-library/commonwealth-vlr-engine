@@ -75,7 +75,7 @@ module CommonwealthVlrEngine
 
       # modify show_document_actions
       gsub_file(controller_path, /:citation/, ":citation, partial: 'show_cite_tools'")
-      gsub_file(controller_path, / +config\.add_show_tools_partial\(:email.+?$\n*/, '')
+      gsub_file(controller_path, /:email,/, ":email, partial: 'show_email_tools', if: false,")
     end
   end
 end
