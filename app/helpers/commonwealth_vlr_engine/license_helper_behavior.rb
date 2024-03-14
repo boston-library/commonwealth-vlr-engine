@@ -3,22 +3,31 @@
 # methods related to rendering license values
 module CommonwealthVlrEngine
   module LicenseHelperBehavior
-    # returns the CC license terms code for use in URLs, etc.
     def cc_terms_code(license)
-      license.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase
+      license.match(/\((CC.*?)\)/)[1]
     end
 
-    # returns a link to a CC license
     def cc_url(license)
-      terms_code = cc_terms_code(license)
-      "http://creativecommons.org/licenses/#{terms_code}/4.0/"
+      urls = {
+        "CC BY-NC-ND" => "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "CC0" => "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+
+      urls[cc_terms_code(license)]
     end
 
-    # insert an icon and link to CC licenses
+    def cc_image_url(license)
+      urls = {
+        "CC BY-NC-ND" => "https://licensebuttons.net/l/by-nc-nd/3.0/80x15.png",
+        "CC0" => "https://licensebuttons.net/p/zero/1.0/80x15.png"
+      }
+      
+      urls[cc_terms_code(license)]
+    end
+
     def render_cc_license(license)
-      terms_code = cc_terms_code(license)
-      link_to(image_tag("//i.creativecommons.org/l/#{terms_code}/4.0/80x15.png",
-                        alt: 'CC ' + terms_code.upcase + ' icon',
+      link_to(image_tag(cc_image_url(license),
+                        alt: cc_terms_code(license) + ' icon',
                         class: 'cc_license_icon'),
               cc_url(license),
               rel: 'license',

@@ -229,7 +229,7 @@
             <% end %>
             <% if document[:license_ss] %>
               <%= document[:license_ss] %><br />
-              <% if document[:license_ss].match(/\(CC\s/) %>
+              <% if document[:license_ss].match(/\(CC/) %>
                 <%= render_cc_license(document[:license_ss]) %><br />
               <% end %>
             <% end %>
