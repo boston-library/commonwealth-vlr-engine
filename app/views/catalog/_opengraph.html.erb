@@ -8,9 +8,8 @@
                                                           separator: ' ',
                                                           omission: '... ') %>" />
 <% end %>
-<% if controller_name == 'collections' && @collection_image_info %>
-    <meta property="og:image" content="<%= collection_image_url(@collection_image_info[:image_pid],
-                                           @collection_image_info[:destination_site]) %>" />
+<% if controller_name == 'collections' %>
+    <meta property="og:image" content="<%= collection_image_url %>" />
 <% elsif has_image_files?(@object_files) %>
     <meta property="og:image" content="<%= filestream_disseminator_url(@object_files[:image].first['storage_key_base_ss'],
                                                                     'image_access_800') %>" />

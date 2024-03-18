@@ -38,8 +38,36 @@ describe CollectionsHelper, :vcr do
   end
 
   describe '#collection_image_url' do
+    describe 'hosted collection' do
+      before(:each) do
+        assign(:collection_image_info,
+               { pid: 'bpl-dev:h702q6403', image_pid: image_pid, title: 'foo', access_master: true, destination_site: ['commonwealth'] })
+      end
+
+      it 'returns the correct url' do
+        col_img_url = helper.collection_image_url(true)
+        expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
+      end
+    end
+
+    describe 'harvested collection' do
+      let(:harvested_image_pid) { 'oai-dev:cf95jp21j' }
+
+      before(:each) do
+        assign(:collection_image_info,
+               { pid: 'oai-dev:5x21tt128', image_key: harvested_image_pid, title: 'foo', access_master: false })
+      end
+
+      it 'returns the correct url' do
+        col_img_url = helper.collection_image_url
+        expect(col_img_url).to include("derivatives/#{harvested_image_pid}/image_thumbnail_300.jpg")
+      end
+    end
+  end
+
+  describe '#collection_image_iiif_url' do
     it 'returns the correct url' do
-      col_img_url = helper.collection_image_url(image_pid)
+      col_img_url = helper.collection_image_iiif_url(image_pid)
       expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
     end
   end

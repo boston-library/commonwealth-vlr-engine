@@ -20,12 +20,12 @@ module CommonwealthVlrEngine
           iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
         end
       else
-        collection_icon_path
+        collection_icon_url
       end
     end
 
-    def collection_icon_path
-      asset_path('commonwealth-vlr-engine/dc_collection-icon.png')
+    def collection_icon_url
+      asset_url('commonwealth-vlr-engine/dc_collection-icon.png')
     end
 
     def create_thumb_img_element(document, img_class = [])
@@ -58,7 +58,7 @@ module CommonwealthVlrEngine
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-        collection_icon_path
+        collection_icon_url
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
         institution_icon_path
       else
@@ -83,7 +83,7 @@ module CommonwealthVlrEngine
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-        collection_icon_path
+        collection_icon_url
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
         institution_icon_path
       else
