@@ -8,21 +8,25 @@ module CommonwealthVlrEngine
     end
 
     def cc_url(license)
-      urls = {
-        "CC BY-NC-ND" => "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-        "CC0" => "https://creativecommons.org/publicdomain/zero/1.0/"
-      }
+      base_url = "https://creativecommons.org/"
+      terms_code = cc_terms_code(license)
 
-      urls[cc_terms_code(license)]
+      return "#{base_url}publicdomain/zero/1.0/" if terms_code == "CC0"
+
+      license_path = terms_code.split(" ").last.downcase
+
+      "#{base_url}licenses/#{license_path}/4.0/"
     end
 
     def cc_image_url(license)
-      urls = {
-        "CC BY-NC-ND" => "https://licensebuttons.net/l/by-nc-nd/3.0/80x15.png",
-        "CC0" => "https://licensebuttons.net/p/zero/1.0/80x15.png"
-      }
-      
-      urls[cc_terms_code(license)]
+      base_url = "https://licensebuttons.net/"
+      terms_code = cc_terms_code(license)
+
+      return "#{base_url}p/zero/1.0/80x15.png" if terms_code == "CC0"
+
+      license_path = terms_code.split(" ").last.downcase
+
+      "#{base_url}l/#{license_path}/4.0/80x15.png"
     end
 
     def render_cc_license(license)
