@@ -17,21 +17,21 @@ module CommonwealthVlrEngine
     # depends on instance var set by CollectionsControllerBehavior:
     # @collection_image_info [Hash] = hash of relevant image parent item info
     def render_collection_image(image_tag_class = nil)
-      hosted = @collection_image_info&.dig(:hosting_status) == 'hosted' ? true : false
-      image_url = collection_image_url(hosted)
+      hosting_status = @collection_image_info&.dig(:hosting_status)
+      image_url = collection_image_url(hosting_status: hosting_status)
       if @collection_image_info
         image_title = @collection_image_info[:title]
         render partial: 'collection_image',
                locals: { image_element: image_tag(image_url, alt: image_title, class: image_tag_class),
-                         image_title: image_title, hosted: hosted }
+                         image_title: image_title, hosted: hosting_status == 'hosted' }
       else
         image_tag(image_url, alt: @collection_title, class: image_tag_class)
       end
     end
 
-    def collection_image_url(hosted = false)
+    def collection_image_url(hosting_status: nil)
       if @collection_image_info
-        if !hosted || @collection_image_info[:access_master] == false
+        if hosting_status != 'hosted' || @collection_image_info[:access_master] == false
           filestream_disseminator_url(@collection_image_info[:image_key], 'image_thumbnail_300')
         else
           collection_image_iiif_url(@collection_image_info[:image_pid],
