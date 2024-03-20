@@ -10,22 +10,18 @@ module CommonwealthVlrEngine
     def cc_url(license)
       base_url = 'https://creativecommons.org/'
       terms_code = cc_terms_code(license)
-
       return "#{base_url}publicdomain/zero/1.0/" if terms_code == 'CC0'
 
       license_path = terms_code.split(' ').last.downcase
-
       "#{base_url}licenses/#{license_path}/4.0/"
     end
 
     def cc_image_url(license)
       base_url = 'https://licensebuttons.net/'
       terms_code = cc_terms_code(license)
-
       return "#{base_url}p/zero/1.0/80x15.png" if terms_code == 'CC0'
 
       license_path = terms_code.split(' ').last.downcase
-
       "#{base_url}l/#{license_path}/4.0/80x15.png"
     end
 

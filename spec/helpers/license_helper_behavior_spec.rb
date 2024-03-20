@@ -9,7 +9,7 @@ describe CommonwealthVlrEngine::LicenseHelperBehavior do
     let(:cc_image_url) { 'https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png' }
 
     describe '#cc_terms_code' do
-      it 'starts with CC' do
+      it 'returns the right value' do
         expect(helper.cc_terms_code(license)).to eq('CC BY-NC-ND')
       end
     end
@@ -35,7 +35,7 @@ describe CommonwealthVlrEngine::LicenseHelperBehavior do
   end
 
   describe 'render_reuse' do
-    it 'returns the correct value' do
+    it 'returns the right value' do
       expect(helper.render_reuse('creative commons')).to eq 'Creative Commons license'
     end
   end
