@@ -39,9 +39,9 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
     end
   end
 
-  describe '#collection_icon_path' do
+  describe '#collection_icon_url' do
     it 'returns the right value' do
-      expect(helper.collection_icon_path).to include('dc_collection-icon')
+      expect(helper.collection_icon_url).to include('dc_collection-icon')
     end
   end
 

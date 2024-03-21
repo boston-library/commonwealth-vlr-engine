@@ -2833,6 +2833,12 @@
     - true
   hosting_status_ssi:
     - harvested
+  exemplary_image_ssi:
+    - oai-dev:bg258017r
+  exemplary_image_key_base_ss:
+    - metadata/oai-dev:bg258017r
+  exemplary_image_iiif_bsi:
+    - false
   timestamp:
     - '2022-09-25T20:38:10.637Z'
 - system_create_dtsi:
@@ -2938,6 +2944,7 @@
     - oai-dev:qv33s812k
   is_exemplary_image_of_ssim:
     - oai-dev:qv33s812k
+    - oai-dev:5x21tt128
   filename_base_ssi:
     - 'oai-dev:qv33s812k_metadata'
   position_isi:

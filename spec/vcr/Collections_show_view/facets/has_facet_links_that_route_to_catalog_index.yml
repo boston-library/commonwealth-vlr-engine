@@ -14,23 +14,21 @@ http_interactions:
   response:
     status:
       code: 404
-      message: Not Found
+      message: ''
     headers:
       Server:
       - nginx
       Date:
-      - Fri, 17 Sep 2021 20:41:55 GMT
+      - Thu, 21 Mar 2024 20:24:22 GMT
       Content-Type:
       - text/plain;charset=utf-8
       Content-Length:
       - '2344'
-      Connection:
-      - keep-alive
       Vary:
       - Accept, Accept-Charset, Accept-Encoding, Accept-Language, Origin
       - Accept-Encoding
       X-Powered-By:
-      - Cantaloupe/5.0.2
+      - Cantaloupe/5.0.5
       Access-Control-Allow-Origin:
       - "*"
       Cache-Control:
@@ -40,7 +38,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: "404 Not Found\n\nHTTP 404\n\n\njava.nio.file.NoSuchFileException: HTTP
-        404\n\tat edu.illinois.library.cantaloupe.source.HttpSource.checkAccess(HttpSource.java:430)\n\tat
+        404\n\tat edu.illinois.library.cantaloupe.source.HttpSource.checkAccess(HttpSource.java:487)\n\tat
         edu.illinois.library.cantaloupe.resource.InformationRequestHandler.handle(InformationRequestHandler.java:248)\n\tat
         edu.illinois.library.cantaloupe.resource.iiif.v2.InformationResource.doGET(InformationResource.java:85)\n\tat
         edu.illinois.library.cantaloupe.resource.HandlerServlet.handle(HandlerServlet.java:97)\n\tat
@@ -64,5 +62,68 @@ http_interactions:
         org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:773)\n\tat
         org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:905)\n\tat
         java.base/java.lang.Thread.run(Thread.java:829)\n\n"
-  recorded_at: Fri, 17 Sep 2021 20:41:55 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Thu, 21 Mar 2024 20:24:22 GMT
+- request:
+    method: get
+    uri: https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:df65v791t/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Mar 2024 20:24:28 GMT
+      Content-Type:
+      - text/plain;charset=utf-8
+      Content-Length:
+      - '2344'
+      Vary:
+      - Accept, Accept-Charset, Accept-Encoding, Accept-Language, Origin
+      - Accept-Encoding
+      X-Powered-By:
+      - Cantaloupe/5.0.5
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: "404 Not Found\n\nHTTP 404\n\n\njava.nio.file.NoSuchFileException: HTTP
+        404\n\tat edu.illinois.library.cantaloupe.source.HttpSource.checkAccess(HttpSource.java:487)\n\tat
+        edu.illinois.library.cantaloupe.resource.InformationRequestHandler.handle(InformationRequestHandler.java:248)\n\tat
+        edu.illinois.library.cantaloupe.resource.iiif.v2.InformationResource.doGET(InformationResource.java:85)\n\tat
+        edu.illinois.library.cantaloupe.resource.HandlerServlet.handle(HandlerServlet.java:97)\n\tat
+        edu.illinois.library.cantaloupe.resource.HandlerServlet.doGet(HandlerServlet.java:35)\n\tat
+        javax.servlet.http.HttpServlet.service(HttpServlet.java:687)\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:790)\n\tat
+        org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:791)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:550)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1434)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:501)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1349)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)\n\tat
+        org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)\n\tat
+        org.eclipse.jetty.server.Server.handle(Server.java:516)\n\tat org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)\n\tat
+        org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)\n\tat
+        org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)\n\tat org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:273)\n\tat
+        org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)\n\tat
+        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)\n\tat org.eclipse.jetty.io.ssl.SslConnection$1.run(SslConnection.java:146)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:773)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:905)\n\tat
+        java.base/java.lang.Thread.run(Thread.java:829)\n\n"
+  recorded_at: Thu, 21 Mar 2024 20:24:28 GMT
+recorded_with: VCR 6.2.0

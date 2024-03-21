@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:h702q641c/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 17 Sep 2021 19:44:48 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '838'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept, Accept-Charset, Accept-Encoding, Accept-Language, Origin
+      - Accept-Encoding
+      X-Powered-By:
+      - Cantaloupe/5.0.2
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=2592000, public, no-transform
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:h702q641c","protocol":"http://iiif.io/api/image","width":1496,"height":2448,"sizes":[{"width":94,"height":153},{"width":187,"height":306},{"width":374,"height":612},{"width":748,"height":1224},{"width":1496,"height":2448}],"tiles":[{"width":1024,"height":1024,"scaleFactors":[1,2,4,8,16]}],"profile":["http://iiif.io/api/image/2/level2.json",{"formats":["jpg","tif","gif","png"],"qualities":["bitonal","default","gray","color"],"supports":["regionByPx","sizeByW","sizeByWhListed","cors","regionSquare","sizeByDistortedWh","canonicalLinkHeader","sizeByConfinedWh","sizeByPct","jsonldMediaType","regionByPct","rotationArbitrary","sizeByH","baseUriRedirect","rotationBy90s","profileLinkHeader","sizeByForcedWh","sizeByWh","mirroring"]}]}'
+  recorded_at: Fri, 17 Sep 2021 19:44:48 GMT
+recorded_with: VCR 6.0.0
