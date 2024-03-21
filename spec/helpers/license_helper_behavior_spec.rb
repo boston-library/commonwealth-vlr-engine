@@ -5,11 +5,12 @@ require 'rails_helper'
 describe CommonwealthVlrEngine::LicenseHelperBehavior do
   describe 'Creative Commons license helpers' do
     let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
-    let(:cc_url) { 'http://creativecommons.org/licenses/by-nc-nd/4.0/' }
+    let(:cc_url) { 'https://creativecommons.org/licenses/by-nc-nd/4.0/' }
+    let(:cc_image_url) { 'https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png' }
 
     describe '#cc_terms_code' do
       it 'returns the right value' do
-        expect(helper.cc_terms_code(license)).to eq('by-nc-nd')
+        expect(helper.cc_terms_code(license)).to eq('CC BY-NC-ND')
       end
     end
 
@@ -19,16 +20,22 @@ describe CommonwealthVlrEngine::LicenseHelperBehavior do
       end
     end
 
+    describe '#cc_image_url' do
+      it 'returns the right value' do
+        expect(helper.cc_image_url(license)).to eq(cc_image_url)
+      end
+    end
+
     describe '#render_cc_license' do
       it 'renders the CC link and image' do
         expect(helper.render_cc_license(license)).to include('href="' + cc_url)
-        expect(helper.render_cc_license(license)).to include('src="//i.creativecommons.org/l/')
+        expect(helper.render_cc_license(license)).to include('src="' + cc_image_url)
       end
     end
   end
 
   describe 'render_reuse' do
-    it 'returns the correct value' do
+    it 'returns the right value' do
       expect(helper.render_reuse('creative commons')).to eq 'Creative Commons license'
     end
   end

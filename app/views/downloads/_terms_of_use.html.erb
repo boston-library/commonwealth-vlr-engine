@@ -6,7 +6,7 @@
   <% if document[:license_ss] %>
     <li>
       <%= document[:license_ss] %>
-      <% if document[:license_ss].match(/\(CC\s/) %>
+      <% if document[:license_ss].match(/\(CC/) %>
         <br/>
         <%= link_to t('blacklight.downloads.cc'),
                     cc_url(document[:license_ss]),
