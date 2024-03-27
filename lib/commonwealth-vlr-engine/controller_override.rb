@@ -17,6 +17,7 @@ module CommonwealthVlrEngine
       before_action :set_nav_context, only: [:index]
       before_action :mlt_search, only: [:index, :show]
       before_action :add_institution_fields, only: [:index, :facet]
+      after_action :set_access_control_headers, only: [:index, :show]
 
       DATE_ASC_SORT = 'date_start_dtsi asc, title_info_primary_ssort asc'
       TITLE_SORT = 'title_info_primary_ssort asc, date_start_dtsi asc'
@@ -324,6 +325,13 @@ module CommonwealthVlrEngine
     # override so we can inspect for other params, like :mlt_id
     def has_search_parameters?
       params[:mlt_id].present? || super
+    end
+
+    # to allow apps to load JSON API requests from a remote server
+    def set_access_control_headers
+      return unless /application\/json/.match?(response.content_type)
+
+      headers['Access-Control-Allow-Origin'] = '*'
     end
   end
 end
