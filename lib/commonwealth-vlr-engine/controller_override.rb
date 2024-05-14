@@ -104,8 +104,8 @@ module CommonwealthVlrEngine
         config.default_solr_params = { qt: 'search', rows: 20 }
 
         # solr fields that will be treated as facets by the blacklight application
-        config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false
-        config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
+        config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
         config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
