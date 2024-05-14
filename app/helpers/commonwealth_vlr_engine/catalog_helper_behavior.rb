@@ -38,6 +38,11 @@ module CommonwealthVlrEngine
       has_searchable_text?(document) || files_hash[:image].length > IMAGE_VIEWER_LIMIT
     end
 
+    # need to render full title or too many pages have same <title>, bad for site SEO
+    def html_title(options = {})
+      render_title(options[:document])
+    end
+
     def image_file_pids(images)
       images.map { |i| i[:id] }
     end

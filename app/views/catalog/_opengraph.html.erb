@@ -1,7 +1,7 @@
 <%# facebook opengraph meta tags %>
 
 <meta property="og:url" content="<%= solr_document_url(document) %>" />
-<meta property="og:title" content="<%= document[blacklight_config.index.title_field.to_sym].presence %>" />
+<meta property="og:title" content="<%= render_title(document) %>" />
 <% if document[:abstract_tsi] %>
     <meta property="og:description" content="<%= truncate(document[:abstract_tsi],
                                                           length: 300,
@@ -16,4 +16,3 @@
 <% elsif document[:exemplary_image_ssi] %>
     <meta property="og:image" content="<%= thumbnail_url(document) %>" />
 <% end %>
-

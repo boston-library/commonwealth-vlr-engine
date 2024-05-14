@@ -19,14 +19,12 @@ describe CatalogController, :vcr do
     before(:each) { get :metadata_view, params: { id: 'bpl-dev:h702q6403' } }
 
     it 'responds to the #metadata_view action' do
-      # expect(response).to be_successful
-      # expect(assigns(:document)).to_not be_nil
-      skip('XML serialization not yet supported by Curator')
+      expect(response).to be_successful
+      expect(assigns(:document)).to_not be_nil
     end
 
     it 'renders the page' do
-      # expect(response.body).to include('&lt;mods:title&gt;Beauregard&lt;/mods:title&gt;')
-      skip('XML serialization is not yet available')
+      expect(response.body).to include('&lt;mods:title&gt;Beauregard&lt;/mods:title&gt;')
     end
   end
 
