@@ -193,4 +193,12 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
       expect(URI.parse(helper.pdf_url_for_viewer(pdf_files_hash[:document]))).to be_a_kind_of URI::HTTPS
     end
   end
+
+  describe '#html_title' do
+    let(:newspaper_issue_document) { SolrDocument.find('bpl-dev:z029pg62r') }
+
+    it 'renders the full title with parts' do
+      expect(helper.html_title({ document: newspaper_issue_document })).to eq 'Raivaaja. February 9, 1905 = Pioneer'
+    end
+  end
 end

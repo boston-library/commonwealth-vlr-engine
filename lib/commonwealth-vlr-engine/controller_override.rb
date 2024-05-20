@@ -54,6 +54,8 @@ module CommonwealthVlrEngine
 
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
+        config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
+                                                                            helper_method: :html_title)
         config.show.display_type_field = 'curator_model_suffix_ssi'
         config.show.partials = [:show_breadcrumb, :show_header, :show]
 
@@ -104,8 +106,8 @@ module CommonwealthVlrEngine
         config.default_solr_params = { qt: 'search', rows: 20 }
 
         # solr fields that will be treated as facets by the blacklight application
-        config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false
-        config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
+        config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
         config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
         config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }

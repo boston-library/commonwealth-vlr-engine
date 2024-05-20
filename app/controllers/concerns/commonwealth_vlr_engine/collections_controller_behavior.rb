@@ -124,7 +124,7 @@ module CommonwealthVlrEngine
           col_img_obj_pid = col_img_field.first
           _col_img_obj_resp, col_img_obj_doc = search_service.fetch(col_img_obj_pid)
           if col_img_obj_doc
-            col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]
+            col_img_info[:title] = helpers.render_title(col_img_obj_doc)
             col_img_info[:pid] = col_img_obj_pid
           end
         end
