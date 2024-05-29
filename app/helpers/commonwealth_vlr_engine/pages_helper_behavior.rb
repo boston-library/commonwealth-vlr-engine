@@ -7,7 +7,8 @@ module CommonwealthVlrEngine
     def render_blog_feed(source = t('blacklight.home.context.news.rss_link'))
       if source.present?
         feed = Rails.cache.fetch('dc_rss_feed', expires_in: 60.minutes) do
-          RSS::Parser.parse(open(source).read, false).items[0..3]
+          uri = URI.parse(source)
+          RSS::Parser.parse(uri.open.read, false).items[0..3]
         end
       end
       if source.present? && feed.length > 0
