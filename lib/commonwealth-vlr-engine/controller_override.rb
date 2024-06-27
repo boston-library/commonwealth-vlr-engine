@@ -210,6 +210,7 @@ module CommonwealthVlrEngine
         config.add_sort_field TITLE_SORT, label: 'title'
         config.add_sort_field DATE_ASC_SORT, label: 'date (asc)'
         config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
+        config.add_sort_field 'system_create_dtsi desc', label: 'recently added'
 
         # add our custom tools
         config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
