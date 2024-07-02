@@ -5,7 +5,7 @@ module CitationHelper
   # an array of available citation formats
   # for each style, there should be a corresponding "render_#{style}_citation" method
   def citation_styles
-    %w(mla apa chicago)
+    %w(mla apa chicago wikipedia)
   end
 
   def render_citations(documents, citation_styles)
@@ -75,10 +75,20 @@ module CitationHelper
     citation_output.gsub(/\.\./, '.')
   end
 
+  def render_wikipedia_citation(document)
+    citation_output = "<code>"
+    citation_output += "&lt;ref name=\"#{document[:id]}\"&gt;{{cite web"
+    citation_output += " | title=#{title_for_citation(document, 'wikipedia')}"
+    citation_output += " | date=#{date_for_citation(document[:date_tsim].first, 'wikipedia')}" if document[:date_tsim]
+    citation_output += " | url=#{url_for_citation(document)}"
+    citation_output += " | accessdate=#{Time.zone.today.strftime('%B %d, %Y')}}}&lt;/ref&gt;"
+    citation_output += "</code>"
+    citation_output.html_safe
+  end
+
   # create a list of creator names
   # TODO: need a way to distinguish corporate names from personal
   def names_for_citation(document, citation_style)
-    name_and = citation_style == 'apa' ? '&' : 'and'
     return if document[:name_tsim].blank?
 
     names = []
@@ -102,6 +112,7 @@ module CitationHelper
 
     # if multiple creators, put ', ' between each, but ', and/& ' before last one
     name_output = ''
+    name_and = citation_style == 'apa' ? '&' : 'and'
     if names.length > 1
       0.upto(names.length - 1) do |index|
         if index == names.length - 1
@@ -139,6 +150,9 @@ module CitationHelper
       apa_date_raw += ", #{Date::MONTHNAMES[date_components[1].to_i]}" if date_components[1]
       apa_date_raw += " #{date_components[2].to_i}" if date_components[2]
       "(#{apa_date_raw}). "
+    elsif citation_style == 'wikipedia'
+      date_components[1] = Date::ABBR_MONTHNAMES[date_components[1].to_i] if date_components[1]
+      "#{date_components.reverse.join(' ')}"
     end
   end
 
@@ -148,6 +162,8 @@ module CitationHelper
       "<em>#{document[blacklight_config.index.title_field.to_sym]}</em>. "
     elsif citation_style == 'chicago'
       "\"#{document[blacklight_config.index.title_field.to_sym]}.\" "
+    elsif citation_style == 'wikipedia'
+      document[blacklight_config.index.title_field.to_sym]
     else
       "#{document[blacklight_config.index.title_field.to_sym]}. "
     end

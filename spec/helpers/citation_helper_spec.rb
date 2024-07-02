@@ -49,6 +49,12 @@ describe CitationHelper do
     end
   end
 
+  describe '#render_wikipedia_citation' do
+    it 'returns a formatted citation' do
+      expect(helper.render_chicago_citation(document)).to include('cite web')
+    end
+  end
+
   describe '#names_for_citation' do
     let(:multiname_document) { SolrDocument.find('bpl-dev:df65v788h') }
 
