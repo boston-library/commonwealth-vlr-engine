@@ -74,6 +74,7 @@ describe CitationHelper do
     it 'returns a properly formatted date' do
       expect(helper.date_for_citation(document[:date_tsim].first, 'apa')).to include('(ca. 1859–1870).')
       expect(helper.date_for_citation(document[:date_tsim].first, 'mla')).to include('1859–1870.')
+      expect(helper.date_for_citation(document[:date_tsim].first, 'wikipedia')).to include('1859–1870')
     end
   end
 
@@ -81,6 +82,7 @@ describe CitationHelper do
     it 'returns a properly formatted title' do
       expect(helper.title_for_citation(document, 'mla')).to include('<em>Beauregard</em>')
       expect(helper.title_for_citation(document, 'chicago')).to include('"Beauregard."')
+      expect(helper.title_for_citation(document, 'wikipedia')).to include('Beauregard')
     end
   end
 
