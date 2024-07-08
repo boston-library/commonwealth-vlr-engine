@@ -229,12 +229,12 @@
             <% end %>
             <% if document[:license_ss] %>
               <%= document[:license_ss] %><br />
-              <% if document[:rightsstatement_ss].match(/No Copyright - United States/) %>
-                <%= render_noc(document[:rightsstatement_uri_ss]) %>
-              <% end %>
-              <% if document[:license_ss].match(/\(CC/) %>
-                <%= render_cc_license(document[:license_ss]) %><br />
-              <% end %>
+            <% end %>
+            <% if document[:rightsstatement_ss]&.match?(/No Copyright - United States/) %>
+              <%= render_noc(document[:rightsstatement_uri_ss]) %>
+            <% end %>
+            <% if document[:license_ss]&.match?(/\(CC/) %>
+              <%= render_cc_license(document[:license_ss]) %>
             <% end %>
           </dd>
       <% end %>
