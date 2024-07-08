@@ -79,9 +79,10 @@ module CitationHelper
     citation_output = "<code>"
     citation_output += "&lt;ref name=\"#{document[:id]}\"&gt;{{cite web"
     citation_output += " | title=#{title_for_citation(document, 'wikipedia')}"
-    citation_output += " | date=#{date_for_citation(document[:date_tsim].first, 'wikipedia')}" if document[:date_tsim]
+    citation_output += " | website=DigitalCommonwealth.org"
+    citation_output += " | date=#{document[:date_tsim].first}" if document[:date_tsim]
     citation_output += " | url=#{url_for_citation(document)}"
-    citation_output += " | accessdate=#{Time.zone.today.strftime('%B %d, %Y')}}}&lt;/ref&gt;"
+    citation_output += " | accessdate=#{Time.zone.today.strftime('%B %-d, %Y')}}}&lt;/ref&gt;"
     citation_output += "</code>"
     citation_output.html_safe
   end
@@ -150,9 +151,6 @@ module CitationHelper
       apa_date_raw += ", #{Date::MONTHNAMES[date_components[1].to_i]}" if date_components[1]
       apa_date_raw += " #{date_components[2].to_i}" if date_components[2]
       "(#{apa_date_raw}). "
-    elsif citation_style == 'wikipedia'
-      date_components[1] = Date::ABBR_MONTHNAMES[date_components[1].to_i] if date_components[1]
-      "#{date_components.reverse.join(' ')}"
     end
   end
 
