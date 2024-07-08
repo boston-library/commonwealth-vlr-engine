@@ -51,7 +51,7 @@ describe CitationHelper do
 
   describe '#render_wikipedia_citation' do
     it 'returns a formatted citation' do
-      expect(helper.render_chicago_citation(document)).to include('cite web')
+      expect(helper.render_wikipedia_citation(document)).to include('cite web')
     end
   end
 
