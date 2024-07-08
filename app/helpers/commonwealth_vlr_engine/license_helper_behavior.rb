@@ -25,6 +25,16 @@ module CommonwealthVlrEngine
       "#{base_url}l/#{license_path}/4.0/80x15.png"
     end
 
+    def render_noc(link)
+      link_to(image_tag('https://rightsstatements.org/files/icons/NoC.Icon-Only.dark.svg',
+                        alt: 'No Copyright icon',
+                        class: 'noc_icon'),
+              link,
+              rel: 'license',
+              id: 'noc_link',
+              target: '_blank')
+    end
+
     def render_cc_license(license)
       link_to(image_tag(cc_image_url(license),
                         alt: cc_terms_code(license) + ' icon',

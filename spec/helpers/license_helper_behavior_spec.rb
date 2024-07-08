@@ -4,6 +4,8 @@ require 'rails_helper'
 
 describe CommonwealthVlrEngine::LicenseHelperBehavior do
   describe 'Creative Commons license helpers' do
+    let(:rightsstatement) { 'No Copyright - United States' }
+    let(:noc_image_url) { 'https://rightsstatements.org/files/icons/NoC.Icon-Only.dark.svg' }
     let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
     let(:cc_url) { 'https://creativecommons.org/licenses/by-nc-nd/4.0/' }
     let(:cc_image_url) { 'https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png' }
@@ -30,6 +32,12 @@ describe CommonwealthVlrEngine::LicenseHelperBehavior do
       it 'renders the CC link and image' do
         expect(helper.render_cc_license(license)).to include('href="' + cc_url)
         expect(helper.render_cc_license(license)).to include('src="' + cc_image_url)
+      end
+    end
+
+    describe '#render_noc' do
+      it 'renders the CC link and image' do
+        expect(helper.render_noc(rightsstatement)).to include('src="' + noc_image_url)
       end
     end
   end
