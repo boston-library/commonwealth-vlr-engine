@@ -43,7 +43,7 @@ describe CommonwealthVlrEngine::ControllerOverride do
       subject { test_config.sort_fields }
 
       it 'has the expected fields' do
-        expect(subject.count).to eq 4
+        expect(subject.count).to eq 5
         expect(subject['score desc, title_info_primary_ssort asc']).not_to be_falsey
       end
     end
