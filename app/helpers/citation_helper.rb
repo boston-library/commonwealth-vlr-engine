@@ -76,14 +76,14 @@ module CitationHelper
   end
 
   def render_wikipedia_citation(document)
-    citation_output = "<code>"
+    citation_output = '<code>'
     citation_output += "&lt;ref name=\"#{document[:id]}\"&gt;{{cite web"
     citation_output += " | title=#{title_for_citation(document, 'wikipedia')}"
-    citation_output += " | website=DigitalCommonwealth.org"
+    citation_output += ' | website=DigitalCommonwealth.org'
     citation_output += " | date=#{document[:date_tsim].first}" if document[:date_tsim]
     citation_output += " | url=#{url_for_citation(document)}"
     citation_output += " | accessdate=#{Time.zone.today.strftime('%B %-d, %Y')}}}&lt;/ref&gt;"
-    citation_output += "</code>"
+    citation_output += '</code>'
     citation_output.html_safe
   end
 
