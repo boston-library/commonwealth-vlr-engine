@@ -3,7 +3,6 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-capybara
-  - rubocop-rspec_rails
 
 AllCops:
   Exclude:
