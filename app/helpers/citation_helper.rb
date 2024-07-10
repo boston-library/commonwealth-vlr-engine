@@ -5,7 +5,7 @@ module CitationHelper
   # an array of available citation formats
   # for each style, there should be a corresponding "render_#{style}_citation" method
   def citation_styles
-    %w(mla apa chicago)
+    %w(mla apa chicago wikipedia)
   end
 
   def render_citations(documents, citation_styles)
@@ -32,8 +32,8 @@ module CitationHelper
     citation_output += names_for_citation(document, 'mla').presence.to_s
     citation_output += title_for_citation(document, 'mla')
     citation_output += publishing_data_for_citation(document).presence.to_s
-    citation_output += if document[:date_tsim]
-                         date_for_citation(document[:date_tsim].first, 'mla')
+    citation_output += if document[:date_start_dtsi]
+                         date_for_citation(document[:date_start_dtsi], 'mla')
                        else
                          'n.d. '
                        end
@@ -47,8 +47,8 @@ module CitationHelper
     names = names_for_citation(document, 'apa')
     citation_output += names if names
     title_date_info = []
-    title_date_info << if document[:date_tsim]
-                         date_for_citation(document[:date_tsim].first, 'apa')
+    title_date_info << if document[:date_start_dtsi]
+                         date_for_citation(document[:date_start_dtsi], 'apa')
                        else
                          '(n.d.). '
                        end
@@ -69,16 +69,35 @@ module CitationHelper
     citation_output += "#{genre_for_citation(document[:genre_basic_ssim].first)}. " if document[:genre_basic_ssim]
     citation_output += publishing_data_for_citation(document).presence.to_s
     citation_output += "#{document[:date_tsim].first}. " if document[:date_tsim]
-    citation_output += "<em>#{t('blacklight.application_name')}</em>, "
+    citation_output += if document[:hosting_status_ssi] == 'hosted'
+                         "<em>#{t('blacklight.application_name')}</em>, "
+                       else
+                         "<em>#{oai_inst_name(document)}</em>, "
+                       end
     citation_output += "#{url_for_citation(document)} "
     citation_output += "(accessed #{Time.zone.today.strftime('%B %d, %Y')})."
     citation_output.gsub(/\.\./, '.')
   end
 
+  def render_wikipedia_citation(document)
+    citation_output = '<code>'
+    citation_output += '{{cite web'
+    citation_output += " | title=#{render_title(document)}"
+    citation_output += if document[:hosting_status_ssi] == 'hosted'
+                         ' | website=DigitalCommonwealth.org'
+                       else
+                         " | website=#{oai_inst_name(document)}"
+                       end
+    citation_output += " | date=#{document[:date_tsim].first}" if document[:date_tsim]
+    citation_output += " | url=#{url_for_citation(document)}"
+    citation_output += " | accessdate=#{Time.zone.today.strftime('%B %-d, %Y')}}}"
+    citation_output += '</code>'
+    citation_output.html_safe
+  end
+
   # create a list of creator names
   # TODO: need a way to distinguish corporate names from personal
   def names_for_citation(document, citation_style)
-    name_and = citation_style == 'apa' ? '&' : 'and'
     return if document[:name_tsim].blank?
 
     names = []
@@ -102,6 +121,7 @@ module CitationHelper
 
     # if multiple creators, put ', ' between each, but ', and/& ' before last one
     name_output = ''
+    name_and = citation_style == 'apa' ? '&' : 'and'
     if names.length > 1
       0.upto(names.length - 1) do |index|
         if index == names.length - 1
@@ -124,13 +144,12 @@ module CitationHelper
     publishing_output += document[:pubplace_tsi] if document[:pubplace_tsi]
     publishing_output += ': ' if document[:pubplace_tsi] && document[:publisher_tsi]
     publishing_output += document[:publisher_tsi] if document[:publisher_tsi]
-    publishing_output.gsub!(/[\[\]]/, '')
-    "#{publishing_output}#{document[:date_tsim] ? ',' : '.'} "
+    "#{publishing_output.gsub(/[\[\]]/, '')}#{document[:date_tsim] ? ',' : '.'} "
   end
 
   # return date with formatting
   def date_for_citation(date_start, citation_style)
-    date_components = date_start.split('-')
+    date_components = date_start.gsub(/(-01-01)*T[\d:]*Z\z/, '').split('-')
     if citation_style == 'mla'
       date_components[1] = Date::ABBR_MONTHNAMES[date_components[1].to_i] if date_components[1]
       "#{date_components.reverse.join(' ')}. "
@@ -145,11 +164,11 @@ module CitationHelper
   # return the document title with formatting
   def title_for_citation(document, citation_style)
     if citation_style == 'mla'
-      "<em>#{document[blacklight_config.index.title_field.to_sym]}</em>. "
+      "<em>#{render_title(document)}</em>. "
     elsif citation_style == 'chicago'
-      "\"#{document[blacklight_config.index.title_field.to_sym]}.\" "
+      "\"#{render_title(document)}.\" "
     else
-      "#{document[blacklight_config.index.title_field.to_sym]}. "
+      "#{render_title(document)}. "
     end
   end
 
@@ -161,10 +180,6 @@ module CitationHelper
   # return the URL for the current page
   # prefer ARK when available
   def url_for_citation(document)
-    if document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject'
-      solr_document_url(document)
-    else
-      document[:identifier_uri_ss].presence || solr_document_url(document)
-    end
+    document[:identifier_uri_ss].presence || solr_document_url(document)
   end
 end

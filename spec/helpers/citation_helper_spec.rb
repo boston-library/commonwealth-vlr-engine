@@ -39,13 +39,19 @@ describe CitationHelper do
 
   describe '#render_apa_citation' do
     it 'returns a formatted citation' do
-      expect(helper.render_apa_citation(document)).to include('(ca. 1859–1870)')
+      expect(helper.render_apa_citation(document)).to include('(1859)')
     end
   end
 
   describe '#render_chicago_citation' do
     it 'returns a formatted citation' do
       expect(helper.render_chicago_citation(document)).to include(I18n.t('blacklight.application_name'))
+    end
+  end
+
+  describe '#render_wikipedia_citation' do
+    it 'returns a formatted citation' do
+      expect(helper.render_wikipedia_citation(document)).to include('cite web')
     end
   end
 
@@ -66,8 +72,8 @@ describe CitationHelper do
 
   describe '#date_for_citation' do
     it 'returns a properly formatted date' do
-      expect(helper.date_for_citation(document[:date_tsim].first, 'apa')).to include('(ca. 1859–1870).')
-      expect(helper.date_for_citation(document[:date_tsim].first, 'mla')).to include('1859–1870.')
+      expect(helper.date_for_citation(document[:date_start_dtsi], 'apa')).to include('(1859).')
+      expect(helper.date_for_citation(document[:date_start_dtsi], 'mla')).to include('1859.')
     end
   end
 
@@ -75,6 +81,7 @@ describe CitationHelper do
     it 'returns a properly formatted title' do
       expect(helper.title_for_citation(document, 'mla')).to include('<em>Beauregard</em>')
       expect(helper.title_for_citation(document, 'chicago')).to include('"Beauregard."')
+      expect(helper.title_for_citation(document, 'wikipedia')).to include('Beauregard')
     end
   end
 
