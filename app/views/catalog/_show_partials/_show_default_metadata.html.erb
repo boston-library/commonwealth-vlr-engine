@@ -222,6 +222,7 @@
           <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
           <dd class="col-md-9">
             <% if document[:rightsstatement_ss].present? %>
+              <%= render_rs_icon(document) %>
               <%= document[:rightsstatement_ss] %><br />
             <% end %>
             <% if document[:rights_ss] %>
@@ -230,7 +231,7 @@
             <% if document[:license_ss] %>
               <%= document[:license_ss] %><br />
               <% if document[:license_ss].match(/\(CC/) %>
-                <%= render_cc_license(document[:license_ss]) %><br />
+                <%= render_cc_license(document[:license_ss]) %>
               <% end %>
             <% end %>
           </dd>

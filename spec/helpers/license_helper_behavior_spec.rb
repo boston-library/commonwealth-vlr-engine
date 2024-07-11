@@ -3,6 +3,17 @@
 require 'rails_helper'
 
 describe CommonwealthVlrEngine::LicenseHelperBehavior do
+  describe 'Rights Statements helpers' do
+    let(:document) { SolrDocument.find('bpl-dev:g445cd14k') }
+
+    describe '#render_rs_icon' do
+      it 'renders the rights link and image' do
+        expect(helper.render_rs_icon(document)).to include('href="' + document[:rightsstatement_uri_ss])
+        expect(helper.render_rs_icon(document)).to include('src="https://rightsstatements.org/')
+      end
+    end
+  end
+
   describe 'Creative Commons license helpers' do
     let(:license) { 'This work is licensed for use under a Creative Commons Attribution Non-Commercial No Derivatives License (CC BY-NC-ND).' }
     let(:cc_url) { 'https://creativecommons.org/licenses/by-nc-nd/4.0/' }

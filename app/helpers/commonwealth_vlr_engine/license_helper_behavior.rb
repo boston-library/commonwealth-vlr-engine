@@ -25,6 +25,17 @@ module CommonwealthVlrEngine
       "#{base_url}l/#{license_path}/4.0/80x15.png"
     end
 
+    def render_rs_icon(document)
+      icon_slug = document[:rightsstatement_uri_ss].split('/')[-2].split('-').first
+      link_to(image_tag("https://rightsstatements.org/files/icons/#{icon_slug}.Icon-Only.dark.svg",
+                        alt: "#{document[:rightsstatement_ss]} icon",
+                        class: 'rs_icon'),
+              document[:rightsstatement_uri_ss],
+              rel: 'license',
+              id: 'rs_link',
+              target: '_blank')
+    end
+
     def render_cc_license(license)
       link_to(image_tag(cc_image_url(license),
                         alt: cc_terms_code(license) + ' icon',
