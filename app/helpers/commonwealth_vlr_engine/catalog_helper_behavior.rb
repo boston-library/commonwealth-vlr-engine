@@ -125,7 +125,9 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_pdf_viewer?(files_hash)
-      !has_image_files?(files_hash) && has_pdf_files?(files_hash) && !has_playable_audio?(files_hash)
+      (!has_image_files?(files_hash) || files_hash[:image].count < 2) &&
+      has_pdf_files?(files_hash) &&
+      !has_playable_audio?(files_hash)
     end
 
     # @param document [SolrDocument]

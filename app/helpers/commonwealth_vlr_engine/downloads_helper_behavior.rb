@@ -41,11 +41,9 @@ module CommonwealthVlrEngine
 
     def has_downloadable_files?(document, files_hash)
       document[blacklight_config.hosting_status_field.to_sym] == 'hosted' &&
-      (has_downloadable_images?(document, files_hash) ||
-       has_downloadable_video?(document, files_hash) ||
-       files_hash[:document].present? ||
-       files_hash[:audio].present? ||
-       files_hash[:ereader].present?)
+      license_allows_download?(document) &&
+      (has_image_files?(files_hash) || has_video_files?(files_hash) ||
+       files_hash[:document].present? || files_hash[:audio].present? || files_hash[:ereader].present?)
     end
 
     def has_downloadable_images?(document, files_hash)
