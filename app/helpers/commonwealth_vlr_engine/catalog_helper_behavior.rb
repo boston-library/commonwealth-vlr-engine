@@ -16,26 +16,36 @@ module CommonwealthVlrEngine
       files_hash[:image].present?
     end
 
+    def has_multiple_images?(files_hash)
+      has_image_files?(files_hash) && files_hash[:image].size > 1
+    end
+
     def has_video_files?(files_hash)
       files_hash[:video].present?
     end
 
-    def has_playable_audio?(files_hash)
-      return false if files_hash[:audio].blank?
+    def has_audio_files?(files_hash)
+      files_hash[:audio].present?
+    end
 
-      files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+    def has_document_files?(files_hash)
+      files_hash[:document].present?
+    end
+
+    def has_ereader_files?(files_hash)
+      files_hash[:ereader].present?
+    end
+
+    def has_playable_audio?(files_hash)
+      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
     end
 
     def has_pdf_files?(files_hash)
-      return false if files_hash[:document].blank?
-
-      files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
+      has_document_files?(files_hash) && files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
     end
 
     def book_reader?(document, files_hash)
-      return false if files_hash[:image].blank?
-
-      has_searchable_text?(document) || files_hash[:image].length > IMAGE_VIEWER_LIMIT
+      has_image_files?(files_hash) && (has_searchable_text?(document) || files_hash[:image].size > IMAGE_VIEWER_LIMIT)
     end
 
     # need to render full title or too many pages have same <title>, bad for site SEO
@@ -125,9 +135,7 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_pdf_viewer?(files_hash)
-      (!has_image_files?(files_hash) || files_hash[:image].count < 2) &&
-      has_pdf_files?(files_hash) &&
-      !has_playable_audio?(files_hash)
+      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash)
     end
 
     # @param document [SolrDocument]
