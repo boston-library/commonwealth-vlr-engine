@@ -207,13 +207,12 @@
         <% end %>
         <%# URI field %>
         <% if document[:identifier_uri_ss] %>
-          <% oai_object = true if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' %>
-          <dt class="col-md-3"><%= oai_object ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
+          <dt class="col-md-3"><%= harvested_object?(document) ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
           <dd class="col-md-9">
             <%= link_to(document[:identifier_uri_ss],
                         document[:identifier_uri_ss],
                         :class => 'uri_metadata_link',
-                        target: oai_object ? '_blank' : '_self'
+                        target: harvested_object?(document) ? '_blank' : '_self'
                 ) %>
           </dd>
       <% end %>

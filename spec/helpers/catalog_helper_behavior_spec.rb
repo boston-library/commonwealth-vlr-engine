@@ -12,6 +12,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
   let(:files_hash) { catalog_helper_test_class.get_files(item_ark_id) }
   let(:pdf_item_ark_id) { 'bpl-dev:z029pg62r' }
   let(:pdf_files_hash) { catalog_helper_test_class.get_files(pdf_item_ark_id) }
+  let(:audio_files_hash) { catalog_helper_test_class.get_files('bpl-dev:5d86p086p') }
   let(:harvested_item_ark_id) { 'oai-dev:qv33s812k' }
   let(:harvested_item) { SolrDocument.find(harvested_item_ark_id) }
 
@@ -22,7 +23,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
   describe 'file helpers' do
     describe '#has_image_files?' do
-      it 'returns true' do
+      it 'returns true if the object has image files' do
         expect(helper.has_image_files?(files_hash)).to be_truthy
       end
     end
@@ -37,21 +38,40 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
     describe '#has_video_files?' do
       let(:files_hash) { catalog_helper_test_class.get_files('bpl-dev:cj82k894f') }
-      it 'returns true' do
+      it 'returns true if the object has video files' do
         expect(helper.has_video_files?(files_hash)).to be_truthy
       end
     end
 
+    describe '#has_audio_files?' do
+      it 'returns true if the object has audio files' do
+        expect(helper.has_audio_files?(audio_files_hash)).to be_truthy
+      end
+    end
+
     describe '#has_playable_audio?' do
-      let(:files_hash) { catalog_helper_test_class.get_files('bpl-dev:5d86p086p') }
-      it 'returns true' do
-        expect(helper.has_playable_audio?(files_hash)).to be_truthy
+      it 'returns true if the object has playable audio' do
+        expect(helper.has_playable_audio?(audio_files_hash)).to be_truthy
+      end
+    end
+
+    describe '#has_document_files?' do
+      it 'returns true if the object has document files' do
+        expect(helper.has_document_files?(pdf_files_hash)).to be_truthy
       end
     end
 
     describe '#has_pdf_files?' do
-      it 'returns true' do
+      it 'returns true if the object has PDF files' do
         expect(helper.has_pdf_files?(pdf_files_hash)).to be_truthy
+      end
+    end
+
+    describe '#has_ereader_files?' do
+      let(:files_hash) { catalog_helper_test_class.get_files('bpl-dev:3j334603p') }
+
+      it 'returns true if the object has E-reader files' do
+        expect(helper.has_ereader_files?(files_hash)).to be_truthy
       end
     end
   end

@@ -70,7 +70,7 @@ module CommonwealthVlrEngine
     end
 
     def hosted_collection_class(document)
-      document[blacklight_config.hosting_status_field.to_sym] == 'harvested' ? 'harvested-collection' : 'hosted-collection'
+      harvested_object?(document) ? 'harvested-collection' : 'hosted-collection'
     end
 
     # whether the A-Z link menu should be displayed in collections#index

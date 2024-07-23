@@ -12,7 +12,7 @@ module CommonwealthVlrEngine
     def collection_gallery_url(document, size)
       exemplary_image_pid = document[:exemplary_image_ssi]
       if exemplary_image_pid
-        if document[blacklight_config.hosting_status_field.to_sym] == 'harvested' || document['exemplary_image_iiif_bsi'] == false
+        if harvested_object?(document) || document['exemplary_image_iiif_bsi'] == false
           filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
         elsif document[:destination_site_ssim].to_s.include?('newspapers')
           iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
