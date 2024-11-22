@@ -24,8 +24,9 @@ module CommonwealthVlrEngine
   include CommonwealthVlrEngine::Controller
 )
       end
-      remove_marker = "layout 'blacklight'"
-      gsub_file('app/controllers/application_controller.rb', remove_marker, '')
+      # TODO: remove, this line isn't in test app application_controller
+      # remove_marker = "layout 'blacklight'"
+      # gsub_file('app/controllers/application_controller.rb', remove_marker, '')
     end
 
     # Update the blacklight catalog controller
@@ -52,6 +53,11 @@ module CommonwealthVlrEngine
     # limit Advanced Search facets to this institution
     # can't call SearchBuilder.institution_limit because it's an instance method, not a class method
     config.advanced_search[:form_solr_parameters]['fq'] = '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
+
+    # Blacklight::Gallery config
+    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
+    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)
+    # config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)
 )
       end
 

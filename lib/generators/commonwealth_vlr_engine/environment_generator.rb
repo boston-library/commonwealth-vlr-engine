@@ -7,8 +7,7 @@ module CommonwealthVlrEngine
     source_root File.expand_path('templates', __dir__)
 
     desc "This generator makes the following changes to your application:
-          1. Adds some settings for asset precompilation to config/initializers/assets.rb
-          2. Adds some settings for security and mailers to config/application.rb"
+          1. Adds some settings for security and mailers to config/application.rb"
 
     # add settings to application.rb
     def inject_application_settings

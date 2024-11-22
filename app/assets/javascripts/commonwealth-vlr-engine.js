@@ -1,6 +1,6 @@
 //
 // Required by Blacklight-Maps
-//= require blacklight-maps
+// require blacklight-maps
 
 // Required by Blacklight-Gallery
 //= require blacklight_gallery
