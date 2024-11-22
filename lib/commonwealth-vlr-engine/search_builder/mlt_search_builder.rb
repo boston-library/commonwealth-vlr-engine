@@ -2,7 +2,7 @@
 
 class CommonwealthMltSearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
-  include BlacklightMaps::MapsSearchBuilderBehavior
+  # include BlacklightMaps::MapsSearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 

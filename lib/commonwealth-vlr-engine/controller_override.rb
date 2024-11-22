@@ -7,7 +7,7 @@ module CommonwealthVlrEngine
     included do
       include CommonwealthVlrEngine::Finder
       include BlacklightAdvancedSearch::Controller
-      include BlacklightMaps::Controller
+      # include BlacklightMaps::Controller
       include BlacklightRangeLimit::ControllerOverride
       include BlacklightIiifSearch::Controller
 

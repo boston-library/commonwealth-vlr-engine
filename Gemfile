@@ -8,30 +8,33 @@ git_source(:github) { |repo| "https://github.com/boston-library/#{repo}.git" }
 gemspec
 
 group :development, :test do
-  gem 'rubocop', '~> 1.36', require: false
+  gem 'rubocop', '~> 1.57.2', require: false
   gem 'rubocop-capybara', require: false
-  gem 'rubocop-performance', '~> 1.15', require: false
-  gem 'rubocop-rails', '~> 2.16', require: false
-  gem 'rubocop-rspec', '~> 2.16', require: false
+  gem 'rubocop-performance', '~> 1.19.1', require: false
+  gem 'rubocop-rails', '~> 2.22.1', require: false
+  gem 'rubocop-rspec', '~> 2.25.0', require: false
 end
 
 group :test do
-  gem 'coveralls_reborn', require: false
+  gem 'coveralls_reborn', '~> 0.28.0', require: false
   gem 'database_cleaner'
   gem 'puffing-billy'
   gem 'rails-controller-testing'
   gem 'rss'
-  gem 'selenium-webdriver', '~> 4.10'
-  gem 'simplecov', '~> 0.22'
-  gem 'vcr', '~> 6.0'
-  gem 'webmock', '~> 3.8'
+  gem 'selenium-webdriver', '~> 4.26'
+  gem 'simplecov'
+  gem 'vcr', '~> 6.1'
+  gem 'webmock', '~> 3.18'
 end
+
+# To use a debugger
+# gem 'byebug', group: [:development, :test]
 
 # BEGIN ENGINE_CART BLOCK
 # engine_cart: 2.5.0
 # engine_cart stanza: 2.5.0
 # the below comes from engine_cart, a gem used to test this Rails engine gem in the context of a Rails app.
-file = File.expand_path('Gemfile', ENV['ENGINE_CART_DESTINATION'] || ENV['RAILS_ROOT'] || File.expand_path('.internal_test_app', File.dirname(__FILE__)))
+file = File.expand_path('Gemfile', ENV.fetch('ENGINE_CART_DESTINATION') { ENV.fetch('RAILS_ROOT') { File.expand_path('.internal_test_app', File.dirname(__FILE__)) } })
 if File.exist?(file)
   begin
     eval_gemfile file
@@ -44,18 +47,9 @@ else
   if ENV['RAILS_VERSION']
     if ENV['RAILS_VERSION'] == 'edge'
       gem 'rails', github: 'rails/rails'
-      ENV['ENGINE_CART_RAILS_OPTIONS'] = '--edge --skip-turbolinks'
+      ENV['ENGINE_CART_RAILS_OPTIONS'] = '--edge'
     else
       gem 'rails', ENV['RAILS_VERSION']
-    end
-    case ENV['RAILS_VERSION']
-    when /^6.0/
-      gem 'sass-rails', '>= 6'
-      gem 'webpacker', '~> 4.0'
-    when /^5.[12]/
-      gem 'sass-rails', '~> 5.0'
-      gem 'sprockets', '~> 3.7'
-      gem 'thor', '~> 0.20'
     end
   end
 end

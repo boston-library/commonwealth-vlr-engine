@@ -2,7 +2,7 @@
 
 class CommonwealthInstitutionsSearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
-  include BlacklightMaps::MapsSearchBuilderBehavior
+  # include BlacklightMaps::MapsSearchBuilderBehavior
   include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
 
   self.default_processor_chain += [
