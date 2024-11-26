@@ -17,9 +17,9 @@
 } %>
 
 <% # add the explore options
-  if t('blacklight.home.browse.maps.enabled')
-    nav_links[:explore][:map] = { title: t('blacklight.maps.title'), path: map_path }
-  end
+  # if t('blacklight.home.browse.maps.enabled')
+  #   nav_links[:explore][:map] = { title: t('blacklight.maps.title'), path: map_path }
+  # end
 
   if t('blacklight.home.browse.collections.enabled')
     nav_links[:explore][:collections] = { title: t('blacklight.collections.nav'),

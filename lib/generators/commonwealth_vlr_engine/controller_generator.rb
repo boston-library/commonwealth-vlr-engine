@@ -30,6 +30,8 @@ module CommonwealthVlrEngine
     end
 
     # Update the blacklight catalog controller
+    # TODO: modify Blacklight::Gallery config rather than injecting
+    # TODO: modify default BlacklightIiifSearch config rather than injecting
     def inject_catalog_controller_behavior
       controller_path = "app/controllers/#{controller_name}_controller.rb"
       return if IO.read(controller_path).include?('CommonwealthVlrEngine')
@@ -50,14 +52,10 @@ module CommonwealthVlrEngine
 
     config.fetch_many_document_params = { fl: '*' }
 
+    # TODO: figure out AdvancedSearch stuff
     # limit Advanced Search facets to this institution
     # can't call SearchBuilder.institution_limit because it's an instance method, not a class method
-    config.advanced_search[:form_solr_parameters]['fq'] = '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
-
-    # Blacklight::Gallery config
-    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
-    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)
-    # config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)
+    # config.advanced_search[:form_solr_parameters]['fq'] = '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
 )
       end
 

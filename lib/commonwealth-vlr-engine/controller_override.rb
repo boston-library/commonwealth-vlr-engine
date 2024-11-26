@@ -6,10 +6,10 @@ module CommonwealthVlrEngine
 
     included do
       include CommonwealthVlrEngine::Finder
-      include BlacklightAdvancedSearch::Controller
+      # include BlacklightAdvancedSearch::Controller
       # include BlacklightMaps::Controller
-      include BlacklightRangeLimit::ControllerOverride
-      include BlacklightIiifSearch::Controller
+      # include BlacklightRangeLimit::ControllerOverride
+      # include BlacklightIiifSearch::Controller
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
       before_action :object_files, only: [:show]
@@ -38,13 +38,13 @@ module CommonwealthVlrEngine
         # config.view.slideshow.partials = [:index]
 
         # blacklight-maps stuff
-        config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
-        config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-        config.view.maps.placename_field = 'subject_geographic_sim'
-        config.view.maps.maxzoom = 14
-        config.view.maps.show_initial_zoom = 12
-        config.view.maps.facet_mode = 'geojson'
-        config.view.maps.spatial_query_dist = 0.2
+        # config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
+        # config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
+        # config.view.maps.placename_field = 'subject_geographic_sim'
+        # config.view.maps.maxzoom = 14
+        # config.view.maps.show_initial_zoom = 12
+        # config.view.maps.facet_mode = 'geojson'
+        # config.view.maps.spatial_query_dist = 0.2
 
         # solr field configuration for search results/index views
         config.index.title_field = 'title_info_primary_tsi'
@@ -66,21 +66,22 @@ module CommonwealthVlrEngine
         config.date_asc_sort = DATE_ASC_SORT
         config.title_sort = TITLE_SORT
 
+        # TODO: figure out the new advanced search stuff
         # advanced search configuration
-        config.advanced_search = {
-          qt: 'search',
-          url_key: 'advanced',
-          query_parser: 'edismax',
-          form_solr_parameters: {
-            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
-            'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
-            'f.collection_name_ssim.facet.limit' => -1,
-            'f.reuse_allowed_ssi.facet.limit' => -1,
-            'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
-            'f.collection_name_ssim.facet.sort' => 'index',
-            'f.reuse_allowed_ssi.facet.sort' => 'index'
-          }
-        }
+        # config.advanced_search = {
+        #   qt: 'search',
+        #   url_key: 'advanced',
+        #   query_parser: 'edismax',
+        #   form_solr_parameters: {
+        #     'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
+        #     'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+        #     'f.collection_name_ssim.facet.limit' => -1,
+        #     'f.reuse_allowed_ssi.facet.limit' => -1,
+        #     'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
+        #     'f.collection_name_ssim.facet.sort' => 'index',
+        #     'f.reuse_allowed_ssi.facet.sort' => 'index'
+        #   }
+        # }
 
         # fields for pseudo-objects (collection, institution, series)
         config.collection_field = 'collection_name_ssim'
@@ -96,12 +97,11 @@ module CommonwealthVlrEngine
         config.full_text_index = 'all_fields_ft'
 
         # configuration for Blacklight IIIF Content Search
-        config.iiif_search = {
-          full_text_field: 'ocr_tsiv',
-          object_relation_field: 'is_file_set_of_ssim',
-          page_model_field: 'curator_model_suffix_ssi',
-          supported_params: %w(q page)
-        }
+        # config.iiif_search = {
+        #   full_text_field: 'ocr_tsiv',
+        #   object_relation_field: 'is_file_set_of_ssim',
+        #   supported_params: %w(q page)
+        # }
 
         config.default_solr_params = { qt: 'search', rows: 20 }
 

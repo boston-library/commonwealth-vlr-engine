@@ -152,7 +152,7 @@ en:
               enabled: false
               tagline: 'View materials from libraries, historical societies, museums, and other cultural institutions.'
             maps:
-              enabled: true
+              enabled: false
               tagline: 'Use the map to search for materials from locations across the globe.'
           context:
             about:

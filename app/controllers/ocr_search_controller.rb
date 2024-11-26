@@ -11,7 +11,7 @@ class OcrSearchController < CatalogController
   before_action :modify_config_for_ocr, only: [:index]
 
   def index
-    @doc_response, @document = search_service.fetch(params[:id])
+    @document = search_service.fetch(params[:id])
     if params[:ocr_q]
       if params[:ocr_q].present?
         @image_pid_list = image_file_pids(get_image_files(params[:id]))
@@ -26,12 +26,12 @@ class OcrSearchController < CatalogController
         ocr_search_service = search_service_class.new(config: blacklight_config,
                                                       user_params: ocr_search_params,
                                                       search_builder_class: CommonwealthOcrSearchBuilder)
-        @response, @document_list = ocr_search_service.search_results
+        @response = ocr_search_service.search_results
       else
-        @response, @document_list = Blacklight::Solr::Response.new(nil, nil), []
+        @response = Blacklight::Solr::Response.new(nil, nil)
       end
     else
-      @response, @document_list = {}, []
+      @response = {}
     end
 
     respond_to do |format|

@@ -23,7 +23,7 @@ module CommonwealthVlrEngine
                     sort: blacklight_config.title_sort)
       institutions_search_service = search_service_class.new(config: blacklight_config,
                                                              user_params: params)
-      (@response, @document_list) = institutions_search_service.search_results
+      @response = institutions_search_service.search_results
 
       respond_to do |format|
         format.html
@@ -36,7 +36,7 @@ module CommonwealthVlrEngine
       # have to define a new search_service here, or we can't inject params[:f] below
       institution_search_service = search_service_class.new(config: blacklight_config,
                                                             user_params: params)
-      _show_response, @document = institution_search_service.fetch(params[:id])
+      @document = institution_search_service.fetch(params[:id])
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
       # get the response for collection objects
@@ -45,13 +45,13 @@ module CommonwealthVlrEngine
                         rows: 500, sort: blacklight_config.title_sort }
       collex_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: collex_params)
-      _collex_response, @collex_documents = collex_search_service.search_results
+      @collex_documents = collex_search_service.search_results&.documents
 
       # add params[:f] for proper facet links, get response for items in collection
       params.merge!(f: { blacklight_config.institution_field => [@institution_title] }).permit!
       facets_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: { f: params[:f] })
-      @response, @document_list = facets_search_service.search_results
+      @response = facets_search_service.search_results
 
       respond_to do |format|
         format.html

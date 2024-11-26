@@ -34,6 +34,21 @@ module CommonwealthVlrEngine
       generate 'bpluser:install'
     end
 
+    def blacklight_gallery_intall
+      say_status('info', 'INSTALLING BLACKLIGHT GALLERY', :blue)
+      generate "blacklight_gallery:install"
+    end
+
+    def blacklight_iiif_search_intall
+      say_status('info', 'INSTALLING BLACKLIGHT IIIF SEARCH', :blue)
+      generate "blacklight_iiif_search:install"
+    end
+
+    def blacklight_range_limit_intall
+      say_status('info', 'INSTALLING BLACKLIGHT RANGE LIMIT', :blue)
+      generate "blacklight_range_limit:install"
+    end
+
     # def insert_to_assets
     #   generate 'commonwealth_vlr_engine:localassets'
     # end

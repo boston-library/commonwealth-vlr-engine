@@ -3,7 +3,7 @@
  * require does not need to change if we change file list.
 */
 
-/* vlr-engine dependencies such as blacklight_maps, blacklight_gallery, etc. */
+/* vlr-engine dependencies such as font-awesome, etc. */
 @import 'vlr_dependencies';
 
 /* some site-wide styles, colors, etc. */

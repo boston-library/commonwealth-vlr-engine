@@ -13,7 +13,7 @@ class IiifManifestController < CatalogController
     if image_files.length > 0
       @iiif_manifest = Rails.cache.fetch(params[:id],
                                          { namespace: cache_namespace, compress: true }) do
-        _response, document = search_service.fetch(params[:id])
+        document = search_service.fetch(params[:id])
         create_iiif_manifest(document, image_files).to_json
       end
       render json: @iiif_manifest
@@ -23,9 +23,9 @@ class IiifManifestController < CatalogController
   end
 
   def canvas
-    _canvas_response, canvas_document = search_service.fetch(params[:canvas_object_id])
+    canvas_document = search_service.fetch(params[:canvas_object_id])
     if canvas_document[:is_file_set_of_ssim]
-      _response, document = search_service.fetch(params[:id])
+      document = search_service.fetch(params[:id])
       image_files = image_file_pids(get_image_files(params[:id]))
       if image_files
         image_index = Hash[image_files.map.with_index.to_a][params[:canvas_object_id]]
@@ -42,7 +42,7 @@ class IiifManifestController < CatalogController
   end
 
   def annotation
-    _response, document = search_service.fetch(params[:id])
+    document = search_service.fetch(params[:id])
     if image_file_pids(get_image_files(params[:id])).include?(params[:annotation_object_id])
       annotation = image_annotation_from_image_id(params[:annotation_object_id], document)
       render json: annotation.to_json

@@ -5,7 +5,7 @@ class ImageViewerController < CatalogController
   include CommonwealthVlrEngine::CatalogHelperBehavior
 
   def show
-    _response, @document = search_service.fetch(params[:id])
+    @document = search_service.fetch(params[:id])
     @title = @document[blacklight_config.index.title_field.to_sym]
     # @object_files is already set by before_action in CommonwealthVlrEngine::ControllerOverride
     @page_sequence = create_img_sequence(@object_files[:image], params[:view])
@@ -16,7 +16,7 @@ class ImageViewerController < CatalogController
   end
 
   def book_viewer
-    _response, @document = search_service.fetch(params[:id])
+    @document = search_service.fetch(params[:id])
 
     respond_to do |format|
       format.html { render layout: 'book_viewer' }

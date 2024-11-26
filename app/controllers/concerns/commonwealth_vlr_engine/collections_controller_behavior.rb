@@ -24,7 +24,7 @@ module CommonwealthVlrEngine
       params.merge!(view: 'list', sort: 'title_info_primary_ssort asc, date_start_dtsi asc')
       collection_search_service = search_service_class.new(config: blacklight_config,
                                                            user_params: params)
-      @response, @document_list = collection_search_service.search_results
+      @response = collection_search_service.search_results
 
       respond_to do |format|
         format.html
@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
       # have to define a new search_service here, or we can't inject params[:f] below
       collection_search_service = search_service_class.new(config: blacklight_config,
                                                            user_params: params)
-      _show_response, @document = collection_search_service.fetch(params[:id])
+      @document = collection_search_service.fetch(params[:id])
       @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
       # add params[:f] for proper facet links
@@ -46,7 +46,7 @@ module CommonwealthVlrEngine
       # get the response for the facets representing items in collection
       facets_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: { f: params[:f] })
-      @response, @document_list = facets_search_service.search_results
+      @response = facets_search_service.search_results
 
       # get an image for the collection
       @collection_image_info = collection_image_info(@document) if @document[:exemplary_image_ssi]
@@ -75,8 +75,8 @@ module CommonwealthVlrEngine
                         rows: 1 }
       series_search_service = search_service_class.new(config: blacklight_config,
                                                        user_params: series_params)
-      _series_response, series_doc_list = series_search_service.search_results
-      series_doc_list.first
+      series_response = series_search_service.search_results
+      series_response.documents.first
     end
 
     # show series facet
@@ -116,7 +116,7 @@ module CommonwealthVlrEngine
                        title: '', pid: document[:id], access_master: false,
                        hosting_status: document[blacklight_config.hosting_status_field.to_sym],
                        destination_site: document[:destination_site_ssim] }
-      _col_img_file_resp, col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
+      col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
       if col_img_file_doc
         col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
         col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
