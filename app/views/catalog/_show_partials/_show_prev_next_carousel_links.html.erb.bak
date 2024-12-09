@@ -8,7 +8,7 @@
               remote: true) do %>
     <%= icon('fas', 'chevron-left', class: 'carousel-control-icon prev_icon rounded-circle',
              aria: { hidden: true }) %>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   <% end %>
 <% end %>
 <% if page_sequence[:next] %>
@@ -20,6 +20,6 @@
               remote: true) do %>
     <%= icon('fas', 'chevron-right', class: 'carousel-control-icon next_icon rounded-circle',
              aria: { hidden: true }) %>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   <% end %>
 <% end %>

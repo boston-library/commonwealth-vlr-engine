@@ -49,6 +49,8 @@ module CommonwealthVlrEngine
       generate "blacklight_range_limit:install"
     end
 
+    # TODO: run BlacklightAdvancedSearch generator?
+
     # def insert_to_assets
     #   generate 'commonwealth_vlr_engine:localassets'
     # end

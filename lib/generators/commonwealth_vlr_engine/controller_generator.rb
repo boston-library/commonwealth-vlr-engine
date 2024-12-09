@@ -32,6 +32,7 @@ module CommonwealthVlrEngine
     # Update the blacklight catalog controller
     # TODO: modify Blacklight::Gallery config rather than injecting
     # TODO: modify default BlacklightIiifSearch config rather than injecting
+    # TODO: remove config.add_nav_action lines
     def inject_catalog_controller_behavior
       controller_path = "app/controllers/#{controller_name}_controller.rb"
       return if IO.read(controller_path).include?('CommonwealthVlrEngine')

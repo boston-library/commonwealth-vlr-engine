@@ -366,8 +366,6 @@ Style/MutableConstant:
 
 Style/Next:
   Enabled: true
-  Exclude:
-    - 'app/helpers/commonwealth_vlr_engine/vlr_blacklight_maps_helper_behavior.rb'
 
 Style/NumericLiterals:
   Enabled: true
@@ -391,7 +389,6 @@ Style/RedundantSelf:
   Enabled: true
   Exclude:
     - 'app/helpers/commonwealth_vlr_engine/catalog_helper_behavior.rb'
-    - 'app/helpers/commonwealth_vlr_engine/vlr_blacklight_maps_helper_behavior.rb'
 
 Style/RescueStandardError:
   Enabled: true

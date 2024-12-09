@@ -8,9 +8,9 @@ class DownloadsController < ApplicationController
 
   # render a page/modal with license terms, download links, etc
   def show
-    @doc_response, @document = search_service.fetch(params[:id])
+    @document = search_service.fetch(params[:id])
     if @document[:curator_model_ssi].include? 'Filestream'
-      _parent_response, @parent_document = search_service.fetch(parent_id(@document))
+      @parent_document = search_service.fetch(parent_id(@document))
       @object_profile = JSON.parse(@document['attachments_ss'])
     else
       @parent_document = @document

@@ -1,12 +1,12 @@
-<%# override so we can call our own template; render sidebar elsewhere %>
+<%# override so we can call our own template; add opengraph markup %>
 <% content_for(:content) do %>
   <section class="<%= show_content_classes %>">
     <%= yield %>
   </section>
 
-  <!-- <section class="<%# show_sidebar_classes %>"> -->
-    <%# content_for(:sidebar) %>
-  <!-- </section> -->
+  <section class="<%= show_sidebar_classes %>">
+    <%= content_for(:sidebar) %>
+  </section>
 <% end %>
 
 <% insert_opengraph_markup %>

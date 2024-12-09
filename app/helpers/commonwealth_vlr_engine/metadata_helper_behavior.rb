@@ -125,7 +125,7 @@ module CommonwealthVlrEngine
         title_output = document.id
       end
       regex = /[^\.]\.\.[^\.]/ # double periods, but not ellipsis
-      title_output.gsub!(/\.\./, '.') if title_output.match?(regex)
+      title_output = title_output.gsub(/\.\./, '.') if title_output.match?(regex)
       title_output.squish
     end
 

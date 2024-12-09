@@ -2,8 +2,9 @@
 
 module CommonwealthVlrEngine
   module CatalogHelperBehavior
-    include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
-    include CommonwealthVlrEngine::RenderConstraintsHelperBehavior
+    #include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
+    #include CommonwealthVlrEngine::RenderConstraintsHelperBehavior
+    include CommonwealthVlrEngine::DocumentHelperBehavior
     include CommonwealthVlrEngine::ImagesHelperBehavior
     include CommonwealthVlrEngine::LicenseHelperBehavior
     include CommonwealthVlrEngine::MetadataHelperBehavior
@@ -49,7 +50,7 @@ module CommonwealthVlrEngine
     end
 
     # need to render full title or too many pages have same <title>, bad for site SEO
-    def html_title(options = {})
+    def show_html_title(options = {})
       render_title(options[:document])
     end
 
@@ -163,23 +164,23 @@ module CommonwealthVlrEngine
     # https://github.com/projectblacklight/blacklight-maps/issues/84
     # https://github.com/projectblacklight/blacklight_range_limit/issues/49
     # are resolved
-    def render_search_to_page_title(params)
-      # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
-      if params.respond_to?(:permit!)
-        params_for_constraints = params.permit!.to_h
-      else
-        params_for_constraints = params
-      end
-
-      html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/, ' ')
-      html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/, ' / ')
-      sanitize(html_constraints, tags: [])
-
-      ## TODO: remove above and uncomment lines below after all issues have been resolved with
-      ##       blacklight_advanced_search, blacklight_range_limit, and blacklight-maps
-      # constraints = [render_search_to_page_title_mlt(params), super(params)]
-      # constraints.reject { |item| item.blank? }.join(' / ')
-    end
+    # def render_search_to_page_title(params)
+    #   # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
+    #   if params.respond_to?(:permit!)
+    #     params_for_constraints = params.permit!.to_h
+    #   else
+    #     params_for_constraints = params
+    #   end
+    #
+    #   html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/, ' ')
+    #   html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/, ' / ')
+    #   sanitize(html_constraints, tags: [])
+    #
+    #   ## TODO: remove above and uncomment lines below after all issues have been resolved with
+    #   ##       blacklight_advanced_search, blacklight_range_limit, and blacklight-maps
+    #   # constraints = [render_search_to_page_title_mlt(params), super(params)]
+    #   # constraints.reject { |item| item.blank? }.join(' / ')
+    # end
 
     # TODO: uncomment and write spec after issues identified with render_search_to_page_title resolved
     # def render_search_to_page_title_mlt(params)
@@ -207,10 +208,10 @@ module CommonwealthVlrEngine
     # override from Blacklight::ConfigurationHelperBehavior
     # remove extraneous text from search field labels
     # but leave them as-is on Advanced Search
-    def search_fields
-      return super if controller_name == 'advanced'
-
-      super.map { |f| [f[0].gsub(/\s\([\w\s]*\)/, ''), f[1]] }
-    end
+    # def search_fields
+    #   return super if controller_name == 'advanced'
+    #
+    #   super.map { |f| [f[0].gsub(/\s\([\w\s]*\)/, ''), f[1]] }
+    # end
   end
 end

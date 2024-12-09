@@ -70,7 +70,7 @@ module CommonwealthVlrEngine
       asset_path('commonwealth-vlr-engine/dc_institution-icon.png')
     end
 
-    # override Blacklight::CatalogHelperBehavior: don't want to pull thumbnail url from Solr
+    # TODO: this should probably be set in ThumbnailPresenter
     def thumbnail_url(document)
       thumbnail_att_name = 'image_thumbnail_300'
       if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'

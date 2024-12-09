@@ -3,15 +3,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">EXPLICIT CONTENT WARNING</h3>
-        <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="blacklight-modal-close close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
       </div>
       <div id="flagged_warning_text" class="modal-body">
         <%= render partial: 'catalog/_show_partials/show_flagged_modal_text' %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">View Content</button>
+        <button type="button" class="btn btn-warning" data-bl-dismiss="modal">View Content</button>
         <% if current_search_session %>
             <%= link_back_to_catalog(class: 'btn btn-danger') %>
         <% else %>

@@ -55,9 +55,10 @@ module CommonwealthVlrEngine
         # solr field configuration for document/show views
         config.show.title_field = 'title_info_primary_tsi'
         config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
-                                                                            helper_method: :html_title)
+                                                                            helper_method: :show_html_title,
+                                                                            presenter: Blacklight::FieldPresenter)
         config.show.display_type_field = 'curator_model_suffix_ssi'
-        config.show.partials = [:show_breadcrumb, :show_header, :show]
+        # config.show.partials = [:show_breadcrumb, :show_header, :show]
 
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
@@ -213,15 +214,15 @@ module CommonwealthVlrEngine
         config.add_sort_field 'system_create_dtsi desc', label: 'recently added'
 
         # add our custom tools
-        config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
-        config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
-        config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
+        # config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
+        # config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
+        # config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
       # for some reason won't work if not in the 'included' block
       def metadata_view
-        @response, @document = search_service.fetch(params[:id])
+        @document = search_service.fetch(params[:id])
         respond_to do |format|
           format.html do
             render layout: false if request.xhr?

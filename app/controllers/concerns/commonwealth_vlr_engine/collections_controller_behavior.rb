@@ -122,7 +122,7 @@ module CommonwealthVlrEngine
         col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
         if col_img_field
           col_img_obj_pid = col_img_field.first
-          _col_img_obj_resp, col_img_obj_doc = search_service.fetch(col_img_obj_pid)
+          col_img_obj_doc = search_service.fetch(col_img_obj_pid)
           if col_img_obj_doc
             col_img_info[:title] = helpers.render_title(col_img_obj_doc)
             col_img_info[:pid] = col_img_obj_pid

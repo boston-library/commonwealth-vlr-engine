@@ -1,8 +1,6 @@
 <div class="modal-header">
   <h3 class="modal-title"><%= t('blacklight.tools.librarian_view.title') %></h3>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="blacklight-modal-close close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
 </div>
 <div class="mods_xml_display">
     <%= content_tag(:pre, render_mods_xml_record(@document)) %>

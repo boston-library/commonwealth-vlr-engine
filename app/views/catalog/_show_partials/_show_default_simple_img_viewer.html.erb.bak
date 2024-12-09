@@ -4,9 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="img_viewer_title"><%= object_title.gsub(/\'/,'') %></h4>
-        <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="blacklight-modal-close close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
       </div>
       <div class="modal-body" id="img_viewer_osd"></div>
       <div class="modal-footer"></div>

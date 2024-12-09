@@ -16,19 +16,19 @@
     <div class="row">
       <div class="col-sm-8">
         <%= hidden_field_tag 'ark_id', @document[:id] %>
-        <div class="form-group row">
+        <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
           <div class="col-md-9">
             <%= text_field_tag :name, params[:name], class: 'form-control' %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.email') %></label>
           <div class="col-md-9">
             <%= text_field_tag :email, params[:email], class: 'form-control' %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.topic.label') %></label>
           <div class="col-md-9">
             <%= select_tag(:topic,
@@ -37,13 +37,13 @@
                            class: 'form-control') %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
           <div class="col-md-9">
             <%= text_area_tag :message, params[:message], size: '24x6', class: 'form-control' %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <div class="offset-md-3 col-md-4">
             <%= recaptcha_tags(id: 'item_feedback_recaptcha') %>
           </div>

@@ -36,7 +36,7 @@ module CommonwealthVlrEngine
     # replaces render_document_index in institutions/index partial
     # so we can use local index_map_institutions partial for map view
     def render_institutions_index(documents = nil, locals = {})
-      documents ||= @document_list
+      documents ||= @response.documents
       if document_index_view_type.to_s == 'maps'
         render partial: 'catalog/index_mapview_institutions',
                locals: { geojson_features: serialize_geojson(map_facet_values,

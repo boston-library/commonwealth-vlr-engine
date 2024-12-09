@@ -5,9 +5,7 @@
                  length: 55,
                  separator: ' ') %>
   </h4>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
 </div>
 <div id="ocr_search_modal" class="modal-body">
   <div id="ocr_search_wrapper">
@@ -25,10 +23,10 @@
               <%= render partial: 'catalog/sort_widget' %>
             </div>
             <div id="ocr_search_results">
-              <%= render collection: @document_list,
+              <%= render collection: @response.documents,
                          as: :document,
                          partial: 'index_ocr_list',
-                         locals: { count: @document_list.count } %>
+                         locals: { count: @response.documents&.count } %>
             </div>
         <% elsif ocr_q_params(current_search_session) %>
             <div id="ocr_search_suggest">

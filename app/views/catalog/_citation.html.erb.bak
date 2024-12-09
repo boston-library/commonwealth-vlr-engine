@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h3><%= t('blacklight.tools.citation') %></h3>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+  <button type="button" class="blacklight-modal-close close" data-bl-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">×</span>
   </button>
 </div>

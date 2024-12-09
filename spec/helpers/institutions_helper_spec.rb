@@ -32,12 +32,11 @@ describe InstitutionsHelper do
   describe 'render_institutions_index' do
     before(:each) do
       blacklight_config.search_builder_class = CommonwealthInstitutionsSearchBuilder
-      (@response, @document_list) = search_service.search_results
+      @response = search_service.search_results
     end
 
     # remove the instance variables so they don't mess up other specs
     after(:each) do
-      remove_instance_variable(:@document_list)
       remove_instance_variable(:@response)
     end
 
@@ -48,7 +47,7 @@ describe InstitutionsHelper do
 
       it 'calls render_document_index_with_view' do
         expect(helper).to receive(:render_document_index_with_view)
-        helper.render_institutions_index(@document_list, {})
+        helper.render_institutions_index(@response.documents, {})
       end
     end
 

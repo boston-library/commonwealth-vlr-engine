@@ -5,8 +5,6 @@
   <h4 id="" class="modal-title">
     <%= t('blacklight.feedback.item.title') %>
   </h4>
-  <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
 </div>
 <%= render 'item_feedback_form' %>

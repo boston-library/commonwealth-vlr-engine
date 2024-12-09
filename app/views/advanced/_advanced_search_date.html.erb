@@ -1,10 +1,10 @@
 <div id="date_range_limit" class="advanced_search_field">
-  <div class="form-group row">
+  <div class="row">
     <label class="col-form-label col-md-3 col-lg-2">Year</label>
     <div class="col-sm-8">
       <% %w(start end).each do |v| %>
         <div class="input-group col-md-8 col-lg-5">
-          <div class="input-group-prepend">
+          <div class="">
             <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "date_#{v}" %>">
               <%= v.capitalize %>
             </label>

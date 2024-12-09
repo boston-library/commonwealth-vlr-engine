@@ -5,7 +5,7 @@
     <h4><%= t('blacklight.home.context.about.title') %></h4>
     <p><%= t('blacklight.home.context.about.text') %></p>
 
-    <p class="more-info-link text-right">
+    <p class="more-info-link text-end">
       <%= link_to 'Learn more >>', render_about_site_path %>
     </p>
   </div>
@@ -13,7 +13,7 @@
   <div id="content_home_news" class="col-sm-6">
     <h4><%= t('blacklight.home.context.news.title') %></h4>
     <%= render_blog_feed %>
-    <p class="more-info-link text-right">
+    <p class="more-info-link text-end">
       <%= link_to 'More news >>',
                   t('blacklight.home.context.news.blog_url'),
                   target: '_blank' %>
