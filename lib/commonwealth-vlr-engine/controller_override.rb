@@ -6,10 +6,9 @@ module CommonwealthVlrEngine
 
     included do
       include CommonwealthVlrEngine::Finder
+      # TODO: remove, these should be added directly to downstream app's CatalogController
       # include BlacklightAdvancedSearch::Controller
       # include BlacklightMaps::Controller
-      # include BlacklightRangeLimit::ControllerOverride
-      # include BlacklightIiifSearch::Controller
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
       before_action :object_files, only: [:show]
@@ -258,6 +257,7 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
       blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
       # remove item-centric show tools (for admin)
+      # TODO: this isn't how actions are added anymore, may not need to worry about this
       blacklight_config.show.document_actions.delete(:sharing)
       blacklight_config.show.document_actions.delete(:iiif_manifest)
       blacklight_config.show.document_actions.delete(:bookmark)

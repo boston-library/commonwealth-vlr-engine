@@ -40,7 +40,7 @@
 <% nav_links.each_with_index do |(category, menu_items), index| %>
   <li class="nav-item dropdown<%= ' last_nav' if index == nav_links.length-1 %><%= ' active' if @nav_li_active == category.to_s %>">
     <a id="<%= category.to_s + '_dropdown' %>" class="nav-link dropdown-toggle" href="/<%= category.to_s %>"
-       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= category.to_s.titleize %>
     </a>
     <div class="dropdown-menu<%= ' dropdown-menu-right' if index == nav_links.length-1 %>" role="menu"

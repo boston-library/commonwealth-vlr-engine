@@ -39,6 +39,11 @@ module CommonwealthVlrEngine
       generate "blacklight_gallery:install"
     end
 
+    # TODO:
+    # 1. update the generated configuration in downstream app catalog_controller
+    # 2. add these lines to iiif_search_builder#ocr_search_params:
+    #      solr_parameters[:qf] = '${fulltext_qf}'
+    #      solr_parameters[:pf] = '${fulltext_pf}'
     def blacklight_iiif_search_intall
       say_status('info', 'INSTALLING BLACKLIGHT IIIF SEARCH', :blue)
       generate "blacklight_iiif_search:install"

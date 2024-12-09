@@ -37,14 +37,14 @@ module CommonwealthVlrEngine
     # so we can use local index_map_institutions partial for map view
     def render_institutions_index(documents = nil, locals = {})
       documents ||= @response.documents
-      if document_index_view_type.to_s == 'maps'
-        render partial: 'catalog/index_mapview_institutions',
-               locals: { geojson_features: serialize_geojson(map_facet_values,
-                                                             'index',
-                                                             { partial: 'institutions/map_institutions_search' }) }
-      else
+      # if document_index_view_type.to_s == 'maps'
+      #   render partial: 'catalog/index_mapview_institutions',
+      #          locals: { geojson_features: serialize_geojson(map_facet_values,
+      #                                                        'index',
+      #                                                        { partial: 'institutions/map_institutions_search' }) }
+      # else
         render_document_index_with_view(document_index_view_type, documents, locals)
-      end
+      # end
     end
 
     # whether the A-Z link menu should be displayed in institutions#index
