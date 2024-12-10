@@ -6,7 +6,7 @@ module CommonwealthVlrEngine
   class ControllerGenerator < Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
 
-    argument :controller_name, type: :string, default: 'catalog'
+    CATALOG_CONTROLLER_PATH = 'app/controllers/catalog_controller.rb'
 
     desc "This generator makes the following changes to your application:
           1. Injects behavior into your user application_controller.rb
@@ -30,23 +30,24 @@ module CommonwealthVlrEngine
     end
 
     # Update the blacklight catalog controller
-    # TODO: modify Blacklight::Gallery config rather than injecting
-    # TODO: modify default BlacklightIiifSearch config rather than injecting
-    # TODO: remove config.add_nav_action lines
     def inject_catalog_controller_behavior
-      controller_path = "app/controllers/#{controller_name}_controller.rb"
-      return if IO.read(controller_path).include?('CommonwealthVlrEngine')
+      return if IO.read(CATALOG_CONTROLLER_PATH).include?('CommonwealthVlrEngine')
 
       marker = 'include Blacklight::Catalog'
-      insert_into_file controller_path, after: marker do
+      insert_into_file CATALOG_CONTROLLER_PATH, after: marker do
         %q(
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 )
       end
+    end
 
+    # updates to stuff within configure_blacklight block
+    # TODO: modify default Blacklight::Gallery config rather than injecting
+    # TODO: remove config.add_nav_action lines
+    def modify_blacklight_config
       marker = 'configure_blacklight do |config|'
-      insert_into_file controller_path, after: marker do
+      insert_into_file CATALOG_CONTROLLER_PATH, after: marker do
         %q(
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
@@ -61,26 +62,37 @@ module CommonwealthVlrEngine
       end
 
       # For config.default_solr_params
-      gsub_file(controller_path, /config\.default_solr_params[\s\S]+?}/, '')
+      gsub_file(CATALOG_CONTROLLER_PATH, /config\.default_solr_params[\s\S]+?}/, '')
 
+      # remove default blacklight index/facet/show/search/sort fields
       fields_to_remove = [
-          / +config.add_facet_field 'example_query_facet_field'[\s\S]+?}\n[ ]+}/,
-          / +config.add_search_field\([\s\S]+?end/,
-          / +config.index.title_field +=.+?$\n*/,
-          / +config.index.display_type_field +=.+?$\n*/,
-          / +config.add_facet_field +'.+?$\n*/,
-          / +config.add_index_field +'.+?$\n*/,
-          / +config.add_show_field +'.+?$\n*/,
-          / +config.add_search_field +'.+?$\n*/,
-          / +config.add_sort_field +'.+?$\n*/
+        / +config.add_facet_field 'example_query_facet_field'[\s\S]+?}\n[ ]+}/,
+        / +config.add_search_field\([\s\S]+?end/,
+        / +config.index.title_field +=.+?$\n*/,
+        / +config.index.display_type_field +=.+?$\n*/,
+        / +config.add_facet_field +'.+?$\n*/,
+        / +config.add_index_field +'.+?$\n*/,
+        / +config.add_show_field +'.+?$\n*/,
+        / +config.add_search_field +'.+?$\n*/,
+        / +config.add_sort_field +'.+?$\n*/
       ]
       fields_to_remove.each do |remove_marker|
-        gsub_file(controller_path, /#{remove_marker}/, '')
+        gsub_file(CATALOG_CONTROLLER_PATH, /#{remove_marker}/, '')
       end
 
       # modify show_document_actions
-      gsub_file(controller_path, /:citation/, ":citation, partial: 'show_cite_tools'")
-      gsub_file(controller_path, /:email,/, ":email, partial: 'show_email_tools', if: false,")
+      gsub_file(CATALOG_CONTROLLER_PATH, /:citation/, ":citation, partial: 'show_cite_tools'")
+      gsub_file(CATALOG_CONTROLLER_PATH, /:email,/, ":email, partial: 'show_email_tools', if: false,")
+
+      # update blacklight_iiif_search config
+      gsub_file(CATALOG_CONTROLLER_PATH, / +config.iiif_search[\s\S]+}/) do
+        %q(config.iiif_search = {
+      full_text_field: 'ocr_tsiv',
+      object_relation_field: 'is_file_set_of_ssim',
+      page_model_field: 'curator_model_suffix_ssi',
+      supported_params: %w(q page)
+    })
+      end
     end
   end
 end
