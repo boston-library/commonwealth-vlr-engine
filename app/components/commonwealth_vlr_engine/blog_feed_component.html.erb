@@ -1,0 +1,18 @@
+<h4 id="blog_feed_title"><%= t('blacklight.home.news.title') %></h4>
+<% if posts.present? %>
+  <ul id="blog_feed_items">
+    <% posts.each do |post| %>
+      <%= content_tag(:li, link_to(post.title, post.link, class: 'blog_feed_item_link', target: '_blank'),
+                      class: 'blog_feed_item') %>
+    <% end %>
+  </ul>
+  <p class="more-info-link text-end">
+    <%= link_to 'More news >>', t('blacklight.home.news.blog_url'), target: '_blank' %>
+  </p>
+<% else %>
+  <%= content_tag(:p, 'No news at the moment, visit ' +
+    link_to(t('blacklight.home.context.news.blog_title'),
+            t('blacklight.home.context.news.blog_url'),
+            target: '_blank') +
+    ' for the latest updates.') %>
+<% end %>

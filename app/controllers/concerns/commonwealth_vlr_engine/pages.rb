@@ -5,8 +5,8 @@ module CommonwealthVlrEngine
     extend ActiveSupport::Concern
 
     def home
-      @carousel_slides = CarouselSlide.where(context: 'root').order(:sequence)
-      render 'pages/home'
+      @banner_image = CarouselSlide.where(context: 'root').sample
+      # render 'pages/home'
     end
 
     def about

@@ -1,4 +1,12 @@
 <%# putting this in a partial so it can be called from catalog#index %>
 <%# when no search params present %>
-<%= render 'pages/_home_partials/home_content' %>
+<%# render 'pages/home/home_content' %>
+<%# render CommonwealthVlrEngine::BannerImageComponent.new(context: 'root', image_data: @banner_image) %>
+
+<%= render partial: 'pages/home/hero_block' %>
+
+<%= render partial: 'pages/home/context' %>
+
+<%= render partial: 'pages/home/news' %>
+
 <%= render 'shared/sitelinks_search_box' %>
