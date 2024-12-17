@@ -1,17 +1,21 @@
 <%# hero image and search box %>
 <div id="hero_block" class="row">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <div id="hero_content_wrapper">
-        <h1><%= t('blacklight.home.banner.center_text') %></h1>
-        <div id="hero_search_wrapper">
-          <%= render Blacklight::SearchBarComponent.new(
-            url: search_action_url,
-            advanced_search_url: search_action_url(action: 'advanced_search'),
-            params: search_state.params_for_search.except(:qt),
-            autocomplete_path: suggest_index_catalog_path) %>
-        </div>
+  <div class="container-fluid"
+       style="background-image:url('<%= iiif_image_url(@banner_image.image_pid,
+                                                       { size: @banner_image.size,
+                                                       region: @banner_image.region }) %>')">
+    <div id="hero_content_wrapper">
+      <h1 id="hero headline"><%= t('blacklight.home.banner.center_text') %></h1>
+      <div id="hero_search_wrapper">
+        <%= render Blacklight::SearchBarComponent.new(
+          url: search_action_url,
+          advanced_search_url: search_action_url(action: 'advanced_search'),
+          params: search_state.params_for_search.except(:qt),
+          autocomplete_path: suggest_index_catalog_path) %>
       </div>
+      <% if @banner_image %>
+        <div id="hero_image_attribution"><%= @banner_image.title %></div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -10,9 +10,9 @@
     <%= link_to 'More news >>', t('blacklight.home.news.blog_url'), target: '_blank' %>
   </p>
 <% else %>
-  <%= content_tag(:p, 'No news at the moment, visit ' +
-    link_to(t('blacklight.home.context.news.blog_title'),
-            t('blacklight.home.context.news.blog_url'),
-            target: '_blank') +
-    ' for the latest updates.') %>
+  <p>
+    No news at the moment, visit <%= link_to(t('blacklight.home.news.blog_title'),
+                                             t('blacklight.home.news.blog_url'),
+                                             target: '_blank') %> for the latest updates.
+  </p>
 <% end %>
