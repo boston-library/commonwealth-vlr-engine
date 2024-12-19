@@ -103,6 +103,9 @@ module CommonwealthVlrEngine
         #   supported_params: %w(q page)
         # }
 
+        # permit mlt_id param, needs to be set here, not in #mlt_search
+        config.search_state_fields << :mlt_id
+
         config.default_solr_params = { qt: 'search', rows: 20 }
 
         # solr fields that will be treated as facets by the blacklight application
@@ -126,7 +129,7 @@ module CommonwealthVlrEngine
         # facet for blacklight-maps catalog#index map view
         # have to use '-2' to get all values
         # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
-        config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
+        #config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
         # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
