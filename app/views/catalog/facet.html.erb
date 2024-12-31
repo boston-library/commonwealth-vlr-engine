@@ -1,0 +1,25 @@
+<%# override so we can add ids for event tracking to div.facet-extended-list %>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_prefix do %>
+    <div class="facet-pagination top row justify-content-between">
+      <%= render :partial=>'facet_pagination' %>
+    </div>
+  <% end %>
+
+  <% component.with_title { facet_field_label(@facet.key) } %>
+  <%= render Blacklight::Search::FacetSuggestInput.new(facet: @facet, presenter: @presenter) %>
+
+  <%= render partial: 'facet_index_navigation' if @facet.index_range && @display_facet.index? %>
+
+  <div class="facet-extended-list" id="<%= "facet-#{@facet.field}" %>" >
+    <%= render Blacklight::FacetComponent.new(display_facet: @display_facet,
+                                              blacklight_config: blacklight_config,
+                                              layout: false) %>
+  </div>
+
+  <% component.with_footer do %>
+    <div class="facet-pagination bottom flex-row justify-content-between">
+      <%= render :partial=>'facet_pagination' %>
+    </div>
+  <% end %>
+<% end %>

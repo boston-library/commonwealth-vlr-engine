@@ -233,15 +233,17 @@ module CommonwealthVlrEngine
         end
       end
 
-      # displays values and pagination links for Format field
+      # /formats - displays values and pagination links for Format field
+      # based on Blacklight::Catalog#facet
       def formats_facet
         @nav_li_active = 'explore'
         @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
         @facet = blacklight_config.facet_fields['genre_basic_ssim']
         @response = search_service.facet_field_response(@facet.key,
                                                         { 'f.genre_basic_ssim.facet.limit' => -1 })
-        @display_facet = @response.aggregations[@facet.key]
-        @pagination = facet_paginator(@facet, @display_facet)
+        @display_facet = @response.aggregations[@facet.field]
+        @presenter = @facet.presenter.new(@facet, @display_facet, view_context)
+        @pagination = @presenter.paginator
         render :facet
       end
     end

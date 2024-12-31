@@ -2,7 +2,7 @@
 
 begin
   require 'blacklight'
-  require 'blacklight/gallery'
+  # require 'blacklight/gallery' # prob don't need this, we don't use any classes from this gem?
   require 'blacklight_advanced_search'
   # require 'blacklight/maps'
   require 'blacklight_range_limit'
