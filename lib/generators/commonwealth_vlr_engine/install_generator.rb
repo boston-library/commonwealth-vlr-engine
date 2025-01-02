@@ -45,8 +45,8 @@ module CommonwealthVlrEngine
     # tries to compile files directly from blacklight-gallery gem's app/assets/javascripts/blacklight_gallery
     # TAKE A DEEP BREATH, WE CAN FIGURE THIS OUT
     def blacklight_gallery_intall
-      # say_status('info', 'INSTALLING BLACKLIGHT GALLERY', :blue)
-      # generate "blacklight_gallery:install"
+      say_status('info', 'INSTALLING BLACKLIGHT GALLERY', :blue)
+      generate "blacklight_gallery:install"
     end
 
     def blacklight_iiif_search_intall

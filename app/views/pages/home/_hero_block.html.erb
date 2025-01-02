@@ -3,7 +3,7 @@
   <div class="container-fluid"
        style="background-image:url('<%= iiif_image_url(@banner_image.image_pid,
                                                        { size: @banner_image.size,
-                                                       region: @banner_image.region }) %>')">
+                                                       region: @banner_image.region }) if @banner_image %>')">
     <div id="hero_content_wrapper">
       <h1 id="hero headline"><%= t('blacklight.home.banner.center_text') %></h1>
       <div id="hero_search_wrapper">
