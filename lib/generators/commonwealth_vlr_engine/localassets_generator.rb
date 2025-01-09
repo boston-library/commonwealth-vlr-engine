@@ -8,6 +8,12 @@ module CommonwealthVlrEngine
 
     desc 'AssetsGenerator Commonwealth VLR Engine'
 
+    # TODO: this all need to be rewritten for Rails 7 pipeline with propshaft, importmaps,
+    #       and cssbundling-rails (no sprockets)
+    # also need to add `@import "font-awesome";` to app's either:
+    #   - app/assets/stylesheets/application.bootstrap.scss
+    #   - app/assets/stylesheets/application.css.scss
+
     def assets
       unless IO.read('app/assets/javascripts/application.js').include?('commonwealth-vlr-engine')
         marker = '//= require blacklight/blacklight'

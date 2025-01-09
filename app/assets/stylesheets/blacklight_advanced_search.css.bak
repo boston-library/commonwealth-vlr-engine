@@ -1,5 +1,0 @@
-/* have to create this locally to use @import instead of require */
-/* sass-rails > 5.0 doesn't like require */
-
-@import 'blacklight_advanced_search/advanced_results';
-@import 'blacklight_advanced_search/blacklight_advanced_search_styles';
