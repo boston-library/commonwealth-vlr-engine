@@ -37,6 +37,7 @@ module CommonwealthVlrEngine
     end
 
     # as of sprockets >= 4 have to explicitly declare each file
+    # TODO this is all probably deprecated now that we're not using Sprockets
     initializer 'commonwealth.assets.precompile' do |app|
       vlr_asset_base_path = File.join(CommonwealthVlrEngine.root, 'app', 'assets')
       vlr_assets = [
