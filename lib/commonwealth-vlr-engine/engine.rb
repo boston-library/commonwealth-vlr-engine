@@ -38,23 +38,29 @@ module CommonwealthVlrEngine
 
     # as of sprockets >= 4 have to explicitly declare each file
     # TODO this is all probably deprecated now that we're not using Sprockets
-    initializer 'commonwealth.assets.precompile' do |app|
-      vlr_asset_base_path = File.join(CommonwealthVlrEngine.root, 'app', 'assets')
-      vlr_assets = [
-        Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', '*.{gif,png,svg}')),
-        Dir.glob(File.join(vlr_asset_base_path, 'javascripts', 'commonwealth-vlr-engine', '*'))
-      ]
-      vlr_assets.each do |assets|
-        assets.each do |asset|
-          asset_filename = asset.split('/').last.gsub(/\.erb/, '')
-          app.config.assets.precompile << "commonwealth-vlr-engine/#{asset_filename}"
-        end
-      end
-      osd_images = Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', 'openseadragon', '*.png'))
-      osd_images.each do |osd_img|
-        app.config.assets.precompile << "commonwealth-vlr-engine/openseadragon/#{osd_img.split('/').last}"
-      end
-      app.config.assets.precompile << 'openseadragon.js'
+    # initializer 'commonwealth.assets.precompile' do |app|
+    #   vlr_asset_base_path = File.join(CommonwealthVlrEngine.root, 'app', 'assets')
+    #   vlr_assets = [
+    #     Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', '*.{gif,png,svg}')),
+    #     Dir.glob(File.join(vlr_asset_base_path, 'javascripts', 'commonwealth-vlr-engine', '*'))
+    #   ]
+    #   vlr_assets.each do |assets|
+    #     assets.each do |asset|
+    #       asset_filename = asset.split('/').last.gsub(/\.erb/, '')
+    #       app.config.assets.precompile << "commonwealth-vlr-engine/#{asset_filename}"
+    #     end
+    #   end
+    #   osd_images = Dir.glob(File.join(vlr_asset_base_path, 'images', 'commonwealth-vlr-engine', 'openseadragon', '*.png'))
+    #   osd_images.each do |osd_img|
+    #     app.config.assets.precompile << "commonwealth-vlr-engine/openseadragon/#{osd_img.split('/').last}"
+    #   end
+    #   app.config.assets.precompile << 'openseadragon.js'
+    # end
+
+    initializer "commonwealth_vlr_engine.importmap", before: "importmap" do |app|
+      app.config.assets.paths << Engine.root.join("app/javascript/commonwealth-vlr-engine")
+      app.config.importmap.paths << Engine.root.join("config/importmap.rb")
+      app.config.importmap.cache_sweepers << Engine.root.join("app/javascript/commonwealth-vlr-engine")
     end
   end
 end
