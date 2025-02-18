@@ -149,7 +149,7 @@ en:
               enabled: true
               tagline: 'Photographs, maps, postcards, manuscripts, books, artifacts, and more.'
             institutions:
-              enabled: false
+              enabled: true
               tagline: 'View materials from libraries, historical societies, museums, and other cultural institutions.'
             maps:
               enabled: false

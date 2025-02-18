@@ -9,8 +9,8 @@ begin
   require 'blacklight_iiif_search'
   require 'typhoeus'
   require 'font-awesome-sass'
-  # require 'unicode'
   require 'madison'
+  require 'openseadragon'
   require 'rsolr' unless defined? RSolr
   require 'iiif/presentation'
   require 'recaptcha'
@@ -58,9 +58,9 @@ module CommonwealthVlrEngine
     # end
 
     initializer "commonwealth_vlr_engine.importmap", before: "importmap" do |app|
-      app.config.assets.paths << Engine.root.join("app/javascript/commonwealth-vlr-engine")
+      app.config.assets.paths << Engine.root.join("app/javascript")
       app.config.importmap.paths << Engine.root.join("config/importmap.rb")
-      app.config.importmap.cache_sweepers << Engine.root.join("app/javascript/commonwealth-vlr-engine")
+      app.config.importmap.cache_sweepers << Engine.root.join("app/javascript")
     end
   end
 end
