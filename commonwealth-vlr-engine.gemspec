@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass', '~> 6.5.2'
   s.add_dependency 'iiif-presentation'
   s.add_dependency 'madison', '~> 0.5.0'
-  s.add_dependency 'openseadragon', '~> 1.0.12'
+  s.add_dependency 'openseadragon', '~> 1.0.17'
   s.add_dependency 'rails', '~> 7.2.2', '< 8'
   s.add_dependency 'recaptcha', '~> 5.17'
   s.add_dependency 'rsolr', '>= 1.0', '< 3'

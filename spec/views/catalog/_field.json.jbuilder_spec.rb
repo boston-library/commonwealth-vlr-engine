@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'catalog/_field.json.jbuilder.bak', api: true do
+RSpec.describe 'catalog/_field.json.jbuilder', api: true do
   let(:field_name) { 'genre_basic_ssim' }
   let(:blacklight_config) do
     Blacklight::Configuration.new.configure do |config|
@@ -14,7 +14,7 @@ RSpec.describe 'catalog/_field.json.jbuilder.bak', api: true do
 
   let(:field_presenter) { CommonwealthVlrEngine::JsonFieldPresenter.new({}, document, field_config) }
   let(:hash) do
-    render template: 'catalog/_field.json.jbuilder.bak', format: :json
+    render template: 'catalog/_field.json.jbuilder', format: :json
     JSON.parse(rendered).with_indifferent_access
   end
 
