@@ -6,7 +6,16 @@ module CommonwealthVlrEngine
 
     # override so we can set custom presenter for JSON API responses
     def document_presenter_class(document)
-      formats.first == :json ? CommonwealthVlrEngine::JsonIndexPresenter : super
+      return super unless formats.first == :json
+
+      case action_name
+      when 'show'
+        CommonwealthVlrEngine::JsonShowPresenter
+      when 'index'
+        CommonwealthVlrEngine::JsonIndexPresenter
+      else
+        super
+      end
     end
   end
 end
