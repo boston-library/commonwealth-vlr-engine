@@ -51,7 +51,8 @@ module CommonwealthVlrEngine
         config.index.thumbnail_method = :create_thumb_img_element
         config.index.partials = [:thumbnail, :index_header, :index]
 
-        # solr field configuration for document/show views
+        # solr field configuration for document show views
+        config.show.document_component = CommonwealthVlrEngine::DocumentComponent
         config.show.title_field = 'title_info_primary_tsi'
         config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
                                                                             helper_method: :show_html_title,
@@ -227,7 +228,8 @@ module CommonwealthVlrEngine
         @document = search_service.fetch(params[:id])
         respond_to do |format|
           format.html do
-            render layout: false if request.xhr?
+            return render layout: false if request.xhr?
+            # Otherwise draw the full page
           end
           format.js { render layout: false }
         end

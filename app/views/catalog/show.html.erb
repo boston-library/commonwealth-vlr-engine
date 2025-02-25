@@ -8,4 +8,10 @@
              locals: { document: @document } %>
 <% end %>
 
-<%= render_document_main_content_partial %>
+<%= render 'show_main_content' %>
+
+<%# content_for(:sidebar) do %>
+  <%# Blacklight.deprecation.silence do %>
+    <%#= render_document_sidebar_partial @document %>
+  <%# end %>
+<%# end %>
