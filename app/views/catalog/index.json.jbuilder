@@ -19,7 +19,7 @@ json.data do
     doc_presenter = document_presenter(document)
     document_url = polymorphic_url(search_state.url_for_document(document))
     json.id document.id
-    json.type doc_presenter.display_type.first
+    json.type doc_presenter.display_type # .first
     json.attributes do
       # Removes 'mods_xml_ss' field from the response
       fields_to_render = doc_presenter.fields_to_render.reject { |field_name, _, _| field_name == 'mods_xml_ss' }
