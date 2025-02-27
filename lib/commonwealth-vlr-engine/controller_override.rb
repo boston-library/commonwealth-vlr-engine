@@ -53,6 +53,7 @@ module CommonwealthVlrEngine
 
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent
+        # config.show.metadata_component = CommonwealthVlrEngine::Document::MetadataComponent
         config.show.title_field = 'title_info_primary_tsi'
         config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
                                                                             helper_method: :show_html_title,

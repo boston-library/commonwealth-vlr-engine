@@ -265,6 +265,7 @@ en:
             title_translated: 'Title (translated)'
             type_of_resource: 'Type of Resource'
             volume: 'Volume'
+          title: 'Item Information'
 
 
     more_like_this:

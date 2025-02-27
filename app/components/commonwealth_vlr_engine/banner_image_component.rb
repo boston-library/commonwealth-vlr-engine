@@ -2,7 +2,7 @@
 
 module CommonwealthVlrEngine
   class BannerImageComponent < ViewComponent::Base
-    include ApplicationHelper
+    # include ApplicationHelper # shouldn't need this, use helpers.helper_method instead
 
     def initialize(context:, image_data:)
       @context = context
@@ -10,8 +10,8 @@ module CommonwealthVlrEngine
     end
 
     def banner_image_tag
-      iiif_image_tag(@image_data.image_pid,
-                     { size: @image_data.size, alt: @image_data.title, region: @image_data.region })
+      helpers.iiif_image_tag(@image_data.image_pid,
+                             { size: @image_data.size, alt: @image_data.title, region: @image_data.region })
     end
 
     def banner_image_url

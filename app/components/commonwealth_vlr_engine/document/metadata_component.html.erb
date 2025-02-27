@@ -1,0 +1,21 @@
+<div id="item_metadata">
+  <h3><%= t('blacklight.metadata_display.title') %></h3>
+  <dl class="row document-metadata">
+    <%# title field %>
+    <% if document[blacklight_config.index.title_field.to_sym] %>
+      <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.title') %>:</dt>
+      <dd class="col-md-9">
+        <%# render_title(document) %>
+      </dd>
+    <% end %>
+    <!--
+      ARGS NEEDED
+      solr field name
+      I18n field key
+      multiple values boolean ?
+      link_to_facet ?
+      special rendering method
+      special rendering method args
+    -->
+  </dl>
+</div>
