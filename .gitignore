@@ -57,10 +57,10 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-spec/internal
 Thumbs.db
 Icon?
 .DS_Store?
+spec/internal/node_modules
 .DS_Store
 ehthumbs.db
 .idea # Rubymine config files

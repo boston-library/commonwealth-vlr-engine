@@ -1,0 +1,18 @@
+/* Application styles */
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import "blacklight-frontend/app/assets/stylesheets/blacklight/blacklight";
+
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/gallery";
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/masonry";
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/slideshow";
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/osd_viewer";
+
+$fa-font-path: ".";
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+
+@import 'openseadragon';
