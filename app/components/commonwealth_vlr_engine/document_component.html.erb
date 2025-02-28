@@ -12,14 +12,15 @@
     <%= body %>
   <% else %>
     <div class="document-main-section">
+      <%= breadcrumb %>
       <%= title %>
       <%= embed %>
       <%= content %>
-      <%# metadata %>
+      <%= metadata %>
       <%# metadata_sections.each do |section| %>
         <%# section %>
       <%# end %>
-      <%= metadata_vlr %>
+      <%# metadata_vlr %>
 
       <% partials.each do |partial| %>
         <%= partial %>
