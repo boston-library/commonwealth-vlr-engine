@@ -22,8 +22,8 @@ group :development, :test do
 end
 gem "rsolr", ">= 1.0", "< 3"
 gem "bootstrap", "~> 5.3"
-gem "sassc-rails", "~> 2.1"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem 'dotenv-rails'

@@ -1,0 +1,16 @@
+# GA web property id
+default: &default
+  web_property_id: <%= ENV.fetch('GA_PROPERTY_ID') { Rails.application.credentials.dig(:ga, :property_id).to_s } %>
+  gtm_container_id: <%= ENV.fetch('GTM_CONTAINER_ID') { Rails.application.credentials.dig(:ga, :gtm_container_id).to_s } %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

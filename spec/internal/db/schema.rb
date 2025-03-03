@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_27_155614) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_03_170331) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_type"
@@ -21,6 +21,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_27_155614) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "carousel_slides", force: :cascade do |t|
+    t.integer "sequence"
+    t.string "object_pid"
+    t.string "image_pid"
+    t.string "region"
+    t.string "title"
+    t.string "institution"
+    t.string "context"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "size"
   end
 
   create_table "searches", force: :cascade do |t|

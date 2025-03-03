@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
+
+  root to: 'pages#home'
+
+  # TODO: this bookmarks stuff should be in bpluser generator?
+  # bookmarks item actions
+  # this has to be in local app for bookmark item actions to work
+  put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
+
+
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
-  root to: "catalog#index"
+  # root to: "catalog#index"
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalog, only: [], as: 'catalog', path: '/catalog', controller: 'catalog' do
+  resource :catalog, only: [], as: 'catalog', path: '/search', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
 
@@ -12,8 +22,9 @@ Rails.application.routes.draw do
 
   concern :exportable, Blacklight::Routes::Exportable.new
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  resources :solr_documents, only: [:show], path: '/search', controller: 'catalog' do
     concerns :exportable
+    concerns :iiif_search
   end
 
   resources :bookmarks, only: [:index, :update, :create, :destroy] do
