@@ -40,6 +40,7 @@ pickle-email-*.html
 *.dll
 *.sqlite
 *.sql
+.env
 
 # Specific Files to ignore #
 ############################
@@ -60,7 +61,6 @@ tmp
 Thumbs.db
 Icon?
 .DS_Store?
-spec/internal/node_modules
 .DS_Store
 ehthumbs.db
 .idea # Rubymine config files
@@ -78,3 +78,7 @@ ehthumbs.db
 # test app #
 #########################
 .internal_test_app
+spec/internal/node_modules
+spec/internal/log/*.log
+spec/internal/tmp/*
+spec/internal/config/*.key
