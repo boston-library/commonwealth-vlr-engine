@@ -129,9 +129,10 @@ module CommonwealthVlrEngine
       end
     end
 
-    def render_item_breadcrumb(document, link_class = nil)
-      setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
-    end
+    # DEPRECATED, moved to CommonwealthVlrEngine::BreadcrumbComponent
+    # def render_item_breadcrumb(document, link_class = nil)
+    #   setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
+    # end
 
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
