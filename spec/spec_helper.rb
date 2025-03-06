@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-require 'awesome_print'
-require 'pry-rescue'
-require 'engine_cart'
 require 'coveralls'
 
 Coveralls.wear!('rails')
-EngineCart.load_application!
 
 if ENV['COVERAGE'] or ENV['CI']
   require 'simplecov'

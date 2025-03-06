@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.2', '< 3.4'
 
-  s.add_dependency 'blacklight', '~> 8.8.2'
+  s.add_dependency 'blacklight', '~> 8.8.3'
   s.add_dependency 'blacklight_advanced_search', '8.0.0.alpha2'
   s.add_dependency 'blacklight-gallery', '~> 4.8.4'
   s.add_dependency 'blacklight_iiif_search', '~> 3.0'
@@ -40,12 +40,7 @@ Gem::Specification.new do |s|
   # s.add_dependency 'view_component', '>= 2.82.0', '< 3.0'
   s.add_dependency 'zipline', '~> 1.5.0'
 
-  # s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'capybara', '~> 3.0', '< 4'
-  s.add_development_dependency 'engine_cart', '~> 2.2'
-  # s.add_development_dependency 'pry-rails'
-  # s.add_development_dependency 'pry-rescue'
-  # s.add_development_dependency 'pry-stack_explorer'
   s.add_development_dependency 'rspec-rails', '>= 6.1', '< 8'
   s.add_development_dependency 'solr_wrapper', '~> 4.0'
 end
