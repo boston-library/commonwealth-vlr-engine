@@ -11,10 +11,12 @@ module CommonwealthVlrEngine
     desc 'YmlGenerator Commonwealth VLR Engine'
 
     def config_yml_copy
-      %w(asset_store contact_emails curator geojson_static_file google_analytics iiif_server vlr).each do |yml|
-        source_dest = "config/#{yml}.yml"
-        copy_file source_dest, source_dest unless File.exist?(source_dest)
-      end
+      # %w(asset_store contact_emails curator geojson_static_file google_analytics iiif_server vlr).each do |yml|
+      #   source_dest = "config/#{yml}.yml"
+      #   copy_file source_dest, source_dest unless File.exist?(source_dest)
+      # end
+      source_dest = 'config/vlr.yml'
+      copy_file source_dest, source_dest unless File.exist?(source_dest)
     end
 
     def locale_yml_copy

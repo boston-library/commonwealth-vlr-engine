@@ -9,7 +9,7 @@ class TestAppGenerator < Rails::Generators::Base
 
   def set_env_vars
     env_vars = %q(VLR_SITE_ID=commonwealth
-VLR_INSTITUTION_PID=bpl-dev:abcd12345
+VLR_INSTITUTION_PID=
 GEOJSON_PATH=lib/assets/static_geojson_catalog-map.json
 IIIF_URL=https://iiif-dc3dev.bpl.org/iiif/2/
 AZURE_STORAGE_ACCOUNT_NAME=bpltestaccount

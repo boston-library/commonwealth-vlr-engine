@@ -88,7 +88,7 @@ describe CollectionsController, :vcr do
     describe 'collections_limit' do
       it 'sets the correct search builder class' do
         mock_controller.send(:collections_limit)
-        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
+        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthVlrEngine::CollectionsSearchBuilder)
       end
     end
 
@@ -97,7 +97,7 @@ describe CollectionsController, :vcr do
     describe 'collections_limit_for_facets' do
       it 'sets the correct search builder class' do
         mock_controller.send(:collections_limit_for_facets)
-        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthCollectionsSearchBuilder)
+        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthVlrEngine::CollectionsSearchBuilder)
       end
     end
 

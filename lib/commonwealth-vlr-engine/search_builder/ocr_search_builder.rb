@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-class CommonwealthOcrSearchBuilder < Blacklight::SearchBuilder
-  include Blacklight::Solr::SearchBuilderBehavior
-  include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
+module CommonwealthVlrEngine
+  class OcrSearchBuilder < Blacklight::SearchBuilder
+    include Blacklight::Solr::SearchBuilderBehavior
+    include CommonwealthVlrEngine::SearchBuilderBehavior
 
-  self.default_processor_chain += [
-    :exclude_unpublished_items, :ocr_search_params
-  ]
+    self.default_processor_chain += [
+      :exclude_unpublished_items, :ocr_search_params
+    ]
+  end
 end

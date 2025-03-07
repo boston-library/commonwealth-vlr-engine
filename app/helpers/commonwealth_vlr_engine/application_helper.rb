@@ -77,7 +77,7 @@ module CommonwealthVlrEngine
     def filestream_disseminator_url(key, attachment_id, full_key = false)
       return primary_filestream_url(key, attachment_id, full_key) if (attachment_id.match?(/primary/) && !attachment_id.match?(/georectified/))
 
-      return "#{ASSET_STORE['url']}/derivatives/#{key}" if full_key
+      return "#{CommonwealthVlrEngine.config[:asset_store_url]}/derivatives/#{key}" if full_key
 
       file_ext = case attachment_id
                  when 'image_thumbnail_300', 'image_access_800'
@@ -105,7 +105,7 @@ module CommonwealthVlrEngine
                  when 'image_georectified_primary'
                    'tif'
                  end
-      "#{ASSET_STORE['url']}/derivatives/#{key}/#{attachment_id}.#{file_ext}"
+      "#{CommonwealthVlrEngine.config[:asset_store_url]}/derivatives/#{key}/#{attachment_id}.#{file_ext}"
     end
 
     # returns the signed URL to a filestream blob in 'primary' container (private)
@@ -114,7 +114,7 @@ module CommonwealthVlrEngine
     # @param full_key [Boolean] true if we are passing the full key (with extension) as key param
     def primary_filestream_url(key, attachment_id, full_key = false)
       key = key.gsub(/\/[\w\.]*\z/, '') if full_key
-      api_url = "#{CURATOR['url']}/filestreams/#{key}?show_primary_url=true"
+      api_url = "#{CommonwealthVlrEngine.config[:curator_url]}/filestreams/#{key}?show_primary_url=true"
       curator_response = Typhoeus::Request.get(api_url)
       if curator_response.response_code == 200 && curator_response.body.present?
         filestream_data = JSON.parse(curator_response.body)
@@ -135,12 +135,12 @@ module CommonwealthVlrEngine
     def iiif_image_url(image_pid, options)
       size = options[:size] ? options[:size] : 'full'
       region = options[:region] ? options[:region] : 'full'
-      "#{IIIF_SERVER['url']}#{image_pid}/#{region}/#{size}/0/default.jpg"
+      "#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/#{region}/#{size}/0/default.jpg"
     end
 
     # returns a hash with width/height from IIIF info.json response
     def get_image_metadata(image_pid)
-      iiif_response = Typhoeus::Request.get(IIIF_SERVER['url'] + image_pid + '/info.json')
+      iiif_response = Typhoeus::Request.get(CommonwealthVlrEngine.config[:iiif_server_url] + image_pid + '/info.json')
       if iiif_response.response_code == 200 && !iiif_response.response_body.empty?
         iiif_info = JSON.parse(iiif_response.body)
         height = iiif_info['height'].to_i

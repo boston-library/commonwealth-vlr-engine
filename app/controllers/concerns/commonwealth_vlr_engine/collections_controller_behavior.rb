@@ -69,7 +69,7 @@ module CommonwealthVlrEngine
 
     # find a representative image/item for a series
     def get_series_image_obj(series_title, collection_title)
-      blacklight_config.search_builder_class = CommonwealthFlaggedSearchBuilder # ignore flagged items
+      blacklight_config.search_builder_class = CommonwealthVlrEngine::FlaggedSearchBuilder # ignore flagged items
       series_params = { f: { blacklight_config.series_field => series_title,
                              blacklight_config.collection_field => collection_title },
                         rows: 1 }
@@ -86,14 +86,14 @@ module CommonwealthVlrEngine
 
     # collapse the institution facet, if Institutions supported
     def collapse_institution_facet
-      return unless t('blacklight.home.browse.institutions.enabled')
+      return unless CommonwealthVlrEngine.config.dig(:institution, :pid).present?
 
       blacklight_config.facet_fields['physical_location_ssim'].collapse = true
     end
 
     # find only collection objects
     def collections_limit
-      blacklight_config.search_builder_class = CommonwealthCollectionsSearchBuilder
+      blacklight_config.search_builder_class = CommonwealthVlrEngine::CollectionsSearchBuilder
     end
 
     # find object data for "more" facet results
@@ -135,7 +135,7 @@ module CommonwealthVlrEngine
     # set the correct facet params for facets from the collection
     def set_collection_facet_params(collection_title, document)
       facet_params = { blacklight_config.collection_field => [collection_title] }
-      facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if t('blacklight.home.browse.institutions.enabled')
+      facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
       facet_params
     end
   end

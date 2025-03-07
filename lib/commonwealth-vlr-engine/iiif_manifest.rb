@@ -79,7 +79,7 @@ module CommonwealthVlrEngine
     # page_id = id of image object
     # document = SolrDocument of parent object
     def image_resource_from_image_id(page_id, document)
-      base_uri = "#{IIIF_SERVER['url']}#{page_id}"
+      base_uri = "#{CommonwealthVlrEngine.config[:iiif_server_url]}#{page_id}"
       params = { service_id: base_uri,
                  resource_id: document[:identifier_uri_ss].gsub(/\/[\w]+\z/, page_id.gsub(/\A[\w-]+:/, '/')) + '/large_image' }
       IIIF::Presentation::ImageResource.create_image_api_image_resource(params)

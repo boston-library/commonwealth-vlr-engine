@@ -5,7 +5,7 @@ require 'commonwealth-vlr-engine/version'
 
 module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/controller_override'
-  require 'commonwealth-vlr-engine/search_builder/commonwealth_search_builder_behavior'
+  require 'commonwealth-vlr-engine/search_builder/search_builder_behavior'
   require 'commonwealth-vlr-engine/search_builder/institutions_search_builder'
   require 'commonwealth-vlr-engine/search_builder/collections_search_builder'
   require 'commonwealth-vlr-engine/search_builder/flagged_search_builder'

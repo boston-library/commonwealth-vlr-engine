@@ -46,7 +46,7 @@ describe CollectionsHelper, :vcr do
 
       it 'returns the correct url' do
         col_img_url = helper.collection_image_url(hosting_status: 'hosted')
-        expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
+        expect(col_img_url).to eq("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
       end
     end
 
@@ -68,7 +68,7 @@ describe CollectionsHelper, :vcr do
   describe '#collection_image_iiif_url' do
     it 'returns the correct url' do
       col_img_url = helper.collection_image_iiif_url(image_pid)
-      expect(col_img_url).to eq("#{IIIF_SERVER['url']}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
+      expect(col_img_url).to eq("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/75,948,1346,551/1100,/0/default.jpg")
     end
   end
 

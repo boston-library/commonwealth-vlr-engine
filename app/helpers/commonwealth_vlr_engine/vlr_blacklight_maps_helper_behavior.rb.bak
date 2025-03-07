@@ -46,7 +46,7 @@ module CommonwealthVlrEngine
     # OVERRIDE: use a static file for catalog#map so page loads faster
     # render the map for #index and #map views
     def render_index_mapview
-      static_geojson_file_loc = "#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}"
+      static_geojson_file_loc = "#{Rails.root}/#{CommonwealthVlrEngine.config[:geojson_static_filepath]}"
       if Rails.env.to_s == 'production' && params[:action] == 'map' && File.exist?(static_geojson_file_loc)
         geojson_for_map = File.open(static_geojson_file_loc).first
       else

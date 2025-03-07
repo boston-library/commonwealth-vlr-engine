@@ -294,7 +294,7 @@ module CommonwealthVlrEngine
       false
     end
 
-    # if this is 'more like this' search, use CommonwealthMltSearchBuilder
+    # if this is 'more like this' search, use CommonwealthVlrEngine::MltSearchBuilder
     # we need this in both #index and #show, because a search is also run when #show is loaded,
     # see Blacklight::SearchContext#setup_next_and_previous_documents
     def mlt_search
@@ -302,7 +302,7 @@ module CommonwealthVlrEngine
 
       if params[:mlt_id] ||
          (current_search_session && current_search_session.query_params[:mlt_id].present?)
-        blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+        blacklight_config.search_builder_class = CommonwealthVlrEngine::MltSearchBuilder
       end
     end
 
@@ -315,9 +315,9 @@ module CommonwealthVlrEngine
       @nav_li_active = 'search' if controller_name == 'catalog'
     end
 
-    # add institutions if configured
+    # add institutions unless limiting to specific institution
     def add_institution_fields
-      return unless t('blacklight.home.browse.institutions.enabled')
+      #return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
 
       blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse: false
       blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link
@@ -330,7 +330,7 @@ module CommonwealthVlrEngine
 
       mlt_search_service = search_service_class.new(config: blacklight_config,
                                                     user_params: { mlt_id: params[:id], rows: 4 },
-                                                    search_builder_class: CommonwealthMltSearchBuilder)
+                                                    search_builder_class: CommonwealthVlrEngine::MltSearchBuilder)
       _mlt_response, @mlt_document_list = mlt_search_service.search_results
     end
 

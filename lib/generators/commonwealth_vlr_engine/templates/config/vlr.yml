@@ -4,6 +4,17 @@ default: &default
   site: <%= ENV.fetch('VLR_SITE_ID', '') %>
   institution:
     pid: <%= ENV.fetch('VLR_INSTITUTION_PID', '') %>
+  asset_store_url: <%= ENV.fetch('AZURE_STORAGE_ACCOUNT_ENDPOINT', '') %>
+  iiif_server_url: <%= ENV.fetch('IIIF_URL', '') %>
+  curator_url: <%= ENV.fetch('CURATOR_API_URL', '') %>
+  contact_emails:
+    site_admin: <%= ENV.fetch('EMAIL_SITE_ADMIN', 'site_admin@example.org') %>
+    image_requests: <%= ENV.fetch('EMAIL_IMAGE_REQUEST', 'image_request@example.org') %>
+    research_question: <%= ENV.fetch('EMAIL_RESEARCH_QUESTION', 'research_question@example.org') %>
+  google_analytics:
+    web_property_id: <%= ENV.fetch('GA_PROPERTY_ID') { Rails.application.credentials.dig(:ga, :property_id).to_s } %>
+    gtm_container_id: <%= ENV.fetch('GTM_CONTAINER_ID') { Rails.application.credentials.dig(:ga, :gtm_container_id).to_s } %>
+  geojson_static_filepath: <%= ENV.fetch('GEOJSON_PATH', '') %>
 
 development:
   <<: *default

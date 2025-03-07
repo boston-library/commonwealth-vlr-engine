@@ -19,7 +19,7 @@ describe CommonwealthVlrEngine::Notifier do
     end
 
     it 'has the right receiver email address' do
-      expect(test_feedback_email.to[0]).to eq(CONTACT_EMAILS['image_requests'])
+      expect(test_feedback_email.to[0]).to eq(CommonwealthVlrEngine.config.dig(:contact_emails, :image_requests))
     end
   end
 end

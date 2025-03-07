@@ -22,12 +22,12 @@ module CommonwealthVlrEngine
     def route_email(topic)
       if topic == t('blacklight.feedback.form.topic.options.repro.option') ||
          topic == t('blacklight.feedback.item.topic.options.repro.option')
-        CONTACT_EMAILS['image_requests']
+        CommonwealthVlrEngine.config.dig(:contact_emails, :image_requests)
       elsif topic == t('blacklight.feedback.form.topic.options.research.option') ||
             topic == t('blacklight.feedback.item.topic.options.research.option')
-        CONTACT_EMAILS['research_question']
+        CommonwealthVlrEngine.config.dig(:contact_emails, :research_question)
       else
-        CONTACT_EMAILS['site_admin']
+        CommonwealthVlrEngine.config.dig(:contact_emails, :site_admin)
       end
     end
   end

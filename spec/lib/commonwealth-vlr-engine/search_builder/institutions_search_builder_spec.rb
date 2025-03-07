@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthInstitutionsSearchBuilder do
+describe CommonwealthVlrEngine::InstitutionsSearchBuilder do
   let(:search_builder) { described_class.new(CatalogController.new) }
 
   describe 'processor chain' do

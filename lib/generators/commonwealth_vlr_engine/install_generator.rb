@@ -94,7 +94,7 @@ module CommonwealthVlrEngine
       return unless options[:bpluser]
 
       gsub_file('config/initializers/devise.rb', /^[\s#]*config.mailer_sender[^\n]*/,
-                "  config.mailer_sender = CONTACT_EMAILS['site_admin']")
+                "  config.mailer_sender = CommonwealthVlrEngine.config.dig(:contact_emails, :site_admin)")
     end
 
     def bundle_install

@@ -15,7 +15,7 @@ module CommonwealthVlrEngine
     end
 
     def institution_link
-      return unless document[:institution_ark_id_ssi].present?
+      return unless document[:institution_ark_id_ssi].present? && CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
 
       link_to(document[helpers.blacklight_config.institution_field.to_sym],
               institution_path(id: document[:institution_ark_id_ssi]),
@@ -23,6 +23,8 @@ module CommonwealthVlrEngine
     end
 
     def collection_links
+      return if document[helpers.blacklight_config.show.display_type_field] == 'Collection'
+
       helpers.setup_collection_links(document, link_class).sort.join(' / ').html_safe
     end
 

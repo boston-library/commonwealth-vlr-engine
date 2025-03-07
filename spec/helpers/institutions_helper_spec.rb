@@ -31,7 +31,7 @@ describe InstitutionsHelper do
 
   describe 'render_institutions_index' do
     before(:each) do
-      blacklight_config.search_builder_class = CommonwealthInstitutionsSearchBuilder
+      blacklight_config.search_builder_class = CommonwealthVlrEngine::InstitutionsSearchBuilder
       @response = search_service.search_results
     end
 

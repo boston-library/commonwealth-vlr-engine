@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
+describe CommonwealthVlrEngine::SearchBuilderBehavior do
   let(:blacklight_params) { Hash.new }
   let(:solr_parameters) { Blacklight::Solr::Request.new }
   let(:blacklight_config) { CatalogController.blacklight_config.deep_copy }
@@ -11,7 +11,7 @@ describe CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior do
   let(:search_builder_class) do
     Class.new(Blacklight::SearchBuilder) do
       include Blacklight::Solr::SearchBuilderBehavior
-      include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
+      include CommonwealthVlrEngine::SearchBuilderBehavior
     end
   end
   let(:search_builder) { search_builder_class.new(context) }

@@ -25,7 +25,7 @@ class OcrSearchController < CatalogController
             "id,#{blacklight_config.page_num_field},#{termfreq_query(params[:ocr_q])}"
         ocr_search_service = search_service_class.new(config: blacklight_config,
                                                       user_params: ocr_search_params,
-                                                      search_builder_class: CommonwealthOcrSearchBuilder)
+                                                      search_builder_class: CommonwealthVlrEngine::OcrSearchBuilder)
         @response = ocr_search_service.search_results
       else
         @response = Blacklight::Solr::Response.new(nil, nil)

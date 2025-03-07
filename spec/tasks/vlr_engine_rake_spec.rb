@@ -15,7 +15,7 @@ describe 'vlr_engine namespace rake tasks' do
       Rake::Task['vlr_engine:create_geojson'].reenable
       Rake.application.invoke_task 'vlr_engine:create_geojson'
     end
-    let(:file_path) { "#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}" }
+    let(:file_path) { "#{Rails.root}/#{CommonwealthVlrEngine.config[:geojson_static_filepath]}" }
 
     it 'creates the geojson file' do
       run_rake_task

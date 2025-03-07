@@ -24,14 +24,14 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
     it 'returns a IIIF URL if this is a repository item' do
       expect(
         helper.collection_gallery_url({ exemplary_image_ssi: image_pid }, thumb_size)
-      ).to include("#{IIIF_SERVER['url']}#{image_pid}/square/#{thumb_size},/0/default.jpg")
+      ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/square/#{thumb_size},/0/default.jpg")
     end
 
     it 'returns a region percentage if this is a newspaper collection' do
       expect(
         helper.collection_gallery_url({ exemplary_image_ssi: image_pid, destination_site_ssim: %w(newspapers) },
                                       thumb_size)
-      ).to include("#{IIIF_SERVER['url']}#{image_pid}/pct:4,3,90,67/#{thumb_size},#{thumb_size}/0/default.jpg")
+      ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/pct:4,3,90,67/#{thumb_size},#{thumb_size}/0/default.jpg")
     end
 
     it 'returns the icon path if there is no exemplary_image_ssi value' do
@@ -61,7 +61,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
 
   describe '#index_slideshow_img_url' do
     it 'returns a IIIF image URL if there is an exemplary image' do
-      expect(helper.index_slideshow_img_url(document)).to eq("#{IIIF_SERVER['url']}#{image_pid}/full/,500/0/default.jpg")
+      expect(helper.index_slideshow_img_url(document)).to eq("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/full/,500/0/default.jpg")
     end
   end
 
@@ -75,7 +75,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
     describe '#create_thumb_img_element' do
       it 'returns an image tag with the thumbnail image' do
         expect(helper.create_thumb_img_element(document).match(/\A<img[\s\S]+\/>\z/)).to be_truthy
-        expect(helper.create_thumb_img_element(document)).to include("src=\"#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
+        expect(helper.create_thumb_img_element(document)).to include("src=\"#{CommonwealthVlrEngine.config[:asset_store_url]}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
       end
     end
 
@@ -83,7 +83,7 @@ describe CommonwealthVlrEngine::ImagesHelperBehavior do
       let(:document_to_hash) { document.to_h }
 
       it 'returns the datastream path if there is an exemplary_image_ssi value' do
-        expect(helper.thumbnail_url(document)).to eq("#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
+        expect(helper.thumbnail_url(document)).to eq("#{CommonwealthVlrEngine.config[:asset_store_url]}/derivatives/images/#{image_pid}/image_thumbnail_300.jpg")
       end
 
       describe 'with no exemplary image' do

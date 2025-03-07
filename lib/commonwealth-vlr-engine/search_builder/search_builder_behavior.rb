@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CommonwealthVlrEngine
-  module CommonwealthSearchBuilderBehavior
+  module SearchBuilderBehavior
     # only return items corresponding to the correct site
     def site_filter(solr_parameters = {})
       solr_parameters[:fq] ||= []
@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
 
     # keep file assets from appearing in search results
     # we don't really need this because Filestream::* objects don't have destination_site_ssim
-    # values, so they are already excluded by CommonwealthSearchBuilderBehavior#site_filter
+    # values, so they are already excluded by SearchBuilderBehavior#site_filter
     # but keeping this in case we need it in the future
     def exclude_unwanted_models(solr_parameters = {})
       solr_parameters[:fq] ||= []
@@ -26,6 +26,8 @@ module CommonwealthVlrEngine
 
     # keep Institution objects out of the search results
     def exclude_institutions(solr_parameters = {})
+      return solr_parameters if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '-curator_model_suffix_ssi:"Institution"'
     end
@@ -44,8 +46,10 @@ module CommonwealthVlrEngine
 
     # limit results to a single institution
     def institution_limit(solr_parameters = {})
+      return solr_parameters unless CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+
       solr_parameters[:fq] ||= []
-      solr_parameters[:fq] << '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
+      solr_parameters[:fq] << '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config.dig(:institution, :pid) + '"'
     end
 
     # used by InstitutionsController#index

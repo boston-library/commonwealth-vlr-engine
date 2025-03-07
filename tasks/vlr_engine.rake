@@ -17,7 +17,7 @@ namespace :vlr_engine do
   #
   #   geojson_features = serialize_geojson(map_facet_values, 'index')
   #   if geojson_features
-  #     File.open("#{Rails.root}/#{GEOJSON_STATIC_FILE['filepath']}", 'w') do |f|
+  #     File.open("#{Rails.root}/#{CommonwealthVlrEngine.config[:geojson_static_filepath]}", 'w') do |f|
   #       f.write(geojson_features)
   #     end
   #     puts 'The GeoJSON file has successfully been created'

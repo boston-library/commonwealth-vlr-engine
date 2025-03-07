@@ -71,7 +71,7 @@ module CommonwealthVlrEngine
 
     # remove grid view from blacklight_config, use correct SearchBuilder for index view
     def institutions_index_config
-      blacklight_config.search_builder_class = CommonwealthInstitutionsSearchBuilder
+      blacklight_config.search_builder_class = CommonwealthVlrEngine::InstitutionsSearchBuilder
       blacklight_config.view.delete(:gallery)
       blacklight_config.view.delete(:masonry)
       blacklight_config.view.delete(:slideshow)

@@ -52,20 +52,20 @@ describe ApplicationHelper, :vcr do
   describe '#filestream_disseminator_url' do
     it 'creates a path to the filestream' do
       expect(helper.filestream_disseminator_url("images/#{image_pid}", 'image_service')).to eq(
-        "#{ASSET_STORE['url']}/derivatives/images/#{image_pid}/image_service.jp2"
+        "#{CommonwealthVlrEngine.config[:asset_store_url]}/derivatives/images/#{image_pid}/image_service.jp2"
       )
     end
   end
 
   describe '#iiif_image_tag' do
     it 'creates an image tag with a IIIF URI as the href' do
-      expect(helper.iiif_image_tag(image_pid, {})).to include("#{IIIF_SERVER['url']}#{image_pid}/full/full/0/default.jpg")
+      expect(helper.iiif_image_tag(image_pid, {})).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/full/full/0/default.jpg")
     end
   end
 
   describe '#iiif_image_url' do
     it 'returns a IIIF URI' do
-      expect(helper.iiif_image_url(image_pid, { size: 'pct:50', region: '0,0,100,100' })).to include("#{IIIF_SERVER['url']}#{image_pid}/0,0,100,100/pct:50/0/default.jpg")
+      expect(helper.iiif_image_url(image_pid, { size: 'pct:50', region: '0,0,100,100' })).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/0,0,100,100/pct:50/0/default.jpg")
     end
   end
 

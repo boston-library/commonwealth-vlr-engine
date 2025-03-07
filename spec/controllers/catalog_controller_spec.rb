@@ -44,7 +44,7 @@ describe CatalogController, :vcr do
   describe 'mlt_search' do
     it 'modifies the config to use the correct search builder class' do
       get :index, params: { mlt_id: item_pid }
-      expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthMltSearchBuilder)
+      expect(controller.blacklight_config.search_builder_class).to eq(CommonwealthVlrEngine::MltSearchBuilder)
     end
   end
 
