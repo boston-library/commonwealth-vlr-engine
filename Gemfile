@@ -8,11 +8,11 @@ git_source(:github) { |repo| "https://github.com/boston-library/#{repo}.git" }
 gemspec
 
 group :development, :test do
-  gem 'rubocop', '~> 1.57.2', require: false
+  gem 'rubocop', '~> 1.61.0', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-performance', '~> 1.19.1', require: false
   gem 'rubocop-rails', '~> 2.22.1', require: false
-  gem 'rubocop-rspec', '~> 2.25.0', require: false
+  gem 'rubocop-rspec', '~> 2.31.0', require: false
 end
 
 group :test do

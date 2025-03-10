@@ -2,9 +2,9 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-abort('The Rails environment is running in production mode!') if ::Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
-require File.expand_path('./internal/config/environment', __dir__)
+require_relative 'internal/config/environment'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'

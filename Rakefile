@@ -43,11 +43,9 @@ end
 
 desc 'Lint, set up test app, spin up Solr, and run test suite'
 task ci: [:rubocop] do
-  SolrWrapper.wrap do |solr|
-    solr.with_collection do
-      within_test_app do
-        system 'RAILS_ENV=test rake commonwealth_vlr_engine:test_index:seed'
-      end
+  SolrWrapper.wrap(port: 8984, version: '9.7.0', persist: false) do |solr|
+    solr.with_collection(name: 'blacklight-core', dir: File.expand_path('./spec/internal/solr/conf')) do
+      system 'RAILS_ENV=test bundle exec commonwealth_vlr_engine:test_index:seed'
       Rake::Task['spec'].invoke
     end
   end

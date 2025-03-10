@@ -43,7 +43,7 @@ module CommonwealthVlrEngine
       #                                                        'index',
       #                                                        { partial: 'institutions/map_institutions_search' }) }
       # else
-        render_document_index_with_view(document_index_view_type, documents, locals)
+      render_document_index_with_view(document_index_view_type, documents, locals)
       # end
     end
 

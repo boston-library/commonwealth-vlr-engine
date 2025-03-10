@@ -42,5 +42,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'capybara', '~> 3.0', '< 4'
   s.add_development_dependency 'rspec-rails', '>= 6.1', '< 8'
-  s.add_development_dependency 'solr_wrapper', '~> 4.0'
+  s.add_development_dependency 'solr_wrapper', '~> 4.1'
 end
