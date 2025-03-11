@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# only called from catalog#show, though Blacklight::DocumentComponent is used in both #index and #show
 module CommonwealthVlrEngine
   class DocumentComponent < Blacklight::DocumentComponent
     # renders_one :metadata_vlr, ->(document: @document, blacklight_config: @presenter.blacklight_config) do

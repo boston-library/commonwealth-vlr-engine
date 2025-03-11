@@ -1,1 +1,7 @@
-<%= link_to banner_image_tag, banner_image_url %>
+<div id="banner_image_container">
+  <%= link_to banner_image_tag, banner_image_url,
+              id: "banner_image", class: banner_image_class %>
+  <div id="banner_image_caption">
+    <%= banner_image_caption %>
+  </div>
+</div>

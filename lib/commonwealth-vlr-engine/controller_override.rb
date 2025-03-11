@@ -18,8 +18,9 @@ module CommonwealthVlrEngine
       before_action :add_institution_fields, only: [:index, :facet]
       after_action :set_access_control_headers, only: [:index, :show]
 
-      DATE_ASC_SORT = 'date_start_dtsi asc, title_info_primary_ssort asc'
-      TITLE_SORT = 'title_info_primary_ssort asc, date_start_dtsi asc'
+      TITLE_SORT_FIELD = 'title_info_primary_ssort'
+      DATE_ASC_SORT = "date_start_dtsi asc, #{TITLE_SORT_FIELD} asc"
+      TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc"
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
@@ -211,10 +212,10 @@ module CommonwealthVlrEngine
         end
 
         # "sort results by" select (pulldown)
-        config.add_sort_field 'score desc, title_info_primary_ssort asc', label: 'relevance'
+        config.add_sort_field "score desc, #{TITLE_SORT_FIELD} asc", label: 'relevance'
         config.add_sort_field TITLE_SORT, label: 'title'
         config.add_sort_field DATE_ASC_SORT, label: 'date (asc)'
-        config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', label: 'date (desc)'
+        config.add_sort_field "date_start_dtsi desc, #{TITLE_SORT_FIELD} asc", label: 'date (desc)'
         config.add_sort_field 'system_create_dtsi desc', label: 'recently added'
 
         # add our custom tools

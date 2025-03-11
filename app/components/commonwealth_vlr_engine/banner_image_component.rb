@@ -11,7 +11,8 @@ module CommonwealthVlrEngine
 
     def banner_image_tag
       helpers.iiif_image_tag(@image_data.image_pid,
-                             { size: @image_data.size, alt: @image_data.title, region: @image_data.region })
+                             { size: @image_data.size, region: @image_data.region,
+                               alt: banner_image_title })
     end
 
     def banner_image_url
@@ -20,6 +21,14 @@ module CommonwealthVlrEngine
 
     def banner_image_title
       @image_data.title
+    end
+
+    def banner_image_class
+
+    end
+
+    def banner_image_caption
+
     end
   end
 end
