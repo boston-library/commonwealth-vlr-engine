@@ -14,7 +14,7 @@ AllCops:
     - 'Gemfile'
   DisplayCopNames: true
   DisabledByDefault: true
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.2
 
 ####################### BUNDLER/GEMSPEC ###############################
 Bundler/OrderedGems:
@@ -392,6 +392,8 @@ Style/RedundantSelf:
 
 Style/RescueStandardError:
   Enabled: true
+  Exclude:
+    - 'app/components/commonwealth_vlr_engine/blog_feed_component.rb'
 
 Style/SignalException:
   Enabled: true
@@ -404,6 +406,8 @@ Style/StderrPuts:
 
 Style/StringLiterals:
   Enabled: true
+  Exclude:
+    - 'lib/generators/commonwealth_vlr_engine/install_generator.rb'
 
 Style/SymbolArray:
   Enabled: false

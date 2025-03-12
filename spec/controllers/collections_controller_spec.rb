@@ -5,7 +5,7 @@ require 'rails_helper'
 describe CollectionsController, :vcr do
   render_views
 
-  #include BlacklightMapsHelper
+  # include BlacklightMapsHelper
 
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:collection_pid) { 'bpl-dev:h702q636h' }

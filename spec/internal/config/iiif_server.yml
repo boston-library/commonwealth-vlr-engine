@@ -1,0 +1,13 @@
+# stores IIIF image server url
+
+default: &default
+  url: <%= ENV.fetch('IIIF_URL', '') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

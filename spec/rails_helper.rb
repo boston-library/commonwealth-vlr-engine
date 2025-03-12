@@ -2,13 +2,9 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require 'commonwealth-vlr-engine'
-abort('The Rails environment is running in production mode!') if ::Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
-require 'engine_cart'
-EngineCart.load_application!
-
-require 'pry-rails'
+require_relative 'internal/config/environment'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'

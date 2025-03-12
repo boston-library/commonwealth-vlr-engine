@@ -24,8 +24,6 @@ load 'lib/railties/commonwealth_vlr_engine.rake'
 
 task default: :ci
 
-require 'engine_cart/rake_task'
-
 require 'solr_wrapper'
 
 require 'rspec/core/rake_task'
@@ -44,12 +42,10 @@ RuboCop::RakeTask.new(:rubocop) do |task|
 end
 
 desc 'Lint, set up test app, spin up Solr, and run test suite'
-task ci: [:rubocop, 'engine_cart:generate'] do
-  SolrWrapper.wrap do |solr|
-    solr.with_collection do
-      within_test_app do
-        system 'RAILS_ENV=test rake commonwealth_vlr_engine:test_index:seed'
-      end
+task ci: [:rubocop] do
+  SolrWrapper.wrap(port: 8984, version: '9.7.0', persist: false) do |solr|
+    solr.with_collection(name: 'blacklight-core', dir: File.expand_path('./spec/internal/solr/conf')) do
+      system 'RAILS_ENV=test bundle exec commonwealth_vlr_engine:test_index:seed'
       Rake::Task['spec'].invoke
     end
   end

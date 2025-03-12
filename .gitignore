@@ -40,6 +40,7 @@ pickle-email-*.html
 *.dll
 *.sqlite
 *.sql
+.env
 
 # Specific Files to ignore #
 ############################
@@ -57,7 +58,6 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-spec/internal
 Thumbs.db
 Icon?
 .DS_Store?
@@ -78,3 +78,7 @@ ehthumbs.db
 # test app #
 #########################
 .internal_test_app
+spec/internal/node_modules
+spec/internal/log/*.log
+spec/internal/tmp/*
+spec/internal/config/*.key

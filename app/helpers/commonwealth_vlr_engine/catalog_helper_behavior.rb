@@ -2,8 +2,8 @@
 
 module CommonwealthVlrEngine
   module CatalogHelperBehavior
-    #include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
-    #include CommonwealthVlrEngine::RenderConstraintsHelperBehavior
+    # include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
+    # include CommonwealthVlrEngine::RenderConstraintsHelperBehavior
     include CommonwealthVlrEngine::DocumentHelperBehavior
     include CommonwealthVlrEngine::ImagesHelperBehavior
     include CommonwealthVlrEngine::LicenseHelperBehavior

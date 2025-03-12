@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
 
     # add params needed for IIIF content search
     def modify_iiif_search_builder
-      iiif_sb_path = "app/models/iiif_search_builder.rb"
+      iiif_sb_path = 'app/models/iiif_search_builder.rb'
       return if IO.read(iiif_sb_path).include?('solr_parameters[:qf]')
 
       marker = 'def ocr_search_params(solr_parameters = {})'
