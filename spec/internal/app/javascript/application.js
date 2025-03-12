@@ -10,3 +10,5 @@ BlacklightRangeLimit.init({onLoadHandler: Blacklight.onLoad });
 
 import "openseadragon"
 import "openseadragon-rails"
+
+import "@fortawesome/fontawesome-free"

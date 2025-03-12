@@ -82,3 +82,4 @@ spec/internal/node_modules
 spec/internal/log/*.log
 spec/internal/tmp/*
 spec/internal/config/*.key
+spec/internal/vendor/javascript
