@@ -77,9 +77,11 @@ ehthumbs.db
 
 # test app #
 #########################
-.internal_test_app
 spec/internal/node_modules
 spec/internal/log/*.log
 spec/internal/tmp/*
 spec/internal/config/*.key
 spec/internal/vendor/javascript
+spec/internal/app/assets/builds/*
+!spec/internal/app/assets/builds/.keep
+spec/internal/.env.development

@@ -5,7 +5,6 @@ class CommonwealthSearchBuilder < Blacklight::SearchBuilder
   # include BlacklightAdvancedSearch::AdvancedSearchBuilder
   # include BlacklightMaps::MapsSearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
-  include CommonwealthVlrEngine::CommonwealthSearchBuilderBehavior
   include CommonwealthVlrEngine::SearchBuilderBehavior
 
   self.default_processor_chain += [
