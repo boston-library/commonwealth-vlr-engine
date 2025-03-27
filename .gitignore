@@ -85,4 +85,4 @@ ehthumbs.db
 /spec/internal/app/assets/builds/*
 !/spec/internal/app/assets/builds/.keep
 /spec/internal/.env.development
-/spec/internal/storage/
+/spec/internal/storage

@@ -69,12 +69,12 @@ module CommonwealthVlrEngine
       search_catalog_url(options.except(:controller, :action))
     end
 
-    # remove all views except grid, set SearchBuilder
     def institutions_index_config
       blacklight_config.search_builder_class = CommonwealthVlrEngine::InstitutionsSearchBuilder
       blacklight_config.view.delete(:list)
       blacklight_config.view.delete(:masonry)
       blacklight_config.view.delete(:slideshow)
+      blacklight_config.show.route = { controller: 'institutions' }
     end
   end
 end
