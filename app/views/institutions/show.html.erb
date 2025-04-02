@@ -5,15 +5,11 @@
 
   <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-    <h1 class="institution-title"><%= @institution_title %></h1>
-
     <div id="institution_geolocation">
-      <% if @document[:subject_hiergeo_geojson_ssm] %>
-          <%= render_hiergo_subject(@document[:subject_hiergeo_geojson_ssm].first,
-                                    t('blacklight.breadcrumb.separator'),
-                                    'metadata_breadcrumb') %>
-      <% end %>
+      <%= render CommonwealthVlrEngine::HiergeoSubjectComponent.new(document: @document) %>
     </div>
+
+    <h1 class="institution-title"><%= @institution_title %></h1>
 
     <div class="row">
 

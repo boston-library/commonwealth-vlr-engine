@@ -48,31 +48,32 @@ module CommonwealthVlrEngine
       end
     end
 
+    # DEPRECATED - moved to HiergeoSubjectComponent
     # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
-    def render_hiergo_subject(geojson_feature, separator, separator_class = nil)
-      output_array = []
-      hiergeo_hash = JSON.parse(geojson_feature).symbolize_keys[:properties]
-      hiergeo_hash.each_key do |k|
-        # only display continent if there are no other values
-        if k == 'continent'
-          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 1
-        elsif k == 'country' && hiergeo_hash[k] == 'United States'
-          # display 'United States' only if no other values besides continent
-          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 2
-        elsif k == 'county'
-          output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_sim')
-        elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
-          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') + " (#{k})"
-        elsif k == 'other'
-          place_type = hiergeo_hash[k].scan(/\([a-z\s]*\)/).last
-          place_name = hiergeo_hash[k].gsub(/#{place_type}/, '').gsub(/\s\(\)\z/, '')
-          output_array << link_to_facet(place_name, 'subject_geographic_sim') + " #{place_type}"
-        else
-          output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim')
-        end
-      end
-      output_array.join(content_tag(:span, separator, :class => separator_class)).html_safe
-    end
+    # def render_hiergo_subject(geojson_feature, separator, separator_class = nil)
+    #   output_array = []
+    #   hiergeo_hash = JSON.parse(geojson_feature).symbolize_keys[:properties]
+    #   hiergeo_hash.each_key do |k|
+    #     # only display continent if there are no other values
+    #     if k == 'continent'
+    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 1
+    #     elsif k == 'country' && hiergeo_hash[k] == 'United States'
+    #       # display 'United States' only if no other values besides continent
+    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 2
+    #     elsif k == 'county'
+    #       output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_sim')
+    #     elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
+    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') + " (#{k})"
+    #     elsif k == 'other'
+    #       place_type = hiergeo_hash[k].scan(/\([a-z\s]*\)/).last
+    #       place_name = hiergeo_hash[k].gsub(/#{place_type}/, '').gsub(/\s\(\)\z/, '')
+    #       output_array << link_to_facet(place_name, 'subject_geographic_sim') + " #{place_type}"
+    #     else
+    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim')
+    #     end
+    #   end
+    #   output_array.join(content_tag(:span, separator, :class => separator_class)).html_safe
+    # end
 
     # returns an array of properly-formatted date values
     # DEPRECATED

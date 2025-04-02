@@ -2,9 +2,8 @@
 
 module CommonwealthVlrEngine
   class BannerImageComponent < ViewComponent::Base
-    # include ApplicationHelper # shouldn't need this, use helpers.helper_method instead
-
-    def initialize(context:, image_data:)
+    def initialize(document:, context:, image_data:)
+      @document = document
       @context = context
       @image_data = image_data
     end
@@ -24,7 +23,7 @@ module CommonwealthVlrEngine
     end
 
     def banner_image_class
-
+      "banner-image-#{@context}"
     end
 
     def banner_image_caption
