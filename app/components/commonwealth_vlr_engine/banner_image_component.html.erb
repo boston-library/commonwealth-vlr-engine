@@ -1,7 +1,9 @@
 <div id="banner_image_container">
-  <%= link_to banner_image_tag, banner_image_url,
+  <%= link_to banner_image_tag, solr_document_path(@exemplary_document['id']),
               id: "banner_image", class: banner_image_class %>
   <div id="banner_image_caption">
-    <%= banner_image_caption %>
+    <%= I18n.t('blacklight.collections.image_title_prefix') if hosted? %>
+    <%= link_to(banner_image_title,
+                solr_document_path(@exemplary_document['id'])) %>
   </div>
 </div>

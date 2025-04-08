@@ -1,4 +1,4 @@
-<% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
+<% @page_title = t('blacklight.search.show.title', document_title: @document[blacklight_config.show.title_field], application_name: application_name) %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
 <div id="document" class="<%= render_document_class %>">
@@ -13,7 +13,9 @@
 
     <div class="row">
 
-      <div class="col-lg-9">
+      <div class="col-lg-12">
+
+        <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document) %>
 
         <div id="institution_search_tools">
           <div id="institution_view_all">
@@ -56,11 +58,13 @@
       </div>
 
 
+      <!--
       <div id="sidebar" class="col-lg-3">
-        <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
+        <%# render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
                                              Rails.application.class.module_parent_name == 'Commonwealth') %>
-        <%= render 'search_sidebar' %>
+        <%# render 'search_sidebar' %>
       </div>
+      -->
 
     </div>
 

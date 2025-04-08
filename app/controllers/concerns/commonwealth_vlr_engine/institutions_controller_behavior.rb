@@ -37,6 +37,10 @@ module CommonwealthVlrEngine
       institution_search_service = search_service_class.new(config: blacklight_config,
                                                             user_params: params)
       @document = institution_search_service.fetch(params[:id])
+      # TODO: replace this with a fetch for @document['exemplary_image_digobj_ss']
+      @exemplary_document = institution_search_service.fetch('bpl-dev:6q182k915') # image
+      # @exemplary_document = institution_search_service.fetch('bpl-dev:fx719n13q') # newspaper
+      # @exemplary_document = institution_search_service.fetch('TK') # harvested item
       @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
       # get the response for collection objects

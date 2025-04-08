@@ -10,7 +10,7 @@
                                                           omission: '... ') %>" />
 <% end %>
 <% if controller_name == 'collections' %>
-    <meta property="og:image" content="<%= collection_image_url(hosting_status: document[blacklight_config.hosting_status_field]) %>" />
+    <meta property="og:image" content="<%= banner_image_url(hosting_status: document[blacklight_config.hosting_status_field]) %>" />
 <% elsif has_image_files?(@object_files) %>
     <meta property="og:image" content="<%= filestream_disseminator_url(@object_files[:image].first['storage_key_base_ss'],
                                                                     'image_access_800') %>" />
