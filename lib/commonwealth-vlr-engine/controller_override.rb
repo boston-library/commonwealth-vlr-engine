@@ -50,6 +50,7 @@ module CommonwealthVlrEngine
         config.index.title_field = 'title_info_primary_tsi'
         config.index.display_type_field = 'curator_model_suffix_ssi'
         config.index.thumbnail_method = :create_thumb_img_element
+        config.index.random_field = 'hashed_id_ssi'
         # config.index.partials = [:thumbnail, :index_header, :index] # this may be deprecated?
 
         # solr field configuration for document show views

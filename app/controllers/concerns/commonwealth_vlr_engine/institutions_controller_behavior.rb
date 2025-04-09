@@ -10,8 +10,9 @@ module CommonwealthVlrEngine
     included do
       copy_blacklight_config_from(CatalogController)
 
-      before_action :institutions_index_config, :only => [:index]
-      before_action :relation_base_blacklight_config, :only => [:show]
+      before_action :institutions_index_config, only: [:index]
+      before_action :institutions_show_config, only: [:show]
+      before_action :relation_base_blacklight_config, only: [:show]
 
       helper_method :search_action_url
     end
@@ -54,8 +55,10 @@ module CommonwealthVlrEngine
       # add params[:f] for proper facet links, get response for items in collection
       params.merge!(f: { blacklight_config.institution_field => [@institution_title] }).permit!
       facets_search_service = search_service_class.new(config: blacklight_config,
-                                                       user_params: { f: params[:f] })
+                                                       user_params: { f: params[:f],
+                                                                      sort: "#{blacklight_config.index.random_field} asc"})
       @response = facets_search_service.search_results
+      @featured_items = @response&.documents&.sample(8)
 
       respond_to do |format|
         format.html
@@ -79,6 +82,12 @@ module CommonwealthVlrEngine
       blacklight_config.view.delete(:masonry)
       blacklight_config.view.delete(:slideshow)
       blacklight_config.show.route = { controller: 'institutions' }
+    end
+
+    # reset to defaults
+    def institutions_show_config
+      blacklight_config.show.document_component = nil
+      blacklight_config.show.metadata_component = nil
     end
   end
 end

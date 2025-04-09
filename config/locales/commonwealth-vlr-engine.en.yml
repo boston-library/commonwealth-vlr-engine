@@ -176,6 +176,7 @@ en:
             more: 'more...'
           facets:
             title: 'Browse by:'
+          featured: 'Featured Items'
           index:
             page_title: 'Institutions - %{application_name}'
             a-z_label: 'Starts with:'

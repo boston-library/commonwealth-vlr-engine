@@ -26,7 +26,7 @@
                      locals: { document: @document } %>
         </div>
 
-        <%= create_thumb_img_element(@document, ['institution_img_show']) %>
+        <%# create_thumb_img_element(@document, ['institution_img_show']) %>
 
         <div id="institution_desc_wrap">
 
@@ -34,26 +34,25 @@
 
           <% if @document[:institution_url_ss] %>
               <div id="institution_site_link_wrap">
-                <ul>
-                  <li>
-                    <%= link_to @document[:institution_url_ss], id: 'institution_site_link', target: '_blank' do %>
-                        Visit institution web site <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
-                    <% end %>
-                  </li>
-                </ul>
+                <%= link_to @document[:institution_url_ss], id: 'institution_site_link', target: '_blank' do %>
+                  Visit institution web site <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
+                <% end %>
               </div>
           <% end %>
 
         </div>
 
-          <% if @collex_documents.length > 0 %>
-            <div id="institution_collections">
-                <h4>Digital Collections: <span id="collections_count">(<%= @collex_documents.length %>)</span></h4>
+        <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,
+                                                                     context: 'institutions') %>
 
-                <%= render partial: 'catalog/document_collections_gallery',
-                           locals: { documents: @collex_documents } %>
-            </div>
-          <% end %>
+        <% if @collex_documents.present? %>
+          <div id="institution_collections">
+              <h4>Digital Collections: <span id="collections_count">(<%= @collex_documents.length %>)</span></h4>
+
+              <%= render partial: 'catalog/document_collections_gallery',
+                         locals: { documents: @collex_documents } %>
+          </div>
+        <% end %>
 
       </div>
 

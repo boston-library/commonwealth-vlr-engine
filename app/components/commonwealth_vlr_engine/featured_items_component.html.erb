@@ -1,0 +1,4 @@
+<div id="featured_items">
+  <h4><%= I18n.t("blacklight.#{context}.featured") %></h4>
+  <%= helpers.render_document_index_with_view(:masonry, featured_documents) %>
+</div>
