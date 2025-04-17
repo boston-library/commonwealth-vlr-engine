@@ -38,8 +38,10 @@ class CatalogController < ApplicationController
       supported_params: %w(q page)
     }
 
-    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
-    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)
+    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent,
+                        metadata_component: CommonwealthVlrEngine::MasonryDocumentMetadataComponent)
+    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent,
+                        metadata_component: CommonwealthVlrEngine::MasonryDocumentMetadataComponent)
     config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)
     # config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     # config.show.partials ||= []

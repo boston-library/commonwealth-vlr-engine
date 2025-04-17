@@ -31,7 +31,13 @@ module CommonwealthVlrEngine
     end
 
     def render_format_index(options = {})
-      options[:value].map { |v| render_format(v) }.join('; ')
+      options[:value].map do |v|
+        format_val = render_format(v)
+        format_val = format_val.gsub(/recordings/, 'recording')
+        format_val.split('/').map do |fv|
+          fv.singularize.gsub(/Atlase\z/, 'Atlas')
+        end.join('/')
+      end.join(', ')
     end
 
     # return the path to the icon for objects with no thumbnail

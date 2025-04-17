@@ -27,6 +27,7 @@ en:
             all: 'View All Items'
           facets:
             title: 'Browse by:'
+          featured: 'Featured Items'
           image_title_prefix: 'Detail from: '
           index:
             a-z_label: 'Starts with:'
