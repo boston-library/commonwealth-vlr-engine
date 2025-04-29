@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
     attr_reader :featured_documents, :context
 
     def initialize(featured_documents: [], context: 'collections')
-      @featured_documents = featured_documents
+      @featured_documents = featured_documents.map { |doc| Blacklight::DocumentPresenter.new(doc, CatalogController) }
       @context = context
     end
 
