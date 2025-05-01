@@ -1,10 +1,7 @@
 <div id="featured_items">
   <h4><%= I18n.t("blacklight.#{context}.featured") %></h4>
-  <%# helpers.render_document_index_with_view(:masonry, featured_documents) %>
+  <%# below based on blacklight-gallery/app/views/catalog/_document_masonry.html.erb %>
   <div id="documents_featured" class="documents-masonry">
-    <% puts view_config = helpers.blacklight_config&.view_config(:masonry) %>
-  <h4>VIEW CONFIG = <%= view_config %></h4>
-  <%# document_presenters = Blacklight::VERSION > '8' ? documents.map { |doc| document_presenter(doc) } : documents%>
-  <%= render helpers.blacklight_config.view.masonry.document_component.with_collection(featured_documents) %>
+    <%= render view_config.document_component.with_collection(featured_documents_presenters) %>
   </div>
 </div>

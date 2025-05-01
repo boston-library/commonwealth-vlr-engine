@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # so we can use our own template for rendering metadata in catalog#index masonry view
+# TODO: remove if unused, prefer using CSS to control layout of fields?
 module CommonwealthVlrEngine
   class MasonryDocumentMetadataComponent < Blacklight::Component
     # use same args as Blacklight::DocumentMetadataComponent,
@@ -19,7 +20,7 @@ module CommonwealthVlrEngine
     end
 
     def field_value(field_name)
-      fields.find { |f| f.key == field_name }.render
+      fields.find { |f| f.key == field_name }&.render
     end
   end
 end
