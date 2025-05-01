@@ -5,6 +5,9 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
+# jquery is needed for blacklight-gallery masonry view
+# pin "jquery", to: "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+# pin "jquery" # @3.7.1, local
 pin "bootstrap", to: "bootstrap.min.js"
 pin "@github/auto-complete-element", to: "https://cdn.skypack.dev/@github/auto-complete-element"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/dist/umd/popper.min.js"

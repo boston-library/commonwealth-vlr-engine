@@ -43,7 +43,7 @@
         </div>
 
         <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,
-                                                                     context: 'institutions') %>
+                                                                     parent_document: @document) %>
 
         <% if @collex_documents.present? %>
           <div id="institution_collections">
@@ -53,7 +53,6 @@
                          locals: { documents: @collex_documents } %>
           </div>
         <% end %>
-
       </div>
 
 

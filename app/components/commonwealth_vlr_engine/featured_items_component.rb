@@ -2,11 +2,11 @@
 
 module CommonwealthVlrEngine
   class FeaturedItemsComponent < ViewComponent::Base
-    attr_reader :featured_documents, :context
+    attr_reader :featured_documents, :parent_document
 
-    def initialize(featured_documents: [], context: 'collections')
+    def initialize(featured_documents: [], parent_document: nil)
       @featured_documents = featured_documents
-      @context = context
+      @parent_document = parent_document
     end
 
     def view_config
@@ -15,6 +15,20 @@ module CommonwealthVlrEngine
 
     def featured_documents_presenters
       featured_documents.map { |doc| CommonwealthVlrEngine::IndexPresenter.new(doc, controller.view_context) }
+    end
+
+    def link_to_all_featured_items(classes: '')
+      facet_params = if context == 'institutions'
+                       { helpers.blacklight_config.institution_field => [@institution_title || parent_document[helpers.blacklight_config.index.title_field]] }
+                     else
+                       { helpers.blacklight_config.institution_field => [parent_document[helpers.blacklight_config.institution_field]],
+                         helpers.blacklight_config.collection_field => [parent_document[helpers.blacklight_config.index.title_field.to_sym]] }
+                     end
+      link_to(I18n.t("blacklight.#{context}.browse.all"), search_catalog_path(f: facet_params), class: classes)
+    end
+
+    def context
+      parent_document.fetch(helpers.blacklight_config.index.display_type_field)&.downcase&.pluralize
     end
 
     def render?

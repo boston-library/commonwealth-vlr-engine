@@ -4,4 +4,7 @@
   <div id="documents_featured" class="documents-masonry">
     <%= render view_config.document_component.with_collection(featured_documents_presenters) %>
   </div>
+  <div id="featured_view_all_wrap">
+    <%= link_to_all_featured_items(classes: 'btn btn-info') %>
+  </div>
 </div>
