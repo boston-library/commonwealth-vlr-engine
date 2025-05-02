@@ -49,7 +49,8 @@ module CommonwealthVlrEngine
                              'institution_ark_id_ssi' => params[:id] },
                         rows: 500, sort: blacklight_config.title_sort }
       collex_search_service = search_service_class.new(config: blacklight_config,
-                                                       user_params: collex_params)
+                                                       user_params: collex_params,
+                                                       search_builder_class: CommonwealthVlrEngine::CollectionsSearchBuilder)
       @collex_documents = collex_search_service.search_results&.documents
 
       # add params[:f] for proper facet links, get response for items in collection
