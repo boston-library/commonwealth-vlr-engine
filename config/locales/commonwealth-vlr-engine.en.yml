@@ -172,6 +172,8 @@ en:
     institutions:
           browse:
             all: 'View all items'
+          collections:
+            title: 'Digital Collections'
           description:
             less: 'less...'
             more: 'more...'

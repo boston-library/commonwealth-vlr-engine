@@ -8,6 +8,8 @@ module CommonwealthVlrEngine
 
     included do
       helper_method :create_img_sequence # extra head content
+      # use our own class so we can override Blacklight::SearchState#url_for_document
+      self.search_state_class = CommonwealthVlrEngine::SearchState
     end
 
     # @param image_files [Array] array of SolrDocument from @object_files[:image]

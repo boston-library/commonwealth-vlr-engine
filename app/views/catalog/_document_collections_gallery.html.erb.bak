@@ -1,5 +1,5 @@
 <% # container for all collection documents in collections display view -%>
-<div id="documents" class="row collections-gallery">
+<div id="documents_collections" class="row collections-gallery">
   <%= render collection: documents,
              as: :document,
              partial: 'index_collections_gallery',

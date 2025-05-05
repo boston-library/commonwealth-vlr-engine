@@ -21,6 +21,7 @@ module CommonwealthVlrEngine
       TITLE_SORT_FIELD = 'title_info_primary_ssort'
       DATE_ASC_SORT = "date_start_dtsi asc, #{TITLE_SORT_FIELD} asc"
       TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc"
+      DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
@@ -48,7 +49,7 @@ module CommonwealthVlrEngine
 
         # solr field configuration for search results/index views
         config.index.title_field = 'title_info_primary_tsi'
-        config.index.display_type_field = 'curator_model_suffix_ssi'
+        config.index.display_type_field = DISPLAY_TYPE_FIELD
         config.index.thumbnail_method = :create_thumb_img_element
         config.index.random_field = 'hashed_id_ssi'
         # config.index.partials = [:thumbnail, :index_header, :index] # this may be deprecated?
@@ -60,7 +61,7 @@ module CommonwealthVlrEngine
         config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
                                                                             helper_method: :show_html_title,
                                                                             presenter: Blacklight::FieldPresenter)
-        config.show.display_type_field = 'curator_model_suffix_ssi'
+        config.show.display_type_field = DISPLAY_TYPE_FIELD
         # config.show.partials = [:show_breadcrumb, :show_header, :show]
 
         # solr field for flagged/inappropriate content
@@ -137,13 +138,16 @@ module CommonwealthVlrEngine
         # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
-        config.add_facet_field 'curator_model_suffix_ssi', include_in_request: false
+        config.add_facet_field DISPLAY_TYPE_FIELD, include_in_request: false
 
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
         config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
+        blacklight_config.add_index_field 'abstract_tsi', label: 'Description', helper_method: :index_abstract, if: lambda { |_context, _field_config, document|
+          document[DISPLAY_TYPE_FIELD] == 'Collection'
+        }
 
         # "fielded" search configuration. Used by pulldown among other places.
         config.add_search_field('all_fields') do |field|

@@ -32,6 +32,7 @@ module CommonwealthVlrEngine
     end
 
     def show
+      puts "SEARCH STATE CLASS = #{search_state_class}"
       @nav_li_active = 'explore'
 
       # have to define a new search_service here, or we can't inject params[:f] below

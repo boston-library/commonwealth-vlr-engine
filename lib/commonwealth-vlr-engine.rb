@@ -15,6 +15,7 @@ module CommonwealthVlrEngine
   require 'commonwealth-vlr-engine/finder'
   require 'commonwealth-vlr-engine/notifier'
   require 'commonwealth-vlr-engine/iiif_manifest'
+  require 'commonwealth-vlr-engine/search_state'
   require 'commonwealth-vlr-engine/streaming'
 
   def self.config

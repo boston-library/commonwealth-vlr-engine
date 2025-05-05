@@ -9,10 +9,6 @@ module CommonwealthVlrEngine
       @parent_document = parent_document
     end
 
-    def view_config
-      helpers.blacklight_config&.view_config(:masonry)
-    end
-
     def featured_documents_presenters
       featured_documents.map { |doc| CommonwealthVlrEngine::IndexPresenter.new(doc, controller.view_context) }
     end

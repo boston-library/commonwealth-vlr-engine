@@ -1,0 +1,7 @@
+<div id="institution_collections">
+  <h4><%= I18n.t("blacklight.institutions.collections.title") %></h4>
+  <%# below based on blacklight-gallery/app/views/catalog/_document_gallery.html.erb %>
+  <div id="documents_collections" class="row-cols-2 row-cols-md-3 row documents-gallery">
+    <%= render Blacklight::Gallery::DocumentComponent.with_collection(collection_documents_presenters) %>
+  </div>
+</div>

@@ -2,7 +2,7 @@
   <h4><%= I18n.t("blacklight.#{context}.featured") %></h4>
   <%# below based on blacklight-gallery/app/views/catalog/_document_masonry.html.erb %>
   <div id="documents_featured" class="documents-masonry">
-    <%= render view_config.document_component.with_collection(featured_documents_presenters) %>
+    <%= render Blacklight::Gallery::DocumentComponent.with_collection(featured_documents_presenters) %>
   </div>
   <div id="featured_view_all_wrap">
     <%= link_to_all_featured_items(classes: 'btn btn-info') %>

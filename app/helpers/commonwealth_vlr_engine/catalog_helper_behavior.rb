@@ -81,6 +81,13 @@ module CommonwealthVlrEngine
       end
     end
 
+    def index_abstract(options = {})
+      truncate(sanitize(options[:value].first.gsub(/<\/p><p>/,' '), :tags => []),
+               length: 300, separator: ' ', omission: '... ') do
+        link_to('more', collection_path(id: options[:document][:id]), class: 'read-more-link')
+      end
+    end
+
     def insert_opengraph_markup
       return unless action_name == 'show' && %w(catalog collections).include?(controller_name)
 
