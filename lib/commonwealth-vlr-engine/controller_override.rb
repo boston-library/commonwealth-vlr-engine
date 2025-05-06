@@ -22,6 +22,7 @@ module CommonwealthVlrEngine
       DATE_ASC_SORT = "date_start_dtsi asc, #{TITLE_SORT_FIELD} asc"
       TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc"
       DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
+      TITLE_PRIMARY_FIELD = 'title_info_primary_tsi'
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
@@ -48,17 +49,21 @@ module CommonwealthVlrEngine
         # config.view.maps.spatial_query_dist = 0.2
 
         # solr field configuration for search results/index views
-        config.index.title_field = 'title_info_primary_tsi'
+        config.index.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
+                                                                        helper_method: :show_html_title,
+                                                                        presenter: Blacklight::FieldPresenter)
         config.index.display_type_field = DISPLAY_TYPE_FIELD
         config.index.thumbnail_method = :create_thumb_img_element
         config.index.random_field = 'hashed_id_ssi'
-        # config.index.partials = [:thumbnail, :index_header, :index] # this may be deprecated?
+        # config.index.partials = [:thumbnail, :index_header, :index] # TODO: this may be deprecated?
 
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent
         config.show.metadata_component = CommonwealthVlrEngine::Document::MetadataComponent
-        config.show.title_field = 'title_info_primary_tsi'
-        config.show.html_title_field = Blacklight::Configuration::Field.new(field: 'title_info_primary_tsi',
+        config.show.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
+                                                                       helper_method: :show_html_title,
+                                                                       presenter: Blacklight::FieldPresenter)
+        config.show.html_title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
                                                                             helper_method: :show_html_title,
                                                                             presenter: Blacklight::FieldPresenter)
         config.show.display_type_field = DISPLAY_TYPE_FIELD

@@ -12,7 +12,7 @@ describe CollectionsHelper, :vcr do
 
   describe '#link_to_all_col_items' do
     let(:document) do
-      { blacklight_config.index.title_field.to_sym => 'Foo Collection',
+      { blacklight_config.index.title_field.field => 'Foo Collection',
         blacklight_config.institution_field.to_sym => 'Bar Institution' }
     end
     let(:coll_items_link) do

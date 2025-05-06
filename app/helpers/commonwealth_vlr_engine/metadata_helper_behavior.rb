@@ -112,8 +112,8 @@ module CommonwealthVlrEngine
     # if full = false, output with volume info, but no subtitle or parallel title
     def render_title(document, full = true)
       title_output = ''
-      if document[blacklight_config.index.title_field.to_sym]
-        title_output += document[blacklight_config.index.title_field.to_sym]
+      if document[blacklight_config.index.title_field.field]
+        title_output += document[blacklight_config.index.title_field.field]
         title_output += " : #{document[:title_info_primary_subtitle_tsi]}" if document[:title_info_primary_subtitle_tsi] && full
         title_output += ". #{document[:title_info_partnum_tsi]}" if document[:title_info_partnum_tsi]
         title_output += ". #{document[:title_info_partname_tsi]}" if document[:title_info_partname_tsi]

@@ -32,7 +32,6 @@ module CommonwealthVlrEngine
     end
 
     def show
-      puts "SEARCH STATE CLASS = #{search_state_class}"
       @nav_li_active = 'explore'
 
       # have to define a new search_service here, or we can't inject params[:f] below
@@ -43,7 +42,7 @@ module CommonwealthVlrEngine
       @exemplary_document = institution_search_service.fetch('bpl-dev:6q182k915') # image
       # @exemplary_document = institution_search_service.fetch('bpl-dev:fx719n13q') # newspaper
       # @exemplary_document = institution_search_service.fetch('TK') # harvested item
-      @institution_title = @document[blacklight_config.index.title_field.to_sym]
+      @institution_title = @document[blacklight_config.index.title_field.field]
 
       # get the response for collection objects
       collex_params = { f: { blacklight_config.index.display_type_field => 'Collection',

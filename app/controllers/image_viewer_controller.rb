@@ -6,7 +6,7 @@ class ImageViewerController < CatalogController
 
   def show
     @document = search_service.fetch(params[:id])
-    @title = @document[blacklight_config.index.title_field.to_sym]
+    @title = @document[blacklight_config.index.title_field.field]
     # @object_files is already set by before_action in CommonwealthVlrEngine::ControllerOverride
     @page_sequence = create_img_sequence(@object_files[:image], params[:view])
     respond_to do |format|

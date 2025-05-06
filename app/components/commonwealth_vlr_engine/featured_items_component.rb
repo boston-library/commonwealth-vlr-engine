@@ -18,7 +18,7 @@ module CommonwealthVlrEngine
                        { helpers.blacklight_config.institution_field => [@institution_title || parent_document[helpers.blacklight_config.index.title_field]] }
                      else
                        { helpers.blacklight_config.institution_field => [parent_document[helpers.blacklight_config.institution_field]],
-                         helpers.blacklight_config.collection_field => [parent_document[helpers.blacklight_config.index.title_field.to_sym]] }
+                         helpers.blacklight_config.collection_field => [parent_document[helpers.blacklight_config.index.title_field.field]] }
                      end
       link_to(I18n.t("blacklight.#{context}.browse.all"), search_catalog_path(f: facet_params), class: classes)
     end

@@ -38,7 +38,7 @@ module CommonwealthVlrEngine
       collection_search_service = search_service_class.new(config: blacklight_config,
                                                            user_params: params)
       @document = collection_search_service.fetch(params[:id])
-      @collection_title = @document[blacklight_config.index.title_field.to_sym]
+      @collection_title = @document[blacklight_config.index.title_field.field]
 
       # add params[:f] for proper facet links
       params.merge!(f: set_collection_facet_params(@collection_title, @document)).permit!

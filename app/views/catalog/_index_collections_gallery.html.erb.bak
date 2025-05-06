@@ -2,7 +2,7 @@
 <div class="masonry document col-6 col-sm-4 col-md-4">
   <div class="thumbnail">
     <%= link_to(image_tag(collection_gallery_url(document,'300'),
-                          alt: document[blacklight_config.index.title_field.to_sym]),
+                          alt: document[blacklight_config.index.title_field.field]),
                 collection_path(id: document[:id])) %>
     <div class="caption">
       <%# render partial: 'catalog/index_header_default',

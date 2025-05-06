@@ -9,7 +9,7 @@
         <% content_tag :i, '', class: 'img_zoom_icon fa fa-search-plus' %>
     <% end %>
     <%= link_to(image_tag(filestream_disseminator_url(image_key, 'image_access_800'),
-                          alt: document[blacklight_config.index.title_field.to_sym],
+                          alt: document[blacklight_config.index.title_field.field],
                           class: 'img_show'),
                 '#', id: 'img_viewer_link',
                 class: 'img_viewer_link',
@@ -18,7 +18,7 @@
   </div>
 
   <%= render partial: 'catalog/_show_partials/show_default_simple_img_viewer',
-             locals: { object_title: document[blacklight_config.index.title_field.to_sym].html_safe,
+             locals: { object_title: document[blacklight_config.index.title_field.field].html_safe,
                        image_key: image_key } %>
 
   <% unless page_sequence[:total] == 1 %>

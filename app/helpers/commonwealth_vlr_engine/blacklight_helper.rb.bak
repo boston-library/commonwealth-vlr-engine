@@ -8,7 +8,7 @@ module CommonwealthVlrEngine
     # for catalog#show title heading
     # def document_heading(document = nil)
     #   document ||= @document
-    #   if document[blacklight_config.index.title_field.to_sym]
+    #   if document[blacklight_config.index.title_field.field]
     #     render_title(document)
     #   else
     #     @document.id

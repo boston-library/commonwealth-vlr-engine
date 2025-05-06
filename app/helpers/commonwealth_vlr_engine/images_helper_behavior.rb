@@ -64,7 +64,7 @@ module CommonwealthVlrEngine
     def create_thumb_img_element(document, img_class = [])
       image_classes = img_class.class == Array ? img_class.join(' ') : ''
       image_tag(thumbnail_url(document),
-                alt: document[blacklight_config.index.title_field.to_sym],
+                alt: document[blacklight_config.index.title_field.field],
                 class: image_classes)
     end
 

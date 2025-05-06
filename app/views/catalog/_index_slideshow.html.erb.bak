@@ -2,7 +2,7 @@
 <div class="item<%= ' active' if document_counter == 0 %>">
   <div class="frame">
     <% img = image_tag index_slideshow_img_url(document),
-                       :alt => document[blacklight_config.index.title_field.to_sym] %>
+                       :alt => document[blacklight_config.index.title_field.field] %>
     <%= link_to_document document, img, counter: document_counter_with_offset(document_counter) %>
     <div class="caption">
       <%= link_to_document document,

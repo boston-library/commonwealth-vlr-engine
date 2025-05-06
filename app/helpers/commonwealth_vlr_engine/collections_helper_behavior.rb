@@ -6,7 +6,7 @@ module CommonwealthVlrEngine
     # @param document [SolrDocument] collection
     # @param class [String] CSS classes to add to the link
     def link_to_all_col_items(document, link_class: '')
-      facet_params = { blacklight_config.collection_field => [document[blacklight_config.index.title_field.to_sym]] }
+      facet_params = { blacklight_config.collection_field => [document[blacklight_config.index.title_field.field]] }
       facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
       search_params = { f: facet_params }
       search_params[:sort] = blacklight_config.date_asc_sort if document['destination_site_ssim'].to_s.include?('newspapers')

@@ -111,7 +111,7 @@ describe CommonwealthVlrEngine::IiifManifest, :vcr do
 
     it 'has a bunch of metadata about the item' do
       expect(manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.title') }[:value]).to eq(
-        document[mock_controller.blacklight_config.index.title_field.to_sym]
+        document[mock_controller.blacklight_config.index.title_field.field]
       )
       expect(manifest_metadata.find { |field| field[:label] == I18n.t('blacklight.metadata_display.fields.collection') }[:value]).to eq(
         document[:related_item_host_ssim].first
