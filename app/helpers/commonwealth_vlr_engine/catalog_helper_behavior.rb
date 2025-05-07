@@ -69,7 +69,13 @@ module CommonwealthVlrEngine
               institution_path(id: options[:document][:institution_ark_id_ssi]))
     end
 
+    def index_title(options = {})
+      truncate(show_html_title(options), separator: ' ', length: index_title_length)
+    end
+
     # determine the 'truncate' length based on catalog#index view type
+    # note that this is NOT invoked when displaying item-level search results on
+    # pages with a #show action (like institutions#show)
     def index_title_length
       case params[:view]
       when 'list'

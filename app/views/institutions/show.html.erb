@@ -1,4 +1,4 @@
-<% @page_title = t('blacklight.search.show.title', document_title: @document[blacklight_config.show.title_field], application_name: application_name) %>
+<% @page_title = t('blacklight.search.show.title', document_title: @document[blacklight_config.show.title_field.field], application_name: application_name) %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
 <div id="document" class="<%= render_document_class %>">
@@ -17,19 +17,7 @@
 
         <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document) %>
 
-        <div id="institution_search_tools">
-          <div id="institution_view_all">
-            <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
-          </div>
-          <span class="institution_search_separator">or</span>
-          <%# render partial: 'search_form_institution',
-                     locals: { document: @document } %>
-        </div>
-
-        <%# create_thumb_img_element(@document, ['institution_img_show']) %>
-
         <div id="institution_desc_wrap">
-
           <%= render_institution_desc(@document[:abstract_tsi]) if @document[:abstract_tsi] %>
 
           <% if @document[:institution_url_ss] %>
@@ -39,7 +27,20 @@
                 <% end %>
               </div>
           <% end %>
+        </div>
 
+        <div id="institution_search_tools">
+          <div id="institution_view_all">
+            <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
+          </div>
+          <span class="institution_search_separator">or</span>
+          <%# render partial: 'search_form_institution',
+                     locals: { document: @document } %>
+          <%= render Blacklight::SearchBarComponent.new(
+            url: search_action_url,
+            params: search_state.params_for_search.except(:q, :search_field, :qt, :page),
+            i18n: { scope: 'blacklight.search.form.institution' }
+          ) %>
         </div>
 
         <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,

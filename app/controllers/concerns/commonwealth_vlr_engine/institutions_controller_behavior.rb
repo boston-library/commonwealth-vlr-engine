@@ -85,10 +85,14 @@ module CommonwealthVlrEngine
       blacklight_config.show.route = { controller: 'institutions' }
     end
 
-    # reset to defaults
+    # reset to defaults, don't display field options for search box
     def institutions_show_config
       blacklight_config.show.document_component = nil
       blacklight_config.show.metadata_component = nil
+      blacklight_config.search_fields.delete(:title)
+      blacklight_config.search_fields.delete(:subject)
+      blacklight_config.search_fields.delete(:place)
+      blacklight_config.search_fields.delete(:creator)
     end
   end
 end

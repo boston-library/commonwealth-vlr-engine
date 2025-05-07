@@ -50,7 +50,7 @@ module CommonwealthVlrEngine
 
         # solr field configuration for search results/index views
         config.index.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
-                                                                        helper_method: :show_html_title,
+                                                                        helper_method: :index_title,
                                                                         presenter: Blacklight::FieldPresenter)
         config.index.display_type_field = DISPLAY_TYPE_FIELD
         config.index.thumbnail_method = :create_thumb_img_element

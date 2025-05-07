@@ -1,4 +1,4 @@
-<% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
+<% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field.field], :application_name => application_name) %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
 <div id="document" class="<%= render_document_class %>">

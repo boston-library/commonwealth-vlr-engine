@@ -53,7 +53,7 @@ module CommonwealthVlrEngine
     # end
 
     def banner_image_title
-      @exemplary_document[helpers.blacklight_config.index.title_field]
+      @exemplary_document[helpers.blacklight_config.index.title_field.field]
     end
 
     def banner_image_class
