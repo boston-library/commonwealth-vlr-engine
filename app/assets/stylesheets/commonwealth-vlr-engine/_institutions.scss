@@ -9,7 +9,6 @@ div.institutions-list {
   }
 
   #sortAndPerPage {
-    margin-bottom: 0;
 
     /* don't display sort widget */
     #sort-dropdown {
@@ -19,20 +18,9 @@ div.institutions-list {
   }
 
   #documents {
-    //margin-top: 15px;
-    //margin-bottom: 25px;
+    margin-bottom: 30px;
 
     .blacklight-institution {
-      //margin-bottom: 10px;
-      //padding-bottom: 10px;
-
-      //.document-thumbnail {
-      //  display: none;
-      //}
-
-      //.documentHeader {
-      //  padding-left: 0;
-      //}
 
       .document-metadata {
         display: none;

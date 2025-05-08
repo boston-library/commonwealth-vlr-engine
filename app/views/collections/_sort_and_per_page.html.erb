@@ -1,0 +1,13 @@
+<div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation"
+     aria-label="<%= t('blacklight.search.per_page.aria_label')%>">
+  <%= render partial: "paginate_compact", object: @response if show_pagination? %>
+  <%# render Blacklight::FacetComponent.with_collection(blacklight_config.facet_fields.keys, response: @response) %>
+  <%= render Blacklight::FacetFieldListComponent.new(
+    facet_field: Blacklight::FacetFieldPresenter.new(
+      blacklight_config.facet_fields['genre_basic_ssim'],
+      @response.aggregations.dig(:genre_basic_ssim), controller.view_context
+    )
+  ) %>
+  <%# @response.aggregations.dig(:genre_basic_ssim).class %>
+  <%= render_results_collection_tools wrapping_class: "search-widgets" %>
+</div>

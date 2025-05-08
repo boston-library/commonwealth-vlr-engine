@@ -13,13 +13,13 @@ module CommonwealthVlrEngine
       before_action :institutions_index_config, only: [:index]
       before_action :institutions_show_config, only: [:show]
       before_action :relation_base_blacklight_config, only: [:show]
+      before_action :nav_li_active, only: [:index, :show]
 
       helper_method :search_action_url
     end
 
     def index
-      @nav_li_active = 'explore'
-      params.merge!(view: params[:view].presence || 'list',
+      params.merge!(view: 'gallery',
                     per_page: params[:per_page].presence || '50',
                     sort: blacklight_config.title_sort)
       institutions_search_service = search_service_class.new(config: blacklight_config,
@@ -32,8 +32,6 @@ module CommonwealthVlrEngine
     end
 
     def show
-      @nav_li_active = 'explore'
-
       # have to define a new search_service here, or we can't inject params[:f] below
       institution_search_service = search_service_class.new(config: blacklight_config,
                                                             user_params: params)
@@ -93,6 +91,10 @@ module CommonwealthVlrEngine
       blacklight_config.search_fields.delete(:subject)
       blacklight_config.search_fields.delete(:place)
       blacklight_config.search_fields.delete(:creator)
+    end
+
+    def nav_li_active
+      @nav_li_active = 'explore'
     end
   end
 end

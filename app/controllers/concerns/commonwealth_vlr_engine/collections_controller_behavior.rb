@@ -9,19 +9,19 @@ module CommonwealthVlrEngine
     included do
       copy_blacklight_config_from(CatalogController)
 
+      before_action :nav_li_active, only: [:index, :show]
       before_action :relation_base_blacklight_config, only: [:index, :show]
-      before_action :add_series_facet, only: :show
-      before_action :collections_limit, only: :index
-      before_action :collections_limit_for_facets, only: :facet
       before_action :collapse_institution_facet, only: :index
+      before_action :collections_index_config, only: :index
+      before_action :collections_limit_for_facets, only: :facet
+      before_action :add_series_facet, only: :show
 
       helper_method :search_action_url
       helper_method :get_series_image_obj
     end
 
     def index
-      @nav_li_active = 'explore'
-      params.merge!(view: 'list', sort: 'title_info_primary_ssort asc, date_start_dtsi asc')
+      params.merge!(view: 'gallery', sort: blacklight_config.title_sort)
       collection_search_service = search_service_class.new(config: blacklight_config,
                                                            user_params: params)
       @response = collection_search_service.search_results
@@ -32,8 +32,6 @@ module CommonwealthVlrEngine
     end
 
     def show
-      @nav_li_active = 'explore'
-
       # have to define a new search_service here, or we can't inject params[:f] below
       collection_search_service = search_service_class.new(config: blacklight_config,
                                                            user_params: params)
@@ -86,14 +84,18 @@ module CommonwealthVlrEngine
 
     # collapse the institution facet, if Institutions supported
     def collapse_institution_facet
-      return unless CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+      return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
 
       blacklight_config.facet_fields['physical_location_ssim'].collapse = true
     end
 
     # find only collection objects
-    def collections_limit
+    def collections_index_config
       blacklight_config.search_builder_class = CommonwealthVlrEngine::CollectionsSearchBuilder
+      blacklight_config.index.search_header_component = CommonwealthVlrEngine::CollectionsSearchHeaderComponent
+      blacklight_config.view.delete(:list)
+      blacklight_config.view.delete(:masonry)
+      blacklight_config.view.delete(:slideshow)
     end
 
     # find object data for "more" facet results
@@ -137,6 +139,10 @@ module CommonwealthVlrEngine
       facet_params = { blacklight_config.collection_field => [collection_title] }
       facet_params[blacklight_config.institution_field] = [document[blacklight_config.institution_field.to_sym]] if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
       facet_params
+    end
+
+    def nav_li_active
+      @nav_li_active = 'explore'
     end
   end
 end
