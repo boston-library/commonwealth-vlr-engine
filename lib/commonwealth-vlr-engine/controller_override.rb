@@ -15,7 +15,6 @@ module CommonwealthVlrEngine
       before_action :mlt_results_for_show, only: [:show]
       before_action :set_nav_context, only: [:index]
       before_action :mlt_search, only: [:index, :show]
-      before_action :add_institution_fields, only: [:index, :facet]
       after_action :set_access_control_headers, only: [:index, :show]
 
       TITLE_SORT_FIELD = 'title_info_primary_ssort'
@@ -126,6 +125,9 @@ module CommonwealthVlrEngine
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
         config.add_facet_field 'date_facet_yearly_itim', label: 'Date', range: true, collapse: false
         config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse: false, if: lambda { |_context, _field_config, _document|
+          CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+        }
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', label: 'Collection', include_in_request: false # Collection (local)
         config.add_facet_field 'genre_specific_ssim', label: 'Genre', include_in_request: false
@@ -150,6 +152,9 @@ module CommonwealthVlrEngine
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
         config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
+        blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link, if: lambda { |_context, _field_config, _document|
+          CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+        }
         blacklight_config.add_index_field 'abstract_tsi', label: 'Description', helper_method: :index_abstract, if: lambda { |_context, _field_config, document|
           document[DISPLAY_TYPE_FIELD] == 'Collection'
         }
@@ -324,14 +329,6 @@ module CommonwealthVlrEngine
 
     def set_nav_context
       @nav_li_active = 'search' if controller_name == 'catalog'
-    end
-
-    # add institutions unless limiting to specific institution
-    def add_institution_fields
-      #return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
-
-      blacklight_config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse: false
-      blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link
     end
 
     # run a separate search for 'more like this' items

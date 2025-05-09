@@ -7,7 +7,7 @@
 
 <div id="content" class="row collections-list">
 
-  <div id="collections_results" class="col-lg-9">
+  <div id="collections_results" class="col-lg-12">
 
     <%= render CommonwealthVlrEngine::AzLinksComponent.new(context: 'collections') %>
 
@@ -25,8 +25,9 @@
     <%= render 'catalog/results_pagination' %>
   </div>
 
+  <!--
   <div id="sidebar" class="col-lg-3">
-    <%= render 'catalog/search_sidebar' %>
+    <%# render 'catalog/search_sidebar' %>
   </div>
-
+  -->
 </div>

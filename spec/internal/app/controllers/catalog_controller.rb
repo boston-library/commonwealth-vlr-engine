@@ -38,10 +38,11 @@ class CatalogController < ApplicationController
       supported_params: %w(q page)
     }
 
+    # blacklight-gallery config
     # FYI, can pass :metadata_component as an arg if desired
     config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
     config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent, icon: Blacklight::Gallery::Icons::MasonryComponent)
-    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)
+    # config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent, icon: Blacklight::Gallery::Icons::SlideshowComponent)
     # config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     # config.show.partials ||= []
     # config.show.partials.insert(1, :openseadragon)

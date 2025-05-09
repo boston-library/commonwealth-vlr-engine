@@ -63,6 +63,7 @@ module CommonwealthVlrEngine
     end
 
     # whether the A-Z link menu should be displayed in collections#index
+    # TODO: this isn't being used right now, remove? or use to to drive logic of AzLinksComponent#render?
     def should_render_col_az?
       false
     end

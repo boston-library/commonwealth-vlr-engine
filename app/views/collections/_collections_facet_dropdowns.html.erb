@@ -1,0 +1,31 @@
+<%# custom dropdowns for facet values %>
+<%# render Blacklight::FacetComponent.with_collection(blacklight_config.facet_fields.keys, response: @response) %>
+<%# render Blacklight::FacetFieldListComponent.new(
+  facet_field: Blacklight::FacetFieldPresenter.new(
+    blacklight_config.facet_fields['genre_basic_ssim'],
+    @response.aggregations.dig(:genre_basic_ssim), controller.view_context
+  )
+) %>
+<%#
+  # don't want to use defaiult blacklight facet component, too much HTML structure to deal with
+  @response.aggregations.dig(:genre_basic_ssim).class = Blacklight::Solr::Response::Facets::FacetField
+  gf = @response.aggregations.dig(:genre_basic_ssim)
+  gf.items
+=>
+[#<Blacklight::Solr::Response::Facets::FacetItem value="Photographs", hits=5298>,
+ #<Blacklight::Solr::Response::Facets::FacetItem value="Documents", hits=2942>,
+ ...
+
+ gf.items.first.value
+=> "Photographs" # NOTE THIS IS RAW VALUE, we need to run it through the associated helper for label
+gf.items.first.hits
+=> 5298
+%>
+
+<%= render CommonwealthVlrEngine::FacetDropdownComponent.new(response: @response,
+                                                             facet_field_name: :genre_basic_ssim,
+                                                             search_state: search_state) %>
+
+<%= render CommonwealthVlrEngine::FacetDropdownComponent.new(response: @response,
+                                                             facet_field_name: :physical_location_ssim,
+                                                             search_state: search_state) %>

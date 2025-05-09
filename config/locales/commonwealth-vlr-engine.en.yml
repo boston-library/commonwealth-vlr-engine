@@ -332,6 +332,10 @@ en:
             submit: 'Update'
           constraints:
             az_search: 'Starts with'
+          f[genre_basic_ssim][]:
+            label_html: 'Format'
+          f[physical_location_ssim][]:
+            label_html: 'Institution'
           facets:
             home: 'Explore the Collections'
           filters:

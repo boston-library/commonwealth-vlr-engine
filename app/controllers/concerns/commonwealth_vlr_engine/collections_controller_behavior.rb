@@ -93,6 +93,7 @@ module CommonwealthVlrEngine
     def collections_index_config
       blacklight_config.search_builder_class = CommonwealthVlrEngine::CollectionsSearchBuilder
       blacklight_config.index.search_header_component = CommonwealthVlrEngine::CollectionsSearchHeaderComponent
+      blacklight_config.facet_fields[:genre_basic_ssim].limit = 20
       blacklight_config.view.delete(:list)
       blacklight_config.view.delete(:masonry)
       blacklight_config.view.delete(:slideshow)
