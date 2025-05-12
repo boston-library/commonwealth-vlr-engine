@@ -53,9 +53,10 @@ module CommonwealthVlrEngine
 
       # add params[:f] for proper facet links, get response for items in collection
       params.merge!(f: { blacklight_config.institution_field => [@institution_title] }).permit!
-      facets_search_service = search_service_class.new(config: blacklight_config,
-                                                       user_params: { f: params[:f],
-                                                                      sort: "#{blacklight_config.index.random_field} asc"})
+      facets_search_service = search_service_class.new(
+        config: blacklight_config,
+        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc"}
+      )
       @response = facets_search_service.search_results
       @featured_items = @response&.documents&.sample(8)
 
@@ -70,10 +71,12 @@ module CommonwealthVlrEngine
 
     protected
 
-    # Blacklight uses #search_action_url to figure out the right URL for the global search box
-    def search_action_url options = {}
-      search_catalog_url(options.except(:controller, :action))
-    end
+    # TODO: maybe remove this? The default implementation in Blacklight is more context-aware,
+    # this method is used for "remove" facet links, but maybe also for header search URL?
+    # def search_action_url options = {}
+    #   options = options.to_h if options.is_a? Blacklight::SearchState
+    #   url_for(options.reverse_merge(action: 'index'))
+    # end
 
     def institutions_index_config
       blacklight_config.search_builder_class = CommonwealthVlrEngine::InstitutionsSearchBuilder

@@ -15,7 +15,8 @@
 
       <div class="col-lg-12">
 
-        <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document) %>
+        <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document,
+                                                                   context: 'institution') %>
 
         <div id="institution_desc_wrap">
           <%= render_institution_desc(@document[:abstract_tsi]) if @document[:abstract_tsi] %>

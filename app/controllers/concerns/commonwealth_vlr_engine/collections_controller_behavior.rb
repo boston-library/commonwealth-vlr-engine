@@ -13,6 +13,7 @@ module CommonwealthVlrEngine
       before_action :relation_base_blacklight_config, only: [:index, :show]
       before_action :collapse_institution_facet, only: :index
       before_action :collections_index_config, only: :index
+      before_action :collections_show_config, only: :show
       before_action :collections_limit_for_facets, only: :facet
       before_action :add_series_facet, only: :show
 
@@ -37,17 +38,27 @@ module CommonwealthVlrEngine
                                                            user_params: params)
       @document = collection_search_service.fetch(params[:id])
       @collection_title = @document[blacklight_config.index.title_field.field]
+      # TODO: use @document[:exemplary_image_digobj_ss] instead of hard-coded value
+      # @exemplary_document = collection_search_service.fetch(@document[:exemplary_image_digobj_ss])
+      @exemplary_document = collection_search_service.fetch('bpl-dev:6q182k915')
+      @institution_document = collection_search_service.fetch(@document[:institution_ark_id_ssi])
+      # TODO: use @document[:exemplary_image_digobj_ss] instead of hard-coded value
+      # @institution_exemplary_document = collection_search_service.fetch(@institution_document[:exemplary_image_digobj_ss])
+      @institution_exemplary_document = collection_search_service.fetch('bpl-dev:6q182k915')
 
       # add params[:f] for proper facet links
       params.merge!(f: set_collection_facet_params(@collection_title, @document)).permit!
 
       # get the response for the facets representing items in collection
-      facets_search_service = search_service_class.new(config: blacklight_config,
-                                                       user_params: { f: params[:f] })
+      facets_search_service = search_service_class.new(
+        config: blacklight_config,
+        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc"}
+      )
       @response = facets_search_service.search_results
+      @featured_items = @response&.documents&.sample(8)
 
-      # get an image for the collection
-      @collection_image_info = collection_image_info(@document) if @document[:exemplary_image_ssi]
+      # get an image for the collection - DEPRECATED, prefer using @exemplary_document
+      # @collection_image_info = collection_image_info(@document) if @document[:exemplary_image_ssi]
 
       respond_to do |format|
         format.html
@@ -60,10 +71,12 @@ module CommonwealthVlrEngine
 
     protected
 
-    # Blacklight uses #search_action_url to figure out the right URL for the global search box
-    def search_action_url options = {}
-      search_catalog_url(options.except(:controller, :action))
-    end
+    # TODO: maybe remove this? The default implementation in Blacklight is more context-aware,
+    # this method is used for "remove" facet links, but maybe also for header search URL?
+    # def search_action_url options = {}
+    #   options = options.to_h if options.is_a? Blacklight::SearchState
+    #   url_for(options.reverse_merge(action: 'index'))
+    # end
 
     # find a representative image/item for a series
     def get_series_image_obj(series_title, collection_title)
@@ -99,6 +112,14 @@ module CommonwealthVlrEngine
       blacklight_config.view.delete(:slideshow)
     end
 
+    def collections_show_config
+      blacklight_config.show.metadata_component = nil
+      blacklight_config.search_fields.delete(:title)
+      blacklight_config.search_fields.delete(:subject)
+      blacklight_config.search_fields.delete(:place)
+      blacklight_config.search_fields.delete(:creator)
+    end
+
     # find object data for "more" facet results
     # collections#facet can be called within BOTH collections#index and collections#show contexts
     # when collections#index, want to limit to collection objects
@@ -114,26 +135,26 @@ module CommonwealthVlrEngine
     # find the title and pid for the object representing the collection image
     # @param document [SolrDocument]
     # @return [Hash]
-    def collection_image_info(document)
-      col_img_info = { image_pid: document[:exemplary_image_ssi], image_key: document[:exemplary_image_key_base_ss],
-                       title: '', pid: document[:id], access_master: false,
-                       hosting_status: document[blacklight_config.hosting_status_field.to_sym],
-                       destination_site: document[:destination_site_ssim] }
-      col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
-      if col_img_file_doc
-        col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
-        col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
-        if col_img_field
-          col_img_obj_pid = col_img_field.first
-          col_img_obj_doc = search_service.fetch(col_img_obj_pid)
-          if col_img_obj_doc
-            col_img_info[:title] = helpers.render_title(col_img_obj_doc)
-            col_img_info[:pid] = col_img_obj_pid
-          end
-        end
-      end
-      col_img_info
-    end
+    # def collection_image_info(document)
+    #   col_img_info = { image_pid: document[:exemplary_image_ssi], image_key: document[:exemplary_image_key_base_ss],
+    #                    title: '', pid: document[:id], access_master: false,
+    #                    hosting_status: document[blacklight_config.hosting_status_field.to_sym],
+    #                    destination_site: document[:destination_site_ssim] }
+    #   col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
+    #   if col_img_file_doc
+    #     col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
+    #     col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
+    #     if col_img_field
+    #       col_img_obj_pid = col_img_field.first
+    #       col_img_obj_doc = search_service.fetch(col_img_obj_pid)
+    #       if col_img_obj_doc
+    #         col_img_info[:title] = helpers.render_title(col_img_obj_doc)
+    #         col_img_info[:pid] = col_img_obj_pid
+    #       end
+    #     end
+    #   end
+    #   col_img_info
+    # end
 
     # set the correct facet params for facets from the collection
     def set_collection_facet_params(collection_title, document)

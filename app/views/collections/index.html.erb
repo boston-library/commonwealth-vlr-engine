@@ -11,10 +11,6 @@
 
     <%= render CommonwealthVlrEngine::AzLinksComponent.new(context: 'collections') %>
 
-    <%# render 'catalog/constraints' %>
-
-    <%# render 'catalog/sort_and_per_page' %>
-
     <%= render 'constraints' %>
     <%= render 'catalog/search_header' %>
 
@@ -25,6 +21,7 @@
     <%= render 'catalog/results_pagination' %>
   </div>
 
+  <!-- facets moved to CommonwealthVlrEngine::CollectionsSearchHeaderComponent -->
   <!--
   <div id="sidebar" class="col-lg-3">
     <%# render 'catalog/search_sidebar' %>

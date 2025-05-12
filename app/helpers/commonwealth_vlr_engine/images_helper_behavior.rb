@@ -24,16 +24,18 @@ module CommonwealthVlrEngine
       end
     end
 
-    def banner_image_url(exemplary_document:)
+    def banner_image_url(exemplary_document:, target_width: 1100, target_height: 450)
       if exemplary_document
-        if exemplary_document[blacklight_config.hosting_status_field] != 'hosted' || exemplary_document[:identifier_iiif_manifest_ss].blank?
-          filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
-        else
-          banner_image_iiif_url(image_ark_id: exemplary_document[:exemplary_image_ssi],
-                                destination_site: exemplary_document[:destination_site_ssim])
-        end
-      else
+        return banner_image_iiif_url(image_ark_id: exemplary_document[:exemplary_image_ssi],
+                                     destination_site: exemplary_document[:destination_site_ssim],
+                                     target_width: target_width, target_height: target_height) if exemplary_document[:identifier_iiif_manifest_ss].present?
+
+        return filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss],
+                                           'image_thumbnail_300') if exemplary_document[:exemplary_image_key_base_ss].present?
+
         icon_url(exemplary_document[blacklight_config.index.display_type_field].downcase)
+      else
+        icon_url('image')
       end
     end
 

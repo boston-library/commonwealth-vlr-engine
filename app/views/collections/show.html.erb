@@ -1,79 +1,47 @@
-<% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field.field], :application_name => application_name) %>
+<% @page_title = t('blacklight.search.show.title', document_title: @document[blacklight_config.show.title_field.field], application_name: application_name) %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
 <div id="document" class="<%= render_document_class %>">
 
   <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-    <% if t('blacklight.home.browse.institutions.enabled') %>
-        <h4 class="collection-provenance">
-          <% if @document[:institution_ark_id_ssi] %>
-              <%= link_to(@document[blacklight_config.institution_field.to_sym],
-                          institutions_path + '/' + @document[:institution_ark_id_ssi],
-                          id: 'institution_link') %>
-          <% elsif @document[:physical_location_ssim] %>
-              <%= @document[:physical_location_ssim][0] %>
-          <% end %>
-        </h4>
-    <% end %>
+    <%= render CommonwealthVlrEngine::BreadcrumbComponent.new(document: @document) %>
+
     <h1 class="collection-title"><%= @collection_title %></h1>
 
-    <div class="document">
+    <div class="row">
 
-      <div class="<%= hosted_collection_class(@document) %>">
-        <div class="row">
-          <div class="col-sm-12">
-            <div id="collection_img">
-              <%= render_collection_image('collection_img_show') %>
-            </div>
-            <div id="collection_search_tools">
-              <div id="collection_view_all">
-                <% if @document[blacklight_config.institution_field.to_sym] %>
-                  <%= link_to_all_col_items(@document, link_class: 'btn btn-info view-all-col') %>
-                <% end %>
-              </div>
-              <span class="collection_search_separator">or</span>
-              <%= render partial: 'search_form_collection',
-                         locals: { document: @document } %>
-            </div>
+      <div class="col-lg-12">
 
-            <div id="collection_desc">
-              <%= @document[:abstract_tsi].html_safe if @document[:abstract_tsi].present? %>
-            </div>
-          </div>
+        <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document) %>
+
+        <div id="collection_desc">
+          <%= @document[:abstract_tsi].html_safe if @document[:abstract_tsi].present? %>
         </div>
 
-        <div id="collection_facets_wrapper" class="row">
-          <% if has_facet_values?([blacklight_config.series_field], @response) || map_facet_values.present?  %>
-            <div class="col-lg-9">
-
-              <% if has_facet_values?([blacklight_config.series_field], @response) %>
-                <div id="series_wrapper">
-                  <%= render partial: 'catalog/facets_series' %>
-                </div>
-              <% end %>
-
-              <% # map for collections#show view %>
-              <% unless map_facet_values.empty? %>
-                <div id="blacklight-collection-map-container">
-                  <h4><%= t('blacklight.collections.map.title') %></h4>
-                  <%= render partial: 'catalog/index_mapview',
-                             locals: { geojson_features: serialize_geojson(map_facet_values,
-                                                                           'index') } %>
-                </div>
-                </div> <!-- TODO: figure out why this extra </div> is needed! -->
-              <% end %>
-
-            </div>
-          <% end %>
-
-          <div id="sidebar" class="collections-sidebar col-lg-3">
-            <%= render partial: 'show_tools' if (request.host_with_port.match(/admin\./) ||
-                                                 Rails.application.class.module_parent_name == 'Commonwealth') %>
-            <%= javascript_include_tag 'commonwealth-vlr-engine/collection_facets' %>
-            <%= render 'search_sidebar' %>
+        <div id="collection_search_tools">
+          <div id="collection_view_all">
+            <% if @document[blacklight_config.institution_field.to_sym] %>
+              <%= link_to_all_col_items(@document, link_class: 'btn btn-info view-all-col') %>
+            <% end %>
           </div>
+
+          <span class="collection_search_separator">or</span>
+          <%# render partial: 'search_form_collection', locals: { document: @document } %>
+          <%= render Blacklight::SearchBarComponent.new(
+            url: search_action_url,
+            params: search_state.params_for_search.except(:q, :search_field, :qt, :page),
+            i18n: { scope: 'blacklight.search.form.collection' }
+          ) %>
         </div>
+
+        <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,
+                                                                     parent_document: @document) %>
+
+        <%= render CommonwealthVlrEngine::ExploreRelationBaseComponent.new(
+          explore_document: @institution_document, explore_exemplary_document: @institution_exemplary_document,
+          parent_document: @document
+        ) %>
 
       </div>
 
