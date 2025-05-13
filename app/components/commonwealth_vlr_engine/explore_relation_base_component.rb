@@ -12,32 +12,36 @@ module CommonwealthVlrEngine
       @parent_document = parent_document
     end
 
-    # def link_to_all_featured_items(classes: '')
-    #   facet_params = if context == 'institutions'
-    #                    { helpers.blacklight_config.institution_field => [@institution_title || parent_document[helpers.blacklight_config.index.title_field]] }
-    #                  else
-    #                    { helpers.blacklight_config.institution_field => [parent_document[helpers.blacklight_config.institution_field]],
-    #                      helpers.blacklight_config.collection_field => [parent_document[helpers.blacklight_config.index.title_field.field]] }
-    #                  end
-    #   link_to(I18n.t("blacklight.#{context}.browse.all"), search_catalog_path(f: facet_params), class: classes)
-    # end
-
     def context
       parent_document.fetch(helpers.blacklight_config.index.display_type_field)&.downcase&.pluralize
     end
 
     def explore_image_tag
-      image_tag(helpers.banner_image_url(exemplary_document: @explore_exemplary_document,
+      image_tag(helpers.banner_image_url(exemplary_document: explore_exemplary_document,
                                          target_height: 400,
                                          target_width: 550),
-                alt: @explore_document[helpers.blacklight_config.index.title_field.field],
+                alt: explore_document[helpers.blacklight_config.index.title_field.field],
                 class: 'explore-image')
     end
 
-    def render?
-      return unless explore_document.present?
+    def explore_link
+      link_to(explore_document[helpers.blacklight_config.index.title_field.field],
+              helpers.public_send(explore_path, id: parent_document[:id]), id: 'explore_link')
+    end
 
-      context == 'collection' && CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+    def explore_text
+      helpers.index_abstract({ value: [explore_document['abstract_tsi']], document: explore_document,
+                               path_helper: explore_path, truncate_length: 600 })
+    end
+
+    def explore_path
+      context == 'digitalobjects' ? :collection_path : :institution_path
+    end
+
+    def render?
+      return if explore_document.blank?
+
+      context == 'collections' && CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
     end
   end
 end

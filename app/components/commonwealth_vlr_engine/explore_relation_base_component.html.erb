@@ -1,1 +1,13 @@
-<%= explore_image_tag %>
+<div id="explore_component" class="row">
+  <div id="explore_image_wrapper" class="col-lg-6">
+    <%= explore_image_tag %>
+  </div>
+  <div id="explore_text" class="col-lg-6">
+    <div id="explore_header">
+      <%= I18n.t('blacklight.explore_component.header') %> <%= explore_link %>
+    </div>
+    <div id="explore_text">
+      <%= explore_text %>
+    </div>
+  </div>
+</div>

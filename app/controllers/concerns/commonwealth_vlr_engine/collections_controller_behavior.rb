@@ -15,10 +15,10 @@ module CommonwealthVlrEngine
       before_action :collections_index_config, only: :index
       before_action :collections_show_config, only: :show
       before_action :collections_limit_for_facets, only: :facet
-      before_action :add_series_facet, only: :show
+      # before_action :add_series_facet, only: :show
 
-      helper_method :search_action_url
-      helper_method :get_series_image_obj
+      # helper_method :search_action_url
+      # helper_method :get_series_image_obj
     end
 
     def index
@@ -79,28 +79,28 @@ module CommonwealthVlrEngine
     # end
 
     # find a representative image/item for a series
-    def get_series_image_obj(series_title, collection_title)
-      blacklight_config.search_builder_class = CommonwealthVlrEngine::FlaggedSearchBuilder # ignore flagged items
-      series_params = { f: { blacklight_config.series_field => series_title,
-                             blacklight_config.collection_field => collection_title },
-                        rows: 1 }
-      series_search_service = search_service_class.new(config: blacklight_config,
-                                                       user_params: series_params)
-      series_response = series_search_service.search_results
-      series_response.documents.first
-    end
+    # def get_series_image_obj(series_title, collection_title)
+    #   blacklight_config.search_builder_class = CommonwealthVlrEngine::FlaggedSearchBuilder # ignore flagged items
+    #   series_params = { f: { blacklight_config.series_field => series_title,
+    #                          blacklight_config.collection_field => collection_title },
+    #                     rows: 1 }
+    #   series_search_service = search_service_class.new(config: blacklight_config,
+    #                                                    user_params: series_params)
+    #   series_response = series_search_service.search_results
+    #   series_response.documents.first
+    # end
 
     # show series facet
-    def add_series_facet
-      blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
-    end
+    # def add_series_facet
+    #   blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
+    # end
 
     # collapse the institution facet, if Institutions supported
-    def collapse_institution_facet
-      return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
-
-      blacklight_config.facet_fields['physical_location_ssim'].collapse = true
-    end
+    # def collapse_institution_facet
+    #   return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+    #
+    #   blacklight_config.facet_fields['physical_location_ssim'].collapse = true
+    # end
 
     # find only collection objects
     def collections_index_config

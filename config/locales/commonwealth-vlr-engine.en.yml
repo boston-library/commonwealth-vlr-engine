@@ -66,6 +66,9 @@ en:
             url: 'Link: %{url}'
             message: 'Comments: %{message}'
 
+    explore_component:
+        header: 'Explore:'
+
     feedback:
           item:
             title: 'Question or Comment About This Item'

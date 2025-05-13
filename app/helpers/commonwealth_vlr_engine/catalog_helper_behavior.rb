@@ -88,9 +88,11 @@ module CommonwealthVlrEngine
     end
 
     def index_abstract(options = {})
-      truncate(sanitize(options[:value].first.gsub(/<\/p><p>/,' '), :tags => []),
-               length: 300, separator: ' ', omission: '... ') do
-        link_to('more', collection_path(id: options[:document][:id]), class: 'read-more-link')
+      truncate(sanitize(options[:value].first.gsub(/<\/p><p>/, ' '), :tags => []),
+               length: options[:truncate_length] || 300,
+               separator: ' ', omission: '... ') do
+        link_to('more', public_send((options[:path_helper] || :collection_path), id: options[:document][:id]),
+                class: 'read-more-link')
       end
     end
 

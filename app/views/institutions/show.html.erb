@@ -38,7 +38,7 @@
           <%# render partial: 'search_form_institution',
                      locals: { document: @document } %>
           <%= render Blacklight::SearchBarComponent.new(
-            url: search_action_url,
+            url: search_catalog_path, # don't use #search_action_url, returns /institutions
             params: search_state.params_for_search.except(:q, :search_field, :qt, :page),
             i18n: { scope: 'blacklight.search.form.institution' }
           ) %>

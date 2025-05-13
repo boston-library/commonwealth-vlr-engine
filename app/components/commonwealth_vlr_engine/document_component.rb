@@ -21,7 +21,7 @@ module CommonwealthVlrEngine
     # so that we don't have to do c.with_top_bar() in the call.
     def before_render
       set_slot(:breadcrumb, nil)
-      set_slot(:metadata, nil, document: @document, blacklight_config: helpers.blacklight_config) # unless metadata
+      set_slot(:metadata, nil, document: @document) # unless metadata
     end
   end
 end

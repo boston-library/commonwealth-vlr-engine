@@ -1,4 +1,3 @@
-<p>IS THIS THING ONE?</p>
 <div id="item_metadata">
   <h3><%= t('blacklight.metadata_display.title') %></h3>
   <dl class="row document-metadata">
@@ -9,6 +8,10 @@
         <%= helpers.render_title(document) %>
       </dd>
     <% end %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: document[blacklight_config.index.title_field.field],
+      field_key: 'title', helper_method: :render_title
+    ) %>
     <!--
       ARGS NEEDED
       solr field name

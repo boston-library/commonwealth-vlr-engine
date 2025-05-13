@@ -9,11 +9,14 @@ module CommonwealthVlrEngine
       # rubocop:disable Metrics/ParameterLists
       def initialize(fields: [], tag: nil, classes: nil, show: false, view_type: nil, field_layout: nil, **component_args)
         @document = component_args[:document]
-        @blacklight_config = component_args[:blacklight_config]
       end
       # rubocop:enable Metrics/ParameterLists
 
-      attr_reader :document, :blacklight_config
+      attr_reader :document
+
+      def blacklight_config
+        helpers.blacklight_config
+      end
     end
   end
 end

@@ -15,7 +15,7 @@ module CommonwealthVlrEngine
       before_action :relation_base_blacklight_config, only: [:show]
       before_action :nav_li_active, only: [:index, :show]
 
-      helper_method :search_action_url
+      # helper_method :search_action_url
     end
 
     def index
