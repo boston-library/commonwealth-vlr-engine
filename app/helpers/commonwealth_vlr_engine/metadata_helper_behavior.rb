@@ -141,6 +141,10 @@ module CommonwealthVlrEngine
       alt_title_output
     end
 
+    def render_constituent(document)
+      document[:related_item_constituent_tsim].map { |c| c.split('--').map(&:strip).join('<br>') }.join('<br>')
+    end
+
     # return MODS XML (serialized in Solr as gzipped Base64 encoded String)
     def render_mods_xml_record(document)
       return '' unless document['mods_xml_ss']
@@ -149,38 +153,28 @@ module CommonwealthVlrEngine
       REXML::Document.new(mods_data)
     end
 
+    def render_toc(document)
+      document[:table_of_contents_tsi].split('--').map(&:strip).join('<br>')
+    end
+
     # create a list of names and roles to be displayed
+    # @param [SolrDoument] document
+    # @return [Hash] { 'role1' => ['name1', 'name2'], 'role2' => ['name3'] }
     def setup_names_roles(document)
-      names = []
-      roles = []
-      multi_role_indices = []
+      roles_names = {}
       role_field_values = document[:name_role_tsim]
       document[:name_tsim].each_with_index do |name, index|
-        names << name
-        if role_field_values[index]
-          roles << role_field_values[index].strip
-        else
-          roles << 'Creator'
+        roles_for_name = (role_field_values[index] || 'Creator').split('||')
+        roles_for_name.each do |rfn|
+          roles_names[rfn] ||= []
+          roles_names[rfn] << name
         end
       end
-      roles.each_with_index do |role, index|
-        next unless role.match?(/[\|]{2}/)
+      roles_names.each_value { |v| v.sort! }.sort.to_h
+    end
 
-        multi_roles = role.split('||')
-        multi_role_name = names[index]
-        multi_role_indices << index
-        multi_roles.each { |multi_role| roles << multi_role }
-        0.upto(multi_roles.length - 1) do
-          names << multi_role_name
-        end
-      end
-      unless multi_role_indices.empty?
-        multi_role_indices.reverse_each do |index|
-          names.delete_at(index)
-          roles.delete_at(index)
-        end
-      end
-      [names, roles]
+    def show_abstract(document)
+      document[:abstract_tsi].gsub(/<br\/><br\/>/, '<br>')
     end
   end
 end

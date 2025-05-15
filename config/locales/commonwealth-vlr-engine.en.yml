@@ -134,7 +134,11 @@ en:
             ark_id: 'ARK ID: '
 
     flagged:
-          warning: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'
+          explicit:
+            title: 'EXPLICIT CONTENT WARNING'
+            body: 'This item contains content that could be offensive to some viewers or inappropriate for minors.'
+          offensive:
+            body: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'
 
     formats:
           page_title: 'Formats - %{application_name}'

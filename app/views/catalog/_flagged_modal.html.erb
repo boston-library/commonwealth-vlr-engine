@@ -1,0 +1,41 @@
+<%# sorta based on blacklight/app/views/shared/_modal.html.erb %>
+<%# use our own partial so we can add a unique #id, since there will be >1 modal in the DOM %>
+<div id="flagged_warning_modal" class="modal fade" aria-labelledby="flaggedWarningTitle" data-turbo="false">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="flaggedWarningTitle"><%= t('blacklight.flagged.explicit.title') %></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
+      </div>
+      <div class="modal-body">
+        <div><strong><%= t('blacklight.flagged.explicit.body') %></strong></div>
+        <div>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bl-dismiss="modal">View Content</button>
+        <% if current_search_session %>
+          <%= link_back_to_catalog(class: 'btn btn-danger') %>
+        <% else %>
+          <%= link_to t('blacklight.back_to_search'), search_catalog_path, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // fire the warning modal and make the backdrop very dark
+
+  // old jquery version:
+  // $('#flagged_warning_modal').modal();
+  // $(".modal-backdrop").css("opacity",".95");
+
+  // Blacklight Modal version:
+  // this works to trigger the modal but then it can't be dismissed
+  // document.getElementById('flagged_warning_modal').show();
+
+  // trying to use below causes: Uncaught ReferenceError: bootstrap is not defined
+  // var myModal = new bootstrap.Modal(document.getElementById('flagged_warning_modal'), {
+  //     backdrop: true
+  // })
+</script>

@@ -11,7 +11,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js"
 pin "@github/auto-complete-element", to: "https://cdn.skypack.dev/@github/auto-complete-element"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/dist/umd/popper.min.js"
-pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.js"
+# pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.js"
 # chart.js is dependency of blacklight-range-limit, currently is not working
 # as vendored importmaps, but instead must be pinned to CDN. You may want to update
 # versions perioidically.

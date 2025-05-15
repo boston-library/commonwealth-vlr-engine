@@ -9,6 +9,14 @@ module CommonwealthVlrEngine
       'col-sm-12 show-document'
     end
 
+    def metadata_field_label_class
+      'col-md-3'
+    end
+
+    def metadata_field_value_class
+      'col-md-9'
+    end
+
     # def show_sidebar_classes
     #   'col-sm-4'
     # end

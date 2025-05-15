@@ -1,12 +1,12 @@
 <%# override so we can add flagged behavior and render sidebar elsewhere %>
-<% if show_explicit_warning?(@document) %>
-    <%= render partial: 'catalog/_show_partials/show_flagged_modal' %>
-<% end %>
+<%# if show_explicit_warning?(@document) %>
+    <%# render partial: 'catalog/_show_partials/show_flagged_modal' %>
+<%# end %>
 
-<% if show_content_warning?(@document) %>
-  <%= render partial: 'catalog/_show_partials/show_flagged_warning',
+<%# if show_content_warning?(@document) %>
+  <%# render partial: 'catalog/_show_partials/show_flagged_warning',
              locals: { document: @document } %>
-<% end %>
+<%# end %>
 
 <%= render 'show_main_content' %>
 

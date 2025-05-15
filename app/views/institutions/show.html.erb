@@ -6,7 +6,7 @@
   <div id="doc_<%= @document.id.to_s.parameterize %>">
 
     <div id="institution_geolocation">
-      <%= render CommonwealthVlrEngine::HiergeoSubjectComponent.new(document: @document) %>
+      <%= render CommonwealthVlrEngine::HiergeoSubjectComponent.new(geojson_feature: @document[blacklight_config.geojson_field]&.first) %>
     </div>
 
     <h1 class="institution-title"><%= @institution_title %></h1>

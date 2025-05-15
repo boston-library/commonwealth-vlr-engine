@@ -59,6 +59,7 @@ module CommonwealthVlrEngine
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent
         config.show.metadata_component = CommonwealthVlrEngine::Document::MetadataComponent
+        config.show.document_header_component = CommonwealthVlrEngine::Document::PageHeaderComponent
         config.show.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
                                                                        helper_method: :show_html_title,
                                                                        presenter: Blacklight::FieldPresenter)
@@ -74,6 +75,9 @@ module CommonwealthVlrEngine
         # sort params used in helpers
         config.date_asc_sort = DATE_ASC_SORT
         config.title_sort = TITLE_SORT
+
+        config.geojson_field = 'subject_hiergeo_geojson_ssm'
+        config.geo_subject_link_field = 'subject_geographic_sim'
 
         # TODO: figure out the new advanced search stuff
         # advanced search configuration

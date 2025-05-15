@@ -2,24 +2,345 @@
   <h3><%= t('blacklight.metadata_display.title') %></h3>
   <dl class="row document-metadata">
     <%# title field %>
-    <% if document[blacklight_config.index.title_field.field] %>
-      <dt class="col-md-3"><%= t('blacklight.metadata_display.fields.title') %>:</dt>
-      <dd class="col-md-9">
-        <%= helpers.render_title(document) %>
-      </dd>
-    <% end %>
     <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
-      document: document, field_name: document[blacklight_config.index.title_field.field],
+      document: document, field_name: blacklight_config.index.title_field.field,
       field_key: 'title', helper_method: :render_title
     ) %>
-    <!--
-      ARGS NEEDED
-      solr field name
-      I18n field key
-      multiple values boolean ?
-      link_to_facet ?
-      special rendering method
-      special rendering method args
-    -->
+
+    <%# translated title field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :title_info_translated_tsim, field_key: 'title_translated'
+    ) %>
+
+    <%# alternative title field %>
+    <%# TODO: refactor to use CommonwealthVlrEngine::Document::MetadataFieldComponent %>
+    <% if document[:title_info_alternative_tsim] %>
+      <% if document[:title_info_alternative_label_ssm] %>
+        <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
+          <dt class="<%= helpers.metadata_field_label_class %>">
+            <% if document[:title_info_alternative_label_ssm][index].present? %>
+              <%= document[:title_info_alternative_label_ssm][index].gsub(/\s*:\s*\Z/, '') %>
+            <% else %>
+              <%= t('blacklight.metadata_display.fields.title_alt') %>
+            <% end %>:
+          </dt>
+          <dd class="<%= helpers.metadata_field_value_class %>">
+            <%= helpers.render_alt_title(document, index) %>
+          </dd>
+        <% end %>
+      <% else %>
+        <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.title_alt') %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class %>">
+          <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
+            <%= helpers.render_alt_title(document, index) %><br>
+          <% end %>
+        </dd>
+      <% end %>
+    <% end %>
+
+    <%# uniform title field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :title_info_uniform_ssim, field_key: 'title_uniform', link: true
+    ) %>
+
+    <%# abstract/description field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :abstract_tsi, field_key: 'abstract', helper_method: :show_abstract
+    ) %>
+
+    <%# creator field - assumes equal # of roles and creator names %>
+    <% if document[:name_tsim] %>
+      <% helpers.setup_names_roles(document).each do |r, ns| %>
+        <dt class="<%= helpers.metadata_field_label_class %>"><%= r %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class %>">
+          <% ns.each do |n| %>
+            <%= helpers.link_to_facet(n, 'name_facet_ssim') %><br>
+          <% end %>
+        </dd>
+      <% end %>
+    <% end %>
+
+    <%# note @type="statement of responsibility" field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :note_resp_tsim, field_key: 'note_resp'
+    ) %>
+
+    <%# date field  %>
+    <% if document[:date_tsim] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.date') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% document[:date_tsim].each_with_index do |date, index| %>
+          <%= date %>
+          <% if document[:date_tsim].length > 1 %>
+            <%= " (#{helpers.date_qualifier(document[:date_type_ssm][index])})" %>
+          <% end %>
+          <br/>
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# genre field - basic %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :genre_basic_ssim, field_key: 'genre_basic', link: true
+    ) %>
+
+    <%# genre field - specific %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :genre_specific_ssim, field_key: 'genre_specific', link: true
+    ) %>
+
+    <%# physical location field (including sub_location and shelf_locator) %>
+    <% if document[:physical_location_ssim] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.location') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <%= helpers.link_to_facet(document[:physical_location_ssim].first, 'physical_location_ssim') %>
+        <% if document[:sub_location_tsi] %>
+          <br><%= document[:sub_location_tsi] %>
+        <% end %>
+        <% if document[:shelf_locator_tsi] %>
+          <br><%= document[:shelf_locator_tsi] %> (<%= t('blacklight.metadata_display.fields.shelf_locator').downcase %>)
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# related item host field (physical collection) %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :related_item_host_ssim, field_key: 'collection', link: true
+    ) %>
+
+    <%# related item series field (series) %>
+    <% if document[:related_item_series_ssi] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.series') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <%= helpers.link_to_facets([document[:related_item_series_ssi], document[:related_item_host_ssim].first],
+                                   %w[related_item_series_ssi related_item_host_ssim]) %>
+        <% if document[:related_item_subseries_ssi] %>
+          <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
+          <%= helpers.link_to_facets([document[:related_item_subseries_ssi],
+                                      document[:related_item_series_ssi]],
+                                     %w[related_item_subseries_ssi related_item_series_ssi]) %>
+        <% end %>
+        <% if document[:related_item_subsubseries_ssi] %>
+          <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
+          <%= helpers.link_to_facets([document[:related_item_subsubseries_ssi],
+                                      document[:related_item_subseries_ssi],
+                                      document[:related_item_series_ssi]],
+                                     %w[related_item_subsubseries_ssi related_item_subseries_ssi related_item_series_ssi]) %>
+        <% end %>
+        <% if document[:related_item_subsubsubseries_ssi] %>
+          <%= content_tag(:span, t('blacklight.breadcrumb.separator'), class: 'metadata_breadcrumb') %>
+          <%= helpers.link_to_facets([document[:related_item_subsubsubseries_ssi],
+                                      document[:related_item_subsubseries_ssi],
+                                      document[:related_item_subseries_ssi],
+                                      document[:related_item_series_ssi]],
+                                     %w[related_item_subsubsubseries_ssi related_item_subsubseries_ssi
+                                        related_item_subseries_ssi related_item_series_ssi]) %>
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# topic field %>
+    <% if document[:subject_topic_tsim] || document[:subject_name_tsim] || document[:subject_title_tsim] || document[:subject_temporal_tsim] || document[:subject_date_tsim] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% %i[subject_topic_tsim subject_name_tsim subject_title_tsim subject_temporal_tsim subject_date_tsim].each do |skey| %>
+          <% if document[skey] %>
+            <% document[skey].each do |s| %>
+              <%= helpers.link_to_facet(s, 'subject_facet_ssim') %><br />
+            <% end %>
+          <% end %>
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# geo subject field %>
+    <% if document[blacklight_config.geojson_field] || document[:subject_geo_other_ssm] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% if document[blacklight_config.geojson_field] %>
+          <% document[blacklight_config.geojson_field].each do |hier_geojson| %>
+            <%= render CommonwealthVlrEngine::HiergeoSubjectComponent.new(geojson_feature: hier_geojson) %><br />
+          <% end %>
+        <% end %>
+        <% if document[:subject_geo_other_ssm] %>
+          <% document[:subject_geo_other_ssm].each do |geo_other| %>
+            <%= helpers.link_to_facet(geo_other, blacklight_config.geo_subject_link_field) %><br />
+          <% end %>
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# extent field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :extent_tsi, field_key: 'extent'
+    ) %>
+
+    <%# URI field %>
+    <% if document[:identifier_uri_ss] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= helpers.harvested_object?(document) ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <%= link_to(document[:identifier_uri_ss], document[:identifier_uri_ss],
+                    class: 'uri_metadata_link', target: helpers.harvested_object?(document) ? '_blank' : '_self') %>
+      </dd>
+    <% end %>
+
+    <%# rights field %>
+    <% if document[:rights_ss] || document[:license_ss] || document[:rightsstatement_ss]  %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% if document[:rightsstatement_ss].present? %>
+          <%= helpers.render_rs_icon(document) %>
+          <%= document[:rightsstatement_ss] %><br />
+        <% end %>
+        <% if document[:rights_ss] %>
+          <%= document[:rights_ss] %><br />
+        <% end %>
+        <% if document[:license_ss] %>
+          <%= document[:license_ss] %><br />
+          <% if document[:license_ss].match(/\(CC/) %>
+            <%= helpers.render_cc_license(document[:license_ss]) %>
+          <% end %>
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# additional rights/use info field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :restrictions_on_access_ss, field_key: 'access'
+    ) %>
+
+    <%# publisher field %>
+    <% if document[:publisher_tsi] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.publisher') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% if document[:pubplace_tsi] %>
+          <%= "#{document[:pubplace_tsi]} : " %>
+        <% end %>
+        <%= document[:publisher_tsi] %><br />
+      </dd>
+    <% end %>
+    <%# place of pub. field (if no publisher) %>
+    <% if document[:pubplace_tsi] && document[:publisher_tsi].blank? %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.pubplace') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <%= document[:pubplace_tsi] %><br />
+      </dd>
+    <% end %>
+
+    <%# publication data fields %>
+    <% %w(edition_name edition_number volume issue_number).each do |pd_field_base| %>
+      <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+        document: document, field_name: "#{pd_field_base}_tsi".to_sym, field_key: pd_field_base
+      ) %>
+    <% end %>
+
+    <%# geo scale field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :scale_tsim, field_key: 'scale'
+    ) %>
+
+    <%# geo projection field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :projection_tsi, field_key: 'projection'
+    ) %>
+
+    <%# lang field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :lang_term_ssim, field_key: 'language', link: true
+    ) %>
+
+    <%# TOC field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :table_of_contents_tsi, field_key: 'toc', helper_method: :render_toc
+    ) %>
+
+    <%# TOC URL field %>
+    <% if document[:table_of_contents_url_ss] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.toc_url') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <%= link_to(document[:table_of_contents_url_ss], target: '_blank') %>
+      </dd>
+    <% end %>
+
+    <%# related item isReferencedBy field %>
+    <% if document[:related_item_isreferencedby_ssm] %>
+      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class %>">
+        <% document[:related_item_isreferencedby_ssm].each do |reference| %>
+          <% ref_hash = JSON.parse(reference) %>
+          <%= link_to(ref_hash['label'] || ref_hash['url'], ref_hash['url'], target: '_blank') %><br />
+        <% end %>
+      </dd>
+    <% end %>
+
+    <%# relatedItem @type='constituent' field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :related_item_constituent_tsim, field_key: 'constituent', helper_method: :render_constituent
+    ) %>
+
+    <%# relatedItem @type='otherFormat' field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :related_item_other_format_tsim, field_key: 'other_format'
+    ) %>
+
+    <%# relatedItem @type='references' and @type='reviewOf' fields %>
+    <% %w[references review].each do |ri_base| %>
+      <% if document["related_item_#{ri_base}_ssm".to_sym] %>
+        <dt class="<%= helpers.metadata_field_label_class %>"><%= t("blacklight.metadata_display.fields.#{ri_base}") %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class %>">
+          <% document["related_item_#{ri_base}_ssm".to_sym].each do |ri_value| %>
+            <%= link_to(ri_value, ri_value, target: '_blank') %><br />
+          <% end %>
+        </dd>
+      <% end %>
+    <% end %>
+
+    <%# generic note field %>
+    <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+      document: document, field_name: :note_tsim, field_key: 'note'
+    ) %>
+
+    <%# specific note fields %>
+    <% %w(citation performers venue ownership acquisition date reference physical bibliography
+          exhibitions arrangement language funding biographical publications credits).each do |nt| %>
+      <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+        document: document, field_name: "note_#{nt}_tsim".to_sym, field_key: "note_#{nt}"
+      ) %>
+    <% end %>
+
+    <%# local-accession, local-other, local-call local-barcode id fields %>
+    <% %w[accession other call barcode].each do |id_base| %>
+      <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
+      <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
+      <% if document[fn] || document[fn_invalid] %>
+        <dt class="<%= helpers.metadata_field_label_class %>"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class %>">
+          <% if document[fn] %>
+            <% document[fn].each do |id_value| %>
+              <%= id_value %><br />
+            <% end %>
+          <% end %>
+          <% if document[fn_invalid] %>
+            <% document[fn_invalid].each do |id_value_invalid| %>
+              <%= id_value_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+            <% end %>
+          <% end %>
+        </dd>
+      <% end %>
+    <% end %>
+
+    <%# other identifier fields %>
+    <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher sici videorecording].each do |id_base| %>
+      <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
+        document: document, field_name: "identifier_#{id_base}_ssim".to_sym, field_key: "id_#{id_base}"
+      ) %>
+    <% end %>
+
+    <div id="mods_link_wrapper">
+      <% if document[:mods_xml_ss] %>
+        <%= link_to t('blacklight.tools.librarian_view.link'), metadata_view_catalog_path(@document),
+                    { id: 'librarianLink', rel: 'nofollow', data: { blacklight_modal: 'trigger' } } %>
+      <% end %>
+    </div>
   </dl>
 </div>
