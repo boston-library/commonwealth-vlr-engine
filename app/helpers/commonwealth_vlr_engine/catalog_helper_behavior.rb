@@ -11,15 +11,15 @@ module CommonwealthVlrEngine
     # include CommonwealthVlrEngine::FlaggedHelperBehavior
     include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
-    IMAGE_VIEWER_LIMIT = 7
+    # IMAGE_VIEWER_LIMIT = 7
 
     def has_image_files?(files_hash)
       files_hash[:image].present?
     end
 
-    def has_multiple_images?(files_hash)
-      has_image_files?(files_hash) && files_hash[:image].size > 1
-    end
+    # def has_multiple_images?(files_hash)
+    #   has_image_files?(files_hash) && files_hash[:image].size > 1
+    # end
 
     def has_video_files?(files_hash)
       files_hash[:video].present?
@@ -37,17 +37,17 @@ module CommonwealthVlrEngine
       files_hash[:ereader].present?
     end
 
-    def has_playable_audio?(files_hash)
-      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
-    end
-
-    def has_pdf_files?(files_hash)
-      has_document_files?(files_hash) && files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
-    end
-
-    def book_reader?(document, files_hash)
-      has_image_files?(files_hash) && (has_searchable_text?(document) || files_hash[:image].size > IMAGE_VIEWER_LIMIT)
-    end
+    # def has_playable_audio?(files_hash)
+    #   has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+    # end
+    #
+    # def has_pdf_files?(files_hash)
+    #   has_document_files?(files_hash) && files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
+    # end
+    #
+    # def book_reader?(document, files_hash)
+    #   has_image_files?(files_hash) && (has_searchable_text?(document) || files_hash[:image].size > IMAGE_VIEWER_LIMIT)
+    # end
 
     # need to render full title or too many pages have same <title>, bad for site SEO
     def show_html_title(options = {})

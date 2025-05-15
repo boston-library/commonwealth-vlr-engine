@@ -1,5 +1,6 @@
-<%# sorta based on blacklight/app/views/shared/_modal.html.erb %>
-<%# use our own partial so we can add a unique #id, since there will be >1 modal in the DOM %>
+<%# use our own partial instead of blacklight/app/views/shared/_modal.html.erb
+    so we can add a unique #id, since there will be >1 modal in the DOM,
+    and use Bootstrap modal functionality instead of Blackight version %>
 <div id="flagged_warning_modal" class="modal fade" aria-labelledby="flaggedWarningTitle" data-turbo="false">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -31,7 +32,11 @@
   // $(".modal-backdrop").css("opacity",".95");
 
   // Blacklight Modal version:
-  // this works to trigger the modal but then it can't be dismissed
+  // this works to trigger the modal (if we use <dialog> as the root element),
+  // see:
+  //   blacklight/app/views/shared/_modal.html.erb
+  //   blacklight/app/javascript/blacklight/modal.js
+  // but then it can't be dismissed
   // document.getElementById('flagged_warning_modal').show();
 
   // trying to use below causes: Uncaught ReferenceError: bootstrap is not defined
