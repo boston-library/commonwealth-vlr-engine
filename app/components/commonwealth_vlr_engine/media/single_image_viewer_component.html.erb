@@ -1,4 +1,4 @@
-<div id="img_show_container">
+<div id="img_show_container" class="row">
   <div id="img_show_canvas">
     <%= link_to '#',
                 id: 'img_show_zoom_cue',
@@ -6,7 +6,7 @@
                 rel: 'nofollow' do %>
       <% content_tag :i, '', class: 'img_zoom_icon fa fa-search-plus' %>
     <% end %>
-    <%= link_to(image_tag(filestream_disseminator_url(image_key, 'image_access_800'),
+    <%= link_to(image_tag(helpers.filestream_disseminator_url(image_key, 'image_access_800'),
                           alt: document[helpers.blacklight_config.index.title_field.field],
                           class: 'img_show'),
                 '#', id: 'img_viewer_link',

@@ -4,10 +4,6 @@
 module CommonwealthVlrEngine
   module Document
     class PageHeaderComponent < Blacklight::Document::PageHeaderComponent
-      # def initialize(document:, search_context:, search_session:)
-      #   super
-      # end
-
       def flagged_warning_component
         CommonwealthVlrEngine::Document::FlaggedWarningComponent.new(document: document)
       end

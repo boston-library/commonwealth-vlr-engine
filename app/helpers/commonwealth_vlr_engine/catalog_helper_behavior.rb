@@ -17,9 +17,9 @@ module CommonwealthVlrEngine
       files_hash[:image].present?
     end
 
-    # def has_multiple_images?(files_hash)
-    #   has_image_files?(files_hash) && files_hash[:image].size > 1
-    # end
+    def has_multiple_images?(files_hash)
+      has_image_files?(files_hash) && files_hash[:image].size > 1
+    end
 
     def has_video_files?(files_hash)
       files_hash[:video].present?
@@ -37,9 +37,9 @@ module CommonwealthVlrEngine
       files_hash[:ereader].present?
     end
 
-    # def has_playable_audio?(files_hash)
-    #   has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
-    # end
+    def has_playable_audio?(files_hash)
+      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+    end
     #
     # def has_pdf_files?(files_hash)
     #   has_document_files?(files_hash) && files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
@@ -120,10 +120,10 @@ module CommonwealthVlrEngine
 
     # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
     # @return [Boolean]
-    def pdf_url_for_viewer(document_files)
-      pdf_file = document_files.find { |a| a['attachments_ss']['document_access'].present? }
-      filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
-    end
+    # def pdf_url_for_viewer(document_files)
+    #   pdf_file = document_files.find { |a| a['attachments_ss']['document_access'].present? }
+    #   filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
+    # end
 
     # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
@@ -152,9 +152,9 @@ module CommonwealthVlrEngine
 
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
-    def render_pdf_viewer?(files_hash)
-      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash)
-    end
+    # def render_pdf_viewer?(files_hash)
+    #   has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash)
+    # end
 
     # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files

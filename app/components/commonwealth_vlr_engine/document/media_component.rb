@@ -12,49 +12,36 @@ module CommonwealthVlrEngine
 
       IMAGE_VIEWER_LIMIT = 7
 
-      def single_image_viewer
-        render CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
+      # def single_image_viewer
+      #   render CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
+      # end
+      renders_one :single_image_viewer, -> do
+        CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
       end
 
-      # def has_image_files?
-      #   object_files[:image].present?
-      # end
-      #
-      # def has_multiple_images?
-      #   has_image_files? && object_files[:image].size > 1
-      # end
-      #
-      # def has_video_files?
-      #   object_files[:video].present?
-      # end
-      #
-      # def has_audio_files?
-      #   object_files[:audio].present?
-      # end
-      #
-      # def has_document_files?
-      #   object_files[:document].present?
-      # end
-      #
-      # def has_ereader_files?
-      #   object_files[:ereader].present?
-      # end
-      #
-      # def has_playable_audio?
-      #   has_audio_files? && object_files[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
-      # end
-      #
-      # def has_pdf_files?
-      #   has_document_files? && object_files[:document].any? { |a| a['attachments_ss']['document_access'].present? }
-      # end
-      #
-      # def book_reader?
-      #   has_image_files? && (helpers.has_searchable_text?(document) || object_files[:image].size > IMAGE_VIEWER_LIMIT)
-      # end
+      renders_one :pdf_viewer, -> do
+        CommonwealthVlrEngine::Media::PdfViewerComponent.new(document: document, object_files: object_files)
+      end
+
+      renders_one :audio_player, -> do
+        CommonwealthVlrEngine::Media::AudioPlayerComponent.new(document: document, object_files: object_files)
+      end
+
+      renders_one :video_player, -> do
+        CommonwealthVlrEngine::Media::VideoPlayerComponent.new(document: document, object_files: object_files)
+      end
 
       def render?
-        puts "OBJECT_FILES (MEDCOM) = #{object_files}"
         true # logic TK
+      end
+
+      # Hack so that the default lambdas are triggered
+      # so that we don't have to do c.with_top_bar() in the call.
+      def before_render
+        set_slot(:single_image_viewer, nil)
+        set_slot(:pdf_viewer, nil)
+        set_slot(:audio_player, nil)
+        set_slot(:video_player, nil)
       end
     end
   end

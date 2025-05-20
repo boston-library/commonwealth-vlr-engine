@@ -1,0 +1,10 @@
+<div id="img_show_container">
+  <div id="img_show_canvas">
+    <%= video_tag(helpers.filestream_disseminator_url(video_key, 'video_access_mp4'),
+                  class: 'img_show',
+                  id: 'video_player',
+                  controls: true,
+                  poster: helpers.thumbnail_url(document),
+                  controlsList: 'nodownload') %>
+  </div>
+</div>

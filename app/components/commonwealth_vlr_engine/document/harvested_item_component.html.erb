@@ -1,0 +1,12 @@
+<div id="harvested_item_show_container" class="row">
+  <%= link_to(helpers.create_thumb_img_element(document, %w(thumb_img_show)),
+              document[:identifier_uri_ss],
+              target: '_blank',
+              id: 'oai_item_thumb_link',
+              title: oai_link_text) %>
+  <div id="oai_item_link">
+    <%= link_to(document[:identifier_uri_ss], class: 'view_oai_item', target: '_blank' ) do %>
+      <%= oai_link_text %> <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
+    <% end %>
+  </div>
+</div>

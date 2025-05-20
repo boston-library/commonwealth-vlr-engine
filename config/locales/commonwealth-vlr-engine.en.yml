@@ -290,10 +290,10 @@ en:
     oai_objects:
           default_inst_name: 'the contributing institution'
           link_to_item:
+            audio: 'Listen to this recording online at %{institution_name}'
             generic: 'View this item online at %{institution_name}'
             image: 'View the full image online at %{institution_name}'
             map: 'View this map online at %{institution_name}'
-            sound: 'Listen to this recording online at %{institution_name}'
             video: 'Watch this video online at %{institution_name}'
           link_to_item_label: 'Link to Item'
 

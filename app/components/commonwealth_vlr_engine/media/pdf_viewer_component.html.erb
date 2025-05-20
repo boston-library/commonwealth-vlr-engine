@@ -1,0 +1,8 @@
+<div id="pdf_show_container" class="row">
+  <div id="pdf_show_canvas">
+    <%= content_tag :object, 'Your browser cannot display the PDF.',
+                    id: 'pdf_viewer',
+                    data: pdf_url_for_viewer,
+                    type: 'application/pdf' %>
+  </div>
+</div>
