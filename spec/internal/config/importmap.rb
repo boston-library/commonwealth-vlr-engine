@@ -8,6 +8,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 # jquery is needed for blacklight-gallery masonry view
 # pin "jquery", to: "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
 # pin "jquery" # @3.7.1, local
+pin 'jquery', to: 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.js'
 pin "bootstrap", to: "bootstrap.min.js"
 pin "@github/auto-complete-element", to: "https://cdn.skypack.dev/@github/auto-complete-element"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -18,6 +19,7 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/dist/umd
 pin "chart.js", to: "https://ga.jspm.io/npm:chart.js@4.2.0/dist/chart.js"
 # single dependency of chart.js:
 pin "@kurkle/color", to: "https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js"
+
 # pin "openseadragon", to: 'https://cdn.jsdelivr.net/npm/openseadragon@5.0/build/openseadragon/openseadragon.min.js'
 pin "openseadragon"
 pin "@fortawesome/fontawesome-free", to: "@fortawesome--fontawesome-free.js"
