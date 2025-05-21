@@ -35,6 +35,7 @@
             <%= select_tag(:topic,
                            options_for_select(feedback_type_options),
                            id: 'message_type_select',
+                           data: { topic_options: raw(I18n.t('blacklight.feedback.form.topic.options').to_json) },
                            class: 'form-select') %>
             <div id="contact_help_text" class="alert alert-warning" style="display: none;">
               <!-- help content rendered dynamically by commonwealth-vlr-engine/feedback_alerts.js -->

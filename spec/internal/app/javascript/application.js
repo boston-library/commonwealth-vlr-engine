@@ -17,7 +17,7 @@ import "@github/auto-complete-element"
 import 'blacklight'
 import "blacklight-range-limit";
 // import 'blacklight-gallery'
-// import 'commonwealth-vlr-engine'
+import 'commonwealth-vlr-engine'
 import "openseadragon"
 import "openseadragon-rails"
 

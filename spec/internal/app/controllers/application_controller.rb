@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  stale_when_importmap_changes
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
 
