@@ -7,6 +7,10 @@ module CommonwealthVlrEngine
       def flagged_warning_component
         CommonwealthVlrEngine::Document::FlaggedWarningComponent.new(document: document)
       end
+
+      def render?
+        document[helpers.blacklight_config.flagged_field].present? || super
+      end
     end
   end
 end

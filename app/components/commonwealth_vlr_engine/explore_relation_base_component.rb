@@ -41,6 +41,8 @@ module CommonwealthVlrEngine
     end
 
     def explore_text
+      return if explore_document['abstract_tsi'].blank?
+
       helpers.index_abstract({ value: [explore_document['abstract_tsi']], document: explore_document,
                                path_helper: explore_path, truncate_length: 600 })
     end
