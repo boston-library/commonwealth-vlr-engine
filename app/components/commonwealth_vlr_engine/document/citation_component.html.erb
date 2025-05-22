@@ -1,0 +1,5 @@
+<h3 class="document-title-for-citation"><%= title %></h3>
+<% helpers.citation_styles.each do |style| %>
+  <%= content_tag(:h4, t("blacklight.citation.#{style}")) %>
+  <%= render_citation(style).html_safe %>
+<% end %>

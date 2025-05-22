@@ -1,9 +1,6 @@
 <div id="more_like_this">
   <h4><%= t('blacklight.more_like_this.heading') %></h4>
   <div id="more_like_this_docs" class="row">
-    <%# render collection: mlt_response.documents,
-               partial: 'show_more_like_this',
-               as: :document %>
     <%= render Blacklight::Gallery::DocumentComponent.with_collection(mlt_documents_presenters) %>
   </div>
   <%= mlt_search_link %>

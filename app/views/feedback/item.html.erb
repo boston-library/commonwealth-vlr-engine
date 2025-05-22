@@ -1,10 +1,19 @@
 <%# based on blacklight/app/view/catalog/email.html.erb,
     but we explicitly render HTML rather than using Blacklight::System::ModalComponent,
     for some reason #recaptcha_tags don't work in ModalComponent %>
-<div class="modal-header">
-  <h4 id="" class="modal-title">
-    <%= t('blacklight.feedback.item.title') %>
-  </h4>
-  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
-</div>
-<%= render 'item_feedback_form' %>
+<!--<div class="modal-header">-->
+<!--  <h4 id="" class="modal-title">-->
+    <%#= t('blacklight.feedback.item.title') %>
+<!--  </h4>-->
+<!--  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%#= t('blacklight.modal.close') %>"></button>-->
+<!--</div>-->
+<%# render 'item_feedback_form' %>
+
+<%# more 'blacklight' way below, recaptcha_tags not working with either option? %>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title { t('blacklight.feedback.item.title') } %>
+
+  <%# component.with_body do %>
+    <%= render 'item_feedback_form' %>
+  <%# end %>
+<% end %>

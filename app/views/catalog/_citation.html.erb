@@ -1,0 +1,14 @@
+<!--<div class="modal-header">-->
+<!--  <h3><%#= t('blacklight.tools.citation') %></h3>-->
+<!--  <button type="button" class="blacklight-modal-close close" data-bl-dismiss="modal" aria-label="Close">-->
+<!--    <span aria-hidden="true">×</span>-->
+<!--  </button>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+  <%#= render_citations(@documents, citation_styles) %>
+<!--</div>-->
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title { t('blacklight.tools.citation') } %>
+
+  <%= render CommonwealthVlrEngine::Document::CitationComponent.with_collection(@documents) if @documents.present? %>
+<% end %>

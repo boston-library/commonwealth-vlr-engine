@@ -238,9 +238,12 @@ module CommonwealthVlrEngine
         config.add_sort_field 'system_create_dtsi desc', label: 'recently added'
 
         # add our custom tools
-        # config.add_show_tools_partial :sharing, partial: 'sharing', if: :render_sharing?
-        # config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
-        # config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
+        config.show.show_tools_component = Blacklight::Document::ShowToolsComponent
+        config.add_show_tools_partial(:sharing, partial: 'sharing', if: :render_sharing?)
+        config.add_show_tools_partial(:item_feedback, partial: 'item_feedback', if: :render_item_feedback?)
+        config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
+        config.add_show_tools_partial(:iiif_manifest, partial: 'iiif_manifest', if: :render_manifest_link?)
+        config.add_show_tools_partial(:email, partial: 'show_email_tools', if: false, callback: :email_action, validator: :validate_email_params)
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -286,12 +289,12 @@ module CommonwealthVlrEngine
       blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
       # remove item-centric show tools (for admin)
       # TODO: this isn't how actions are added anymore, may not need to worry about this
-      blacklight_config.show.document_actions.delete(:sharing)
-      blacklight_config.show.document_actions.delete(:iiif_manifest)
-      blacklight_config.show.document_actions.delete(:bookmark)
-      blacklight_config.show.document_actions.delete(:item_feedback)
-      blacklight_config.show.document_actions.delete(:email)
-      blacklight_config.show.document_actions.delete(:citation)
+      # blacklight_config.show.document_actions.delete(:sharing)
+      # blacklight_config.show.document_actions.delete(:iiif_manifest)
+      # blacklight_config.show.document_actions.delete(:bookmark)
+      # blacklight_config.show.document_actions.delete(:item_feedback)
+      # blacklight_config.show.document_actions.delete(:email)
+      # blacklight_config.show.document_actions.delete(:citation)
     end
 
     # display the social/sharing widget in catalog#show

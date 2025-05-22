@@ -9,6 +9,7 @@ module CommonwealthVlrEngine
       end
       attr_reader :document, :mlt_response
 
+      # need to pass view_config, or presenter will use blacklight_config.show.metadata_component
       def mlt_documents_presenters
         mlt_response.documents.map do |doc| CommonwealthVlrEngine::IndexPresenter.new(
           doc, controller.view_context, view_config: helpers.blacklight_config.view_config(:index)

@@ -24,6 +24,10 @@ module CommonwealthVlrEngine
       CommonwealthVlrEngine::Document::HarvestedItemComponent.new(document: @document)
     end
 
+    renders_one :show_tools, -> do
+      helpers.blacklight_config.view_config(:show).show_tools_component.new(document: @document)
+    end
+
     renders_one :explore_collection, -> do
       CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document)
     end
@@ -38,6 +42,7 @@ module CommonwealthVlrEngine
       set_slot(:breadcrumb, nil)
       set_slot(:media, nil)
       set_slot(:harvested_item_link, nil)
+      set_slot(:show_tools, nil)
       set_slot(:metadata, nil, document: @document) # unless metadata
       set_slot(:explore_collection, nil)
       set_slot(:more_like_this, nil)

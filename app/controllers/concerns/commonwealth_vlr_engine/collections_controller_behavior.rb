@@ -11,7 +11,7 @@ module CommonwealthVlrEngine
 
       before_action :nav_li_active, only: [:index, :show]
       before_action :relation_base_blacklight_config, only: [:index, :show]
-      before_action :collapse_institution_facet, only: :index
+      # before_action :collapse_institution_facet, only: :index
       before_action :collections_index_config, only: :index
       before_action :collections_show_config, only: :show
       before_action :collections_limit_for_facets, only: :facet
