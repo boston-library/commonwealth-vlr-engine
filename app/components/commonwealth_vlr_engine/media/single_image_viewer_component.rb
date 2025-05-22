@@ -15,7 +15,6 @@ module CommonwealthVlrEngine
       end
 
       def render?
-        puts "OBJECTF_FILES = #{object_files}"
         helpers.has_image_files?(object_files) && object_files[:image].length == 1 && !helpers.has_searchable_text?(document)
       end
     end

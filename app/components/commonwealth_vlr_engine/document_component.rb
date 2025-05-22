@@ -8,6 +8,7 @@ module CommonwealthVlrEngine
                    counter: nil, document_counter: nil, counter_offset: 0,
                    show: false, **args)
       @object_files = args[:object_files]
+      @mlt_response = args[:mlt_response]
       super
     end
 
@@ -23,12 +24,13 @@ module CommonwealthVlrEngine
       CommonwealthVlrEngine::Document::HarvestedItemComponent.new(document: @document)
     end
 
-    # renders_one :explore_collection, -> do
-    #   CommonwealthVlrEngine::ExploreRelationBaseComponent.new(
-    #     explore_document: @institution_document, explore_exemplary_document: @institution_exemplary_document,
-    #     parent_document: @document
-    #   )
-    # end
+    renders_one :explore_collection, -> do
+      CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document)
+    end
+
+    renders_one :more_like_this, -> do
+      CommonwealthVlrEngine::Document::MoreLikeThisComponent.new(document: @document, mlt_response: @mlt_response)
+    end
 
     # Hack so that the default lambdas are triggered
     # so that we don't have to do c.with_top_bar() in the call.
@@ -37,7 +39,8 @@ module CommonwealthVlrEngine
       set_slot(:media, nil)
       set_slot(:harvested_item_link, nil)
       set_slot(:metadata, nil, document: @document) # unless metadata
-      # set_slot(:explore_collection, nil)
+      set_slot(:explore_collection, nil)
+      set_slot(:more_like_this, nil)
     end
   end
 end

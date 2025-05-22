@@ -163,17 +163,6 @@ module CommonwealthVlrEngine
       book_reader?(document, files_hash) || harvested_object?(document)
     end
 
-    # render the 'more like this' search link if doc has subjects
-    def render_mlt_search_link(document)
-      return unless document[:subject_facet_ssim] || document[:subject_geo_city_sim] || document[:related_item_host_ssim]
-
-      content_tag :div, id: 'more_mlt_link_wrapper' do
-        link_to t('blacklight.more_like_this.more_mlt_link'),
-                search_catalog_path(mlt_id: document.id),
-                id: 'more_mlt_link'
-      end
-    end
-
     # have to override to display non-typical constraints
     # (e.g. coordinates, mlt, range limit, advanced search)
     # need this until:

@@ -343,7 +343,7 @@ module CommonwealthVlrEngine
       mlt_search_service = search_service_class.new(config: blacklight_config,
                                                     user_params: { mlt_id: params[:id], rows: 4 },
                                                     search_builder_class: CommonwealthVlrEngine::MltSearchBuilder)
-      _mlt_response, @mlt_document_list = mlt_search_service.search_results
+      @mlt_response = mlt_search_service.search_results
     end
 
     # override so we can inspect for other params, like :mlt_id

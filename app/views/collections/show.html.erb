@@ -38,10 +38,9 @@
         <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,
                                                                      parent_document: @document) %>
 
-        <%= render CommonwealthVlrEngine::ExploreRelationBaseComponent.new(
-          explore_document: @institution_document, explore_exemplary_document: @institution_exemplary_document,
-          parent_document: @document
-        ) %>
+        <%= render CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document) %>
+        <%# , explore_document: @institution_document,
+          explore_exemplary_document: @institution_exemplary_document %>
 
       </div>
 

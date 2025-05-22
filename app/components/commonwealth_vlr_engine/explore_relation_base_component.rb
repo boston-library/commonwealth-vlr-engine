@@ -3,17 +3,28 @@
 # render a component for #show views to include information about an institution or collection
 module CommonwealthVlrEngine
   class ExploreRelationBaseComponent < ViewComponent::Base
-    attr_reader :explore_document, :explore_exemplary_document, :parent_document
+    attr_reader :parent_document, :explore_document #, :explore_exemplary_document
 
-    # @param [SolrDocument] explore_document, explore_exemplary_document, parent_document
-    def initialize(explore_document:, explore_exemplary_document:, parent_document:)
-      @explore_document = explore_document
-      @explore_exemplary_document = explore_exemplary_document
+    # @param [SolrDocument] parent_document - the document on which we want to display this component
+    def initialize(parent_document:)
       @parent_document = parent_document
+      @explore_document = fetch_explore_document
     end
 
+    def fetch_explore_document
+      explore_doc_class = context == 'digitalobjects' ? 'admin_set' : 'institution'
+      SolrDocument.find(parent_document["#{explore_doc_class}_ark_id_ssi"])
+    end
+
+    def explore_exemplary_document
+      # TODO: use explore_document[:exemplary_image_digobj_ss] instead of hard-coded value
+      # SolrDocument.find(explore_document[:exemplary_image_digobj_ss])
+      SolrDocument.find('bpl-dev:6q182k915')
+    end
+
+    # can't use helpers here because this gets called during initialize
     def context
-      parent_document.fetch(helpers.blacklight_config.index.display_type_field)&.downcase&.pluralize
+      @parent_document.fetch(:curator_model_suffix_ssi)&.downcase&.pluralize
     end
 
     def explore_image_tag
@@ -41,7 +52,9 @@ module CommonwealthVlrEngine
     def render?
       return if explore_document.blank?
 
-      context == 'collections' && CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+      return if context == 'collections' && CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+
+      true
     end
   end
 end
