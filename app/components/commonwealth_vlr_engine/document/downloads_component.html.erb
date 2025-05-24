@@ -1,0 +1,10 @@
+<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <%= icon('fas', 'download', aria: { hidden: true }) %>
+  <span><%= I18n.t('blacklight.downloads.title') %></span>
+</button>
+
+<ul class="dropdown-menu">
+  <% download_links.each do |link| %>
+    <li class="download_list_item"><%= link %></li>
+  <% end %>
+</ul>

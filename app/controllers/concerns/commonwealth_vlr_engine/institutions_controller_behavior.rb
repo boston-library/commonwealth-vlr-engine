@@ -33,13 +33,10 @@ module CommonwealthVlrEngine
 
     def show
       # have to define a new search_service here, or we can't inject params[:f] below
-      institution_search_service = search_service_class.new(config: blacklight_config,
-                                                            user_params: params)
+      institution_search_service = search_service_class.new(config: blacklight_config, user_params: params)
       @document = institution_search_service.fetch(params[:id])
-      # TODO: replace this with a fetch for @document['exemplary_image_digobj_ss']
-      @exemplary_document = institution_search_service.fetch('bpl-dev:6q182k915') # image
-      # @exemplary_document = institution_search_service.fetch('bpl-dev:fx719n13q') # newspaper
-      # @exemplary_document = institution_search_service.fetch('TK') # harvested item
+      # TODO: case when @document['exemplary_image_digobj_ss'] is not set (throws Blacklight::Exceptions::RecordNotFound)
+      @exemplary_document = institution_search_service.fetch(@document['exemplary_image_digobj_ss'])
       @institution_title = @document[blacklight_config.index.title_field.field]
 
       # get the response for collection objects

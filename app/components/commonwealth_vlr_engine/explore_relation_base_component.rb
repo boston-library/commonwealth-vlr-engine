@@ -17,9 +17,9 @@ module CommonwealthVlrEngine
     end
 
     def explore_exemplary_document
-      # TODO: use explore_document[:exemplary_image_digobj_ss] instead of hard-coded value
-      # SolrDocument.find(explore_document[:exemplary_image_digobj_ss])
-      SolrDocument.find('bpl-dev:6q182k915')
+      # TODO: case when @document['exemplary_image_digobj_ss'] not set (throws Blacklight::Exceptions::RecordNotFound)
+      SolrDocument.find(explore_document[:exemplary_image_digobj_ss])
+      # SolrDocument.find('bpl-dev:6q182k915')
     end
 
     # can't use helpers here because this gets called during initialize
@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
 
     def explore_link
       link_to(explore_document[helpers.blacklight_config.index.title_field.field],
-              helpers.public_send(explore_path, id: parent_document[:id]), id: 'explore_link')
+              helpers.public_send(explore_path, id: explore_document[:id]), id: 'explore_link')
     end
 
     def explore_text

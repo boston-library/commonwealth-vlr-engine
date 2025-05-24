@@ -110,12 +110,7 @@ module CommonwealthVlrEngine
     def thumbnail_url(document)
       thumbnail_att_name = 'image_thumbnail_300'
       if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
-        if document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
-          attachment_json = JSON.parse(document[:attachments_ss])
-          filestream_disseminator_url(attachment_json[thumbnail_att_name]['key'], thumbnail_att_name, true)
-        else
-          filestream_disseminator_url(document[:exemplary_image_key_base_ss], thumbnail_att_name)
-        end
+        filestream_disseminator_url(document[:exemplary_image_key_base_ss], thumbnail_att_name)
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'

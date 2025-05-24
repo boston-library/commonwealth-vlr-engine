@@ -243,7 +243,9 @@ module CommonwealthVlrEngine
         config.add_show_tools_partial(:item_feedback, partial: 'item_feedback', if: :render_item_feedback?)
         config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
         config.add_show_tools_partial(:iiif_manifest, partial: 'iiif_manifest', if: :render_manifest_link?)
-        config.add_show_tools_partial(:email, partial: 'show_email_tools', if: false, callback: :email_action, validator: :validate_email_params)
+        config.add_show_tools_partial(:downloads, partial: 'downloads_tools', if: :render_download_tools?)
+        config.add_show_tools_partial(:email, if: false, partial: 'show_email_tools', callback: :email_action,
+                                      validator: :validate_email_params)
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
@@ -315,6 +317,10 @@ module CommonwealthVlrEngine
     # override Blacklight::Catalog#render_sms_action?
     def render_sms_action?
       false
+    end
+
+    def render_download_tools?
+      helpers.has_downloadable_files?(@document, @object_files)
     end
 
     # if this is 'more like this' search, use CommonwealthVlrEngine::MltSearchBuilder

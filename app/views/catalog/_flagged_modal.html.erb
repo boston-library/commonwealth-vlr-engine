@@ -13,7 +13,7 @@
         <div>Click "View Content" to continue to the item or "Back to Search" to return to the search results page.</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-bl-dismiss="modal">View Content</button>
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">View Content</button>
         <% if current_search_session %>
           <%= link_back_to_catalog(class: 'btn btn-danger') %>
         <% else %>
@@ -23,26 +23,3 @@
     </div>
   </div>
 </div>
-
-<script type="module">
-  // fire the warning modal and make the backdrop very dark
-
-  // old jquery version:
-  // $('#flagged_warning_modal').modal();
-  // $(".modal-backdrop").css("opacity",".95");
-
-  // Blacklight Modal version:
-  // this works to trigger the modal (if we use <dialog> as the root element),
-  // see:
-  //   blacklight/app/views/shared/_modal.html.erb
-  //   blacklight/app/javascript/blacklight/modal.js
-  // but then it can't be dismissed
-  // document.getElementById('flagged_warning_modal').show();
-
-  // trying to use below causes: Uncaught ReferenceError: bootstrap is not defined
-
-  const myModal = new bootstrap.Modal(document.getElementById('flagged_warning_modal'), {
-      backdrop: true
-  })
-  myModal.show();
-</script>
