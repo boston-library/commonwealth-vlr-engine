@@ -17,11 +17,12 @@ module CommonwealthVlrEngine
 
     protected
 
-    # Blacklight uses #search_action_url to figure out the right URL for
-    # the global search box
-    def search_action_url options = {}
-      search_catalog_url(options.except(:controller, :action))
-    end
+    # TODO: maybe remove this? The default implementation in Blacklight is more context-aware,
+    # this method is used for "remove" facet links, but maybe also for header search URL?
+    # def search_action_url options = {}
+    #   options = options.to_h if options.is_a? Blacklight::SearchState
+    #   url_for(options.reverse_merge(action: 'index'))
+    # end
 
     # Handle the HTTP show request
     def send_content

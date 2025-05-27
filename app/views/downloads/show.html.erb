@@ -1,33 +1,32 @@
-<div class="modal-header">
-  <h4 id="downloads_modal_title" class="modal-title">
-    <%= truncate("#{t('blacklight.downloads.title')}: #{render_title(@parent_document, false)}",
-                 length: 55,
-                 separator: ' ') %>
-  </h4>
-  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
-</div>
-<div id="downloads_modal" class="modal-body">
-  <%= render partial: 'terms_of_use', locals: {document: @parent_document} %>
-</div>
+<%# prefer to use Blacklight::System::ModalComponent, or the full layout gets rendered %>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title do
+      truncate("#{t('blacklight.downloads.title')}: #{render_title(@parent_document, false)}",
+                   length: 55, separator: ' ')
+    end
+  %>
 
-<div id="downloads_start_links" class="modal-footer">
-  <%= form_tag url_for_download(@document, params[:filestream_id]), method: :get, id: 'trigger_download_form' do %>
-    <input type="hidden" name="filestream_id" value="<%= params[:filestream_id] %>" />
-    <%= recaptcha_tags(id: 'download_recaptcha', callback: 'enableDownloadButton',
-                       expired_callback: 'refreshRecaptcha') %>
-    <%= button_tag type: 'submit', class: 'trigger_download btn btn-primary ' + params[:filestream_id],
-                   rel: 'nofollow', formtarget: '_blank', id: 'trigger_download_submit' do %>
-      <%= icon('fas', 'download', aria: { hidden: true }) %>
-      <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
-                                                   @object_profile,
-                                                   params[:filestream_id]),
-                               length: 40,
-                               omission: '...')} (#{file_type_string(params[:filestream_id],
-                                                                     @object_profile)}, #{file_size_string(params[:filestream_id],
-                                                                                                           @object_profile)})" %>
+  <%= render partial: 'terms_of_use', locals: { document: @parent_document } %>
+
+  <% component.with_footer do %>
+    <%= form_tag url_for_download(@document, params[:filestream_id]), method: :get, id: 'trigger_download_form' do %>
+      <input type="hidden" name="filestream_id" value="<%= params[:filestream_id] %>" />
+      <%= recaptcha_tags(id: 'download_recaptcha', callback: 'enableDownloadButton',
+                         expired_callback: 'refreshRecaptcha') %>
+      <%= button_tag type: 'submit', class: 'trigger_download btn btn-primary ' + params[:filestream_id],
+                     rel: 'nofollow', formtarget: '_blank', id: 'trigger_download_submit',
+                     data: { 'bl-dismiss': 'modal' } do %>
+        <%= icon('fas', 'download', aria: { hidden: true }) %>
+        <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
+                                                     @object_profile,
+                                                     params[:filestream_id]),
+                                 length: 40,
+                                 omission: '...')} (#{file_type_string(params[:filestream_id],
+                                                                       @object_profile)}, #{file_size_string(params[:filestream_id],
+                                                                                                             @object_profile)})" %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <button type="button" class="btn btn-warning" data-bl-dismiss="modal">Cancel</button>
-</div>
-<%= javascript_include_tag 'commonwealth-vlr-engine/download_utils' %>
+    <button type="button" class="btn btn-warning" data-bl-dismiss="modal">Cancel</button>
+  <% end %>
+<% end %>

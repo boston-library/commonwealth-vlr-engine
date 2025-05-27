@@ -26,8 +26,6 @@ module CommonwealthVlrEngine
 
     # keep Institution objects out of the search results
     def exclude_institutions(solr_parameters = {})
-      return solr_parameters if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
-
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '-curator_model_suffix_ssi:"Institution"'
     end

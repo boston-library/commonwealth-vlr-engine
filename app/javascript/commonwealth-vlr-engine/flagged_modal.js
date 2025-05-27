@@ -1,5 +1,8 @@
 const initFlaggedModal = () => {
-    const flaggedModal = new bootstrap.Modal(document.getElementById('flagged_warning_modal'), {
+    const flagged_warning = document.getElementById('flagged_warning_modal');
+    if (!flagged_warning) return;
+
+    const flaggedModal = new bootstrap.Modal(flagged_warning, {
         backdrop: true
     })
     flaggedModal.show();

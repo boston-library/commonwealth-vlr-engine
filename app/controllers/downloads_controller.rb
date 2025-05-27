@@ -18,10 +18,12 @@ class DownloadsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html do
-        render layout: false if request.xhr?
-      end # for users w/o JS
-      format.js { render layout: false } # download modal window
+      format.html do # for users w/o JS
+        return render layout: false if request.xhr?
+      end
+      format.js do # download modal window
+        return render layout: false
+      end
     end
   end
 
