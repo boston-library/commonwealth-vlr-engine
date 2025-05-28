@@ -6,13 +6,9 @@ namespace :vlr_engine do
   task :create_geojson => :environment do
     include BlacklightMapsHelper
 
-    def blacklight_config
-      CatalogController.blacklight_config
-    end
-
     @controller = CatalogController.new
     @controller.request = ActionDispatch::TestRequest.create
-    geojson_search_service = Blacklight::SearchService.new(config: blacklight_config)
+    geojson_search_service = Blacklight::SearchService.new(config: @controller.blacklight_config)
     (@response, @document_list) = geojson_search_service.search_results
 
     geojson_features = serialize_geojson(map_facet_values, 'index')

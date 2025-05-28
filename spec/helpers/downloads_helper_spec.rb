@@ -28,7 +28,6 @@ describe DownloadsHelper do
 
   describe '#create_download_links' do
     it 'returns an array of links' do
-      puts "DOWNLOAD LINKS = #{download_links}"
       expect(download_links.length).to eq(5)
       expect(download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
