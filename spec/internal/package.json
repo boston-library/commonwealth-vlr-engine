@@ -9,7 +9,7 @@
     "blacklight-gallery": "^4.8.4",
     "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
-    "commonwealth-vlr-engine": "file:./../../../commonwealth-vlr-engine",
+    "commonwealth-vlr-engine": "link:./../../../commonwealth-vlr-engine",
     "masonry-layout": "v4",
     "nodemon": "^3.1.9",
     "openseadragon-rails": "^1.0.17",

@@ -51,7 +51,7 @@
         <div class="row mb-3">
           <div class="offset-md-2 col-md-4">
             <%= recaptcha_tags(id: 'feedback_recaptcha') %>
-            <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-primary mt-3') %>
+            <%= submit_tag(t('blacklight.feedback.submit'), class: 'btn btn-primary mt-3', data: { turbo: false }) %>
           </div>
         </div>
       <% end %>
