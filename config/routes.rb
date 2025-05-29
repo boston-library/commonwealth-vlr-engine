@@ -35,11 +35,6 @@ Rails.application.routes.draw do
   get 'image_viewer/:id', to: 'image_viewer#show', as: 'image_viewer'
   get 'book_viewer/:id', to: 'image_viewer#book_viewer', as: 'book_viewer'
 
-  # static pages
-  get 'explore', to: 'pages#explore', as: 'explore'
-  get 'about', to: 'pages#about', as: 'about'
-  get 'about_this_site', to: 'pages#about_site', as: 'about_site'
-
   # IIIF manifest
   get 'search/:id/manifest', to: 'iiif_manifest#manifest', as: 'iiif_manifest'
   get 'search/:id/canvas/:canvas_object_id', to: 'iiif_manifest#canvas', as: 'iiif_canvas'

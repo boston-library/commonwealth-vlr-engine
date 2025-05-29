@@ -7,7 +7,7 @@ require BlacklightAdvancedSearch::Engine.root.join(CommonwealthVlrEngine::Engine
                                                    'config', 'initializers', 'patch_blacklight_advanced_search')
 
 class BlacklightAdvancedSearch::QueryParser
-  # LOCAL OVERRIDE of BlacklightAdvancedSearch::ParsingNestingParser#process_query
+  # LOCAL OVERRIDE of BlacklightAdvancedSearch::QueryParser#process_query
   def process_query(params, config)
     queries = []
     queries = keyword_queries.map do |field, query|
@@ -65,13 +65,13 @@ class BlacklightAdvancedSearch::QueryParser
   end
 end
 
-module BlacklightAdvancedSearch::RenderConstraintsOverride
-  # LOCAL OVERRIDE for mlt and geo searches
-  def query_has_constraints?(localized_params = params)
-    if is_advanced_search? localized_params
-      true
-    else
-      !(localized_params[:q].blank? && localized_params[:f].blank? && localized_params[:f_inclusive].blank? && localized_params[:mlt_id].blank? && localized_params[:coordinates].blank?)
-    end
-  end
-end
+# module BlacklightAdvancedSearch::RenderConstraintsOverride
+#   # LOCAL OVERRIDE for mlt and geo searches
+#   def query_has_constraints?(localized_params = params)
+#     if is_advanced_search? localized_params
+#       true
+#     else
+#       !(localized_params[:q].blank? && localized_params[:f].blank? && localized_params[:f_inclusive].blank? && localized_params[:mlt_id].blank? && localized_params[:coordinates].blank?)
+#     end
+#   end
+# end
