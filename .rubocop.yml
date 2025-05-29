@@ -487,6 +487,8 @@ Rails/Date:
 
 Rails/Delegate:
   Enabled: true
+  Exclude:
+    - 'tasks/vlr_engine.rake'
 
 Rails/DelegateAllowBlank:
   Enabled: true
