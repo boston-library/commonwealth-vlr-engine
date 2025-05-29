@@ -6,7 +6,7 @@
     "@popperjs/core": "2.11.8",
     "autoprefixer": "^10.4.20",
     "blacklight-frontend": "8.11.0",
-    "blacklight-gallery": "^4.8.4",
+    "blacklight-gallery": "^4.9.0",
     "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
     "commonwealth-vlr-engine": "link:./../../../commonwealth-vlr-engine",

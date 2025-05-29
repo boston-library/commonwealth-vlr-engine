@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'blacklight', '~> 8.11.0'
   s.add_dependency 'blacklight_advanced_search', '8.0.0.alpha2'
-  s.add_dependency 'blacklight-gallery', '~> 4.8.4'
+  s.add_dependency 'blacklight-gallery', '~> 4.9.0'
   s.add_dependency 'blacklight_iiif_search', '~> 3.0'
   # s.add_dependency 'blacklight-maps', '~> 1.1.0'
   s.add_dependency 'blacklight_range_limit', '9.0.0'

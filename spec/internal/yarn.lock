@@ -150,7 +150,7 @@ blacklight-frontend@8.11.0, "blacklight-frontend@>=7.1.0 <9":
   dependencies:
     bootstrap ">=4.3.1 <6.0.0"
 
-blacklight-gallery@^4.8.4:
+blacklight-gallery@^4.9.0:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/blacklight-gallery/-/blacklight-gallery-4.9.0.tgz#f85e2071ef7971ee8e455a0a16eeddf652aa8372"
   integrity sha512-ZmmkaXBUV8YHKwP0e90Z8SQhh/cvjazOgO1q+vJvf0YAfs0NaJpUWCgKxtCN2gUgISFD8JbsqDGeYbRzEN+Rtg==
