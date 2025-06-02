@@ -300,7 +300,7 @@ Lint/Void:
 Naming/AccessorMethodName:
   Enabled: true
   Exclude:
-    - 'app/controllers/blacklight_advanced_search/advanced_controller.rb'
+    - 'app/controllers/blacklight_advanced_search/advanced_controller.rb.bak'
 
 ####################### STYLE ###############################
 

@@ -1,0 +1,96 @@
+<% if constraints? %>
+  <div class="constraints well search_history">
+    <h4><%= t 'blacklight.advanced_search.form.search_context' %></h4>
+    <% constraints.each do |constraint| %>
+      <%= constraint %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: hidden_search_state_params) %>
+
+  <div class="input-criteria">
+    <div class="query-criteria mb-4">
+      <!--
+      <h2 class="query-criteria-heading h3 mb-4">
+        <%# t('blacklight.advanced_search.form.query_criteria_heading_html', select_menu: default_operator_menu) %>
+      </h2>
+      -->
+
+      <div id="advanced_search">
+        <p><%= t('blacklight.advanced_search.form.query_criteria_heading') %></p>
+        <% search_field_controls.each do |control| %>
+          <%= control %>
+        <% end %>
+      </div>
+
+      <div class="advanced_search_field">
+        <div id="advanced_operators" class="offset-sm-3 offset-md-3 offset-lg-2 col-sm-8 col-md-10 col-lg-6">
+          <div class="form-check form-check-inline">
+            <%= radio_button_tag(:op, 'must', true, class: 'form-check-input') %>
+            <label class="form-check-label" for="op_must">find all terms</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= radio_button_tag(:op, 'should', false, class: 'form-check-input') %>
+            <label class="form-check-label" for="op_should">find any terms</label>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit' %>
+        <%= link_to t('blacklight.advanced_search.form.start_over_html'), request.path, :class =>"btn btn-link advanced-search-start-over" %>
+      </div>
+    </div>
+
+    <% if search_filter_controls? %>
+      <div class="limit-criteria mb-4">
+        <h2 class="limit-criteria-heading h3"><%= t('blacklight.advanced_search.limit')%></h2>
+
+        <div id="date_range_limit" class="advanced_search_field">
+          <div class="row">
+            <label class="col-form-label col-md-3 col-lg-2">Year</label>
+            <div class="col-sm-8">
+              <% %w(start end).each do |v| %>
+                <div class="input-group col-md-8 col-lg-5">
+                    <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "date_range_#{v}" %>">
+                      <%= v.capitalize %>
+                    </label>
+                  <%= text_field_tag("date_#{v}", nil,
+                                     id: "date_range_#{v}", class: 'form-control', maxlength: 4) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div id="advanced_search_facets" class="limit_input row">
+          <div class="advanced-facet-limits panel-group col-md-9 offset-md-3">
+            <% search_filter_controls.each do |control| %>
+              <%= control %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!--
+  <%# if sort_fields_select %>
+    <div class="form-group row mb-4">
+      <%# content_tag :h2, t('blacklight.advanced_search.form.sort_label'), id: 'advanced-search-sort-label', class: 'col-md-3 text-md-right' %>
+      <div class="col-md-9">
+        <%# sort_fields_select %>
+      </div>
+    </div>
+  <%# end %>
+  -->
+
+  <div class="form-group row">
+    <div class="submit-buttons col-md-9 offset-md-3">
+      <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
+      <%= link_to t('blacklight.advanced_search.form.start_over_html'), request.path, :class =>"btn btn-link advanced-search-start-over" %>
+    </div>
+  </div>
+<% end %>

@@ -4,6 +4,8 @@ en:
 
     advanced_search:
           page_title: 'Search'
+          form:
+            query_criteria_heading: 'Enter your search terms in the fields below.'
           title: 'Search - %{application_name}'
           limit: 'Narrow your search:'
           constraints:

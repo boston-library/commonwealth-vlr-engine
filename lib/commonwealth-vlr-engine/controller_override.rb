@@ -6,9 +6,6 @@ module CommonwealthVlrEngine
 
     included do
       include CommonwealthVlrEngine::Finder
-      # TODO: remove, these should be added directly to downstream app's CatalogController
-      # include BlacklightAdvancedSearch::Controller
-      # include BlacklightMaps::Controller
 
       # HEADS UP: these filters get inherited by any subclass of CatalogController
       before_action :object_files, only: [:show]
@@ -79,22 +76,21 @@ module CommonwealthVlrEngine
         config.geojson_field = 'subject_hiergeo_geojson_ssm'
         config.geo_subject_link_field = 'subject_geographic_sim'
 
-        # TODO: figure out the new advanced search stuff
         # advanced search configuration
-        # config.advanced_search = {
-        #   qt: 'search',
-        #   url_key: 'advanced',
-        #   query_parser: 'edismax',
-        #   form_solr_parameters: {
-        #     'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
-        #     'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
-        #     'f.collection_name_ssim.facet.limit' => -1,
-        #     'f.reuse_allowed_ssi.facet.limit' => -1,
-        #     'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
-        #     'f.collection_name_ssim.facet.sort' => 'index',
-        #     'f.reuse_allowed_ssi.facet.sort' => 'index'
-        #   }
-        # }
+        config.advanced_search = {
+          qt: 'search',
+          url_key: 'advanced',
+          query_parser: 'edismax',
+          form_solr_parameters: {
+            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
+            'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+            'f.collection_name_ssim.facet.limit' => -1,
+            'f.reuse_allowed_ssi.facet.limit' => -1,
+            'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
+            'f.collection_name_ssim.facet.sort' => 'index',
+            'f.reuse_allowed_ssi.facet.sort' => 'index'
+          }
+        }
 
         # fields for pseudo-objects (collection, institution, series)
         config.collection_field = 'collection_name_ssim'
@@ -116,8 +112,8 @@ module CommonwealthVlrEngine
         #   supported_params: %w(q page)
         # }
 
-        # permit mlt_id param, needs to be set here, not in #mlt_search
-        config.search_state_fields << :mlt_id
+        # permit mlt_id and date range params
+        config.search_state_fields.concat([:mlt_id, :date_start, :date_end])
 
         config.default_solr_params = { qt: 'search', rows: 20 }
 
