@@ -34,32 +34,27 @@ module CommonwealthVlrEngine
       generate 'bpluser:install'
     end
 
-    # currently problematic, since the blacklight_gallery installer runs the openseadragon installer
-    # (see https://github.com/projectblacklight/blacklight-gallery/blob/main/lib/generators/blacklight_gallery/install_generator.rb#L25-L29)
-    # and the openseadragon installer uses yarn, see:
-    # https://github.com/sul-dlss/openseadragon-rails/blob/master/lib/generators/openseadragon/install_generator.rb#L7-L19
-    # which I don't think we want?
-    # need to figure out the importmaps-based install config for openseadragon, if possible
-    # HOWEVER, if we don't run this generator, we get Sprockets errors, even when there are no
-    # includes or refs to blacklight_gallery in our internal_test_app, because sprockets
-    # tries to compile files directly from blacklight-gallery gem's app/assets/javascripts/blacklight_gallery
-    # TAKE A DEEP BREATH, WE CAN FIGURE THIS OUT
+    # TODO may need additional steps? doesn’t create refs for blacklight-gallery in application.bootstrap.scss
     def blacklight_gallery_intall
+      return if IO.read('app/models/solr_document.rb').include?('Blacklight::Gallery')
+
       say_status('info', 'INSTALLING BLACKLIGHT GALLERY', :blue)
       generate "blacklight_gallery:install"
     end
 
     def blacklight_iiif_search_intall
+      return if File.exist?('app/models/iiif_search_builder.rb')
+
       say_status('info', 'INSTALLING BLACKLIGHT IIIF SEARCH', :blue)
       generate "blacklight_iiif_search:install"
     end
 
     def blacklight_range_limit_intall
+      return if IO.read('app/models/search_builder.rb').include?('BlacklightRangeLimit::RangeLimitBuilder')
+
       say_status('info', 'INSTALLING BLACKLIGHT RANGE LIMIT', :blue)
       generate "blacklight_range_limit:install"
     end
-
-    # TODO: run BlacklightAdvancedSearch generator?
 
     # def insert_to_assets
     #   generate 'commonwealth_vlr_engine:localassets'
@@ -78,7 +73,6 @@ module CommonwealthVlrEngine
     end
 
     def add_vlr_initializers
-      template 'config/initializers/a_load_commonwealth_vlr_configs.rb'
       template 'config/initializers/recaptcha.rb'
     end
 

@@ -150,10 +150,10 @@ blacklight-frontend@8.11.0, "blacklight-frontend@>=7.1.0 <9":
   dependencies:
     bootstrap ">=4.3.1 <6.0.0"
 
-blacklight-gallery@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/blacklight-gallery/-/blacklight-gallery-4.9.0.tgz#f85e2071ef7971ee8e455a0a16eeddf652aa8372"
-  integrity sha512-ZmmkaXBUV8YHKwP0e90Z8SQhh/cvjazOgO1q+vJvf0YAfs0NaJpUWCgKxtCN2gUgISFD8JbsqDGeYbRzEN+Rtg==
+blacklight-gallery@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/blacklight-gallery/-/blacklight-gallery-5.0.0.tgz#a7686264f7200d3d165a3c8224a3fc8884001265"
+  integrity sha512-fQh68PuTANvmbS6ARrqHGtGztj0hoKnjFuBoJelG02zQ03lo1xkUYOsg+xhIh2ob6lFWjjp3gfdQ+GaFJknZJw==
   dependencies:
     blacklight-frontend ">=7.1.0 <9"
     jquery ">=3.0"

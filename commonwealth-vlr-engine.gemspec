@@ -22,9 +22,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'blacklight', '~> 8.11.0'
   s.add_dependency 'blacklight_advanced_search', '8.0.0.alpha2'
-  s.add_dependency 'blacklight-gallery', '~> 4.9.0'
+  s.add_dependency 'blacklight-gallery', '~> 5.0.0'
   s.add_dependency 'blacklight_iiif_search', '~> 3.0'
-  # s.add_dependency 'blacklight-maps', '~> 1.1.0'
   s.add_dependency 'blacklight_range_limit', '9.0.0'
   s.add_dependency 'bootstrap', '~> 5.3'
   s.add_dependency 'font-awesome-sass', '~> 6.5.2'
@@ -36,8 +35,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'rss', '~> 0.3.1'
   s.add_dependency 'typhoeus', '~> 1.4'
-  # s.add_dependency 'unicode', '~> 0.4.4'
-  # s.add_dependency 'view_component', '>= 2.82.0', '< 3.0'
   s.add_dependency 'zipline', '~> 1.5.0'
 
   s.add_development_dependency 'capybara', '~> 3.0', '< 4'

@@ -77,7 +77,8 @@ module CommonwealthVlrEngine
         config.geo_subject_link_field = 'subject_geographic_sim'
 
         # advanced search configuration
-        config.advanced_search = {
+        config.advanced_search = OpenStruct.new(
+          enabled: true,
           qt: 'search',
           url_key: 'advanced',
           query_parser: 'edismax',
@@ -90,7 +91,7 @@ module CommonwealthVlrEngine
             'f.collection_name_ssim.facet.sort' => 'index',
             'f.reuse_allowed_ssi.facet.sort' => 'index'
           }
-        }
+        )
 
         # fields for pseudo-objects (collection, institution, series)
         config.collection_field = 'collection_name_ssim'
@@ -104,13 +105,6 @@ module CommonwealthVlrEngine
         config.ocr_search_field = 'ocr_tsiv'
         config.page_num_field = 'page_num_label_ssi'
         config.full_text_index = 'all_fields_ft'
-
-        # configuration for Blacklight IIIF Content Search
-        # config.iiif_search = {
-        #   full_text_field: 'ocr_tsiv',
-        #   object_relation_field: 'is_file_set_of_ssim',
-        #   supported_params: %w(q page)
-        # }
 
         # permit mlt_id and date range params
         config.search_state_fields.concat([:mlt_id, :date_start, :date_end])

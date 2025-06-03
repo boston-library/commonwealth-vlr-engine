@@ -24,9 +24,6 @@ module CommonwealthVlrEngine
   include CommonwealthVlrEngine::Controller
 )
       end
-      # TODO: remove, this line isn't in test app application_controller
-      # remove_marker = "layout 'blacklight'"
-      # gsub_file('app/controllers/application_controller.rb', remove_marker, '')
     end
 
     # Update the blacklight catalog controller
@@ -54,8 +51,7 @@ module CommonwealthVlrEngine
 
     config.fetch_many_document_params = { fl: '*' }
 
-    # TODO: figure out AdvancedSearch stuff
-    # limit Advanced Search facets to this institution
+    # limit Advanced Search facets to this institution (uncomment if needed)
     # can't call SearchBuilder.institution_limit because it's an instance method, not a class method
     # config.advanced_search[:form_solr_parameters]['fq'] = '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
 )
@@ -74,25 +70,28 @@ module CommonwealthVlrEngine
         / +config.add_index_field +'.+?$\n*/,
         / +config.add_show_field +'.+?$\n*/,
         / +config.add_search_field +'.+?$\n*/,
-        / +config.add_sort_field +'.+?$\n*/
+        / +config.add_sort_field +'.+?$\n*/,
+        / +config.add_show_tools_partial\(.+?$\n*/
       ]
       fields_to_remove.each do |remove_marker|
         gsub_file(CATALOG_CONTROLLER_PATH, /#{remove_marker}/, '')
       end
 
-      # modify show_document_actions
-      gsub_file(CATALOG_CONTROLLER_PATH, /:citation/, ":citation, partial: 'show_cite_tools'")
-      gsub_file(CATALOG_CONTROLLER_PATH, /:email,/, ":email, partial: 'show_email_tools', if: false,")
-
       # update blacklight_iiif_search config
       gsub_file(CATALOG_CONTROLLER_PATH, / +config.iiif_search[\s\S]+}/) do
-        %q(config.iiif_search = {
+        %q(    config.iiif_search = {
       full_text_field: 'ocr_tsiv',
       object_relation_field: 'is_file_set_of_ssim',
       page_model_field: 'curator_model_suffix_ssi',
       supported_params: %w(q page)
     })
       end
+
+      # modify Blacklight::Gallery config
+      gsub_file(CATALOG_CONTROLLER_PATH, /config.view.slideshow/, '# config.view.slideshow')
+      gsub_file(CATALOG_CONTROLLER_PATH, /config.show.tile_source_field/, '# config.show.tile_source_field')
+      gsub_file(CATALOG_CONTROLLER_PATH, /config.show.partials \|\|= \[\]/, '# config.show.partials ||= []')
+      gsub_file(CATALOG_CONTROLLER_PATH, /config.show.partials.insert/, '# config.show.partials.insert')
     end
   end
 end
