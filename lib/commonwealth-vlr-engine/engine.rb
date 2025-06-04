@@ -21,7 +21,6 @@ end
 
 module CommonwealthVlrEngine
   class Engine < Rails::Engine
-    isolate_namespace CommonwealthVlrEngine
     # for db migrations
     engine_name 'commonwealth_vlr_engine'
 

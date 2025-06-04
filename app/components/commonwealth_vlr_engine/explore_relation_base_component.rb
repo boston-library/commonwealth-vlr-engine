@@ -3,7 +3,7 @@
 # render a component for #show views to include information about an institution or collection
 module CommonwealthVlrEngine
   class ExploreRelationBaseComponent < ViewComponent::Base
-    attr_reader :parent_document, :explore_document #, :explore_exemplary_document
+    attr_reader :parent_document, :explore_document
 
     # @param [SolrDocument] parent_document - the document on which we want to display this component
     def initialize(parent_document:)
@@ -17,9 +17,7 @@ module CommonwealthVlrEngine
     end
 
     def explore_exemplary_document
-      # TODO: case when @document['exemplary_image_digobj_ss'] not set (throws Blacklight::Exceptions::RecordNotFound)
-      SolrDocument.find(explore_document[:exemplary_image_digobj_ss])
-      # SolrDocument.find('bpl-dev:6q182k915')
+      explore_document[:exemplary_image_digobj_ss] ? SolrDocument.find(explore_document[:exemplary_image_digobj_ss]) : nil
     end
 
     # can't use helpers here because this gets called during initialize

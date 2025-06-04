@@ -35,8 +35,7 @@ module CommonwealthVlrEngine
       # have to define a new search_service here, or we can't inject params[:f] below
       institution_search_service = search_service_class.new(config: blacklight_config, user_params: params)
       @document = institution_search_service.fetch(params[:id])
-      # TODO: case when @document['exemplary_image_digobj_ss'] is not set (throws Blacklight::Exceptions::RecordNotFound)
-      @exemplary_document = institution_search_service.fetch(@document['exemplary_image_digobj_ss'])
+      @exemplary_document = @document['exemplary_image_digobj_ss'] ? institution_search_service.fetch(@document['exemplary_image_digobj_ss']) : nil
       @institution_title = @document[blacklight_config.index.title_field.field]
 
       # get the response for collection objects

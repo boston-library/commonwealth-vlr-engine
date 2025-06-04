@@ -38,13 +38,7 @@ module CommonwealthVlrEngine
                                                            user_params: params)
       @document = collection_search_service.fetch(params[:id])
       @collection_title = @document[blacklight_config.index.title_field.field]
-      # TODO: case when @document['exemplary_image_digobj_ss'] not set (throws Blacklight::Exceptions::RecordNotFound)
-      @exemplary_document = collection_search_service.fetch(@document[:exemplary_image_digobj_ss])
-      # @exemplary_document = collection_search_service.fetch('bpl-dev:6q182k915')
-      # @institution_document = collection_search_service.fetch(@document[:institution_ark_id_ssi])
-      # # TODO: use @document[:exemplary_image_digobj_ss] instead of hard-coded value
-      # # @institution_exemplary_document = collection_search_service.fetch(@institution_document[:exemplary_image_digobj_ss])
-      # @institution_exemplary_document = collection_search_service.fetch('bpl-dev:6q182k915')
+      @exemplary_document = @document[:exemplary_image_digobj_ss] ? collection_search_service.fetch(@document[:exemplary_image_digobj_ss]) : nil
 
       # add params[:f] for proper facet links
       params.merge!(f: set_collection_facet_params(@collection_title, @document)).permit!

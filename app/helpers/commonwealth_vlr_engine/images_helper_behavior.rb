@@ -33,9 +33,9 @@ module CommonwealthVlrEngine
         return filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss],
                                            'image_thumbnail_300') if exemplary_document[:exemplary_image_key_base_ss].present?
 
-        icon_url(exemplary_document[blacklight_config.index.display_type_field].downcase)
+        render_object_icon_path(exemplary_document[blacklight_config.index.display_type_field]&.downcase)
       else
-        icon_url('image')
+        render_object_icon_path('image')
       end
     end
 

@@ -27,7 +27,7 @@
           </div>
 
           <span class="collection_search_separator">or</span>
-          <%# render partial: 'search_form_collection', locals: { document: @document } %>
+
           <%= render Blacklight::SearchBarComponent.new(
             url: search_catalog_path, # don't use #search_action_url, returns /collections
             params: search_state.params_for_search.except(:q, :search_field, :qt, :page),
@@ -39,8 +39,6 @@
                                                                      parent_document: @document) %>
 
         <%= render CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document) %>
-        <%# , explore_document: @institution_document,
-          explore_exemplary_document: @institution_exemplary_document %>
 
       </div>
 
