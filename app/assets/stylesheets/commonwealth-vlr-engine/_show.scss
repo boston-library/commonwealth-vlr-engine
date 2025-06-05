@@ -34,6 +34,62 @@
     }
   }
 
+  #img_viewer_modal {
+
+    .modal-dialog {
+      max-width: 98%;
+      margin:10px auto;
+
+      .modal-content {
+
+        .modal-header {
+          border-bottom: 0;
+          padding: 3px 10px;
+          text-align: left;
+          height: 29px;
+          overflow: hidden;
+
+          .modal-title {
+            font-weight: bold;
+            width: 95%;
+          }
+
+        }
+
+        #img_viewer_osd {
+          background-color: black;
+          margin: 0 5px;
+          padding: 0;
+          border: 1px solid gray;
+
+          /* OSd navigator */
+          .openseadragon-container > div.openseadragon-canvas + div + div {
+            right: 3px !important;
+            top: 3px !important;
+          }
+
+          /* OSd controls */
+          .openseadragon-container > div.openseadragon-canvas + div + div + div {
+            right: 3px !important;
+            padding: 1px 1px 0 !important;
+            border-radius: 5px 5px 0 0;
+            background: rgb(17, 17, 17) !important; /* fallback for browsers w/o RGBa support */
+            background: rgba(17, 17, 17, 0.4) !important;
+          }
+
+        }
+
+        .modal-footer {
+          border-top: 0;
+          padding: 2px;
+        }
+
+      }
+
+    }
+
+  }
+
   #pdf_show_container {
     text-align: center;
     margin-bottom: 2em;

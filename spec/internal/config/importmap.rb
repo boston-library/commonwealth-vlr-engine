@@ -28,7 +28,7 @@ pin "@kurkle/color", to: "https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.
 # The following pin is taken from https://github.com/projectblacklight/blacklight/pull/3502/commits/fea1f9c7d21a6c1a526c4aa488493e50cdf7b074
 # This is in order to resolve an issue with the blacklight-gallery plugin and blacklight using blacklight as the module in their importmaps config but calling it blacklight-frontend in their npm config
 # We should also pay attention to this issue in blacklight-gallery https://github.com/projectblacklight/blacklight-gallery/issues/202
-pin "blacklight-frontend", to: "blacklight/index.js"
+# pin "blacklight-frontend", to: "blacklight/index.js"
 
 # pin "openseadragon", to: 'https://cdn.jsdelivr.net/npm/openseadragon@5.0/build/openseadragon/openseadragon.min.js'
 pin "openseadragon"
