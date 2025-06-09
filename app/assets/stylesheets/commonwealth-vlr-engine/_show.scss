@@ -144,4 +144,21 @@
       }
     }
   }
+
+  div.show-tools {
+
+    #iiif-logo {
+      height: 16px;
+      width: 16px;
+      vertical-align: text-top;
+    }
+
+    #iiif_manifest_info_icon {
+      position: absolute;
+      top: 15px;
+      padding-left: 3px;
+    }
+
+  }
+
 }

@@ -4,7 +4,7 @@
                 id: 'img_show_zoom_cue',
                 title: t('blacklight.images.zoom'),
                 rel: 'nofollow',
-                data: { turbo: false, 'bs-toggle' => 'modal', 'bs-target' => '#img_viewer_modal' } do %>
+                data: { turbo: false, bs_toggle: 'modal', bs_target: '#img_viewer_modal' } do %>
       <% content_tag :i, '', class: 'img_zoom_icon fa fa-search-plus' %>
     <% end %>
     <%= link_to(image_tag(helpers.filestream_disseminator_url(image_key, 'image_access_800'),
@@ -14,7 +14,7 @@
                 class: 'img_viewer_link',
                 title: t('blacklight.images.zoom'),
                 rel: 'nofollow',
-                data: { turbo: false, 'bs-toggle' => 'modal', 'bs-target' => '#img_viewer_modal' }) %>
+                data: { turbo: false, bs_toggle: 'modal', bs_target: '#img_viewer_modal' }) %>
   </div>
 
   <div id="img_viewer_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="img_viewer_title" data-turbo="false">

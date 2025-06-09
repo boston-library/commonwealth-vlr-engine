@@ -45,7 +45,9 @@
         </div>
         <div class="row">
           <div class="offset-md-3 col-md-4">
-            <%= recaptcha_tags(id: 'item_feedback_recaptcha') %>
+            <%# `noscript: false` param is required, or captcha submission doesn't work from inside a modal,
+                 see https://stackoverflow.com/a/79648299 %>
+            <%= recaptcha_tags(id: 'item_feedback_recaptcha', noscript: false) %>
           </div>
         </div>
       </div>

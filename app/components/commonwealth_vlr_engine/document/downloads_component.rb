@@ -12,11 +12,6 @@ module CommonwealthVlrEngine
       # create an array of download links
       # images/video have to be handled separately since there are multiple sizes
       def download_links
-        # download_links = []
-        # download_links.concat(image_download_links(object_files[:image])) if helpers.has_downloadable_images?(document, object_files)
-        # download_links.concat(video_download_links(object_files[:video])) if helpers.has_downloadable_video?(document, object_files)
-        # download_links.concat(other_download_links)
-        # download_links
         image_download_links + video_download_links + other_download_links
       end
 

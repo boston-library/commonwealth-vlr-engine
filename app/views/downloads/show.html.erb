@@ -11,11 +11,13 @@
   <% component.with_footer do %>
     <%= form_tag url_for_download(@document, params[:filestream_id]), method: :get, id: 'trigger_download_form' do %>
       <input type="hidden" name="filestream_id" value="<%= params[:filestream_id] %>" />
+      <%# `noscript: false` param is required, or captcha submission doesn't work from inside a modal,
+          see https://stackoverflow.com/a/79648299 %>
       <%= recaptcha_tags(id: 'download_recaptcha', callback: 'enableDownloadButton',
-                         expired_callback: 'refreshRecaptcha') %>
+                         expired_callback: 'refreshRecaptcha', noscript: false) %>
       <%= button_tag type: 'submit', class: 'trigger_download btn btn-primary ' + params[:filestream_id],
                      rel: 'nofollow', formtarget: '_blank', id: 'trigger_download_submit',
-                     data: { 'bl-dismiss': 'modal' } do %>
+                     data: { 'bl-dismiss': 'modal', turbo: false } do %>
         <%= icon('fas', 'download', aria: { hidden: true }) %>
         <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
                                                      @object_profile,
