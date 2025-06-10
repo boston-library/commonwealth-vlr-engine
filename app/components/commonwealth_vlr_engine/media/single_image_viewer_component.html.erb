@@ -5,7 +5,7 @@
                 title: t('blacklight.images.zoom'),
                 rel: 'nofollow',
                 data: { turbo: false, bs_toggle: 'modal', bs_target: '#img_viewer_modal' } do %>
-      <% content_tag :i, '', class: 'img_zoom_icon fa fa-search-plus' %>
+      <%= content_tag :i, '', class: 'img_zoom_icon fa-solid fa-magnifying-glass-plus' %>
     <% end %>
     <%= link_to(image_tag(helpers.filestream_disseminator_url(image_key, 'image_access_800'),
                           alt: document[helpers.blacklight_config.index.title_field.field],
@@ -21,10 +21,10 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="img_viewer_title"><%= title_for_viewer %></h4>
+          <h4 class="modal-title" id="img_viewer_title"><%= title_for_viewer_modal %></h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
         </div>
-        <div class="modal-body" id="img_viewer_osd" data-tilesource="<%= osd_tilesource %>" data-navimages="<%= osd_nav_images %>"></div>
+        <div class="modal-body" id="img_viewer_osd" data-tilesource="<%= osd_tilesource %>" data-navimages="<%= helpers.osd_nav_images %>"></div>
         <div class="modal-footer"></div>
       </div>
     </div>

@@ -10,6 +10,8 @@
       display: inline-block;
       position: relative;
       max-width: 100%;
+      background-color: black;
+      padding: 10px;
 
       #img_show_zoom_cue {
         position: absolute;
@@ -90,6 +92,16 @@
 
   }
 
+  #multi_img_show_container {
+    margin-bottom: 1em;
+
+    #multi_img_viewer_osd {
+      background-color: black;
+      height: 500px;
+    }
+
+  }
+
   #pdf_show_container {
     text-align: center;
     margin-bottom: 2em;
@@ -146,6 +158,7 @@
   }
 
   div.show-tools {
+    margin-bottom: 1em;
 
     #iiif-logo {
       height: 16px;
@@ -159,6 +172,15 @@
       padding-left: 3px;
     }
 
+  }
+
+  #item_metadata {
+    margin-bottom: 1em;
+
+    #rs_icon {
+      height: 1rem;
+      vertical-align: -10%;
+    }
   }
 
 }

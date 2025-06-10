@@ -29,7 +29,7 @@ module CommonwealthVlrEngine
       icon_slug = document[:rightsstatement_uri_ss].split('/')[-2].split('-').first
       link_to(image_tag("https://rightsstatements.org/files/icons/#{icon_slug}.Icon-Only.dark.svg",
                         alt: "#{document[:rightsstatement_ss]} icon",
-                        class: 'rs_icon'),
+                        id: 'rs_icon'),
               document[:rightsstatement_uri_ss],
               rel: 'license',
               id: 'rs_link',
@@ -39,7 +39,7 @@ module CommonwealthVlrEngine
     def render_cc_license(license)
       link_to(image_tag(cc_image_url(license),
                         alt: cc_terms_code(license) + ' icon',
-                        class: 'cc_license_icon'),
+                        id: 'cc_license_icon'),
               cc_url(license),
               rel: 'license',
               id: 'cc_license_link',

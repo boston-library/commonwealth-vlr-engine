@@ -11,8 +11,6 @@ module CommonwealthVlrEngine
     # include CommonwealthVlrEngine::FlaggedHelperBehavior
     include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
-    # IMAGE_VIEWER_LIMIT = 7
-
     def has_image_files?(files_hash)
       files_hash[:image].present?
     end

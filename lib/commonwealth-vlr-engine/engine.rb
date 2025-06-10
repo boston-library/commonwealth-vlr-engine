@@ -4,7 +4,6 @@ begin
   require 'blacklight'
   require 'blacklight/gallery'
   require 'blacklight_advanced_search'
-  # require 'blacklight/maps'
   require 'blacklight_range_limit'
   require 'blacklight_iiif_search'
   require 'typhoeus'
