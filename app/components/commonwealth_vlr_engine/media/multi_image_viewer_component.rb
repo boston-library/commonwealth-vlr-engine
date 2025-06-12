@@ -9,6 +9,7 @@ module CommonwealthVlrEngine
       end
       attr_reader :document, :object_files
 
+      # TODO: DRY this out, also used in BookViewerComponent
       IMAGE_VIEWER_LIMIT = 7
 
       def image_keys

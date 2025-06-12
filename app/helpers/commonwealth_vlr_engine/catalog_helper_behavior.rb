@@ -126,22 +126,22 @@ module CommonwealthVlrEngine
     # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
-    def render_image_viewer?(document, files_hash)
-      has_image_files?(files_hash) && files_hash[:image].length <= IMAGE_VIEWER_LIMIT && !has_searchable_text?(document)
-    end
-
-    def render_image_viewer(document, files_hash)
-      case files_hash[:image].count
-      when 1
-        render partial: 'catalog/_show_partials/show_default_img',
-               locals: { document: document,
-                         image_key: files_hash[:image].first['storage_key_base_ss'],
-                         page_sequence: { total: 1 } }
-      when 2..IMAGE_VIEWER_LIMIT
-        render partial: 'catalog/_show_partials/show_multi_img',
-               locals: { document: document, image_files: files_hash[:image] }
-      end
-    end
+    # def render_image_viewer?(document, files_hash)
+    #   has_image_files?(files_hash) && files_hash[:image].length <= IMAGE_VIEWER_LIMIT && !has_searchable_text?(document)
+    # end
+    #
+    # def render_image_viewer(document, files_hash)
+    #   case files_hash[:image].count
+    #   when 1
+    #     render partial: 'catalog/_show_partials/show_default_img',
+    #            locals: { document: document,
+    #                      image_key: files_hash[:image].first['storage_key_base_ss'],
+    #                      page_sequence: { total: 1 } }
+    #   when 2..IMAGE_VIEWER_LIMIT
+    #     render partial: 'catalog/_show_partials/show_multi_img',
+    #            locals: { document: document, image_files: files_hash[:image] }
+    #   end
+    # end
 
     # DEPRECATED, moved to CommonwealthVlrEngine::BreadcrumbComponent
     # def render_item_breadcrumb(document, link_class = nil)
@@ -157,9 +157,9 @@ module CommonwealthVlrEngine
     # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
-    def render_thumbnail_wrapper?(document, files_hash)
-      book_reader?(document, files_hash) || harvested_object?(document)
-    end
+    # def render_thumbnail_wrapper?(document, files_hash)
+    #   book_reader?(document, files_hash) || harvested_object?(document)
+    # end
 
     # have to override to display non-typical constraints
     # (e.g. coordinates, mlt, range limit, advanced search)

@@ -15,7 +15,8 @@
     "openseadragon-rails": "^1.0.17",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.85.1"
+    "sass": "^1.85.1",
+    "universalviewer": "^4.2.0"
   },
   "scripts": {
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",

@@ -102,6 +102,33 @@
 
   }
 
+  #uv_container {
+    flex: 1;
+    overflow: hidden;
+    height: 500px;
+
+    #uv {
+      height: 100%;
+
+      .centerPanel {
+
+        .title {
+          display: none;
+        }
+
+        .content {
+
+          .attribution {
+            display: none !important;
+          }
+
+        }
+
+      }
+
+    }
+  }
+
   #pdf_show_container {
     text-align: center;
     margin-bottom: 2em;

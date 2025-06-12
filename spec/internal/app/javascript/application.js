@@ -20,3 +20,5 @@ import "openseadragon"
 import "openseadragon-rails"
 
 import "@fortawesome/fontawesome-free"
+
+import "universalviewer"

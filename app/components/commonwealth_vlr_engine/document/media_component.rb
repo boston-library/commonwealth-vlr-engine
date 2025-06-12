@@ -23,6 +23,10 @@ module CommonwealthVlrEngine
         CommonwealthVlrEngine::Media::MultiImageViewerComponent.new(document: document, object_files: object_files)
       end
 
+      renders_one :book_viewer, -> do
+        CommonwealthVlrEngine::Media::BookViewerComponent.new(document: document, object_files: object_files)
+      end
+
       renders_one :pdf_viewer, -> do
         CommonwealthVlrEngine::Media::PdfViewerComponent.new(document: document, object_files: object_files)
       end
@@ -44,6 +48,7 @@ module CommonwealthVlrEngine
       def before_render
         set_slot(:single_image_viewer, nil)
         set_slot(:multi_image_viewer, nil)
+        set_slot(:book_viewer, nil)
         set_slot(:pdf_viewer, nil)
         set_slot(:audio_player, nil)
         set_slot(:video_player, nil)
