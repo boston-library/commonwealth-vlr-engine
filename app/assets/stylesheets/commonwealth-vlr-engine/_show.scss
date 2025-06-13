@@ -106,6 +106,7 @@
     flex: 1;
     overflow: hidden;
     height: 500px;
+    margin-bottom: 1em;
 
     #uv {
       height: 100%;
@@ -113,7 +114,7 @@
       .centerPanel {
 
         .title {
-          display: none;
+          display: none !important;
         }
 
         .content {

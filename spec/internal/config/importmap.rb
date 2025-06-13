@@ -20,7 +20,7 @@ pin "@github/auto-complete-element", to: "https://cdn.skypack.dev/@github/auto-c
 
 # chart.js is dependency of blacklight-range-limit, currently is not working
 # as vendored importmaps, but instead must be pinned to CDN. You may want to update
-# versions perioidically.
+# versions periodically.
 pin "chart.js", to: "https://ga.jspm.io/npm:chart.js@4.2.0/dist/chart.js"
 # single dependency of chart.js:
 pin "@kurkle/color", to: "https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js"
@@ -36,6 +36,4 @@ pin "openseadragon"
 pin "@fortawesome/fontawesome-free", to: "@fortawesome--fontawesome-free.js"
 
 # TODO: use preload: false and selectively add to page?
-#pin "universalviewer", to: "https://ga.jspm.io/npm:universalviewer@4.2.0/dist/esm/index.js"
-#pin "universalviewer", to: "https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/umd/UV.js"
 pin "universalviewer", to: "https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/index.js"

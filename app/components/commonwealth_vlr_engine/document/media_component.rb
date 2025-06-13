@@ -12,9 +12,6 @@ module CommonwealthVlrEngine
 
       IMAGE_VIEWER_LIMIT = 7
 
-      # def single_image_viewer
-      #   render CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
-      # end
       renders_one :single_image_viewer, -> do
         CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
       end
@@ -40,7 +37,10 @@ module CommonwealthVlrEngine
       end
 
       def render?
-        true # logic TK
+        helpers.has_image_files?(object_files) ||
+          helpers.has_video_files?(object_files) ||
+          helpers.has_document_files?(object_files) ||
+          helpers.has_playable_audio?(object_files)
       end
 
       # Hack so that the default lambdas are triggered

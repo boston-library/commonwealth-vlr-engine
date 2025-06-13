@@ -1,4 +1,3 @@
-// import { init, IIIFURLAdapter } from 'universalviewer'
 import * as UV from "universalviewer"
 
 const bookViewer = (() => {
@@ -15,7 +14,6 @@ const bookViewer = (() => {
         if (!uv_viewer_el) return;
 
         var urlAdapter = new UV.IIIFURLAdapter();
-        // var urlAdapter = new IIIFURLAdapter();
 
         const data = urlAdapter.getInitialData({
             manifest: uv_viewer_el.dataset.manifest,
@@ -25,11 +23,9 @@ const bookViewer = (() => {
         const uv = UV.init(uv_viewer_el, data);
         urlAdapter.bindTo(uv);
 
-        // const data = {
-        //     manifest: uv_viewer_el.dataset.manifest
-        // };
-        //
-        // init(uv_viewer_el, data);
+        uv.on("configure", function ({ config, cb }) {
+            cb(JSON.parse(uv_viewer_el.dataset.uvconfig));
+        });
     }
 
     bViewer.setupViewer()

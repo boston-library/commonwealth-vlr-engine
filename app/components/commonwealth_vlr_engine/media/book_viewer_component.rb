@@ -10,11 +10,24 @@ module CommonwealthVlrEngine
       end
       attr_reader :document, :object_files
 
-      # TODO: DRY this out, also used in MultiImageViewerComponent
-      IMAGE_VIEWER_LIMIT = 7
+      # override a few defaults as needed
+      def uv_config
+        {
+          options: { 'clickToZoomEnabled' => true,
+                     'zoomToSearchResultEnabled' => true },
+          modules: {
+            # centerPanel options doesn't seem to work, hiding title via CSS for now
+            # 'centerPanel' => { options: { 'titleEnabled' => false } },
+            'openSeadragonCenterPanel' => { options: { 'showAdjustImageControl' => false } },
+            'shareDialogue' => { options: { 'embedEnabled' => false } }
+          }
+        }.to_json
+      end
 
       def render?
-        helpers.has_image_files?(object_files) && (helpers.has_searchable_text?(document) || object_files[:image].size > IMAGE_VIEWER_LIMIT)
+        helpers.has_image_files?(object_files) &&
+          (helpers.has_searchable_text?(document) ||
+            object_files[:image].size > CommonwealthVlrEngine::Document::MediaComponent::IMAGE_VIEWER_LIMIT)
       end
     end
   end

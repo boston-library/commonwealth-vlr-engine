@@ -9,9 +9,6 @@ module CommonwealthVlrEngine
       end
       attr_reader :document, :object_files
 
-      # TODO: DRY this out, also used in BookViewerComponent
-      IMAGE_VIEWER_LIMIT = 7
-
       def image_keys
         object_files[:image].map { |i| i['storage_key_base_ss'] }
       end
@@ -23,7 +20,9 @@ module CommonwealthVlrEngine
       end
 
       def render?
-        helpers.has_multiple_images?(object_files) && object_files[:image].length <= IMAGE_VIEWER_LIMIT && !helpers.has_searchable_text?(document)
+        helpers.has_multiple_images?(object_files) &&
+          object_files[:image].length <= CommonwealthVlrEngine::Document::MediaComponent::IMAGE_VIEWER_LIMIT &&
+          !helpers.has_searchable_text?(document)
       end
     end
   end
