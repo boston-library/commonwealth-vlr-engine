@@ -28,13 +28,6 @@ module CommonwealthVlrEngine
         # allow responses >100 rows
         config.max_per_page = 500
 
-        # blacklight-gallery stuff
-        config.view.gallery.default = true
-        config.view.gallery.partials = [:index_header]
-        # slideshow and masonry get ver little usage, deprecating
-        # config.view.masonry.partials = [:index_header]
-        # config.view.slideshow.partials = [:index]
-
         # blacklight-maps stuff
         # config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
         # config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
@@ -236,6 +229,13 @@ module CommonwealthVlrEngine
         config.add_show_tools_partial(:downloads, partial: 'downloads_tools', if: :render_download_tools?)
         config.add_show_tools_partial(:email, if: false, partial: 'show_email_tools', callback: :email_action,
                                       validator: :validate_email_params)
+
+        config.add_nav_action(:formats, partial: 'blacklight/nav/formats')
+        config.add_nav_action(:collections, partial: 'blacklight/nav/collections')
+        config.add_nav_action(:institutions, partial: 'blacklight/nav/institutions', if: lambda { |_context, _field_config, _document|
+          CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
+        })
+        config.add_nav_action(:about, partial: 'blacklight/nav/about')
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'

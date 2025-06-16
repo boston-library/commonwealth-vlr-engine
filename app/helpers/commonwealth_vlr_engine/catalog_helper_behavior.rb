@@ -39,6 +39,17 @@ module CommonwealthVlrEngine
       has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
     end
 
+    # determine if the item has text content that can be searched
+    def has_searchable_text?(document)
+      document['has_searchable_pages_bsi']
+    end
+
+    def include_uv?(document, files_hash)
+      has_image_files?(files_hash) &&
+        (has_searchable_text?(document) ||
+          files_hash[:image].size > CommonwealthVlrEngine::Document::MediaComponent::IMAGE_VIEWER_LIMIT)
+    end
+
     # need to render full title or too many pages have same <title>, bad for site SEO
     def show_html_title(options = {})
       render_title(options[:document])

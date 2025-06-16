@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => '/'
 
   # alias for map browse
-  get 'places', to: 'catalog#map', as: 'places_facet'
+  # get 'places', to: 'catalog#map', as: 'places_facet'
 
   # formats browse
   get 'formats', to: 'catalog#formats_facet', as: 'formats_facet'

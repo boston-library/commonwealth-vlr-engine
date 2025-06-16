@@ -25,9 +25,7 @@ module CommonwealthVlrEngine
       end
 
       def render?
-        helpers.has_image_files?(object_files) &&
-          (helpers.has_searchable_text?(document) ||
-            object_files[:image].size > CommonwealthVlrEngine::Document::MediaComponent::IMAGE_VIEWER_LIMIT)
+        helpers.include_uv?(document, object_files)
       end
     end
   end

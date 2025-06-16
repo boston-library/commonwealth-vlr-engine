@@ -8,11 +8,6 @@ module CommonwealthVlrEngine
       term_freq > 0 ? term_freq : term_freq + 1
     end
 
-    # determine of the item has text content that can be searched
-    def has_searchable_text?(document)
-      document['has_searchable_pages_bsi']
-    end
-
     # if current_search_session exists, return query_params['q'], otherwise return nil
     # @current_search_session is defined in Blacklight::SearchContext
     def ocr_q_params(current_search_session)

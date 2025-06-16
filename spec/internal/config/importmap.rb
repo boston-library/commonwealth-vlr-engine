@@ -27,5 +27,4 @@ pin "openseadragon"
 
 pin "@fortawesome/fontawesome-free", to: "@fortawesome--fontawesome-free.js"
 
-# TODO: use preload: false and selectively add to page?
-pin "universalviewer", to: "https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/index.js"
+pin "universalviewer", to: "https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/index.js", preload: false

@@ -1,7 +1,10 @@
 <%# override so we can pass @object_files and @mlt_response to document_component %>
 <%= render blacklight_config.view_config(:show).document_header_component.new(document: @document, search_context: @search_context, search_session: search_session) %>
 <% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
-<% content_for(:head) { render_link_rel_alternates } %>
+<% content_for(:head) do %>
+  <%= javascript_import_module_tag "universalviewer" if include_uv?(@document, @object_files) %>
+  <%= render_link_rel_alternates %>
+<% end %>
 
 <% document_component = blacklight_config.view_config(:show).document_component -%>
 <%= render (document_component).new(document_component.collection_parameter => document_presenter(@document),

@@ -148,6 +148,12 @@ en:
     footer:
           address: '123 Main Street, Anywhere, MA 01234'
 
+    header_links:
+          about: 'About'
+          collections: 'Collections'
+          formats: 'Formats'
+          institutions: 'Institutions'
+
     home:
           banner:
             center_text: 'Explore historical collections from this totally awesome library.'
