@@ -2,23 +2,28 @@
 import "@hotwired/turbo-rails"
 import "@popperjs/core"
 // import "bootstrap"
-import "jquery"
 import "controllers"
 
 import * as bootstrap from "bootstrap"
 import githubAutoCompleteElement from "@github/auto-complete-element"
 import Blacklight from "blacklight"
 
-import BlacklightRangeLimit from "blacklight-range-limit";
-BlacklightRangeLimit.init({onLoadHandler: Blacklight.onLoad});
-
+import 'jquery'
+// universalviewer MUST be after jquery and before blacklight-gallery
+import "universalviewer"
 import 'blacklight-gallery'
-
-import 'commonwealth-vlr-engine'
 
 import "openseadragon"
 import "openseadragon-rails"
 
+Blacklight.onLoad(function() {
+    $('.documents-masonry').BlacklightMasonry();
+    $('.documents-slideshow').slideshow();
+});
+
+import BlacklightRangeLimit from "blacklight-range-limit";
+BlacklightRangeLimit.init({onLoadHandler: Blacklight.onLoad});
+
 import "@fortawesome/fontawesome-free"
 
-import "universalviewer"
+import 'commonwealth-vlr-engine'

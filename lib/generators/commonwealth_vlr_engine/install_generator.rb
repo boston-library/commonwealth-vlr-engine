@@ -34,7 +34,7 @@ module CommonwealthVlrEngine
       generate 'bpluser:install'
     end
 
-    # TODO may need additional steps? doesn’t create refs for blacklight-gallery in application.bootstrap.scss
+    # TODO: double-check that refs for blacklight-gallery added to application.bootstrap.scss
     def blacklight_gallery_intall
       return if IO.read('app/models/solr_document.rb').include?('Blacklight::Gallery')
 

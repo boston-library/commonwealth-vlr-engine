@@ -4,17 +4,16 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import "blacklight-frontend/app/assets/stylesheets/blacklight/blacklight";
 
-@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/gallery";
-@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/masonry";
-@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/osd_viewer";
+@import 'openseadragon';
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_gallery";
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_masonry";
+@import "blacklight-gallery/app/assets/stylesheets/blacklight_gallery/_osd_viewer";
 
 $fa-font-path: ".";
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
-
-@import 'openseadragon';
 
 @import 'commonwealth-vlr-engine/app/assets/stylesheets/commonwealth-vlr-engine/commonwealth-vlr-engine';
 
