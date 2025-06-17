@@ -9,6 +9,7 @@
                   controls: true,
                   controlsList: 'nodownload') %>
     <% if audio_files.length > 1 %>
+      <%# playlist functionality via 'commonwealth-vlr-engine/audio_player_playlist.js' %>
       <ol id="audio_playlist">
         <% audio_files.each_with_index do |audio_file, index| %>
           <%= content_tag(:li,
@@ -20,5 +21,3 @@
     <% end %>
   </div>
 </div>
-<%# TODO: refactor playlist JS %>
-<%# javascript_include_tag 'commonwealth-vlr-engine/audio_player_playlist' %>
