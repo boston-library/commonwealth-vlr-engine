@@ -4,9 +4,9 @@
   <h1><%= t('blacklight.advanced_search.page_title') %></h1>
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
-    <li class="nav-item"><a href="#" class="nav-link active">Basic</a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><%= t('blacklight.search.nav.basic') %></a></li>
     <li class="nav-item">
-      <%= link_to 'Advanced',
+      <%= link_to t('blacklight.search.nav.advanced'),
                   blacklight_advanced_search_engine.advanced_search_path,
                   class: 'nav-link' %>
     </li>
@@ -14,14 +14,13 @@
 
   <div class="tab-content">
     <div class="tab-pane active" id="basic_search">
-      <div class="row">
-        <div class="col-lg-8">
-          <div id="basic_search_form_wrapper">
-            <%= render_search_bar %>
-          </div>
-        </div>
+      <div id="basic_search_wrapper">
+        <%= render Blacklight::SearchBarComponent.new(
+          url: search_action_url,
+          advanced_search_url: blacklight_advanced_search_engine.advanced_search_url,
+          params: search_state.params_for_search.except(:qt),
+          autocomplete_path: suggest_index_catalog_path) %>
       </div>
     </div>
   </div>
 </div>
-<%= javascript_include_tag 'commonwealth-vlr-engine/basic_search' %>

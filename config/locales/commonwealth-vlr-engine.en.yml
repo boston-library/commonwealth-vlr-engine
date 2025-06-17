@@ -341,6 +341,7 @@ en:
               q: 'Enter search terms...'
               search_indexes: 'Search by title, subject, place, etc.'
               select: 'in'
+            title: 'Basic'
           change_views:
             label: 'View as %{view}'
             action: 'View as'

@@ -1,0 +1,17 @@
+<%# override so we can display basic search form if no search params %>
+<% unless has_search_parameters? %>
+  <%# if there are no input/search related params, display the basic search form -%>
+  <%= render 'basic_search' %>
+<% else %>
+  <% content_for(:head) do %>
+    <meta name="blacklight-search-storage" content="<%= blacklight_config.track_search_session.storage %>">
+  <% end %>
+  <% content_for(:sidebar) do %>
+    <% conf = blacklight_config.view_config(document_index_view_type) %>
+    <%= render conf.sidebar_component.new(blacklight_config: blacklight_config,
+                                          response: @response,
+                                          view_config: conf) %>
+  <% end %>
+
+  <%= render 'search_results' %>
+<% end %>
