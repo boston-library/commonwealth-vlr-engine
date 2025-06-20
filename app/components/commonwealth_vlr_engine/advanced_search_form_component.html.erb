@@ -52,13 +52,13 @@
           <div class="row">
             <label class="col-form-label col-md-3 col-lg-2">Year</label>
             <div class="col-sm-8">
-              <% %w(start end).each do |v| %>
+              <% %w(begin end).each do |v| %>
                 <div class="input-group col-md-8 col-lg-5">
-                    <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "date_range_#{v}" %>">
+                    <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "range_date_facet_yearly_itim_#{v}" %>">
                       <%= v.capitalize %>
                     </label>
-                  <%= text_field_tag("date_#{v}", nil,
-                                     id: "date_range_#{v}", class: 'form-control', maxlength: 4) %>
+                  <%= text_field_tag("range[date_facet_yearly_itim][#{v}]", nil,
+                                     id: "range_date_facet_yearly_itim_#{v}", class: 'form-control', maxlength: 4) %>
                 </div>
               <% end %>
             </div>

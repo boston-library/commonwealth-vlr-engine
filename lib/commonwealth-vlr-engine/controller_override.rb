@@ -99,8 +99,8 @@ module CommonwealthVlrEngine
         config.page_num_field = 'page_num_label_ssi'
         config.full_text_index = 'all_fields_ft'
 
-        # permit mlt_id and date range params
-        config.search_state_fields.concat([:mlt_id, :date_start, :date_end])
+        # permit mlt_id params
+        config.search_state_fields.concat([:mlt_id])
 
         config.default_solr_params = { qt: 'search', rows: 20 }
 

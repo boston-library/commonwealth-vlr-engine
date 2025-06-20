@@ -1,0 +1,17 @@
+/* styles for app/views/shared/footer */
+
+#footer {
+
+  #footer_logo {
+
+    #footer_logo_link {
+      background: transparent $footer_logo_image no-repeat top left;
+      display: inline-block;
+      height: 75px;
+      overflow: hidden;
+      text-indent: -200%;
+    }
+
+  }
+
+}

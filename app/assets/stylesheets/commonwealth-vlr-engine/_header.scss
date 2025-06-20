@@ -1,0 +1,13 @@
+/* styles for views/shared/header_navbar */
+
+nav.topbar {
+
+  .navbar-logo {
+    @if $header_logo_image {
+      background: transparent $header_logo_image no-repeat top left;
+    }
+    height: 74px;
+    width: 200px;
+  }
+
+}

@@ -19,13 +19,13 @@
         <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.name') %></label>
           <div class="col-md-9">
-            <%= text_field_tag :name, params[:name], class: 'form-control' %>
+            <%= text_field_tag :name, params[:name], class: 'form-control', required: true %>
           </div>
         </div>
         <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.email') %></label>
           <div class="col-md-9">
-            <%= text_field_tag :email, params[:email], class: 'form-control' %>
+            <%= email_field_tag :email, params[:email], class: 'form-control', required: true %>
           </div>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@
         <div class="row">
           <label class="col-md-3 col-form-label"><%= t('blacklight.feedback.form.message') %></label>
           <div class="col-md-9">
-            <%= text_area_tag :message, params[:message], size: '24x6', class: 'form-control' %>
+            <%= text_area_tag :message, params[:message], size: '24x6', class: 'form-control', required: true %>
           </div>
         </div>
         <div class="row">

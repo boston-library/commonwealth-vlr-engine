@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rsolr', '>= 1.0', '< 3'
   s.add_dependency 'rss', '~> 0.3.1'
   s.add_dependency 'typhoeus', '~> 1.4'
-  s.add_dependency 'zipline', '~> 1.5.0'
+  s.add_dependency 'zipline', '~> 2.0.0'
 
   s.add_development_dependency 'capybara', '~> 3.0', '< 4'
   s.add_development_dependency 'rspec-rails', '>= 6.1', '< 8'

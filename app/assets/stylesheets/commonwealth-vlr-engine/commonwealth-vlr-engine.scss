@@ -3,11 +3,8 @@
  * require does not need to change if we change file list.
 */
 
-/* vlr-engine dependencies such as font-awesome, etc. */
-/*@import 'vlr_dependencies';*/
-
-/* some site-wide styles, colors, etc. */
-/*@import 'cmmnwlth_defaults';*/
+/* site-wide styles, colors, etc. */
+@import 'defaults';
 
 /* styles for partials */
 /*@import 'cmmnwlth_shared';*/
@@ -20,8 +17,8 @@
 /*@import 'facets';*/
 /*@import 'feedback';*/
 /*@import 'folders';*/
-/*@import 'footer';*/
-/*@import 'header';*/
+@import 'footer';
+@import 'header';
 /*@import 'home';*/
 /*@import 'index';*/
 @import 'institutions';
