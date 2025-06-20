@@ -134,6 +134,11 @@ module CommonwealthVlrEngine
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
         config.add_facet_field DISPLAY_TYPE_FIELD, include_in_request: false
 
+        # not a real facet field, but allows rendering MLT constraint on search results page (catalog#index)
+        config.add_facet_field 'mlt_id', label: 'More like', item_presenter: CommonwealthVlrEngine::MltItemPresenter,
+                               filter_class: CommonwealthVlrEngine::MltFilterField,
+                               filter_query_builder: CommonwealthVlrEngine::MltFilterQuery, include_in_request: false
+
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
