@@ -15,7 +15,7 @@
   <div class="tab-content">
     <div class="tab-pane active" id="basic_search">
       <div id="basic_search_wrapper">
-        <%= render Blacklight::SearchBarComponent.new(
+        <%= render CommonwealthVlrEngine::SearchBarComponent.new(
           url: search_action_url,
           advanced_search_url: blacklight_advanced_search_engine.advanced_search_url,
           params: search_state.params_for_search.except(:qt),

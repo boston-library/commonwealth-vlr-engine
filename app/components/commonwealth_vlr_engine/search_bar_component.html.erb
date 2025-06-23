@@ -1,0 +1,54 @@
+<%# override default so we can add "include full text" checkbox %>
+<search>
+  <%= form_with url: @url, local: true, method: @method, class: @classes.join(' '), scope: @prefix, role: 'search', **@form_options do |f| %>
+    <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
+    <% if search_fields.length > 1 %>
+      <%= f.label :search_field, scoped_t('search_field.label'), class: 'sr-only visually-hidden' %>
+    <% end %>
+    <% before_input_groups.each do |input_group| %>
+      <%= input_group %>
+    <% end %>
+    <div class="input-group">
+      <%= prepend %>
+
+      <% if search_fields.length > 1 %>
+        <%= f.select(:search_field,
+                     options_for_select(search_fields, h(@search_field)),
+                     {},
+                     title: scoped_t('search_field.title'),
+                     class: "custom-select form-select search-field") %>
+      <% elsif search_fields.length == 1 %>
+        <%= f.hidden_field :search_field, value: search_fields.first.last %>
+      <% end %>
+
+      <%= f.label @query_param, scoped_t('search.label'), class: 'sr-only visually-hidden' %>
+      <% if autocomplete_path.present? %>
+        <auto-complete src="<%= autocomplete_path %>" for="autocomplete-popup" class="search-autocomplete-wrapper <%= rounded_border_class %>">
+          <%= f.search_field @query_param, value: @q, placeholder: scoped_t('search.placeholder'), class: "search-q q form-control #{rounded_border_class}", autofocus: @autofocus, aria: { label: scoped_t('search.label'), autocomplete: 'list', controls: 'autocomplete-popup' }  %>
+          <ul id="autocomplete-popup" class="dropdown-menu" role="listbox" aria-label="<%= scoped_t('search.label') %>" hidden></ul>
+        </auto-complete>
+      <% else %>
+        <%= f.search_field @query_param, value: @q, placeholder: scoped_t('search.placeholder'), class: "search-q q form-control #{rounded_border_class}", autofocus: @autofocus, aria: { label: scoped_t('search.label') }  %>
+      <% end %>
+
+      <%= append %>
+      <%= search_button || render(Blacklight::SearchButtonComponent.new(id: "#{@prefix}search", text: scoped_t('submit'))) %>
+    </div>
+    <%# custom checkbox %>
+    <div id="fulltext_checkbox_wrapper">
+      <span id="fulltext_checkbox_label"><%= t('blacklight.search.form.fulltext.label') %></span>
+      <%= check_box_tag(:search_field, blacklight_config.full_text_index, false, id: 'fulltext_checkbox') %>
+      <%= content_tag('a', id: 'fulltext_info', tabindex: 100,
+                      data: { bs_toggle: 'popover', bs_placement: 'right', bs_trigger: 'focus', html: true,
+                              bs_title: t('blacklight.search.form.fulltext.label'), bs_container: 'body',
+                              bs_content: t('blacklight.search.form.fulltext.help') }) do %>
+        <%= icon('fas', 'circle-question', class: 'fa-sm', aria: { hidden: true }) %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# don't need to show advanced option %>
+  <%# if advanced_search_enabled? %>
+    <%# link_to t('blacklight.advanced_search.more_options'), @advanced_search_url, class: 'advanced_search btn btn-secondary'%>
+  <%# end %>
+</search>

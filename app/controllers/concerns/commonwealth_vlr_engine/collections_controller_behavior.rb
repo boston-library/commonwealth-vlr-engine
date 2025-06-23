@@ -112,6 +112,7 @@ module CommonwealthVlrEngine
       blacklight_config.search_fields.delete(:subject)
       blacklight_config.search_fields.delete(:place)
       blacklight_config.search_fields.delete(:creator)
+      blacklight_config.advanced_search.enabled = false
     end
 
     # find object data for "more" facet results

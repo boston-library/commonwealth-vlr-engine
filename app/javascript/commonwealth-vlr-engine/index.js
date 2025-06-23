@@ -1,3 +1,4 @@
+import "commonwealth-vlr-engine/basic_search";
 import "commonwealth-vlr-engine/download_utils"
 import "commonwealth-vlr-engine/feedback_alerts";
 import audioPlayerPlaylist from "commonwealth-vlr-engine/audio_player_playlist";

@@ -90,6 +90,7 @@ module CommonwealthVlrEngine
       blacklight_config.search_fields.delete(:subject)
       blacklight_config.search_fields.delete(:place)
       blacklight_config.search_fields.delete(:creator)
+      blacklight_config.advanced_search.enabled = false
     end
 
     def nav_li_active
