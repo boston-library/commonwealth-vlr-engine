@@ -69,14 +69,4 @@
       -->
       <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
   <% end %>
-
-  <script type="text/javascript">
-    $('.institution_desc_expand').on('click', function() {
-      toggleText($(this),
-          '<%= I18n.t('blacklight.institutions.description.more') %>',
-          '<%= I18n.t('blacklight.institutions.description.less') %>');
-      $('#institution_desc_collapse, #institution_desc_static').toggleClass('institution_desc_inline');
-    });
-  </script>
-
 </div>

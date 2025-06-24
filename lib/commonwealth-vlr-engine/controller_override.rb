@@ -237,6 +237,7 @@ module CommonwealthVlrEngine
 
         # header/nav stuff
         config.header_component = CommonwealthVlrEngine::HeaderComponent
+        config.add_nav_action(:search, partial: 'blacklight/nav/search')
         config.add_nav_action(:formats, partial: 'blacklight/nav/formats')
         config.add_nav_action(:collections, partial: 'blacklight/nav/collections')
         config.add_nav_action(:institutions, partial: 'blacklight/nav/institutions', if: lambda { |_context, _field_config, _document|
