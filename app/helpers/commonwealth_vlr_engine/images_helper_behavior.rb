@@ -82,26 +82,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # DEPRECATED, we no longer support slideshow view
-    # return the URL of an image to display in the catalog#index slideshow view
-    # def index_slideshow_img_url(document)
-    #   if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
-    #     if document[blacklight_config.index.display_type_field.to_sym] == 'OAIObject' || document[:exemplary_image_ssi].match(/oai/)
-    #       thumbnail_url(document)
-    #     else
-    #       iiif_image_url(document[:exemplary_image_ssi], { size: ',500' })
-    #     end
-    #   elsif document[:type_of_resource_ssim]
-    #     render_object_icon_path(document[:type_of_resource_ssim].first)
-    #   elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-    #     collection_icon_url
-    #   elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
-    #     institution_icon_path
-    #   else
-    #     render_object_icon_path(nil)
-    #   end
-    # end
-
     def institution_icon_path
       asset_path('commonwealth-vlr-engine/dc_institution-icon.png')
     end

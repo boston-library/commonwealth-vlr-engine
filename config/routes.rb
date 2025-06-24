@@ -32,8 +32,12 @@ Rails.application.routes.draw do
   get 'feedback/complete', to: 'feedback#complete'
 
   # multi-image viewers
-  get 'image_viewer/:id', to: 'image_viewer#show', as: 'image_viewer'
-  get 'book_viewer/:id', to: 'image_viewer#book_viewer', as: 'book_viewer'
+  # currently not using dynamic multi-image viewer on catalog#show
+  # get 'image_viewer/:id', to: 'image_viewer#show', as: 'image_viewer'
+
+  # currently rendering book viewer embedded on catalog#show page, keep this route for legacy URLs
+  # get 'book_viewer/:id', to: 'image_viewer#book_viewer', as: 'book_viewer'
+  get 'book_viewer/:id', to: 'catalog#show'
 
   # static pages
   get 'about_this_site', to: 'pages#about_site', as: 'about_site'

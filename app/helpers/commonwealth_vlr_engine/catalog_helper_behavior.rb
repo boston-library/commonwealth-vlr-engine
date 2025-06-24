@@ -2,13 +2,10 @@
 
 module CommonwealthVlrEngine
   module CatalogHelperBehavior
-    # include CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior
-    # include CommonwealthVlrEngine::RenderConstraintsHelperBehavior
     include CommonwealthVlrEngine::DocumentHelperBehavior
     include CommonwealthVlrEngine::ImagesHelperBehavior
     include CommonwealthVlrEngine::LicenseHelperBehavior
     include CommonwealthVlrEngine::MetadataHelperBehavior
-    # include CommonwealthVlrEngine::FlaggedHelperBehavior
     include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
     def has_image_files?(files_hash)
@@ -105,96 +102,11 @@ module CommonwealthVlrEngine
       end
     end
 
-    # @deprecated - moved to AzLinksComponent
-    # link to items starting with a specific letter
-    # def link_to_az_value(letter, field, search_path, link_class = nil)
-    #   new_params = params.permit!.except(:controller, :action, :q, :page)
-    #   new_params[:q] = "#{field}:#{letter}*"
-    #   link_to(letter, self.send(search_path, new_params), class: link_class)
-    # end
-
     # @param document [SolrDocument]
     # @return [Boolean]
     def harvested_object?(document)
       document[blacklight_config.hosting_status_field.to_sym] == 'harvested'
     end
-
-    # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
-    # @return [Boolean]
-    # def pdf_url_for_viewer(document_files)
-    #   pdf_file = document_files.find { |a| a['attachments_ss']['document_access'].present? }
-    #   filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
-    # end
-
-    # @param document [SolrDocument]
-    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
-    # @return [Boolean]
-    # def render_image_viewer?(document, files_hash)
-    #   has_image_files?(files_hash) && files_hash[:image].length <= IMAGE_VIEWER_LIMIT && !has_searchable_text?(document)
-    # end
-    #
-    # def render_image_viewer(document, files_hash)
-    #   case files_hash[:image].count
-    #   when 1
-    #     render partial: 'catalog/_show_partials/show_default_img',
-    #            locals: { document: document,
-    #                      image_key: files_hash[:image].first['storage_key_base_ss'],
-    #                      page_sequence: { total: 1 } }
-    #   when 2..IMAGE_VIEWER_LIMIT
-    #     render partial: 'catalog/_show_partials/show_multi_img',
-    #            locals: { document: document, image_files: files_hash[:image] }
-    #   end
-    # end
-
-    # DEPRECATED, moved to CommonwealthVlrEngine::BreadcrumbComponent
-    # def render_item_breadcrumb(document, link_class = nil)
-    #   setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
-    # end
-
-    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
-    # @return [Boolean]
-    # def render_pdf_viewer?(files_hash)
-    #   has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash)
-    # end
-
-    # @param document [SolrDocument]
-    # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
-    # @return [Boolean]
-    # def render_thumbnail_wrapper?(document, files_hash)
-    #   book_reader?(document, files_hash) || harvested_object?(document)
-    # end
-
-    # have to override to display non-typical constraints
-    # (e.g. coordinates, mlt, range limit, advanced search)
-    # need this until:
-    # https://github.com/projectblacklight/blacklight_advanced_search/issues/53
-    # https://github.com/projectblacklight/blacklight-maps/issues/84
-    # https://github.com/projectblacklight/blacklight_range_limit/issues/49
-    # are resolved
-    # def render_search_to_page_title(params)
-    #   # this is ugly, but easiest way to deal with it; too many gems to try and solve it all here
-    #   if params.respond_to?(:permit!)
-    #     params_for_constraints = params.permit!.to_h
-    #   else
-    #     params_for_constraints = params
-    #   end
-    #
-    #   html_constraints = render_search_to_s(params_for_constraints).gsub(/<span class="filterValues">/, ' ')
-    #   html_constraints = html_constraints.gsub(/<\/span>[\s]*<span class="constraint">/, ' / ')
-    #   sanitize(html_constraints, tags: [])
-    #
-    #   ## TODO: remove above and uncomment lines below after all issues have been resolved with
-    #   ##       blacklight_advanced_search, blacklight_range_limit, and blacklight-maps
-    #   # constraints = [render_search_to_page_title_mlt(params), super(params)]
-    #   # constraints.reject { |item| item.blank? }.join(' / ')
-    # end
-
-    # TODO: uncomment and write spec after issues identified with render_search_to_page_title resolved
-    # def render_search_to_page_title_mlt(params)
-    #   return "".html_safe if params[:mlt_id].blank?
-    #   "#{t('blacklight.search.filters.label', :label => t('blacklight.more_like_this.constraint_label'))} #{h
-    #  (params[:mlt_id])}"
-    # end
 
     # creates an array of collection links
     # for display on catalog#index list view and catalog#show breadcrumb
@@ -211,14 +123,5 @@ module CommonwealthVlrEngine
       end
       coll_links
     end
-
-    # override from Blacklight::ConfigurationHelperBehavior
-    # remove extraneous text from search field labels
-    # but leave them as-is on Advanced Search
-    # def search_fields
-    #   return super if controller_name == 'advanced'
-    #
-    #   super.map { |f| [f[0].gsub(/\s\([\w\s]*\)/, ''), f[1]] }
-    # end
   end
 end
