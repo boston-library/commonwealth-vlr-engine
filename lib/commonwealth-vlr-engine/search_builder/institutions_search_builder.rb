@@ -7,7 +7,7 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::SearchBuilderBehavior
 
     self.default_processor_chain += [
-      :site_filter, :exclude_unpublished_items, :institutions_filter
+      :site_filter, :exclude_unpublished_items, :institutions_filter, :starts_with
     ]
   end
 end

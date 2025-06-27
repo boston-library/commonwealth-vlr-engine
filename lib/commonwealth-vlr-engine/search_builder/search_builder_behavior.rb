@@ -78,5 +78,9 @@ module CommonwealthVlrEngine
       solr_parameters[:'hl.fragsize'] = 135
       solr_parameters[:'hl.snippets'] = 10
     end
+
+    def starts_with(solr_parameters = {})
+      solr_parameters[:q] = "#{blacklight_config.title_sort_field}:#{blacklight_params[:starts_with]}*" if blacklight_params[:starts_with]
+    end
   end
 end

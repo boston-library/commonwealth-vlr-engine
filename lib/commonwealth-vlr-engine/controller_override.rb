@@ -44,7 +44,6 @@ module CommonwealthVlrEngine
         config.index.display_type_field = DISPLAY_TYPE_FIELD
         config.index.thumbnail_method = :create_thumb_img_element
         config.index.random_field = 'hashed_id_ssi'
-        # config.index.partials = [:thumbnail, :index_header, :index] # TODO: this may be deprecated?
 
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent
@@ -57,12 +56,12 @@ module CommonwealthVlrEngine
                                                                             helper_method: :show_html_title,
                                                                             presenter: Blacklight::FieldPresenter)
         config.show.display_type_field = DISPLAY_TYPE_FIELD
-        # config.show.partials = [:show_breadcrumb, :show_header, :show]
 
         # solr field for flagged/inappropriate content
         config.flagged_field = 'flagged_content_ssi'
 
         # sort params used in helpers
+        config.title_sort_field = TITLE_SORT_FIELD
         config.date_asc_sort = DATE_ASC_SORT
         config.title_sort = TITLE_SORT
 
@@ -99,8 +98,8 @@ module CommonwealthVlrEngine
         config.page_num_field = 'page_num_label_ssi'
         config.full_text_index = 'all_fields_ft'
 
-        # permit mlt_id params
-        config.search_state_fields.concat([:mlt_id])
+        # permit custom search params
+        config.search_state_fields.concat([:mlt_id, :starts_with])
 
         config.default_solr_params = { qt: 'search', rows: 20 }
 
@@ -134,10 +133,13 @@ module CommonwealthVlrEngine
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
         config.add_facet_field DISPLAY_TYPE_FIELD, include_in_request: false
 
-        # not a real facet field, but allows rendering MLT constraint on search results page (catalog#index)
-        config.add_facet_field 'mlt_id', label: 'More like', item_presenter: CommonwealthVlrEngine::MltItemPresenter,
+        # below are not real facet fields, but allows rendering constraints for custom fields on search results pages
+        config.add_facet_field 'mlt_id', label: 'More like', include_in_request: false,
                                filter_class: CommonwealthVlrEngine::MltFilterField,
-                               filter_query_builder: CommonwealthVlrEngine::MltFilterQuery, include_in_request: false
+                               filter_query_builder: CommonwealthVlrEngine::MltFilterQuery
+        config.add_facet_field 'starts_with', label: 'Starts with', include_in_request: false,
+                               filter_class: CommonwealthVlrEngine::StartsWithFilterField,
+                               filter_query_builder: CommonwealthVlrEngine::StartsWithFilterQuery
 
         # solr fields to be displayed in the index (search results) view
         config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
