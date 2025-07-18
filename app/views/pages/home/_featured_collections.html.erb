@@ -1,0 +1,12 @@
+<div id="home_featured_collections" class="row">
+  <h4><%= t('blacklight.home.featured_collections.title') %></h4>
+  <div id="home_featured_collections_lead">
+    <%= t('blacklight.home.featured_collections.lead') %>
+  </div>
+  <%= render CommonwealthVlrEngine::CollectionsGalleryComponent.new(collection_documents: @featured_collections) %>
+  <div id="home_featured_collections_view_all">
+    <%= link_to I18n.t('blacklight.home.featured_collections.view_all_link'), collections_url,
+                id: 'home_featured_collections_view_all_link',
+                class: 'btn btn-primary' %>
+  </div>
+</div>

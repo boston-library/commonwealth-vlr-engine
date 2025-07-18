@@ -1,9 +1,8 @@
-<%# putting this in a partial so it can be called from catalog#index %>
-<%# when no search params present %>
-<%# render 'pages/home/home_content' %>
-<%# render CommonwealthVlrEngine::BannerImageComponent.new(context: 'root', image_data: @banner_image) %>
-
 <%= render partial: 'pages/home/hero_block' %>
+
+<%= render partial: 'pages/home/featured_collections' if @featured_collections.present? %>
+
+<%= render partial: 'pages/home/featured_items' if @featured_items.present? %>
 
 <%= render partial: 'pages/home/context' %>
 

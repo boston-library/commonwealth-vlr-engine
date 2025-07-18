@@ -2,11 +2,10 @@
 
 module CommonwealthVlrEngine
   class CollectionsGalleryComponent < ViewComponent::Base
-    attr_reader :collection_documents #, :parent_document
+    attr_reader :collection_documents
 
     def initialize(collection_documents: [])
       @collection_documents = collection_documents
-      # @parent_document = parent_document
     end
 
     def view_config

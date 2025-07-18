@@ -22,9 +22,10 @@ module CommonwealthVlrEngine
       end
     end
 
-    # we don't track viewing of institutions or collections
+    # don't add session tracking to links when displaying items on certain non-catalog#* views
     def session_tracking_path(document, params = {})
-      return if controller_name == 'institutions' || controller_name == 'collections' || controller_name == 'primary_source_sets'
+      notrack_controllers = %w(institutions collections primary_source_sets pages)
+      return if notrack_controllers.include?(controller_name)
 
       super
     end

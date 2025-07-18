@@ -177,5 +177,12 @@ module CommonwealthVlrEngine
     def render_mobile_icon_tags
       render partial: 'shared/mobile_icon_tags'
     end
+
+    # retrieve a list of ARK identifiers from the CommonwealthVlrEngine config
+    def featured_objects_from_config(context: nil, type: 'objects')
+      return [] unless context
+
+      CommonwealthVlrEngine.config.dig('featured_items', context, type) || []
+    end
   end
 end

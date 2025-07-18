@@ -15,11 +15,35 @@ default: &default
     web_property_id: <%= ENV.fetch('GA_PROPERTY_ID') { Rails.application.credentials.dig(:ga, :property_id).to_s } %>
     gtm_container_id: <%= ENV.fetch('GTM_CONTAINER_ID') { Rails.application.credentials.dig(:ga, :gtm_container_id).to_s } %>
   geojson_static_filepath: <%= ENV.fetch('GEOJSON_PATH', '') %>
+  featured_items:
+    root:
+      objects:
+      collections:
 
 development:
   <<: *default
+  featured_items:
+    root:
+      objects:
+        - bpl-dev:k3569c06m
+        - bpl-dev:gf06gr50c
+        - bpl-dev:fx719n13q
+        - bpl-dev:5712m712c
+        - bpl-dev:08612v97x
+        - bpl-dev:v118rf26r
+        - bpl-dev:t722hz19w
+        - bpl-dev:9p290b01g
+      collections:
+        - bpl-dev:r207vc18w
+        - bpl-dev:nz805z711
+        - bpl-dev:8623jk13n
+        - bpl-dev:6w924c404
+        - bpl-dev:ff3656270
 
 test:
+  <<: *default
+
+staging:
   <<: *default
 
 production:

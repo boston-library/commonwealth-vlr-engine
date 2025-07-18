@@ -1,0 +1,7 @@
+<div id="facet_more" class="row">
+  <h4><%= I18n.t("blacklight.facet_more.title") %>: <%= term_to_explore[:value] %></h4>
+  <%# below based on blacklight-gallery/app/views/catalog/_document_masonry.html.erb %>
+  <div id="documents_facet_more" class="documents-gallery">
+    <%= render Blacklight::Gallery::DocumentComponent.with_collection(facet_more_documents_presenters) %>
+  </div>
+</div>

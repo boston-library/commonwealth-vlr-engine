@@ -1,0 +1,10 @@
+<div id="home_featured_items" class="row">
+  <h4><%= t('blacklight.home.featured_items.title') %></h4>
+  <div id="home_featured_items_lead">
+    <%= t('blacklight.home.featured_items.lead') %>
+  </div>
+  <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(
+    featured_documents: @featured_items,
+    parent_document: { CatalogController.blacklight_config.index.display_type_field => 'home' }
+  ) %>
+</div>
