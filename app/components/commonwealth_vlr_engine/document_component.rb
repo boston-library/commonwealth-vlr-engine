@@ -36,6 +36,10 @@ module CommonwealthVlrEngine
       CommonwealthVlrEngine::Document::MoreLikeThisComponent.new(document: @document, mlt_response: @mlt_response)
     end
 
+    renders_one :facet_more, -> do
+      CommonwealthVlrEngine::FacetMoreComponent.new(parent_document: @document)
+    end
+
     # Hack so that the default lambdas are triggered
     # so that we don't have to do c.with_top_bar() in the call.
     def before_render
@@ -46,6 +50,7 @@ module CommonwealthVlrEngine
       set_slot(:metadata, nil, document: @document) # unless metadata
       set_slot(:explore_collection, nil)
       set_slot(:more_like_this, nil)
+      set_slot(:facet_more, nil)
     end
   end
 end
