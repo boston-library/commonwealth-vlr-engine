@@ -56,6 +56,7 @@ class OcrSearchController < CatalogController
                                       highlight: true,
                                       helper_method: 'render_ocr_snippets'
     blacklight_config.default_per_page = 5
+    blacklight_config.index.document_component = CommonwealthVlrEngine::OcrDocumentComponent
   end
 
   # create the Solr function query to return term frequency

@@ -9,7 +9,13 @@
 </div>
 <div id="ocr_search_modal" class="modal-body">
   <div id="ocr_search_wrapper">
-    <%= render partial: 'search_form_ocr' %>
+    <%# render partial: 'search_form_ocr' %>
+    <%= render CommonwealthVlrEngine::OcrSearchFormComponent.new(
+      url: ocr_search_path,
+      params: search_state.params_for_search(id: params[:id]).except('q', 'ocr_q', 'search_field', 'qt', 'page'),
+      i18n: { scope: 'blacklight.search.form.fulltext' },
+      prefix: 'ocr_' # ???
+    ) %>
     <% if params[:ocr_q] && @response.empty? %>
         <%= render 'zero_results_ocr' %>
     <% else %>
@@ -18,16 +24,10 @@
               <span id="ocr_search_terms">
                 <%= @response.total %> results for: <span id="ocr_search_term"><%= params[:ocr_q] %></span>
               </span>
-              <%= render partial: 'catalog/paginate_compact',
-                         object: @response if show_pagination? %>
+              <%= render partial: 'catalog/paginate_compact', object: @response if show_pagination? %>
               <%= render partial: 'catalog/sort_widget' %>
             </div>
-            <div id="ocr_search_results">
-              <%= render collection: @response.documents,
-                         as: :document,
-                         partial: 'index_ocr_list',
-                         locals: { count: @response.documents&.count } %>
-            </div>
+            <%= render partial: "document_list_ocr" %>
         <% elsif ocr_q_params(current_search_session) %>
             <div id="ocr_search_suggest">
               Enter search terms above, or search for
@@ -45,7 +45,6 @@
 
 <div id="ocr_modal_footer" class="modal-footer">
   <div id="ocr_pagination" class="bottom">
-    <%= render partial: 'catalog/results_pagination' if params[:ocr_q] %>
+    <%= render Blacklight::Response::PaginationComponent.new(response: @response)  if params[:ocr_q] %>
   </div>
 </div>
-<%= javascript_include_tag 'commonwealth-vlr-engine/ocr_search_utils' %>

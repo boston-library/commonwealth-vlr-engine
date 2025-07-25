@@ -1,0 +1,19 @@
+<div class="ocr_search_result">
+  <dl class="row ocr_dl">
+    <dt class="col-md-2">
+      <span class="ocr_page_link">
+        <%= page_link %>
+      </span>
+    </dt>
+    <dd class="col-md-10">
+      <% if @document[:term_freq] %>
+        <div class="ocr_term_freq">
+          <%= ocr_term_frequency %>
+        </div>
+      <% end %>
+      <div class="ocr_snippets">
+        <%= snippets %>
+      </div>
+    </dd>
+  </dl>
+</div>
