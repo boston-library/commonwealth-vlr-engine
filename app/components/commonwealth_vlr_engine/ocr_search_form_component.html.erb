@@ -1,6 +1,6 @@
 <%# override default so we can add "include full text" checkbox %>
 <search id="ocr_search_form_wrapper">
-  <%= form_with url: @url, local: true, method: @method, class: @classes.join(' '), scope: @prefix,
+  <%= form_with url: @url, local: true, method: @method, class: @classes.join(' '), scope: @prefix, id: 'ocr_search_form',
                 data: { blacklight_modal: 'trigger' }, role: 'ocr_search', **@form_options do |_f| %>
     <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
 

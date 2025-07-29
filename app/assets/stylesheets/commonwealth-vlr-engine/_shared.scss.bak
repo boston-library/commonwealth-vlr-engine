@@ -88,25 +88,6 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
   }
 }
 
-#modal-transition {
-  display: none;
-  border-radius: $border-radius-lg;
-  background-color: rgba(0,0,0,.1);
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 5;
-
-  #modal-transition-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-
-}
-
 .no-js {
 
   #item_metadata_expand, #institution_desc_collapse, .ocr_snippet {

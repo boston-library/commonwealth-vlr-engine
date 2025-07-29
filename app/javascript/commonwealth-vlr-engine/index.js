@@ -7,6 +7,7 @@ import bookViewer from "commonwealth-vlr-engine/book_viewer";
 import flaggedContentModal from "commonwealth-vlr-engine/flagged_modal";
 import imageViewerModal from "commonwealth-vlr-engine/image_viewer_modal";
 import multiImageViewer from "commonwealth-vlr-engine/multi_image_viewer";
+import ocrSearchModal from "commonwealth-vlr-engine/ocr_search";
 
 export default {
     audioPlayerPlaylist,
@@ -14,5 +15,6 @@ export default {
     bookViewer,
     flaggedContentModal,
     imageViewerModal,
-    multiImageViewer
+    multiImageViewer,
+    ocrSearchModal
 }

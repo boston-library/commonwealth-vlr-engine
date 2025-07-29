@@ -1,0 +1,18 @@
+// styles for Bootstrap/Blacklight modal popups
+
+#modal-transition {
+  border-radius: var(--bs-border-radius-lg);
+  background-color: rgba(0,0,0,.1);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+
+  #modal-transition-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}

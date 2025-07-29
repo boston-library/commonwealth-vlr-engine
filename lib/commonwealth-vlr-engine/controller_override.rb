@@ -99,7 +99,7 @@ module CommonwealthVlrEngine
         config.full_text_index = 'all_fields_ft'
 
         # permit custom search params
-        config.search_state_fields.concat([:mlt_id, :starts_with])
+        config.search_state_fields.concat([:mlt_id, :starts_with, :ocr_q])
 
         config.default_solr_params = { qt: 'search', rows: 20 }
 
@@ -229,6 +229,7 @@ module CommonwealthVlrEngine
 
         # add our custom tools
         config.show.show_tools_component = Blacklight::Document::ShowToolsComponent
+        config.add_show_tools_partial(:ocr_search, partial: 'ocr_search', if: :render_ocr_search?)
         config.add_show_tools_partial(:sharing, partial: 'sharing', if: :render_sharing?)
         config.add_show_tools_partial(:item_feedback, partial: 'item_feedback', if: :render_item_feedback?)
         config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
@@ -321,6 +322,10 @@ module CommonwealthVlrEngine
 
     def render_download_tools?
       helpers.has_downloadable_files?(@document, @object_files)
+    end
+
+    def render_ocr_search?
+      helpers.has_searchable_text?(@document)
     end
 
     # if this is 'more like this' search, use CommonwealthVlrEngine::MltSearchBuilder
