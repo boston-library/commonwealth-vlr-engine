@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
 
     def render_item_breadcrumb
       separator = icon('fas', 'arrow-right', class: 'breadcrumb_separator', aria: { hidden: true })
-      breadcrumbs = [institution_link, collection_links]
+      breadcrumbs = [institution_link, collection_links].compact
       breadcrumbs.join(separator).html_safe
     end
 

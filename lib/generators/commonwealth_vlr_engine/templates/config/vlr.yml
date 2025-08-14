@@ -1,25 +1,32 @@
 # stores VLR settings
 
 default: &default
-  site: <%= ENV.fetch('VLR_SITE_ID', '') %>
+  site: <%= ENV.fetch('VLR_SITE_ID') { Rails.application.credentials.dig(:vlr, :site_id) } %>
   institution:
-    pid: <%= ENV.fetch('VLR_INSTITUTION_PID', '') %>
-  asset_store_url: <%= ENV.fetch('AZURE_STORAGE_ACCOUNT_ENDPOINT', '') %>
-  iiif_server_url: <%= ENV.fetch('IIIF_URL', '') %>
-  curator_url: <%= ENV.fetch('CURATOR_API_URL', '') %>
+    pid: <%= ENV.fetch('VLR_INSTITUTION_PID') { Rails.application.credentials.dig(:vlr, :institution_pid) } %>
+  asset_store_url: <%= ENV.fetch('AZURE_STORAGE_ACCOUNT_ENDPOINT') { Rails.application.credentials.dig(:azure, :storage_account_endpoint).to_s } %>
+  iiif_server_url: <%= ENV.fetch('IIIF_URL') { Rails.application.credentials.dig(:iiif_url) } %>
+  curator_url: <%= ENV.fetch('CURATOR_API_URL') { Rails.application.credentials.dig(:curator_api_url) } %>
   contact_emails:
-    site_admin: <%= ENV.fetch('EMAIL_SITE_ADMIN', 'site_admin@example.org') %>
-    image_requests: <%= ENV.fetch('EMAIL_IMAGE_REQUEST', 'image_request@example.org') %>
-    research_question: <%= ENV.fetch('EMAIL_RESEARCH_QUESTION', 'research_question@example.org') %>
+    site_admin: <%= ENV.fetch('EMAIL_SITE_ADMIN') { Rails.application.credentials.dig(:contact_emails, :site_admin).to_s } %>
+    image_requests: <%= ENV.fetch('EMAIL_IMAGE_REQUEST') { Rails.application.credentials.dig(:contact_emails, :image_request).to_s } %>
+    research_question: <%= ENV.fetch('EMAIL_RESEARCH_QUESTION') { Rails.application.credentials.dig(:contact_emails, :research_question).to_s } %>
   google_analytics:
     web_property_id: <%= ENV.fetch('GA_PROPERTY_ID') { Rails.application.credentials.dig(:ga, :property_id).to_s } %>
     gtm_container_id: <%= ENV.fetch('GTM_CONTAINER_ID') { Rails.application.credentials.dig(:ga, :gtm_container_id).to_s } %>
-  geojson_static_filepath: <%= ENV.fetch('GEOJSON_PATH', '') %>
+  geojson_static_filepath: <%= ENV.fetch('GEOJSON_PATH') { Rails.application.credentials.dig(:geojson_static_file, :filepath).to_s } %>
+  featured_items:
+    root:
+      objects:
+      collections:
 
 development:
   <<: *default
 
 test:
+  <<: *default
+
+staging:
   <<: *default
 
 production:
