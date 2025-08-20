@@ -68,6 +68,7 @@ en:
         subject: 'Totally Awesome Library E-mail: link to item'
         url: 'Link: %{url}'
         message: 'Comments: %{message}'
+        title: 'Item: %{value}'
 
     explore_component:
       header: 'Explore:'
