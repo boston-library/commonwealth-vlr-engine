@@ -29,7 +29,8 @@ const imageViewerModal = (() => {
             navigatorPosition: 'TOP_RIGHT',
             showRotationControl: true,
             navigationControlAnchor: OpenSeadragon.ControlAnchor.BOTTOM_RIGHT,
-            showFullPageControl: false
+            showFullPageControl: false,
+            crossOriginPolicy: 'Anonymous'
         });
     }
 
