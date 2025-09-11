@@ -26,6 +26,17 @@ const bookViewer = (() => {
         uv.on("configure", function ({ config, cb }) {
             cb(JSON.parse(uv_viewer_el.dataset.uvconfig));
         });
+
+        // handle page link clicks from ocr search modal
+        document.addEventListener('ocrsearch.pagelinkclick', (ev) => {
+            console.log("The pagelinkclick event has fired!");
+            const new_data = {
+                highlight: ev.detail.highlight,
+                canvasIndex: Number(ev.detail.canvasIndex),
+                // xywh: 0
+            };
+            uv.set(new_data);
+        });
     }
 
     bViewer.setupViewer()

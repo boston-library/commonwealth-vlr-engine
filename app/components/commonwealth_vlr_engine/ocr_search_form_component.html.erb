@@ -1,7 +1,9 @@
-<%# override default so we can add "include full text" checkbox %>
+<%# simple form for OCR search %>
+<%# data-blacklight-modal~=preserve doesn't work by default, we define it ourselves in ocr_search.js %>
+<%# see https://github.com/projectblacklight/blacklight/issues/2331 %>
 <search id="ocr_search_form_wrapper">
   <%= form_with url: @url, local: true, method: @method, class: @classes.join(' '), scope: @prefix, id: 'ocr_search_form',
-                data: { blacklight_modal: 'trigger' }, role: 'ocr_search', **@form_options do |_f| %>
+                data: { blacklight_modal: 'preserve' }, role: 'ocr_search', **@form_options do |_f| %>
     <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
 
     <div class="input-group">

@@ -35,12 +35,13 @@ class OcrSearchController < CatalogController
     end
 
     respond_to do |format|
-      # Draw the facet selector for users who have javascript disabled:
+      # Draw the partial for the ocr search results modal window:
       format.html do
         return render layout: false if request.xhr?
       end
-      # Draw the partial for the ocr search results modal window:
-      format.js { render layout: false }
+      format.js do
+        return render layout: false
+      end
     end
   end
 

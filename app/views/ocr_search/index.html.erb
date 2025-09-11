@@ -1,50 +1,18 @@
-<%= render partial: 'shared/modal_transition' %>
-<div class="modal-header">
-  <h4 id="ocr_search_modal_title" class="modal-title">
-    <%= truncate("#{t('blacklight.ocr.search.results.title')}: #{render_title(@document, false)}",
-                 length: 55,
-                 separator: ' ') %>
-  </h4>
-  <button type="button" class="blacklight-modal-close btn-close" data-bl-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>"></button>
-</div>
-<div id="ocr_search_modal" class="modal-body">
-  <div id="ocr_search_wrapper">
-    <%# render partial: 'search_form_ocr' %>
-    <%= render CommonwealthVlrEngine::OcrSearchFormComponent.new(
-      url: ocr_search_path,
-      params: search_state.params_for_search(id: params[:id]).except('q', 'ocr_q', 'search_field', 'qt', 'page'),
-      i18n: { scope: 'blacklight.search.form.fulltext' },
-      prefix: 'ocr_' # ???
-    ) %>
-    <% if params[:ocr_q] && @response.empty? %>
-        <%= render 'zero_results_ocr' %>
-    <% else %>
-        <% if params[:ocr_q] %>
-            <div id="ocr_search_details">
-              <span id="ocr_search_terms">
-                <%= @response.total %> results for: <span id="ocr_search_term"><%= params[:ocr_q] %></span>
-              </span>
-              <%= render partial: 'catalog/paginate_compact', object: @response if show_pagination? %>
-              <%= render partial: 'catalog/sort_widget' %>
-            </div>
-            <%= render partial: "document_list_ocr" %>
-        <% elsif ocr_q_params(current_search_session) %>
-            <div id="ocr_search_suggest">
-              Enter search terms above, or search for
-              "<%= link_to(current_search_session.query_params['q'].gsub(/\A"|"\Z/, ''),
-                           ocr_search_path(ocr_q: current_search_session.query_params['q']),
-                           class: '',
-                           rel: 'nofollow',
-                           data: { blacklight_modal: 'preserve' }) %>"
-              in the text of this item.
-            </div>
-        <% end %>
-    <% end %>
-  </div>
-</div>
+<%# prefer to use Blacklight::System::ModalComponent, or the full layout gets rendered %>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_prefix do
+    render partial: 'shared/modal_transition'
+  end %>
+  <% component.with_title do
+    truncate("#{t('blacklight.ocr.search.results.title')}: #{render_title(@document, false)}",
+             length: 55, separator: ' ')
+  end %>
 
-<div id="ocr_modal_footer" class="modal-footer">
-  <div id="ocr_pagination" class="bottom">
-    <%= render Blacklight::Response::PaginationComponent.new(response: @response)  if params[:ocr_q] %>
-  </div>
-</div>
+  <%= render partial: 'search_form_ocr' %>
+
+  <% component.with_footer do %>
+    <div id="ocr_pagination" class="bottom">
+      <%= render Blacklight::Response::PaginationComponent.new(response: @response)  if params[:ocr_q] %>
+    </div>
+  <% end %>
+<% end %>

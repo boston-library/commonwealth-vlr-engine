@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   post 'search/:id/manifest/cache_invalidate', to: 'iiif_manifest#cache_invalidate', as: 'iiif_cache_invalidate'
 
   # OCR search results
-  get 'search/:id/fulltext', to: 'ocr_search#index', as: 'ocr_search'
+  match 'search/:id/fulltext', to: 'ocr_search#index', via: [:get, :post], as: 'ocr_search'
 
   # downloads
   resources :downloads, only: [:show]

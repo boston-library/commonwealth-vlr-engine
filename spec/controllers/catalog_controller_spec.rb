@@ -11,7 +11,7 @@ describe CatalogController, :vcr do
 
   describe 'search_builder_class' do
     it 'uses CommonwealthSearchBuilder' do
-      expect(described_class.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
+      expect(described_class.new.blacklight_config.search_builder_class).to eq(CommonwealthSearchBuilder)
     end
   end
 

@@ -1,0 +1,33 @@
+<div id="ocr_search_wrapper">
+  <%= render CommonwealthVlrEngine::OcrSearchFormComponent.new(
+    url: ocr_search_path,
+    method: 'POST',
+    params: search_state.params_for_search(id: params[:id]).except('q', 'ocr_q', 'search_field', 'qt', 'page'),
+    i18n: { scope: 'blacklight.search.form.fulltext' },
+    prefix: 'ocr_' # ???
+  ) %>
+  <% if params[:ocr_q] && @response.empty? %>
+    <%= render 'zero_results_ocr' %>
+  <% else %>
+    <% if params[:ocr_q] %>
+      <div id="ocr_search_details">
+              <span id="ocr_search_terms">
+                <%= @response.total %> results for: <span id="ocr_search_term"><%= params[:ocr_q] %></span>
+              </span>
+        <%= render partial: 'catalog/paginate_compact', object: @response if show_pagination? %>
+        <%= render partial: 'catalog/sort_widget' %>
+      </div>
+      <%= render partial: "document_list_ocr" %>
+    <% elsif ocr_q_params(current_search_session) %>
+      <div id="ocr_search_suggest">
+        Enter search terms above, or search for
+        "<%= link_to(current_search_session.query_params['q'].gsub(/\A"|"\Z/, ''),
+                     ocr_search_path(ocr_q: current_search_session.query_params['q']),
+                     class: '',
+                     rel: 'nofollow',
+                     data: { blacklight_modal: 'preserve' }) %>"
+        in the text of this item.
+      </div>
+    <% end %>
+  <% end %>
+</div>
