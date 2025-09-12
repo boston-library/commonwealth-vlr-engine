@@ -38,6 +38,9 @@
         <%= render CommonwealthVlrEngine::FeaturedItemsComponent.new(featured_documents: @featured_items,
                                                                      parent_document: @document) %>
 
+        <%= render CommonwealthVlrEngine::SeriesComponent.new(response: @response,
+                                                              series_field_name: blacklight_config.series_field) %>
+
         <%= render CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document) %>
 
         <%= render CommonwealthVlrEngine::FacetMoreComponent.new(response: @response) %>

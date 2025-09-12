@@ -34,6 +34,7 @@ module CommonwealthVlrEngine
 
     def facet_more_documents
       facet_search_params = { f: facet_more_params, sort: "#{helpers.blacklight_config.index.random_field} asc" }
+      puts "FACET_SEARCH_PARAMS = #{facet_search_params.inspect}"
       facet_search_service = Blacklight::SearchService.new(user_params: facet_search_params,
                                                            config: helpers.blacklight_config,
                                                            search_builder_class: FlaggedSearchBuilder)

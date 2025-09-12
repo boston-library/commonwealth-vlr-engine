@@ -117,7 +117,8 @@ module CommonwealthVlrEngine
         # link_to_facet fields (not in facets sidebar of search results)
         config.add_facet_field 'related_item_host_ssim', label: 'Collection', include_in_request: false # Collection (local)
         config.add_facet_field 'genre_specific_ssim', label: 'Genre', include_in_request: false
-        config.add_facet_field 'related_item_series_ssi', label: 'Series', limit: 300, sort: 'index', include_in_request: false
+        config.add_facet_field 'related_item_series_ssi', label: 'Series', limit: 300, sort: 'index',
+                               include_in_request: false, item_component: CommonwealthVlrEngine::SeriesFacetItemComponent
         config.add_facet_field 'related_item_subseries_ssi', label: 'Subseries', include_in_request: false
         config.add_facet_field 'related_item_subsubseries_ssi', label: 'Sub-subseries', include_in_request: false
         config.add_facet_field 'institution_name_ssi', label: 'Institution', include_in_request: false

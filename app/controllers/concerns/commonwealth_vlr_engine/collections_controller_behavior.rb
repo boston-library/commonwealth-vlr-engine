@@ -11,14 +11,12 @@ module CommonwealthVlrEngine
 
       before_action :nav_li_active, only: [:index, :show]
       before_action :relation_base_blacklight_config, only: [:index, :show]
-      # before_action :collapse_institution_facet, only: :index
       before_action :collections_index_config, only: :index
       before_action :collections_show_config, only: :show
-      before_action :collections_limit_for_facets, only: :facet
-      # before_action :add_series_facet, only: :show
+      before_action :add_series_facet, only: :show
 
-      # helper_method :search_action_url
-      # helper_method :get_series_image_obj
+      # before_action :collapse_institution_facet, only: :index
+      # before_action :collections_limit_for_facets, only: :facet
     end
 
     def index
@@ -51,9 +49,6 @@ module CommonwealthVlrEngine
       @response = facets_search_service.search_results
       @featured_items = @response&.documents&.sample(8)
 
-      # get an image for the collection - DEPRECATED, prefer using @exemplary_document
-      # @collection_image_info = collection_image_info(@document) if @document[:exemplary_image_ssi]
-
       respond_to do |format|
         format.html
       end
@@ -65,36 +60,22 @@ module CommonwealthVlrEngine
 
     protected
 
-    # TODO: maybe remove this? The default implementation in Blacklight is more context-aware,
-    # this method is used for "remove" facet links, but maybe also for header search URL?
-    # def search_action_url options = {}
-    #   options = options.to_h if options.is_a? Blacklight::SearchState
-    #   url_for(options.reverse_merge(action: 'index'))
-    # end
+    # need to use different methods depending on controller action so search links are correct
+    def search_action_url options = {}
+      if action_name == 'index'
+        # Blacklight::Catalog#search_action_url
+        options = options.to_h if options.is_a? Blacklight::SearchState
+        url_for(options.reverse_merge(action: 'index'))
+      else
+        # Blacklight::Controller#search_action_url
+        search_catalog_url(options.to_h.except(:controller, :action))
+      end
+    end
 
-    # find a representative image/item for a series
-    # def get_series_image_obj(series_title, collection_title)
-    #   blacklight_config.search_builder_class = CommonwealthVlrEngine::FlaggedSearchBuilder # ignore flagged items
-    #   series_params = { f: { blacklight_config.series_field => series_title,
-    #                          blacklight_config.collection_field => collection_title },
-    #                     rows: 1 }
-    #   series_search_service = search_service_class.new(config: blacklight_config,
-    #                                                    user_params: series_params)
-    #   series_response = series_search_service.search_results
-    #   series_response.documents.first
-    # end
-
-    # show series facet
-    # def add_series_facet
-    #   blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
-    # end
-
-    # collapse the institution facet, if Institutions supported
-    # def collapse_institution_facet
-    #   return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
-    #
-    #   blacklight_config.facet_fields['physical_location_ssim'].collapse = true
-    # end
+    # add series facet for collections#show
+    def add_series_facet
+      blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
+    end
 
     # find only collection objects
     def collections_index_config
@@ -115,42 +96,6 @@ module CommonwealthVlrEngine
       blacklight_config.advanced_search.enabled = false
     end
 
-    # find object data for "more" facet results
-    # collections#facet can be called within BOTH collections#index and collections#show contexts
-    # when collections#index, want to limit to collection objects
-    # when collections#show, should be objects that are child of collection
-    # so we use the check below, since request.query_parameters['f'] is only added in collections#show
-    # via set_collection_facet_params
-    def collections_limit_for_facets
-      return if request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
-
-      collections_limit
-    end
-
-    # find the title and pid for the object representing the collection image
-    # @param document [SolrDocument]
-    # @return [Hash]
-    # def collection_image_info(document)
-    #   col_img_info = { image_pid: document[:exemplary_image_ssi], image_key: document[:exemplary_image_key_base_ss],
-    #                    title: '', pid: document[:id], access_master: false,
-    #                    hosting_status: document[blacklight_config.hosting_status_field.to_sym],
-    #                    destination_site: document[:destination_site_ssim] }
-    #   col_img_file_doc = search_service.fetch(document[:exemplary_image_ssi])
-    #   if col_img_file_doc
-    #     col_img_info[:access_master] = true if col_img_file_doc[:curator_model_suffix_ssi] == 'Image'
-    #     col_img_field = col_img_file_doc[:is_file_set_of_ssim].presence
-    #     if col_img_field
-    #       col_img_obj_pid = col_img_field.first
-    #       col_img_obj_doc = search_service.fetch(col_img_obj_pid)
-    #       if col_img_obj_doc
-    #         col_img_info[:title] = helpers.render_title(col_img_obj_doc)
-    #         col_img_info[:pid] = col_img_obj_pid
-    #       end
-    #     end
-    #   end
-    #   col_img_info
-    # end
-
     # set the correct facet params for facets from the collection
     def set_collection_facet_params(collection_title, document)
       facet_params = { blacklight_config.collection_field => [collection_title] }
@@ -161,5 +106,24 @@ module CommonwealthVlrEngine
     def nav_li_active
       @nav_li_active = 'explore'
     end
+
+    # collapse the institution facet, if Institutions supported
+    # def collapse_institution_facet
+    #   return if CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+    #
+    #   blacklight_config.facet_fields['physical_location_ssim'].collapse = true
+    # end
+
+    # find object data for "more" facet results
+    # collections#facet can be called within BOTH collections#index and collections#show contexts
+    # when collections#index, want to limit to collection objects
+    # when collections#show, should be objects that are child of collection
+    # so we use the check below, since request.query_parameters['f'] is only added in collections#show
+    # via set_collection_facet_params
+    # def collections_limit_for_facets
+    #   return if request.query_parameters['f'] && request.query_parameters['f'][blacklight_config.collection_field]
+    #
+    #   collections_limit
+    # end
   end
 end
