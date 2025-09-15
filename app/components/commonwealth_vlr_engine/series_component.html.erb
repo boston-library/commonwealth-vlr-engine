@@ -1,6 +1,5 @@
 <div id="series" class="row">
   <h4><%= t('blacklight.collections.series.title') %></h4>
-  <%# @facet_item.items.inspect %>
   <%= render Blacklight::FacetComponent.new(display_facet: @facet_item,
                                             blacklight_config: helpers.blacklight_config,
                                             layout: false) %>

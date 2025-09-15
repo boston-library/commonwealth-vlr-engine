@@ -4,13 +4,16 @@
 # either randomly derived from SolrDocument or Blacklight::Solr::Response, or provided as an arg.
 module CommonwealthVlrEngine
   class FacetMoreComponent < ViewComponent::Base
-    attr_reader :parent_document, :response, :subject_fields, :subject_term, :item_count
+    attr_reader :parent_document, :response, :subject_fields, :subject_term, :item_count, :term_to_explore
 
-    def initialize(parent_document: {}, response: nil, subject_fields: %w[subject_facet_ssim subject_geographic_sim], subject_term: nil, item_count: 4)
+    def initialize(parent_document: {}, response: nil, subject_fields: %w[subject_facet_ssim subject_geographic_sim],
+                   subject_term: nil, item_count: 4)
       @parent_document = parent_document
       @response = response
       @subject_fields = subject_fields
+      @subject_term = subject_term
       @item_count = item_count
+      @term_to_explore = term_data
     end
 
     def facet_more_documents_presenters
@@ -20,25 +23,24 @@ module CommonwealthVlrEngine
       end
     end
 
-    def term_to_explore
-      term_data = { field_name: subject_fields.first, value: subject_term }
-      subject_fields.each do |sf|
-        next if term_data[:value] || (parent_document[sf].blank? && response&.aggregations&.dig(sf)&.items.blank?)
+    def term_data
+      t_data = { field_name: @subject_fields.first, value: @subject_term }
+      @subject_fields.each do |sf|
+        next if t_data[:value] || (parent_document[sf].blank? && response&.aggregations&.dig(sf)&.items.blank?)
 
-        term_data = { field_name: sf,
+        t_data = { field_name: sf,
                       value: (parent_document[sf] ||
                               response&.aggregations&.dig(sf)&.items&.map(&:value))[0..2].sample }
       end
-      term_data
+      t_data
     end
 
     def facet_more_documents
-      facet_search_params = { f: facet_more_params, sort: "#{helpers.blacklight_config.index.random_field} asc" }
-      puts "FACET_SEARCH_PARAMS = #{facet_search_params.inspect}"
+      facet_search_params = { f: facet_more_params, sort: "#{helpers.blacklight_config.index.random_field} asc", rows: 50 }
       facet_search_service = Blacklight::SearchService.new(user_params: facet_search_params,
                                                            config: helpers.blacklight_config,
                                                            search_builder_class: FlaggedSearchBuilder)
-      facet_search_service.search_results.documents[0..(item_count - 1)] || []
+      facet_search_service.search_results.documents.shuffle[0..(item_count - 1)] || []
     end
 
     def facet_more_params
