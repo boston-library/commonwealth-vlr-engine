@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::RenderConstraintsHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::RenderConstraintsHelperBehavior do
   let(:mlt_id) { 'bpl-dev:h702q6403' }
   let(:mock_controller) { CatalogController.new }
   let(:search_state) do

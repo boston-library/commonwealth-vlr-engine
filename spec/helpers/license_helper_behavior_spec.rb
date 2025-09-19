@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::LicenseHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::LicenseHelperBehavior do
   describe 'Rights Statements helpers' do
     let(:document) { SolrDocument.find('bpl-dev:g445cd14k') }
 

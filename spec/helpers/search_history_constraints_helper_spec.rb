@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::SearchHistoryConstraintsHelperBehavior do
   describe 'render_search_to_s_mlt' do
     let(:mlt_test_params) { { mlt_id: 'bpl-dev:h702q6403' } }
 

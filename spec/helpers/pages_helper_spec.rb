@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe PagesHelper, :vcr do
+RSpec.describe PagesHelper, :vcr do
   describe '#render_blog_feed' do
     let(:rendered_feed) { helper.render_blog_feed('https://blog.digitalcommonwealth.org/?feed=rss2') }
 

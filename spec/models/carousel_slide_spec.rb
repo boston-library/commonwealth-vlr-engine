@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CarouselSlide do
+RSpec.describe CarouselSlide do
   let(:slide_attrs) do
     {
       sequence: 1,

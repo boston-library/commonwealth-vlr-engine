@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::FlaggedSearchBuilder do
+RSpec.describe CommonwealthVlrEngine::FlaggedSearchBuilder do
   let(:search_builder) { described_class.new(CatalogController.new) }
 
   describe 'processor chain' do

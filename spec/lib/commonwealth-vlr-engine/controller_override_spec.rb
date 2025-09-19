@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::ControllerOverride do
+RSpec.describe CommonwealthVlrEngine::ControllerOverride do
   let(:mock_controller) { CatalogController.new }
   let(:test_config) { mock_controller.blacklight_config }
 

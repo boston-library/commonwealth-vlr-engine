@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::Controller do
+RSpec.describe CommonwealthVlrEngine::Controller do
   let(:mock_controller) { CatalogController.new }
 
   describe 'create_img_sequence' do

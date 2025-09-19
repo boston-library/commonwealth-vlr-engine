@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::ImagesHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image_pid) { 'bpl-dev:h702q641c' }

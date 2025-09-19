@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::OcrSearchBuilder do
+RSpec.describe CommonwealthVlrEngine::OcrSearchBuilder do
   let(:search_builder) { described_class.new(CatalogController.new) }
 
   describe 'processor chain' do

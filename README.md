@@ -52,6 +52,8 @@ After cloning the repository, and running `bundle install`, run `bundle exec rak
 
 ### Useful Development commands
 
+# setup test database: rake db:test:prepare
+
 Generate the test application at `.internal_test_app`:
 ```
 $ rake engine_cart:generate
@@ -63,6 +65,7 @@ $ rake engine_cart:clean
 ```
 Start Solr (run in new terminal from `.internal_test_app` home):
 ```
+# this can be run from project root or ./spec/internal
 $ solr_wrapper
 ```
 Stop Solr:

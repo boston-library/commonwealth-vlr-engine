@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::BlacklightHelper do
+RSpec.describe CommonwealthVlrEngine::BlacklightHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:search_service) { Blacklight::SearchService.new(config: blacklight_config) }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }

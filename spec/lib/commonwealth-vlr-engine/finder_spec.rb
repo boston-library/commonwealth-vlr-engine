@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::Finder do
+RSpec.describe CommonwealthVlrEngine::Finder do
   let(:mock_controller) { CatalogController.new }
   let(:item_pid) { 'bpl-dev:h702q6403' }
   let(:image1_pid) { 'bpl-dev:h702q641c' }

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe OcrSearchHelper do
+RSpec.describe OcrSearchHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:ocr_search_helper_test_class) { OcrSearchController.new }
   let(:book_pid) { 'bpl-dev:7s75dn48d' }

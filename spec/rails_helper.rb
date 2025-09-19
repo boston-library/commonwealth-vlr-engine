@@ -1,16 +1,24 @@
 # frozen_string_literal: true
 
-ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
+ENV['RAILS_ENV'] ||= 'test'
+
+# have to set here, ENV['SOLR_URL'] not set by Dotenv before Rspec loads Curator::Engine
+ENV['SOLR_URL'] = File.read(
+  File.expand_path('internal/.env.test', __dir__)
+).match(/SOLR_URL=[\w:\/\.]*/).to_s.split('SOLR_URL=').last if ENV['RAILS_ENV'] == 'test'
+
+require File.expand_path('./internal/config/environment', __dir__)
+
+# Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
-require_relative 'internal/config/environment'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'vcr'
-require 'billy/capybara/rspec'
+# require 'billy/capybara/rspec'
 
 VCR.configure do |c|
   # NOTE: uncomment this when creating or updating existing specs are wrapped in VCR.use_cassete
@@ -23,7 +31,7 @@ VCR.configure do |c|
   # ignore Solr, Capybara middleware, etc
   c.ignore_request do |request|
     # see https://github.com/oesmith/puffing-billy#working-with-vcr-and-webmock
-    request.uri =~ /chromedriver/ || request.headers.include?('Referer')
+    request.uri =~ /solr/ || request.uri =~ /chromedriver/ || request.headers.include?('Referer')
   end
 end
 
