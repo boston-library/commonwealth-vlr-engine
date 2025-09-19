@@ -33,8 +33,6 @@ module CommonwealthVlrEngine
     end
 
     def dropdown
-      puts "SEARCH STATE PARAMS = #{@search_state.params_for_search}"
-      puts "SELECTED = #{@search_state.params_for_search.dig(:f, facet_field_name)&.first}"
       render(CommonwealthVlrEngine::System::DropdownComponent.new(
         param: "f[#{facet_field_name}][]",
         choices: dropdown_choices,

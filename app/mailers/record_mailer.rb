@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # overriding Blacklight RecordMailer to add :from address in email
-# otherwise we get error: ArgumentError (An SMTP From address is required to send a message
+# otherwise we get error: ArgumentError (An SMTP From address is required to send a message)
 class RecordMailer < ApplicationMailer
   def email_record(documents, details, url_gen_params)
     subject = I18n.t('blacklight.email.text.subject', count: documents.length,

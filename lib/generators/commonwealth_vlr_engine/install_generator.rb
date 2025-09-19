@@ -34,7 +34,6 @@ module CommonwealthVlrEngine
       generate 'bpluser:install'
     end
 
-    # TODO: double-check that refs for blacklight-gallery added to application.bootstrap.scss
     def blacklight_gallery_intall
       return if IO.read('app/models/solr_document.rb').include?('Blacklight::Gallery')
 
@@ -56,9 +55,9 @@ module CommonwealthVlrEngine
       generate "blacklight_range_limit:install"
     end
 
-    # def insert_to_assets
-    #   generate 'commonwealth_vlr_engine:localassets'
-    # end
+    def insert_to_assets
+      generate 'commonwealth_vlr_engine:localassets'
+    end
 
     def copy_yml_files
       generate "commonwealth_vlr_engine:yml#{ ' --force' if options[:force]}"
@@ -80,6 +79,7 @@ module CommonwealthVlrEngine
       generate 'commonwealth_vlr_engine:routes'
     end
 
+    # TODO: is this actually needed?
     # def insert_to_environments
     #   generate 'commonwealth_vlr_engine:environment'
     # end

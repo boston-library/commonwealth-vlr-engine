@@ -48,65 +48,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # DEPRECATED - moved to HiergeoSubjectComponent
-    # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
-    # def render_hiergo_subject(geojson_feature, separator, separator_class = nil)
-    #   output_array = []
-    #   hiergeo_hash = JSON.parse(geojson_feature).symbolize_keys[:properties]
-    #   hiergeo_hash.each_key do |k|
-    #     # only display continent if there are no other values
-    #     if k == 'continent'
-    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 1
-    #     elsif k == 'country' && hiergeo_hash[k] == 'United States'
-    #       # display 'United States' only if no other values besides continent
-    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') if hiergeo_hash.length == 2
-    #     elsif k == 'county'
-    #       output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_sim')
-    #     elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
-    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim') + " (#{k})"
-    #     elsif k == 'other'
-    #       place_type = hiergeo_hash[k].scan(/\([a-z\s]*\)/).last
-    #       place_name = hiergeo_hash[k].gsub(/#{place_type}/, '').gsub(/\s\(\)\z/, '')
-    #       output_array << link_to_facet(place_name, 'subject_geographic_sim') + " #{place_type}"
-    #     else
-    #       output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_sim')
-    #     end
-    #   end
-    #   output_array.join(content_tag(:span, separator, :class => separator_class)).html_safe
-    # end
-
-    # returns an array of properly-formatted date values
-    # DEPRECATED
-    # TODO: remove this once we're sure we don't need it anywhere
-    # def render_mods_dates (document)
-    #   date_values = []
-    #   document[:date_tsim].each_with_index do |start_date, index|
-    #     date_type = document[:date_type_ssm] ? document[:date_type_ssm][index] : nil
-    #     date_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm][index] : nil
-    #     date_end = document[:date_end_tsim] ? document[:date_end_tsim][index] : nil
-    #     date_values << render_mods_date(start_date, date_end, date_qualifier, date_type)
-    #   end
-    #   date_values
-    # end
-    #
-    # # returns a properly-formatted date value as a string
-    # def render_mods_date (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
-    #   prefix = ''
-    #   suffix = ''
-    #   date_start_suffix = ''
-    #   if date_qualifier && date_qualifier != 'nil'
-    #     prefix = date_qualifier == 'approximate' ? '[ca. ' : '['
-    #     suffix = date_qualifier == 'questionable' ? '?]' : ']'
-    #   end
-    #   prefix += '(c) ' if date_type == 'copyrightDate'
-    #   if date_end && date_end != 'nil'
-    #     date_start_suffix = '?' if date_qualifier == 'questionable'
-    #     prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.date_range_connector') + normalize_date(date_end) + suffix
-    #   else
-    #     prefix + normalize_date(date_start) + suffix
-    #   end
-    # end
-
     # output properly formatted title
     # if full = true, include subtitle, parallel title, etc.
     # if full = false, output with volume info, but no subtitle or parallel title

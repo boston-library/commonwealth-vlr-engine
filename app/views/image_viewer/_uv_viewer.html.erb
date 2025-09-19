@@ -1,0 +1,18 @@
+<%# DEPRECATED, currently unused, prefer CommonwealthVlrEngine::Media::BookViewerComponent instead %>
+<main id="uv-wrapper">
+  <div id="uv" class="uv"></div>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          var urlAdapter = new UV.IIIFURLAdapter();
+
+          const data = urlAdapter.getInitialData({
+              manifest: '<%= iiif_manifest_path(@document.id) %>',
+              highlight: urlAdapter.get('h',''),
+          });
+
+          uv = UV.init("uv", data);
+          urlAdapter.bindTo(uv);
+      });
+  </script>
+</main>

@@ -1,5 +1,0 @@
-<% @page_title = render_title(@document, false) + ' - ' + application_name %>
-
-<%= render partial: 'uv_header' %>
-
-<%= render partial: 'uv_viewer' %>

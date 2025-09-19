@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Notifier < ActionMailer::Base
+class Notifier < ApplicationMailer
   include CommonwealthVlrEngine::Notifier
 end
