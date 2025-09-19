@@ -280,6 +280,7 @@ module CommonwealthVlrEngine
 
     private
 
+    # TODO: maybe not needed since no longer displaying facets on collections#show or institutions#show ?
     # modify BL config settings for Collections#show and Institutions#show
     def relation_base_blacklight_config
       # don't show collection facet

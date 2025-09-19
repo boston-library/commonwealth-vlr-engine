@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # tests for controller actions and configuration added to CatalogController
 # via CommonwealthVlrEngine::ControllerOverride
-describe CatalogController, :vcr do
+RSpec.describe CatalogController, :vcr do
   render_views
 
   let(:item_pid) { 'bpl-dev:df65v790j' }
@@ -58,12 +58,12 @@ describe CatalogController, :vcr do
   describe 'mlt_results_for_show' do
     it 'retrieves the mlt results for the item' do
       get :show, params: { id: item_pid }
-      expect(assigns(:mlt_document_list)).to_not be_falsey
+      expect(assigns(:mlt_response)).to_not be_falsey
     end
   end
 
-  describe 'add_institution_fields' do
-    it 'adds the institution-related facet fields to the config' do
+  describe 'add_facet_field:physical_location_ssim ' do
+    it 'adds the physical_location_ssim facet field to the config' do
       get :index
       expect(controller.blacklight_config.facet_fields['physical_location_ssim']).to_not be_nil
     end

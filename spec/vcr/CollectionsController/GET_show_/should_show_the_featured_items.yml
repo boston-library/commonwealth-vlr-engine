@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 19 Sep 2025 20:47:04 GMT
+      - Fri, 19 Sep 2025 20:47:03 GMT
       Content-Type:
       - text/plain;charset=utf-8
       Vary:
@@ -68,7 +68,7 @@ http_interactions:
         org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883)\n\tat
         org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034)\n\tat
         java.base/java.lang.Thread.run(Thread.java:840)\n\n"
-  recorded_at: Fri, 19 Sep 2025 20:47:04 GMT
+  recorded_at: Fri, 19 Sep 2025 20:47:03 GMT
 - request:
     method: get
     uri: https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:h702q641c/info.json

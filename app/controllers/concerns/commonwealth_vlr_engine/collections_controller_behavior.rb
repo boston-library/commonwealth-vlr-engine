@@ -15,6 +15,7 @@ module CommonwealthVlrEngine
       before_action :collections_show_config, only: :show
       before_action :add_series_facet, only: :show
 
+      # methods below are DEPRECATED, but possibly needed in the future
       # before_action :collapse_institution_facet, only: :index
       # before_action :collections_limit_for_facets, only: :facet
     end
@@ -106,6 +107,9 @@ module CommonwealthVlrEngine
     def nav_li_active
       @nav_li_active = 'explore'
     end
+
+    ##
+    # methods below are DEPRECATED, but possibly needed in the future
 
     # collapse the institution facet, if Institutions supported
     # def collapse_institution_facet

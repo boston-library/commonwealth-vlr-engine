@@ -793,6 +793,8 @@
   - bpl-dev:df65v791t
   exemplary_image_key_base_ss:
     - images/bpl-dev:df65v791t
+  exemplary_image_digobj_ss:
+    - bpl-dev:df65v790j
   destination_site_ssim:
   - commonwealth
   - bpl
@@ -843,6 +845,8 @@
   - bpl-dev:h702q642n
   exemplary_image_key_base_ss:
     - images/bpl-dev:h702q642n
+  exemplary_image_digobj_ss:
+    - bpl-dev:h702q6403
   destination_site_ssim:
   - commonwealth
   - bpl
@@ -890,6 +894,8 @@
   - bpl-dev:g445cd17d
   exemplary_image_key_base_ss:
     - images/bpl-dev:g445cd17d
+  exemplary_image_digobj_ss:
+    - bpl-dev:g445cd14k
   destination_site_ssim:
   - commonwealth
   - bpl
@@ -937,6 +943,8 @@
   - bpl-dev:g445cd17d
   exemplary_image_key_base_ss:
     - images/bpl-dev:g445cd17d
+  exemplary_image_digobj_ss:
+    - bpl-dev:g445cd14k
   destination_site_ssim:
   - commonwealth
   - bpl
@@ -1001,6 +1009,12 @@
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"placename\":\"Boston, MA\"}}"
   subject_hiergeo_geojson_ssm:
   - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.05,42.35]},\"properties\":{\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\"}}"
+  exemplary_image_ssi:
+    - bpl-dev:000000043
+  exemplary_image_key_base_ss:
+    - images/bpl-dev:000000043
+  exemplary_image_digobj_ss:
+    - bpl-dev:00000003t
   institution_ark_id_ssi:
   - bpl-dev:abcd12345
   destination_site_ssim:
@@ -2841,6 +2855,8 @@
     - metadata/oai-dev:bg258017r
   exemplary_image_iiif_bsi:
     - false
+  exemplary_image_digobj_ss:
+    - oai-dev:bg258017q
   timestamp:
     - '2022-09-25T20:38:10.637Z'
 - system_create_dtsi:
