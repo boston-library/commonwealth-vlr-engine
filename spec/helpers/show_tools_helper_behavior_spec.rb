@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::ShowToolsHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::ShowToolsHelperBehavior do
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
 
   describe '#social_sharing_links' do

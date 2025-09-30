@@ -114,4 +114,11 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior do
       end
     end
   end
+
+  describe '#osd_nav_images' do
+    it 'returns a hash with the path to the OpenSeadragon control images' do
+      assets_root = File.join(CommonwealthVlrEngine.root, 'app', 'assets', 'images', 'commonwealth-vlr-engine', 'opeanseadragon')
+      expect(JSON.parse(helper.osd_nav_images(assets_root))['zoomIn']['REST']).to eq("#{assets_root}/zoomin_rest.png")
+    end
+  end
 end

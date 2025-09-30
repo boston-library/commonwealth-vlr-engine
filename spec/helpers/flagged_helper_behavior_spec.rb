@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::FlaggedHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::FlaggedHelperBehavior do
   let(:blacklight_config) { CatalogController.blacklight_config }
 
   before(:each) do

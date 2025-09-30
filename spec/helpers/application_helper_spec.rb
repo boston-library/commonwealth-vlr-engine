@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe ApplicationHelper, :vcr do
+RSpec.describe ApplicationHelper, :vcr do
   let(:image_pid) { 'bpl-dev:h702q641c' }
 
   describe '#render_format' do
@@ -15,7 +15,7 @@ describe ApplicationHelper, :vcr do
   describe '#render_format_index' do
     let(:opts) { { value: ['Maps'] } }
     it 'returns the right value' do
-      expect(helper.render_format_index(opts)).to eq('Maps/Atlases')
+      expect(helper.render_format_index(opts)).to eq('Map/Atlas')
     end
   end
 
@@ -81,10 +81,9 @@ describe ApplicationHelper, :vcr do
     end
   end
 
-  describe '#osd_nav_images' do
-    it 'returns a hash with the path to the OpenSeadragon control images' do
-      assets_root = File.join(CommonwealthVlrEngine.root, 'app', 'assets', 'images', 'commonwealth-vlr-engine', 'opeanseadragon')
-      expect(JSON.parse(helper.osd_nav_images(assets_root))['zoomIn']['REST']).to eq("#{assets_root}/zoomin_rest.png")
+  describe '#featured_objects_from_config' do
+    it 'returns an Array of object pids' do
+      expect(helper.featured_objects_from_config(context: 'root')).to eq ['bpl-dev:00000003t']
     end
   end
 end

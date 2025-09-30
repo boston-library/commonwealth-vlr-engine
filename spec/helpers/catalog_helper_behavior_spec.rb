@@ -2,23 +2,25 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::CatalogHelperBehavior do
-  let(:blacklight_config) { CatalogController.blacklight_config }
+RSpec.describe CommonwealthVlrEngine::CatalogHelperBehavior do
+  # let(:blacklight_config) { CatalogController.blacklight_config }
   let(:catalog_helper_test_class) { CatalogController.new }
+  let(:blacklight_config) { catalog_helper_test_class.blacklight_config }
   let(:item_ark_id) { 'bpl-dev:h702q6403' }
   let(:image_ark_id) { 'bpl-dev:h702q641c' }
   let(:collection_ark_id) { 'bpl-dev:h702q636h' }
   let(:document) { SolrDocument.find(item_ark_id) }
   let(:files_hash) { catalog_helper_test_class.get_files(item_ark_id) }
-  let(:pdf_item_ark_id) { 'bpl-dev:z029pg62r' }
-  let(:pdf_files_hash) { catalog_helper_test_class.get_files(pdf_item_ark_id) }
+  let(:document_item_ark_id) { 'bpl-dev:z029pg62r' }
+  let(:document_files_hash) { catalog_helper_test_class.get_files(document_item_ark_id) }
   let(:audio_files_hash) { catalog_helper_test_class.get_files('bpl-dev:5d86p086p') }
   let(:harvested_item_ark_id) { 'oai-dev:qv33s812k' }
   let(:harvested_item) { SolrDocument.find(harvested_item_ark_id) }
 
   before(:each) do
-    allow(helper).to receive_messages(blacklight_config: blacklight_config)
-    allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(catalog_helper_test_class))
+    # allow(helper).to receive(:blacklight_config).and_return(blacklight_config)
+    # allow(helper).to receive_messages(blacklight_config: blacklight_config)
+    # allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(catalog_helper_test_class))
   end
 
   describe 'file helpers' do
@@ -57,13 +59,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
     describe '#has_document_files?' do
       it 'returns true if the object has document files' do
-        expect(helper.has_document_files?(pdf_files_hash)).to be_truthy
-      end
-    end
-
-    describe '#has_pdf_files?' do
-      it 'returns true if the object has PDF files' do
-        expect(helper.has_pdf_files?(pdf_files_hash)).to be_truthy
+        expect(helper.has_document_files?(document_files_hash)).to be_truthy
       end
     end
 
@@ -72,6 +68,23 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
       it 'returns true if the object has E-reader files' do
         expect(helper.has_ereader_files?(files_hash)).to be_truthy
+      end
+    end
+  end
+
+  describe 'searchable text and uv methods' do
+    let(:item_ark_id) { 'bpl-dev:7s75dn48d' }
+    # let(:fulltext_document) { SolrDocument.find('bpl-dev:7s75dn48d') }
+
+    describe '#has_searchable_text?' do
+      it 'returns true if the object has searchable text' do
+        expect(helper.has_searchable_text?(document)).to be_truthy
+      end
+    end
+
+    describe '#include_uv?' do
+      it 'returns true if the universal viewer should be rendered' do
+        expect(helper.include_uv?(document, files_hash)).to be_truthy
       end
     end
   end
@@ -108,9 +121,40 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
   end
 
-  describe '#index_title_length' do
-    it 'returns the default length if no params[:view] is present' do
-      expect(helper.index_title_length).to eq(130)
+  describe '#index_institution_link' do
+    it 'renders the institution link' do
+      expect(helper.index_institution_link({ document: document })).to include('<a href="/collections/' + 'bpl-dev:abcd12345')
+    end
+  end
+
+  describe 'title helpers' do
+    describe '#show_html_title' do
+      it 'returns the document title' do
+        expect(helper.show_html_title({ document: document })).to eq 'WHATEVS'
+      end
+    end
+
+    describe '#index_title' do
+      it 'returns the title for the catalog#index view' do
+        expect(helper.index_title({ document: document })).to eq(130)
+      end
+    end
+
+    describe '#index_title_length' do
+      it 'returns the default length if no params[:view] is present' do
+        expect(helper.index_title_length).to eq(130)
+      end
+    end
+  end
+
+  describe '#index_abstract' do
+    it 'returns the truncated abstract for the catalog#index view' do
+      expect(helper.index_abstract({ value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                             sed do eiusmod tempor incididunt ut labore et dolore magna
+                                             aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                             ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                             Duis aute irure dolor in reprehenderit in voluptate velit',
+                                     document: document })).to eq(130)
     end
   end
 
@@ -195,7 +239,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
     describe '#render_pdf_viewer?' do
       it 'returns true when the item has a viewable PDF file' do
-        expect(helper.render_pdf_viewer?(pdf_files_hash)).to be_truthy
+        expect(helper.render_pdf_viewer?(document_files_hash)).to be_truthy
       end
     end
 
@@ -210,7 +254,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
 
   describe '#pdf_url_for_viewer' do
     it 'returns the URL of the PDF file in asset storage' do
-      expect(URI.parse(helper.pdf_url_for_viewer(pdf_files_hash[:document]))).to be_a_kind_of URI::HTTPS
+      expect(URI.parse(helper.pdf_url_for_viewer(document_files_hash[:document]))).to be_a_kind_of URI::HTTPS
     end
   end
 

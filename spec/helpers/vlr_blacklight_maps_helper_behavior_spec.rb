@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
+RSpec.describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
   let(:query_term) { 'Boston' }
   let(:mock_controller) { CatalogController.new }
   let(:blacklight_config) { CatalogController.blacklight_config }

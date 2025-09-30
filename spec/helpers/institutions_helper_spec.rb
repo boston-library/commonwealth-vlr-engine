@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe InstitutionsHelper do
+RSpec.describe InstitutionsHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:search_service) { Blacklight::SearchService.new(config: blacklight_config) }
   let(:institution) { SolrDocument.find('bpl-dev:abcd12345') }

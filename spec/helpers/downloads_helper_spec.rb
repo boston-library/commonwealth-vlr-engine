@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe DownloadsHelper do
+RSpec.describe DownloadsHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:downloads_helper_test_class) { DownloadsController.new }
   let(:item_ark_id) { 'bpl-dev:h702q6403' }

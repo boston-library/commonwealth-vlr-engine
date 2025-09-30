@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe OaiItemHelper do
+RSpec.describe OaiItemHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
 

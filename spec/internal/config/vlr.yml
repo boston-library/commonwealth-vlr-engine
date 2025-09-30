@@ -42,6 +42,10 @@ development:
 
 test:
   <<: *default
+  featured_items:
+    root:
+      objects:
+        - bpl-dev:00000003t
 
 staging:
   <<: *default
