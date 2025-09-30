@@ -12,7 +12,7 @@
 
   <% component.with_footer do %>
     <div id="ocr_pagination" class="bottom">
-      <%= render Blacklight::Response::PaginationComponent.new(response: @response)  if params[:ocr_q] %>
+      <%= render Blacklight::Response::PaginationComponent.new(response: @response) if params[:ocr_q].present? %>
     </div>
   <% end %>
 <% end %>

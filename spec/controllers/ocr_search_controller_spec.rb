@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe OcrSearchController do
+RSpec.describe OcrSearchController do
   render_views
 
   describe "GET 'index'" do
@@ -10,7 +10,7 @@ describe OcrSearchController do
       it 'renders the page' do
         get :index, params: { id: 'bpl-dev:7s75dn48d' }
         expect(response).to be_successful
-        expect(assigns(:document_list)).to be_empty
+        expect(assigns(:response)).to be_empty
       end
     end
 
@@ -20,7 +20,7 @@ describe OcrSearchController do
 
         it 'renders the page' do
           expect(response).to be_successful
-          expect(assigns(:document_list)).to be_empty
+          expect(assigns(:response)).to be_empty
         end
       end
 
@@ -29,7 +29,7 @@ describe OcrSearchController do
 
         it 'renders the page' do
           expect(response).to be_successful
-          expect(assigns(:document_list).length).to eq(2)
+          expect(assigns(:response).documents.length).to eq(2)
         end
 
         it 'should include highlighting in the Solr response' do
@@ -55,6 +55,10 @@ describe OcrSearchController do
       it 'adds the ocr_search_field to the index_fields config' do
         expect(ocr_field.class).to eq(Blacklight::Configuration::IndexField)
         expect(ocr_field.highlight).to eq(true)
+      end
+
+      it 'sets the correct DocumentComponent' do
+        expect(blacklight_config.index.document_component).to eq(CommonwealthVlrEngine::OcrDocumentComponent)
       end
     end
 

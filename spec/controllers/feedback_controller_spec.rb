@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe FeedbackController do
+RSpec.describe FeedbackController do
   render_views
   describe 'show' do
     describe 'GET' do

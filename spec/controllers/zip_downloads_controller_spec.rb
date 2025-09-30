@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe ZipDownloadsController, :vcr do
+RSpec.describe ZipDownloadsController, :vcr do
   render_views
 
   let(:item_id) { 'bpl-dev:h702q6403' }

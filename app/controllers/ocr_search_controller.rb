@@ -12,24 +12,20 @@ class OcrSearchController < CatalogController
 
   def index
     @document = search_service.fetch(params[:id])
-    if params[:ocr_q]
-      if params[:ocr_q].present?
-        @image_pid_list = image_file_pids(get_image_files(params[:id]))
-        ocr_search_params = { q: params[:ocr_q],
-                              f: { 'is_file_set_of_ssim' => params[:id],
-                                   blacklight_config.index.display_type_field => 'Image' } }
-        ocr_search_params[:page] = params[:page] if params[:page]
-        ocr_search_params[:sort] = params[:sort] if params[:sort]
-        # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
-        blacklight_config.default_solr_params[:fl] =
-            "id,#{blacklight_config.page_num_field},#{termfreq_query(params[:ocr_q])}"
-        ocr_search_service = search_service_class.new(config: blacklight_config,
-                                                      user_params: ocr_search_params,
-                                                      search_builder_class: CommonwealthVlrEngine::OcrSearchBuilder)
-        @response = ocr_search_service.search_results
-      else
-        @response = Blacklight::Solr::Response.new(nil, nil)
-      end
+    if params[:ocr_q].present?
+      @image_pid_list = image_file_pids(get_image_files(params[:id]))
+      ocr_search_params = { q: params[:ocr_q],
+                            f: { 'is_file_set_of_ssim' => params[:id],
+                                 blacklight_config.index.display_type_field => 'Image' } }
+      ocr_search_params[:page] = params[:page] if params[:page]
+      ocr_search_params[:sort] = params[:sort] if params[:sort]
+      # for some reason, have to set :fl here, or gets scrubbed out of ocr_search_params somehow
+      blacklight_config.default_solr_params[:fl] =
+        "id,#{blacklight_config.page_num_field},#{termfreq_query(params[:ocr_q])}"
+      ocr_search_service = search_service_class.new(config: blacklight_config,
+                                                    user_params: ocr_search_params,
+                                                    search_builder_class: CommonwealthVlrEngine::OcrSearchBuilder)
+      @response = ocr_search_service.search_results
     else
       @response = {}
     end

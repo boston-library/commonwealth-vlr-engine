@@ -9,7 +9,7 @@
   <% if params[:ocr_q] && @response.empty? %>
     <%= render 'zero_results_ocr' %>
   <% else %>
-    <% if params[:ocr_q] %>
+    <% if params[:ocr_q].present? %>
       <div id="ocr_search_details">
               <span id="ocr_search_terms">
                 <%= @response.total %> results for: <span id="ocr_search_term"><%= params[:ocr_q] %></span>

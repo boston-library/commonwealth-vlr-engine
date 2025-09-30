@@ -4,8 +4,9 @@
 class ImageViewerController < CatalogController
   # include CommonwealthVlrEngine::CatalogHelperBehavior
 
-  # TODO: Remove this?, Currently deprecated, since we are now using a multi-image Openseadragon viewer
-  #       in catalog#show view via CommonwealthVlrEngine::Media::MultiImageViewerComponent
+  # TODO: DEPRECATED, since we are now using a multi-image Openseadragon viewer
+  #       in catalog#show view via CommonwealthVlrEngine::Media::MultiImageViewerComponent,
+  #       but keep for the moment in case we need it later
   # def show
   #   @document = search_service.fetch(params[:id])
   #   @title = @document[blacklight_config.index.title_field.field]
@@ -17,8 +18,9 @@ class ImageViewerController < CatalogController
   #   end
   # end
 
-  # TODO: Remove this? Currently deprecated, since we are now embedding Universal Viewer
-  #       in catalog#show view via CommonwealthVlrEngine::Media::BookViewerComponent
+  # TODO: DEPRECATED, since we are now embedding Universal Viewer
+  #       in catalog#show view via CommonwealthVlrEngine::Media::BookViewerComponent,
+  #       but keep for the moment in case we need it later
   # def book_viewer
   #   @document = search_service.fetch(params[:id])
   #
