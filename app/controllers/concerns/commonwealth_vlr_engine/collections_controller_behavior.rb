@@ -10,7 +10,6 @@ module CommonwealthVlrEngine
       copy_blacklight_config_from(CatalogController)
 
       before_action :nav_li_active, only: [:index, :show]
-      before_action :relation_base_blacklight_config, only: [:index, :show]
       before_action :collections_index_config, only: :index
       before_action :collections_show_config, only: :show
       before_action :add_series_facet, only: :show
@@ -18,6 +17,7 @@ module CommonwealthVlrEngine
       # methods below are DEPRECATED, but possibly needed in the future
       # before_action :collapse_institution_facet, only: :index
       # before_action :collections_limit_for_facets, only: :facet
+      # before_action :relation_base_blacklight_config, only: [:index, :show]
     end
 
     def index

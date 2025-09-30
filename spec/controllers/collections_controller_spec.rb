@@ -66,6 +66,32 @@ RSpec.describe CollectionsController, :vcr do
       end
     end
 
+    describe 'collections_index_config' do
+      it 'sets the correct configuration' do
+        mock_controller.send(:collections_index_config)
+        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthVlrEngine::CollectionsSearchBuilder)
+        expect(mock_controller.blacklight_config.index.search_header_component).to eq(CommonwealthVlrEngine::CollectionsSearchHeaderComponent)
+        expect(mock_controller.blacklight_config.view.masonry.document_component).to be_falsey
+      end
+    end
+
+    describe 'collections_show_config' do
+      it 'sets the correct configuration' do
+        mock_controller.send(:collections_show_config)
+        expect(mock_controller.blacklight_config.show.metadata_component).to be_falsey
+        expect(mock_controller.blacklight_config.search_fields[:subject]).to be_falsey
+        expect(mock_controller.blacklight_config.advanced_search.enabled).to be_falsey
+      end
+    end
+
+    describe 'set_collection_facet_params' do
+      it 'sets the correct facet params' do
+        expect(mock_controller.send(:set_collection_facet_params,
+                                    'Carte de Visite Collection',
+                                    document)[blacklight_config.collection_field][0]).to eq('Carte de Visite Collection')
+      end
+    end
+
     # method is DEPRECATED, but possibly needed in the future
     # describe 'collapse_institution_facet' do
     #   it 'should collapse the institution facet' do
@@ -73,22 +99,6 @@ RSpec.describe CollectionsController, :vcr do
     #     expect(mock_controller.blacklight_config.facet_fields['physical_location_ssim'].collapse).to eq(true)
     #   end
     # end
-
-    describe 'collections_index_config' do
-      it 'sets the correct configuration' do
-        mock_controller.send(:collections_index_config)
-        expect(mock_controller.blacklight_config.search_builder_class).to eq(CommonwealthVlrEngine::CollectionsSearchBuilder)
-        expect(mock_controller.blacklight_config.index.search_header_component).to eq(CommonwealthVlrEngine::CollectionsSearchHeaderComponent)
-        expect(mock_controller.blacklight_config.view.masonry).to eq 'FOO' # TODO, this should be falsey
-      end
-    end
-
-    describe 'collections_show_config' do
-      it 'sets the correct configuration' do
-        mock_controller.send(:collections_show_config)
-        # TK
-      end
-    end
 
     # method is DEPRECATED, but possibly needed in the future
     # TODO: spec for case where request.query_parameters exist
@@ -100,29 +110,22 @@ RSpec.describe CollectionsController, :vcr do
     #   end
     # end
 
-    describe 'set_collection_facet_params' do
-      it 'sets the correct facet params' do
-        expect(mock_controller.send(:set_collection_facet_params,
-                                    'Carte de Visite Collection',
-                                    document)[blacklight_config.collection_field][0]).to eq('Carte de Visite Collection')
-      end
-    end
-
+    # method is DEPRECATED, but possibly needed in the future
     # method from CommonwealthVlrEngine::ControllerOverride
-    describe 'relation_base_blacklight_config' do
-      before(:each) { mock_controller.send(:relation_base_blacklight_config) }
-
-      it 'sets the collection_name_ssim facet :show property to false' do
-        expect(mock_controller.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy
-      end
-
-      it 'sets the collapse property to true for all displayed facets' do
-        expect(mock_controller.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
-      end
-
-      # it 'should remove the citation tool from the show tools' do
-      #   expect(mock_controller.blacklight_config.show.document_actions[:citation][:partial]).to be_falsey
-      # end
-    end
+    # describe 'relation_base_blacklight_config' do
+    #   before(:each) { mock_controller.send(:relation_base_blacklight_config) }
+    #
+    #   it 'sets the collection_name_ssim facet :show property to false' do
+    #     expect(mock_controller.blacklight_config.facet_fields['collection_name_ssim'].show).not_to be_truthy
+    #   end
+    #
+    #   it 'sets the collapse property to true for all displayed facets' do
+    #     expect(mock_controller.blacklight_config.facet_fields['subject_facet_ssim'].collapse).to be_truthy
+    #   end
+    #
+    #   it 'should remove the citation tool from the show tools' do
+    #     expect(mock_controller.blacklight_config.show.document_actions[:citation][:partial]).to be_falsey
+    #   end
+    # end
   end
 end

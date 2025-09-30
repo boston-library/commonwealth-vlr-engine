@@ -280,27 +280,27 @@ module CommonwealthVlrEngine
 
     private
 
-    # TODO: maybe not needed since no longer displaying facets on collections#show or institutions#show ?
+    # TODO: DEPRECATED since no longer displaying facets on collections#show or institutions#show,
+    #       but possibly needed in the future
     # modify BL config settings for Collections#show and Institutions#show
-    def relation_base_blacklight_config
-      # don't show collection facet
-      blacklight_config.facet_fields['collection_name_ssim'].show = false
-      blacklight_config.facet_fields['collection_name_ssim'].if = false
-      # collapse remaining facets
-      blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
-      blacklight_config.facet_fields['subject_geographic_sim'].collapse = true
-      blacklight_config.facet_fields['date_facet_yearly_itim'].collapse = true
-      blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
-      blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
-      # remove item-centric show tools (for admin)
-      # TODO: this isn't how actions are added anymore, may not need to worry about this
-      # blacklight_config.show.document_actions.delete(:sharing)
-      # blacklight_config.show.document_actions.delete(:iiif_manifest)
-      # blacklight_config.show.document_actions.delete(:bookmark)
-      # blacklight_config.show.document_actions.delete(:item_feedback)
-      # blacklight_config.show.document_actions.delete(:email)
-      # blacklight_config.show.document_actions.delete(:citation)
-    end
+    # def relation_base_blacklight_config
+    #   # don't show collection facet
+    #   blacklight_config.facet_fields['collection_name_ssim'].show = false
+    #   blacklight_config.facet_fields['collection_name_ssim'].if = false
+    #   # collapse remaining facets
+    #   blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
+    #   blacklight_config.facet_fields['subject_geographic_sim'].collapse = true
+    #   blacklight_config.facet_fields['date_facet_yearly_itim'].collapse = true
+    #   blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
+    #   blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
+    #   # remove item-centric show tools (for admin)
+    #   blacklight_config.show.document_actions.delete(:sharing)
+    #   blacklight_config.show.document_actions.delete(:iiif_manifest)
+    #   blacklight_config.show.document_actions.delete(:bookmark)
+    #   blacklight_config.show.document_actions.delete(:item_feedback)
+    #   blacklight_config.show.document_actions.delete(:email)
+    #   blacklight_config.show.document_actions.delete(:citation)
+    # end
 
     # display the social/sharing widget in catalog#show
     def render_sharing?
