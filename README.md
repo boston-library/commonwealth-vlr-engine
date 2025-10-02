@@ -54,16 +54,7 @@ After cloning the repository, and running `bundle install`, run `bundle exec rak
 
 # setup test database: rake db:test:prepare
 
-Generate the test application at `.internal_test_app`:
-```
-$ rake engine_cart:generate
-```
-
-Destroy the test application at `.internal_test_app`:
-```
-$ rake engine_cart:clean
-```
-Start Solr (run in new terminal from `.internal_test_app` home):
+Start Solr (run in a dedicated terminal window):
 ```
 # this can be run from project root or ./spec/internal
 $ solr_wrapper
@@ -76,7 +67,7 @@ Purge Solr (Solr must be running):
 ```
 $ solr_wrapper clean
 ```
-Index sample Solr docs (run from `internal_test_app`):
+Index sample Solr docs (run from `./spec/internal`):
 ```
 # Solr must be running
 $ RAILS_ENV=test bundle exec rake commonwealth_vlr_engine:test_index:seed
