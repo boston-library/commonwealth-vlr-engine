@@ -3,37 +3,39 @@
 # methods related to rendering metadata values
 module CommonwealthVlrEngine
   module MetadataHelperBehavior
+    # TODO: currently unused, probably can be removed
     # determine whether to render the 'show more' expand/collapse link in catalog#show metadata display
-    def expand_metadata_link?(document)
-      keys_to_eval = document.keys
-      keys_to_eval.delete('identifier_uri_ss')
-      return true if !keys_to_eval.grep(/note/).empty? || !keys_to_eval.grep(/identifier/).empty?
-
-      # other fields, roughly in order of how often they appear in metadata records
-      other_expand_fields = %w(lang_term_ssim pubplace_tsi publisher_tsi scale_tsim projection_tsi
-                               edition_name_tsi table_of_contents_tsi table_of_contents_url_ss
-                               related_item_constituent_tsim related_item_other_format_tsim
-                               related_item_references_ssm related_item_review_ssm related_item_isreferencedby_ssm)
-      other_expand_fields.each do |field_key|
-        return true if keys_to_eval.include? field_key
-      end
-      false
-    end
+    # def expand_metadata_link?(document)
+    #   keys_to_eval = document.keys
+    #   keys_to_eval.delete('identifier_uri_ss')
+    #   return true if !keys_to_eval.grep(/note/).empty? || !keys_to_eval.grep(/identifier/).empty?
+    #
+    #   # other fields, roughly in order of how often they appear in metadata records
+    #   other_expand_fields = %w(lang_term_ssim pubplace_tsi publisher_tsi scale_tsim projection_tsi
+    #                            edition_name_tsi table_of_contents_tsi table_of_contents_url_ss
+    #                            related_item_constituent_tsim related_item_other_format_tsim
+    #                            related_item_references_ssm related_item_review_ssm related_item_isreferencedby_ssm)
+    #   other_expand_fields.each do |field_key|
+    #     return true if keys_to_eval.include? field_key
+    #   end
+    #   false
+    # end
 
     # render the date in the catalog#index list view
     def index_date_value(options = {})
       options[:document][:date_tsim]&.first
     end
 
-    def normalize_date(date)
-      if date.length == 10
-        Date.parse(date).strftime('%B %-d, %Y')
-      elsif date.length == 7
-        Date.parse(date + '-01').strftime('%B %Y')
-      else
-        date
-      end
-    end
+    # TODO: this is probably no longer needed, dates are normalized at indexing time
+    # def normalize_date(date)
+    #   if date.length == 10
+    #     Date.parse(date).strftime('%B %-d, %Y')
+    #   elsif date.length == 7
+    #     Date.parse(date + '-01').strftime('%B %Y')
+    #   else
+    #     date
+    #   end
+    # end
 
     def date_qualifier(date_type)
       case date_type

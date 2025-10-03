@@ -43,7 +43,7 @@ module CommonwealthVlrEngine
     # return the path to the icon for objects with no thumbnail
     def render_object_icon_path(format = nil)
       icon = case format&.downcase
-             when 'still image'
+             when 'still image', 'cartographic'
                'image'
              when 'audio'
                'audio'

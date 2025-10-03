@@ -3,27 +3,34 @@
 # methods related to rendering images, thumbnails, icons, etc.
 module CommonwealthVlrEngine
   module ImagesHelperBehavior
-    NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
+    # NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
 
+    # TODO: this method is cnot currently used, but may still be needed,
+    #       for display of collections on institutions#show
     # return the image url for the collection gallery view document
     # @param document [SolrDocument] = Curator::Collection Solr document
     # @param size [String] = pixel length of square IIIF-created image
     # @return [String]
-    def collection_gallery_url(document, size)
-      exemplary_image_pid = document[:exemplary_image_ssi]
-      if exemplary_image_pid
-        if harvested_object?(document) || document['exemplary_image_iiif_bsi'] == false
-          filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
-        elsif document[:destination_site_ssim].to_s.include?('newspapers')
-          iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
-        else
-          iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
-        end
-      else
-        collection_icon_url
-      end
-    end
+    # def collection_gallery_url(document, size)
+    #   exemplary_image_pid = document[:exemplary_image_ssi]
+    #   if exemplary_image_pid
+    #     if harvested_object?(document) || document['exemplary_image_iiif_bsi'] == false
+    #       filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
+    #     elsif document[:destination_site_ssim].to_s.include?('newspapers')
+    #       iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
+    #     else
+    #       iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
+    #     end
+    #   else
+    #     collection_icon_url
+    #   end
+    # end
 
+    # return the url for the banner image (called by CommonwealthVlrEngine::BannerImageComponent)
+    # @param exemplary_document [SolrDocument] DigitalObject solr document
+    # @param target_width [Integer]
+    # @param target_height [Integer]
+    # @return [String]
     def banner_image_url(exemplary_document:, target_width: 1100, target_height: 450)
       if exemplary_document
         return banner_image_iiif_url(image_ark_id: exemplary_document[:exemplary_image_ssi],
@@ -33,12 +40,18 @@ module CommonwealthVlrEngine
         return filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss],
                                            'image_thumbnail_300') if exemplary_document[:exemplary_image_key_base_ss].present?
 
-        render_object_icon_path(exemplary_document[blacklight_config.index.display_type_field]&.downcase)
+        render_object_icon_path(exemplary_document[:type_of_resource_ssim]&.first)
       else
         render_object_icon_path('image')
       end
     end
 
+    # return the IIIF url for the banner image (called by CommonwealthVlrEngine::BannerImageComponent)
+    # @param image_ark_id [SolrDocument] Filestreams::Image solr document
+    # @param destination_site [Array]
+    # @param target_width [Integer]
+    # @param target_height [Integer]
+    # @return [String]
     def banner_image_iiif_url(image_ark_id:, destination_site: %w(commonwealth), target_width: 1100, target_height: 450)
       image_info = get_image_metadata(image_ark_id)
       output_aspect = target_width.to_f / target_height.to_f

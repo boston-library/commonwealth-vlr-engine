@@ -200,7 +200,7 @@
   date_start_dtsi:
   - '1859-01-01T00:00:00Z'
   date_tsim:
-  - [ca. 1859–1870]
+  - '[ca. 1859–1870]'
   date_edtf_ssm:
   - 1859~/1870~
   date_end_dtsi:

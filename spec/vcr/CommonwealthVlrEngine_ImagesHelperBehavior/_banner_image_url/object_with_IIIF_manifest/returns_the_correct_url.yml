@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:vx0224404/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 03 Oct 2025 18:44:40 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '905'
+      Vary:
+      - Accept, Accept-Charset, Accept-Encoding, Accept-Language, Origin
+      - Accept-Encoding
+      X-Powered-By:
+      - Cantaloupe/5.0.6
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=2592000, public, no-transform
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@context":"http://iiif.io/api/image/2/context.json","@id":"https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:vx0224404","protocol":"http://iiif.io/api/image","width":10259,"height":7208,"sizes":[{"width":160,"height":113},{"width":321,"height":225},{"width":641,"height":451},{"width":1282,"height":901},{"width":2565,"height":1802},{"width":5130,"height":3604},{"width":10259,"height":7208}],"tiles":[{"width":1024,"height":1024,"scaleFactors":[1,2,4,8,16,32,64]}],"profile":["http://iiif.io/api/image/2/level2.json",{"formats":["tif","jpg","gif","png"],"qualities":["bitonal","default","gray","color"],"supports":["regionByPx","sizeByW","sizeByWhListed","cors","regionSquare","sizeByDistortedWh","canonicalLinkHeader","sizeByConfinedWh","sizeByPct","jsonldMediaType","regionByPct","rotationArbitrary","sizeByH","baseUriRedirect","rotationBy90s","profileLinkHeader","sizeByForcedWh","sizeByWh","mirroring"]}]}'
+  recorded_at: Fri, 03 Oct 2025 18:44:40 GMT
+recorded_with: VCR 6.3.1
