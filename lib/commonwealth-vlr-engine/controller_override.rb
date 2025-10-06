@@ -28,15 +28,6 @@ module CommonwealthVlrEngine
         # allow responses >100 rows
         config.max_per_page = 500
 
-        # blacklight-maps stuff
-        # config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
-        # config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-        # config.view.maps.placename_field = 'subject_geographic_sim'
-        # config.view.maps.maxzoom = 14
-        # config.view.maps.show_initial_zoom = 12
-        # config.view.maps.facet_mode = 'geojson'
-        # config.view.maps.spatial_query_dist = 0.2
-
         # solr field configuration for search results/index views
         config.index.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
                                                                         helper_method: :index_title,

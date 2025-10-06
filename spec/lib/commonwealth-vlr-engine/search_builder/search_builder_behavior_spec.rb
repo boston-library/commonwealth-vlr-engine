@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::SearchBuilderBehavior do
+RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
   let(:blacklight_params) { Hash.new }
   let(:solr_parameters) { Blacklight::Solr::Request.new }
   let(:blacklight_config) { CatalogController.blacklight_config.deep_copy }
@@ -65,6 +65,8 @@ describe CommonwealthVlrEngine::SearchBuilderBehavior do
   end
 
   describe 'institutions_limit' do
+    before(:each) { ENV['VLR_INSTITUTION_PID'] = 'foo' }
+
     it 'adds parameters to limit to a single institution' do
       expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
     end
@@ -99,9 +101,9 @@ describe CommonwealthVlrEngine::SearchBuilderBehavior do
     end
 
     it 'adds parameters for field highlighting' do
-      expect(solr_parameters.to_s).to include('"hl"=>true')
-      expect(solr_parameters.to_s).to include('hl.fragsize')
-      expect(solr_parameters.to_s).to include("\"hl.fl\"=>\"#{blacklight_config.ocr_search_field}\"")
+      expect(solr_parameters['hl']).to be_truthy
+      expect(solr_parameters['hl.fragsize']).to be_truthy
+      expect(solr_parameters['hl.fl']).to eq(blacklight_config.ocr_search_field)
     end
   end
 end

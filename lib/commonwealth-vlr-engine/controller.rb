@@ -12,22 +12,23 @@ module CommonwealthVlrEngine
       self.search_state_class = CommonwealthVlrEngine::SearchState
     end
 
+    # TODO: remove? only used in ImageViewerController, which isn't being used for multi-image display
     # @param image_files [Array] array of SolrDocument from @object_files[:image]
     # @param current_img_pid [String]
     # @return [Hash]
-    def create_img_sequence(image_files, current_img_pid)
-      current_img_file = image_files.find { |i| i[:id] == current_img_pid }
-      img_pids = image_files.map { |i| i[:id] }
-      current_index = img_pids.index(current_img_pid) + 1
-      {
-        current: current_img_pid,
-        current_key: current_img_file[:storage_key_base_ss],
-        index: img_pids.index(current_img_pid) + 1,
-        total: image_files.length,
-        prev: current_index - 2 > -1 ? img_pids[current_index - 2] : nil,
-        next: img_pids[current_index].presence
-      }
-    end
+    # def create_img_sequence(image_files, current_img_pid)
+    #   current_img_file = image_files.find { |i| i[:id] == current_img_pid }
+    #   img_pids = image_files.map { |i| i[:id] }
+    #   current_index = img_pids.index(current_img_pid) + 1
+    #   {
+    #     current: current_img_pid,
+    #     current_key: current_img_file[:storage_key_base_ss],
+    #     index: img_pids.index(current_img_pid) + 1,
+    #     total: image_files.length,
+    #     prev: current_index - 2 > -1 ? img_pids[current_index - 2] : nil,
+    #     next: img_pids[current_index].presence
+    #   }
+    # end
 
     def not_found
       raise ActionController::RoutingError.new('Not Found')

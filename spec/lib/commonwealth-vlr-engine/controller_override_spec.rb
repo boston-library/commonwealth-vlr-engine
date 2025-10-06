@@ -15,7 +15,7 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
         expect(subject['subject_facet_ssim']).not_to be_falsey
         expect(subject['genre_basic_ssim'].class).to eq(Blacklight::Configuration::FacetField)
         expect(subject['collection_name_ssim'].label).to eq('Collection')
-        expect(subject['name_facet_ssim'].include_in_request).to be_falsey
+        expect(subject['starts_with'].include_in_request).to be_falsey
       end
     end
 
@@ -48,12 +48,6 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
       end
     end
 
-    describe 'thumbnail_method' do
-      it 'sets the thumbnail_method' do
-        expect(test_config.index.thumbnail_method).to eq(:create_thumb_img_element)
-      end
-    end
-
     describe 'commonwealth config fields' do
       it 'sets the fields for pseudo classes' do
         expect(test_config.collection_field).to eq('collection_name_ssim')
@@ -70,6 +64,29 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
       it 'sets the fields for sorting' do
         expect(test_config.date_asc_sort).to be_truthy
         expect(test_config.title_sort).to be_truthy
+      end
+    end
+
+    describe 'index config settings' do
+      it 'sets the thumbnail_method' do
+        expect(test_config.index.thumbnail_method).to eq(:create_thumb_img_element)
+      end
+
+      it 'sets the fields' do
+        expect(test_config.index.title_field.field).to eq('title_info_primary_tsi')
+        expect(test_config.index.display_type_field).to eq('curator_model_suffix_ssi')
+      end
+    end
+
+    describe 'show config settings' do
+      it 'sets the components' do
+        expect(test_config.show.document_component).to eq(CommonwealthVlrEngine::DocumentComponent)
+        expect(test_config.show.document_header_component).to eq(CommonwealthVlrEngine::Document::PageHeaderComponent)
+      end
+
+      it 'sets the fields' do
+        expect(test_config.show.title_field.helper_method).to eq(:show_html_title)
+        expect(test_config.show.display_type_field).to eq('curator_model_suffix_ssi')
       end
     end
 
@@ -94,9 +111,9 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
     end
 
     # remove the instance variables so they don't mess up other specs
-    after(:each) do
-      mock_controller.remove_instance_variable(:@document)
-    end
+    # after(:each) do
+    #   mock_controller.remove_instance_variable(:@document)
+    # end
 
     it 'returns the correct boolean value' do
       expect(mock_controller.send(:render_manifest_link?)).to be_truthy
@@ -109,11 +126,18 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
     end
   end
 
+  describe '#render_item_feedback??' do
+    it 'returns the correct boolean value' do
+      expect(mock_controller.send(:render_item_feedback?)).to be_truthy
+    end
+  end
+
+
   describe 'has_search_parameters?' do
     before(:each) { mock_controller.params = { mlt_id: 'bpl-dev:h702q6403' } }
 
     it 'returns true if mlt params are present' do
-      expect(mock_controller.has_search_parameters?).to be_truthy
+      expect(mock_controller.send(:has_search_parameters?)).to be_truthy
     end
   end
 end
