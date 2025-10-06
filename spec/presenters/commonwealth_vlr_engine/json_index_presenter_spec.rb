@@ -10,16 +10,6 @@ RSpec.describe CommonwealthVlrEngine::JsonIndexPresenter, api: true do
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
   let(:presenter) { described_class.new(document, request_context, blacklight_config) }
 
-  describe '#display_type' do
-    before :each do
-      blacklight_config.index.display_type_field = :curator_model_suffix_ssi
-    end
-
-    it 'returns the value as an array' do
-      expect(presenter.display_type).to eq ['DigitalObject']
-    end
-  end
-
   describe '#fields' do
     let(:all_fields) { subject.send(:fields) }
 

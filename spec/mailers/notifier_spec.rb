@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe CommonwealthVlrEngine::Notifier do
+RSpec.describe CommonwealthVlrEngine::Notifier do
   describe 'feedback' do
     let(:email_params) do
       { name: 'Testy McGee', email: 'testy@example.com', topic: 'image reproduction',
