@@ -4,9 +4,9 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
 # have to set here, ENV['SOLR_URL'] not set by Dotenv before Rspec loads Curator::Engine
-ENV['SOLR_URL'] = File.read(
-  File.expand_path('internal/.env.test', __dir__)
-).match(/SOLR_URL=[\w:\/\.]*/).to_s.split('SOLR_URL=').last if ENV['RAILS_ENV'] == 'test'
+# ENV['SOLR_URL'] = File.read(
+#   File.expand_path('internal/.env.test', __dir__)
+# ).match(/SOLR_URL=[\w:\/\.]*/).to_s.split('SOLR_URL=').last if ENV['RAILS_ENV'] == 'test'
 
 require File.expand_path('./internal/config/environment', __dir__)
 
@@ -73,6 +73,12 @@ end
 Capybara.javascript_driver = :selenium_chrome_headless_billy
 Capybara.default_max_wait_time = 5
 
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+# Blacklight, again, make sure we're looking in the right place for em.
+# Relative to HERE, NOT to Rails.root, which is off somewhere else.
+Dir[Pathname.new(File.expand_path('support/**/*.rb', __dir__))].each { |f| require f }
+
 RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -100,4 +106,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponentTestHelpers, type: :component
 end
