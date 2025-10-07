@@ -3,24 +3,12 @@
 require 'rails_helper'
 require 'rake'
 
-describe 'vlr_engine namespace rake tasks' do
-  time = Time.now.to_f
+# this file was used to test a task: vlr_engine:create_geojson
+# to create a static GeoJSON file using Blacklight::Maps
+# keep as a placeholder until that gem is updated
+RSpec.describe 'vlr_engine namespace rake tasks' do
   before :all do
     Rake.application.rake_require '../tasks/vlr_engine'
     Rake::Task.define_task(:environment)
-  end
-
-  describe 'vlr_engine:create_geojson' do
-    let(:run_rake_task) do
-      Rake::Task['vlr_engine:create_geojson'].reenable
-      Rake.application.invoke_task 'vlr_engine:create_geojson'
-    end
-    let(:file_path) { "#{Rails.root}/#{CommonwealthVlrEngine.config[:geojson_static_filepath]}" }
-
-    it 'creates the geojson file' do
-      run_rake_task
-      expect(File.file?(file_path)).not_to be_nil
-      expect(File.stat(file_path).mtime.to_f).to be > time
-    end
   end
 end

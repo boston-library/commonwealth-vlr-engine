@@ -3,12 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe CommonwealthVlrEngine::JsonIndexPresenter, api: true do
-  subject { presenter }
+  subject { described_class.new(document, request_context, blacklight_config) }
 
   let(:request_context) { double(document_index_view_type: 'list') }
   let(:blacklight_config) { Blacklight::Configuration.new }
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
-  let(:presenter) { described_class.new(document, request_context, blacklight_config) }
 
   describe '#fields' do
     let(:all_fields) { subject.send(:fields) }
