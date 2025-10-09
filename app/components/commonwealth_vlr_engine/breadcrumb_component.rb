@@ -4,6 +4,7 @@ module CommonwealthVlrEngine
   class BreadcrumbComponent < Blacklight::Component
     def initialize(document: nil, link_class: nil)
       @document = document
+      @link_class = link_class
     end
 
     attr_reader :document, :link_class
