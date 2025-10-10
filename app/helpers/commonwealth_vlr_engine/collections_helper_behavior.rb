@@ -14,7 +14,6 @@ module CommonwealthVlrEngine
     end
 
     def hosted_collection_class(document)
-      puts "DOCUMENT = #{document}"
       harvested_object?(document) ? 'harvested-collection' : 'hosted-collection'
     end
   end

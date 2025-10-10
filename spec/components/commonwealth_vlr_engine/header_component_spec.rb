@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe CommonwealthVlrEngine::HeaderComponent, type: :component do
   before do
     with_controller_class(CatalogController) do

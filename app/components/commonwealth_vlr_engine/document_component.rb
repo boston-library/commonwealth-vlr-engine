@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# only called from catalog#show, though Blacklight::DocumentComponent is used in both #index and #show
+# only rendered in catalog#show (Blacklight::DocumentComponent is rendered in catalog#index)
 module CommonwealthVlrEngine
   class DocumentComponent < Blacklight::DocumentComponent
     def initialize(document: nil, presenter: nil, partials: nil,
@@ -29,7 +29,7 @@ module CommonwealthVlrEngine
     end
 
     renders_one :explore_collection, -> do
-      CommonwealthVlrEngine::ExploreRelationBaseComponent.new(parent_document: @document)
+      CommonwealthVlrEngine::ParentPreviewComponent.new(document: @document)
     end
 
     renders_one :more_like_this, -> do
@@ -37,7 +37,7 @@ module CommonwealthVlrEngine
     end
 
     renders_one :facet_more, -> do
-      CommonwealthVlrEngine::FacetMoreComponent.new(parent_document: @document)
+      CommonwealthVlrEngine::FacetMoreComponent.new(document: @document)
     end
 
     # Hack so that the default lambdas are triggered

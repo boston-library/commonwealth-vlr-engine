@@ -3,11 +3,6 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
-# have to set here, ENV['SOLR_URL'] not set by Dotenv before Rspec loads Curator::Engine
-# ENV['SOLR_URL'] = File.read(
-#   File.expand_path('internal/.env.test', __dir__)
-# ).match(/SOLR_URL=[\w:\/\.]*/).to_s.split('SOLR_URL=').last if ENV['RAILS_ENV'] == 'test'
-
 require File.expand_path('./internal/config/environment', __dir__)
 
 # Prevent database truncation if the environment is production

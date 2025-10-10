@@ -4,11 +4,11 @@
 # either randomly derived from SolrDocument or Blacklight::Solr::Response, or provided as an arg.
 module CommonwealthVlrEngine
   class FacetMoreComponent < ViewComponent::Base
-    attr_reader :parent_document, :response, :subject_fields, :subject_term, :item_count, :term_to_explore
+    attr_reader :document, :response, :subject_fields, :subject_term, :item_count, :term_to_explore
 
-    def initialize(parent_document: {}, response: nil, subject_fields: %w[subject_facet_ssim subject_geographic_sim],
+    def initialize(document: {}, response: nil, subject_fields: %w[subject_facet_ssim subject_geographic_sim],
                    subject_term: nil, item_count: 4)
-      @parent_document = parent_document
+      @document = document
       @response = response
       @subject_fields = subject_fields
       @subject_term = subject_term
@@ -26,10 +26,10 @@ module CommonwealthVlrEngine
     def term_data
       t_data = { field_name: @subject_fields.first, value: @subject_term }
       @subject_fields.each do |sf|
-        next if t_data[:value] || (parent_document[sf].blank? && response&.aggregations&.dig(sf)&.items.blank?)
+        next if t_data[:value] || (document[sf].blank? && response&.aggregations&.dig(sf)&.items.blank?)
 
         t_data = { field_name: sf,
-                      value: (parent_document[sf] ||
+                      value: (document[sf] ||
                               response&.aggregations&.dig(sf)&.items&.map(&:value))[0..2].sample }
       end
       t_data
@@ -64,7 +64,8 @@ module CommonwealthVlrEngine
     end
 
     def render?
-      subject_fields.any? { |sf| parent_document[sf].present? || response&.aggregations&.dig(sf)&.items.present? }
+      (subject_fields.any? { |sf| document[sf].present? || response&.aggregations&.dig(sf)&.items.present? }) ||
+        subject_term.present?
     end
   end
 end
