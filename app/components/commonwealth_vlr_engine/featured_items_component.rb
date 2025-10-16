@@ -4,6 +4,8 @@ module CommonwealthVlrEngine
   class FeaturedItemsComponent < ViewComponent::Base
     attr_reader :featured_documents, :parent_document
 
+    # @param featured_documents [Array] of SolrDocument objects
+    # @param parent_document [SolrDocument] object where the featured items are being displayed
     def initialize(featured_documents: [], parent_document: nil)
       @featured_documents = featured_documents
       @parent_document = parent_document
