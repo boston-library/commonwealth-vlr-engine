@@ -2969,3 +2969,48 @@
     - 0
   timestamp:
     - '2023-09-21T20:18:01.149Z'
+- system_create_dtsi:
+    - '2025-09-01T16:19:55Z'
+  system_modified_dtsi:
+    - '2025-09-01T19:04:09Z'
+  curator_model_ssi:
+    - Curator::Collection
+  id:
+    - bpl-dev:xs55mc046
+  read_access_group_ssim:
+    - public
+  edit_access_group_ssim:
+    - superuser
+    - admin[bpl-dev:abcd12345]
+  curator_model_suffix_ssi:
+    - Collection
+  title_info_primary_tsi:
+    - Books from the Boston Public Library
+  title_info_primary_ssort:
+    - Books from the Boston Public Library
+  publishing_state_ssi:
+    - published
+  abstract_tsi:
+    - Mollit biodiesel dolor chillwave, reprehenderit aute disrupt sint incididunt ut yuccie. Ullamco veniam irure iceland swag sartorial.
+  physical_location_ssim:
+    - Boston Public Library
+  physical_location_tim:
+    - Boston Public Library
+  institution_name_ssi:
+    - Boston Public Library
+  institution_name_ti:
+    - Boston Public Library
+  genre_basic_ssim:
+    - Collections
+    - Books
+  institution_ark_id_ssi:
+    - bpl-dev:abcd12345
+  destination_site_ssim:
+    - commonwealth
+    - bpl
+  harvesting_status_bsi:
+    - true
+  hosting_status_ssi:
+    - hosted
+  timestamp:
+    - '2025-09-01T20:38:10.637Z'

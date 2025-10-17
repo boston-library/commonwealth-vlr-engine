@@ -1,6 +1,7 @@
 <% # based on Blacklight app/views/catalog/_document_list.html.erb -%>
 <% view_config = blacklight_config&.view_config(document_index_view_type) %>
 <div id="ocr_search_results">
+  <%= "DOCUMENT = #{@response.documents.first.inspect}" %>
   <% document_presenters = @response.documents.map { |doc| document_presenter(doc) } -%>
   <%= render view_config.document_component.with_collection(document_presenters,
                                                             image_pid_list: @image_pid_list,
