@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# there's a lof of setup here and code copied from OcrSearchController
+# there's a lot of setup here, and code copied from OcrSearchController,
 # but to test rendering of term_freq and snippets
 # we need an actual search response from Solr, can't just use a single document
 RSpec.describe CommonwealthVlrEngine::OcrDocumentComponent, type: :component do

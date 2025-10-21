@@ -12,7 +12,6 @@ module CommonwealthVlrEngine
       before_action :nav_li_active, only: [:index, :show]
       before_action :collections_index_config, only: :index
       before_action :collections_show_config, only: :show
-      before_action :add_series_facet, only: :show
 
       # methods below are DEPRECATED, but possibly needed in the future
       # before_action :collapse_institution_facet, only: :index
@@ -73,11 +72,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # add series facet for collections#show
-    def add_series_facet
-      blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
-    end
-
     # find only collection objects
     def collections_index_config
       blacklight_config.search_builder_class = CommonwealthVlrEngine::CollectionsSearchBuilder
@@ -95,6 +89,7 @@ module CommonwealthVlrEngine
       blacklight_config.search_fields.delete(:place)
       blacklight_config.search_fields.delete(:creator)
       blacklight_config.advanced_search.enabled = false
+      blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
     end
 
     # set the correct facet params for facets from the collection
