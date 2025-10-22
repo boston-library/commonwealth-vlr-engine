@@ -38,6 +38,8 @@ module CommonwealthVlrEngine
 
     # determine if the item has text content that can be searched
     def has_searchable_text?(document)
+      return if document.blank?
+
       document['has_searchable_pages_bsi']
     end
 

@@ -25,6 +25,9 @@ en:
     breadcrumb:
       separator: ' > '
 
+    citation:
+      wikipedia: 'Wikipedia'
+
     collections:
       browse:
         all: 'View All Items'

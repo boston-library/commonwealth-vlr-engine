@@ -293,19 +293,19 @@ module CommonwealthVlrEngine
     #   blacklight_config.show.document_actions.delete(:citation)
     # end
 
-    # display the social/sharing widget in catalog#show
+    # display the social/sharing widget in catalog#show tools
     def render_sharing?
-      true
+      true if @document.present?
     end
 
-    # show the IIIF manifest link in tools
+    # show the IIIF manifest link in catalog#show tools
     def render_manifest_link?
       @document.present? && @document[:identifier_iiif_manifest_ss].present?
     end
 
-    # show the item feedback link in tools
+    # show the item feedback link in catalog#show tools
     def render_item_feedback?
-      true
+      true if @document.present?
     end
 
     # override Blacklight::Catalog#render_sms_action?

@@ -3,6 +3,8 @@
 module CommonwealthVlrEngine
   module DownloadsHelperBehavior
     def has_downloadable_files?(document, files_hash)
+      return if document.blank?
+
       !harvested_object?(document) && license_allows_download?(document) &&
       (has_image_files?(files_hash) || has_video_files?(files_hash) || has_audio_files?(files_hash) ||
        has_document_files?(files_hash) || has_ereader_files?(files_hash))
