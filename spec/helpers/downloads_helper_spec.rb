@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# TODO: remove unused specs (move to DownloadsComponent spec)
 RSpec.describe DownloadsHelper do
   let(:blacklight_config) { CatalogController.blacklight_config }
   let(:mock_controller) { DownloadsController.new }
@@ -20,9 +19,7 @@ RSpec.describe DownloadsHelper do
     fh
   end
   let(:object_profile) { JSON.parse(files_hash[:image].first['attachments_ss']) }
-  # let(:download_links) { helper.create_download_links(document, files_hash) }
   let(:image_filestreams) do
-    # helper.image_filestreams(object_profile)
     downloads_component = CommonwealthVlrEngine::Document::DownloadsComponent.new(document: document,
                                                                                   object_files: files_hash)
     downloads_component.image_filestreams(object_profile)
@@ -33,26 +30,6 @@ RSpec.describe DownloadsHelper do
       allow(helper).to receive_messages(blacklight_config: blacklight_config)
     end
   end
-
-  # describe '#create_download_links' do
-  #   it 'returns an array of links' do
-  #     puts "DOWNLOAD LINKS = #{download_links}"
-  #     expect(download_links.length).to eq(5)
-  #     expect(download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
-  #   end
-  # end
-
-  # describe '#download_link_class' do
-  #   it 'returns a string' do
-  #     expect(helper.download_link_class.class).to eq(String)
-  #   end
-  # end
-
-  # describe '#download_link_options' do
-  #   it 'returns a Hash of link options' do
-  #     expect(helper.download_link_options[:class]).to be_truthy
-  #   end
-  # end
 
   describe '#has_downloadable_files?' do
     it 'returns true if there are documents, audio, or generic files' do
@@ -79,65 +56,11 @@ RSpec.describe DownloadsHelper do
     end
   end
 
-  # describe '#image_filestreams' do
-  #   it 'returns an array of image datastream ids' do
-  #     expect(image_filestreams_output.class).to eq(Array)
-  #     expect(image_filestreams_output[0]).to eq('image_primary')
-  #   end
-  # end
-
-  # describe '#image_download_links' do
-  #   let(:image_download_links) { helper.image_download_links(document, files_hash[:image]) }
-  #
-  #   it 'returns an array of links' do
-  #     expect(image_download_links.length).to eq(3)
-  #     expect(image_download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
-  #   end
-  # end
-
-  # describe '#video_download_links' do
-  #   let(:video_download_links) { helper.video_download_links(document, files_hash[:video]) }
-  #
-  #   it 'returns an array of links' do
-  #     expect(video_download_links.length).to eq(1)
-  #     expect(video_download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
-  #   end
-  # end
-
-  # describe '#other_download_links' do
-  #   let(:other_download_links) { helper.other_download_links(document, files_hash) }
-  #
-  #   it 'returns an array of links' do
-  #     expect(other_download_links.length).to eq(1)
-  #     expect(other_download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
-  #   end
-  # end
-
   describe '#license_allows_download?' do
     it 'returns true if the license allows download' do
       expect(helper.license_allows_download?(document)).to be_truthy
     end
   end
-
-  # describe '#file_download_link' do
-  #   let(:file_download_link_output) do
-  #     helper.file_download_link(image_ark_id, 'foo', object_profile, image_filestreams_output[0])
-  #   end
-  #
-  #   it 'returns a link' do
-  #     expect(file_download_link_output.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
-  #   end
-  #
-  #   it 'should link to the downloads controller show action with the correct datastream param' do
-  #     expect(file_download_link_output).to include(download_path(image_ark_id, filestream_id: image_filestreams_output[0]))
-  #   end
-  #
-  #   it 'should include a <span> with the file type and size' do
-  #     expect(file_download_link_output).to include('<span')
-  #     expect(file_download_link_output).to include('TIF')
-  #     expect(file_download_link_output).to include('230 MB')
-  #   end
-  # end
 
   describe '#file_type_string' do
     it 'returns the correct file type' do
@@ -158,20 +81,6 @@ RSpec.describe DownloadsHelper do
       expect(helper.public_domain?(document)).to be_truthy
     end
   end
-
-  # describe '#setup_zip_object_profile' do
-  #   let(:zip_object_profile) { helper.setup_zip_attachments(files_hash[:image], image_filestreams_output[0]) }
-  #
-  #   it 'returns a hash with the right structure' do
-  #     expect(zip_object_profile['zip']).to be_truthy
-  #     expect(zip_object_profile[image_filestreams_output[0]]['byte_size']).to be_truthy
-  #   end
-  #
-  #   # should be greater than 10.5 MB
-  #   it 'should estimate the zip size' do
-  #     expect(zip_object_profile[image_filestreams_output[0]]['byte_size'] > 11_010_048).to be_truthy
-  #   end
-  # end
 
   describe '#url_for_download' do
     it 'returns the correct link path for a single-file item' do
