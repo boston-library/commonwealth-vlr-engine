@@ -12,8 +12,8 @@ module CommonwealthVlrEngine
 
       IMAGE_VIEWER_LIMIT = 7
 
-      renders_one :single_image_viewer, -> do
-        CommonwealthVlrEngine::Media::SingleImageViewerComponent.new(document: document, object_files: object_files)
+      renders_one :image_viewer, -> do
+        CommonwealthVlrEngine::Media::ImageViewerComponent.new(document: document, object_files: object_files)
       end
 
       renders_one :multi_image_viewer, -> do
@@ -46,7 +46,7 @@ module CommonwealthVlrEngine
       # Hack so that the default lambdas are triggered
       # so that we don't have to do c.with_top_bar() in the call.
       def before_render
-        set_slot(:single_image_viewer, nil)
+        set_slot(:image_viewer, nil)
         set_slot(:multi_image_viewer, nil)
         set_slot(:book_viewer, nil)
         set_slot(:pdf_viewer, nil)

@@ -8,7 +8,6 @@ RSpec.describe CommonwealthVlrEngine::Document::HarvestedItemComponent, type: :c
 
   it 'renders the component' do
     render_inline(described_class.new(document: document))
-    puts "RENDERE: #{rendered_content}"
 
     expect(page).to have_css('#harvested_item_show_container')
     expect(page).to have_link(class: 'view_oai_item', href: 'https://hdl.handle.net/1912/66764')

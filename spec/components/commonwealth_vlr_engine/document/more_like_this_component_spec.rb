@@ -7,12 +7,14 @@ RSpec.describe CommonwealthVlrEngine::Document::MoreLikeThisComponent, type: :co
     component.render_in(view_context)
   end
 
-  let(:mlt_documents) { [SolrDocument.find('bpl-dev:00000003t'), SolrDocument.find('bpl-dev:00000007x')] }
-  # TODO: figure out how to mock response with documents
+  let(:item_pid) { 'bpl-dev:00000007x' }
   let(:mlt_response) do
-    Blacklight::Solr::Response.new({ response: { documents: mlt_documents } }.with_indifferent_access, {})
+    mlt_search_service = Blacklight::SearchService.new(config: blacklight_config,
+                                                       user_params: { mlt_id: item_pid, rows: 4 },
+                                                       search_builder_class: CommonwealthVlrEngine::MltSearchBuilder)
+    mlt_search_service.search_results
   end
-  let(:component) { described_class.new(document: SolrDocument.find('bpl-dev:h702q6403'), mlt_response: mlt_response) }
+  let(:component) { described_class.new(document: SolrDocument.find(item_pid), mlt_response: mlt_response) }
   let(:rendered) { Capybara::Node::Simple.new(render) }
   let(:view_context) { controller.view_context }
   let(:blacklight_config) do

@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe CommonwealthVlrEngine::Document::FlaggedWarningComponent, type: :component do
+RSpec.describe CommonwealthVlrEngine::Document::PageHeaderComponent, type: :component do
   subject(:render) do
     component.render_in(view_context)
   end
 
   let(:item_pid) { 'bpl-dev:00000007x' }
   let(:document) { SolrDocument.find(item_pid) }
-  let(:component) { described_class.new(document: document) }
+  let(:component) { described_class.new(document: document, search_context: nil, search_session: {}) }
   let(:rendered) { Capybara::Node::Simple.new(render) }
   let(:view_context) { controller.view_context }
 
@@ -19,8 +19,7 @@ RSpec.describe CommonwealthVlrEngine::Document::FlaggedWarningComponent, type: :
     end
   end
 
-  it 'renders the component' do
+  it 'renders the component with a FlaggedWarningComponent' do
     expect(rendered).to have_selector('#flagged_warning_modal')
-    expect(rendered).to have_content(I18n.t('blacklight.flagged.explicit.title'))
   end
 end

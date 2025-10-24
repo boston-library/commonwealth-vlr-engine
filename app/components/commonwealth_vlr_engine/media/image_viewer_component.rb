@@ -2,7 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class SingleImageViewerComponent < ViewComponent::Base
+    class ImageViewerComponent < ViewComponent::Base
       def initialize(document:, object_files:)
         @document = document
         @object_files = object_files

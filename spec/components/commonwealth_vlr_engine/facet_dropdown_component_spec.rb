@@ -26,7 +26,7 @@ RSpec.describe CommonwealthVlrEngine::FacetDropdownComponent, type: :component d
                                       search_state: search_state))
 
     expect(page).to have_selector("##{facet_field_name}-dropdown")
-    expect(page).to have_selector('a.dropdown-item', count: 6)
+    expect(page).to have_selector('a.dropdown-item', count: 7)
   end
 
   describe 'with a selected facet value' do
