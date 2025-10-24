@@ -1,0 +1,41 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/chunk-L67DAW3A.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 24 Oct 2025 21:00:45 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 993c67c7cede4cf6-BOS
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: 4.2.0
+  x-jsd-version-type: version
+  etag: W/"37e-spAHXPtPoGhjEoE9Y++n1PlKLt8"
+  x-served-by: cache-fra-etou8220188-FRA, cache-iad-kiad7000121-IAD
+  x-cache: HIT, MISS
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  cf-cache-status: MISS
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=3EsKkhy9qmkQCJX%2BpYXxBYTKkGQnrXPbeLrxy8XB2zGa9GHUh9qQan6yx4IrRwklqRJAQp68JUgkS%2BBMyX8XClDWagMtgtC7fb7wvoXzhDy%2BdFtHqIkJm%2B%2FyKwkZXLo3Lxs%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: 'var g=Object.create;var f=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var
+  i=Object.getOwnPropertyNames;var j=Object.getPrototypeOf,k=Object.prototype.hasOwnProperty;var
+  m=(a=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(a,{get:(b,c)=>(typeof
+  require<"u"?require:b)[c]}):a)(function(a){if(typeof require<"u")return require.apply(this,arguments);throw
+  Error(''Dynamic require of "''+a+''" is not supported'')}),n=a=>b=>{var c=a[b];if(c)return
+  c();throw new Error("Module not found in bundle: "+b)};var o=(a,b)=>()=>(b||a((b={exports:{}}).exports,b),b.exports);var
+  l=(a,b,c,e)=>{if(b&&typeof b=="object"||typeof b=="function")for(let d of i(b))!k.call(a,d)&&d!==c&&f(a,d,{get:()=>b[d],enumerable:!(e=h(b,d))||e.enumerable});return
+  a};var p=(a,b,c)=>(c=a!=null?g(j(a)):{},l(b||!a||!a.__esModule?f(c,"default",{value:a,enumerable:!0}):c,a));export{m
+  as a,n as b,o as c,p as d};
+
+  '

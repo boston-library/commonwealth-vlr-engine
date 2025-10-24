@@ -1,0 +1,39 @@
+---
+:scope:
+:url: https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&laf=b64bin&json=standard
+:body: " "
+:status: 200
+:method: post
+:headers:
+  Content-Type: application/binary
+  Vary: Origin
+  Access-Control-Allow-Origin: https://www.google.com
+  Access-Control-Allow-Credentials: 'true'
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Fri, 24 Oct 2025 21:00:42 GMT
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*,
+    ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
+  Content-Security-Policy:
+  - require-trusted-types-for 'script';report-uri /_/IdentityListAccountsHttp/cspreport
+  - script-src 'report-sample' 'nonce-RxhPj7OZPXlen3mVzNYYkA' 'unsafe-inline';object-src
+    'none';base-uri 'self';report-uri /_/IdentityListAccountsHttp/cspreport;worker-src
+    'self'
+  - 'script-src ''unsafe-inline'' ''unsafe-eval'' blob: data: ''self'' https://apis.google.com
+    https://ssl.gstatic.com https://www.google.com https://www.googletagmanager.com
+    https://www.gstatic.com https://www.google-analytics.com;report-uri /_/IdentityListAccountsHttp/cspreport/allowlist'
+  - 'script-src ''unsafe-inline'' ''unsafe-eval'' blob: data:;report-uri /_/IdentityListAccountsHttp/cspreport/fine-allowlist'
+  Accept-CH: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+    Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform,
+    Sec-CH-UA-Platform-Version
+  Cross-Origin-Opener-Policy: same-origin
+  reporting-endpoints: default="/_/IdentityListAccountsHttp/web-reports?context=eJzjEtHikmLw0JBiOHxtB5Meyy0mIyAW4uH4dfH9cTaBHcc2H2JW0k3KL4zPTEnNK8ksqczJLC5JTE7OL80rKS5OLSpLLYo3MjAyNTQwtNQzsIgvMAAAkzkcsg"
+  Server: ESF
+  Content-Length: '0'
+  X-XSS-Protection: '0'
+  X-Content-Type-Options: nosniff
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Connection: close
+:content: ''

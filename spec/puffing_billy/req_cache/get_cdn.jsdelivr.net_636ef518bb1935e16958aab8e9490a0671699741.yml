@@ -1,0 +1,267 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/gh/boston-library/commonwealth-vlr-engine@blacklight-8/app/assets/builds/commonwealth-vlr-engine.css
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 24 Oct 2025 21:00:47 GMT
+  Content-Type: text/css; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 993c67c22e53c32b-EWR
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=604800, s-maxage=43200
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: blacklight-8
+  x-jsd-version-type: branch
+  etag: W/"189b-g+KF7o8DUdIciLyavNTz3y4ULXU"
+  Age: '0'
+  x-served-by: cache-fra-eddf8230031-FRA, cache-lga21975-LGA
+  x-cache: HIT, HIT
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  cf-cache-status: MISS
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=2I3FeF7pOmF%2BmaVXQBqh6X%2FDDrBwvLFfkMHIsV2Pm4aQogu%2FHSU%2FjmRWTLzJuk3LUpW1vK%2FJ1CfhU7PMJXKiWoDXoJu3u1ax%2BuElwPNuv7lm9Y6N0mV7fOGzPRbKZd42fss%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: |
+  /* compiled CSS from app/assets/stylesheets/commonwealth-vlr-engine */
+  /* compiled 2025-08-01T13:11:00Z */
+
+  /* styles for collections views */
+  /* collections#index */
+  .collections-list #az_links {
+      margin-bottom: 10px;
+  }
+  .collections-list #sortAndPerPage {
+      /* don't display sort widget */
+  }
+  .collections-list #sortAndPerPage #sort-dropdown {
+      display: none;
+  }
+  .collections-list #documents {
+      margin-bottom: 30px;
+  }
+  /* collections#show */
+  /* styles for download popup modal */
+  #downloads_terms {
+      padding-bottom: 10px;
+  }
+  #downloads_terms li {
+      padding-top: 10px;
+  }
+
+  /* styles for app/views/shared/footer */
+  #footer {
+      margin-top: 20px;
+  }
+  #footer #footer_logo #footer_logo_link {
+      background: transparent url("commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
+      display: inline-block;
+      height: 75px;
+      overflow: hidden;
+      text-indent: -200%;
+  }
+
+  /* styles for views/shared/header_navbar */
+  nav.topbar .navbar-logo {
+      background: transparent url("commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
+      height: 74px;
+      width: 200px;
+  }
+
+  /* styles for institution views */
+  /* institutions index view (see shared.css for static-navbar) */
+  div.institutions-list #az_links {
+      margin-bottom: 10px;
+  }
+  div.institutions-list #sortAndPerPage {
+      /* don't display sort widget */
+  }
+  div.institutions-list #sortAndPerPage #sort-dropdown {
+      display: none;
+  }
+  div.institutions-list #documents {
+      margin-bottom: 30px;
+  }
+  div.institutions-list #documents .blacklight-institution .document-metadata {
+      display: none;
+  }
+
+  /* institutions show view */
+  #modal-transition {
+      border-radius: var(--bs-border-radius-lg);
+      background-color: rgba(0, 0, 0, 0.1);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 5;
+  }
+  #modal-transition #modal-transition-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+  }
+
+  /* styles for catalog#show view */
+  .show-document #img_show_container {
+      text-align: center;
+      margin-bottom: 1em;
+  }
+  .show-document #img_show_container #img_show_canvas {
+      display: inline-block;
+      position: relative;
+      max-width: 100%;
+      background-color: black;
+      padding: 10px;
+  }
+  .show-document #img_show_container #img_show_canvas #img_show_zoom_cue {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: white;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 14px -4px #000000;
+  }
+  .show-document #img_show_container #img_show_canvas #img_show_zoom_cue .img_zoom_icon {
+      font-size: 32px;
+  }
+  .show-document #img_show_container #img_show_canvas .img_show {
+      border: 1px solid lightgrey;
+      width: auto;
+      max-width: 100%;
+      max-height: 600px;
+  }
+  .show-document #img_viewer_modal .modal-dialog {
+      max-width: 98%;
+      margin: 10px auto;
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content .modal-header {
+      border-bottom: 0;
+      padding: 3px 10px;
+      text-align: left;
+      height: 29px;
+      overflow: hidden;
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content .modal-header .modal-title {
+      font-weight: bold;
+      width: 95%;
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content #img_viewer_osd {
+      background-color: black;
+      margin: 0 5px;
+      padding: 0;
+      border: 1px solid gray;
+      /* OSd navigator */
+      /* OSd controls */
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content #img_viewer_osd .openseadragon-container > div.openseadragon-canvas + div + div {
+      right: 3px !important;
+      top: 3px !important;
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content #img_viewer_osd .openseadragon-container > div.openseadragon-canvas + div + div + div {
+      right: 3px !important;
+      padding: 1px 1px 0 !important;
+      border-radius: 5px 5px 0 0;
+      background: rgb(17, 17, 17) !important; /* fallback for browsers w/o RGBa support */
+      background: rgba(17, 17, 17, 0.4) !important;
+  }
+  .show-document #img_viewer_modal .modal-dialog .modal-content .modal-footer {
+      border-top: 0;
+      padding: 2px;
+  }
+  .show-document #multi_img_show_container {
+      margin-bottom: 1em;
+  }
+  .show-document #multi_img_show_container #multi_img_viewer_osd {
+      background-color: black;
+      height: 500px;
+  }
+  .show-document #uv_container {
+      flex: 1;
+      overflow: hidden;
+      height: 500px;
+      margin-bottom: 1em;
+  }
+  .show-document #uv_container #uv {
+      height: 100%;
+  }
+  .show-document #uv_container #uv .centerPanel .title {
+      display: none !important;
+  }
+  .show-document #uv_container #uv .centerPanel .content .attribution {
+      display: none !important;
+  }
+  .show-document #pdf_show_container {
+      text-align: center;
+      margin-bottom: 2em;
+      margin-top: 2em;
+  }
+  .show-document #pdf_show_container #pdf_show_canvas {
+      max-width: 100%;
+  }
+  .show-document #pdf_show_container #pdf_show_canvas #pdf_viewer {
+      width: 90%;
+      height: 800px;
+      border: 1px solid darkgrey;
+  }
+  .show-document #audio_show_container {
+      text-align: center;
+      margin-bottom: 2em;
+      margin-top: 2em;
+  }
+  .show-document #audio_show_container #audio_show_canvas {
+      display: inline-block;
+      position: relative;
+      max-width: 100%;
+      border-radius: 10px;
+      background-color: lightgray;
+      border: 1px solid darkgray;
+      padding: 10px;
+  }
+  .show-document #audio_show_container #audio_show_canvas #audio_player {
+      width: 700px;
+  }
+  .show-document #audio_show_container #audio_show_canvas #audio_playlist {
+      list-style-type: none;
+      padding: 0 5px;
+      margin-bottom: 0;
+  }
+  .show-document #audio_show_container #audio_show_canvas #audio_playlist li {
+      text-align: left;
+      padding: 5px;
+  }
+  .show-document #audio_show_container #audio_show_canvas #audio_playlist li.active {
+      background-color: lightgray;
+  }
+  .show-document #audio_show_container #audio_show_canvas #audio_playlist li.active a {
+      color: dimgrey;
+  }
+  .show-document div.show-tools {
+      margin-bottom: 1em;
+  }
+  .show-document div.show-tools #iiif-logo {
+      height: 16px;
+      width: 16px;
+      vertical-align: text-top;
+  }
+  .show-document div.show-tools #iiif_manifest_info_icon {
+      position: absolute;
+      top: 15px;
+      padding-left: 3px;
+  }
+  .show-document #item_metadata {
+      margin-bottom: 1em;
+  }
+  .show-document #item_metadata #rs_icon {
+      height: 1rem;
+      vertical-align: -10%;
+  }

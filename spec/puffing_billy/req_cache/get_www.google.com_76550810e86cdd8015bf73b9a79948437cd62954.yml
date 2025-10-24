@@ -1,0 +1,38 @@
+---
+:scope:
+:url: https://www.google.com/async/folae?async=_fmt:pb
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Version: '821982826'
+  Content-Type: application/x-protobuffer
+  X-Content-Type-Options: nosniff
+  Cross-Origin-Opener-Policy: same-origin-allow-popups; report-to="gws"
+  Report-To: '{"group":"gws","max_age":2592000,"endpoints":[{"url":"https://csp.withgoogle.com/csp/report-to/gws/none"}]}'
+  Accept-CH:
+  - Sec-CH-Prefers-Color-Scheme
+  - Downlink
+  - RTT
+  - Sec-CH-UA-Form-Factors
+  - Sec-CH-UA-Platform
+  - Sec-CH-UA-Platform-Version
+  - Sec-CH-UA-Full-Version
+  - Sec-CH-UA-Arch
+  - Sec-CH-UA-Model
+  - Sec-CH-UA-Bitness
+  - Sec-CH-UA-Full-Version-List
+  - Sec-CH-UA-WoW64
+  Permissions-Policy: unload=()
+  Link: <https://www.gstatic.com>; rel="preconnect"
+  Content-Disposition: attachment; filename="f.txt"
+  Date: Fri, 24 Oct 2025 21:00:42 GMT
+  Server: gws
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: "\b\0\x10\x01\x18\0 \00\x01"

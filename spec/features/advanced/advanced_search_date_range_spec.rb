@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'advanced search date range behavior', js: true do
+RSpec.describe 'advanced search date range behavior', js: true do
   before(:each) { visit blacklight_advanced_search_engine.advanced_search_path }
 
   it 'should show the date range fields on the advanced search form' do

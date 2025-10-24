@@ -1,0 +1,38 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/chunk-DVYM4KA5.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 24 Oct 2025 21:00:44 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 993c67c7d8550f89-EWR
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: 4.2.0
+  x-jsd-version-type: version
+  etag: W/"368-qW/7Rdxz+gTLYn5g88zYJxtg8mc"
+  x-served-by: cache-fra-etou8220114-FRA, cache-iad-kiad7000023-IAD
+  x-cache: HIT, MISS
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  cf-cache-status: MISS
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=%2FiXvNnNikXmYh%2BaoN55lvwC8ou8YTL5blNXGLW3ltLYevuLyCjYIb5Th0saDaqKNzbft5LLVCncjF2ySS6vkHqdsXoFng9qdjHJLeMYYV8ysy40p4%2B0juWj6rgGH7q4U7So%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: 'import{a,g as l}from"./chunk-5XPHF4E5.js";var o=class{constructor(e,s,i){this.options=e;this.adapter=s;this._el=this.options.target,i&&i.forEach(({name:t,cb:n})=>{this.on(t,n)})}set(e,s){}on(e,s,i){var
+  t=this._eventListeners||(this._eventListeners={});(t[e]||(t[e]=[])).push({cb:s,ctx:i})}fire(e,...s){var
+  i=[].slice.call(arguments,1),t=((this._eventListeners||(this._eventListeners={}))[e]||[]).slice(),n=0,r=t.length;for(n;n<r;n++)t[n].cb.apply(t[n].ctx,i)}showSpinner(){this._el.parentElement?.classList.remove("loaded")}hideSpinner(){this._el.parentElement?.classList.add("loaded")}async
+  configure(e){let s=[];if(this.fire(l.CONFIGURE,{config:e,cb:i=>{s.push(i)}}),s.length){let
+  t=(await Promise.all(s)).reduce((n,r)=>a(n,r));e=a(e,t)}return e}exitFullScreen(){}resize(){}dispose(){this._el.innerHTML="",this._el.className="",this.adapter?.dispose()}};export{o
+  as a};
+
+  '

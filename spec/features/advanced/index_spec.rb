@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'basic_search' do
+RSpec.describe 'basic_search' do
   it 'should show correct results after running a fielded search' do
     visit blacklight_advanced_search_engine.advanced_search_path
     within '#advanced_search_form' do

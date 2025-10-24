@@ -1,0 +1,35 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/chunk-M4MN2QTO.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 24 Oct 2025 21:00:44 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 993c67c7b863231a-BOS
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: 4.2.0
+  x-jsd-version-type: version
+  etag: W/"117d-kt/dC8KFu8LqzGrZ6To3Tk2PWIU"
+  x-served-by: cache-fra-etou8220091-FRA, cache-chi-kigq8000126-CHI
+  x-cache: HIT, HIT
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  CF-Cache-Status: HIT
+  Age: '271169'
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=vkjjPxlSwLwijLVN5kVF7V4vOmI7EswDEZS24yDqGWhyi40tJbwttLaxIeWvitJdIj2EYia5hJi%2F7bUpptg8t1lIkRP0ojXcbJNhBCkKmy4vii%2BPL5PQTBNdf7QUrcUZDXk%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: 'var t=class{};t.ACCEPT_TERMS="acceptTerms",t.ANNOTATION_CANVAS_CHANGE="annotationCanvasChange",t.ANNOTATION_CHANGE="annotationChange",t.ANNOTATIONS_CLEARED="annotationsCleared",t.ANNOTATIONS_EMPTY="annotationsEmpty",t.ANNOTATIONS="annotations",t.BOOKMARK="bookmark",t.CANVAS_INDEX_CHANGE_FAILED="canvasIndexChangeFailed",t.CANVAS_INDEX_CHANGE="canvasIndexChange",t.CLEAR_ANNOTATIONS="clearAnnotations",t.CLICKTHROUGH="clickthrough",t.CLOSE_ACTIVE_DIALOGUE="closeActiveDialogue",t.CLOSE_LEFT_PANEL="closeLeftPanel",t.CLOSE_RIGHT_PANEL="closeRightPanel",t.COLLECTION_INDEX_CHANGE="collectionIndexChange",t.CREATE="create",t.CURRENT_TIME_CHANGE="currentTimeChanged",t.RANGE_TIME_CHANGE="rangeTimeChanged",t.DOWN_ARROW="downArrow",t.DOWNLOAD="download",t.END="end",t.ESCAPE="escape",t.EXTERNAL_LINK_CLICKED="externalLinkClicked",t.FEEDBACK="feedback",t.FIRST="first",t.FORBIDDEN="forbidden",t.GALLERY_DECREASE_SIZE="galleryDecreaseSize",t.GALLERY_INCREASE_SIZE="galleryIncreaseSize",t.GALLERY_THUMB_SELECTED="galleryThumbSelected",t.HIDE_AUTH_DIALOGUE="hideAuthDialogue",t.HIDE_CLICKTHROUGH_DIALOGUE="hideClickthroughDialogue",t.HIDE_DOWNLOAD_DIALOGUE="hideDownloadDialogue",t.HIDE_EMBED_DIALOGUE="hideEmbedDialogue",t.HIDE_EXTERNALCONTENT_DIALOGUE="hideExternalContentDialogue",t.HIDE_GENERIC_DIALOGUE="hideGenericDialogue",t.HIDE_HELP_DIALOGUE="hideHelpDialogue",t.HIDE_INFORMATION="hideInformation",t.HIDE_LOGIN_DIALOGUE="hideLoginDialogue",t.HIDE_MULTISELECT_DIALOGUE="hideMultiSelectDialogue",t.HIDE_OVERLAY="hideOverlay",t.HIDE_RESTRICTED_DIALOGUE="hideRestrictedDialogue",t.HIDE_SETTINGS_DIALOGUE="hideSettingsDialogue",t.HIDE_SHARE_DIALOGUE="hideShareDialogue",t.HOME="home",t.LAST="last",t.LEFT_ARROW="leftArrow",t.LEFTPANEL_COLLAPSE_FULL_FINISH="leftPanelCollapseFullFinish",t.LEFTPANEL_COLLAPSE_FULL_START="leftPanelCollapseFullStart",t.LEFTPANEL_EXPAND_FULL_FINISH="leftPanelExpandFullFinish",t.LEFTPANEL_EXPAND_FULL_START="leftPanelExpandFullStart",t.LOGIN_FAILED="loginFailed",t.LOGIN="login",t.LOGOUT="logout",t.MANIFEST_INDEX_CHANGE="manifestIndexChange",t.METRIC_CHANGE="metricChange",t.MINUS="minus",t.MULTISELECT_CHANGE="multiSelectChange",t.MULTISELECTION_MADE="multiSelectionMade",t.NEXT="next",t.NOT_FOUND="notFound",t.OPEN_EXTERNAL_RESOURCE="openExternalResource",t.OPEN_LEFT_PANEL="openLeftPanel",t.OPEN_RIGHT_PANEL="openRightPanel",t.OPEN_THUMBS_VIEW="openThumbsView",t.OPEN_TREE_VIEW="openTreeView",t.OPEN="open",t.PAGE_DOWN="pageDown",t.PAGE_UP="pageUp",t.PAUSE="pause",t.PINPOINT_ANNOTATION_CLICKED="pinpointAnnotationClicked",t.PLUS="plus",t.PREV="prev",t.RANGE_CHANGE="rangeChange",t.REDIRECT="redirect",t.REFRESH="refresh",t.RESOURCE_DEGRADED="resourceDegraded",t.RETRY="retry",t.RETURN="return",t.RIGHT_ARROW="rightArrow",t.RIGHTPANEL_COLLAPSE_FULL_FINISH="rightPanelCollapseFullFinish",t.RIGHTPANEL_COLLAPSE_FULL_START="rightPanelCollapseFullStart",t.RIGHTPANEL_EXPAND_FULL_FINISH="rightPanelExpandFullFinish",t.RIGHTPANEL_EXPAND_FULL_START="rightPanelExpandFullStart",t.SET_ROTATION="setRotation",t.SET_TARGET="setTarget",t.SET_MUTED="setMuted",t.SETTINGS_CHANGE="settingsChange",t.SHOW_AUTH_DIALOGUE="showAuthDialogue",t.SHOW_CLICKTHROUGH_DIALOGUE="showClickThroughDialogue",t.SHOW_DOWNLOAD_DIALOGUE="showDownloadDialogue",t.SHOW_EMBED_DIALOGUE="showEmbedDialogue",t.SHOW_EXTERNALCONTENT_DIALOGUE="showExternalContentDialogue",t.SHOW_GENERIC_DIALOGUE="showGenericDialogue",t.SHOW_HELP_DIALOGUE="showHelpDialogue",t.SHOW_INFORMATION="showInformation",t.SHOW_LOGIN_DIALOGUE="showLoginDialogue",t.SHOW_MESSAGE="showMessage",t.MESSAGE_DISPLAYED="messageDisplayed",t.SHOW_MULTISELECT_DIALOGUE="showMultiSelectDialogue",t.SHOW_OVERLAY="showOverlay",t.SHOW_RESTRICTED_DIALOGUE="showRestrictedDialogue",t.SHOW_SETTINGS_DIALOGUE="showSettingsDialogue",t.SHOW_SHARE_DIALOGUE="showShareDialogue",t.SHOW_TERMS_OF_USE="showTermsOfUse",t.TARGET_CHANGE="targetChange",t.TOGGLE_RIGHT_PANEL="toggleRightPanel",t.TOGGLE_LEFT_PANEL="toggleLeftPanel",t.THUMB_MULTISELECTED="thumbMultiSelected",t.THUMB_SELECTED="thumbSelected",t.TOGGLE_EXPAND_LEFT_PANEL="toggleExpandLeftPanel",t.TOGGLE_EXPAND_RIGHT_PANEL="toggleExpandRightPanel",t.TREE_NODE_MULTISELECTED="treeNodeMultiSelected",t.TREE_NODE_SELECTED="treeNodeSelected",t.UP_ARROW="upArrow",t.UPDATE_SETTINGS="updateSettings",t.VIEW_FULL_TERMS="viewFullTerms",t.WINDOW_UNLOAD="windowUnload",t.SHOW_ADJUSTIMAGE_DIALOGUE="showAdjustImageDialogue",t.HIDE_ADJUSTIMAGE_DIALOGUE="hideAdjustImageDialogue";export{t
+  as a};
+
+  '

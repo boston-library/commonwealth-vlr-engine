@@ -1,0 +1,31 @@
+---
+:scope:
+:url: https://cdn.skypack.dev/@github/auto-complete-element
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 24 Oct 2025 21:00:43 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Content-Length: '997'
+  Connection: close
+  access-control-allow-origin: "*"
+  access-control-expose-headers: X-Import-Status, X-Import-Url, X-Pinned-Url, Content-Length
+  Age: '258'
+  Cache-Control: public, max-age=300
+  etag: W/"3e5-TFELCwC5oZiwGPQlRzvWBRRFhsA"
+  Server: cloudflare
+  strict-transport-security: max-age=63072000
+  x-import-status: SUCCESS
+  x-import-url: "/-/@github/auto-complete-element@v3.8.0-H6W3MGa3llHLSKrIinzy/dist=es2019,mode=imports/optimized/@github/auto-complete-element.js"
+  x-pinned-url: "/pin/@github/auto-complete-element@v3.8.0-H6W3MGa3llHLSKrIinzy/mode=imports/optimized/@github/auto-complete-element.js"
+  x-vercel-cache: HIT
+  x-vercel-id: iad1::sfo1::x2h5v-1761339643197-9d6f24928326
+  cf-cache-status: MISS
+  Nel: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+  Vary: accept-encoding
+  Report-To: '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VrI7vRCB0AGFO3n6VPVi4PohSE8zUtwQXSvm7YlJZgqldFQr%2BdCvRoT9w3CZpCMQ4BCMwA92KwmfyEd43c5301vAV%2FWR%2FZHmgvQM8g%3D%3D"}]}'
+  CF-RAY: 993c67c1eff50ca4-EWR
+  alt-svc: h3=":443"; ma=86400
+:content: !binary |-
+  LyoKICogU2t5cGFjayBDRE4gLSBAZ2l0aHViL2F1dG8tY29tcGxldGUtZWxlbWVudEAzLjguMAogKgogKiBMZWFybiBtb3JlOgogKiAgIPCfk5kgUGFja2FnZSBEb2N1bWVudGF0aW9uOiBodHRwczovL3d3dy5za3lwYWNrLmRldi92aWV3L0BnaXRodWIvYXV0by1jb21wbGV0ZS1lbGVtZW50CiAqICAg8J+TmCBTa3lwYWNrIERvY3VtZW50YXRpb246IGh0dHBzOi8vd3d3LnNreXBhY2suZGV2L2RvY3MKICoKICogUGlubmVkIFVSTDogKE9wdGltaXplZCBmb3IgUHJvZHVjdGlvbikKICogICDilrbvuI8gTm9ybWFsOiBodHRwczovL2Nkbi5za3lwYWNrLmRldi9waW4vQGdpdGh1Yi9hdXRvLWNvbXBsZXRlLWVsZW1lbnRAdjMuOC4wLUg2VzNNR2EzbGxITFNLcklpbnp5L21vZGU9aW1wb3J0cy9vcHRpbWl6ZWQvQGdpdGh1Yi9hdXRvLWNvbXBsZXRlLWVsZW1lbnQuanMKICogICDij6kgTWluaWZpZWQ6IGh0dHBzOi8vY2RuLnNreXBhY2suZGV2L3Bpbi9AZ2l0aHViL2F1dG8tY29tcGxldGUtZWxlbWVudEB2My44LjAtSDZXM01HYTNsbEhMU0tySWluenkvbW9kZT1pbXBvcnRzLG1pbi9vcHRpbWl6ZWQvQGdpdGh1Yi9hdXRvLWNvbXBsZXRlLWVsZW1lbnQuanMKICoKICovCgovLyBCcm93c2VyLU9wdGltaXplZCBJbXBvcnRzIChEb24ndCBkaXJlY3RseSBpbXBvcnQgdGhlIFVSTHMgYmVsb3cgaW4geW91ciBhcHBsaWNhdGlvbiEpCmV4cG9ydCAqIGZyb20gJy8tL0BnaXRodWIvYXV0by1jb21wbGV0ZS1lbGVtZW50QHYzLjguMC1INlczTUdhM2xsSExTS3JJaW56eS9kaXN0PWVzMjAxOSxtb2RlPWltcG9ydHMvb3B0aW1pemVkL0BnaXRodWIvYXV0by1jb21wbGV0ZS1lbGVtZW50LmpzJzsKZXhwb3J0IHtkZWZhdWx0fSBmcm9tICcvLS9AZ2l0aHViL2F1dG8tY29tcGxldGUtZWxlbWVudEB2My44LjAtSDZXM01HYTNsbEhMU0tySWluenkvZGlzdD1lczIwMTksbW9kZT1pbXBvcnRzL29wdGltaXplZC9AZ2l0aHViL2F1dG8tY29tcGxldGUtZWxlbWVudC5qcyc7Cg==
