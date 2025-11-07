@@ -1,0 +1,111 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/en-GB-NZX2ZWUE.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 07 Nov 2025 21:24:28 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 99afe5c8f8764ccf-BOS
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: 4.2.0
+  x-jsd-version-type: version
+  etag: W/"2508-8dBKYNeNpRVSknkdMjc6JCo4aDU"
+  x-served-by: cache-fra-etou8220140-FRA, cache-chi-klot8100153-CHI
+  x-cache: MISS, MISS
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  cf-cache-status: MISS
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=UuG3mQNdlDKHBV6s4xvZjod7060MBgFKOl03lQEtmP%2BjguOLVejSbzj%2BlafwF2Zh%2BBczvLVKMpJF22xbKsozoQ76j3gIvs4hJjnWOdBCIKswZCuXoUDYPRCBD6Oa6tjKiz0%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: 'import"./chunk-L67DAW3A.js";var a="Collapse Contents",t="Collapse Gallery",i="date",n="Expand
+  Contents",s="Expand Gallery",l="Index",r="Manifest Ranges",$="{0} search result",u="{0}
+  search results",g="Sort By:",d="Thumbnails",m="Contents",p="volume",c="Close",h="Close
+  attribution panel",w="All Pages",f="Current view {0} x {1}px (jpg)",b="Opens in
+  a new window",v="Download",P="Download Selection",I="Opens a dialogue to select
+  which pages to download.",x="Edit Settings",y="Entire document ({0})",R="Entire
+  file ({0})",C="Entire file",T="Individual Pages",L="No download options are available.",S="Please
+  turn off Two Page View for additional options.",F="Preview",A="Selection",E="Terms
+  of Use",M="Whole image {0} x {1}px ({2})",O="Opens in a new window.",k="Whole image
+  {0} x {1}px (jpg)",N="Opens in a new window.",D="Whole images ({0})",V="Opens in
+  two new windows.",H="Add to bookmarks",G="Embed",U="Exit Full Screen",W="Feedback",_="Full
+  Screen",B="More Information",Z="Open Navigation Panel",j="Close Navigation Panel",z="Open
+  More Information",Y="Close More Information",J="Open",K="Share",q="please enter
+  a value.",Q="Please enter a valid number.",X="No matches were found.",ee="OK",oe="This
+  item does not contain a page with the number you entered. Try switching the numbering
+  mode to ''image''.",ae="Refresh",te="placeholder text",ie="Help",ne="Attribution",se="About
+  the image",le="Collapse Information",re="Collapse Gallery",$e="Copied to clipboard",ue="Copy
+  to clipboard",ge="Copy",de="Description",me="Expand Information",pe="Your module
+  goes here!",ce="less",he="Less information: Hide {0}",we="License",fe="Logo",be="About
+  the item",ve="more",Pe="More information: Reveal {0}",Ie="No data to display",xe="Page",ye="About
+  this section",Re="More Information",Ce="Select All",Te="Select Pages for Download",Le="First",Se="First
+  Image",Fe="First Page",Ae="Folio",Ee="Gallery",Me="Go",Oe="Image",ke="Last",Ne="Last
+  Image",De="Last Page",Ve="Next",He="Next Image",Ge="Next Page",Ue="of {0}",We="Single
+  page view",_e="Search by Page Number",Be="Previous",Ze="Previous Image",je="Previous
+  Page",ze="Settings",Ye="Two page view",Je="Go Home",Ke="Image Unavailable",qe="Rotate
+  Right",Qe="Zoom In",Xe="Zoom Out",eo="Adjust image",oo="Clear",ao="{0} {1} of {2}",to="Enter
+  Keyword",io="image",no="1 instance of ''{0}'' found",so="{0} instances of ''{1}''
+  found",lo="Next Result",ro="page",$o="Previous Result",uo="Print",go="result found
+  for",mo="results found for",po="Search within this item:",co="Locale",ho="Navigator
+  Enabled",wo="Mouse Click To Zoom",fo="Reduce motion (disables animations)",bo="Truncate
+  Thumbnail Labels",vo="Preserve Zoom",Po="<a href=''https://github.com/UniversalViewer/universalviewer/wiki/About''>More
+  info about the Universal Viewer</a>",Io="custom",xo="To embed this item in your
+  own website, copy and paste the code below.",yo="Height",Ro="IIIF Manifest",Co="Link
+  to this Page",To="To share this item, copy the URL below.",Lo="Size:",So="Width",Fo="Cancel",Ao="Confirm",Eo="Read
+  Full Terms and Conditions",Mo="Login",Oo="log in",ko="Logout",No="Your browser does
+  not support CORS, please upgrade to view this content.",Do="Your log-in attempt
+  did not appear to be successful. Please try again.",Vo="Canvas index out of range.",Ho="Login",Go="Please
+  log in to view this content at full resolution.",Uo="Your current access rights
+  are insufficient to view this image",Wo="Media Viewer",_o="Skip to downloads and
+  alternative formats",Bo="Please enter a value",Zo="Please log in to view at full
+  quality.",jo="VR",zo="Current Time",Yo="Duration",Jo="Mute",Ko="Pause",qo="Play",Qo="Brightness",Xo="Contrast",ea="Saturation",oa="Reset",aa="Remember
+  my settings",ta={$collapse:a,$collapseFull:t,$date:i,$expandContents:n,$expandGallery:s,$index:l,$manifestRanges:r,$searchResult:$,$searchResults:u,$sortBy:g,$thumbnails:d,$contents:m,$volume:p,$close:c,$closeAttribution:h,$allPages:w,$currentViewAsJpg:f,$openNewWindow:b,$download:v,$downloadSelection:P,$downloadSelectionExplanation:I,$editSettings:x,$entireDocument:y,$entireFileX:R,$entireFile:C,$individualPages:T,$noDownloadOptionsAvailable:L,$pagingNote:S,$preview:F,$selection:A,$termsOfUse:E,$wholeImageHighRes:M,$wholeImageHighResExplanation:O,$wholeImageLowResAsJpg:k,$wholeImageLowResAsJpgExplanation:N,$wholeImagesHighRes:D,$wholeImagesHighResExplanation:V,$add_to_bookmarks:H,$embed:G,$exitFullScreen:U,$feedback:W,$fullScreen:_,$moreInfo:B,$openLeftPanel:Z,$closeLeftPanel:j,$openRightPanel:z,$closeRightPanel:Y,$open:J,$share:K,$emptyValue:q,$invalidNumber:Q,$noMatches:X,$ok:ee,$pageNotFound:oe,$refresh:ae,$placeholder_text:te,$help:ie,$attribution:ne,$aboutTheImage:se,$collapseInformation:le,$collapseGallery:re,$copiedToClipboard:$e,$copyToClipboard:ue,$copyBtn:ge,$description:de,$expandInformation:me,$moduleGoesHere:pe,$less:ce,$lessAriaLabelTemplate:he,$license:we,$logo:fe,$aboutTheItem:be,$more:ve,$moreAriaLabelTemplate:Pe,$noDataToDisplay:Ie,$page:xe,$aboutThisSection:ye,$moreInformation:Re,$selectAll:Ce,$selectPagesForDownload:Te,$first:Le,$firstImage:Se,$firstPage:Fe,$folio:Ae,$gallery:Ee,$go:Me,$image:Oe,$last:ke,$lastImage:Ne,$lastPage:De,$next:Ve,$nextImage:He,$nextPage:Ge,$of:Ue,$singlePageView:We,$searchByPageNumber:_e,$previous:Be,$previousImage:Ze,$previousPage:je,$settings:ze,$twoPageView:Ye,$goHome:Je,$imageUnavailable:Ke,$rotateRight:qe,$zoomIn:Qe,$zoomOut:Xe,$adjustImage:eo,$clearSearch:oo,$displaying_A_of_B:ao,$enterKeyword:to,$imageLowercase:io,$instanceFound:no,$instancesFound:so,$nextResult:lo,$pageLowercase:ro,$previousResult:$o,$print:uo,$resultFoundFor:go,$resultsFoundFor:mo,$searchWithinItem:po,$locale:co,$navigatorEnabled:ho,$clickToZoomEnabled:wo,$reducedMotion:fo,$truncateThumbnailLabels:bo,$preserveViewport:vo,$uvWebsite:Po,$custom:Io,$embedInstructions:xo,$height:yo,$iiifManifest:Ro,$shareLink:Co,$shareInstructions:To,$size:Lo,$width:So,$cancel:Fo,$confirm:Ao,$viewTerms:Eo,$login:Mo,$log_in:Oo,$logout:ko,$authCORSError:No,$authorisationFailedMessage:Do,$canvasIndexOutOfRange:Vo,$fallbackDegradedLabel:Ho,$fallbackDegradedMessage:Go,$forbiddenResourceMessage:Uo,$mediaViewer:Wo,$skipToDownload:_o,$pleaseEnterValue:Bo,$pleaseLogInToViewAtFullQuality:Zo,$vr:jo,$currentTime:zo,$duration:Yo,$mute:Jo,$pause:Ko,$play:qo,$brightness:Qo,$contrast:Xo,$saturation:ea,$reset:oa,$remember:aa};export{se
+  as $aboutTheImage,be as $aboutTheItem,ye as $aboutThisSection,H as $add_to_bookmarks,eo
+  as $adjustImage,w as $allPages,ne as $attribution,No as $authCORSError,Do as $authorisationFailedMessage,Qo
+  as $brightness,Fo as $cancel,Vo as $canvasIndexOutOfRange,oo as $clearSearch,wo
+  as $clickToZoomEnabled,c as $close,h as $closeAttribution,j as $closeLeftPanel,Y
+  as $closeRightPanel,a as $collapse,t as $collapseFull,re as $collapseGallery,le
+  as $collapseInformation,Ao as $confirm,m as $contents,Xo as $contrast,$e as $copiedToClipboard,ge
+  as $copyBtn,ue as $copyToClipboard,zo as $currentTime,f as $currentViewAsJpg,Io
+  as $custom,i as $date,de as $description,ao as $displaying_A_of_B,v as $download,P
+  as $downloadSelection,I as $downloadSelectionExplanation,Yo as $duration,x as $editSettings,G
+  as $embed,xo as $embedInstructions,q as $emptyValue,to as $enterKeyword,y as $entireDocument,C
+  as $entireFile,R as $entireFileX,U as $exitFullScreen,n as $expandContents,s as
+  $expandGallery,me as $expandInformation,Ho as $fallbackDegradedLabel,Go as $fallbackDegradedMessage,W
+  as $feedback,Le as $first,Se as $firstImage,Fe as $firstPage,Ae as $folio,Uo as
+  $forbiddenResourceMessage,_ as $fullScreen,Ee as $gallery,Me as $go,Je as $goHome,yo
+  as $height,ie as $help,Ro as $iiifManifest,Oe as $image,io as $imageLowercase,Ke
+  as $imageUnavailable,l as $index,T as $individualPages,no as $instanceFound,so as
+  $instancesFound,Q as $invalidNumber,ke as $last,Ne as $lastImage,De as $lastPage,ce
+  as $less,he as $lessAriaLabelTemplate,we as $license,co as $locale,Oo as $log_in,Mo
+  as $login,fe as $logo,ko as $logout,r as $manifestRanges,Wo as $mediaViewer,pe as
+  $moduleGoesHere,ve as $more,Pe as $moreAriaLabelTemplate,B as $moreInfo,Re as $moreInformation,Jo
+  as $mute,ho as $navigatorEnabled,Ve as $next,He as $nextImage,Ge as $nextPage,lo
+  as $nextResult,Ie as $noDataToDisplay,L as $noDownloadOptionsAvailable,X as $noMatches,Ue
+  as $of,ee as $ok,J as $open,Z as $openLeftPanel,b as $openNewWindow,z as $openRightPanel,xe
+  as $page,ro as $pageLowercase,oe as $pageNotFound,S as $pagingNote,Ko as $pause,te
+  as $placeholder_text,qo as $play,Bo as $pleaseEnterValue,Zo as $pleaseLogInToViewAtFullQuality,vo
+  as $preserveViewport,F as $preview,Be as $previous,Ze as $previousImage,je as $previousPage,$o
+  as $previousResult,uo as $print,fo as $reducedMotion,ae as $refresh,aa as $remember,oa
+  as $reset,go as $resultFoundFor,mo as $resultsFoundFor,qe as $rotateRight,ea as
+  $saturation,_e as $searchByPageNumber,$ as $searchResult,u as $searchResults,po
+  as $searchWithinItem,Ce as $selectAll,Te as $selectPagesForDownload,A as $selection,ze
+  as $settings,K as $share,To as $shareInstructions,Co as $shareLink,We as $singlePageView,Lo
+  as $size,_o as $skipToDownload,g as $sortBy,E as $termsOfUse,d as $thumbnails,bo
+  as $truncateThumbnailLabels,Ye as $twoPageView,Po as $uvWebsite,Eo as $viewTerms,p
+  as $volume,jo as $vr,M as $wholeImageHighRes,O as $wholeImageHighResExplanation,k
+  as $wholeImageLowResAsJpg,N as $wholeImageLowResAsJpgExplanation,D as $wholeImagesHighRes,V
+  as $wholeImagesHighResExplanation,So as $width,Qe as $zoomIn,Xe as $zoomOut,ta as
+  default};
+
+  '

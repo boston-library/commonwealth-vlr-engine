@@ -1,0 +1,37 @@
+---
+:scope:
+:url: https://cdn.jsdelivr.net/npm/universalviewer@4.2.0/dist/esm/chunk-RFMJCM2W.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 07 Nov 2025 21:24:26 GMT
+  Content-Type: application/javascript; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: close
+  CF-RAY: 99afe5c06a5a4ce4-BOS
+  access-control-allow-origin: "*"
+  access-control-expose-headers: "*"
+  timing-allow-origin: "*"
+  Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable
+  cross-origin-resource-policy: cross-origin
+  x-content-type-options: nosniff
+  strict-transport-security: max-age=31536000; includeSubDomains; preload
+  x-jsd-version: 4.2.0
+  x-jsd-version-type: version
+  etag: W/"346-2d5fYmhEtVgXPDp8xIs9AdN2UHs"
+  x-served-by: cache-fra-eddf8230025-FRA, cache-lga21947-LGA
+  x-cache: MISS, MISS
+  vary: Accept-Encoding
+  alt-svc: h3=":443"; ma=86400
+  CF-Cache-Status: MISS
+  Report-To: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=KIE9eQPhwO7R96fkd0%2FUcpLj8%2BtqfNbvsfedIWDd%2B6nkmPuD%2FbRVtG1G0lGha7dBVBFyV0ENiwxiyVgf7XIU6UG11Qt0bAKGoOku1wp5IRDw%2FPm68D7r7BHJ2ujrvhMugD0%3D"}],"group":"cf-nel","max_age":604800}'
+  NEL: '{"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}'
+  Server: cloudflare
+:content: 'import{c as t}from"./chunk-VT2S2PC2.js";import{a as e}from"./chunk-M4MN2QTO.js";import{a
+  as n}from"./chunk-YB7AEQFU.js";var s=n(),i=class extends t{constructor(o){super(o)}create(){this.setConfig("helpDialogue"),super.create(),this.openCommand=e.SHOW_HELP_DIALOGUE,this.closeCommand=e.HIDE_HELP_DIALOGUE,this.extensionHost.subscribe(this.openCommand,()=>{this.open()}),this.extensionHost.subscribe(this.closeCommand,()=>{this.close()}),this.$title=s(''<div
+  role="heading" class="heading"></div>''),this.$content.append(this.$title),this.$scroll=s(''<div
+  class="scroll"></div>''),this.$content.append(this.$scroll),this.$message=s("<p></p>"),this.$scroll.append(this.$message),this.$title.text(this.content.title),this.$message.html(this.content.text),this.$message.targetBlank(),this.$element.hide()}resize(){super.resize()}};export{i
+  as a};
+
+  '

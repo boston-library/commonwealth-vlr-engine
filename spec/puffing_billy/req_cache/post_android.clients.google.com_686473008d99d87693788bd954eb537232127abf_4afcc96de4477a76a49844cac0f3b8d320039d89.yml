@@ -1,0 +1,22 @@
+---
+:scope:
+:url: https://android.clients.google.com/c2dm/register3
+:body: app=com.chrome.macosx&X-subtype=com.google.chrome.fcm.invalidations-585406161706&device=4649875172472737760&scope=GCM&X-scope=GCM&gmsv=142&appid=cCwbDfifdkE&sender=585406161706&ttl=1209600
+:status: 200
+:method: post
+:headers:
+  Content-Type: text/plain; charset=UTF-8
+  Date: Fri, 07 Nov 2025 21:58:27 GMT
+  Expires: Fri, 07 Nov 2025 21:58:27 GMT
+  Cache-Control: private, max-age=0
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: token=cCwbDfifdkE:APA91bHTfqgi0kAmK9SSdH7JIEGWat1I4KA2Vrr3zaZp4WrcD5Bx1aWguilYIA5hj0OV-bqWdUWn_ohF2jfOIf2F5jMYkpM1KUieG9FJ-lAuk9_iyAwhxGQ

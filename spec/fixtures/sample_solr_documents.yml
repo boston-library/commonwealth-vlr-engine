@@ -3014,3 +3014,215 @@
     - hosted
   timestamp:
     - '2025-09-01T20:38:10.637Z'
+- id:
+  - bpl-dev:1r66j8860
+  system_create_dtsi:
+  - '2023-05-31T18:24:15Z'
+  system_modified_dtsi:
+  - '2023-05-31T18:24:15Z'
+  curator_model_ssi:
+  - Curator::Collection
+  curator_model_suffix_ssi:
+   - Collection
+  publishing_state_ssi:
+   - published
+  destination_site_ssim:
+    - commonwealth
+    - newspapers
+  hosting_status_ssi: hosted
+  harvesting_status_bsi: true
+  exemplary_image_ssi:
+  - bpl-dev:tq57p0847
+  exemplary_image_key_base_ss:
+  - images/bpl-dev:tq57p0847
+  exemplary_image_digobj_ss:
+  - bpl-dev:th83m700n
+  title_info_primary_tsi: The Dorchester Beacon
+  title_info_primary_ssi: The Dorchester Beacon
+  physical_location_ssim:
+    - Boston Public Library
+  institution_name_ssi: Boston Public Library
+  institution_ark_id_ssi:
+  - bpl-dev:abcd12345
+  genre_basic_ssim:
+    - Collections
+    - Newspapers
+  timestamp: '2025-05-23T17:56:51.659Z'
+- id:
+  - bpl-dev:th83m700n
+  system_create_dtsi:
+  - '2023-05-31T18:24:18Z'
+  system_modified_dtsi:
+  - '2023-05-31T18:26:36Z'
+  curator_model_ssi:
+  - Curator::DigitalObject
+  curator_model_suffix_ssi:
+  - DigitalObject
+  title_info_primary_tsi:
+  - The Dorchester Beacon
+  title_info_partnum_tsi:
+  - 'April 18, 1908'
+  genre_basic_ssim:
+    - Newspapers
+  date_tsim:
+    - 'April 18, 1908'
+  date_type_ssm:
+    - dateIssued
+  date_edtf_ssm:
+    - '1908-04-18'
+  date_start_dtsi:
+  - '1908-04-18T00:00:00Z'
+  date_end_dtsi:
+  - '1908-04-18T23:59:59.999Z'
+  related_item_host_ssim:
+    - Boston Public Library Collection
+  subject_coordinates_geospatial:
+    - '42.2833,-71.0667'
+  subject_point_geospatial:
+    - '42.2833,-71.0667'
+  subject_geojson_facet_ssim:
+    - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.0667,42.2833]},\"properties\":{\"placename\":\"Dorchester, MA\"}}"
+  subject_hiergeo_geojson_ssm:
+    - "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71.0667,42.2833]},\"properties\":{\"continent\":\"North and Central America\",\"country\":\"United States\",\"state\":\"Massachusetts\",\"county\":\"Suffolk\",\"city\":\"Boston\",\"city_section\":\"Dorchester\"}}"
+  physical_location_ssim:
+    - Boston Public Library
+  identifier_uri_ss:
+  - https://ark-dc3dev.bpl.org/ark:/50959/th83m700n
+  identifier_iiif_manifest_ss:
+  - https://ark-dc3dev.bpl.org/ark:/50959/th83m700n/manifest
+  identifier_local_other_tsim:
+    - sn86063520_1908041801
+  identifier_lccn_ssim:
+    - sn86063520
+  note_tsim:
+    - "Reel: 1859254"
+  edition_number_tsi:
+  - '1'
+  rights_ss:
+  - No known copyright restrictions.
+  license_ss:
+  - 'This work is in the public domain under a Creative Commons No Rights Reserved License (CC0).'
+  reuse_allowed_ssi:
+  - no restrictions
+  rightsstatement_ss:
+  - 'No Copyright - United States'
+  rightsstatement_uri_ss:
+  - http://rightsstatements.org/vocab/NoC-US/1.0/
+  digital_origin_ssi:
+  - reformatted_digital
+  publisher_tsi:
+  - Geo. E. Todd & Co.
+  pubplace_tsi:
+  - Boston, Mass.
+  resource_type_manuscript_bsi:
+  - false
+  type_of_resource_ssim:
+    - Text
+  lang_term_ssim:
+    - English
+  publishing_state_ssi:
+  - published
+  processing_state_ssi:
+  - complete
+  destination_site_ssim:
+    - bpl
+    - commonwealth
+    - newspapers
+  hosting_status_ssi:
+  - hosted
+  harvesting_status_bsi:
+  - true
+  exemplary_image_ssi:
+  - bpl-dev:tq57p0847
+  exemplary_image_key_base_ss:
+  - images/bpl-dev:tq57p0847
+  admin_set_name_ssi:
+  - The Dorchester Beacon
+  admin_set_ark_id_ssi:
+  - bpl-dev:1r66j8860
+  institution_name_ssi:
+   - Boston Public Library
+  institution_ark_id_ssi:
+  - bpl-dev:abcd12345
+  collection_name_ssim:
+    - The Dorchester Beacon
+  collection_ark_id_ssim:
+    - "bpl-dev:1r66j8860"
+  contained_by_ssi:
+  - bpl-dev:s4655r29r
+  filenames_ssim:
+    - 0001
+    - 0002
+    - 0003
+  mods_xml_ss:
+  - eJzFV1tv2zYUfu+vIPQwbEB1sR3Hl9UqWncbAiTpEDvAsJeClo4lNhQpkJQd//sdXWhLvmRNi2EvdsJz/3j4neN3758zTjagNJNi5vS8wCEgIhkzkcycx+Xv7th5H755l8lYT8sPgvpCT585E08zJzUmn/r+drv1tgNPqsTvTSYTv5I6VlWzc4r9IOj5f93dLqIUMuoyoQ0VEVirMlbHjMvIS+TGLwX+ZuAckh54I7TSbKorV7cyoqYSXLYmZ0Rl/JgqlDdK1bc7cEfes46d8A0hNQyGGQ43Yi1JoWkCMydXLKNq55CY6ZzT3S1dAd8ff2lOKw/Wh5BiIZUJlymQd37nqKVVRQo/SYWFaQOKfAQaSdEY1NKWek6VuS+yFajwAwbnpDd+S3qTYNwYtORlMX63mlaBuxw+rx9Ay0JFEC7h2VjlrmRvkYBQQGhhUqmY2c0cHpkkcw4njw83+/tg8R7zDd7VquCIkp8omqcsuqNYJ6Nc4wVTXsDrDX2MHASj4Hp8fCGYJSjKnfAetjqnOTZQU1eV/6EcTDlhwoKyh5fTqMG7c7QElZESmZljECon/Ci1keItuaNaexZ7q9l49I9dNg6LFWc6xRv6A6RHfvPIUsYx+Ylm+a9kLvfe9mot2xgRuNG6gLj1hLeDKDZrhzzB7hPKZ84OtBOWTeEGV27PtsbBttUaXRjqIJyKpMCubwe2Z8dAtBuCaXk9mLj91auawlp9czNYAx9E4oS/iaSEqSmnnWarynZFzSWkO80iyj+BjhTLSzLp4IyoGMo/V+iECtZSZdQYhL2RWEw7ei0HTGCrCjB3EDO6RLxCmuec1bTl5/G6cXCq96ITZJsE/K85JD9ib9j6B+P3XzK3DXweYkuOBsIHAD5FBhtO+sOrPUWa1jXpYvUVItPuMpOIC/1V9YiXgDE7D+LCrzRPmuqMlj8KeoPhaNih75QhkSArlyXgQ20oqMsNkSyE2YWLYr2W/KmpoDk8VVS78FGwsokWBt+ibuurEwNhmABhwnscGCnBuUXm+C9yG/mQIQtGdG9uNTsOdBkiLOmJRmmhsVwbr5Z0oyGSDaVZr+ykBDxZ4F2U13gYVy11K2yT30sgNm5xYNlzfYyBVMhwJVThVd/rjweDt+4I95fr69G++INKO+6JV1t73U+HBlPA0Ti+MWBpLUUYOo3QmZ7Hg7sGjfxZknVEbtkKy90hi3Neo3Fmjp+byf5xMocMWYx3y9YIZJNgoZgTls2ssZupenLjaBDDxlvlvNq68GjqD4PJcOKbdDzIRkFg0zj4esE/jyLhhFqMr4PrwbAfvMoWHxd3pcGx1XbxpRxGwVVvHPRe8Mabra4zLBsSsRvfecCPGOe25chOgPbRxWiF4icLH40i0LinypqJmCDli6uWgO+7BAxyHNPGyBVsGGxf7Rn/wp1PUMYvxyiJFWc0Y2s3o4KtQb++At9adsNcxLiuay5FzEoBqX40TFOcp3s6xsmZGl1xUoYtoavYFUf793LuPi58fPC+Y3tfQ0WFCnIl46J6Yscr4DmPuA9KfJX5rhISl5wj4qNsL5fx7blgj4LQ4OCPAKbJVqongt/YQ/hCSF73cCwziieFiPEZUTJXgChuANPNMik0wcwfqpIILuWgNpj2be2W/DyfB794/136NZQVeE9CbsvWtxAq7AKcQqWV/tcMFETI08fLdn06L1+TMIv658ZLz/uc/qm7Cj4pyk34dEcO+0F/4AZDd9Bb9sbT/tW0N/67675lf8Z7ipskfLfvvfWp52aFxHdMBUEewB9yEHesT5dMu9Z+Xs8pbqESxUl3SJ1Z2zFr+P/Xdvy4sLKfLO3H1XVAqXuqOSo/wjf/ALxL0O4=
+  has_searchable_pages_bsi:
+  - true
+  georeferenced_bsi:
+  - false
+  timestamp: '2025-05-23T15:21:17.537Z'
+- id:
+  - bpl-dev:3197xv73d
+  system_create_dtsi: '2023-05-31T18:25:02Z'
+  system_modified_dtsi: '2023-05-31T18:26:36Z'
+  curator_model_ssi:
+  - Curator::Filestreams::Image
+  curator_model_suffix_ssi: Image
+  processing_state_ssi: complete
+  attachments_ss: '{"characterization":{"filename":"characterization.xml","byte_size":4307,"content_type":"application/xml","checksum":"GkmGnIaO7DYbt0q/5gxePw==","key":"images/bpl-dev:3197xv73d/characterization.xml","service_name":"derivatives"},"document_access":{"filename":"0003.pdf","byte_size":3901042,"content_type":"application/pdf","checksum":"EwHe/5gMPO/XQ63iKJZCOg==","key":"images/bpl-dev:3197xv73d/document_access.pdf","service_name":"derivatives"},"image_access_800":{"filename":"image_access_800.jpg","byte_size":143967,"content_type":"image/jpeg","checksum":"CJV2JC0rl57UiVaFp09dvQ==","key":"images/bpl-dev:3197xv73d/image_access_800.jpg","service_name":"derivatives"},"image_primary":{"filename":"0003.tif","byte_size":66753896,"content_type":"image/tiff","checksum":"8oA2MBa1SOllzZ4CNyAX2Q==","key":"images/bpl-dev:3197xv73d/image_primary.tif","service_name":"primary"},"image_service":{"filename":"image_service.jp2","byte_size":8318728,"content_type":"image/jp2","checksum":"uuQec1XMjgC3W+TI5LQoZw==","key":"images/bpl-dev:3197xv73d/image_service.jp2","service_name":"derivatives"},"image_thumbnail_300":{"filename":"image_thumbnail_300.jpg","byte_size":22862,"content_type":"image/jpeg","checksum":"YQcr2638QTq+clMC1KRuvA==","key":"images/bpl-dev:3197xv73d/image_thumbnail_300.jpg","service_name":"derivatives"},"text_coordinates_access":{"filename":"text_coordinates_access.json","byte_size":67187,"content_type":"application/json","checksum":"SUEnBYILu30+EkZYyroieQ==","key":"images/bpl-dev:3197xv73d/text_coordinates_access.json","service_name":"derivatives"},"text_coordinates_primary":{"filename":"0003.xml","byte_size":615726,"content_type":"application/xml","checksum":"7vcm4kGQOH1mFGs0Ml0WcQ==","key":"images/bpl-dev:3197xv73d/text_coordinates_primary.xml","service_name":"primary"},"text_plain":{"filename":"text_plain.txt","byte_size":18430,"content_type":"text/plain","checksum":"e//3M2S6yp1dGngXv1+hfg==","key":"images/bpl-dev:3197xv73d/text_plain.txt","service_name":"derivatives"}}'
+  storage_key_base_ss:
+  - images/bpl-dev:3197xv73d
+  is_file_set_of_ssim:
+    - bpl-dev:th83m700n
+  filename_base_ssi: '0003'
+  position_isi: 2
+  has_wordcoords_json_bsi: true
+  destination_site_ssim:
+    - newspapers
+  has_ocr_text_bsi: true
+  timestamp: '2025-03-11T19:10:41.630Z'
+  ocr_tsiv: "W.C. PIPER EXPERT Electrical Specialist 10 TEBROC STREET DORCHESTER Offiee Hours, 9 A. M. to 8 P. M Telephone 614 Dorchester SPECIAL FOR WOMEN. Mrs. Agnes bunham Olive, SUPERFLUOUS HAIR and MOLES Skilfully Removed by the ELECTRIC NEEDLE* Shampooing, Scalp and Facial Treatment, Manicuring, Chiropody. Offiee Hours 1 to 5 P. M. appointment. 771 DUDLEY STREET, UPHAM’S CORNER, Opposite Transfer Station."
+- id:
+  - bpl-dev:vh53x436p
+  system_create_dtsi: '2023-05-31T18:24:47Z'
+  system_modified_dtsi: '2023-05-31T18:26:14Z'
+  curator_model_ssi:
+  - Curator::Filestreams::Image
+  curator_model_suffix_ssi: Image
+  processing_state_ssi: complete
+  attachments_ss: '{"characterization":{"filename":"characterization.xml","byte_size":4307,"content_type":"application/xml","checksum":"+E6osh5Lbiw3VTBaKHEtRA==","key":"images/bpl-dev:vh53x436p/characterization.xml","service_name":"derivatives"},"document_access":{"filename":"0002.pdf","byte_size":3401241,"content_type":"application/pdf","checksum":"88GKEwOUsYZ6bk8N7afrAw==","key":"images/bpl-dev:vh53x436p/document_access.pdf","service_name":"derivatives"},"image_access_800":{"filename":"image_access_800.jpg","byte_size":132725,"content_type":"image/jpeg","checksum":"4PWP0Cn1Y/8leLUsT14m6Q==","key":"images/bpl-dev:vh53x436p/image_access_800.jpg","service_name":"derivatives"},"image_primary":{"filename":"0002.tif","byte_size":65591002,"content_type":"image/tiff","checksum":"z6hTW60fEJGMm+p6PFKp3w==","key":"images/bpl-dev:vh53x436p/image_primary.tif","service_name":"primary"},"image_service":{"filename":"image_service.jp2","byte_size":8171241,"content_type":"image/jp2","checksum":"CNXpOyRdSK6pZoQEoDvI8g==","key":"images/bpl-dev:vh53x436p/image_service.jp2","service_name":"derivatives"},"image_thumbnail_300":{"filename":"image_thumbnail_300.jpg","byte_size":20555,"content_type":"image/jpeg","checksum":"ikhQ1dg8b1224/UuWpqMYA==","key":"images/bpl-dev:vh53x436p/image_thumbnail_300.jpg","service_name":"derivatives"},"text_coordinates_access":{"filename":"text_coordinates_access.json","byte_size":59435,"content_type":"application/json","checksum":"dxKe2FDk0c8uG1DpMyaFCQ==","key":"images/bpl-dev:vh53x436p/text_coordinates_access.json","service_name":"derivatives"},"text_coordinates_primary":{"filename":"0002.xml","byte_size":536191,"content_type":"application/xml","checksum":"Wp/10h4x3CRuDn3komXJkw==","key":"images/bpl-dev:vh53x436p/text_coordinates_primary.xml","service_name":"primary"},"text_plain":{"filename":"text_plain.txt","byte_size":15471,"content_type":"text/plain","checksum":"XDmDMm7cYHJ4mqJddCzqig==","key":"images/bpl-dev:vh53x436p/text_plain.txt","service_name":"derivatives"}}'
+  storage_key_base_ss:
+  - images/bpl-dev:vh53x436p
+  is_file_set_of_ssim:
+    - bpl-dev:th83m700n
+  filename_base_ssi: '0002'
+  position_isi: 1
+  has_wordcoords_json_bsi: true
+  destination_site_ssim:
+    - newspapers
+  has_ocr_text_bsi: true
+  timestamp: '2025-03-11T19:10:41.574Z'
+  ocr_tsiv: "2 LET THE “BLUE BELL” SIGN REMIND YOU— Of the errand you forgot to execute, and a ready way out of the difficulty. Of the order you were asked to deliver tor your firm or for your home. Of the engagement for which you have been delayed and of the quickest way of explaining your inability to meet it."
+- id:
+  - bpl-dev:tq57p0847
+  system_create_dtsi: '2023-05-31T18:24:33Z'
+  system_modified_dtsi: '2025-05-23T15:21:11Z'
+  curator_model_ssi:
+  - Curator::Filestreams::Image
+  curator_model_suffix_ssi: Image
+  processing_state_ssi: complete
+  attachments_ss: '{"characterization":{"filename":"characterization.xml","byte_size":4307,"content_type":"application/xml","checksum":"6FQY2djpOrw7DgFykZ3paA==","key":"images/bpl-dev:tq57p0847/characterization.xml","service_name":"derivatives"},"document_access":{"filename":"0001.pdf","byte_size":3670249,"content_type":"application/pdf","checksum":"1j1/AQhWQzy5mBTNA6bs0g==","key":"images/bpl-dev:tq57p0847/document_access.pdf","service_name":"derivatives"},"image_access_800":{"filename":"image_access_800.jpg","byte_size":130770,"content_type":"image/jpeg","checksum":"7h0ccKcwpybS0lXSbMJUzQ==","key":"images/bpl-dev:tq57p0847/image_access_800.jpg","service_name":"derivatives"},"image_primary":{"filename":"0001.tif","byte_size":66803320,"content_type":"image/tiff","checksum":"66cIbw4Fz21k/YUgzhODmg==","key":"images/bpl-dev:tq57p0847/image_primary.tif","service_name":"primary"},"image_service":{"filename":"image_service.jp2","byte_size":8318267,"content_type":"image/jp2","checksum":"h5kQvN6TcPh9Gvis/zsbwA==","key":"images/bpl-dev:tq57p0847/image_service.jp2","service_name":"derivatives"},"image_thumbnail_300":{"filename":"image_thumbnail_300.jpg","byte_size":21369,"content_type":"image/jpeg","checksum":"bg2hUwujdbNJB9HbvsH/9w==","key":"images/bpl-dev:tq57p0847/image_thumbnail_300.jpg","service_name":"derivatives"},"text_coordinates_access":{"filename":"text_coordinates_access.json","byte_size":47439,"content_type":"application/json","checksum":"FhqlBpcfvcspk0SGc1JAHg==","key":"images/bpl-dev:tq57p0847/text_coordinates_access.json","service_name":"derivatives"},"text_coordinates_primary":{"filename":"0001.xml","byte_size":424306,"content_type":"application/xml","checksum":"7HNZG6pZ7fw9gbPCw10WVw==","key":"images/bpl-dev:tq57p0847/text_coordinates_primary.xml","service_name":"primary"},"text_plain":{"filename":"text_plain.txt","byte_size":12234,"content_type":"text/plain","checksum":"iBuj3ikOnk9Tuf6rA0u1dA==","key":"images/bpl-dev:tq57p0847/text_plain.txt","service_name":"derivatives"}}'
+  storage_key_base_ss:
+  - images/bpl-dev:tq57p0847
+  is_file_set_of_ssim:
+    - bpl-dev:th83m700n
+  is_exemplary_image_of_ssim:
+    - bpl-dev:th83m700n
+  filename_base_ssi: '0001'
+  position_isi: 0
+  has_wordcoords_json_bsi: true
+  destination_site_ssim:
+    - newspapers
+  has_ocr_text_bsi: true
+  timestamp: '2025-05-23T15:21:16.366Z'
+  ocr_tsiv: "The I Dorchester Beacon ESTABLISHED. 1873. We call your attention to our Tea and Coffee We have also, All the Principal Brands ALBERT FELLOWS 1872 DORCHESTER AVE COR. DRACUT ST.. ASHMONT. H. HERRSTRON! DORCHESTER AWNING CO. Awnings, Tents and Flags."

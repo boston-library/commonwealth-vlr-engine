@@ -1,0 +1,22 @@
+---
+:scope:
+:url: https://android.clients.google.com/c2dm/register3
+:body: app=com.google.android.gms&device=4649875172472737760&sender=745476177629
+:status: 200
+:method: post
+:headers:
+  Content-Type: text/plain; charset=UTF-8
+  Date: Fri, 07 Nov 2025 19:27:00 GMT
+  Expires: Fri, 07 Nov 2025 19:27:00 GMT
+  Cache-Control: private, max-age=0
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: Error=PHONE_REGISTRATION_ERROR

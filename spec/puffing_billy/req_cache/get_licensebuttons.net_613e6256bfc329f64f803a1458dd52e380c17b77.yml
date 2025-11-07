@@ -1,0 +1,28 @@
+---
+:scope:
+:url: https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Date: Fri, 07 Nov 2025 21:48:23 GMT
+  Content-Type: image/png
+  Content-Length: '452'
+  Connection: close
+  Server: cloudflare
+  Vary: accept-encoding
+  Cf-Bgj: imgq:100,h2pri
+  Accept-Ranges: bytes
+  Cf-Polished: origSize=697
+  etag: '"5eab4a31-2b9"'
+  last-modified: Thu, 30 Apr 2020 21:59:13 GMT
+  strict-transport-security: max-age=15768000
+  x-content-type-options: nosniff
+  x-frame-options: deny
+  x-xss-protection: 1; mode=block
+  Cache-Control: max-age=432000
+  CF-Cache-Status: HIT
+  Age: '6979'
+  CF-RAY: 99b008d60e9de8a9-BOS
+:content: !binary |-
+  iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAABGdBTUEAANbY1E9YMgAAAJZQTFRFAAAARERE7u7ud3d3lJmTDg4OERERZmZmMzMzDQ4NW15bDQ0NfYJ9cnZx3d3dMTMxhoaGJygnZ2tnOz07ISEhOTs5QUJBGRkZQkJCJCUjICAgDQ0MxsrGs7iyh4eHLjAuQ0NDxcbFj5CPS0xLyMzIgICADxAPur+6ys7KmZmZqqqqu7u7VVVVIiIiiIiIzMzMq7Gq////+Wgu+gAAANlJREFUeNqtVNcShCAMDKBe77335lmS//+5E4fAjOPTyepLlp11TQDwD/IKbYgaU8gMJcIA8f2Ev2ANgzAjhpggvh4NDWdzssihi3i/NTPsZJSnIKSANCcxQnxfTX+NyOk1Y0qroKphH76UJqRUJD8xqQ7i61Kum5dYbypHsKpiOIBc6qkkbSqgQsTD3nzfythMP26tZAvUJxStSKoPqZ5L6H6Ya05oubqE2MsojqAlBbSHdD5xD13Cmh6yoNZwsfU85WB3JMZ603wf6rGMjd9y1fSkeIX/u+YHU7FSLRX36oMAAAAASUVORK5CYII=

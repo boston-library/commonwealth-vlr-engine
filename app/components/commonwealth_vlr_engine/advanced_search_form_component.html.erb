@@ -7,7 +7,8 @@
   </div>
 <% end %>
 
-<%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
+<%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', id: 'advanced_search_form',
+             'aria-label' => t('blacklight.search.form.submit') do %>
   <%= render Blacklight::HiddenSearchStateComponent.new(params: hidden_search_state_params) %>
 
   <div class="input-criteria">
@@ -25,7 +26,7 @@
         <% end %>
       </div>
 
-      <div class="advanced_search_field">
+      <div class="advanced-search-field">
         <div id="advanced_operators" class="offset-sm-3 offset-md-3 offset-lg-2 col-sm-8 col-md-10 col-lg-6">
           <div class="form-check form-check-inline">
             <%= radio_button_tag(:op, 'must', true, class: 'form-check-input') %>
@@ -48,7 +49,7 @@
       <div class="limit-criteria mb-4">
         <h2 class="limit-criteria-heading h3"><%= t('blacklight.advanced_search.limit')%></h2>
 
-        <div id="date_range_limit" class="advanced_search_field">
+        <div id="date_range_limit" class="advanced-search-field">
           <div class="row">
             <label class="col-form-label col-md-3 col-lg-2">Year</label>
             <div class="col-sm-8">
