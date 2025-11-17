@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-describe 'OCR search index view' do
+RSpec.describe 'OCR search index view' do
   let(:book_pid) { 'bpl-dev:7s75dn48d' }
 
   describe 'loading the search form' do
     describe 'with no current_search_session params' do
       it 'displays the search form' do
         visit ocr_search_path(id: book_pid)
-        expect(page).to have_selector('form.ocr-search-form')
+        expect(page).to have_selector('#ocr_search_form')
       end
     end
 
@@ -30,9 +30,9 @@ describe 'OCR search index view' do
 
     describe 'no matches' do
       it 'renders the no matches partial' do
-        within 'form.ocr-search-form' do
+        within '#ocr_search_form' do
           fill_in 'ocr_q', with: 'sdfsdf'
-          click_button('search')
+          click_button('ocr_search')
         end
         expect(page).to have_selector('#zero_results_ocr')
       end
@@ -40,9 +40,9 @@ describe 'OCR search index view' do
 
     describe 'with matches' do
       before(:each) do
-        within 'form.ocr-search-form' do
+        within '#ocr_search_form' do
           fill_in 'ocr_q', with: 'the'
-          click_button('search')
+          click_button('ocr_search')
         end
       end
 

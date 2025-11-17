@@ -1,0 +1,27 @@
+---
+:scope:
+:url: http://clients2.google.com/time/1/current?cup2key=9:Wd982J3yTwyKzkxS6enSpl7AZgFZKfaTwEiEFh9-hhY&cup2hreq=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/json; charset=utf-8
+  X-Content-Type-Options: nosniff
+  x-cup-server-proof: 304402200eaddeda3f0c6d22f7e22bfc33be1d3bb8f7f49c870e75eef4dd92999f031c4c022073c040b525329d1ed00749c20ebc321d0d5a9bbc9c3d271ac2cc1e8af0ba03be:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Mon, 17 Nov 2025 20:31:26 GMT
+  Content-Disposition: attachment; filename="json.txt"; filename*=UTF-8''json.txt
+  Cross-Origin-Resource-Policy: same-site
+  Cross-Origin-Opener-Policy: same-origin
+  Server: ESF
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  Accept-Ranges: none
+  Vary: Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site,Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |-
+  )]}'
+  {"current_time_millis":1763411486776,"server_nonce":-2.1162152134809658E-238}

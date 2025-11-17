@@ -2,28 +2,10 @@
 
 require 'rails_helper'
 
-describe 'Institutions#index view' do
-  before(:all) do
-    CommonwealthVlrEngine::InstitutionsHelperBehavior.module_eval do
-      # set this helper to return true so AZ links are rendered
-      def should_render_inst_az?
-        true
-      end
-    end
-  end
-
-  after(:all) do
-    CommonwealthVlrEngine::InstitutionsHelperBehavior.module_eval do
-      def should_render_inst_az?
-        false
-      end
-    end
-  end
-
+RSpec.describe 'institutions#index view' do
   before(:each) { visit institutions_path }
 
-  # this is mostly a test for CommonwealthVlrEngine::Controller#search_action_path
-  describe 'search_action_path' do
+  describe 'az_links search_action_path' do
     before(:each) do
       within '#az_links' do
         click_link('B')

@@ -1,0 +1,31 @@
+---
+:scope:
+:url: https://android.clients.google.com/checkin
+:body: !binary |-
+  EAAaKjEtZGEzOWEzZWU1ZTZiNGIwZDMyNTViZmVmOTU2MDE4OTBhZmQ4MDcwOSIYYANqFAgCEg4xNDIuMC43NDQ0LjE2MhgBaQAAAAAAAAAAcAOwAQA=
+:status: 200
+:method: post
+:headers:
+  Content-Type: application/x-protobuffer
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Mon, 17 Nov 2025 20:31:34 GMT
+  Permissions-Policy: ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*,
+    ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
+  Accept-CH: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+    Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform,
+    Sec-CH-UA-Platform-Version
+  Content-Security-Policy: require-trusted-types-for 'script';report-uri /checkin/_/AndroidCheckinHttp/cspreport
+  Cross-Origin-Opener-Policy: same-origin
+  Server: ESF
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: !binary |-
+  CAEY/ImQnKkzKiEKCmFuZHJvaWRfaWQSEzUwMDEyMDI1NDc0MTEyNDY3MzYqEgoNY2hyb21lX2RldmljZRIBMSoUCg5kZXZpY2VfY291bnRyeRICdXMqKQoYZGV2aWNlX3JlZ2lzdHJhdGlvbl90aW1lEg0xNzYzNDA5NjAwMDAwOZDeOSg412dFQRGZrbK7rHEBSABaH0l6TDYtZ2hLaURFU29MUGdON2UtdURDRFQwQTRxUmtitwJBQkZFdDFWRU16enJWWVQ2TlhiYUtRcWlDV0JCNlBWRWpiczYtYVNLdXdXWEZKeG0zVFJYSFZrY000Nm5SdEQ3b3oxazFVNE5GRXNCZEpiUnh0Z20xTTVfaGswc1NWUm1zMU0wSVR2c2Nxa3p4djNvaXFpQngya1NnRFVjNXlpc3FFNEVHLVZrNDNjUkQ1U3hBMnJ4aVpCM2VPOWpKem84eXVsZzhzanZVTVVFd2tkUThLWmdTZ1h1RFRYV2tYNU9SZ3RHT0ttRXJXVlpyNWwwRVh4VDFaR3kxdk44S3hsbGV1RHVmVjRlNmo2UFJqU3BLQk1LZ3FRWXYxMi1lcXRfcktGbFFjNEF6TWkyRTV1U3NOT19MWGM4UzZOQnUwTnV1VFBqN3B1M24xaHV5T3pfZjhSQjJSbw==

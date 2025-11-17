@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'feedback form', js: true do
+RSpec.describe 'feedback form', js: true do
   before(:each) do
     visit feedback_path
   end

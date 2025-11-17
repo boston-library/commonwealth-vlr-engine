@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Institutions#show view', js: true do
+RSpec.describe 'institutions#show view', :vcr, js: true do
   before(:each) { visit institution_path(id: 'bpl-dev:abcd12345') }
 
   describe 'description collapse behavior' do
@@ -13,9 +13,10 @@ describe 'Institutions#show view', js: true do
     end
 
     describe 'expanded description' do
-      before(:each) { find('.institution_desc_expand').click }
+      # before(:each) { find('.institution_desc_expand').click }
 
       it 'should show the #institution_desc_collapse content when the link is clicked' do
+        find('#institution_desc_expand').click
         expect(page).to have_selector('#institution_desc_collapse', visible: :visible)
       end
     end

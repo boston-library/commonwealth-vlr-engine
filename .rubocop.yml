@@ -754,3 +754,4 @@ Capybara/VisibilityMatcher:
   Enabled: true
   Exclude:
     - 'spec/features/ocr_search/index_spec.rb'
+    - 'spec/features/catalog/show/flagged_modal_spec.rb'
