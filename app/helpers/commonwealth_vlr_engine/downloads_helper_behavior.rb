@@ -231,6 +231,8 @@ module CommonwealthVlrEngine
       zip_size = 0
       image_files.each do |image_file|
         img_attachments_json = JSON.parse(image_file['attachments_ss'])
+        next if img_attachments_json[filestream_id_to_use].blank?
+
         zip_size += img_attachments_json[filestream_id_to_use]['byte_size']
       end
       # estimate compression, pretty rough
