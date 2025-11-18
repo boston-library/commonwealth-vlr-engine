@@ -1,0 +1,28 @@
+---
+:scope:
+:url: https://update.googleapis.com/service/update2/json
+:body: '{"request":{"@os":"mac","@updater":"chrome","acceptformat":"crx3,download,puff,run,xz,zucc","apps":[{"appid":"lmelglejhemejginpboagddgdfbepgmp","brand":"OZZY","cohort":"1:lwl:3cnr@0.1","cohortname":"Auto","enabled":true,"events":[{"download_time_ms":241,"downloaded":375151,"downloader":"direct","eventresult":1,"eventtype":14,"nextversion":"572","pipeline_id":"1:full:abd78817d137324a488d33f2be78c1bcce014f22371fa586085f59d53d0290e8:any","previousversion":"0.0.0.0","total":375151,"url":"http://edgedl.me.gvt1.com/edgedl/release2/chrome_component/aczykzp7h4ehu2uwvqqna57c6a2a_572/lmelglejhemejginpboagddgdfbepgmp_572_all_ZZ_adictktxtgu6kbeu5c4vijdh3veq.crx3"},{"eventresult":1,"eventtype":63,"nextversion":"572","pipeline_id":"1:full:abd78817d137324a488d33f2be78c1bcce014f22371fa586085f59d53d0290e8:any","previousversion":"0.0.0.0"},{"eventresult":1,"eventtype":3,"nextversion":"572","previousversion":"0.0.0.0"}],"installdate":6896,"lang":"en-GB","version":"572"}],"arch":"arm64","dedup":"cr","domainjoined":false,"hw":{"avx":false,"physmemory":16,"sse":false,"sse2":false,"sse3":false,"sse41":false,"sse42":false,"ssse3":false},"ismachine":false,"os":{"arch":"arm64","platform":"Mac
+  OS X","version":"15.6.1"},"prodversion":"142.0.7444.176","protocol":"4.0","requestid":"{07febe91-0b9a-41b2-805a-86c82fe1be97}","sessionid":"{6dc7aac7-72dc-4d96-88a2-dca0e657680c}","updaterversion":"142.0.7444.176"}}'
+:status: 200
+:method: post
+:headers:
+  Content-Security-Policy: script-src 'report-sample' 'none';report-uri https://csp.withgoogle.com/csp/clientupdate-aus/1
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Tue, 18 Nov 2025 20:40:14 GMT
+  Content-Type: application/json; charset=utf-8
+  X-Daynum: '6896'
+  X-Daystart: '45614'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |-
+  )]}'
+  {"response":{"server":"prod","protocol":"4.0","daystart":{"elapsed_seconds":45614,"elapsed_days":6896},"apps":[{"appid":"lmelglejhemejginpboagddgdfbepgmp","status":"ok","events":[{"status":"ok"},{"status":"ok"},{"status":"ok"}]}]}}

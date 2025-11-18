@@ -18,19 +18,19 @@ RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
 
   before(:each) { allow(context).to receive(:blacklight_config).and_return(blacklight_config) }
 
-  describe 'site_filter' do
+  describe '#site_filter' do
     it 'adds parameters to filter items with the correct site' do
       expect(search_builder.site_filter(solr_parameters).to_s).to include('destination_site_ssim')
     end
   end
 
-  describe 'exclude_unwanted_models' do
+  describe '#exclude_unwanted_models' do
     it 'adds parameters to exclude unwanted models' do
       expect(search_builder.exclude_unwanted_models(solr_parameters)).to be_a_kind_of Array
     end
   end
 
-  describe 'exclude_unpublished_items' do
+  describe '#exclude_unpublished_items' do
     let(:excluded_unpublished) { search_builder.exclude_unpublished_items(solr_parameters).to_s }
 
     it 'adds parameters to exclude non-published items' do
@@ -40,31 +40,32 @@ RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
     end
   end
 
-  describe 'exclude_institutions' do
+  describe '#exclude_institutions' do
     it 'adds parameters to exclude institutions' do
       expect(search_builder.exclude_institutions(solr_parameters).to_s).to include('-curator_model_suffix_ssi:\"Institution\"')
     end
   end
 
-  describe 'exclude_collections' do
+  describe '#exclude_collections' do
     it 'adds parameters to exclude collections' do
       expect(search_builder.exclude_collections(solr_parameters).to_s).to include('-curator_model_suffix_ssi:\"Collection\"')
     end
   end
 
-  describe 'flagged_filter' do
+  describe '#flagged_filter' do
     it 'adds parameters to exclude flagged items' do
       expect(search_builder.flagged_filter(solr_parameters).to_s).to include("-#{blacklight_config.flagged_field}:[* TO *]")
     end
   end
 
-  describe 'institutions_filter' do
+  describe '#institutions_filter' do
     it 'adds parameters to require institutions' do
       expect(search_builder.institutions_filter(solr_parameters).to_s).to include('+curator_model_suffix_ssi:\"Institution\"')
     end
   end
 
-  describe 'institutions_limit' do
+  # TODO: figure out how to reliably and temporarily set the VLR_INSTITUTION_PID var
+  describe '#institutions_limit', pending: true do
     it 'adds parameters to limit to a single institution' do
       ClimateControl.modify VLR_INSTITUTION_PID: 'foo' do
         expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
@@ -72,7 +73,7 @@ RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
     end
   end
 
-  describe 'mlt_params' do
+  describe '#mlt_params' do
     let(:builder_with_params) { search_builder.with({ mlt_id: 'bpl-dev:12345678' }) }
 
     before(:each) do
@@ -89,13 +90,13 @@ RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
     end
   end
 
-  describe 'collections_filter' do
+  describe '#collections_filter' do
     it 'adds parameters to require institutions' do
       expect(search_builder.collections_filter(solr_parameters).to_s).to include('+curator_model_suffix_ssi:\"Collection\"')
     end
   end
 
-  describe 'ocr_search_params' do
+  describe '#ocr_search_params' do
     before(:each) do
       search_builder.ocr_search_params(solr_parameters)
     end

@@ -7,8 +7,11 @@ RSpec.describe 'search inside link', :vcr, js: true do
     visit solr_document_path(id: 'bpl-dev:th83m700n')
   end
 
-  it 'displays the search link' do
-    expect(page).to have_selector('#ocrSearchLink')
+  # vcr seems to sometimes have difficulty finding default cassette, set it explicitly
+  VCR.use_cassette('search_inside_link/displays_the_search_link') do
+    it 'displays the search link' do
+      expect(page).to have_selector('#ocrSearchLink')
+    end
   end
 
   describe 'search inside modal' do
