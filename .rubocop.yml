@@ -370,15 +370,6 @@ Style/Next:
 Style/NumericLiterals:
   Enabled: true
 
-Style/PercentLiteralDelimiters:
-  Enabled: true
-  PreferredDelimiters:
-    default: ()
-    '%i': ()
-    '%I': ()
-    '%w': ()
-    '%W': ()
-
 Style/Proc:
   Enabled: true
 

@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
     attr_reader :geojson_feature
 
     def initialize(geojson_feature:, separator: I18n.t('blacklight.breadcrumb.separator'), separator_class: 'metadata_breadcrumb')
-      @geojson_feature= geojson_feature
+      @geojson_feature = geojson_feature
       @separator = separator
       @separator_class = separator_class
     end

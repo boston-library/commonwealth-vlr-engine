@@ -38,6 +38,5 @@ RSpec.describe CommonwealthVlrEngine::FacetDropdownComponent, type: :component d
 
       expect(page).to have_selector("##{facet_field_name}-dropdown .dropdown-item.active")
     end
-
   end
 end

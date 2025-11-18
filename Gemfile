@@ -16,6 +16,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'climate_control'
   gem 'coveralls_reborn', '~> 0.28.0', require: false
   gem 'database_cleaner'
   gem 'puffing-billy'

@@ -59,13 +59,6 @@ RSpec.describe CollectionsController, :vcr do
       mock_controller.request = ActionDispatch::TestRequest.create
     end
 
-    describe 'add_series_facet' do
-      it 'adds the series facet to the Solr request' do
-        mock_controller.send(:add_series_facet)
-        expect(mock_controller.blacklight_config.facet_fields['related_item_series_ssi'].include_in_request).to eq(true)
-      end
-    end
-
     describe 'collections_index_config' do
       it 'sets the correct configuration' do
         mock_controller.send(:collections_index_config)
@@ -81,6 +74,7 @@ RSpec.describe CollectionsController, :vcr do
         expect(mock_controller.blacklight_config.show.metadata_component).to be_falsey
         expect(mock_controller.blacklight_config.search_fields[:subject]).to be_falsey
         expect(mock_controller.blacklight_config.advanced_search.enabled).to be_falsey
+        expect(mock_controller.blacklight_config.facet_fields['related_item_series_ssi'].include_in_request).to eq(true)
       end
     end
 

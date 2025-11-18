@@ -52,7 +52,7 @@ module CommonwealthVlrEngine
       # ["{!term f=field_name1_ssim}Foo Bar", "{!term f=field_name2_ssim}Baz--Qux", ...]
       previous_facet_params = response.params.dig('fq')
       previous_facet_params.each do |pfp|
-        next unless pfp.match(/{!term\sf=/)
+        next unless pfp.match?(/{!term\sf=/)
 
         pfp_field_name = pfp.match(/f=[\w]*/)&.to_s&.delete_prefix('f=')
         pfp_field_value = pfp.split(/{!term\sf=[\w]*}/)&.last

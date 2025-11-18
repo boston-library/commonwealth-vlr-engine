@@ -5,7 +5,7 @@ module CommonwealthVlrEngine
   module ImagesHelperBehavior
     # NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
 
-    # TODO: this method is cnot currently used, but may still be needed,
+    # TODO: this method is not currently used, but may still be needed,
     #       for display of collections on institutions#show
     # return the image url for the collection gallery view document
     # @param document [SolrDocument] = Curator::Collection Solr document

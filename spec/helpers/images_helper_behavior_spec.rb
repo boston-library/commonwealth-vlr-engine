@@ -16,6 +16,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
     end
   end
 
+  # TODO: #collection_gallery_url is not currently used, but may still be needed, keep for now
   # describe '#collection_gallery_url' do
   #   it 'returns a thumbnail datastream if this is an OAI-harvested item' do
   #     expect(helper.collection_gallery_url({ exemplary_image_ssi: 'oai-dev:123456', hosting_status_ssi: 'harvested',
@@ -69,13 +70,13 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
       it 'returns the correct url' do
         banner_img_url = helper.banner_image_url(exemplary_document: exemplary_document.except(:identifier_iiif_manifest_ss,
                                                                                                :exemplary_image_key_base_ss))
-        expect(banner_img_url).to include("dc_audio-icon.png")
+        expect(banner_img_url).to include('dc_audio-icon.png')
       end
     end
 
     describe 'when no exemplary document is provided' do
       it 'returns the correct url' do
-        expect(helper.banner_image_url(exemplary_document: nil)).to include("dc_text-icon.png")
+        expect(helper.banner_image_url(exemplary_document: nil)).to include('dc_text-icon.png')
       end
     end
   end

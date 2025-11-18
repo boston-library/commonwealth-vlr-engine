@@ -6,8 +6,8 @@ RSpec.describe CommonwealthVlrEngine::BannerImageComponent, :vcr, type: :compone
   let(:context_arg) { 'collection' }
   let(:exemplary_document) { SolrDocument.find('bpl-dev:h702q6403') }
 
-  it "renders the component" do
-    render_inline(described_class.new(exemplary_document: , context: context_arg))
+  it 'renders the component' do
+    render_inline(described_class.new(exemplary_document: exemplary_document, context: context_arg))
 
     expect(page).to have_selector('#banner_image_container')
     expect(page).to have_selector("img.banner-image-#{context_arg}")

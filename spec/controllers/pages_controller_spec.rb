@@ -9,7 +9,7 @@ RSpec.describe PagesController do
     before(:each) do
       CarouselSlide.create(context: 'root', image_pid: 'bpl-dev:000000043',
                            institution: 'Boston Public Library', object_pid: 'bpl-dev:00000003t',
-                           region: 'pct:10,20,80,23', size: '1600,', title: "Map of the county of Norfolk, Massachusetts")
+                           region: 'pct:10,20,80,23', size: '1600,', title: 'Map of the county of Norfolk, Massachusetts')
       get :home
     end
 

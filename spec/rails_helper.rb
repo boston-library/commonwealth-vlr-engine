@@ -14,8 +14,8 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'vcr'
 # require 'billy/capybara/rspec'
-require "view_component/test_helpers"
-require "view_component/system_test_helpers"
+require 'view_component/test_helpers'
+require 'view_component/system_test_helpers'
 
 VCR.configure do |c|
   # NOTE: uncomment this when creating or updating existing specs are wrapped in VCR.use_cassete
@@ -105,8 +105,6 @@ RSpec.configure do |config|
   end
 
   config.include ViewComponent::TestHelpers, type: :component
-  # config.include ViewComponent::SystemSpecHelpers, type: :feature
-  # config.include ViewComponent::SystemSpecHelpers, type: :system
   config.include ViewComponent::SystemTestHelpers, type: :component
   config.include ViewComponentTestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component

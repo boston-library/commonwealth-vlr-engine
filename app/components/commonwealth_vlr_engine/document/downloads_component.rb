@@ -106,7 +106,7 @@ module CommonwealthVlrEngine
       # @return [Array] list non-image/video downloadable attachments
       def other_downloadable_attachments(attachments_json)
         downloadable_attachments = %w(audio_access document_access ebook_access_epub ebook_access_mobi
-                                    ebook_access_daisy text_plain)
+                                      ebook_access_daisy text_plain)
         all_attachments = attachments_json.keys
 
         # don't allow download of *_primary or text_plain if there is an *_access file

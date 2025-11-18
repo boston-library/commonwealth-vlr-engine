@@ -11,7 +11,7 @@ RSpec.describe CommonwealthVlrEngine::Document::MetadataComponent, type: :compon
 
     expect(page).to have_selector('#item_metadata')
     expect(page).to have_content(document[:title_info_alternative_tsim].first)
-    expect(page).to have_link(document[:name_facet_ssim].first, href: "/search?f%5Bname_facet_ssim%5D%5B%5D=C.S.+Hammond+%26+Company")
+    expect(page).to have_link(document[:name_facet_ssim].first, href: '/search?f%5Bname_facet_ssim%5D%5B%5D=C.S.+Hammond+%26+Company')
     expect(page).to have_link(document[:identifier_uri_ss], href: document[:identifier_uri_ss])
   end
 end

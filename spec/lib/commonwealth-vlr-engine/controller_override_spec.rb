@@ -99,39 +99,35 @@ RSpec.describe CommonwealthVlrEngine::ControllerOverride do
     end
   end
 
-  describe '#render_sharing?' do
-    it 'returns the correct boolean value' do
-      expect(mock_controller.send(:render_sharing?)).to be_truthy
-    end
-  end
-
-  describe '#render_manifest_link?' do
+  describe 'render_*? methods' do
     before(:each) do
       mock_controller.instance_variable_set(:@document, SolrDocument.find('bpl-dev:h702q6403'))
     end
 
-    # remove the instance variables so they don't mess up other specs
-    # after(:each) do
-    #   mock_controller.remove_instance_variable(:@document)
-    # end
+    describe '#render_sharing?' do
+      it 'returns the correct boolean value' do
+        expect(mock_controller.send(:render_sharing?)).to be_truthy
+      end
+    end
 
-    it 'returns the correct boolean value' do
-      expect(mock_controller.send(:render_manifest_link?)).to be_truthy
+    describe '#render_manifest_link?' do
+      it 'returns the correct boolean value' do
+        expect(mock_controller.send(:render_manifest_link?)).to be_truthy
+      end
+    end
+
+    describe 'render_sms_action?' do
+      it 'returns the correct boolean value' do
+        expect(mock_controller.send(:render_sms_action?)).to be_falsey
+      end
+    end
+
+    describe '#render_item_feedback??' do
+      it 'returns the correct boolean value' do
+        expect(mock_controller.send(:render_item_feedback?)).to be_truthy
+      end
     end
   end
-
-  describe 'render_sms_action?' do
-    it 'returns the correct boolean value' do
-      expect(mock_controller.send(:render_sms_action?)).to be_falsey
-    end
-  end
-
-  describe '#render_item_feedback??' do
-    it 'returns the correct boolean value' do
-      expect(mock_controller.send(:render_item_feedback?)).to be_truthy
-    end
-  end
-
 
   describe 'has_search_parameters?' do
     before(:each) { mock_controller.params = { mlt_id: 'bpl-dev:h702q6403' } }

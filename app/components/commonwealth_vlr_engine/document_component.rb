@@ -12,33 +12,33 @@ module CommonwealthVlrEngine
       super
     end
 
-    renders_one :breadcrumb, -> do
+    renders_one :breadcrumb, lambda {
       CommonwealthVlrEngine::BreadcrumbComponent.new(document: @document)
-    end
+    }
 
-    renders_one :media, -> do
+    renders_one :media, lambda {
       CommonwealthVlrEngine::Document::MediaComponent.new(document: @document, object_files: @object_files)
-    end
+    }
 
-    renders_one :harvested_item_link, -> do
+    renders_one :harvested_item_link, lambda {
       CommonwealthVlrEngine::Document::HarvestedItemComponent.new(document: @document)
-    end
+    }
 
-    renders_one :show_tools, -> do
+    renders_one :show_tools, lambda {
       helpers.blacklight_config.view_config(:show).show_tools_component.new(document: @document)
-    end
+    }
 
-    renders_one :explore_collection, -> do
+    renders_one :explore_collection, lambda {
       CommonwealthVlrEngine::ParentPreviewComponent.new(document: @document)
-    end
+    }
 
-    renders_one :more_like_this, -> do
+    renders_one :more_like_this, lambda {
       CommonwealthVlrEngine::Document::MoreLikeThisComponent.new(document: @document, mlt_response: @mlt_response)
-    end
+    }
 
-    renders_one :facet_more, -> do
+    renders_one :facet_more, lambda {
       CommonwealthVlrEngine::FacetMoreComponent.new(document: @document)
-    end
+    }
 
     # Hack so that the default lambdas are triggered
     # so that we don't have to do c.with_top_bar() in the call.

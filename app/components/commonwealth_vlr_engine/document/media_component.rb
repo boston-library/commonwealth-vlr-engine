@@ -12,29 +12,29 @@ module CommonwealthVlrEngine
 
       IMAGE_VIEWER_LIMIT = 7
 
-      renders_one :image_viewer, -> do
+      renders_one :image_viewer, lambda {
         CommonwealthVlrEngine::Media::ImageViewerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
-      renders_one :multi_image_viewer, -> do
+      renders_one :multi_image_viewer, lambda {
         CommonwealthVlrEngine::Media::MultiImageViewerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
-      renders_one :book_viewer, -> do
+      renders_one :book_viewer, lambda {
         CommonwealthVlrEngine::Media::BookViewerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
-      renders_one :pdf_viewer, -> do
+      renders_one :pdf_viewer, lambda {
         CommonwealthVlrEngine::Media::PdfViewerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
-      renders_one :audio_player, -> do
+      renders_one :audio_player, lambda {
         CommonwealthVlrEngine::Media::AudioPlayerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
-      renders_one :video_player, -> do
+      renders_one :video_player, lambda {
         CommonwealthVlrEngine::Media::VideoPlayerComponent.new(document: document, object_files: object_files)
-      end
+      }
 
       def render?
         helpers.has_image_files?(object_files) ||

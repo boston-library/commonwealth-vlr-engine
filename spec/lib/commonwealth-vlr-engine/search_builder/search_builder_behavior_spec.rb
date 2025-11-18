@@ -65,10 +65,10 @@ RSpec.describe CommonwealthVlrEngine::SearchBuilderBehavior do
   end
 
   describe 'institutions_limit' do
-    before(:each) { ENV['VLR_INSTITUTION_PID'] = 'foo' }
-
     it 'adds parameters to limit to a single institution' do
-      expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
+      ClimateControl.modify VLR_INSTITUTION_PID: 'foo' do
+        expect(search_builder.institution_limit(solr_parameters).to_s).to include('+institution_ark_id_ssi:\"' + CommonwealthVlrEngine.config[:institution][:pid])
+      end
     end
   end
 

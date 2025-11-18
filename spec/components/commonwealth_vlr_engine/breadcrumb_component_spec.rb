@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CommonwealthVlrEngine::BreadcrumbComponent, type: :component do
   let(:document) { SolrDocument.find('bpl-dev:h702q6403') }
 
-  it "renders the component" do
+  it 'renders the component' do
     render_inline(described_class.new(document: document))
 
     expect(page).to have_selector('#item_breadcrumb')

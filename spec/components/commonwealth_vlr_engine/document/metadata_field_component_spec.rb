@@ -26,7 +26,7 @@ RSpec.describe CommonwealthVlrEngine::Document::MetadataFieldComponent, type: :c
       render_inline(described_class.new(document: document, field_name: field_name, field_key: 'language', link: true))
 
       # for some BIZARRE reason, can't use document[field_name] below
-      expect(page).to have_link "English", href: "/search?f%5B#{field_name}%5D%5B%5D=English"
+      expect(page).to have_link 'English', href: "/search?f%5B#{field_name}%5D%5B%5D=English"
     end
   end
 end

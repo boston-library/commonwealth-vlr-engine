@@ -4,7 +4,6 @@
 # otherwise Blacklight removes index fields from IndexPresenter because of #show action name
 module CommonwealthVlrEngine
   class IndexPresenter < Blacklight::IndexPresenter
-
     private
 
     def display_fields(config = configuration)

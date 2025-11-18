@@ -9,16 +9,16 @@ module CommonwealthVlrEngine
       # so use same args as Blacklight::DocumentMetadataComponent, even though most are unused
       # @param fields [Enumerable<Blacklight::FieldPresenter>] Document field presenters
       # rubocop:disable Metrics/ParameterLists
+      # rubocop:disable Lint/UnusedMethodArgument
       def initialize(fields: [], tag: nil, classes: nil, show: false, view_type: nil, field_layout: nil, **component_args)
         @document = component_args[:document]
       end
       # rubocop:enable Metrics/ParameterLists
+      # rubocop:enable Lint/UnusedMethodArgument
 
       attr_reader :document
 
-      def blacklight_config
-        helpers.blacklight_config
-      end
+      delegate :blacklight_config, to: :helpers
     end
   end
 end

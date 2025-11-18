@@ -17,7 +17,7 @@ RSpec.describe CommonwealthVlrEngine::AdvancedSearchFormComponent, type: :compon
 
   let(:view_context) { controller.view_context }
 
-  before do
+  before(:each) do
     without_partial_double_verification do
       allow(view_context).to receive(:facet_limit_for).and_return(nil)
     end

@@ -13,7 +13,7 @@ RSpec.describe CommonwealthVlrEngine::Document::FlaggedWarningComponent, type: :
   let(:rendered) { Capybara::Node::Simple.new(render) }
   let(:view_context) { controller.view_context }
 
-  before do
+  before(:each) do
     without_partial_double_verification do
       allow(view_context).to receive_messages(current_search_session: nil)
     end

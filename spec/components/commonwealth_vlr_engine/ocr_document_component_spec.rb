@@ -50,7 +50,7 @@ RSpec.describe CommonwealthVlrEngine::OcrDocumentComponent, type: :component do
     end
   end
 
-  before do
+  before(:each) do
     without_partial_double_verification do
       allow(controller).to receive_messages(view_context: view_context, blacklight_config: blacklight_config)
     end

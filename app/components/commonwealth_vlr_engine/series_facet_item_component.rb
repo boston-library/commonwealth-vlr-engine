@@ -9,7 +9,7 @@ module CommonwealthVlrEngine
                   href, rel: 'nofollow')
         end +
         tag.div(class: 'caption-area') do
-          tag.span(class: "facet-label") do
+          tag.span(class: 'facet-label') do
             link_to_unless(@suppress_link, label, href, class: 'facet-select', rel: 'nofollow')
           end
         end
@@ -32,8 +32,6 @@ module CommonwealthVlrEngine
       CGI.unescape(href.split('&f%5B').find { |h| h.include?('collection_name') }.split('%5D=').last)
     end
 
-    def blacklight_config
-      helpers.blacklight_config
-    end
+    delegate :blacklight_config, to: :helpers
   end
 end

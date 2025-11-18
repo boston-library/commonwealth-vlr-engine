@@ -14,7 +14,7 @@ module CommonwealthVlrEngine
       end
 
       def title_for_viewer_modal
-        document[helpers.blacklight_config.index.title_field.field]&.html_safe&.gsub(/\'/,'')
+        document[helpers.blacklight_config.index.title_field.field]&.html_safe&.delete("'")
       end
 
       def osd_tilesource

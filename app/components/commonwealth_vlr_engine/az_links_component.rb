@@ -23,7 +23,7 @@ module CommonwealthVlrEngine
     def link_to_az_value(letter)
       new_params = params.permit!.except(:controller, :action, :q, :page, :starts_with)
       new_params[:starts_with] = letter
-      link_to(letter, self.send(az_link_path, new_params), class: 'az_link')
+      link_to(letter, send(az_link_path, new_params), class: 'az_link')
     end
   end
 end

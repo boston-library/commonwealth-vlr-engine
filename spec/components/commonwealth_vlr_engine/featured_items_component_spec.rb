@@ -18,14 +18,14 @@ RSpec.describe CommonwealthVlrEngine::FeaturedItemsComponent, type: :component d
     end
   end
 
-  before do
+  before(:each) do
     without_partial_double_verification do
       allow(controller).to receive_messages(view_context: view_context, blacklight_config: blacklight_config)
       allow(view_context).to receive_messages(search_session: {}, current_search_session: nil)
     end
   end
 
-  it "renders the component" do
+  it 'renders the component' do
     expect(rendered).to have_selector('#documents_featured')
     expect(rendered).to have_selector('.blacklight-digitalobject.document', count: featured_documents.size)
   end

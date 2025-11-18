@@ -13,16 +13,14 @@ RSpec.describe 'catalog/index.json', api: true do
   end
   let(:presenter) { Blacklight::JsonPresenter.new(response, config) }
   let(:mock_controller) { CatalogController.new }
-  let(:search_state) do
-    Blacklight::SearchState.new({}, config, mock_controller)
-  end
+  let(:search_state) { Blacklight::SearchState.new({}, config, mock_controller) }
 
   let(:hash) do
-    render template: "catalog/index", formats: [:json]
+    render template: 'catalog/index', formats: [:json]
     JSON.parse(rendered).with_indifferent_access
   end
 
-  before do
+  before(:each) do
     without_partial_double_verification do
       allow(view).to receive_messages(blacklight_config: config,
                                       search_action_path: 'http://test.host/some/search/url',
@@ -35,7 +33,7 @@ RSpec.describe 'catalog/index.json', api: true do
     assign :response, response
   end
 
-  it "returns the documents with correctly formatted values" do
+  it 'returns the documents with correctly formatted values' do
     expect(hash[:data].first[:attributes][field_name]).to eq ['Photographs']
   end
 end

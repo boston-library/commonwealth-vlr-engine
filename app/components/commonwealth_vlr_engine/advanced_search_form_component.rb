@@ -2,7 +2,6 @@
 
 module CommonwealthVlrEngine
   class AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormComponent
-
     def sort_fields_select
       false
     end

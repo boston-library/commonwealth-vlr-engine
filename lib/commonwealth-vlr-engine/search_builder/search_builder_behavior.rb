@@ -44,7 +44,7 @@ module CommonwealthVlrEngine
 
     # limit results to a single institution
     def institution_limit(solr_parameters = {})
-      return solr_parameters unless CommonwealthVlrEngine.config.dig(:institution, :pid).present?
+      return solr_parameters if CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
 
       solr_parameters[:fq] ||= []
       solr_parameters[:fq] << '+institution_ark_id_ssi:"' + CommonwealthVlrEngine.config.dig(:institution, :pid) + '"'

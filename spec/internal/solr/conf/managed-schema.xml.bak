@@ -267,7 +267,7 @@
          without the field to come after documents with the field,
          regardless of the requested sort order (asc or desc).
        - If sortMissingFirst="true", then a sort on this field will cause documents
-         without the field to come before documents with the field,
+         without the field to come before(:each) documents with the field,
          regardless of the requested sort order.
        - If sortMissingLast="false" and sortMissingFirst="false" (the default),
          then default lucene sorting will be used which places docs without the

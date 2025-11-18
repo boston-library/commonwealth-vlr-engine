@@ -23,6 +23,7 @@ module CommonwealthVlrEngine
         citation_output.gsub(/\.\./, '.')
       end
 
+      # rubocop:disable Style/IfUnlessModifier
       def render_apa_citation
         citation_output = ''
         names = names_for_citation('apa')
@@ -42,6 +43,7 @@ module CommonwealthVlrEngine
         citation_output += "Retrieved from #{url_for_citation}"
         citation_output.gsub(/\.\./, '.')
       end
+      # rubocop:enable Style/IfUnlessModifier
 
       def render_chicago_citation
         citation_output = ''
@@ -78,6 +80,7 @@ module CommonwealthVlrEngine
 
       # create a list of creator names
       # TODO: need a way to distinguish corporate names from personal
+      # rubocop:disable Style/IfUnlessModifier
       def names_for_citation(citation_style)
         return if @document[:name_tsim].blank?
 
@@ -116,6 +119,7 @@ module CommonwealthVlrEngine
         end
         "#{name_output}. "
       end
+      # rubocop:enable Style/IfUnlessModifier
 
       # return the publication info
       def publishing_data_for_citation

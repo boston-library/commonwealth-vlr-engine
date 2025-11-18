@@ -18,7 +18,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("Beauregard. 501 Broadway, New York: Published by E & H. T. Anthony, 1859. Web. #{Time.now.strftime("%d %b %Y")}. <#{ark_link}>.")
+      expect(page).to have_content("Beauregard. 501 Broadway, New York: Published by E & H. T. Anthony, 1859. Web. #{Time.current.strftime("%d %b %Y")}. <#{ark_link}>.")
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("{{cite web | title=Beauregard | website=DigitalCommonwealth.org | date=[ca. 1859–1870] | url=#{ark_link} | accessdate=#{Time.now.strftime("%B %d, %Y")}}}")
+      expect(page).to have_content("{{cite web | title=Beauregard | website=DigitalCommonwealth.org | date=[ca. 1859–1870] | url=#{ark_link} | accessdate=#{Time.current.strftime("%B %d, %Y")}}}")
     end
   end
 end

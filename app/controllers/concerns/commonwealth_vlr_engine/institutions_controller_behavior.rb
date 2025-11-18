@@ -52,7 +52,7 @@ module CommonwealthVlrEngine
       params.merge!(f: { blacklight_config.institution_field => [@institution_title] }).permit!
       facets_search_service = search_service_class.new(
         config: blacklight_config,
-        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc"}
+        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc" }
       )
       @response = facets_search_service.search_results
       @featured_items = @response&.documents&.sample(8)

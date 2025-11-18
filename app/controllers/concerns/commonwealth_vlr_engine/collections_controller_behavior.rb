@@ -44,7 +44,7 @@ module CommonwealthVlrEngine
       # get the response for the facets representing items in collection
       facets_search_service = search_service_class.new(
         config: blacklight_config,
-        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc"}
+        user_params: { f: params[:f], sort: "#{blacklight_config.index.random_field} asc" }
       )
       @response = facets_search_service.search_results
       @featured_items = @response&.documents&.sample(8)
