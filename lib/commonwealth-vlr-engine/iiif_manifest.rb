@@ -163,7 +163,7 @@ module CommonwealthVlrEngine
       [:rights_ss, :license_ss, :restrictions_on_access_ss].each do |field|
         attribution_array << document[field] if document[field]
       end
-      attribution_array.blank? ? nil : attribution_array.join(' ')
+      attribution_array.presence&.join(' ')
     end
 
     # returns the appropriate label for the page/file
