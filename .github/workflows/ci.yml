@@ -33,7 +33,7 @@ jobs:
         run: yarn install
         working-directory: ./spec/internal
       - name: Compile CSS
-        run: yarn watch:css
+        run: yarn build:css
         working-directory: ./spec/internal
       - name: Run linter and tests
         run: bundle exec rake ci

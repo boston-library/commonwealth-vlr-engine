@@ -12,8 +12,9 @@ before_install:
   - nvm install --lts
 
 before_script:
-  - cd ./spec/internal && yarn install
-  - cd ./spec/internal && yarn watch:css
+  - cd ./spec/internal
+  - yarn install
+  - yarn build:css
 
 global_env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
