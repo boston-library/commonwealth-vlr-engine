@@ -12,7 +12,7 @@ before_install:
   - nvm install --lts
 
 before_script:
-  - yarn
+  - cd ./spec/internal && yarn install
   - cd ./spec/internal && yarn watch:css
 
 global_env:
