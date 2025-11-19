@@ -13,7 +13,7 @@ before_install:
 
 before_script:
   - yarn
-  - cd ./spec/internal && yarn build:css:compile && yarn build:css:prefix
+  - cd ./spec/internal && yarn watch:css
 
 global_env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
