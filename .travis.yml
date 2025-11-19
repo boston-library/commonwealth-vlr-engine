@@ -1,19 +1,18 @@
 language: ruby
 sudo: false
 dist: jammy
+rvm:
+  - 3.4.4
 
 addons:
   chrome: stable
 
 before_install:
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+  - nvm install --lts
+
+before_script:
+  - yarn
 
 global_env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - ENGINE_CART_RAILS_OPTIONS='--skip-git --skip-listen --skip-spring --skip-keeps --skip-action-cable --skip-coffee --skip-test'
-
-matrix:
-  include:
-    - rvm: 3.4.4
-      env: "RAILS_VERSION=7.2.2.1"
-  fast_finish: true
