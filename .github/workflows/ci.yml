@@ -35,5 +35,8 @@ jobs:
       - name: Compile CSS
         run: yarn build:css
         working-directory: ./spec/internal
+      - name: Create test database
+        run: RAILS_ENV=test bundle exec rails db:test:prepare
+        working-directory: ./spec/internal
       - name: Run linter and tests
         run: bundle exec rake ci

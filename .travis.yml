@@ -15,6 +15,8 @@ before_script:
   - cd ./spec/internal
   - yarn install
   - yarn build:css
+  - RAILS_ENV=test bundle exec rails db:test:prepare
+  - cd ../..
 
 global_env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
