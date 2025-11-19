@@ -29,6 +29,6 @@ jobs:
       - name: Install packages
         run: bundle install
       - name: Install packages
-        run: yarn install --pure-lockfile
+        run: yarn install
       - name: Run linter and tests
         run: bundle exec rake ci
