@@ -31,5 +31,7 @@ jobs:
         run: bundle install
       - name: Install packages
         run: yarn install
+      - name: Compile CSS
+        run: cd ./spec/internal && yarn build:css:compile && yarn build:css:prefix
       - name: Run linter and tests
         run: bundle exec rake ci
