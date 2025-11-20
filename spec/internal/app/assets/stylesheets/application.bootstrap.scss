@@ -15,7 +15,7 @@ $fa-font-path: ".";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
 
-//@import 'commonwealth-vlr-engine/app/assets/stylesheets/commonwealth-vlr-engine/commonwealth-vlr-engine';
+// TODO: create npm package for commonwealth-vlr-engine assets
 @import url("https://cdn.jsdelivr.net/gh/boston-library/commonwealth-vlr-engine@blacklight-8/app/assets/builds/commonwealth-vlr-engine.css");
 
 @import "universalviewer/dist/esm/index";

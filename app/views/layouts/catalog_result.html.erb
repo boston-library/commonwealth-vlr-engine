@@ -2,6 +2,12 @@
   - call our own template
   - add opengraph markup
   - disable sidebar rendering %>
+<% content_for(:head) do %>
+  <%= render CommonwealthVlrEngine::Document::OpengraphComponent.new(document: @document,
+                                                                     exemplary_document: @exemplary_document,
+                                                                     object_files: @object_files) %>
+<% end %>
+
 <% content_for(:content) do %>
   <section class="<%= show_content_classes %>">
     <%= yield %>
@@ -13,7 +19,5 @@
   </section>
   -->
 <% end %>
-
-<% insert_opengraph_markup %>
 
 <%= render template: "layouts/commonwealth-vlr-engine/base" %>

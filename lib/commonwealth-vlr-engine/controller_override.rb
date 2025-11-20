@@ -333,7 +333,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    # TODO: refactor how views access files
     def object_files
       @object_files = get_files(params[:id]) if controller_name == 'catalog' || controller_name == 'image_viewer'
     end

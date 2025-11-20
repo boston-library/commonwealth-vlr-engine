@@ -21,16 +21,11 @@ RSpec.describe CommonwealthVlrEngine::Finder do
       expect(return_hash[:image][0]['curator_model_ssi']).to eq('Curator::Filestreams::Image')
     end
 
-    it 'has the right objects for the item' do
-      expect(return_hash[:image].to_s).to include(image1_pid)
-    end
-
     it 'has the images in the right order' do
       expect(return_hash[:image][0]['id']).to eq(image1_pid)
       expect(return_hash[:image][1]['id']).to eq(image2_pid)
     end
 
-    # TODO: specs for each file type (need sample docs for all file types)
     it 'has keys for other file types' do
       %i(document audio ereader video).each do |k|
         expect(return_hash[k]).not_to be_nil

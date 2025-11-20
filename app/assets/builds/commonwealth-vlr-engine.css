@@ -29,7 +29,7 @@
     margin-top: 20px;
 }
 #footer #footer_logo #footer_logo_link {
-    background: transparent url("commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
+    background: transparent url("../images/commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
     display: inline-block;
     height: 75px;
     overflow: hidden;
@@ -38,7 +38,7 @@
 
 /* styles for views/shared/header_navbar */
 nav.topbar .navbar-logo {
-    background: transparent url("commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
+    background: transparent url("../images/commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
     height: 74px;
     width: 200px;
 }

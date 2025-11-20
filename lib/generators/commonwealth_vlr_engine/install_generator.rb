@@ -79,11 +79,6 @@ module CommonwealthVlrEngine
       generate 'commonwealth_vlr_engine:routes'
     end
 
-    # TODO: is this actually needed?
-    # def insert_to_environments
-    #   generate 'commonwealth_vlr_engine:environment'
-    # end
-
     def mailer_sender
       return unless options[:bpluser]
 

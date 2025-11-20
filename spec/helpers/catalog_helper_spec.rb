@@ -162,19 +162,19 @@ RSpec.describe CatalogHelper do
     end
   end
 
-  describe '#insert_opengraph_markup' do
-    before(:each) do
-      assign(:document, document)
-      assign(:object_files, files_hash)
-      allow(helper).to receive(:controller_name).and_return('catalog')
-      allow(helper).to receive(:action_name).and_return('show')
-      helper.insert_opengraph_markup
-    end
-
-    it 'renders the catalog/opengraph partial' do
-      expect(helper.content_for(:head)).to include '<meta property="og:title" content="Beauregard" />'
-    end
-  end
+  # describe '#insert_opengraph_markup' do
+  #   before(:each) do
+  #     assign(:document, document)
+  #     assign(:object_files, files_hash)
+  #     allow(helper).to receive(:controller_name).and_return('catalog')
+  #     allow(helper).to receive(:action_name).and_return('show')
+  #     helper.insert_opengraph_markup
+  #   end
+  #
+  #   it 'renders the catalog/opengraph partial' do
+  #     expect(helper.content_for(:head)).to include '<meta property="og:title" content="Beauregard" />'
+  #   end
+  # end
 
   describe '#harvested_object?' do
     it 'returns true for harvested items' do

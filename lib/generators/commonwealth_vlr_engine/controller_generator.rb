@@ -40,8 +40,6 @@ module CommonwealthVlrEngine
     end
 
     # updates to stuff within configure_blacklight block
-    # TODO: modify default Blacklight::Gallery config rather than injecting
-    # TODO: remove config.add_nav_action lines
     def modify_blacklight_config
       marker = 'configure_blacklight do |config|'
       insert_into_file CATALOG_CONTROLLER_PATH, after: marker do

@@ -14,8 +14,10 @@ RSpec.describe CommonwealthVlrEngine::MetadataHelperBehavior do
   end
 
   describe '#render_constituent' do
+    let(:item_pid) { 'bpl-dev:00000003t' }
+
     it 'returns the formatted value' do
-      # TODO: we need some sample documents with related_item_constituent_tsim field
+      expect(helper.render_constituent(document)).to include('free<br>Dudley')
     end
   end
 

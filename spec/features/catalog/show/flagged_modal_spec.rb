@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'flagged modal', :vcr, js: true do
   before(:each) do
     visit solr_document_path(id: 'bpl-dev:00000007x')
+    sleep(2) # a bit hacky, but ensures we wait for flagged modal to fire
   end
 
   it 'displays the flagged item modal when the page is loaded' do

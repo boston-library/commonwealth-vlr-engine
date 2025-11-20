@@ -2,12 +2,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  # TODO: this bookmarks stuff should be in bpluser generator?
-  # bookmarks item actions
-  # this has to be in local app for bookmark item actions to work
-  put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
-
-
   concern :iiif_search, BlacklightIiifSearch::Routes.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'

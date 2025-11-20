@@ -96,14 +96,6 @@ module CommonwealthVlrEngine
       end
     end
 
-    def insert_opengraph_markup
-      return unless action_name == 'show' && %w(catalog collections).include?(controller_name)
-
-      content_for(:head) do
-        render partial: '/catalog/opengraph', locals: { document: @document }
-      end
-    end
-
     # @param document [SolrDocument]
     # @return [Boolean]
     def harvested_object?(document)

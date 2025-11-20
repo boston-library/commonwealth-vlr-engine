@@ -12,7 +12,8 @@ module CommonwealthVlrEngine
       self.search_state_class = CommonwealthVlrEngine::SearchState
     end
 
-    # TODO: remove? only used in ImageViewerController, which isn't being used for multi-image display
+    # DEPRECATED: only used in ImageViewerController, which isn't being used for multi-image display,
+    #   but keep in case we need it later
     # @param image_files [Array] array of SolrDocument from @object_files[:image]
     # @param current_img_pid [String]
     # @return [Hash]
@@ -39,38 +40,6 @@ module CommonwealthVlrEngine
     def render_bookmarks_control?
       false
     end
-
-    # TODO: probably not needed anymore, Blacklight 8 is more context-aware of controller
-    # override of Blacklight::Controller#search_action_path
-    # for proper constraints and facet links in collections and institution views
-    # gets a bit tricky for collections#facet, since this has multiple contexts (collections#index and collections#show)
-    # def search_action_path *args
-    #   puts "SEARCH_ACTION_PATH CALLED FROM CVE::CONTROLLER"
-    #   puts "ARGS = #{args}"
-    #   if args.first.is_a? Hash
-    #     args.first[:only_path] = true if args.first[:only_path].nil?
-    #   end
-    #
-    #   if params[:controller] == 'institutions' && params[:action] == 'index'
-    #     institutions_url(*args)
-    #   elsif params[:controller] == 'collections'
-    #     if params[:action] == 'index'
-    #       #collections_url(*args)
-    #       search_action_url(*args)
-    #     elsif params[:action] == 'facet'
-    #       if request.query_parameters['f'] &&
-    #          request.query_parameters['f'][blacklight_config.collection_field]
-    #         search_action_url(*args)
-    #       else
-    #         collections_url(*args)
-    #       end
-    #     else
-    #       search_action_url(*args)
-    #     end
-    #   else
-    #     search_action_url(*args)
-    #   end
-    # end
 
     def determine_layout
       'commonwealth-vlr-engine'
