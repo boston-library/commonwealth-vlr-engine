@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: https://update.googleapis.com/service/update2/json
+:body: '{"request":{"@os":"linux","@updater":"chrome","acceptformat":"crx3,download,puff,run,xz,zucc","apps":[{"appid":"eeigpngbgcognadeebkilcpcaedhellh","cohort":"1:w59:","cohortname":"Auto","enabled":true,"events":[{"download_time_ms":354,"downloaded":82164,"downloader":"direct","eventresult":1,"eventtype":14,"nextversion":"2025.6.13.84507","pipeline_id":"1:xz:4497d8060d0e53c12b4403aa9ebe7e827d4880bae3f4139a26a4feb7ed64c4a2:any","previousversion":"0.0.0.0","total":82164,"url":"http://edgedl.me.gvt1.com/edgedl/diffgen-puffin/eeigpngbgcognadeebkilcpcaedhellh/c7f7ea7e08d298a80765a4487523560228a6b60c4ff767480b2e91fc313de154"},{"eventresult":1,"eventtype":60,"nextversion":"2025.6.13.84507","pipeline_id":"1:xz:4497d8060d0e53c12b4403aa9ebe7e827d4880bae3f4139a26a4feb7ed64c4a2:any","previousversion":"0.0.0.0"},{"eventresult":1,"eventtype":63,"nextversion":"2025.6.13.84507","pipeline_id":"1:xz:4497d8060d0e53c12b4403aa9ebe7e827d4880bae3f4139a26a4feb7ed64c4a2:any","previousversion":"0.0.0.0"},{"eventresult":1,"eventtype":3,"nextversion":"2025.6.13.84507","previousversion":"0.0.0.0"}],"installdate":6898,"lang":"en-US","version":"2025.6.13.84507"}],"arch":"x64","dedup":"cr","hw":{"avx":true,"physmemory":16,"sse":true,"sse2":true,"sse3":true,"sse41":true,"sse42":true,"ssse3":true},"ismachine":false,"os":{"arch":"x86_64","platform":"Linux","version":"5.4.0-216-generic"},"prodversion":"142.0.7444.175","protocol":"4.0","requestid":"{bc2b066a-20e3-4377-838d-33fb07496328}","sessionid":"{d4af43d6-3181-4fc2-843b-ce2e47d64f81}","updaterversion":"142.0.7444.175"}}'
+:status: 200
+:method: post
+:headers:
+  Content-Security-Policy: script-src 'report-sample' 'none';report-uri https://csp.withgoogle.com/csp/clientupdate-aus/1
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Thu, 20 Nov 2025 16:47:37 GMT
+  Content-Type: application/json; charset=utf-8
+  X-Daynum: '6898'
+  X-Daystart: '31657'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |-
+  )]}'
+  {"response":{"server":"prod","protocol":"4.0","daystart":{"elapsed_seconds":31657,"elapsed_days":6898},"apps":[{"appid":"eeigpngbgcognadeebkilcpcaedhellh","status":"ok","events":[{"status":"ok"},{"status":"ok"},{"status":"ok"},{"status":"ok"}]}]}}

@@ -1,0 +1,27 @@
+---
+:scope: 
+:url: https://update.googleapis.com/service/update2/json
+:body: '{"request":{"@os":"linux","@updater":"chrome","acceptformat":"crx3,download,puff,run,xz,zucc","apps":[{"accept_locale":"ENUS500000","appid":"obedbbhbpmojnkanicioggnmelmoomoc","cohort":"1:s6f:3cr3@0.025","cohortname":"Auto","enabled":true,"events":[{"download_time_ms":134,"downloaded":4623756,"downloader":"direct","eventresult":1,"eventtype":14,"nextversion":"20251024.824731831.14","pipeline_id":"1:xz:23759e3f6d0119a00038b963cec9fb7abafd7b65a35a7e83c7697511db59e6e7:any","previousversion":"0.0.0.0","total":4623756,"url":"http://edgedl.me.gvt1.com/edgedl/diffgen-puffin/obedbbhbpmojnkanicioggnmelmoomoc/e40bb820d29fb9a9bf8935fa5fbe77b363cf9c553cd0c1993bf0a9bec48686e4"},{"eventresult":1,"eventtype":60,"nextversion":"20251024.824731831.14","pipeline_id":"1:xz:23759e3f6d0119a00038b963cec9fb7abafd7b65a35a7e83c7697511db59e6e7:any","previousversion":"0.0.0.0"},{"eventresult":1,"eventtype":63,"nextversion":"20251024.824731831.14","pipeline_id":"1:xz:23759e3f6d0119a00038b963cec9fb7abafd7b65a35a7e83c7697511db59e6e7:any","previousversion":"0.0.0.0"},{"eventresult":1,"eventtype":3,"nextversion":"20251024.824731831.14","previousversion":"0.0.0.0"}],"installdate":6899,"lang":"en-US","version":"20251024.824731831.14"}],"arch":"x64","dedup":"cr","hw":{"avx":true,"physmemory":16,"sse":true,"sse2":true,"sse3":true,"sse41":true,"sse42":true,"ssse3":true},"ismachine":false,"os":{"arch":"x86_64","platform":"Linux","version":"5.4.0-216-generic"},"prodversion":"142.0.7444.175","protocol":"4.0","requestid":"{8a368741-73f8-45f1-acbc-8faf83887359}","sessionid":"{6b9351e8-4c51-4b7d-af48-1b1178234a72}","updaterversion":"142.0.7444.175"}}'
+:status: 200
+:method: post
+:headers:
+  Content-Security-Policy: script-src 'report-sample' 'none';report-uri https://csp.withgoogle.com/csp/clientupdate-aus/1
+  Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  Expires: Mon, 01 Jan 1990 00:00:00 GMT
+  Date: Fri, 21 Nov 2025 18:59:43 GMT
+  Content-Type: application/json; charset=utf-8
+  X-Daynum: '6899'
+  X-Daystart: '39583'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Server: GSE
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Connection: close
+  Transfer-Encoding: chunked
+:content: |-
+  )]}'
+  {"response":{"server":"prod","protocol":"4.0","daystart":{"elapsed_seconds":39583,"elapsed_days":6899},"apps":[{"appid":"obedbbhbpmojnkanicioggnmelmoomoc","status":"ok","events":[{"status":"ok"},{"status":"ok"},{"status":"ok"},{"status":"ok"}]}]}}

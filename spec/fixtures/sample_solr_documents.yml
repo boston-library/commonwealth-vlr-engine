@@ -2852,13 +2852,13 @@
   hosting_status_ssi:
     - harvested
   exemplary_image_ssi:
-    - oai-dev:bg258017r
+    - oai-dev:cf95jp21j
   exemplary_image_key_base_ss:
-    - metadata/oai-dev:bg258017r
+    - metadata/oai-dev:cf95jp21j
   exemplary_image_iiif_bsi:
     - false
   exemplary_image_digobj_ss:
-    - oai-dev:bg258017q
+    - oai-dev:qv33s812k
   timestamp:
     - '2022-09-25T20:38:10.637Z'
 - system_create_dtsi:

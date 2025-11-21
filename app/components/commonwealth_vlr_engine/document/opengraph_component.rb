@@ -12,7 +12,11 @@ module CommonwealthVlrEngine
       attr_reader :document, :exemplary_document, :object_files
 
       def og_url
-        helpers.show_solr_document_url(document, { controller: controller_name, action: action_name })
+        return helpers.show_solr_document_url(document, { controller: controller_name }) if controller_name == 'collections'
+
+        return document[:identifier_uri_ss] if document[helpers.blacklight_config.hosting_status_field] == 'hosted'
+
+        solr_document_url(document)
       end
 
       def og_title
@@ -26,8 +30,7 @@ module CommonwealthVlrEngine
       def og_image_url
         return helpers.banner_image_url(exemplary_document: exemplary_document) if controller_name == 'collections'
 
-        return helpers.filestream_disseminator_url(object_files[:image].first['storage_key_base_ss'],
-                                                   'image_access_800') if helpers.has_image_files?(object_files)
+        return "#{document[:identifier_uri_ss]}/large_image" if helpers.has_image_files?(object_files)
 
         helpers.thumbnail_url(document)
       end

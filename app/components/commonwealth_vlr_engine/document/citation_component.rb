@@ -52,7 +52,7 @@ module CommonwealthVlrEngine
         citation_output += "#{genre_for_citation(@document[:genre_basic_ssim].first)}. " if @document[:genre_basic_ssim]
         citation_output += publishing_data_for_citation.presence.to_s
         citation_output += "#{@document[:date_tsim].first}. " if @document[:date_tsim]
-        citation_output += if @document[:hosting_status_ssi] == 'hosted'
+        citation_output += if @document[helpers.blacklight_config.hosting_status_field] == 'hosted'
                              "<em>#{t('blacklight.application_name')}</em>, "
                            else
                              "<em>#{helpers.oai_inst_name(@document)}</em>, "
@@ -66,7 +66,7 @@ module CommonwealthVlrEngine
         citation_output = '<code>'
         citation_output += '{{cite web'
         citation_output += " | title=#{helpers.render_title(@document)}"
-        citation_output += if @document[:hosting_status_ssi] == 'hosted'
+        citation_output += if @document[helpers.blacklight_config.hosting_status_field] == 'hosted'
                              ' | website=DigitalCommonwealth.org'
                            else
                              " | website=#{helpers.oai_inst_name(@document)}"

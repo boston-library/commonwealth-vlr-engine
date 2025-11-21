@@ -1,0 +1,25 @@
+---
+:scope: 
+:url: https://content-autofill.googleapis.com/v1/pages/ChVDaHJvbWUvMTQyLjAuNzQ0NC4xNzUSXwkAMiAQ8zWkDxIFDZFhlU4SBQ2RYZVOEgUNlJCS-hIFDaKSmFgSBQ1HfizSEgUNqLljlhIFDYEP_-YSBQ0XuxUjEgUNkWGVThIFDZFhlU4SBQ0iBmvhIeuYeUtE8LP2GLepygE=?alt=proto
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: private,max-age=604800
+  Content-Type: text/plain
+  X-Goog-Safety-Encoding: base64
+  X-Goog-Safety-Content-Type: application/x-protobuf
+  Vary:
+  - X-Origin
+  - Referer
+  - Origin,Accept-Encoding
+  Date: Wed, 19 Nov 2025 14:19:41 GMT
+  Server: ESF
+  X-XSS-Protection: '0'
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Accept-Ranges: none
+  Connection: close
+  Transfer-Encoding: chunked
+:content: CmMKBw2RYZVOGgAKBw2RYZVOGgAKBw2UkJL6GgAKBw2ikphYGgAKBw1HfizSGgAKBw2ouWOWGgAKBw2BD//mGgAKBw0XuxUjGgAKBw2RYZVOGgAKBw2RYZVOGgAKBw0iBmvhGgA=
