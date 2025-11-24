@@ -31,7 +31,6 @@ const audioPlayerPlaylist = (() => {
     }
 
     audioPlayer.play_track = function(track_link, player) {
-        console.log('about to play ' + track_link.textContent);
         player.src = track_link.getAttribute('href');
         let par = track_link.parentNode;
         par.classList.add('active')
