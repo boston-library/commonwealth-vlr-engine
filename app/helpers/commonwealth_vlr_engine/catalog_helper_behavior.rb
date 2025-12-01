@@ -54,6 +54,10 @@ module CommonwealthVlrEngine
       render_title(options[:document])
     end
 
+    def iiif_manifest_url(document)
+      document[:identifier_iiif_manifest_ss]
+    end
+
     def image_file_pids(images)
       images.map { |i| i[:id] }
     end

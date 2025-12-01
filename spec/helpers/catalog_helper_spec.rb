@@ -167,4 +167,10 @@ RSpec.describe CatalogHelper do
       expect(helper.harvested_object?(harvested_item)).to be_truthy
     end
   end
+
+  describe '#iiif_manifest_url' do
+    it 'returns the iiif manifest url' do
+      expect(helper.iiif_manifest_url(document)).to include('/manifest')
+    end
+  end
 end
