@@ -30,7 +30,7 @@ module CommonwealthVlrEngine
                            attachments.keys.find { |k| k.match?(filestream_id) } ||
                            attachments.keys.find { |k| !k.match?(/foxml/) }
         file_name_ext = attachments[primary_file_key]['filename'].split('.')
-        if document[:identifier_ia_id_ssi] || (document[blacklight_config.index.display_type_field] == 'Ereader')
+        if document[blacklight_config.index.display_type_field] == 'Ereader'
           link_title = ia_download_title(filestream_id, file_name_ext[1])
         else
           link_title = file_name_ext[0]
@@ -75,31 +75,23 @@ module CommonwealthVlrEngine
     end
 
     def image_download_links(document, image_files)
-      if document[:identifier_ia_id_ssi]
-        [file_download_link(document[:id],
-                            t('blacklight.downloads.images.image_access_full'),
-                            nil,
-                            'JPEG2000',
-                            download_link_options)]
-      else
-        attachments_json = JSON.parse(image_files.first['attachments_ss'])
-        image_links = []
-        image_filestreams(attachments_json).each do |filestream_id|
-          if image_files.length == 1
-            attachments = attachments_json
-            object_id = image_files.first['id']
-          else
-            attachments = setup_zip_attachments(image_files, filestream_id)
-            object_id = document[:id]
-          end
-          image_links << file_download_link(object_id,
-                                            t("blacklight.downloads.images.#{filestream_id}"),
-                                            attachments,
-                                            filestream_id,
-                                            download_link_options)
+      image_links = []
+      attachments_json = JSON.parse(image_files.first['attachments_ss'])
+      image_filestreams(attachments_json).each do |filestream_id|
+        if image_files.length == 1
+          attachments = attachments_json
+          object_id = image_files.first['id']
+        else
+          attachments = setup_zip_attachments(image_files, filestream_id)
+          object_id = document[:id]
         end
-        image_links
+        image_links << file_download_link(object_id,
+                                          t("blacklight.downloads.images.#{filestream_id}"),
+                                          attachments,
+                                          filestream_id,
+                                          download_link_options)
       end
+      image_links
     end
 
     # for now, we only support video_access_mp4 download
@@ -249,9 +241,7 @@ module CommonwealthVlrEngine
     end
 
     def url_for_download(document, filestream_id)
-      if document[:identifier_ia_id_ssi] && filestream_id == 'JPEG2000'
-        "https://archive.org/download/#{document[:identifier_ia_id_ssi]}/#{document[:identifier_ia_id_ssi]}_jp2.zip"
-      elsif document[blacklight_config.index.display_type_field] == 'DigitalObject'
+      if document[blacklight_config.index.display_type_field] == 'DigitalObject'
         trigger_zip_downloads_path(document.id, filestream_id: filestream_id)
       else
         trigger_downloads_path(document.id, filestream_id: filestream_id)
