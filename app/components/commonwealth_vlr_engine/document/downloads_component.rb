@@ -35,32 +35,24 @@ module CommonwealthVlrEngine
       def image_download_links
         return [] unless helpers.has_downloadable_images?(document, object_files)
 
-        if document[:identifier_ia_id_ssi]
-          [file_download_link(document[:id],
-                              t('blacklight.downloads.images.image_access_full'),
-                              nil,
-                              'JPEG2000',
-                              download_link_options)]
-        else
-          image_files = object_files[:image]
-          attachments_json = JSON.parse(image_files.first['attachments_ss'])
-          image_links = []
-          image_filestreams(attachments_json).each do |filestream_id|
-            if image_files.length == 1
-              attachments = attachments_json
-              object_id = image_files.first['id']
-            else
-              attachments = setup_zip_attachments(image_files, filestream_id)
-              object_id = document[:id]
-            end
-            image_links << file_download_link(object_id,
-                                              t("blacklight.downloads.images.#{filestream_id}"),
-                                              attachments,
-                                              filestream_id,
-                                              download_link_options)
+        image_files = object_files[:image]
+        attachments_json = JSON.parse(image_files.first['attachments_ss'])
+        image_links = []
+        image_filestreams(attachments_json).each do |filestream_id|
+          if image_files.length == 1
+            attachments = attachments_json
+            object_id = image_files.first['id']
+          else
+            attachments = setup_zip_attachments(image_files, filestream_id)
+            object_id = document[:id]
           end
-          image_links
+          image_links << file_download_link(object_id,
+                                            t("blacklight.downloads.images.#{filestream_id}"),
+                                            attachments,
+                                            filestream_id,
+                                            download_link_options)
         end
+        image_links
       end
 
       # for now, we only support video_access_mp4 download

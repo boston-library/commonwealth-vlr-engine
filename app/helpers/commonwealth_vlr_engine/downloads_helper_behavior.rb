@@ -32,9 +32,7 @@ module CommonwealthVlrEngine
     end
 
     def url_for_download(document, filestream_id)
-      if document[:identifier_ia_id_ssi] && filestream_id == 'JPEG2000'
-        "https://archive.org/download/#{document[:identifier_ia_id_ssi]}/#{document[:identifier_ia_id_ssi]}_jp2.zip"
-      elsif document[blacklight_config.index.display_type_field] == 'DigitalObject'
+      if document[blacklight_config.index.display_type_field] == 'DigitalObject'
         trigger_zip_downloads_path(document.id, filestream_id: filestream_id)
       else
         trigger_downloads_path(document.id, filestream_id: filestream_id)
@@ -49,7 +47,7 @@ module CommonwealthVlrEngine
           attachments.keys.find { |k| k.match?(filestream_id) } ||
           attachments.keys.find { |k| !k.match?(/foxml/) }
         file_name_ext = attachments[primary_file_key]['filename'].split('.')
-        if document[:identifier_ia_id_ssi] || (document[blacklight_config.index.display_type_field] == 'Ereader')
+        if document[blacklight_config.index.display_type_field] == 'Ereader'
           link_title = ia_download_title(filestream_id, file_name_ext[1])
         else
           link_title = file_name_ext[0]
