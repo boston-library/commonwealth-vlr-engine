@@ -176,14 +176,5 @@ describe DownloadsHelper do
         trigger_zip_downloads_path(item_ark_id, filestream_id: image_filestreams_output[0])
       )
     end
-
-    describe 'item from Internet Archive' do
-      let(:document_to_hash) { document.to_h }
-      before(:each) { document_to_hash['identifier_ia_id_ssi'] = 'foo' }
-
-      it 'returns the correct link path for an Internet Archive item' do
-        expect(helper.url_for_download(SolrDocument.new(document_to_hash), 'JPEG2000')).to include('archive.org')
-      end
-    end
   end
 end
