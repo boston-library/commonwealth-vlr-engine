@@ -48,7 +48,8 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
         exemplary_image_key_base_ss: 'images/bpl-dev:vx0224404',
         identifier_iiif_manifest_ss: 'https://ark-dc3dev.bpl.org/ark:/50959/1c18f387q/manifest',
         destination_site_ssim: %w(commonwealth),
-        type_of_resource_ssim: %w(Audio)
+        type_of_resource_ssim: %w(Audio),
+        'hosting_status_ssi' => 'hosted'
       }
     end
 

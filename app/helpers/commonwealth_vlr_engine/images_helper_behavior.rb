@@ -35,7 +35,8 @@ module CommonwealthVlrEngine
       if exemplary_document
         return banner_image_iiif_url(image_ark_id: exemplary_document[:exemplary_image_ssi],
                                      destination_site: exemplary_document[:destination_site_ssim],
-                                     target_width: target_width, target_height: target_height) if exemplary_document[:identifier_iiif_manifest_ss].present?
+                                     target_width: target_width, target_height: target_height) if exemplary_document[:identifier_iiif_manifest_ss].present? &&
+                                                                                                  exemplary_document[blacklight_config.hosting_status_field] == 'hosted'
 
         return filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss],
                                            'image_thumbnail_300') if exemplary_document[:exemplary_image_key_base_ss].present?

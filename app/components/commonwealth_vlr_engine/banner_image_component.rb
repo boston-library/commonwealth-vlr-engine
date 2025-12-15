@@ -26,10 +26,6 @@ module CommonwealthVlrEngine
       @exemplary_document[helpers.blacklight_config.hosting_status_field] == 'hosted'
     end
 
-    def iiif_image?
-      @exemplary_document['identifier_iiif_manifest_ss'].present?
-    end
-
     def render?
       @exemplary_document.present?
     end
