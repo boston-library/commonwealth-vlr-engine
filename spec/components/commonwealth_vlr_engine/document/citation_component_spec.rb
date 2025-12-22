@@ -34,7 +34,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("\"Beauregard.\" Photograph. 501 Broadway, New York: Published by E & H. T. Anthony, [ca. 1859–1870]. Totally Awesome Library Digital Collections, #{ark_link}")
+      expect(page).to have_content("\"Beauregard.\" Photograph. 501 Broadway, New York: Published by E & H. T. Anthony, [ca. 1859–1870]. #{I18n.t('blacklight.application_name')}, #{ark_link}")
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("{{cite web | title=Beauregard | website=DigitalCommonwealth.org | date=[ca. 1859–1870] | url=#{ark_link} | accessdate=#{Time.current.strftime("%B %-d, %Y")}}}")
+      expect(page).to have_content("{{cite web | title=Beauregard | website=#{I18n.t('blacklight.application_name')} | date=[ca. 1859–1870] | url=#{ark_link} | accessdate=#{Time.current.strftime("%B %-d, %Y")}}}")
     end
   end
 end

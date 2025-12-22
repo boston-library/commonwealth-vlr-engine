@@ -67,7 +67,7 @@ module CommonwealthVlrEngine
         citation_output += '{{cite web'
         citation_output += " | title=#{helpers.render_title(@document)}"
         citation_output += if @document[helpers.blacklight_config.hosting_status_field] == 'hosted'
-                             ' | website=DigitalCommonwealth.org'
+                             " | website=#{t('blacklight.application_name')}"
                            else
                              " | website=#{helpers.oai_inst_name(@document)}"
                            end
