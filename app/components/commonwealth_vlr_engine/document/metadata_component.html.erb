@@ -17,20 +17,20 @@
     <% if document[:title_info_alternative_tsim] %>
       <% if document[:title_info_alternative_label_ssm] %>
         <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
-          <dt class="<%= helpers.metadata_field_label_class %>">
+          <dt class="<%= helpers.metadata_field_label_class(field_key: 'title_alt') %>">
             <% if document[:title_info_alternative_label_ssm][index].present? %>
               <%= document[:title_info_alternative_label_ssm][index].gsub(/\s*:\s*\Z/, '') %>
             <% else %>
               <%= t('blacklight.metadata_display.fields.title_alt') %>
             <% end %>:
           </dt>
-          <dd class="<%= helpers.metadata_field_value_class %>">
+          <dd class="<%= helpers.metadata_field_value_class(field_key: 'title_alt') %>">
             <%= helpers.render_alt_title(document, index) %>
           </dd>
         <% end %>
       <% else %>
-        <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.title_alt') %>:</dt>
-        <dd class="<%= helpers.metadata_field_value_class %>">
+        <dt class="<%= helpers.metadata_field_label_class(field_key: 'title_alt') %>"><%= t('blacklight.metadata_display.fields.title_alt') %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class(field_key: 'title_alt') %>">
           <% document[:title_info_alternative_tsim].each_with_index do |_alt_title, index| %>
             <%= helpers.render_alt_title(document, index) %><br>
           <% end %>
@@ -51,8 +51,8 @@
     <%# creator field - assumes equal # of roles and creator names %>
     <% if document[:name_tsim] %>
       <% helpers.setup_names_roles(document).each do |r, ns| %>
-        <dt class="<%= helpers.metadata_field_label_class %>"><%= r %>:</dt>
-        <dd class="<%= helpers.metadata_field_value_class %>">
+        <dt class="<%= helpers.metadata_field_label_class(field_key: 'creator') %>"><%= r %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class(field_key: 'creator') %>">
           <% ns.each do |n| %>
             <%= helpers.link_to_facet(n, 'name_facet_ssim') %><br>
           <% end %>
@@ -67,8 +67,8 @@
 
     <%# date field  %>
     <% if document[:date_tsim] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.date') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'date') %>"><%= t('blacklight.metadata_display.fields.date') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'date') %>">
         <% document[:date_tsim].each_with_index do |date, index| %>
           <%= date %>
           <% if document[:date_tsim].length > 1 %>
@@ -91,8 +91,8 @@
 
     <%# physical location field (including sub_location and shelf_locator) %>
     <% if document[:physical_location_ssim] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.location') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'location') %>"><%= t('blacklight.metadata_display.fields.location') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'location') %>">
         <%= helpers.link_to_facet(document[:physical_location_ssim].first, 'physical_location_ssim') %>
         <% if document[:sub_location_tsi] %>
           <br><%= document[:sub_location_tsi] %>
@@ -110,8 +110,8 @@
 
     <%# related item series field (series) %>
     <% if document[:related_item_series_ssi] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.series') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'series') %>"><%= t('blacklight.metadata_display.fields.series') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'series') %>">
         <%= helpers.link_to_facets([document[:related_item_series_ssi], document[:related_item_host_ssim].first],
                                    %w[related_item_series_ssi related_item_host_ssim]) %>
         <% if document[:related_item_subseries_ssi] %>
@@ -141,8 +141,8 @@
 
     <%# topic field %>
     <% if document[:subject_topic_tsim] || document[:subject_name_tsim] || document[:subject_title_tsim] || document[:subject_temporal_tsim] || document[:subject_date_tsim] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'subject_topic') %>"><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'subject_topic') %>">
         <% %i[subject_topic_tsim subject_name_tsim subject_title_tsim subject_temporal_tsim subject_date_tsim].each do |skey| %>
           <% if document[skey] %>
             <% document[skey].each do |s| %>
@@ -155,8 +155,8 @@
 
     <%# geo subject field %>
     <% if document[blacklight_config.geojson_field] || document[:subject_geo_other_ssm] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'subject_geo') %>"><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'subject_geo') %>">
         <% if document[blacklight_config.geojson_field] %>
           <% document[blacklight_config.geojson_field].each do |hier_geojson| %>
             <%= render CommonwealthVlrEngine::HiergeoSubjectComponent.new(geojson_feature: hier_geojson) %><br />
@@ -177,8 +177,8 @@
 
     <%# URI field %>
     <% if document[:identifier_uri_ss] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= helpers.harvested_object?(document) ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: (helpers.harvested_object?(document) ? 'id_uri_oai' : 'id_uri_ark')) %>"><%= helpers.harvested_object?(document) ? t('blacklight.metadata_display.fields.id_uri_oai') : t('blacklight.metadata_display.fields.id_uri_ark') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: (helpers.harvested_object?(document) ? 'id_uri_oai' : 'id_uri_ark')) %>">
         <%= link_to(document[:identifier_uri_ss], document[:identifier_uri_ss],
                     class: 'uri_metadata_link', target: helpers.harvested_object?(document) ? '_blank' : '_self') %>
       </dd>
@@ -186,8 +186,8 @@
 
     <%# rights field %>
     <% if document[:rights_ss] || document[:license_ss] || document[:rightsstatement_ss]  %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'rights') %>"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'rights') %>">
         <% if document[:rightsstatement_ss].present? %>
           <%= helpers.render_rs_icon(document) %>
           <%= document[:rightsstatement_ss] %><br />
@@ -211,8 +211,8 @@
 
     <%# publisher field %>
     <% if document[:publisher_tsi] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.publisher') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'publisher') %>"><%= t('blacklight.metadata_display.fields.publisher') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'publisher') %>">
         <% if document[:pubplace_tsi] %>
           <%= "#{document[:pubplace_tsi]} : " %>
         <% end %>
@@ -221,8 +221,8 @@
     <% end %>
     <%# place of pub. field (if no publisher) %>
     <% if document[:pubplace_tsi] && document[:publisher_tsi].blank? %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.pubplace') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'pubplace') %>"><%= t('blacklight.metadata_display.fields.pubplace') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'pubplace') %>">
         <%= document[:pubplace_tsi] %><br />
       </dd>
     <% end %>
@@ -256,16 +256,16 @@
 
     <%# TOC URL field %>
     <% if document[:table_of_contents_url_ss] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.toc_url') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'toc_url') %>"><%= t('blacklight.metadata_display.fields.toc_url') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'toc_url') %>">
         <%= link_to(document[:table_of_contents_url_ss], target: '_blank') %>
       </dd>
     <% end %>
 
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
-      <dt class="<%= helpers.metadata_field_label_class %>"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
-      <dd class="<%= helpers.metadata_field_value_class %>">
+      <dt class="<%= helpers.metadata_field_label_class(field_key: 'referenced_by') %>"><%= t('blacklight.metadata_display.fields.referenced_by') %>:</dt>
+      <dd class="<%= helpers.metadata_field_value_class(field_key: 'referenced_by') %>">
         <% document[:related_item_isreferencedby_ssm].each do |reference| %>
           <% ref_hash = JSON.parse(reference) %>
           <%= link_to(ref_hash['label'] || ref_hash['url'], ref_hash['url'], target: '_blank') %><br />
@@ -286,8 +286,8 @@
     <%# relatedItem @type='references' and @type='reviewOf' fields %>
     <% %w[references review].each do |ri_base| %>
       <% if document["related_item_#{ri_base}_ssm".to_sym] %>
-        <dt class="<%= helpers.metadata_field_label_class %>"><%= t("blacklight.metadata_display.fields.#{ri_base}") %>:</dt>
-        <dd class="<%= helpers.metadata_field_value_class %>">
+        <dt class="<%= helpers.metadata_field_label_class(field_key: ri_base) %>"><%= t("blacklight.metadata_display.fields.#{ri_base}") %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class(field_key: ri_base) %>">
           <% document["related_item_#{ri_base}_ssm".to_sym].each do |ri_value| %>
             <%= link_to(ri_value, ri_value, target: '_blank') %><br />
           <% end %>
@@ -313,8 +313,8 @@
       <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
       <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
       <% if document[fn] || document[fn_invalid] %>
-        <dt class="<%= helpers.metadata_field_label_class %>"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
-        <dd class="<%= helpers.metadata_field_value_class %>">
+        <dt class="<%= helpers.metadata_field_label_class(field_key: "id_local_#{id_base}") %>"><%= t("blacklight.metadata_display.fields.id_local_#{id_base}") %>:</dt>
+        <dd class="<%= helpers.metadata_field_value_class(field_key: "id_local_#{id_base}") %>">
           <% if document[fn] %>
             <% document[fn].each do |id_value| %>
               <%= id_value %><br />

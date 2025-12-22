@@ -9,12 +9,16 @@ module CommonwealthVlrEngine
       'col-sm-12 show-document'
     end
 
-    def metadata_field_label_class
-      'col-md-3'
+    def metadata_field_label_class(field_key: nil)
+      classes = ['col-md-3']
+      classes << "metadata-field-label_#{field_key}" if field_key
+      classes.join(' ')
     end
 
-    def metadata_field_value_class
-      'col-md-9'
+    def metadata_field_value_class(field_key: nil)
+      classes = ['col-md-9']
+      classes << "metadata-field-value_#{field_key}" if field_key
+      classes.join(' ')
     end
   end
 end

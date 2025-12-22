@@ -1,4 +1,4 @@
-<dt class="<%= helpers.metadata_field_label_class %>"><%= metadata_field_label %>:</dt>
-<dd class="<%= helpers.metadata_field_value_class %>">
+<dt class="<%= helpers.metadata_field_label_class(field_key: field_key) %>"><%= metadata_field_label %>:</dt>
+<dd class="<%= helpers.metadata_field_value_class(field_key: field_key) %>">
   <%= metadata_field_values.html_safe %>
 </dd>
