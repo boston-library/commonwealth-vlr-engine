@@ -23,6 +23,7 @@ en:
       link_to_reader: 'Read online'
 
     breadcrumb:
+      prefix: 'From: '
       separator: ' > '
 
     citation:
