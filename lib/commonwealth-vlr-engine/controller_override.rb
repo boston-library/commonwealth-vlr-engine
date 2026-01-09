@@ -35,6 +35,7 @@ module CommonwealthVlrEngine
         config.index.display_type_field = DISPLAY_TYPE_FIELD
         config.index.thumbnail_method = :create_thumb_img_element
         config.index.random_field = 'hashed_id_ssi'
+        config.index.title_component = CommonwealthVlrEngine::DocumentTitleComponent
 
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent

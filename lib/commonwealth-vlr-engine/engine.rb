@@ -8,6 +8,7 @@ begin
   require 'blacklight_iiif_search'
   require 'typhoeus'
   require 'font-awesome-sass'
+  require 'htmlentities'
   require 'madison'
   require 'openseadragon'
   require 'rsolr' unless defined? RSolr
