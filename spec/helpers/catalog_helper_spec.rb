@@ -149,15 +149,10 @@ RSpec.describe CatalogHelper do
   end
 
   describe '#index_abstract' do
-    let(:abstract_value) do
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-       sed do eiusmod tempor incididunt ut labore et dolore magna
-       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-       ullamco laboris nisi ut aliquip ex ea commodo consequat.
-       Duis aute irure dolor in reprehenderit in voluptate velit'
-    end
+    let(:document) { SolrDocument.find('bpl-dev:000000000') }
+
     it 'returns the truncated abstract for the catalog#index view' do
-      expect(helper.index_abstract({ value: [abstract_value],
+      expect(helper.index_abstract({ value: [document['abstract_tsi']],
                                      document: document })).to include('read-more-link')
     end
   end
