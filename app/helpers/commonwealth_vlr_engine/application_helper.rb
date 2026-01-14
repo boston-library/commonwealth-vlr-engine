@@ -25,6 +25,8 @@ module CommonwealthVlrEngine
         'Postcards/Cards'
       when 'Correspondence'
         'Letters/Correspondence'
+      when 'Data sets'
+        'Datasets'
       else
         value
       end
