@@ -125,6 +125,7 @@ module CommonwealthVlrEngine
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
         config.add_facet_field DISPLAY_TYPE_FIELD, include_in_request: false
+        config.add_facet_field 'destination_site_ssim', include_in_request: false
 
         # below are not real facet fields, but allows rendering constraints for custom fields on search results pages
         config.add_facet_field 'mlt_id', label: 'More like', include_in_request: false,
