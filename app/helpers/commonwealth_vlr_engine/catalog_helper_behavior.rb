@@ -36,12 +36,20 @@ module CommonwealthVlrEngine
       files_hash[:ereader].present?
     end
 
+    # @param file_document [SolrDocument]
+    # @param attachment_type [String]
+    def has_attachment?(file_document, attachment_type)
+      file_document['attachments_ss'][attachment_type].present?
+    end
+
     def has_playable_audio?(files_hash)
-      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| has_attachment?(a, 'audio_access') }
     end
 
     def has_pdf_files?(files_hash)
-      has_document_files?(files_hash) && files_hash[:document].any? { |a| a['attachments_ss']['document_access'].present? }
+      (has_document_files?(files_hash) && files_hash[:document].any? { |a| has_attachment?(a, 'document_access') }) ||
+        ((has_audio_files?(files_hash) || has_video_files?(files_hash)) &&
+          %i(audio video).any? { |f| files_hash[f].any? { |a| has_attachment?(a, 'document_access') } })
     end
 
     def book_reader?(document, files_hash)
@@ -104,7 +112,7 @@ module CommonwealthVlrEngine
     # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
     # @return [Boolean]
     def pdf_url_for_viewer(document_files)
-      pdf_file = document_files.find { |a| a['attachments_ss']['document_access'].present? }
+      pdf_file = document_files.find { |a| has_attachment?(a, 'document_access') }
       filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
     end
 
@@ -135,7 +143,7 @@ module CommonwealthVlrEngine
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
     def render_pdf_viewer?(files_hash)
-      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash)
+      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash) && !has_video_files?(files_hash)
     end
 
     # @param document [SolrDocument]

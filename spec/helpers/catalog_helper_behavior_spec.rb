@@ -22,6 +22,12 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
   end
 
   describe 'file helpers' do
+    describe '#has_attachment?' do
+      it 'returns true if the object has a file with the attachment type' do
+        expect(helper.has_attachment?(files_hash[:image].first, 'image_primary')).to be_truthy
+      end
+    end
+
     describe '#has_image_files?' do
       it 'returns true if the object has image files' do
         expect(helper.has_image_files?(files_hash)).to be_truthy
