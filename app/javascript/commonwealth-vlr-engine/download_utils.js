@@ -8,7 +8,8 @@ const downloadsModal = (() => {
 
     downloads.hideDownloadLink = function() {
         const trigger_download = document.getElementById("trigger_download_submit")
-        if (!trigger_download) return;
+        const download_recaptcha = document.getElementById("download_recaptcha")
+        if (!trigger_download || (Object.keys(download_recaptcha.dataset).length === 0)) return;
 
         trigger_download.style.display = "none";
     }
