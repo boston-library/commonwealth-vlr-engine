@@ -17,7 +17,7 @@ module CommonwealthVlrEngine
       end
 
       def metadata_field_values
-        raw_vals = document[field_name]
+        raw_vals = document[field_name].dup
         raw_vals = [raw_vals] if raw_vals.is_a? String
         raw_vals.map! { |_rv| helpers.public_send(helper_method, document) } if helper_method
         raw_vals.map! { |rv| helpers.link_to_facet(rv, field_name) } if link
