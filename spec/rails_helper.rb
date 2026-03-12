@@ -17,6 +17,9 @@ require 'vcr'
 require 'view_component/test_helpers'
 require 'view_component/system_test_helpers'
 
+require 'axe-capybara'
+require 'axe-rspec'
+
 VCR.configure do |c|
   # NOTE: uncomment this when creating or updating existing specs are wrapped in VCR.use_cassete
   # This will update the yaml files for the specs.

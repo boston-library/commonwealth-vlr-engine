@@ -1,4 +1,4 @@
-<div id="footer" class="<%= container_classes %>">
+<footer class="<%= container_classes %>">
   <div class="row">
     <div id="footer_logo" class="col-sm-3">
       <%= link_to application_name, root_path, id: 'footer_logo_link' %>
@@ -9,7 +9,7 @@
       <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
     </div>
   </div>
-</div>
+</footer>
 
 <%= debug(params) if Rails.env.development? %>
 <%# @search_state.inspect %>

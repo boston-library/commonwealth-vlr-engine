@@ -36,11 +36,12 @@
     </div>
     <%# custom checkbox %>
     <div id="fulltext_checkbox_wrapper">
-      <span id="fulltext_checkbox_label"><%= t('blacklight.search.form.fulltext.label') %></span>
+      <label id="fulltext_checkbox_label"><%= t('blacklight.search.form.fulltext.label') %></label>
       <%= check_box_tag(:search_field, blacklight_config.full_text_index, false, id: 'fulltext_checkbox') %>
       <%= content_tag('a', id: 'fulltext_info', tabindex: 100,
                       data: { bs_toggle: 'popover', bs_placement: 'right', bs_trigger: 'focus', html: true,
-                              bs_title: t('blacklight.search.form.fulltext.label'), bs_container: 'body',
+                              # bs_title: 'YO ADRIAN!', # t('blacklight.search.form.fulltext.label')
+                              bs_container: '#fulltext_checkbox_wrapper',
                               bs_content: t('blacklight.search.form.fulltext.help') }) do %>
         <%= icon('fas', 'circle-question', class: 'fa-sm', aria: { hidden: true }) %>
       <% end %>

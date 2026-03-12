@@ -13,6 +13,7 @@ RSpec.describe 'basic_search', js: true do
       fill_in 'q', with: 'parking'
       click_button('search')
     end
+    expect(page).to be_axe_clean
     expect(page).to have_selector('.document', count: 1)
     expect(page).to have_selector('.document-title-heading',
                                   text: 'Boston traffic map showing one way streets and parking spaces')
@@ -33,6 +34,7 @@ RSpec.describe 'basic_search', js: true do
     within '#basic_search_wrapper' do
       find('#fulltext_checkbox').click
       select('Title', from: 'search_field')
+      expect(page).to be_axe_clean
       expect(page).to_not have_checked_field('fulltext_checkbox')
     end
   end

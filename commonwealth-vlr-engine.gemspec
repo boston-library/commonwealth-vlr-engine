@@ -38,6 +38,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'typhoeus', '~> 1.4'
   s.add_dependency 'zipline', '~> 2.0.0'
 
+  s.add_development_dependency 'axe-core-capybara'
+  s.add_development_dependency 'axe-core-rspec'
   s.add_development_dependency 'capybara', '~> 3.0', '< 4'
   s.add_development_dependency 'rspec-rails', '>= 6.1', '< 8'
   s.add_development_dependency 'solr_wrapper', '~> 4.1'
