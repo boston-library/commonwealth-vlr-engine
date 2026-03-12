@@ -13,14 +13,12 @@
 
   <div class="input-criteria">
     <div class="query-criteria mb-4">
-      <!--
-      <h2 class="query-criteria-heading h3 mb-4">
-        <%# t('blacklight.advanced_search.form.query_criteria_heading_html', select_menu: default_operator_menu) %>
+      <h2 class="query-criteria-heading h3 mb-4 sr-only visually-hidden">
+        <%= t('blacklight.advanced_search.form.query_criteria_heading') %>
       </h2>
-      -->
 
       <div id="advanced_search">
-        <p><%= t('blacklight.advanced_search.form.query_criteria_heading') %></p>
+        <p><%= t('blacklight.advanced_search.form.query_criteria_explanation') %></p>
         <% search_field_controls.each do |control| %>
           <%= control %>
         <% end %>

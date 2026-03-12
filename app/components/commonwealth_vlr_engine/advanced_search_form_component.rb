@@ -17,6 +17,7 @@ module CommonwealthVlrEngine
             select_tag("clause[#{i}][field]",
                        options_for_select(search_fields.values.map { |sf| [sf.label, sf.key] }, search_fields.keys[i]),
                        title: t('blacklight.search.basic_search.form.search_indexes'),
+                       'aria-label' => t('blacklight.search.basic_search.form.search_index_label'),
                        class: 'btn btn-outline-secondary search_index_select col-sm-3 col-md-3 col-lg-5 col-xl-4 col-form-label') +
               label_tag("clause_#{i}_query",
                         t('blacklight.search.basic_search.form.q') + ' (' + (i + 1).to_s + ')',

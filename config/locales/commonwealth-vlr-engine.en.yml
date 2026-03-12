@@ -5,7 +5,8 @@ en:
     advanced_search:
       page_title: 'Search'
       form:
-        query_criteria_heading: 'Enter your search terms in the fields below.'
+        query_criteria_heading: 'Search terms:'
+        query_criteria_explanation: 'Enter your search terms in the fields below.'
       title: 'Search - %{application_name}'
       limit: 'Narrow your search:'
       constraints:
@@ -362,6 +363,7 @@ en:
         form:
           q: 'Enter search terms...'
           search_indexes: 'Search by title, subject, place, etc.'
+          search_index_label: 'Select search field:'
           select: 'in'
         title: 'Basic'
       change_views:
