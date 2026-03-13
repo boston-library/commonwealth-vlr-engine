@@ -33,7 +33,7 @@ module CommonwealthVlrEngine
       end
       manifest.sequences << sequence
 
-      manifest_thumb_svc = manifest.sequences.first.canvases.first.images.first.resource.service
+      manifest_thumb_svc = manifest.sequences.first.canvases.first.images.first.resource.service.dup
       manifest_thumb_svc['@id'] = manifest_thumb_svc['@id'].gsub(/[\-:\w]+\z/, document[:exemplary_image_ssi]) if document[:exemplary_image_ssi]
       manifest.insert_after(existing_key: 'label',
                             new_key: 'thumbnail',

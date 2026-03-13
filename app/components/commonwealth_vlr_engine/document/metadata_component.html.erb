@@ -330,7 +330,7 @@
     <% end %>
 
     <%# other identifier fields %>
-    <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher sici videorecording].each do |id_base| %>
+    <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher oclc sici videorecording].each do |id_base| %>
       <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
         document: document, field_name: "identifier_#{id_base}_ssim".to_sym, field_key: "id_#{id_base}"
       ) %>

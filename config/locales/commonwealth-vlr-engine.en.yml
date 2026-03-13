@@ -256,6 +256,7 @@ en:
         id_matrix_number: 'Matrix number'
         id_music_plate: 'Music plate'
         id_music_publisher: 'Music publisher'
+        id_oclcnum: 'OCLC'
         id_sici: 'SICI'
         id_videorecording: 'Videorecording'
         id_local_accession: 'Accession #'
