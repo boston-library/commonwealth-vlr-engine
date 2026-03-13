@@ -77,7 +77,7 @@ module CommonwealthVlrEngine
       # everything except image and video
       def other_download_links
         other_links = []
-        other_file_types = [object_files[:audio], object_files[:document], object_files[:ereader]]
+        other_file_types = [object_files[:audio], object_files[:document], object_files[:ereader], object_files[:video]]
         other_file_types.each do |file_type|
           file_type.each do |file|
             attachments_json = JSON.parse(file['attachments_ss'])

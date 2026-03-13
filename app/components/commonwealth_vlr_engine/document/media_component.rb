@@ -39,7 +39,7 @@ module CommonwealthVlrEngine
       def render?
         helpers.has_image_files?(object_files) ||
           helpers.has_video_files?(object_files) ||
-          helpers.has_document_files?(object_files) ||
+          helpers.has_pdf_files?(object_files) ||
           helpers.has_playable_audio?(object_files)
       end
 

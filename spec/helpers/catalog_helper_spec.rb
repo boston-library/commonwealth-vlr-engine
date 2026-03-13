@@ -61,6 +61,12 @@ RSpec.describe CatalogHelper do
       end
     end
 
+    describe '#has_pdf_files?' do
+      it 'returns true if the object has PDF files' do
+        expect(helper.has_pdf_files?(document_files_hash)).to be_truthy
+      end
+    end
+
     describe '#has_ereader_files?' do
       let(:files_hash) { mock_controller.get_files('bpl-dev:3j334603p') }
 

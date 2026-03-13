@@ -28,12 +28,24 @@ module CommonwealthVlrEngine
       files_hash[:document].present?
     end
 
+    def has_pdf_files?(files_hash)
+      (has_document_files?(files_hash) && files_hash[:document].any? { |a| has_attachment?(a, 'document_access') }) ||
+        ((has_audio_files?(files_hash) || has_video_files?(files_hash)) &&
+          %i(audio video).any? { |f| files_hash[f].any? { |a| has_attachment?(a, 'document_access') } })
+    end
+
     def has_ereader_files?(files_hash)
       files_hash[:ereader].present?
     end
 
+    # @param file_document [SolrDocument]
+    # @param attachment_type [String]
+    def has_attachment?(file_document, attachment_type)
+      file_document['attachments_ss'][attachment_type].present?
+    end
+
     def has_playable_audio?(files_hash)
-      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| a['attachments_ss']['audio_access'].present? }
+      has_audio_files?(files_hash) && files_hash[:audio].all? { |a| has_attachment?(a, 'audio_access') }
     end
 
     # determine if the item has text content that can be searched

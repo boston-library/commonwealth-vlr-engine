@@ -28,14 +28,12 @@ const basicSearchBehavior = (() => {
         let checkbox = document.getElementById('fulltext_checkbox');
         let checkboxLabel = document.getElementById('fulltext_checkbox_label');
         let infoIcon = document.getElementById('fulltext_info');
-        // let infoIconTitle = infoIcon.dataset.bsTitle;
         let infoIconContent = infoIcon.dataset.bsContent;
 
         if (selectedOption !== "all_fields") {
             let was_checked = checkbox.checked;
             if (was_checked === true) {
                 basicSearch.basicSearchPopover.setContent({
-                    // '.popover-header': infoIconTitle,
                     '.popover-body': 'The full-text option only works with the "All Fields" search.'
                 })
                 basicSearch.basicSearchPopover.show();
@@ -49,7 +47,6 @@ const basicSearchBehavior = (() => {
                 setTimeout(() => {
                     basicSearch.basicSearchPopover.hide();
                     basicSearch.basicSearchPopover.setContent({
-                        // '.popover-header': infoIconTitle,
                         '.popover-body': infoIconContent
                     })
                 }, 2000)
