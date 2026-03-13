@@ -1,3 +1,8 @@
+<%#
+  Note: #iiif_manifest_url below calls the Rails routing helper for IiifManifestController#manifest,
+  not CatalogHelperBehavior#iiif_manifest_url (which returns the canonical ARK URL by default),
+  prefer the routing helper since performance should be slightly better
+%>
 <div id="uv_container" class="row">
-  <div id="uv" class="uv" data-manifest="<%= helpers.iiif_manifest_url(document) %>" data-uvconfig="<%= uv_config %>"></div>
+  <div id="uv" class="uv" data-manifest="<%= iiif_manifest_url(document) %>" data-uvconfig="<%= uv_config %>"></div>
 </div>
