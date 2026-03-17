@@ -11,9 +11,11 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: test
+    name: test rails ${{ matrix.rails_version }}
     runs-on: ubuntu-22.04
-
+    strategy:
+      matrix:
+        rails_version: ['7.2.3', '8.1.2']
     steps:
       - uses: browser-actions/setup-chrome@v2
       - run: chrome --version

@@ -34,6 +34,7 @@ RSpec.describe 'basic_search', js: true do
     within '#basic_search_wrapper' do
       find('#fulltext_checkbox').click
       select('Title', from: 'search_field')
+      sleep(1) # wait for the popover to fade in completely, or axe color contrast check may fail
       expect(page).to be_axe_clean
       expect(page).to_not have_checked_field('fulltext_checkbox')
     end
