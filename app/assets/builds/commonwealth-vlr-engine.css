@@ -25,10 +25,10 @@
 }
 
 /* styles for app/views/shared/footer */
-#footer {
+footer {
     margin-top: 20px;
 }
-#footer #footer_logo #footer_logo_link {
+footer #footer_logo #footer_logo_link {
     background: transparent url("../images/commonwealth-vlr-engine/vlr_logo_img.png") no-repeat top left;
     display: inline-block;
     height: 75px;
@@ -98,6 +98,7 @@ div.institutions-list #documents .blacklight-institution .document-metadata {
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 14px -4px #000000;
+    z-index: 2;
 }
 .show-document #img_show_container #img_show_canvas #img_show_zoom_cue .img_zoom_icon {
     font-size: 32px;
