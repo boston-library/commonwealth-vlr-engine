@@ -5,7 +5,7 @@
                                                        { size: @banner_image.size,
                                                          region: @banner_image.region }) if @banner_image %>')">
     <div id="hero_content_wrapper">
-      <h1 id="hero headline"><%= t('blacklight.home.banner.center_text') %></h1>
+      <h1 id="hero_headline"><%= t('blacklight.home.banner.center_text') %></h1>
       <div id="hero_search_wrapper">
         <%= render Blacklight::SearchBarComponent.new(
           url: search_action_url(controller: 'catalog'),
@@ -13,9 +13,15 @@
           params: search_state.params_for_search.except(:qt),
           autocomplete_path: suggest_index_catalog_path) %>
       </div>
-      <% if @banner_image %>
-        <div id="hero_image_attribution"><%= @banner_image.title %></div>
-      <% end %>
     </div>
+    <% if @banner_image %>
+      <div id="hero_image_attribution">
+        <%= I18n.t('blacklight.collections.image_title_prefix') %>
+        <%= link_to(@banner_image.title,
+                    solr_document_path(@banner_image.object_pid),
+                    id: 'hero_image_attribution_link',
+                    class: 'banner_image_caption_link') %>
+      </div>
+    <% end %>
   </div>
 </div>

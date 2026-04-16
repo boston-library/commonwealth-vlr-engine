@@ -26,7 +26,7 @@ RSpec.describe CommonwealthVlrEngine::FeaturedItemsComponent, type: :component d
   end
 
   it 'renders the component' do
-    expect(rendered).to have_selector('#documents_featured')
+    expect(rendered).to have_selector('.documents_featured')
     expect(rendered).to have_selector('.blacklight-digitalobject.document', count: featured_documents.size)
   end
 end

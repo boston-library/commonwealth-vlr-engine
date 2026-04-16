@@ -44,7 +44,7 @@ RSpec.describe InstitutionsController, :vcr do
     end
 
     it 'should show the featured items' do
-      expect(response.body).to have_selector('#featured_items')
+      expect(response.body).to have_selector('.featured_items')
       expect(assigns(:featured_items)).not_to be_nil
     end
   end

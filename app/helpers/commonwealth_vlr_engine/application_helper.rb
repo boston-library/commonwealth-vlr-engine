@@ -51,6 +51,8 @@ module CommonwealthVlrEngine
                'audio'
              when 'moving image'
                'moving-image'
+             when 'dataset'
+               'data-set'
              else
                'text'
              end
