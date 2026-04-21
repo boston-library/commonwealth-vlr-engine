@@ -15,6 +15,7 @@ begin
   require 'iiif/presentation'
   require 'recaptcha'
   require 'rexml'
+  require 'rss'
   require 'zipline'
 rescue LoadError => e
   puts "A Gem Dependency is Missing....#{e.message}"

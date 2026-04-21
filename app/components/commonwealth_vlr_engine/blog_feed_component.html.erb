@@ -1,13 +1,17 @@
-<h4 id="blog_feed_title"><%= t('blacklight.home.news.title') %></h4>
+<h2 id="blog_feed_title"><%= t('blacklight.home.news.title') %></h2>
 <% if posts.present? %>
   <ul id="blog_feed_items">
     <% posts.each do |post| %>
-      <%= content_tag(:li, link_to(post.title, post.link, class: 'blog_feed_item_link', target: '_blank'),
-                      class: 'blog_feed_item') %>
+      <%= content_tag(:li, class: 'blog_feed_item') do %>
+        <%= content_tag(:span, post.category&.content, class: 'blog_feed_item_category') if post.category %>
+        <%= link_to(post.title, post.link, class: 'blog_feed_item_link', target: '_blank') %>
+        <%= content_tag(:span, post.date&.strftime('%B %d, %Y'), class: 'blog_feed_item_date') if post.date %>
+      <% end %>
     <% end %>
   </ul>
-  <p class="more-info-link text-end">
-    <%= link_to 'More news >>', t('blacklight.home.news.blog_url'), target: '_blank' %>
+  <p class="more-info-link">
+    <%= link_to t('blacklight.home.news.more'), t('blacklight.home.news.blog_url'),
+                target: '_blank', class: 'btn btn-primary' %>
   </p>
 <% else %>
   <p>

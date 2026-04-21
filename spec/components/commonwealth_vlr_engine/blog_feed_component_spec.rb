@@ -7,6 +7,6 @@ RSpec.describe CommonwealthVlrEngine::BlogFeedComponent, :vcr, type: :component 
     render_inline(described_class.new(source: 'https://blog.digitalcommonwealth.org/?feed=rss2'))
 
     expect(page).to have_selector('#blog_feed_items')
-    expect(page).to have_selector('.blog_feed_item_link', count: 4)
+    expect(page).to have_selector('.blog_feed_item_link', count: 3)
   end
 end

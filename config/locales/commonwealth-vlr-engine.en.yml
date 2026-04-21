@@ -182,6 +182,7 @@ en:
           enabled: false
           tagline: 'Use the map to search for materials from locations across the globe.'
       about:
+        more: 'Learn more'
         text: 'This site provides access to materials of historical interest from this totally awesome library.'
         title: 'About This Site'
       featured_collections:
@@ -196,6 +197,7 @@ en:
         rss_link: 'http://awesomelibrary.org/blog?feed=rss2'
         blog_title: 'This Awesome Library Blog'
         blog_url: 'https://awesomelibrary.org/blog'
+        more: 'More news'
 
     homes:
       featured: ''

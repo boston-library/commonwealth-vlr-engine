@@ -8,7 +8,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
   let(:image_pid) { 'bpl-dev:h702q641c' }
   let(:collection_pid) { 'bpl-dev:h702q636h' }
   let(:document) { SolrDocument.find(item_pid) }
-  let(:thumb_size) { '300' }
+  let(:thumb_size) { 300 }
 
   before(:each) do
     without_partial_double_verification do
@@ -16,31 +16,30 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
     end
   end
 
-  # TODO: #collection_gallery_url is not currently used, but may still be needed, keep for now
-  # describe '#collection_gallery_url' do
-  #   it 'returns a thumbnail datastream if this is an OAI-harvested item' do
-  #     expect(helper.collection_gallery_url({ exemplary_image_ssi: 'oai-dev:123456', hosting_status_ssi: 'harvested',
-  #                                            exemplary_image_key_base_ss: 'metadata/oai-dev:123456' },
-  #                                          thumb_size)).to include('oai-dev:123456/image_thumbnail_300.jpg')
-  #   end
-  #
-  #   it 'returns a IIIF URL if this is a repository item' do
-  #     expect(
-  #       helper.collection_gallery_url({ exemplary_image_ssi: image_pid }, thumb_size)
-  #     ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/square/#{thumb_size},/0/default.jpg")
-  #   end
-  #
-  #   it 'returns a region percentage if this is a newspaper collection' do
-  #     expect(
-  #       helper.collection_gallery_url({ exemplary_image_ssi: image_pid, destination_site_ssim: %w(newspapers) },
-  #                                     thumb_size)
-  #     ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/pct:4,3,90,67/#{thumb_size},#{thumb_size}/0/default.jpg")
-  #   end
-  #
-  #   it 'returns the icon path if there is no exemplary_image_ssi value' do
-  #     expect(helper.collection_gallery_url({}, thumb_size)).to include('dc_collection-icon')
-  #   end
-  # end
+  describe '#collection_thumbnail_url' do
+    it 'returns a thumbnail datastream if this is an OAI-harvested item' do
+      expect(helper.collection_thumbnail_url({ exemplary_image_ssi: 'oai-dev:123456', hosting_status_ssi: 'harvested',
+                                             exemplary_image_key_base_ss: 'metadata/oai-dev:123456' },
+                                           thumb_size)).to include('oai-dev:123456/image_thumbnail_300.jpg')
+    end
+
+    it 'returns a IIIF URL if this is a repository item' do
+      expect(
+        helper.collection_thumbnail_url({ exemplary_image_ssi: image_pid }, thumb_size)
+      ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/square/#{thumb_size},/0/default.jpg")
+    end
+
+    it 'returns a region percentage if this is a newspaper collection' do
+      expect(
+        helper.collection_thumbnail_url({ exemplary_image_ssi: image_pid, destination_site_ssim: %w(newspapers) },
+                                      thumb_size)
+      ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/pct:4,3,90,67/#{thumb_size},#{thumb_size}/0/default.jpg")
+    end
+
+    it 'returns the icon path if there is no exemplary_image_ssi value' do
+      expect(helper.collection_thumbnail_url({}, thumb_size)).to include('dc_collection-icon')
+    end
+  end
 
   describe '#banner_image_url' do
     let(:exemplary_document) do

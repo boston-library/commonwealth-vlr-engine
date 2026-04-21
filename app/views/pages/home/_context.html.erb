@@ -1,8 +1,8 @@
 <%# about this site %>
 <div id="home_about">
-  <h4><%= t('blacklight.home.about.title') %></h4>
+  <h2><%= t('blacklight.home.about.title') %></h2>
   <p><%= t('blacklight.home.about.text') %></p>
-  <p class="more-info-link text-end">
-    <%= link_to 'Learn more >>', about_site_path %>
+  <p class="more-info-link">
+    <%= link_to t('blacklight.home.about.more'), about_site_path, class: 'btn btn-primary' %>
   </p>
 </div>

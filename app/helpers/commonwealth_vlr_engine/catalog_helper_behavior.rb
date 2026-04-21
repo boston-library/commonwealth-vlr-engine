@@ -82,7 +82,8 @@ module CommonwealthVlrEngine
     # render institution name as a link in catalog#index list view
     def index_institution_link(options = {})
       link_to(options[:value].first,
-              institution_path(id: options[:document][:institution_ark_id_ssi]))
+              institution_path(id: options[:document][:institution_ark_id_ssi]),
+              class: 'index_institution_link')
     end
 
     def index_title(options = {})

@@ -3,28 +3,26 @@
 # methods related to rendering images, thumbnails, icons, etc.
 module CommonwealthVlrEngine
   module ImagesHelperBehavior
-    # NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
+    NEWSPAPER_GALLERY_REGION = 'pct:4,3,90,67'
 
-    # TODO: this method is not currently used, but may still be needed,
-    #       for display of collections on institutions#show
     # return the image url for the collection gallery view document
     # @param document [SolrDocument] = Curator::Collection Solr document
-    # @param size [String] = pixel length of square IIIF-created image
+    # @param size [Integer] = pixel length of square IIIF-created image
     # @return [String]
-    # def collection_gallery_url(document, size)
-    #   exemplary_image_pid = document[:exemplary_image_ssi]
-    #   if exemplary_image_pid
-    #     if harvested_object?(document) || document['exemplary_image_iiif_bsi'] == false
-    #       filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
-    #     elsif document[:destination_site_ssim].to_s.include?('newspapers')
-    #       iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
-    #     else
-    #       iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
-    #     end
-    #   else
-    #     collection_icon_url
-    #   end
-    # end
+    def collection_thumbnail_url(document, size = 360)
+      exemplary_image_pid = document[:exemplary_image_ssi]
+      if exemplary_image_pid
+        if harvested_object?(document) || document['exemplary_image_iiif_bsi'] == false
+          filestream_disseminator_url(document[:exemplary_image_key_base_ss], 'image_thumbnail_300')
+        elsif document[:destination_site_ssim].to_s.include?('newspapers')
+          iiif_image_url(exemplary_image_pid, { region: NEWSPAPER_GALLERY_REGION, size: "#{size},#{size}" })
+        else
+          iiif_image_url(exemplary_image_pid, { region: 'square', size: "#{size}," })
+        end
+      else
+        collection_icon_url
+      end
+    end
 
     # return the url for the banner image (called by CommonwealthVlrEngine::BannerImageComponent)
     # @param exemplary_document [SolrDocument] DigitalObject solr document
@@ -103,12 +101,12 @@ module CommonwealthVlrEngine
     # TODO: this should probably be set in ThumbnailPresenter
     def thumbnail_url(document)
       thumbnail_att_name = 'image_thumbnail_300'
-      if document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
+      if document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
+        collection_thumbnail_url(document)
+      elsif document[:exemplary_image_ssi] && document[blacklight_config.flagged_field.to_sym] != 'explicit'
         filestream_disseminator_url(document[:exemplary_image_key_base_ss], thumbnail_att_name)
       elsif document[:type_of_resource_ssim]
         render_object_icon_path(document[:type_of_resource_ssim].first)
-      elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-        collection_icon_url
       elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
         institution_icon_path
       else
