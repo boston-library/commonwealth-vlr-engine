@@ -20,7 +20,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
     it 'returns a thumbnail datastream if this is an OAI-harvested item' do
       expect(helper.collection_thumbnail_url({ exemplary_image_ssi: 'oai-dev:123456', hosting_status_ssi: 'harvested',
                                              exemplary_image_key_base_ss: 'metadata/oai-dev:123456' },
-                                           thumb_size)).to include('oai-dev:123456/image_thumbnail_300.jpg')
+                                             thumb_size)).to include('oai-dev:123456/image_thumbnail_300.jpg')
     end
 
     it 'returns a IIIF URL if this is a repository item' do
@@ -32,7 +32,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
     it 'returns a region percentage if this is a newspaper collection' do
       expect(
         helper.collection_thumbnail_url({ exemplary_image_ssi: image_pid, destination_site_ssim: %w(newspapers) },
-                                      thumb_size)
+                                        thumb_size)
       ).to include("#{CommonwealthVlrEngine.config[:iiif_server_url]}#{image_pid}/pct:4,3,90,67/#{thumb_size},#{thumb_size}/0/default.jpg")
     end
 

@@ -2,11 +2,12 @@
 
 module CommonwealthVlrEngine
   class BlogFeedComponent < ViewComponent::Base
-    attr_reader :source, :posts
+    attr_reader :source, :posts, :post_count
 
     def initialize(source: I18n.t('blacklight.home.news.rss_link'), post_count: 3)
       @source = source
       @posts = fetch_blog_posts
+      @post_count = post_count
     end
 
     def fetch_blog_posts
