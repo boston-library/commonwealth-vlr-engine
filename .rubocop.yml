@@ -1,9 +1,9 @@
 plugins:
   - rubocop-rspec
-  - rubocop-rspec_rails
   - rubocop-rails
   - rubocop-performance
   - rubocop-capybara
+  - rubocop-rspec_rails
 
 AllCops:
   Exclude:
