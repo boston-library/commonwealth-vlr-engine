@@ -35,6 +35,12 @@ RSpec.describe CommonwealthVlrEngine::MetadataHelperBehavior do
     end
   end
 
+  describe '#index_creator_value' do
+    it 'returns the creator values for the catalog#index view' do
+      expect(helper.index_creator_value({ document: document })).to eq('Marsh, Amy')
+    end
+  end
+
   describe '#date_qualifier' do
     it 'returns date qualifier values' do
       expect(helper.date_qualifier('copyrightDate')).to eq('copyright')

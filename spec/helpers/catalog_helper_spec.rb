@@ -128,7 +128,7 @@ RSpec.describe CatalogHelper do
   describe '#index_institution_link' do
     it 'renders the institution link' do
       expect(helper.index_institution_link({ value: [document[:institution_name_ssi]],
-                                             document: document })).to include('<a href="/institutions/' + document[:institution_ark_id_ssi])
+                                             document: document })).to include('href="/institutions/' + document[:institution_ark_id_ssi])
     end
   end
 

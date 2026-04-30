@@ -136,9 +136,9 @@ module CommonwealthVlrEngine
                                filter_query_builder: CommonwealthVlrEngine::StartsWithFilterQuery
 
         # solr fields to be displayed in the index (search results) view
-        config.add_index_field 'name_facet_ssim', label: 'Creator', separator_options: { two_words_connector: '; ' }
         config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
         config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
+        config.add_index_field 'name_facet_ssim', label: 'Creator', helper_method: :index_creator_value
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
         blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link, if: lambda { |_context, _field_config, _document|
           CommonwealthVlrEngine.config.dig(:institution, :pid).blank?

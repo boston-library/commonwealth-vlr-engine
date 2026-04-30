@@ -5,7 +5,12 @@ module CommonwealthVlrEngine
   module MetadataHelperBehavior
     # render the date in the catalog#index list view
     def index_date_value(options = {})
-      options[:document][:date_tsim]&.first
+      options[:value]&.first
+    end
+
+    # render the creator values in the catalog#index list view
+    def index_creator_value(options = {})
+      options[:value].uniq.join('; ')
     end
 
     def date_qualifier(date_type)
