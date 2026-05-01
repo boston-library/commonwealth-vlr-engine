@@ -18,7 +18,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("Beauregard. 501 Broadway, New York: Published by E & H. T. Anthony, 1859. Web. #{Time.current.strftime("%d %b %Y")}. <#{ark_link}>.")
+      expect(page).to have_content("Marsh, Amy. Beauregard. 501 Broadway, New York: Published by E & H. T. Anthony, 1859. Web. #{Time.current.strftime("%d %b %Y")}. <#{ark_link}>.")
     end
   end
 
@@ -26,7 +26,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("Beauregard [Photograph]. (1859). Retrieved from #{ark_link}")
+      expect(page).to have_content("Marsh, A. (1859). Beauregard [Photograph]. Retrieved from #{ark_link}")
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe CommonwealthVlrEngine::Document::CitationComponent, type: :compon
     it 'returns a properly formatted citation' do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("\"Beauregard.\" Photograph. 501 Broadway, New York: Published by E & H. T. Anthony, [ca. 1859–1870]. #{I18n.t('blacklight.application_name')}, #{ark_link}")
+      expect(page).to have_content("Marsh, Amy. \"Beauregard.\" Photograph. 501 Broadway, New York: Published by E & H. T. Anthony, [ca. 1859–1870]. #{I18n.t('blacklight.application_name')}, #{ark_link}")
     end
   end
 

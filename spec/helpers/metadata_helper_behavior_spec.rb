@@ -31,13 +31,13 @@ RSpec.describe CommonwealthVlrEngine::MetadataHelperBehavior do
 
   describe '#index_date_value' do
     it 'returns the date value for the catalog#index view' do
-      expect(helper.index_date_value({ document: document })).to eq('[ca. 1859–1870]')
+      expect(helper.index_date_value({ value: document[:date_tsim] })).to eq('[ca. 1859–1870]')
     end
   end
 
   describe '#index_creator_value' do
     it 'returns the creator values for the catalog#index view' do
-      expect(helper.index_creator_value({ document: document })).to eq('Marsh, Amy')
+      expect(helper.index_creator_value({ value: document[:name_facet_ssim] })).to eq('Marsh, Amy')
     end
   end
 
