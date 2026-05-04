@@ -231,16 +231,6 @@ module CommonwealthVlrEngine
         config.add_show_tools_partial(:downloads, partial: 'downloads_tools', if: :render_download_tools?)
         config.add_show_tools_partial(:email, if: false, partial: 'show_email_tools', callback: :email_action,
                                       validator: :validate_email_params)
-
-        # header/nav stuff
-        config.header_component = CommonwealthVlrEngine::HeaderComponent
-        config.add_nav_action(:search, partial: 'blacklight/nav/search')
-        config.add_nav_action(:formats, partial: 'blacklight/nav/formats')
-        config.add_nav_action(:collections, partial: 'blacklight/nav/collections')
-        config.add_nav_action(:institutions, partial: 'blacklight/nav/institutions', if: lambda { |_context, _field_config, _document|
-          CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
-        })
-        config.add_nav_action(:about, partial: 'blacklight/nav/about')
       end
 
       # displays the MODS XML record. copied from blacklight-marc 'librarian_view'
