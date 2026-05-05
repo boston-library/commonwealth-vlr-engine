@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-# subclass so we can render our own partial, modify search fields on basic search form
+# subclass so we can modify search fields on basic search form,
+# render our own partial with fulltext checkbox, etc.
+# used on "basic search" page (catalog#index with no search params)
 module CommonwealthVlrEngine
   class SearchBarComponent < Blacklight::SearchBarComponent
     # simplify text on search field labels

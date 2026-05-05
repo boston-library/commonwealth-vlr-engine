@@ -9,7 +9,14 @@ module CommonwealthVlrEngine
       include Blacklight::Catalog
       copy_blacklight_config_from(CatalogController)
 
+      # set this here, or in downstream PagesController
+      # ensures the header search form has the correct action
+      def search_action_url(_options = {})
+        search_catalog_url(controller: 'catalog')
+      end
+
       before_action :set_featured_objects, only: :home
+      helper_method :search_action_url
     end
 
     def home
