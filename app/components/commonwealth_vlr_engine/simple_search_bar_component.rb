@@ -10,5 +10,9 @@ module CommonwealthVlrEngine
     def advanced_search_enabled?
       false
     end
+
+    def rounded_border_class
+      nil
+    end
   end
 end
