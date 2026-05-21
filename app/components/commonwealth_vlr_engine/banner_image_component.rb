@@ -4,13 +4,16 @@ module CommonwealthVlrEngine
   class BannerImageComponent < ViewComponent::Base
     # @param exemplary_document [SolrDocument] DigitalObject solr document
     # @param context [String] the type of page where the banner is being rendered
-    def initialize(exemplary_document:, context: 'collection')
+    def initialize(exemplary_document:, width: 1300, height: 610, context: 'collection')
       @exemplary_document = exemplary_document
+      @width = width
+      @height = height
       @context = context
     end
 
     def banner_image_tag
-      image_tag(helpers.banner_image_url(exemplary_document: @exemplary_document),
+      image_tag(helpers.banner_image_url(exemplary_document: @exemplary_document,
+                                         target_width: width, target_height: height),
                 alt: banner_image_title, class: banner_image_class)
     end
 
