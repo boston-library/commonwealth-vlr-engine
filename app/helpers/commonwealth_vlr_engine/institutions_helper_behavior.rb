@@ -19,7 +19,7 @@ module CommonwealthVlrEngine
                                   abstract[0..1].join('<br/><br/>').html_safe,
                                   id: 'institution_desc_static',
                                   class: 'institution_desc institution_desc_inline')
-      if abstract.length > 2
+      if abstract.length > 1
         desc_content << content_tag(:div,
                                     abstract[2..(abstract.length - 1)].join('<br/><br/>').html_safe,
                                     id: 'institution_desc_collapse',

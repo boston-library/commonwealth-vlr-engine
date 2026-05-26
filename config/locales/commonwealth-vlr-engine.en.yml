@@ -220,6 +220,7 @@ en:
       facets:
         title: 'Browse by:'
       featured: 'Featured Items'
+      link: 'Visit institution web site'
       index:
         page_title: 'Institutions - %{application_name}'
         a-z_label: 'Starts with:'
