@@ -16,12 +16,12 @@ module CommonwealthVlrEngine
       # double quotes in #delete arg below are correct, DO NOT CHANGE
       abstract = abstract.delete("\n").delete("\r").gsub(/<br[ \/]*>/, '<br/>').split('<br/><br/>')
       desc_content << content_tag(:div,
-                                  abstract[0..1].join('<br/><br/>').html_safe,
+                                  abstract.first.html_safe,
                                   id: 'institution_desc_static',
                                   class: 'institution_desc institution_desc_inline')
       if abstract.length > 1
         desc_content << content_tag(:div,
-                                    abstract[2..(abstract.length - 1)].join('<br/><br/>').html_safe,
+                                    abstract[1..(abstract.length - 1)].join('<br/><br/>').html_safe,
                                     id: 'institution_desc_collapse',
                                     class: 'collapse')
         desc_content << link_to(t('blacklight.institutions.description.more'),

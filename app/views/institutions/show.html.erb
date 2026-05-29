@@ -24,7 +24,7 @@
           <% if @document[:institution_url_ss] %>
               <div id="institution_site_link_wrap">
                 <%= link_to @document[:institution_url_ss], id: 'institution_site_link', target: '_blank' do %>
-                  <%= "#{t('blacklight.institutions.link')} #{icon('fas', 'external-link-alt', aria: { hidden: true })}" %>
+                  <%= t('blacklight.institutions.link') %> <%= icon('fas', 'external-link-alt', aria: { hidden: true }) %>
                 <% end %>
               </div>
           <% end %>

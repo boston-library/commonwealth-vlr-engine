@@ -13,7 +13,7 @@ module CommonwealthVlrEngine
 
     def banner_image_tag
       image_tag(helpers.banner_image_url(exemplary_document: @exemplary_document,
-                                         target_width: width, target_height: height),
+                                         target_width: @width, target_height: @height),
                 alt: banner_image_title, class: banner_image_class)
     end
 
