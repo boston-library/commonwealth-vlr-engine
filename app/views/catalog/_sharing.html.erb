@@ -1,14 +1,14 @@
 <%# social sharing links %>
 
 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-	<%= icon('fas', 'share-alt', aria: { hidden: true }) %>
+	<%= icon('fas', 'share-alt') %>
 	<span>Share</span>
 </button>
 
 <div class="dropdown-menu">
 	<% social_sharing_links(@document).each do |social| %>
 		<%= link_to social[:url], class: 'dropdown-item show-tools-sharing-link', target: '_blank', rel: 'nofollow' do %>
-			<%= icon('fab', social[:icon], class: 'show-tools-sharing-icon', aria: { hidden: true }) %>
+			<%= icon('fab', social[:icon], class: 'show-tools-sharing-icon') %>
 			<span><%= social[:name] %></span>
 		<% end %>
 	<% end %>
@@ -17,12 +17,12 @@
 
 	<%= link_to email_solr_document_path(id: @document), class: 'dropdown-item show-tools-sharing-link', id: 'emailLink',
 							rel: 'nofollow', data: { turbo: false, blacklight_modal: 'trigger' } do %>
-		<%= icon('far', 'envelope', class: 'show-tools-sharing-icon', aria: { hidden: true }) %>
+		<%= icon('far', 'envelope', class: 'show-tools-sharing-icon') %>
 		<span><%= t('blacklight.tools.email') %></span>
 	<% end %>
 
 	<button class="dropdown-item" onclick="navigator.clipboard.writeText('<%= @document['identifier_uri_ss'] %>')">
-		<%= icon('fas', 'link', aria: { hidden: true }) %>
+		<%= icon('fas', 'link') %>
 		<span>Copy link</span>
 	</button>
 </div>

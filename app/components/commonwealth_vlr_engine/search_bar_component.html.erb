@@ -43,7 +43,8 @@
                       data: { bs_toggle: 'popover', bs_placement: 'right', bs_trigger: 'focus', html: true,
                               bs_container: '#fulltext_checkbox_wrapper',
                               bs_content: t('blacklight.search.form.fulltext.help') }) do %>
-        <%= icon('fas', 'circle-question', class: 'fa-sm', aria: { hidden: true }) %>
+        <%= icon('fas', 'circle-question', class: 'fa-sm',
+                 aria: { hidden: true, label: t('blacklight.search.form.fulltext.info_aria_label') }) %>
       <% end %>
     </div>
   <% end %>

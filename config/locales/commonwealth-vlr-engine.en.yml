@@ -3,10 +3,11 @@ en:
   blacklight:
 
     advanced_search:
-      page_title: 'Search'
+      page_title: 'Advanced Search - %{application_name}'
       form:
         query_criteria_heading: 'Search terms:'
         query_criteria_explanation: 'Enter your search terms in the fields below.'
+        title: 'Advanced Search'
       title: 'Search - %{application_name}'
       limit: 'Narrow your search:'
       constraints:
@@ -18,6 +19,12 @@ en:
 
     ark:
       prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
+
+    basic_search:
+      page_title: 'Search - %{application_name}'
+      form:
+        title: 'Search'
+
 
     book_viewer:
       item_link: 'Back to item details'
@@ -391,6 +398,7 @@ en:
         fulltext:
           label: 'Include full-text results:'
           help: 'Click this box if you want your search to include the transcribed text of books, newspapers, manuscripts, and other documents.<br><br>This option only works with the "All Fields" search.'
+          info_aria_label: 'More information about full-text search'
         institution:
           search:
             placeholder: "Search this institution's collections..."

@@ -18,7 +18,7 @@
       <%= button_tag type: 'submit', class: 'trigger_download btn btn-primary ' + params[:filestream_id],
                      rel: 'nofollow', formtarget: '_blank', id: 'trigger_download_submit',
                      data: { 'bl-dismiss': 'modal', turbo: false } do %>
-        <%= icon('fas', 'download', aria: { hidden: true }) %>
+        <%= icon('fas', 'download') %>
         <%= "Download #{truncate(download_link_title(@parent_document[:identifier_ia_id_ssi] ? @parent_document : @document,
                                                      @object_profile,
                                                      params[:filestream_id]),

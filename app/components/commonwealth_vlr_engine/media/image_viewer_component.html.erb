@@ -4,8 +4,10 @@
                 id: 'img_show_zoom_cue',
                 title: t('blacklight.images.zoom'),
                 rel: 'nofollow',
+                role: 'button',
+                aria: { label: t('blacklight.images.zoom') },
                 data: { turbo: false, bs_toggle: 'modal', bs_target: '#img_viewer_modal' } do %>
-      <%= content_tag :i, '', class: 'img_zoom_icon fa-solid fa-magnifying-glass-plus' %>
+      <%= icon('fas', 'magnifying-glass-plus', class: 'img_zoom_icon') %>
     <% end %>
     <%= link_to(image_tag(image_show_asset_url,
                           alt: document[helpers.blacklight_config.index.title_field.field],
@@ -14,6 +16,7 @@
                 class: 'img_viewer_link',
                 title: t('blacklight.images.zoom'),
                 rel: 'nofollow',
+                aria: { label: t('blacklight.images.zoom') },
                 data: { turbo: false, bs_toggle: 'modal', bs_target: '#img_viewer_modal' }) %>
   </div>
 

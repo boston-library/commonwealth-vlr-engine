@@ -1,5 +1,5 @@
 <%# emailLink has moved into sharing dropdown in app/views/catalog/_sharing.html.erb,
     keep this partial if we need to render separately %>
-<%= link_to icon('far', 'envelope', class: 'show-tools-icon', aria: { hidden: true }) + ' ' + t('blacklight.tools.email'),
+<%= link_to icon('far', 'envelope', class: 'show-tools-icon') + ' ' + t('blacklight.tools.email'),
             email_solr_document_path(id: @document),
             { id: 'emailLink', rel: 'nofollow', data: { blacklight_modal: 'trigger', turbo: false } } %>
