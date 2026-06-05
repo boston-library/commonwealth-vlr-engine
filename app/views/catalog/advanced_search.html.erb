@@ -10,7 +10,11 @@
     <li class="nav-item">
       <%= link_to t('blacklight.search.nav.basic'), search_catalog_path, class: 'nav-link' %>
     </li>
-    <li  class="nav-item"><a href="#" class="nav-link active"><%= t('blacklight.search.nav.advanced') %></a></li>
+    <li class="nav-item">
+      <%= link_to t('blacklight.search.nav.advanced'),
+                  blacklight_advanced_search_engine.advanced_search_path,
+                  class: 'nav-link active', aria: { current: 'page' } %>
+    </li>
   </ul>
 
   <div class="tab-content">
