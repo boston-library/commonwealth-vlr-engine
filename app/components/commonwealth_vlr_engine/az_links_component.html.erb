@@ -3,13 +3,13 @@
   <% if params[:starts_with].present? %>
     <%= link_to 'All', send(az_link_path), class: 'az_link' %>
   <% else %>
-    <%= content_tag(:span, 'All', class: 'az_active') %>
+    <%= content_tag(:span, 'All', class: 'az_active', aria: { current: true }) %>
   <% end %> |
   <% ('A'..'Z').each do |letter| %>
     <% if az_exclude.include? letter %>
-      <%= content_tag(:span, letter, class: 'az_nolink') %>
+      <%= content_tag(:span, letter, class: 'az_nolink', aria: { disabled: true }) %>
     <% elsif params[:starts_with] == letter %>
-      <%= content_tag(:span, letter, class: 'az_active') %>
+      <%= content_tag(:span, letter, class: 'az_active', aria: { current: true }) %>
     <% else %>
       <%= link_to_az_value(letter) %>
     <% end %>

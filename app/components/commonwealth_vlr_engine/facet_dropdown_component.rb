@@ -5,13 +5,16 @@ module CommonwealthVlrEngine
   class FacetDropdownComponent < ViewComponent::Base
     attr_reader :facet_field_name
 
-    # @param [Blacklight::Response] response
-    # @param [Symbol] facet_field_name
-    def initialize(response:, facet_field_name: nil, search_state:)
+    # @param response [Blacklight::Response]
+    # @param facet_field_name [Symbol]
+    # @param dropdown_to_render [Class]
+    def initialize(response:, facet_field_name: nil, search_state:,
+                   dropdown_to_render: CommonwealthVlrEngine::System::DropdownComponent)
       @response = response
       @facet_field_name = facet_field_name
       @facet_item = @response.aggregations.dig(facet_field_name)
       @search_state = search_state
+      @dropdown_to_render = dropdown_to_render
     end
 
     def render?
@@ -33,7 +36,7 @@ module CommonwealthVlrEngine
     end
 
     def dropdown
-      render(CommonwealthVlrEngine::System::DropdownComponent.new(
+      render(@dropdown_to_render.new(
         param: "f[#{facet_field_name}][]",
         choices: dropdown_choices,
         id: "#{facet_field_name}-dropdown",
