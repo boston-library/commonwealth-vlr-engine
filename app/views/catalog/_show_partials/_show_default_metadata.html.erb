@@ -401,7 +401,7 @@
         <% end %>
         <%# other identifier fields %>
         <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher
-              sici videorecording].each do |id_base| %>
+              oclcnum sici videorecording].each do |id_base| %>
           <% if document["identifier_#{id_base}_ssim".to_sym] %>
             <dt class="col-md-3"><%= t("blacklight.metadata_display.fields.id_#{id_base}") %>:</dt>
             <dd class="col-md-9">
