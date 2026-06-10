@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
@@ -748,10 +748,10 @@ RSpec/VoidExpect:
 
 ####################### CAPYBARA ###############################
 
-Capybara/CurrentPathExpectation:
+Capybara/RSpec/CurrentPathExpectation:
   Enabled: true
 
-Capybara/VisibilityMatcher:
+Capybara/RSpec/VisibilityMatcher:
   Enabled: true
   Exclude:
     - 'spec/features/ocr_search/index_spec.rb'
