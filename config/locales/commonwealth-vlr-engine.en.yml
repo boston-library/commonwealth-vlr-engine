@@ -17,6 +17,10 @@ en:
     application_name: 'SITE_NAME'
     application_desc: 'SITE DESCRIPTION'
 
+    aria:
+      label:
+        abstract_more_link: 'Read more about this %{genre}.'
+
     ark:
       prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
 

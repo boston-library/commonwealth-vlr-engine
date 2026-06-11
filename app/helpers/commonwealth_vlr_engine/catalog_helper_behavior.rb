@@ -112,6 +112,8 @@ module CommonwealthVlrEngine
                length: options[:truncate_length] || 300,
                separator: ' ', omission: ' ... ') do
         link_to('more', public_send((options[:path_helper] || :collection_path), id: options[:document][:id]),
+                aria: { label: t('blacklight.aria.label.abstract_more_link',
+                                 genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ').first.downcase || 'item') },
                 class: 'read-more-link')
       end
     end
