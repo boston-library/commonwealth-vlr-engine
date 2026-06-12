@@ -118,6 +118,34 @@ module CommonwealthVlrEngine
       end
     end
 
+    # render abstract field, truncating w/'more' link if longer than 2 paragraphs
+    # @param options [Hash] { value: document[:abstract_tsi], document: SolrDocument }
+    def collapsed_abstract(options = {})
+      desc_content = []
+      # double quotes in #delete arg below are correct, DO NOT CHANGE
+      abstract = options[:value].delete("\n").delete("\r").gsub(/<br[ \/]*>/, '<br/>').split('<br/><br/>')
+      desc_content << content_tag(:div,
+                                  abstract.first.html_safe,
+                                  id: 'abstract_static',
+                                  class: 'abstract_inline')
+      if abstract.length > 1
+        desc_content << content_tag(:div,
+                                    abstract[1..(abstract.length - 1)].join('<br/><br/>').html_safe,
+                                    id: 'abstract_collapse',
+                                    class: 'collapse')
+        desc_content << link_to(t('blacklight.metadata_display.expand'),
+                                '#abstract_collapse',
+                                data: { bs_toggle: 'collapse', toggle_text: t('blacklight.metadata_display.collapse') },
+                                aria: {
+                                  expanded: 'false', controls: 'abstract_collapse',
+                                  label: t('blacklight.aria.label.abstract_more_link',
+                                           genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ').first.downcase || 'item')
+                                },
+                                id: 'abstract_expand', class: 'toggle_text')
+      end
+      desc_content.join('').html_safe
+    end
+
     # @param document [SolrDocument]
     # @return [Boolean]
     def harvested_object?(document)

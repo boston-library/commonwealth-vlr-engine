@@ -1,10 +1,10 @@
-<div id="facet_more">
+<div id="facet_more" class="row">
   <h2>
     <%= I18n.t("blacklight.facet_more.title") %>: <%= helpers.link_to_facets(facet_more_params.values,
                                                                              facet_more_params.keys,
                                                                              term_to_explore[:value]) %>
   </h2>
-  <div id="documents_facet_more" class="row documents-masonry">
+  <div id="documents_facet_more" class="documents-masonry">
     <%= render Blacklight::Gallery::DocumentComponent.with_collection(facet_more_documents_presenters) %>
   </div>
 </div>

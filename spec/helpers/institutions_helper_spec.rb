@@ -19,14 +19,4 @@ RSpec.describe InstitutionsHelper do
       expect(helper.link_to_all_inst_items('foo')).to include("#{blacklight_config.institution_field}%5D%5B%5D=Foo+Institution")
     end
   end
-
-  describe '#render_institution_desc' do
-    let(:render_institution_desc_output) { helper.render_institution_desc(institution[:abstract_tsi]) }
-
-    it 'creates the correct HTML content' do
-      expect(render_institution_desc_output).to include('institution_desc_static')
-      expect(render_institution_desc_output).to include('institution_desc_collapse')
-      expect(render_institution_desc_output).to include('institution_desc_expand')
-    end
-  end
 end

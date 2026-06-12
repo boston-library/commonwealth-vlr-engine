@@ -15,8 +15,8 @@
 
         <%= render CommonwealthVlrEngine::BannerImageComponent.new(exemplary_document: @exemplary_document) %>
 
-        <div id="collection_desc">
-          <%= @document[:abstract_tsi].html_safe if @document[:abstract_tsi].present? %>
+        <div id="collection_desc_wrap">
+          <%= collapsed_abstract({ value: @document[:abstract_tsi], document: @document }) if @document[:abstract_tsi] %>
         </div>
 
         <div id="collection_search_tools">

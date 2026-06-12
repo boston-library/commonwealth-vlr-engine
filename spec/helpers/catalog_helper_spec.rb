@@ -163,6 +163,18 @@ RSpec.describe CatalogHelper do
     end
   end
 
+  describe '#collapsed_abstract' do
+    let(:document) { SolrDocument.find('bpl-dev:abcd12345') } # institution with long abstract
+    let(:collapsed_abstract_output) { helper.collapsed_abstract({ value: [document['abstract_tsi']],
+                                                                  document: document }) }
+
+    it 'creates the correct HTML content' do
+      expect(collapsed_abstract_output).to include('abstract_static')
+      expect(collapsed_abstract_output).to include('abstract_collapse')
+      expect(collapsed_abstract_output).to include('abstract_expand')
+    end
+  end
+
   describe '#harvested_object?' do
     it 'returns true for harvested items' do
       expect(helper.harvested_object?(harvested_item)).to be_truthy

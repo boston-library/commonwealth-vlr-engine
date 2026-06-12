@@ -225,9 +225,6 @@ en:
         all: 'View all items'
       collections:
         title: 'Digital Collections'
-      description:
-        less: 'less...'
-        more: 'more...'
       facets:
         title: 'Browse by:'
       featured: 'Featured Items'

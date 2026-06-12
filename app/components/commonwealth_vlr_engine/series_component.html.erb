@@ -1,5 +1,5 @@
 <div id="series" class="row">
-  <h4><%= t('blacklight.collections.series.title') %></h4>
+  <h2><%= t('blacklight.collections.series.title') %></h2>
   <%= render Blacklight::FacetComponent.new(display_facet: @facet_item,
                                             blacklight_config: helpers.blacklight_config,
                                             layout: false) %>
