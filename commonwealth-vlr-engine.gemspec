@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'blacklight_range_limit', '>= 7.8.2', '< 8.0'
   s.add_dependency 'concurrent-ruby', '1.3.4' # lock to 1.3.4 due to Rails 7.0 bug: https://github.com/rails/rails/issues/54260
   s.add_dependency 'font-awesome-sass', '~> 6.5.1'
+  s.add_dependency 'i18n', '~> 1.14.7' # cap below 1.15, which requires Ruby 3.2
   s.add_dependency 'iiif-presentation', '~> 1.1'
   s.add_dependency 'madison', '~> 0.5.0'
   s.add_dependency 'openseadragon', '0.6.0'
