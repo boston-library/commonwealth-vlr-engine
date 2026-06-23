@@ -92,6 +92,8 @@ module CommonwealthVlrEngine
                    'mp4'
                  when 'video_access_webm'
                    'webm'
+                 when 'web_vtt_captions'
+                   'vtt'
                  when 'audio_access'
                    'mp3'
                  when 'document_access'

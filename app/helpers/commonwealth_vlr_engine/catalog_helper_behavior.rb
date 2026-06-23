@@ -52,6 +52,10 @@ module CommonwealthVlrEngine
           %i(audio video).any? { |f| files_hash[f].any? { |a| has_attachment?(a, 'document_access') } })
     end
 
+    def has_captions?(file_document)
+      has_attachment?(file_document, 'web_vtt_captions')
+    end
+
     def book_reader?(document, files_hash)
       has_image_files?(files_hash) && (has_searchable_text?(document) || files_hash[:image].size > IMAGE_VIEWER_LIMIT)
     end
