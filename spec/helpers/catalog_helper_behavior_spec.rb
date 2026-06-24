@@ -84,7 +84,7 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     describe '#has_captions?' do
       let(:video_file) { SolrDocument.find('bpl-dev:cj82k895q') }
       it 'returns true if the file has a captions attachment' do
-        expect(helper.has_attachment?(video_file, 'web_vtt_captionz')).to be_truthy
+        expect(helper.has_attachment?(video_file, 'web_vtt_captions')).to be_truthy
       end
     end
   end
