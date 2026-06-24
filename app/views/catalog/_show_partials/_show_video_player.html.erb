@@ -1,3 +1,4 @@
+<%# assumes we only have one video for an item %>
 <div id="img_show_container">
   <div id="img_show_canvas">
     <%= content_tag(:video,
@@ -7,8 +8,6 @@
                     crossorigin: 'anonymous', controlsList: 'nodownload') do %>
       <%= content_tag(:track, nil, src: filestream_disseminator_url(video_files.first['storage_key_base_ss'], 'web_vtt_captions'),
                       default: true, kind: 'captions', srclang: 'en') if has_captions?(video_files.first) %>
-
-
     <% end %>
   </div>
 </div>
