@@ -10,4 +10,8 @@ describe 'show video player' do
   it 'displays the video player' do
     expect(page).to have_selector('#video_player')
   end
+
+  it 'includes the captions track' do
+    expect(page).to have_selector('track')
+  end
 end

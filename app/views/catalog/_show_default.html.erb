@@ -7,7 +7,7 @@
 <% if has_video_files?(@object_files) %>
   <%= render partial: 'catalog/_show_partials/show_video_player',
              locals: { document: @document,
-                       video_key: @object_files[:video][0]['storage_key_base_ss'] } %>
+                       video_files: @object_files[:video] } %>
 <% end %>
 
 <% if has_playable_audio?(@object_files) %>
