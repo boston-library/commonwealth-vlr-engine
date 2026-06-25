@@ -19,7 +19,7 @@ RSpec.describe CommonwealthVlrEngine::Document::DownloadsComponent, type: :compo
   it 'renders the component' do
     render_inline(described_class.new(document: document, object_files: files_hash))
 
-    expect(page).to have_css('li.download_list_item a.sidebar_downloads_link', count: 5)
+    expect(page).to have_css('li.download_list_item a.sidebar_downloads_link', count: 6)
     expect(page).to have_link(I18n.t('blacklight.downloads.images.image_primary'), href: "/downloads/#{item_pid}?filestream_id=image_primary")
     expect(page).to have_link('39999074400019_0', href: "/downloads/#{video_pid}?filestream_id=video_access_mp4")
     expect(page).to have_link('FreemensOath-Transcription', href: "/downloads/#{document_pid}?filestream_id=text_plain")

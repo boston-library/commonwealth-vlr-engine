@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 17 Nov 2025 22:12:13 GMT
+      - Thu, 25 Jun 2026 20:56:41 GMT
       Content-Type:
       - text/plain;charset=utf-8
       Vary:
@@ -56,9 +56,17 @@ http_interactions:
         org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732)\n\tat
         org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479)\n\tat org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277)\n\tat
         org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)\n\tat
-        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)\n\tat org.eclipse.jetty.io.ssl.SslConnection$1.run(SslConnection.java:149)\n\tat
+        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)\n\tat org.eclipse.jetty.io.ssl.SslConnection$DecryptedEndPoint.onFillable(SslConnection.java:555)\n\tat
+        org.eclipse.jetty.io.ssl.SslConnection.onFillable(SslConnection.java:410)\n\tat
+        org.eclipse.jetty.io.ssl.SslConnection$2.succeeded(SslConnection.java:164)\n\tat
+        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)\n\tat org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)\n\tat
+        org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338)\n\tat
+        org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315)\n\tat
+        org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173)\n\tat
+        org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)\n\tat
+        org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:409)\n\tat
         org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883)\n\tat
         org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034)\n\tat
         java.base/java.lang.Thread.run(Thread.java:840)\n\n"
-  recorded_at: Mon, 17 Nov 2025 22:12:13 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Thu, 25 Jun 2026 20:56:41 GMT
+recorded_with: VCR 6.4.0

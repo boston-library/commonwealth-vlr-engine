@@ -7,17 +7,17 @@ RSpec.describe 'institutions#show view', :vcr, js: true do
 
   describe 'description collapse behavior' do
     describe 'collapsed description' do
-      it 'should hide the #institution_desc_collapse content' do
-        expect(page).to have_selector('#institution_desc_collapse', visible: :hidden)
+      it 'should hide the #abstract_collapse content' do
+        expect(page).to have_selector('#abstract_collapse', visible: :hidden)
       end
     end
 
     describe 'expanded description' do
       # before(:each) { find('.institution_desc_expand').click }
 
-      it 'should show the #institution_desc_collapse content when the link is clicked' do
-        find('#institution_desc_expand').click
-        expect(page).to have_selector('#institution_desc_collapse', visible: :visible)
+      it 'should show the #abstract_collapse content when the link is clicked' do
+        find('#abstract_expand').click
+        expect(page).to have_selector('#abstract_collapse', visible: :visible)
       end
     end
   end

@@ -34,6 +34,10 @@ module CommonwealthVlrEngine
           %i(audio video).any? { |f| files_hash[f].any? { |a| has_attachment?(a, 'document_access') } })
     end
 
+    def has_captions?(file_document)
+      has_attachment?(file_document, 'web_vtt_captions')
+    end
+
     def has_ereader_files?(files_hash)
       files_hash[:ereader].present?
     end
@@ -113,7 +117,7 @@ module CommonwealthVlrEngine
                separator: ' ', omission: ' ... ') do
         link_to('more', public_send((options[:path_helper] || :collection_path), id: options[:document][:id]),
                 aria: { label: t('blacklight.aria.label.abstract_more_link',
-                                 genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ').first.downcase || 'item') },
+                                 genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ')&.first&.downcase || 'item') },
                 class: 'read-more-link')
       end
     end
@@ -123,7 +127,7 @@ module CommonwealthVlrEngine
     def collapsed_abstract(options = {})
       desc_content = []
       # double quotes in #delete arg below are correct, DO NOT CHANGE
-      abstract = options[:value].delete("\n").delete("\r").gsub(/<br[ \/]*>/, '<br/>').split('<br/><br/>')
+      abstract = options[:value].first.delete("\n").delete("\r").gsub(/<br[ \/]*>/, '<br/>').split('<br/><br/>')
       desc_content << content_tag(:div,
                                   abstract.first.html_safe,
                                   id: 'abstract_static',
@@ -139,7 +143,7 @@ module CommonwealthVlrEngine
                                 aria: {
                                   expanded: 'false', controls: 'abstract_collapse',
                                   label: t('blacklight.aria.label.abstract_more_link',
-                                           genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ').first.downcase || 'item')
+                                           genre: render_format_index({ value: options[:document]['genre_basic_ssim'] })&.split(', ')&.first&.downcase || 'item')
                                 },
                                 id: 'abstract_expand', class: 'toggle_text')
       end

@@ -67,6 +67,13 @@ RSpec.describe CatalogHelper do
       end
     end
 
+    describe '#has_captions?' do
+      let(:video_file) { SolrDocument.find('bpl-dev:cj82k895q') }
+      it 'returns true if the file has a captions attachment' do
+        expect(helper.has_captions?(video_file)).to be_truthy
+      end
+    end
+
     describe '#has_ereader_files?' do
       let(:files_hash) { mock_controller.get_files('bpl-dev:3j334603p') }
 
@@ -165,8 +172,7 @@ RSpec.describe CatalogHelper do
 
   describe '#collapsed_abstract' do
     let(:document) { SolrDocument.find('bpl-dev:abcd12345') } # institution with long abstract
-    let(:collapsed_abstract_output) { helper.collapsed_abstract({ value: [document['abstract_tsi']],
-                                                                  document: document }) }
+    let(:collapsed_abstract_output) { helper.collapsed_abstract({ value: [document['abstract_tsi']], document: document }) }
 
     it 'creates the correct HTML content' do
       expect(collapsed_abstract_output).to include('abstract_static')

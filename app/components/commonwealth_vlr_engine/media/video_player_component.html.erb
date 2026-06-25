@@ -1,10 +1,12 @@
 <div id="img_show_container">
   <div id="img_show_canvas">
-    <%= video_tag(helpers.filestream_disseminator_url(video_key, 'video_access_mp4'),
-                  class: 'img_show',
-                  id: 'video_player',
-                  controls: true,
-                  poster: helpers.thumbnail_url(document),
-                  controlsList: 'nodownload') %>
+    <%= content_tag(:video,
+                    src: helpers.filestream_disseminator_url(video_key, 'video_access_mp4'),
+                    class: 'img_show', id: 'video_player',
+                    controls: true, poster: helpers.thumbnail_url(document),
+                    crossorigin: 'anonymous', controlsList: 'nodownload') do %>
+      <%= content_tag(:track, nil, src: helpers.filestream_disseminator_url(video_key, 'web_vtt_captions'),
+                      default: true, kind: 'captions', srclang: 'en') if helpers.has_captions?(object_files[:video][0]) %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,644 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://clients2.google.com/time/1/current?cup2hreq=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&cup2key=10:ZBbdKgtj4iy5V6OB_WnKWW0boU8j0OR9XH2yl9MN4hs
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - clients2.google.com
+      Proxy-Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Cup-Server-Proof:
+      - 30450221008d44aa516bf5492012922dc610758691ff57534379944ce44225d973cec651f302200cb13964b32746124cf7991fc320b37b54bccbf124fbe47ef76c46d984f6b36a:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 25 Jun 2026 20:36:54 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-site
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Accept-Ranges:
+      - none
+      Vary:
+      - Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site,Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |-
+        )]}'
+        {"current_time_millis":1782419814111,"server_nonce":-4.719836177869749E-154}
+  recorded_at: Thu, 25 Jun 2026 20:36:54 GMT
+- request:
+    method: get
+    uri: https://iiif-dc3dev.bpl.org/iiif/2/bpl-dev:000000043/info.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 25 Jun 2026 20:36:54 GMT
+      Content-Type:
+      - text/plain;charset=utf-8
+      Vary:
+      - Accept, Accept-Charset, Accept-Encoding, Accept-Language, Origin
+      - Accept-Encoding
+      X-Powered-By:
+      - Cantaloupe/5.0.6
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: "404 Not Found\n\nHTTP 404\n\n\njava.nio.file.NoSuchFileException: HTTP
+        404\n\tat edu.illinois.library.cantaloupe.source.HttpSource.checkAccess(HttpSource.java:487)\n\tat
+        edu.illinois.library.cantaloupe.resource.InformationRequestHandler.handle(InformationRequestHandler.java:252)\n\tat
+        edu.illinois.library.cantaloupe.resource.iiif.v2.InformationResource.doGET(InformationResource.java:82)\n\tat
+        edu.illinois.library.cantaloupe.resource.HandlerServlet.handle(HandlerServlet.java:97)\n\tat
+        edu.illinois.library.cantaloupe.resource.HandlerServlet.doGet(HandlerServlet.java:35)\n\tat
+        javax.servlet.http.HttpServlet.service(HttpServlet.java:645)\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:750)\n\tat
+        org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:799)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:554)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1440)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)\n\tat
+        org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:505)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)\n\tat
+        org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1355)\n\tat
+        org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)\n\tat
+        org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)\n\tat
+        org.eclipse.jetty.server.Server.handle(Server.java:516)\n\tat org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487)\n\tat
+        org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732)\n\tat
+        org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479)\n\tat org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277)\n\tat
+        org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)\n\tat
+        org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)\n\tat org.eclipse.jetty.io.ssl.SslConnection$1.run(SslConnection.java:149)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883)\n\tat
+        org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034)\n\tat
+        java.base/java.lang.Thread.run(Thread.java:840)\n\n"
+  recorded_at: Thu, 25 Jun 2026 20:36:54 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/ListAccounts?gpsia=1&json=standard&laf=b64bin&source=ChromiumBrowser
+    body:
+      encoding: UTF-8
+      string: " "
+    headers:
+      Host:
+      - accounts.google.com
+      Connection:
+      - close
+      Content-Length:
+      - '1'
+      Origin:
+      - https://www.google.com
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/binary
+      Vary:
+      - Origin
+      Access-Control-Allow-Origin:
+      - https://www.google.com
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 25 Jun 2026 20:36:59 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Accept-Ch:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform,
+        Sec-CH-UA-Platform-Version
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Content-Security-Policy:
+      - require-trusted-types-for 'script';report-uri /_/IdentityListAccountsHttp/cspreport
+      - script-src 'report-sample' 'nonce-PTrPx3EYKXeLMMoZfY1lUw' 'unsafe-inline';object-src
+        'none';base-uri 'self';report-uri /_/IdentityListAccountsHttp/cspreport;worker-src
+        'self'
+      - 'script-src ''unsafe-inline'' ''unsafe-eval'' blob: data: ''self'' https://apis.google.com
+        https://ssl.gstatic.com https://www.google.com https://www.googletagmanager.com
+        https://www.gstatic.com https://www.google-analytics.com;report-uri /_/IdentityListAccountsHttp/cspreport/allowlist'
+      - 'script-src ''unsafe-inline'' ''unsafe-eval'' blob: data:;report-uri /_/IdentityListAccountsHttp/cspreport/fine-allowlist'
+      Permissions-Policy:
+      - ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*,
+        ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
+      Reporting-Endpoints:
+      - default="/_/IdentityListAccountsHttp/web-reports?context=eJzjMtHikmLw1ZBiOHxtB5Meyy0mIyDW1PNl0wVi84n-bNZAbBoSyOYMxBPCw9imALEQN8frRd8usgm8mLE0WEk3Kb8wPjMlNa8ks6QyJ7O4JDE5Ob80r6S4OLWoLLUo3sjAyMzAzMhQz8AivsAAAHhgJBg"
+      Server:
+      - ESF
+      Content-Length:
+      - '0'
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 25 Jun 2026 20:36:59 GMT
+- request:
+    method: get
+    uri: https://www.google.com/async/folae?async=_fmt:pb&client_locale=en-US&udm=50
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - www.google.com
+      Connection:
+      - close
+      X-Client-Data:
+      - CPKCywE=
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Version:
+      - '936760047'
+      Content-Type:
+      - application/x-protobuffer
+      X-Content-Type-Options:
+      - nosniff
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups; report-to="gws"
+      Report-To:
+      - '{"group":"gws","max_age":2592000,"endpoints":[{"url":"https://csp.withgoogle.com/csp/report-to/gws/none"}]}'
+      Accept-Ch:
+      - Downlink
+      - RTT
+      - Sec-CH-Prefers-Color-Scheme
+      - Sec-CH-UA-Arch
+      - Sec-CH-UA-Bitness
+      - Sec-CH-UA-Form-Factors
+      - Sec-CH-UA-Full-Version
+      - Sec-CH-UA-Full-Version-List
+      - Sec-CH-UA-Model
+      - Sec-CH-UA-Platform
+      - Sec-CH-UA-Platform-Version
+      - Sec-CH-UA-WoW64
+      Permissions-Policy:
+      - unload=()
+      Content-Disposition:
+      - attachment; filename="f.txt"
+      Date:
+      - Thu, 25 Jun 2026 20:36:59 GMT
+      Server:
+      - gws
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "\b\0\x10\x01\x18\0 \00\x01B\r\n\t\n\x03udm\x12\x0250\x10\x01H\x01P\x01Z\x0Ewww.google.comZ\ngoogle.comb\a/searchj\x12\n\x03deb\x12\vnocobrowse1j\b\n\x03ncb\x12\x011j\x0E\n\x03deb\x12\amobile1j\n\n\x03deb\x12\x03mt1"
+  recorded_at: Thu, 25 Jun 2026 20:36:59 GMT
+- request:
+    method: post
+    uri: https://android.clients.google.com/checkin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        EAAaKjEtZGEzOWEzZWU1ZTZiNGIwZDMyNTViZmVmOTU2MDE4OTBhZmQ4MDcwOSIYYANqFAgDEg4xNDkuMC43ODI3LjE5NhgBaQAAAAAAAAAAcAOwAQA=
+    headers:
+      Host:
+      - android.clients.google.com
+      Connection:
+      - close
+      Content-Length:
+      - '86'
+      Content-Type:
+      - application/x-protobuf
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/x-protobuffer
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 25 Jun 2026 20:37:02 GMT
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Content-Security-Policy:
+      - require-trusted-types-for 'script';report-uri /checkin/_/AndroidCheckinHttp/cspreport
+      Accept-Ch:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform,
+        Sec-CH-UA-Platform-Version
+      Permissions-Policy:
+      - ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*,
+        ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CAEYq6+AhPAzKiEKCmFuZHJvaWRfaWQSEzQ3MjcxNjY0MDI0NDAwNDA2NjcqEgoNY2hyb21lX2RldmljZRIBMSoUCg5kZXZpY2VfY291bnRyeRICdXMqKQoYZGV2aWNlX3JlZ2lzdHJhdGlvbl90aW1lEg0xNzgyNDE3NjAwMDAwOduQmSPMRJpBQampKoImxW1vSABaH1U5M2wwQm1KVlY0V29MUGdON2UtdURCamVnRUk4QmtitwJBQkZFdDFWdmlSVUZBVjRKYmdWcXM2QXZOcHJ1UzhwbzhnLTZHa3dZWTVqVTI4bV8tOTdTQjFVOW1ISmhGZnBBV29wTHFSSzNsU0MtV19TQlJyMEdPbmd0Mi12UFptTEFzTHRLb1VIb0dZbzBYVEN2a1c4U3dRekpWZ3hncHYwQkNCLVVhRWNNTG5sV181N1dxU0loN1lJZ0pqRGl4WFBKNDdGeUFXMHpKM3E5QkNBbENBWFJteVJUQk1aaDRGNmdHbmIwOWxkdXFnNkcwcU04ODMxd19hcnU1RUd0ZFlULWI5OHlfVFl0MVU0aXY4YXZYTERLVFo1cTNkY0ZMS3E4TzdoSnlFa2wyRkc5bDI4b2VkZWYyV1Ztc3FQQnpBcFRlajNBT0xIS3JFRkZCMVlGSkJZa0JsNA==
+  recorded_at: Thu, 25 Jun 2026 20:37:02 GMT
+- request:
+    method: post
+    uri: https://android.clients.google.com/c2dm/register3
+    body:
+      encoding: UTF-8
+      string: app=com.google.android.gms&device=4727166402440040667&sender=745476177629
+    headers:
+      Host:
+      - android.clients.google.com
+      Connection:
+      - close
+      Content-Length:
+      - '73'
+      Authorization:
+      - AidLogin 4727166402440040667:8029290479854725545
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Expires:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: Error=DEPRECATED_ENDPOINT
+  recorded_at: Thu, 25 Jun 2026 20:37:03 GMT
+- request:
+    method: post
+    uri: https://android.clients.google.com/c2dm/register3
+    body:
+      encoding: UTF-8
+      string: app=com.chrome.linux&X-subtype=com.google.chrome.fcm.invalidations-585406161706&device=4727166402440040667&scope=GCM&X-scope=GCM&gmsv=149&appid=f58mD8R5BPs&sender=585406161706&ttl=1209600
+    headers:
+      Host:
+      - android.clients.google.com
+      Connection:
+      - close
+      Content-Length:
+      - '187'
+      Authorization:
+      - AidLogin 4727166402440040667:8029290479854725545
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Expires:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: token=f58mD8R5BPs:APA91bFXvObplucjuRjkdY4REIEWnxNNCtYR5mEr11a19VZhRpRNlKNXEy9MFHbbSmKPk6GI9NLwy0KvkA0jUq-3ep07CdfSrW7iBIvdDWO_QHXn2CcFYIc
+  recorded_at: Thu, 25 Jun 2026 20:37:03 GMT
+- request:
+    method: post
+    uri: https://android.clients.google.com/c2dm/register3
+    body:
+      encoding: UTF-8
+      string: app=com.chrome.linux&X-subtype=com.google.chrome.fcm.invalidations-245350905893&device=4727166402440040667&scope=GCM&X-scope=GCM&gmsv=149&appid=eEB1PDYjk64&sender=245350905893&ttl=1209600
+    headers:
+      Host:
+      - android.clients.google.com
+      Connection:
+      - close
+      Content-Length:
+      - '187'
+      Authorization:
+      - AidLogin 4727166402440040667:8029290479854725545
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US,en;q=0.9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Expires:
+      - Thu, 25 Jun 2026 20:37:03 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: token=eEB1PDYjk64:APA91bG0zCvF6781CrgWbBSE2SbDLgaBWxWrzFb1KHC-hPMU2BdspjBwUd0sq_Y8Tni2O6_-owcFH0aIPUwFJP52yplo3cums_FP_JO6qLqnl3qFWVweT2Q
+  recorded_at: Thu, 25 Jun 2026 20:37:03 GMT
+- request:
+    method: post
+    uri: https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBqJZh-7pA44blAaAkH6490hUFOwX0KCYM
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CgQIAiAWCm4ICSAWMmgKYXR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLnByaXZhY3kud2VicGVybWlzc2lvbnByZWRpY3Rpb25zLnYxLldlYlBlcm1pc3Npb25QcmVkaWN0aW9uc0NsaWVudEluZm8SAwiVAQoECA0gFgplCA8gFjJfCld0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5pbnRlcm5hbC5jaHJvbWUub3B0aW1pemF0aW9uZ3VpZGUudjEuUGFnZVRvcGljc01vZGVsTWV0YWRhdGESBAgCMAIKZwgQIBYyYQpZdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUuaW50ZXJuYWwuY2hyb21lLm9wdGltaXphdGlvbmd1aWRlLnYxLlNlZ21lbnRhdGlvbk1vZGVsTWV0YWRhdGESBEoCEAMKbggUIBYyaAphdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUucHJpdmFjeS53ZWJwZXJtaXNzaW9ucHJlZGljdGlvbnMudjEuV2ViUGVybWlzc2lvblByZWRpY3Rpb25zQ2xpZW50SW5mbxIDCJUBCmcIFSAWMmEKWXR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmludGVybmFsLmNocm9tZS5vcHRpbWl6YXRpb25ndWlkZS52MS5TZWdtZW50YXRpb25Nb2RlbE1ldGFkYXRhEgRKAhADCmcIFyAWMmEKWXR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmludGVybmFsLmNocm9tZS5vcHRpbWl6YXRpb25ndWlkZS52MS5TZWdtZW50YXRpb25Nb2RlbE1ldGFkYXRhEgRKAhADCgQIGCAWCgQIGSAWCmwIGiAWMmYKYHR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmludGVybmFsLmNocm9tZS5vcHRpbWl6YXRpb25ndWlkZS52MS5BdXRvY29tcGxldGVTY29yaW5nTW9kZWxNZXRhZGF0YRICEAIKZwgbIBYyYQpZdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUuaW50ZXJuYWwuY2hyb21lLm9wdGltaXphdGlvbmd1aWRlLnYxLlNlZ21lbnRhdGlvbk1vZGVsTWV0YWRhdGESBEoCEAMKBAgrIBYKZwgtIBYyYQpZdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUuaW50ZXJuYWwuY2hyb21lLm9wdGltaXphdGlvbmd1aWRlLnYxLlNlZ21lbnRhdGlvbk1vZGVsTWV0YWRhdGESBEoCEAMKZwguIBYyYQpZdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUuaW50ZXJuYWwuY2hyb21lLm9wdGltaXphdGlvbmd1aWRlLnYxLlNlZ21lbnRhdGlvbk1vZGVsTWV0YWRhdGESBEoCEAMYBioFZW4tVVMyEggEGg4xNDkuMC43ODI3LjE5Ng==
+    headers:
+      Host:
+      - optimizationguide-pa.googleapis.com
+      Connection:
+      - close
+      Content-Length:
+      - '1126'
+      Content-Type:
+      - application/x-protobuf
+      X-Client-Data:
+      - CPKCywE=
+      Sec-Fetch-Site:
+      - none
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0
+        Safari/537.36
+      Accept-Encoding:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/x-protobuf
+      Content-Disposition:
+      - attachment
+      Vary:
+      - Origin,Accept-Encoding
+      - Referer
+      - X-Origin
+      Date:
+      - Thu, 25 Jun 2026 20:37:04 GMT
+      Server:
+      - ESF
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Accept-Ranges:
+      - none
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CogBCg8IAhDGsuGgBiIBAkgBUgASdSpzaHR0cHM6Ly9vcHRpbWl6YXRpb25ndWlkZS1wYS5nb29nbGVhcGlzLmNvbS9kb3dubG9hZHM/bmFtZT0xNjc5MzE3MzE4JnRhcmdldD1PUFRJTUlaQVRJT05fVEFSR0VUX0xBTkdVQUdFX0RFVEVDVElPTgq7AgquAQgJENvfh9AGIgESMpUBCmR0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5wcml2YWN5LndlYnBlcm1pc3Npb25wcmVkaWN0aW9ucy52MS5XZWJQZXJtaXNzaW9uUHJlZGljdGlvbnNNb2RlbE1ldGFkYXRhEi0KDAECAwQFBgcICQoLDBABGAIlzcxMPioUDQAAgD4VAAAAPx0AAEA/JVK4Xj9CBQiAmp4BSABSABKHASqEAWh0dHBzOi8vb3B0aW1pemF0aW9uZ3VpZGUtcGEuZ29vZ2xlYXBpcy5jb20vZG93bmxvYWRzP25hbWU9MTc3ODUxMTgzNSZ0YXJnZXQ9T1BUSU1JWkFUSU9OX1RBUkdFVF9OT1RJRklDQVRJT05fUEVSTUlTU0lPTl9QUkVESUNUSU9OUwqKAQoUCA0Q8emcngYiAQhCBQiAmp4BUgAScipwaHR0cHM6Ly9vcHRpbWl6YXRpb25ndWlkZS1wYS5nb29nbGVhcGlzLmNvbS9kb3dubG9hZHM/bmFtZT0xNjczOTk5NjAxJnRhcmdldD1PUFRJTUlaQVRJT05fVEFSR0VUX1BBR0VfVklTSUJJTElUWQqVAgqoAQgPEAUiAQ0ydQpXdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUuaW50ZXJuYWwuY2hyb21lLm9wdGltaXphdGlvbmd1aWRlLnYxLlBhZ2VUb3BpY3NNb2RlbE1ldGFkYXRhEhoSAQIaExIRCAUVCtcjPB0AAIA+Jc3MTD8wAjoVChNvdmVycmlkZV9saXN0LnBiLmd6Og0KC1ZFUlNJT04udHh0SAFSABJoKmZodHRwczovL29wdGltaXphdGlvbmd1aWRlLXBhLmdvb2dsZWFwaXMuY29tL2Rvd25sb2Fkcz9uYW1lPTUmdGFyZ2V0PU9QVElNSVpBVElPTl9UQVJHRVRfUEFHRV9UT1BJQ1NfVjIKugIKrgEIFBDD34fQBiIBEjKVAQpkdHlwZS5nb29nbGVhcGlzLmNvbS9nb29nbGUucHJpdmFjeS53ZWJwZXJtaXNzaW9ucHJlZGljdGlvbnMudjEuV2ViUGVybWlzc2lvblByZWRpY3Rpb25zTW9kZWxNZXRhZGF0YRItCgwBAgMEBQYHCAkKCwwQAhgCJZqZmT4qFA0AAIA+FQAAAD8dCtcjPyXD9Wg/QgUIgJqeAUgAUgAShgEqgwFodHRwczovL29wdGltaXphdGlvbmd1aWRlLXBhLmdvb2dsZWFwaXMuY29tL2Rvd25sb2Fkcz9uYW1lPTE3Nzg1MTE4MTEmdGFyZ2V0PU9QVElNSVpBVElPTl9UQVJHRVRfR0VPTE9DQVRJT05fUEVSTUlTU0lPTl9QUkVESUNUSU9OUwrIAgrBAQgYEPTDkLgGIgEFMm0KYHR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmludGVybmFsLmNocm9tZS5vcHRpbWl6YXRpb25ndWlkZS52MS5PbkRldmljZVRhaWxTdWdnZXN0TW9kZWxNZXRhZGF0YRIJCgcIgAMQBBhAOhEKD3ZvY2FiX2VuLXVzLnR4dDoiCiBlbnVzX2RlbnlsaXN0X2VuY29kZWRfMjQxMDA3LnR4dEIFCICangFSBwoFZW4tVVMSgQEqf2h0dHBzOi8vb3B0aW1pemF0aW9uZ3VpZGUtcGEuZ29vZ2xlYXBpcy5jb20vZG93bmxvYWRzP25hbWU9MTcyODMyNDA4NCZ0YXJnZXQ9T1BUSU1JWkFUSU9OX1RBUkdFVF9PTU5JQk9YX09OX0RFVklDRV9UQUlMX1NVR0dFU1QKmAIKnAEIGRCeg43QBiIBCjJlCl90eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5pbnRlcm5hbC5jaHJvbWUub3B0aW1pemF0aW9uZ3VpZGUudjEuQ2xpZW50U2lkZVBoaXNoaW5nTW9kZWxNZXRhZGF0YRICCAE6HQobdmlzdWFsX21vZGVsX2Rlc2t0b3AudGZsaXRlQgUIgJqeAUgAUgASdyp1aHR0cHM6Ly9vcHRpbWl6YXRpb25ndWlkZS1wYS5nb29nbGVhcGlzLmNvbS9kb3dubG9hZHM/bmFtZT0xNzc4NTk4MzAyJnRhcmdldD1PUFRJTUlaQVRJT05fVEFSR0VUX0NMSUVOVF9TSURFX1BISVNISU5HCp4ECqMDCBoQpoDsqAYiAQUyjAMKYHR5cGUuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmludGVybmFsLmNocm9tZS5vcHRpbWl6YXRpb25ndWlkZS52MS5BdXRvY29tcGxldGVTY29yaW5nTW9kZWxNZXRhZGF0YRKnAgoOCBQVAAAAABgBNQAAIEEKDAgTFQAAAAA1AADAQAoRCBgVAABwQiUAAAAANQAAcEIKBwgQFQAAAAAKDAgGFQAASEI1AABIQgoOCAEVAAAAABgBNQAAIEEKDAgLFQAAAAA1AADwQQoTCAMVAACwQRgBJQAAAAA1AACwQQoOCAIVAAAAABgBNQAAIEEKDAgRFQAAAAA1AABwQQoHCAcVAAAAAAoRCBcVAABwQiUAAAAANQAAcEIKEwgWFQAAyEEYASUAAAAANQAAyEEKDAgMFQAAAAA1AADIQQoMCAoVAAAAADUAACBBCgwICRUAAAAANQAAyEEKDAgFFQAAyEI1AADIQgoHCAQVAAAAAAoMCBIVAABIQjUAAEhCCgwIFRUAAMhCNQAAyEJCBQiApOIFUgASdip0aHR0cHM6Ly9vcHRpbWl6YXRpb25ndWlkZS1wYS5nb29nbGVhcGlzLmNvbS9kb3dubG9hZHM/bmFtZT0xNjk2MjY4MzI2JnRhcmdldD1PUFRJTUlaQVRJT05fVEFSR0VUX09NTklCT1hfVVJMX1NDT1JJTkcKjAIKlAEIKxDog4TMBiIBEzJnCl50eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZV9pbnRlcm5hbF9jaHJvbWVfb3B0aW1pemF0aW9uZ3VpZGVfdjEuUGFzc2FnZUVtYmVkZGluZ3NNb2RlbE1ldGFkYXRhEgUIQBCABjoVChNzZW50ZW5jZXBpZWNlLm1vZGVsQgUIgJqeAVIAEnMqcWh0dHBzOi8vb3B0aW1pemF0aW9uZ3VpZGUtcGEuZ29vZ2xlYXBpcy5jb20vZG93bmxvYWRzP25hbWU9MTc3MDA2MjMxMiZ0YXJnZXQ9T1BUSU1JWkFUSU9OX1RBUkdFVF9QQVNTQUdFX0VNQkVEREVSCtQ4Cso3CC0Qm+LA5YAHIgEQMrI3Cll0eXBlLmdvb2dsZWFwaXMuY29tL2dvb2dsZS5pbnRlcm5hbC5jaHJvbWUub3B0aW1pemF0aW9uZ3VpZGUudjEuU2VnbWVudGF0aW9uTW9kZWxNZXRhZGF0YRLUNhAEGAEgHCgHMAFSHxIdCAEQBCoXZmllbGRfZm9ybV9jb250cm9sX3R5cGVSGRIXCAEQBCoRdG90YWxfZmllbGRfY291bnRSHRIbCAEQBCoVbXVsdGlsaW5lX2ZpZWxkX2NvdW50UhoSGAgBEAQqEnRpbWVfc3BlbnRfb25fcGFnZVLjAhrgAgqrAldJVEggZXZlbnRfaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgZXZlbnRfaWQgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQ0NDMzNGNzlFQ0U3MzYzRCcgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlIElOICgwLCAxNCkpIFNFTEVDVCBJRk5VTEwoU1VNKG1ldHJpY192YWx1ZSksIDApIEZST00gbWV0cmljcyBJTk5FUiBKT0lOIGV2ZW50X2lkcyBPTiBtZXRyaWNzLmV2ZW50X2lkID0gZXZlbnRfaWRzLmV2ZW50X2lkIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnNEU3RDU3OTU5NEVCODMxNSc7EiEKHwiBpfmb08fW7icSE5WGrqfZ8tW+Tr3snOee78/hzAEiDXdvcmRzX3dyaXR0ZW5S4wIa4AIKqwJXSVRIIGV2ZW50X2lkcyBBUyAoU0VMRUNUIERJU1RJTkNUIGV2ZW50X2lkIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJ0NDQzMzRjc5RUNFNzM2M0QnIEFORCBtZXRyaWNzLm1ldHJpY192YWx1ZSBJTiAoMCwgMTQpKSBTRUxFQ1QgSUZOVUxMKFNVTShtZXRyaWNfdmFsdWUpLCAwKSBGUk9NIG1ldHJpY3MgSU5ORVIgSk9JTiBldmVudF9pZHMgT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkcy5ldmVudF9pZCBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJ0NFNzFCRjI4MEI0RUI0QjUnOxIiCiAIgaX5m9PH1u4nEhS97Jznnu/P4cwBtem62oDl77jOASIMZWRpdGluZ190aW1lUqYBGqMBCnVTRUxFQ1QgQ09VTlQobWV0cmljX3ZhbHVlKSBGUk9NIG1ldHJpY3MgV0hFUkUgbWV0cmljcy5tZXRyaWNfaGFzaCA9ICdDRTcxQkYyODBCNEVCNEI1JyBBTkQgbWV0cmljcy5tZXRyaWNfdmFsdWUgPiA0NTsSGAoWCIGl+ZvTx9buJxIKtem62oDl77jOASIQZWRpdGluZ19zZXNzaW9uc1KsARqpAQp2U0VMRUNUIENPVU5UKG1ldHJpY192YWx1ZSkgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQ0U3MUJGMjgwQjRFQjRCNScgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID4gMTIwOxIYChYIgaX5m9PH1u4nEgq16bragOXvuM4BIhVsb25nX2VkaXRpbmdfc2Vzc2lvbnNS4gIa3wIKiwJXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCkgU0VMRUNUIENPVU5UKG1ldHJpY192YWx1ZSkgRlJPTSBtZXRyaWNzIElOTkVSIEpPSU4gb25fc2l0ZV91cmxpZHMgT04gbWV0cmljcy51cmxfaWQgPSBvbl9zaXRlX3VybGlkcy51cmxfaWQgV0hFUkUgbWV0cmljcy5tZXRyaWNfaGFzaCA9ICdDRTcxQkYyODBCNEVCNEI1JyBBTkQgbWV0cmljcy5tZXRyaWNfdmFsdWUgPiA0NTsSGAoWCIGl+ZvTx9buJxIKtem62oDl77jOARobCgEAEAYaFAgBEAQiDgoEbmFtZRIGb3JpZ2luIhhlZGl0aW5nX3Nlc3Npb25zX29uX3NpdGVS6AIa5QIKjAJXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCkgU0VMRUNUIENPVU5UKG1ldHJpY192YWx1ZSkgRlJPTSBtZXRyaWNzIElOTkVSIEpPSU4gb25fc2l0ZV91cmxpZHMgT04gbWV0cmljcy51cmxfaWQgPSBvbl9zaXRlX3VybGlkcy51cmxfaWQgV0hFUkUgbWV0cmljcy5tZXRyaWNfaGFzaCA9ICdDRTcxQkYyODBCNEVCNEI1JyBBTkQgbWV0cmljcy5tZXRyaWNfdmFsdWUgPiAxMjA7EhgKFgiBpfmb08fW7icSCrXputqA5e+4zgEaGwoBABAGGhQIARAEIg4KBG5hbWUSBm9yaWdpbiIdbG9uZ19lZGl0aW5nX3Nlc3Npb25zX29uX3NpdGVS/gYa+wYKyAVXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCksIGV2ZW50X2lkc19mb3JfZmllbGQgQVMgKCBTRUxFQ1QgRElTVElOQ1QgZXZlbnRfaWQgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQUUyMzk0MTRDQzAyODEzQicgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID0gPyApLCBldmVudF9pZHNfZm9yX2Zvcm0gQVMgKCBTRUxFQ1QgRElTVElOQ1QgZXZlbnRfaWQgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnNDJENDY0RjhEQzk4QkM4MycgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID0gPyApIFNFTEVDVCBDT1VOVChtZXRyaWNfdmFsdWUpIEZST00gbWV0cmljcyBJTk5FUiBKT0lOIGV2ZW50X2lkc19mb3JfZmllbGQgT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkc19mb3JfZmllbGQuZXZlbnRfaWQgSU5ORVIgSk9JTiBldmVudF9pZHNfZm9yX2Zvcm0gT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkc19mb3JfZm9ybS5ldmVudF9pZCBJTk5FUiBKT0lOIG9uX3NpdGVfdXJsaWRzIE9OIG1ldHJpY3MudXJsX2lkID0gb25fc2l0ZV91cmxpZHMudXJsX2lkIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQ0U3MUJGMjgwQjRFQjRCNScgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID4gNDU7EisKKQiBpfmb08fW7icSHYP54uSNn5nqQruCiuDMguWRrgG16bragOXvuM4BGhsKAQAQBhoUCAEQBCIOCgRuYW1lEgZvcmlnaW4aJAoBARADGh0IARAEIhcKBG5hbWUSD2ZpZWxkX3NpZ25hdHVyZRojCgECEAMaHAgBEAQiFgoEbmFtZRIOZm9ybV9zaWduYXR1cmUiGWVkaXRpbmdfc2Vzc2lvbnNfb25fZmllbGRShAcagQcKyQVXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCksIGV2ZW50X2lkc19mb3JfZmllbGQgQVMgKCBTRUxFQ1QgRElTVElOQ1QgZXZlbnRfaWQgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQUUyMzk0MTRDQzAyODEzQicgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID0gPyApLCBldmVudF9pZHNfZm9yX2Zvcm0gQVMgKCBTRUxFQ1QgRElTVElOQ1QgZXZlbnRfaWQgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnNDJENDY0RjhEQzk4QkM4MycgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID0gPyApIFNFTEVDVCBDT1VOVChtZXRyaWNfdmFsdWUpIEZST00gbWV0cmljcyBJTk5FUiBKT0lOIGV2ZW50X2lkc19mb3JfZmllbGQgT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkc19mb3JfZmllbGQuZXZlbnRfaWQgSU5ORVIgSk9JTiBldmVudF9pZHNfZm9yX2Zvcm0gT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkc19mb3JfZm9ybS5ldmVudF9pZCBJTk5FUiBKT0lOIG9uX3NpdGVfdXJsaWRzIE9OIG1ldHJpY3MudXJsX2lkID0gb25fc2l0ZV91cmxpZHMudXJsX2lkIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQ0U3MUJGMjgwQjRFQjRCNScgQU5EIG1ldHJpY3MubWV0cmljX3ZhbHVlID4gMTIwOxIrCikIgaX5m9PH1u4nEh2D+eLkjZ+Z6kK7gorgzILlka4Btem62oDl77jOARobCgEAEAYaFAgBEAQiDgoEbmFtZRIGb3JpZ2luGiQKAQEQAxodCAEQBCIXCgRuYW1lEg9maWVsZF9zaWduYXR1cmUaIwoBAhADGhwIARAEIhYKBG5hbWUSDmZvcm1fc2lnbmF0dXJlIh5sb25nX2VkaXRpbmdfc2Vzc2lvbnNfb25fZmllbGRSmgQalwQKvQNXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCksIGV2ZW50X2lkcyBBUyAoU0VMRUNUIERJU1RJTkNUIGV2ZW50X2lkIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJ0NDQzMzRjc5RUNFNzM2M0QnIEFORCBtZXRyaWNzLm1ldHJpY192YWx1ZSBJTiAoMCwgMTQpKSBTRUxFQ1QgSUZOVUxMKFNVTShtZXRyaWNfdmFsdWUpLCAwKSBGUk9NIG1ldHJpY3MgSU5ORVIgSk9JTiBldmVudF9pZHMgT04gbWV0cmljcy5ldmVudF9pZCA9IGV2ZW50X2lkcy5ldmVudF9pZCBJTk5FUiBKT0lOIG9uX3NpdGVfdXJsaWRzIE9OIG1ldHJpY3MudXJsX2lkID0gb25fc2l0ZV91cmxpZHMudXJsX2lkIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnQ0U3MUJGMjgwQjRFQjRCNSc7EiIKIAiBpfmb08fW7icSFL3snOee78/hzAG16bragOXvuM4BGhsKAQAQBhoUCAEQBCIOCgRuYW1lEgZvcmlnaW4iFGVkaXRpbmdfdGltZV9vbl9zaXRlUpgEGpUECr0DV0lUSCBvbl9zaXRlX3VybGlkcyBBUyAoU0VMRUNUIERJU1RJTkNUIHVybF9pZCBGUk9NIHVybHMgV0hFUkUgaW5zdHIodXJsLCA/KSA+IDApLCBldmVudF9pZHMgQVMgKFNFTEVDVCBESVNUSU5DVCBldmVudF9pZCBGUk9NIG1ldHJpY3MgV0hFUkUgbWV0cmljcy5tZXRyaWNfaGFzaCA9ICdDQ0MzM0Y3OUVDRTczNjNEJyBBTkQgbWV0cmljcy5tZXRyaWNfdmFsdWUgSU4gKDAsIDE0KSkgU0VMRUNUIElGTlVMTChTVU0obWV0cmljX3ZhbHVlKSwgMCkgRlJPTSBtZXRyaWNzIElOTkVSIEpPSU4gZXZlbnRfaWRzIE9OIG1ldHJpY3MuZXZlbnRfaWQgPSBldmVudF9pZHMuZXZlbnRfaWQgSU5ORVIgSk9JTiBvbl9zaXRlX3VybGlkcyBPTiBtZXRyaWNzLnVybF9pZCA9IG9uX3NpdGVfdXJsaWRzLnVybF9pZCBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJzRFN0Q1Nzk1OTRFQjgzMTUnOxIhCh8IgaX5m9PH1u4nEhOVhq6n2fLVvk697Jznnu/P4cwBGhsKAQAQBhoUCAEQBCIOCgRuYW1lEgZvcmlnaW4iE3dvcmRzX3R5cGVkX29uX3NpdGVStAIasQIK4wFXSVRIIG9uX3NpdGVfdXJsaWRzIEFTIChTRUxFQ1QgRElTVElOQ1QgdXJsX2lkIEZST00gdXJscyBXSEVSRSBpbnN0cih1cmwsID8pID4gMCkgU0VMRUNUIENPVU5UKGlkKSBGUk9NIG1ldHJpY3MgSU5ORVIgSk9JTiBvbl9zaXRlX3VybGlkcyBPTiBtZXRyaWNzLnVybF9pZCA9IG9uX3NpdGVfdXJsaWRzLnVybF9pZCBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJzY0QkQ3Q0NFNUE5NUJGMDAnOxIYChYIlabuypbgiLmsARIJgP7W1OWZ395kGhsKAQAQBhoUCAEQBCIOCgRuYW1lEgZvcmlnaW4iEnBhZ2VfbG9hZHNfb25fc2l0ZVJ3GnUKTVNFTEVDVCBDT1VOVChpZCkgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnNjRCRDdDQ0U1QTk1QkYwMCc7EhgKFgiVpu7KluCIuawBEgmA/tbU5Znf3mQiCnBhZ2VfbG9hZHNS2wEa2AEKowFTRUxFQ1QgQ09VTlQoRElTVElOQ1QgQ0FTVCgoZXZlbnRfdGltZXN0YW1wIC8gMTAwMDAwMCAvIDYwIC8gMTApIEFTIGludCkpIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJ0FENDExQjc0MUQwREEwMTInIEFORCBtZXRyaWNzLm1ldHJpY192YWx1ZSA+IDA7EhkKFwijuuiiuti17vQBEgqSwLbowe7GoK0BIhVjb21wb3NlX3Nlc3Npb25fY291bnRS4gEa3wEKowFTRUxFQ1QgQ09VTlQoRElTVElOQ1QgQ0FTVCgoZXZlbnRfdGltZXN0YW1wIC8gMTAwMDAwMCAvIDYwIC8gMTApIEFTIGludCkpIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJ0I0Q0ZFODc0MTQwNEI2OTEnIEFORCBtZXRyaWNzLm1ldHJpY192YWx1ZSA+IDA7EhkKFwijuuiiuti17vQBEgqR7ZKgwY7657QBIhxjb21wb3NlX2luc2VydF9zZXNzaW9uX2NvdW50UpIBGo8BCmdTRUxFQ1QgSUZOVUxMKFNVTShtZXRyaWNzLm1ldHJpY192YWx1ZSksIDApIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJzUzNDY2MUIyNzhCMTFCRCc7EhcKFQjkgNm0h9qlpzcSCb2jrLyyw5maBSILbnVkZ2Vfc2hvd3NSlAEakQEKaFNFTEVDVCBJRk5VTEwoU1VNKG1ldHJpY3MubWV0cmljX3ZhbHVlKSwgMCkgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnMTlFMTYxMjI4NDlFMzQzQic7EhcKFQjkgNm0h9qlpzcSCbvo+KSopNjwGSIMbnVkZ2VfY2xpY2tzUpsBGpgBCmhTRUxFQ1QgSUZOVUxMKFNVTShtZXRyaWNzLm1ldHJpY192YWx1ZSksIDApIEZST00gbWV0cmljcyBXSEVSRSBtZXRyaWNzLm1ldHJpY19oYXNoID0gJzc5OTY0NjIxRDM1N0FCODgnOxIXChUI5IDZtIfapac3EgmI196ancSRy3kiE251ZGdlX3NpdGVfZGlzYWJsZXNSnQEamgEKaFNFTEVDVCBJRk5VTEwoU1VNKG1ldHJpY3MubWV0cmljX3ZhbHVlKSwgMCkgRlJPTSBtZXRyaWNzIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnNzU2RjZBNDY2ODc5MTU3RSc7EhcKFQjkgNm0h9qlpzcSCf6q5MPmyNq3dSIVbnVkZ2VfZ2xvYmFsX2Rpc2FibGVzUssCGsgCCv0BV0lUSCBvbl9zaXRlX3VybGlkcyBBUyAoU0VMRUNUIERJU1RJTkNUIHVybF9pZCBGUk9NIHVybHMgV0hFUkUgaW5zdHIodXJsLCA/KSA+IDApIFNFTEVDVCBJRk5VTEwoU1VNKG1ldHJpY3MubWV0cmljX3ZhbHVlKSwgMCkgRlJPTSBtZXRyaWNzIElOTkVSIEpPSU4gb25fc2l0ZV91cmxpZHMgT04gbWV0cmljcy51cmxfaWQgPSBvbl9zaXRlX3VybGlkcy51cmxfaWQgV0hFUkUgbWV0cmljcy5tZXRyaWNfaGFzaCA9ICc1MzQ2NjFCMjc4QjExQkQnOxIXChUI5IDZtIfapac3Egm9o6y8ssOZmgUaGwoBABAGGhQIARAEIg4KBG5hbWUSBm9yaWdpbiIQbnVkZ2Vfc2hvd3Nfc2l0ZVLNAhrKAgr+AVdJVEggb25fc2l0ZV91cmxpZHMgQVMgKFNFTEVDVCBESVNUSU5DVCB1cmxfaWQgRlJPTSB1cmxzIFdIRVJFIGluc3RyKHVybCwgPykgPiAwKSBTRUxFQ1QgSUZOVUxMKFNVTShtZXRyaWNzLm1ldHJpY192YWx1ZSksIDApIEZST00gbWV0cmljcyBJTk5FUiBKT0lOIG9uX3NpdGVfdXJsaWRzIE9OIG1ldHJpY3MudXJsX2lkID0gb25fc2l0ZV91cmxpZHMudXJsX2lkIFdIRVJFIG1ldHJpY3MubWV0cmljX2hhc2ggPSAnMTlFMTYxMjI4NDlFMzQzQic7EhcKFQjkgNm0h9qlpzcSCbvo+KSopNjwGRobCgEAEAYaFAgBEAQiDgoEbmFtZRIGb3JpZ2luIhFudWRnZV9jbGlja3Nfc2l0ZYIBIQoXChUNAABAPxIEU2hvdxoIRG9udFNob3cSBBAHGAQYAUIFCICangFSABKEASqBAWh0dHBzOi8vb3B0aW1pemF0aW9uZ3VpZGUtcGEuZ29vZ2xlYXBpcy5jb20vZG93bmxvYWRzP25hbWU9MjQwNzMxMDQyMDc1JnRhcmdldD1PUFRJTUlaQVRJT05fVEFSR0VUX1NFR01FTlRBVElPTl9DT01QT1NFX1BST01PVElPTg==
+  recorded_at: Thu, 25 Jun 2026 20:37:04 GMT
+recorded_with: VCR 6.4.0

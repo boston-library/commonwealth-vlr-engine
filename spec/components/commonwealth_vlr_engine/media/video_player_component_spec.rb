@@ -13,5 +13,6 @@ RSpec.describe CommonwealthVlrEngine::Media::VideoPlayerComponent, type: :compon
 
     expect(page.find('video')[:'src']).to include(object_files[:video].first['id'])
     expect(page.find('video')[:'poster']).to include(object_files[:video].first['id'])
+    expect(page.find('track')[:'src']).to include(object_files[:video].first['id'])
   end
 end
