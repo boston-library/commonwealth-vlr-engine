@@ -135,7 +135,7 @@ module CommonwealthVlrEngine
     # @return [Array] list non-image/video downloadable attachments
     def other_downloadable_attachments(attachments_json)
       downloadable_attachments = %w(audio_access document_access ebook_access_epub ebook_access_mobi
-                                    ebook_access_daisy text_plain)
+                                    ebook_access_daisy text_plain web_vtt_captions)
       all_attachments = attachments_json.keys
 
       # don't allow download of *_primary or text_plain if there is an *_access file
@@ -169,6 +169,8 @@ module CommonwealthVlrEngine
                              'WAV'
                            elsif filestream_id == 'text_plain'
                              'TXT'
+                           elsif filestream_id == 'web_vtt_captions'
+                             'WebVTT captions'
                            elsif attachments_json[filestream_id]['content_type']
                              attachments_json[filestream_id]['content_type'].split('/')[1].upcase
                            else
