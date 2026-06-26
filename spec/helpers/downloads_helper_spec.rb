@@ -28,7 +28,7 @@ describe DownloadsHelper do
 
   describe '#create_download_links' do
     it 'returns an array of links' do
-      expect(download_links.length).to eq(5)
+      expect(download_links.length).to eq(6)
       expect(download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
   end
@@ -99,7 +99,7 @@ describe DownloadsHelper do
     let(:other_download_links) { helper.other_download_links(document, files_hash) }
 
     it 'returns an array of links' do
-      expect(other_download_links.length).to eq(1)
+      expect(other_download_links.length).to eq(2)
       expect(other_download_links.first.match(/\A<a[a-z -=\\"_]*href=/)).to be_truthy
     end
   end
