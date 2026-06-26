@@ -17,7 +17,7 @@ module CommonwealthVlrEngine
 
     def link_to_all_featured_items(classes: '')
       facet_params = if context == 'institutions'
-                       { helpers.blacklight_config.institution_field => [@institution_title || parent_document[helpers.blacklight_config.index.title_field]] }
+                       { helpers.blacklight_config.institution_field => [@institution_title || parent_document[helpers.blacklight_config.index.title_field.field]] }
                      else
                        { helpers.blacklight_config.institution_field => [parent_document[helpers.blacklight_config.institution_field]],
                          helpers.blacklight_config.collection_field => [parent_document[helpers.blacklight_config.index.title_field.field]] }
