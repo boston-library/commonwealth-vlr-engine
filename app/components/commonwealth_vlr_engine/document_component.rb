@@ -13,7 +13,7 @@ module CommonwealthVlrEngine
     end
 
     renders_one :breadcrumb, lambda {
-      CommonwealthVlrEngine::BreadcrumbComponent.new(document: @document)
+      helpers.blacklight_config.view_config(:show).breadcrumb_component.new(document: @document)
     }
 
     renders_one :media, lambda {

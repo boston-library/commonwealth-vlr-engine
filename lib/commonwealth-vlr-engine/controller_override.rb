@@ -19,6 +19,7 @@ module CommonwealthVlrEngine
       TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc".freeze
       DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
       TITLE_PRIMARY_FIELD = 'title_info_primary_tsi'
+      GENRE_FIELD = 'genre_basic_ssim'
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
@@ -40,6 +41,7 @@ module CommonwealthVlrEngine
 
         # solr field configuration for document show views
         config.show.document_component = CommonwealthVlrEngine::DocumentComponent
+        config.show.breadcrumb_component = CommonwealthVlrEngine::BreadcrumbComponent
         config.show.metadata_component = CommonwealthVlrEngine::Document::MetadataComponent
         config.show.document_header_component = CommonwealthVlrEngine::Document::PageHeaderComponent
         config.show.title_field = Blacklight::Configuration::Field.new(field: TITLE_PRIMARY_FIELD,
@@ -68,11 +70,11 @@ module CommonwealthVlrEngine
           url_key: 'advanced',
           query_parser: 'edismax',
           form_solr_parameters: {
-            'facet.field' => ['genre_basic_ssim', 'collection_name_ssim', 'reuse_allowed_ssi'],
-            'f.genre_basic_ssim.facet.limit' => -1, # return all facet values
+            'facet.field' => [GENRE_FIELD, 'collection_name_ssim', 'reuse_allowed_ssi'],
+            "f.#{GENRE_FIELD}.facet.limit" => -1, # return all facet values
             'f.collection_name_ssim.facet.limit' => -1,
             'f.reuse_allowed_ssi.facet.limit' => -1,
-            'f.genre_basic_ssim.facet.sort' => 'index', # sort by byte order of values
+            "f.#{GENRE_FIELD}.facet.sort" => 'index', # sort by byte order of values
             'f.collection_name_ssim.facet.sort' => 'index',
             'f.reuse_allowed_ssi.facet.sort' => 'index'
           }
@@ -99,7 +101,7 @@ module CommonwealthVlrEngine
         # solr fields that will be treated as facets by the blacklight application
         config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
         config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
-        config.add_facet_field 'genre_basic_ssim', label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
+        config.add_facet_field GENRE_FIELD, label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
         config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
         config.add_facet_field 'date_facet_yearly_itim', label: 'Date', range: true, collapse: false
@@ -137,7 +139,7 @@ module CommonwealthVlrEngine
                                filter_query_builder: CommonwealthVlrEngine::StartsWithFilterQuery
 
         # solr fields to be displayed in the index (search results) view
-        config.add_index_field 'genre_basic_ssim', label: 'Format', helper_method: :render_format_index
+        config.add_index_field GENRE_FIELD, label: 'Format', helper_method: :render_format_index
         config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
         config.add_index_field 'name_facet_ssim', label: 'Creator', helper_method: :index_creator_value
         config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
@@ -252,9 +254,9 @@ module CommonwealthVlrEngine
       def formats_facet
         @nav_li_active = 'explore'
         @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
-        @facet = blacklight_config.facet_fields['genre_basic_ssim']
+        @facet = blacklight_config.facet_fields[GENRE_FIELD]
         @response = search_service.facet_field_response(@facet.key,
-                                                        { 'f.genre_basic_ssim.facet.limit' => -1 })
+                                                        { "f.#{GENRE_FIELD}.facet.limit" => -1 })
         @display_facet = @response.aggregations[@facet.field]
         @presenter = @facet.presenter.new(@facet, @display_facet, view_context)
         @pagination = @presenter.paginator
