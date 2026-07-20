@@ -17,6 +17,7 @@ module CommonwealthVlrEngine
       before_action :set_nav_context, only: [:index]
       before_action :mlt_search, only: [:index, :show]
       before_action :add_institution_fields, only: [:index, :facet]
+      before_action :geojson_facet_config, only: [:index, :map]
       after_action :set_access_control_headers, only: [:index, :show]
 
       DATE_ASC_SORT = 'date_start_dtsi asc, title_info_primary_ssort asc'
@@ -123,10 +124,7 @@ module CommonwealthVlrEngine
         config.add_facet_field 'name_facet_ssim', label: 'Name', include_in_request: false
         config.add_facet_field 'title_info_uniform_ssim', label: 'Title (uniform)', include_in_request: false
         config.add_facet_field 'lang_term_ssim', label: 'Language', include_in_request: false
-        # facet for blacklight-maps catalog#index map view
-        # have to use '-2' to get all values
-        # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
-        config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
+
         # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
@@ -235,8 +233,7 @@ module CommonwealthVlrEngine
         @nav_li_active = 'explore'
         @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
         @facet = blacklight_config.facet_fields['genre_basic_ssim']
-        @response = search_service.facet_field_response(@facet.key,
-                                                        { 'f.genre_basic_ssim.facet.limit' => -1 })
+        @response = search_service.facet_field_response(@facet.key, { 'f.genre_basic_ssim.facet.limit' => -1 })
         @display_facet = @response.aggregations[@facet.key]
         @pagination = facet_paginator(@facet, @display_facet)
         render :facet
@@ -328,6 +325,13 @@ module CommonwealthVlrEngine
     # override so we can inspect for other params, like :mlt_id
     def has_search_parameters?
       params[:mlt_id].present? || super
+    end
+
+    # facet needed for blacklight-maps catalog#index map view; use `limit: -1` to get all values
+    def geojson_facet_config
+      return unless params[:view] == 'maps' || action_name == 'map'
+
+      blacklight_config.add_facet_field 'subject_geojson_facet_ssim', limit: -1, label: 'Coordinates', show: false
     end
 
     # to allow apps to load JSON API requests from a remote server
