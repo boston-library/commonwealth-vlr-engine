@@ -331,7 +331,8 @@ module CommonwealthVlrEngine
     def geojson_facet_config
       return unless params[:view] == 'maps' || action_name == 'map'
 
-      blacklight_config.add_facet_field 'subject_geojson_facet_ssim', limit: -1, label: 'Coordinates', show: false
+      blacklight_config.add_facet_field(blacklight_config.view.maps.geojson_field, limit: -1, label: 'Coordinates',
+                                        show: false)
     end
 
     # to allow apps to load JSON API requests from a remote server

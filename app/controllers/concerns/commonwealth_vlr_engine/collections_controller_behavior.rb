@@ -10,7 +10,7 @@ module CommonwealthVlrEngine
       copy_blacklight_config_from(CatalogController)
 
       before_action :relation_base_blacklight_config, only: [:index, :show]
-      before_action :add_series_facet, only: :show
+      before_action :add_show_facets, only: :show
       before_action :collections_limit, only: :index
       before_action :collections_limit_for_facets, only: :facet
       before_action :collapse_institution_facet, only: :index
@@ -79,9 +79,11 @@ module CommonwealthVlrEngine
       series_doc_list.first
     end
 
-    # show series facet
-    def add_series_facet
+    # add series and geojson facets
+    def add_show_facets
       blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
+      blacklight_config.add_facet_field(blacklight_config.view.maps.geojson_field, limit: -1, label: 'Coordinates',
+                                        show: false)
     end
 
     # collapse the institution facet, if Institutions supported
