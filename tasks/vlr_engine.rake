@@ -12,7 +12,7 @@ namespace :vlr_engine do
 
     @controller = CatalogController.new
     @controller.request = ActionDispatch::TestRequest.create
-    blacklight_config.add_facet_field(blacklight_config.view.maps.geojson_field, limit: -1)
+    blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request = true
     geojson_search_service = Blacklight::SearchService.new(config: blacklight_config)
     (@response, @document_list) = geojson_search_service.search_results
 

@@ -125,6 +125,10 @@ module CommonwealthVlrEngine
         config.add_facet_field 'title_info_uniform_ssim', label: 'Title (uniform)', include_in_request: false
         config.add_facet_field 'lang_term_ssim', label: 'Language', include_in_request: false
 
+        # facet for blacklight-maps catalog#index map view
+        config.add_facet_field 'subject_geojson_facet_ssim', limit: -1, label: 'Coordinates', show: false,
+                               include_in_request: false
+
         # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
@@ -327,12 +331,11 @@ module CommonwealthVlrEngine
       params[:mlt_id].present? || super
     end
 
-    # facet needed for blacklight-maps catalog#index map view; use `limit: -1` to get all values
+    # add geojson facet to solr request
     def geojson_facet_config
       return unless params[:view] == 'maps' || action_name == 'map'
 
-      blacklight_config.add_facet_field(blacklight_config.view.maps.geojson_field, limit: -1, label: 'Coordinates',
-                                        show: false)
+      blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request = true
     end
 
     # to allow apps to load JSON API requests from a remote server

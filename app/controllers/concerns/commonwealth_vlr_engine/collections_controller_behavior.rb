@@ -82,8 +82,7 @@ module CommonwealthVlrEngine
     # add series and geojson facets
     def add_show_facets
       blacklight_config.facet_fields[blacklight_config.series_field].include_in_request = true
-      blacklight_config.add_facet_field(blacklight_config.view.maps.geojson_field, limit: -1, label: 'Coordinates',
-                                        show: false)
+      blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request = true
     end
 
     # collapse the institution facet, if Institutions supported
