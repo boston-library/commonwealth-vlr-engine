@@ -20,6 +20,7 @@ describe CommonwealthVlrEngine::VlrBlacklightMapsHelperBehavior do
     allow(helper).to receive_messages(blacklight_config: blacklight_config)
     allow(helper).to receive_messages(blacklight_configuration_context: Blacklight::Configuration::Context.new(mock_controller))
     allow(helper).to receive(:search_state).and_return Blacklight::SearchState.new({}, blacklight_config, mock_controller)
+    blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request = true
     blacklight_config.add_facet_fields_to_solr_request!
   end
 

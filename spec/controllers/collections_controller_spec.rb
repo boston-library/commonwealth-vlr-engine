@@ -71,10 +71,11 @@ describe CollectionsController, :vcr do
       mock_controller.send(:add_institution_fields)
     end
 
-    describe 'add_series_facet' do
-      it 'adds the series facet to the Solr request' do
-        mock_controller.send(:add_series_facet)
-        expect(mock_controller.blacklight_config.facet_fields['related_item_series_ssi'].include_in_request).to eq(true)
+    describe 'add_show_facets' do
+      it 'adds the series and geojson facets to the Solr request' do
+        mock_controller.send(:add_show_facets)
+        expect(mock_controller.blacklight_config.facet_fields[blacklight_config.series_field].include_in_request).to eq(true)
+        expect(mock_controller.blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request).to eq(true)
       end
     end
 
