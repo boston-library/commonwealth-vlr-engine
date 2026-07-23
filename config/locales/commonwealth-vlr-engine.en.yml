@@ -430,6 +430,8 @@ en:
       librarian_view:
         link: 'View MODS XML'
         title: 'View MODS XML metadata'
+      share:
+        link: 'Share'
 
   errors:
     messages:
