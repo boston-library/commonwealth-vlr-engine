@@ -12,6 +12,8 @@ module CommonwealthVlrEngine
       before_action :mlt_results_for_show, only: [:show]
       before_action :set_nav_context, only: [:index]
       before_action :mlt_search, only: [:index, :show]
+      # TODO: re-enable when blacklight-maps updated
+      # before_action :geojson_facet_config, only: [:index, :map]
       after_action :set_access_control_headers, only: [:index, :show]
 
       TITLE_SORT_FIELD = 'title_info_primary_ssort'
@@ -120,10 +122,12 @@ module CommonwealthVlrEngine
         config.add_facet_field 'name_facet_ssim', label: 'Name', include_in_request: false
         config.add_facet_field 'title_info_uniform_ssim', label: 'Title (uniform)', include_in_request: false
         config.add_facet_field 'lang_term_ssim', label: 'Language', include_in_request: false
+
+        # TODO: re-enable when blacklight-maps updated
         # facet for blacklight-maps catalog#index map view
-        # have to use '-2' to get all values
-        # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
-        # config.add_facet_field 'subject_geojson_facet_ssim', limit: -2, label: 'Coordinates', show: false
+        # config.add_facet_field 'subject_geojson_facet_ssim', limit: -1, label: 'Coordinates', show: false,
+        #                        include_in_request: false
+
         # fields below needed to allow explicitly setting :f params in controller actions
         config.add_facet_field 'is_file_set_of_ssim', include_in_request: false
         config.add_facet_field 'institution_ark_id_ssi', include_in_request: false
@@ -351,6 +355,14 @@ module CommonwealthVlrEngine
     def has_search_parameters?
       params[:mlt_id].present? || super
     end
+
+    # TODO: re-enable when blacklight-maps updated
+    # add geojson facet to solr request
+    # def geojson_facet_config
+    #   return unless params[:view] == 'maps' || action_name == 'map'
+    #
+    #   blacklight_config.facet_fields[blacklight_config.view.maps.geojson_field].include_in_request = true
+    # end
 
     # to allow apps to load JSON API requests from a remote server
     def set_access_control_headers
