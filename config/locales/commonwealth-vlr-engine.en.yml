@@ -62,8 +62,8 @@ en:
 
     downloads:
       cc: 'Learn more about this Creative Commons license'
-      link_info: '(links open in new window)'
-      title: 'Downloads'
+      dropdown:
+        header: 'Choose a size'
       images:
         image_access_800: 'Medium'
         image_access_full: 'Large (full resolution)'
@@ -71,6 +71,8 @@ en:
         JPEG2000: 'Large (full resolution)'
         image_primary: 'Primary (full resolution, uncompressed)'
       indemnification: 'Notice: This digital file may be subject to copyright law of the United States (Title 17, U.S. Code) governing the making of reproductions of copyrighted material. The person using this content may be liable for any infringement.'
+      link_info: '(links open in new window)'
+      title: 'Downloads'
 
     email:
       form:
