@@ -144,10 +144,21 @@ module CommonwealthVlrEngine
       setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
     end
 
+    # logic for whether PDF viewer should be displayed:
+    #  - item has no images, audio, and video
+    #  - item has images, but is not a book, newspaper, or manuscript
+    #  - item has audio/video, but PDF is not downloadable
+    # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
-    def render_pdf_viewer?(files_hash)
-      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash) && !has_video_files?(files_hash)
+    def render_pdf_viewer?(document, files_hash)
+      return unless has_pdf_files?(files_hash)
+
+      return if has_image_files?(files_hash) && %w[Books Manuscripts Newspapers].any? { |g| document[:genre_basic_ssim].include?(g) }
+
+      return if (has_playable_audio?(files_hash) || has_video_files?(files_hash)) && has_downloadable_files?(document, files_hash)
+
+      true
     end
 
     # @param document [SolrDocument]

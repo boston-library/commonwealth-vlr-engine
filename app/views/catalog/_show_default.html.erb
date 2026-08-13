@@ -16,7 +16,7 @@
                        audio_files: @object_files[:audio] } %>
 <% end %>
 
-<% if render_pdf_viewer?(@object_files) %>
+<% if render_pdf_viewer?(@document, @object_files) %>
   <%= render partial: 'catalog/_show_partials/show_pdf_viewer',
              locals: { document: @document,
                        document_files: @object_files[:document] } %>
