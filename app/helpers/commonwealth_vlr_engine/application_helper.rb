@@ -33,6 +33,8 @@ module CommonwealthVlrEngine
     end
 
     def render_format_index(options = {})
+      return if options[:value].any?(&:blank?)
+
       options[:value].map do |v|
         format_val = render_format(v)
         format_val = format_val.gsub(/recordings/, 'recording')
