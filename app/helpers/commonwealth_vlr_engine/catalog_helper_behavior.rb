@@ -145,8 +145,9 @@ module CommonwealthVlrEngine
     end
 
     # logic for whether PDF viewer should be displayed:
-    #  - item has no images, audio, and video
-    #  - item has images, but is not a book, newspaper, or manuscript
+    #  - item has no images, audio, or video
+    #  - item has images, and is not a book, newspaper, manuscript, periodical, etc.
+    #  - item has images, and is a document, and does not have downloadable PDF
     #  - item has audio/video, but PDF is not downloadable
     # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
@@ -154,7 +155,12 @@ module CommonwealthVlrEngine
     def render_pdf_viewer?(document, files_hash)
       return unless has_pdf_files?(files_hash)
 
-      return if has_image_files?(files_hash) && %w[Books Manuscripts Newspapers].any? { |g| document[:genre_basic_ssim].include?(g) }
+      document_genres = document[:genre_basic_ssim] || []
+      genres_to_ignore = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',
+                          'Musical notation', 'Newspapers', 'Periodicals', 'Prints']
+      return if has_image_files?(files_hash) && genres_to_ignore.any? { |g| document_genres.include?(g) }
+
+      return if has_image_files?(files_hash) && document_genres.include?('Documents') && has_downloadable_files?(document, files_hash)
 
       return if (has_playable_audio?(files_hash) || has_video_files?(files_hash)) && has_downloadable_files?(document, files_hash)
 
