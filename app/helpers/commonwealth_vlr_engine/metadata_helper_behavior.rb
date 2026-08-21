@@ -93,7 +93,7 @@ module CommonwealthVlrEngine
     end
 
     def show_abstract(document)
-      document[:abstract_tsi].gsub(/<br\/><br\/>/, '<br>')
+      document[:abstract_tsi]&.gsub(/<br\/><br\/>/, '<br>')
     end
   end
 end
