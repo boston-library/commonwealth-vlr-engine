@@ -207,8 +207,10 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
 
     describe '#render_pdf_viewer?' do
+      let(:pdf_document) { SolrDocument.find(pdf_item_ark_id) }
+
       it 'returns true when the item has a viewable PDF file' do
-        expect(helper.render_pdf_viewer?(pdf_files_hash)).to be_truthy
+        expect(helper.render_pdf_viewer?(pdf_document, pdf_files_hash)).to be_truthy
       end
     end
 
