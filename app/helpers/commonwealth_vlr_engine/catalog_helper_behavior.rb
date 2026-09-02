@@ -113,11 +113,12 @@ module CommonwealthVlrEngine
       document[blacklight_config.hosting_status_field.to_sym] == 'harvested'
     end
 
-    # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
-    # @return [Boolean]
-    def pdf_url_for_viewer(document_files)
-      pdf_file = document_files.find { |a| has_attachment?(a, 'document_access') }
-      filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
+    # @param files_hash [Hash] output CommonwealthVlrEngine::Finder#get_files
+    # @return [Array]
+    def pdf_urls_for_viewer(files_hash)
+      document_files = files_hash[:audio] + files_hash[:video] + files_hash[:document]
+      pdf_files = document_files.select { |a| has_attachment?(a, 'document_access') }
+      pdf_files.map { |pdf_file| filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access') }
     end
 
     # @param document [SolrDocument]
@@ -154,6 +155,8 @@ module CommonwealthVlrEngine
     # @return [Boolean]
     def render_pdf_viewer?(document, files_hash)
       return unless has_pdf_files?(files_hash)
+
+      return if book_reader?(document, files_hash)
 
       document_genres = document[:genre_basic_ssim] || []
       genres_to_ignore = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',

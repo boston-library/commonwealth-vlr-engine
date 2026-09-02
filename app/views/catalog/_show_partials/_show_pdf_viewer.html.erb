@@ -1,8 +1,10 @@
 <div id="pdf_show_container">
   <div id="pdf_show_canvas">
-    <%= content_tag :object, 'Your browser cannot display the PDF.',
-                    id: 'pdf_viewer',
-                    data: pdf_url_for_viewer(document_files),
-                    type: 'application/pdf' %>
+    <% pdf_urls_for_viewer(@object_files).each do |pdf_url| %>
+      <%= content_tag :object, 'Your browser cannot display the PDF.',
+                      class: 'pdf_viewer',
+                      data: pdf_url,
+                      type: 'application/pdf' %>
+    <% end %>
   </div>
 </div>

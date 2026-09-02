@@ -221,9 +221,9 @@ describe CommonwealthVlrEngine::CatalogHelperBehavior do
     end
   end
 
-  describe '#pdf_url_for_viewer' do
-    it 'returns the URL of the PDF file in asset storage' do
-      expect(URI.parse(helper.pdf_url_for_viewer(pdf_files_hash[:document]))).to be_a_kind_of URI::HTTPS
+  describe '#pdf_urls_for_viewer' do
+    it 'returns an array of URLs of the PDF files in asset storage' do
+      expect(URI.parse(helper.pdf_urls_for_viewer(pdf_files_hash).first)).to be_a_kind_of URI::HTTPS
     end
   end
 
