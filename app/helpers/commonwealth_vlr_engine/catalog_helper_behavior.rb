@@ -11,6 +11,8 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
     IMAGE_VIEWER_LIMIT = 7
+    PDF_VIEWER_IGNORE_GENRES = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',
+                                'Musical notation', 'Newspapers', 'Periodicals', 'Prints'].freeze
 
     def has_image_files?(files_hash)
       files_hash[:image].present?
@@ -159,13 +161,13 @@ module CommonwealthVlrEngine
       return if book_reader?(document, files_hash)
 
       document_genres = document[:genre_basic_ssim] || []
-      genres_to_ignore = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',
-                          'Musical notation', 'Newspapers', 'Periodicals', 'Prints']
-      return if has_image_files?(files_hash) && genres_to_ignore.any? { |g| document_genres.include?(g) }
+      return if has_image_files?(files_hash) && PDF_VIEWER_IGNORE_GENRES.any? { |g| document_genres.include?(g) }
 
-      return if has_image_files?(files_hash) && document_genres.include?('Documents') && has_downloadable_files?(document, files_hash)
+      if has_downloadable_files?(document, files_hash)
+        return if has_image_files?(files_hash) && document_genres.include?('Documents')
 
-      return if (has_playable_audio?(files_hash) || has_video_files?(files_hash)) && has_downloadable_files?(document, files_hash)
+        return if has_playable_audio?(files_hash) || has_video_files?(files_hash)
+      end
 
       true
     end
