@@ -3,14 +3,19 @@
 module CommonwealthVlrEngine
   module Document
     class MetadataFieldComponent < ViewComponent::Base
-      def initialize(document:, field_name:, field_key:, link: false, helper_method: nil)
+      def initialize(document:, field_name:, field_key:, link: false, helper_method: nil,
+                     field_label_suffix: ':', field_label_classes: nil, field_value_classes: nil)
         @document = document
         @field_name = field_name
         @field_key = field_key
         @link = link
         @helper_method = helper_method
+        @field_label_suffix = field_label_suffix
+        @field_label_classes = field_label_classes
+        @field_value_classes = field_value_classes
       end
-      attr_reader :document, :field_name, :field_key, :link, :helper_method
+      attr_reader :document, :field_name, :field_key, :link, :helper_method,
+                  :field_label_suffix, :field_label_classes, :field_value_classes
 
       def metadata_field_label
         I18n.t("blacklight.metadata_display.fields.#{field_key}")
