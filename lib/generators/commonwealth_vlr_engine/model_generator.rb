@@ -9,8 +9,8 @@ module CommonwealthVlrEngine
 
     source_root File.expand_path('templates', __dir__)
 
-    argument     :search_builder_model, type: :string, default: 'search_builder'
-    argument     :document_model_name, type: :string, default: 'solr_document'
+    argument :search_builder_model, type: :string, default: 'search_builder'
+    argument :document_model_name, type: :string, default: 'solr_document'
 
     desc "This generator makes the following changes to your application:
           1. Adds commonwealth_search_builder.rb to app/models

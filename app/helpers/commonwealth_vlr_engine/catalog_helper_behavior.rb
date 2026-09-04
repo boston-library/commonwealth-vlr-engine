@@ -11,6 +11,8 @@ module CommonwealthVlrEngine
     include CommonwealthVlrEngine::ShowToolsHelperBehavior
 
     IMAGE_VIEWER_LIMIT = 7
+    PDF_VIEWER_IGNORE_GENRES = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',
+                                'Musical notation', 'Newspapers', 'Periodicals', 'Prints'].freeze
 
     def has_image_files?(files_hash)
       files_hash[:image].present?
@@ -113,11 +115,12 @@ module CommonwealthVlrEngine
       document[blacklight_config.hosting_status_field.to_sym] == 'harvested'
     end
 
-    # @param document_files [Array] Curator::Filestreams::Document SolrDocument objects
-    # @return [Boolean]
-    def pdf_url_for_viewer(document_files)
-      pdf_file = document_files.find { |a| has_attachment?(a, 'document_access') }
-      filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access')
+    # @param files_hash [Hash] output CommonwealthVlrEngine::Finder#get_files
+    # @return [Array]
+    def pdf_urls_for_viewer(files_hash)
+      document_files = files_hash[:audio] + files_hash[:video] + files_hash[:document]
+      pdf_files = document_files.select { |a| has_attachment?(a, 'document_access') }
+      pdf_files.map { |pdf_file| filestream_disseminator_url(pdf_file['storage_key_base_ss'], 'document_access') }
     end
 
     # @param document [SolrDocument]
@@ -144,10 +147,29 @@ module CommonwealthVlrEngine
       setup_collection_links(document, link_class).sort.join(' / ').html_safe if document[:collection_ark_id_ssim]
     end
 
+    # logic for whether PDF viewer should be displayed:
+    #  - item has no images, audio, or video
+    #  - item has images, and is not a book, newspaper, manuscript, periodical, etc.
+    #  - item has images, and is a document, and does not have downloadable PDF
+    #  - item has audio/video, but PDF is not downloadable
+    # @param document [SolrDocument]
     # @param files_hash [Hash] output of CommonwealthVlrEngine::Finder.get_files
     # @return [Boolean]
-    def render_pdf_viewer?(files_hash)
-      has_pdf_files?(files_hash) && !has_multiple_images?(files_hash) && !has_playable_audio?(files_hash) && !has_video_files?(files_hash)
+    def render_pdf_viewer?(document, files_hash)
+      return unless has_pdf_files?(files_hash)
+
+      return if book_reader?(document, files_hash)
+
+      document_genres = document[:genre_basic_ssim] || []
+      return if has_image_files?(files_hash) && PDF_VIEWER_IGNORE_GENRES.any? { |g| document_genres.include?(g) }
+
+      if has_downloadable_files?(document, files_hash)
+        return if has_image_files?(files_hash) && document_genres.include?('Documents')
+
+        return if has_playable_audio?(files_hash) || has_video_files?(files_hash)
+      end
+
+      true
     end
 
     # @param document [SolrDocument]
