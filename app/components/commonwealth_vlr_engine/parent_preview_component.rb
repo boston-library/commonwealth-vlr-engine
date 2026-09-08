@@ -26,12 +26,13 @@ module CommonwealthVlrEngine
       @document.fetch(:curator_model_suffix_ssi)&.downcase&.pluralize
     end
 
-    def parent_image_tag
-      image_tag(helpers.banner_image_url(exemplary_document: parent_exemplary_document,
-                                         target_height: 350,
-                                         target_width: 550),
-                alt: parent_document[helpers.blacklight_config.index.title_field.field],
-                class: 'parent-image')
+    def parent_image_link
+      link_to(image_tag(helpers.banner_image_url(exemplary_document: parent_exemplary_document,
+                                                 target_height: 350,
+                                                 target_width: 550),
+                        alt: parent_document[helpers.blacklight_config.index.title_field.field],
+                        class: 'parent-image'),
+              helpers.public_send(parent_path, id: parent_document[:id]), id: 'parent_image_link')
     end
 
     def parent_link
