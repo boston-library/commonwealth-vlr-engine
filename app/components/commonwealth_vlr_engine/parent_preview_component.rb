@@ -27,7 +27,7 @@ module CommonwealthVlrEngine
     end
 
     def parent_image_link
-      link_to(image_tag(helpers.banner_image_url(exemplary_document: parent_exemplary_document,
+      link_to(image_tag(helpers.banner_image_url(exemplary_document: parent_exemplary_document || parent_document,
                                                  target_height: 350,
                                                  target_width: 550),
                         alt: parent_document[helpers.blacklight_config.index.title_field.field],

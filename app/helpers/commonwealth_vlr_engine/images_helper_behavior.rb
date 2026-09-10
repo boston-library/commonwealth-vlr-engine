@@ -30,18 +30,15 @@ module CommonwealthVlrEngine
     # @param target_height [Integer]
     # @return [String]
     def banner_image_url(exemplary_document:, target_width: 1100, target_height: 450)
-      if exemplary_document
+      if exemplary_document.present?
         return banner_image_iiif_url(image_ark_id: exemplary_document[:exemplary_image_ssi],
                                      destination_site: exemplary_document[:destination_site_ssim],
                                      target_width: target_width, target_height: target_height) if exemplary_document[:identifier_iiif_manifest_ss].present? &&
                                                                                                   exemplary_document[blacklight_config.hosting_status_field] == 'hosted'
 
-        return filestream_disseminator_url(exemplary_document[:exemplary_image_key_base_ss],
-                                           'image_thumbnail_300') if exemplary_document[:exemplary_image_key_base_ss].present?
-
-        render_object_icon_path(exemplary_document[:type_of_resource_ssim]&.first)
+        thumbnail_url(exemplary_document)
       else
-        render_object_icon_path('image')
+        render_object_icon_path('still image')
       end
     end
 

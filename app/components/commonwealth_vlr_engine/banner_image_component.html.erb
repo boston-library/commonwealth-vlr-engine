@@ -1,10 +1,11 @@
 <div id="banner_image_container">
-  <%= link_to banner_image_tag, solr_document_path(@exemplary_document['id']),
-              id: "banner_image", class: "#{banner_image_class}-link" %>
-  <div id="banner_image_caption">
-    <%= I18n.t('blacklight.collections.image_title_prefix') if hosted? %>
-    <%= link_to(banner_image_title,
-                solr_document_path(@exemplary_document['id']),
-                class: 'banner_image_caption_link') %>
-  </div>
+  <%= banner_image_link %>
+  <% if render_image_title? %>
+    <div id="banner_image_caption">
+      <%= I18n.t('blacklight.collections.image_title_prefix') %>
+      <%= link_to(banner_image_title,
+                  solr_document_path(@exemplary_document['id']),
+                  class: 'banner_image_caption_link') %>
+    </div>
+  <% end %>
 </div>
