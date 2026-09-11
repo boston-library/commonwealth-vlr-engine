@@ -2,37 +2,132 @@
 
 .show-document {
 
-  #img_show_container {
-    text-align: center;
-    margin-bottom: 1em;
+  #media_display_wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: black;
+    margin-bottom: 18px;
 
-    #img_show_canvas {
-      display: inline-block;
-      position: relative;
-      max-width: 100%;
-      background-color: black;
-      padding: 10px;
+    #img_show_container {
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
 
-      #img_show_zoom_cue {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        color: white;
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, .2);
-        box-shadow: 0 0 14px -4px #000000;
-        z-index: 2;
+      #img_show_canvas {
+        position: relative;
+        max-width: 100%;
 
-        .img_zoom_icon {
-          font-size: 32px;
+        #img_show_zoom_cue {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          color: white;
+          border-radius: 20px;
+          background-color: rgba(0, 0, 0, .2);
+          box-shadow: 0 0 14px -4px #000000;
+          z-index: 2;
+
+          .img_zoom_icon {
+            font-size: 32px;
+          }
+        }
+
+        .img_show {
+          border: 1px solid lightgrey;
+          width:auto;
+          max-width:100%;
+          max-height: 600px;
         }
       }
+    }
 
-      .img_show {
-        border: 1px solid lightgrey;
-        width:auto;
-        max-width:100%;
-        max-height: 600px;
+    #multi_img_show_container {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      #multi_img_viewer_osd {
+        height: 500px;
+      }
+
+    }
+
+    #uv_container {
+      flex: 1;
+      overflow: hidden;
+      height: 500px;
+      padding-left: 0;
+      padding-right: 0;
+
+      #uv {
+        height: 100%;
+
+        .centerPanel {
+
+          .title {
+            display: none !important;
+          }
+
+          .content {
+
+            .attribution {
+              display: none !important;
+            }
+
+          }
+
+        }
+
+      }
+    }
+
+    #pdf_show_container {
+      text-align: center;
+
+      #pdf_show_canvas {
+        max-width: 100%;
+
+        .pdf_viewer {
+          width: 90%;
+          height: 800px;
+          border: 1px solid darkgrey;
+        }
+      }
+    }
+
+    #audio_show_container {
+      text-align: center;
+
+      #audio_show_canvas {
+        display: inline-block;
+        position: relative;
+        max-width: 100%;
+        border-radius: 10px;
+        background-color: lightgray;
+        border: 1px solid darkgray;
+        padding: 10px;
+
+        #audio_player {
+          width: 700px;
+        }
+
+        #audio_playlist {
+          list-style-type: none;
+          padding: 0 5px;
+          margin-bottom: 0;
+
+          li {
+            text-align: left;
+            padding: 5px;
+          }
+
+          li.active {
+            background-color: lightgray;
+
+            a {
+              color: dimgrey;
+            }
+          }
+        }
       }
     }
   }
@@ -91,99 +186,6 @@
 
     }
 
-  }
-
-  #multi_img_show_container {
-    margin-bottom: 1em;
-
-    #multi_img_viewer_osd {
-      background-color: black;
-      height: 500px;
-    }
-
-  }
-
-  #uv_container {
-    flex: 1;
-    overflow: hidden;
-    height: 500px;
-    margin-bottom: 1em;
-
-    #uv {
-      height: 100%;
-
-      .centerPanel {
-
-        .title {
-          display: none !important;
-        }
-
-        .content {
-
-          .attribution {
-            display: none !important;
-          }
-
-        }
-
-      }
-
-    }
-  }
-
-  #pdf_show_container {
-    text-align: center;
-    margin-bottom: 2em;
-    margin-top: 2em;
-
-    #pdf_show_canvas {
-      max-width: 100%;
-
-      .pdf_viewer {
-        width: 90%;
-        height: 800px;
-        border: 1px solid darkgrey;
-      }
-    }
-  }
-
-  #audio_show_container {
-    text-align: center;
-    margin-bottom: 2em;
-    margin-top: 2em;
-
-    #audio_show_canvas {
-      display: inline-block;
-      position: relative;
-      max-width: 100%;
-      border-radius: 10px;
-      background-color: lightgray;
-      border: 1px solid darkgray;
-      padding: 10px;
-
-      #audio_player {
-        width: 700px;
-      }
-
-      #audio_playlist {
-        list-style-type: none;
-        padding: 0 5px;
-        margin-bottom: 0;
-
-        li {
-          text-align: left;
-          padding: 5px;
-        }
-
-        li.active {
-          background-color: lightgray;
-
-          a {
-            color: dimgrey;
-          }
-        }
-      }
-    }
   }
 
   div.show-tools {
