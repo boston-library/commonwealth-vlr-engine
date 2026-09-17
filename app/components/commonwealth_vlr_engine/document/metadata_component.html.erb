@@ -185,7 +185,7 @@
     <% end %>
 
     <%# rights field %>
-    <% if document[:rights_ss] || document[:license_ss] || document[:rightsstatement_ss]  %>
+    <% if render_rights?  %>
       <dt class="<%= helpers.metadata_field_label_class(field_key: 'rights') %>"><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
       <dd class="<%= helpers.metadata_field_value_class(field_key: 'rights') %>">
         <% if document[:rightsstatement_ss].present? %>
@@ -228,7 +228,7 @@
     <% end %>
 
     <%# publication data fields %>
-    <% %w(edition_name edition_number volume issue_number).each do |pd_field_base| %>
+    <% PUBLICATION_DATA_FIELDS.each do |pd_field_base| %>
       <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
         document: document, field_name: "#{pd_field_base}_tsi".to_sym, field_key: pd_field_base
       ) %>
@@ -301,15 +301,14 @@
     ) %>
 
     <%# specific note fields %>
-    <% %w(citation performers venue ownership acquisition date reference physical bibliography
-          exhibitions arrangement language funding biographical publications credits).each do |nt| %>
+    <% SPECIFIC_NOTE_FIELDS.each do |nt| %>
       <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
         document: document, field_name: "note_#{nt}_tsim".to_sym, field_key: "note_#{nt}"
       ) %>
     <% end %>
 
     <%# local-accession, local-other, local-call local-barcode id fields %>
-    <% %w[accession other call barcode].each do |id_base| %>
+    <% LOCAL_IDENTIFIER_FIELDS.each do |id_base| %>
       <% fn = "identifier_local_#{id_base}_tsim".to_sym %>
       <% fn_invalid = "identifier_local_#{id_base}_invalid_tsim".to_sym %>
       <% if document[fn] || document[fn_invalid] %>
@@ -330,7 +329,7 @@
     <% end %>
 
     <%# other identifier fields %>
-    <% %w[isbn lccn issn ismn isrc issue_number matrix_number music_plate music_publisher oclcnum sici videorecording].each do |id_base| %>
+    <% OTHER_IDENTIFIER_FIELDS.each do |id_base| %>
       <%= render CommonwealthVlrEngine::Document::MetadataFieldComponent.new(
         document: document, field_name: "identifier_#{id_base}_ssim".to_sym, field_key: "id_#{id_base}"
       ) %>

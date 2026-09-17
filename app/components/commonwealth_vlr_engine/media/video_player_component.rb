@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# wrapper for various media display components
 module CommonwealthVlrEngine
   module Media
     class VideoPlayerComponent < ViewComponent::Base

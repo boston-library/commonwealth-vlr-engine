@@ -24,10 +24,6 @@ module CommonwealthVlrEngine
         CommonwealthVlrEngine::Media::BookViewerComponent.new(document: document, object_files: object_files)
       }
 
-      renders_one :pdf_viewer, lambda {
-        CommonwealthVlrEngine::Media::PdfViewerComponent.new(document: document, object_files: object_files)
-      }
-
       renders_one :audio_player, lambda {
         CommonwealthVlrEngine::Media::AudioPlayerComponent.new(document: document, object_files: object_files)
       }
@@ -36,11 +32,16 @@ module CommonwealthVlrEngine
         CommonwealthVlrEngine::Media::VideoPlayerComponent.new(document: document, object_files: object_files)
       }
 
+      renders_one :pdf_viewer, lambda {
+        CommonwealthVlrEngine::Media::PdfViewerComponent.new(document: document, object_files: object_files)
+      }
+
+      renders_one :thumbnail, lambda {
+        CommonwealthVlrEngine::Media::ThumbnailComponent.new(document: document, object_files: object_files)
+      }
+
       def render?
-        helpers.has_image_files?(object_files) ||
-          helpers.has_video_files?(object_files) ||
-          helpers.has_pdf_files?(object_files) ||
-          helpers.has_playable_audio?(object_files)
+        !helpers.harvested_object?(document)
       end
 
       # Hack so that the default lambdas are triggered
@@ -49,9 +50,10 @@ module CommonwealthVlrEngine
         set_slot(:image_viewer, nil)
         set_slot(:multi_image_viewer, nil)
         set_slot(:book_viewer, nil)
-        set_slot(:pdf_viewer, nil)
         set_slot(:audio_player, nil)
         set_slot(:video_player, nil)
+        set_slot(:pdf_viewer, nil)
+        set_slot(:thumbnail, nil)
       end
     end
   end
