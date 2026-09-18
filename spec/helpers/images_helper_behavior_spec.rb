@@ -69,6 +69,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
     describe 'object without an exemplary image' do
       it 'returns the correct url' do
         banner_img_url = helper.banner_image_url(exemplary_document: exemplary_document.except(:identifier_iiif_manifest_ss,
+                                                                                               :exemplary_image_ssi,
                                                                                                :exemplary_image_key_base_ss))
         expect(banner_img_url).to include('dc_audio-icon.png')
       end
@@ -76,7 +77,7 @@ RSpec.describe CommonwealthVlrEngine::ImagesHelperBehavior, :vcr do
 
     describe 'when no exemplary document is provided' do
       it 'returns the correct url' do
-        expect(helper.banner_image_url(exemplary_document: nil)).to include('dc_text-icon.png')
+        expect(helper.banner_image_url(exemplary_document: nil)).to include('dc_image-icon.png')
       end
     end
   end
