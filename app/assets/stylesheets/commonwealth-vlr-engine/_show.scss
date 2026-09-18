@@ -3,13 +3,16 @@
 .show-document {
 
   #media_display_wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
     background-color: black;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
+
+    .media_container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
     #img_show_container {
-      text-align: center;
       padding-left: 15px;
       padding-right: 15px;
 
@@ -61,6 +64,7 @@
       height: 500px;
       padding-left: 0;
       padding-right: 0;
+      text-align: unset;
 
       #uv {
         height: 100%;
@@ -85,8 +89,6 @@
     }
 
     #pdf_show_container {
-      text-align: center;
-
       #pdf_show_canvas {
         max-width: 100%;
 
@@ -99,8 +101,6 @@
     }
 
     #audio_show_container {
-      text-align: center;
-
       #audio_show_canvas {
         display: inline-block;
         position: relative;

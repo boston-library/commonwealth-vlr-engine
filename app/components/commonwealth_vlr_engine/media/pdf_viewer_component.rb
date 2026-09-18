@@ -2,13 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class PdfViewerComponent < ViewComponent::Base
-      def initialize(document:, object_files:)
-        @document = document
-        @object_files = object_files
-      end
-      attr_reader :document, :object_files
-
+    class PdfViewerComponent < CommonwealthVlrEngine::Document::MediaComponent
       PDF_VIEWER_IGNORE_GENRES = ['Books', 'Correspondence', 'Ephemera', 'Manuscripts',
                                   'Musical notation', 'Newspapers', 'Periodicals', 'Prints'].freeze
 

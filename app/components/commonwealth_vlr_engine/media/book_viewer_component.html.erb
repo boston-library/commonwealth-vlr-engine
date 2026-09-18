@@ -3,6 +3,6 @@
   not CatalogHelperBehavior#iiif_manifest_url (which returns the canonical ARK URL by default),
   prefer the routing helper since performance should be slightly better
 %>
-<div id="uv_container">
+<div id="uv_container" class="media_container">
   <div id="uv" class="uv" data-manifest="<%= iiif_manifest_url(document) %>" data-uvconfig="<%= uv_config %>"></div>
 </div>

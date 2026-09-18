@@ -2,13 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class MultiImageViewerComponent < ViewComponent::Base
-      def initialize(document:, object_files:)
-        @document = document
-        @object_files = object_files
-      end
-      attr_reader :document, :object_files
-
+    class MultiImageViewerComponent < CommonwealthVlrEngine::Document::MediaComponent
       def image_keys
         object_files[:image].map { |i| i['storage_key_base_ss'] }
       end

@@ -2,13 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class VideoPlayerComponent < ViewComponent::Base
-      def initialize(document:, object_files:)
-        @document = document
-        @object_files = object_files
-      end
-      attr_reader :document, :object_files
-
+    class VideoPlayerComponent < CommonwealthVlrEngine::Document::MediaComponent
       def video_key
         object_files[:video][0]['storage_key_base_ss']
       end

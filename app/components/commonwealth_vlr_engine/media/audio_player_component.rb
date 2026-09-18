@@ -2,13 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class AudioPlayerComponent < ViewComponent::Base
-      def initialize(document:, object_files:)
-        @document = document
-        @object_files = object_files
-      end
-      attr_reader :document, :object_files
-
+    class AudioPlayerComponent < CommonwealthVlrEngine::Document::MediaComponent
       def audio_files
         object_files[:audio]
       end

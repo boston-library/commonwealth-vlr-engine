@@ -2,13 +2,7 @@
 
 module CommonwealthVlrEngine
   module Media
-    class BookViewerComponent < ViewComponent::Base
-      def initialize(document:, object_files:)
-        @document = document
-        @object_files = object_files
-      end
-      attr_reader :document, :object_files
-
+    class BookViewerComponent < CommonwealthVlrEngine::Document::MediaComponent
       # override a few defaults as needed
       def uv_config
         {
