@@ -1,3 +1,8 @@
-<div id="item_breadcrumb">
-  <%= I18n.t('blacklight.breadcrumb.prefix') %><%= render_item_breadcrumb %>
-</div>
+<nav id="item_breadcrumb">
+  <%= I18n.t('blacklight.breadcrumb.prefix') %>
+  <ol class="breadcrumb">
+    <% breadcrumb_links.each do |link| %>
+      <li class="breadcrumb-item"><%= link %></li>
+    <% end %>
+  </ol>
+</nav>

@@ -9,10 +9,8 @@ module CommonwealthVlrEngine
 
     attr_reader :document, :link_class
 
-    def render_item_breadcrumb
-      separator = icon('fas', 'arrow-right', class: 'breadcrumb_separator')
-      breadcrumbs = [institution_link, collection_links].compact
-      breadcrumbs.join(separator).html_safe
+    def breadcrumb_links
+      [institution_link, collection_links].compact
     end
 
     def institution_link

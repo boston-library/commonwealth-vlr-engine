@@ -48,9 +48,9 @@ module CommonwealthVlrEngine
 
       return new_facet_params if response&.aggregations.blank?
 
-      # extract existing fq params from response, which is an Array like:
+      # extract fq params from response, which is typically (but not always) an Array like:
       # ["{!term f=field_name1_ssim}Foo Bar", "{!term f=field_name2_ssim}Baz--Qux", ...]
-      previous_facet_params = response.params.dig('fq')
+      previous_facet_params = Array.wrap(response.params.dig('fq'))
       previous_facet_params.each do |pfp|
         next unless pfp.match?(/{!term\sf=/)
 
