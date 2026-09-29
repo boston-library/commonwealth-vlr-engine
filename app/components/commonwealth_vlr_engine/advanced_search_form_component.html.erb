@@ -25,7 +25,7 @@
       </div>
 
       <div class="advanced-search-field">
-        <div id="advanced_operators" class="offset-sm-3 offset-md-3 offset-lg-2 col-sm-8 col-md-10 col-lg-6">
+        <div id="advanced_operators" class="offset-sm-3 offset-md-3 offset-lg-4 col-sm-8 col-md-10 col-lg-6">
           <div class="form-check form-check-inline">
             <%= radio_button_tag(:op, 'must', true, class: 'form-check-input') %>
             <label class="form-check-label" for="op_must">find all terms</label>
@@ -37,9 +37,11 @@
         </div>
       </div>
 
-      <div>
-        <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit' %>
-        <%= link_to t('blacklight.advanced_search.form.start_over_html'), request.path, :class =>"btn btn-link advanced-search-start-over" %>
+      <div class="form-group row">
+        <div class="submit-buttons col-md-8 offset-md-4">
+          <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit' %>
+          <%= link_to t('blacklight.advanced_search.form.start_over_html'), request.path, :class =>"btn btn-outline-secondary advanced-search-start-over" %>
+        </div>
       </div>
     </div>
 

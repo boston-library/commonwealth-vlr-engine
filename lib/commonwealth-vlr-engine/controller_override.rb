@@ -4,6 +4,13 @@ module CommonwealthVlrEngine
   module ControllerOverride
     extend ActiveSupport::Concern
 
+    TITLE_SORT_FIELD = 'title_info_primary_ssort'
+    DATE_ASC_SORT = "date_start_dtsi asc, #{TITLE_SORT_FIELD} asc".freeze
+    TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc".freeze
+    DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
+    TITLE_PRIMARY_FIELD = 'title_info_primary_tsi'
+    GENRE_FIELD = 'genre_basic_ssim'
+
     included do
       include CommonwealthVlrEngine::Finder
 
@@ -15,13 +22,6 @@ module CommonwealthVlrEngine
       # TODO: re-enable when blacklight-maps updated
       # before_action :geojson_facet_config, only: [:index, :map]
       after_action :set_access_control_headers, only: [:index, :show]
-
-      TITLE_SORT_FIELD = 'title_info_primary_ssort'
-      DATE_ASC_SORT = "date_start_dtsi asc, #{TITLE_SORT_FIELD} asc".freeze
-      TITLE_SORT = "#{TITLE_SORT_FIELD} asc, date_start_dtsi asc".freeze
-      DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
-      TITLE_PRIMARY_FIELD = 'title_info_primary_tsi'
-      GENRE_FIELD = 'genre_basic_ssim'
 
       # all the commonwealth-vlr-engine CatalogController config stuff goes here
       configure_blacklight do |config|
