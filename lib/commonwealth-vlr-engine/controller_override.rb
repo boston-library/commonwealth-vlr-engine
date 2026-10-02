@@ -10,6 +10,8 @@ module CommonwealthVlrEngine
     DISPLAY_TYPE_FIELD = 'curator_model_suffix_ssi'
     TITLE_PRIMARY_FIELD = 'title_info_primary_tsi'
     GENRE_FIELD = 'genre_basic_ssim'
+    REUSE_FIELD = 'reuse_allowed_ssi'
+    COLLECTION_FIELD = 'collection_name_ssim'
 
     included do
       include CommonwealthVlrEngine::Finder
@@ -72,18 +74,18 @@ module CommonwealthVlrEngine
           url_key: 'advanced',
           query_parser: 'edismax',
           form_solr_parameters: {
-            'facet.field' => [GENRE_FIELD, 'collection_name_ssim', 'reuse_allowed_ssi'],
+            'facet.field' => [GENRE_FIELD, COLLECTION_FIELD, REUSE_FIELD],
             "f.#{GENRE_FIELD}.facet.limit" => -1, # return all facet values
-            'f.collection_name_ssim.facet.limit' => -1,
-            'f.reuse_allowed_ssi.facet.limit' => -1,
+            "f.#{COLLECTION_FIELD}.facet.limit" => -1,
+            "f.#{REUSE_FIELD}.facet.limit" => -1,
             "f.#{GENRE_FIELD}.facet.sort" => 'index', # sort by byte order of values
-            'f.collection_name_ssim.facet.sort' => 'index',
-            'f.reuse_allowed_ssi.facet.sort' => 'index'
+            "f.#{COLLECTION_FIELD}.facet.sort" => 'index',
+            "f.#{REUSE_FIELD}.facet.sort" => 'index'
           }
         )
 
         # fields for pseudo-objects (collection, institution, series)
-        config.collection_field = 'collection_name_ssim'
+        config.collection_field = COLLECTION_FIELD
         config.institution_field = 'institution_name_ssi'
         config.series_field = 'related_item_series_ssi'
 
@@ -104,10 +106,10 @@ module CommonwealthVlrEngine
         config.add_facet_field 'subject_facet_ssim', label: 'Subject', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
         config.add_facet_field 'subject_geographic_sim', label: 'Place', limit: 8, sort: 'count', collapse: false, index_range: 'A'..'Z'
         config.add_facet_field GENRE_FIELD, label: 'Format', limit: 8, sort: 'count', helper_method: :render_format, collapse: false
-        config.add_facet_field 'reuse_allowed_ssi', label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
+        config.add_facet_field REUSE_FIELD, label: 'Available to use', limit: 8, sort: 'count', helper_method: :render_reuse,
                                collapse: false, solr_params: { 'facet.excludeTerms' => 'all rights reserved,contact host' }
         config.add_facet_field 'date_facet_yearly_itim', label: 'Date', range: true, collapse: false
-        config.add_facet_field 'collection_name_ssim', label: 'Collection', limit: 8, sort: 'count', collapse: false
+        config.add_facet_field COLLECTION_FIELD, label: 'Collection', limit: 8, sort: 'count', collapse: false
         config.add_facet_field 'physical_location_ssim', label: 'Institution', limit: 8, sort: 'count', collapse: false, if: lambda { |_context, _field_config, _document|
           CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
         }
@@ -146,7 +148,7 @@ module CommonwealthVlrEngine
         config.add_index_field GENRE_FIELD, label: 'Format', helper_method: :render_format_index
         config.add_index_field 'date_tsim', label: 'Date', helper_method: :index_date_value
         config.add_index_field 'name_facet_ssim', label: 'Creator', helper_method: :index_creator_value
-        config.add_index_field 'collection_name_ssim', label: 'Collection', helper_method: :index_collection_link
+        config.add_index_field COLLECTION_FIELD, label: 'Collection', helper_method: :index_collection_link
         blacklight_config.add_index_field 'institution_name_ssi', label: 'Institution', helper_method: :index_institution_link, if: lambda { |_context, _field_config, _document|
           CommonwealthVlrEngine.config.dig(:institution, :pid).blank?
         }
@@ -275,14 +277,14 @@ module CommonwealthVlrEngine
     # modify BL config settings for Collections#show and Institutions#show
     # def relation_base_blacklight_config
     #   # don't show collection facet
-    #   blacklight_config.facet_fields['collection_name_ssim'].show = false
-    #   blacklight_config.facet_fields['collection_name_ssim'].if = false
+    #   blacklight_config.facet_fields[COLLECTION_FIELD].show = false
+    #   blacklight_config.facet_fields[COLLECTION_FIELD].if = false
     #   # collapse remaining facets
     #   blacklight_config.facet_fields['subject_facet_ssim'].collapse = true
     #   blacklight_config.facet_fields['subject_geographic_sim'].collapse = true
     #   blacklight_config.facet_fields['date_facet_yearly_itim'].collapse = true
     #   blacklight_config.facet_fields['genre_basic_ssim'].collapse = true
-    #   blacklight_config.facet_fields['reuse_allowed_ssi'].collapse = true
+    #   blacklight_config.facet_fields[REUSE_FIELD].collapse = true
     #   # remove item-centric show tools (for admin)
     #   blacklight_config.show.document_actions.delete(:sharing)
     #   blacklight_config.show.document_actions.delete(:iiif_manifest)

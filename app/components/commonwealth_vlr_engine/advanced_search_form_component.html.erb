@@ -51,8 +51,8 @@
 
         <div id="date_range_limit" class="advanced-search-field">
           <div class="row">
-            <label class="col-form-label col-md-3 col-lg-2">Year</label>
-            <div class="col-sm-8">
+            <label class="col-form-label col-sm-5 col-md-3">Year</label>
+            <div class="col-sm-7 col-md-8">
               <% %w(begin end).each do |v| %>
                 <div class="input-group col-md-8 col-lg-5">
                     <label id="<%= "date_range_#{v}_label" %>" class="input-group-text" for="<%= "range_date_facet_yearly_itim_#{v}" %>">
@@ -66,12 +66,10 @@
           </div>
         </div>
 
-        <div id="advanced_search_facets" class="limit_input row">
-          <div class="advanced-facet-limits panel-group col-md-9 offset-md-3">
-            <% search_filter_controls.each do |control| %>
-              <%= control %>
-            <% end %>
-          </div>
+        <div id="advanced_search_facets">
+          <% search_filter_controls.each do |control| %>
+            <%= control %>
+          <% end %>
         </div>
       </div>
     <% end %>
