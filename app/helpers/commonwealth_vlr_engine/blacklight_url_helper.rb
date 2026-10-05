@@ -23,6 +23,9 @@ module CommonwealthVlrEngine
     end
 
     # don't add session tracking to links when displaying items on certain non-catalog#* views
+    # TODO: this method override should probably be replaced with setting:
+    #       `blacklight_config.track_search_session.storage = false`
+    #       in the controllers where it is not desired
     def session_tracking_path(document, params = {})
       notrack_controllers = %w(institutions collections primary_source_sets pages)
       return if notrack_controllers.include?(controller_name)
