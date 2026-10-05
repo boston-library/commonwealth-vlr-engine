@@ -160,6 +160,8 @@ module CommonwealthVlrEngine
 
       return if book_reader?(document, files_hash)
 
+      return true if document[:genre_specific_ssim]&.include?('Oral histories') && !has_downloadable_files?(document, files_hash)
+
       document_genres = document[:genre_basic_ssim] || []
       return if has_image_files?(files_hash) && PDF_VIEWER_IGNORE_GENRES.any? { |g| document_genres.include?(g) }
 
