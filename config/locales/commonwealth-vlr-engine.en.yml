@@ -166,6 +166,7 @@ en:
         body: 'NOTICE: The item below may include offensive, harmful, or inappropriate imagery or language.'
 
     formats:
+      page_header: 'Formats'
       page_title: 'Formats - %{application_name}'
 
     footer:

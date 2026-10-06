@@ -16,11 +16,13 @@ module CommonwealthVlrEngine
       #  - item has no images, audio, or video
       #  - item has images, and is not a book, newspaper, manuscript, periodical, etc.
       #  - item has images, and is a document, and does not have downloadable PDF
-      #  - item has audio/video, but PDF is not downloadable
+      #  - item has audio/video, or is an oral history, but PDF is not downloadable
       def render?
         return unless helpers.has_pdf_files?(object_files)
 
         return if helpers.include_uv?(document, object_files)
+
+        return true if document[:genre_specific_ssim]&.include?('Oral histories') && !helpers.has_downloadable_files?(document, files_hash)
 
         document_genres = document[:genre_basic_ssim] || []
         return if helpers.has_image_files?(object_files) && PDF_VIEWER_IGNORE_GENRES.any? { |g| document_genres.include?(g) }

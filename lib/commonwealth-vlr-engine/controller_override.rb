@@ -258,8 +258,9 @@ module CommonwealthVlrEngine
       # /formats - displays values and pagination links for Format field
       # based on Blacklight::Catalog#facet
       def formats_facet
+        blacklight_config.facet_fields[GENRE_FIELD].label = t('blacklight.formats.page_header')
         @nav_li_active = 'explore'
-        @page_title = t('blacklight.formats.page_title', :application_name => t('blacklight.application_name'))
+        @page_title = t('blacklight.formats.page_title', application_name: t('blacklight.application_name'))
         @facet = blacklight_config.facet_fields[GENRE_FIELD]
         @response = search_service.facet_field_response(@facet.key,
                                                         { "f.#{GENRE_FIELD}.facet.limit" => -1 })
