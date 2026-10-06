@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass', '~> 6.5.1'
   s.add_dependency 'i18n', '~> 1.14.7' # cap below 1.15, which requires Ruby 3.2
   s.add_dependency 'iiif-presentation', '~> 1.1'
+  s.add_dependency 'json', '< 3' # cap below 3.*, which requires activesupport >= 8.1
   s.add_dependency 'madison', '~> 0.5.0'
   s.add_dependency 'openseadragon', '0.6.0'
   s.add_dependency 'rails', '~> 6.1.7.4'
